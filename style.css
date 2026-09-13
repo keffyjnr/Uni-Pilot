@@ -19,6 +19,9 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
+  /* Remove blue tap highlight on mobile */
+  -webkit-tap-highlight-color: transparent;
 }
 
 html {
@@ -35,11 +38,25 @@ body {
 a {
   text-decoration: none;
   color: inherit;
+
+  -webkit-tap-highlight-color: transparent;
 }
 
 button,
 input {
   font: inherit;
+}
+
+/* Remove unwanted blue tap/focus highlights */
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus,
+a:focus {
+  outline: none;
 }
 
 /* =========================
@@ -50,9 +67,6 @@ input {
   position: sticky;
   top: 0;
 
-  /* IMPORTANT:
-     Header must stay above the overlay so the
-     mobile popup inside it stays sharp. */
   z-index: 1000;
 
   background: rgba(255, 255, 255, 0.92);
@@ -173,13 +187,6 @@ input {
    MOBILE MENU OVERLAY
 ========================= */
 
-/*
-  The overlay sits UNDER the mobile menu.
-
-  It blurs the page behind it.
-  It does NOT blur the popup itself.
-*/
-
 .menu-overlay {
   position: fixed;
   inset: 0;
@@ -215,14 +222,6 @@ input {
    MOBILE POPUP MENU
 ========================= */
 
-/*
-  IMPORTANT:
-  This menu is inside the header in your HTML.
-
-  The header is now above the overlay,
-  so this popup remains completely sharp.
-*/
-
 .mobile-menu {
   position: fixed;
 
@@ -237,7 +236,6 @@ input {
 
   padding: 12px;
 
-  /* Fully opaque so the menu itself stays clear */
   background: #ffffff;
 
   border: 1px solid rgba(11, 93, 59, 0.15);
@@ -246,7 +244,6 @@ input {
   box-shadow:
     0 25px 60px rgba(6, 59, 38, 0.22);
 
-  /* Above the overlay */
   z-index: 1001;
 
   opacity: 0;
@@ -266,8 +263,6 @@ input {
     visibility 0.25s ease;
 }
 
-/* OPEN STATE */
-
 .mobile-menu.active {
   opacity: 1;
   visibility: visible;
@@ -278,8 +273,6 @@ input {
     translateY(0)
     scale(1);
 }
-
-/* MENU LINKS */
 
 .mobile-menu a {
   display: flex;
@@ -1469,10 +1462,8 @@ footer {
         calc(100vw - 28px)
       );
 
-    /* Keep popup completely solid */
     background: #ffffff;
 
-    /* Keep it above the blurred overlay */
     z-index: 1001;
   }
 }
@@ -1501,6 +1492,7 @@ footer {
     gap: 20px;
   }
 }
+
 /* =========================
    COMPACT STUDENT TOOLS
 ========================= */
@@ -1593,7 +1585,6 @@ footer {
   font-weight: 800;
 }
 
-
 /* =========================
    TABLET
 ========================= */
@@ -1609,7 +1600,6 @@ footer {
   }
 
 }
-
 
 /* =========================
    MOBILE
