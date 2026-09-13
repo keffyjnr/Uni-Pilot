@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Uni Pilot | Your Student Guide</title>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* =========================
+       ACCOUNT DROPDOWN
+    ========================== */
+
+    .account-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    .account-dropdown {
+      position: absolute;
+      top: calc(100% + 10px);
+      right: 0;
+      min-width: 150px;
+      padding: 6px;
+
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+
+      border: 1px solid rgba(255, 255, 255, 0.65);
+      border-radius: 14px;
+
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-8px);
+
+      transition:
+        opacity 0.2s ease,
+        transform 0.2s ease,
+        visibility 0.2s ease;
+
+      z-index: 1000;
+    }
+
+    .account-dropdown.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .logout-btn {
+      width: 100%;
+      padding: 10px 12px;
+
+      border: none;
+      border-radius: 10px;
+
+      background: transparent;
+
+      color: var(--text);
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
+
+      text-align: left;
+
+      cursor: pointer;
+
+      transition: background 0.2s ease;
+    }
+
+    .logout-btn:hover {
+      background: rgba(11, 93, 59, 0.08);
+    }
+  </style>
+
+</head>
+
+<body>
+
+
+  <!-- =========================
+       NAVIGATION
+  ========================== -->
+
+  <header class="header">
+
+    <nav class="navbar">
+
+
+      <!-- Logo -->
+
+      <a href="index.html" class="brand">
+
+        <div class="brand-icon">
+          🎓
+        </div>
+
+        <span>Uni Pilot</span>
+
+      </a>
+
+
+      <!-- Desktop Navigation -->
+
+      <div class="desktop-nav">
+
+        <a href="index.html">Home</a>
+
+        <a href="resources.html">Resources</a>
+
+        <a href="guide.html">Student Guide</a>
+
+        <a href="updates.html">Updates</a>
+
+        <a href="tools.html">Tools</a>
+
+      </div>
+
+
+      <!-- Navigation Actions -->
+
+      <div class="nav-actions">
+
+
+        <button
+          class="icon-btn"
+          aria-label="Search"
+          type="button"
+        >
+          🔍
+        </button>
+
+
+        <!-- Login / Account -->
+
+        <div class="account-wrapper">
+
+          <a
+            href="auth.html"
+            class="auth-btn"
+            id="authBtn"
+          >
+            Login / Sign Up
+          </a>
+
+
+          <!-- Account Dropdown -->
+
+          <div
+            class="account-dropdown"
+            id="accountDropdown"
+          >
+
+            <button
+              class="logout-btn"
+              id="logoutBtn"
+              type="button"
+            >
+              Log out ↩️
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- Mobile Menu Button -->
+
+        <button
+          class="menu-btn"
+          id="menuBtn"
+          aria-label="Open Menu"
+          type="button"
+        >
+          ☰
+        </button>
+
+
+      </div>
+
+    </nav>
+
+
+    <!-- Mobile Menu -->
+
+    <div
+      class="mobile-menu"
+      id="navLinks"
+    >
+
+      <a href="index.html">
+        Home
+      </a>
+
+      <a href="resources.html">
+        Academic Resources
+      </a>
+
+      <a href="guide.html">
+        Student Guide
+      </a>
+
+      <a href="updates.html">
+        Campus Updates
+      </a>
+
+      <a href="opportunities.html">
+        Opportunities
+      </a>
+
+      <a href="tools.html">
+        Student Tools
+      </a>
+
+      <a href="about.html">
+        About
+      </a>
+
+      <a
+        href="auth.html"
+        id="mobileAuthBtn"
+      >
+        Login / Sign Up
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <!-- Menu Background Overlay -->
+
+  <div
+    class="menu-overlay"
+    id="menuOverlay"
+  ></div>
+
+
+  <!-- =========================
+       MAIN CONTENT
+  ========================== -->
+
+  <main>
+
+
+    <!-- =========================
+         PERSONAL WELCOME HERO
+    ========================== -->
+
+    <section
+      class="welcome-section"
+      id="home"
+    >
+
+      <div class="welcome-content">
+
+
+        <div class="welcome-tag">
+          🎓 YOUR STUDENT COMPANION
+        </div>
+
+
+        <h1 id="welcomeMessage">
+          👋 Hello, Student!
+        </h1>
+
+
+        <p class="welcome-description">
+          What do you want to do today?
+        </p>
+
+
+        <!-- QUICK ACTIONS -->
+
+        <div class="action-grid">
+
+
+          <a
+            href="resources.html"
+            class="action-card"
+          >
+
+            <span>📚</span>
+
+            <div>
+
+              <h3>
+                Explore Resources
+              </h3>
+
+              <p>
+                Find notes, past questions and course materials.
+              </p>
+
+            </div>
+
+            <strong>→</strong>
+
+          </a>
+
+
+          <a
+            href="guide.html"
+            class="action-card"
+          >
+
+            <span>🎓</span>
+
+            <div>
+
+              <h3>
+                Student Guide
+              </h3>
+
+              <p>
+                Get help with school procedures and student life.
+              </p>
+
+            </div>
+
+            <strong>→</strong>
+
+          </a>
+
+
+          <a
+            href="guide.html"
+            class="action-card"
+          >
+
+            <span>📊</span>
+
+            <div>
+
+              <h3>
+                Check Results
+              </h3>
+
+              <p>
+                Learn how to access and understand your results.
+              </p>
+
+            </div>
+
+            <strong>→</strong>
+
+          </a>
+
+
+          <a
+            href="updates.html"
+            class="action-card"
+          >
+
+            <span>📢</span>
+
+            <div>
+
+              <h3>
+                Campus Updates
+              </h3>
+
+              <p>
+                Stay updated with announcements and deadlines.
+              </p>
+
+            </div>
+
+            <strong>→</strong>
+
+          </a>
+
+
+          <a
+            href="opportunities.html"
+            class="action-card"
+          >
+
+            <span>💼</span>
+
+            <div>
+
+              <h3>
+                Opportunities
+              </h3>
+
+              <p>
+                Find scholarships, internships and more.
+              </p>
+
+            </div>
+
+            <strong>→</strong>
+
+          </a>
+
+
+          <a
+            href="tools.html"
+            class="action-card"
+          >
+
+            <span>🧮</span>
+
+            <div>
+
+              <h3>
+                Student Tools
+              </h3>
+
+              <p>
+                GPA calculators, course units and useful tools.
+              </p>
+
+            </div>
+
+            <strong>→</strong>
+
+          </a>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         PLATFORM INTRODUCTION
+    ========================== -->
+
+    <section class="platform-intro">
+
+      <div class="platform-intro-content">
+
+
+        <span class="intro-label">
+          ALL YOUR STUDENT NEEDS
+        </span>
+
+
+        <h2>
+
+          Everything Students Need
+
+          <span>
+            in One Place.
+          </span>
+
+        </h2>
+
+
+        <p>
+
+          Access academic resources, school guides, campus updates,
+          opportunities, and useful student tools — all designed to
+          make student life easier.
+
+        </p>
+
+
+        <div class="hero-buttons">
+
+
+          <a
+            href="resources.html"
+            class="btn btn-primary"
+          >
+            Explore Resources →
+          </a>
+
+
+          <a
+            href="guide.html"
+            class="btn btn-secondary"
+          >
+            Student Guide
+          </a>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         QUICK ACCESS
+    ========================== -->
+
+    <section class="section quick-access">
+
+
+      <div class="section-heading">
+
+        <h2>
+          Quick Access
+        </h2>
+
+        <p>
+          Jump straight to what you need.
+        </p>
+
+      </div>
+
+
+      <div class="quick-access-grid">
+
+
+        <a
+          href="resources.html"
+          class="access-card"
+        >
+
+          <div class="access-icon">
+            📚
+          </div>
+
+          <h3>
+            Academic Resources
+          </h3>
+
+          <p>
+
+            Access course materials, past questions,
+            notes, and study resources.
+
+          </p>
+
+          <span class="card-link">
+            Open →
+          </span>
+
+        </a>
+
+
+        <a
+          href="guide.html"
+          class="access-card"
+        >
+
+          <div class="access-icon">
+            🎓
+          </div>
+
+          <h3>
+            Student Guide
+          </h3>
+
+          <p>
+
+            Learn about registration, results,
+            school procedures, and more.
+
+          </p>
+
+          <span class="card-link">
+            Open →
+          </span>
+
+        </a>
+
+
+        <a
+          href="updates.html"
+          class="access-card"
+        >
+
+          <div class="access-icon">
+            📢
+          </div>
+
+          <h3>
+            Campus Updates
+          </h3>
+
+          <p>
+
+            Stay updated with announcements,
+            events, deadlines, and campus news.
+
+          </p>
+
+          <span class="card-link">
+            Open →
+          </span>
+
+        </a>
+
+
+        <a
+          href="opportunities.html"
+          class="access-card"
+        >
+
+          <div class="access-icon">
+            💼
+          </div>
+
+          <h3>
+            Opportunities
+          </h3>
+
+          <p>
+
+            Discover scholarships, internships,
+            competitions, and opportunities.
+
+          </p>
+
+          <span class="card-link">
+            Open →
+          </span>
+
+        </a>
+
+
+        <a
+          href="tools.html"
+          class="access-card"
+        >
+
+          <div class="access-icon">
+            🧮
+          </div>
+
+          <h3>
+            Student Tools
+          </h3>
+
+          <p>
+
+            Use helpful tools such as GPA
+            calculators and course unit calculators.
+
+          </p>
+
+          <span class="card-link">
+            Open →
+          </span>
+
+        </a>
+
+
+      </div>
+
+    </section>
+
+
+  </main>
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer>
+
+
+    <div class="footer-container">
+
+
+      <div class="footer-brand">
+
+        <h2>
+          Uni Pilot
+        </h2>
+
+        <p>
+          Your campus. Your resources. Your guide.
+        </p>
+
+      </div>
+
+
+      <div class="footer-links">
+
+
+        <div>
+
+          <h4>
+            Platform
+          </h4>
+
+          <a href="resources.html">
+            Resources
+          </a>
+
+          <a href="guide.html">
+            Student Guide
+          </a>
+
+          <a href="updates.html">
+            Updates
+          </a>
+
+          <a href="tools.html">
+            Student Tools
+          </a>
+
+        </div>
+
+
+        <div>
+
+          <h4>
+            Information
+          </h4>
+
+          <a href="about.html">
+            About
+          </a>
+
+          <a href="#">
+            Privacy Policy
+          </a>
+
+          <a href="#">
+            Terms of Use
+          </a>
+
+          <a href="#">
+            Contact
+          </a>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+      <p>
+        © 2026 Uni Pilot. All rights reserved.
+      </p>
+
+    </div>
+
+
+  </footer>
+
+
+  <!-- JavaScript -->
+
+  <script src="script.js"></script>
+
+
+  <!-- =========================
+       LOGIN STATE + ACCOUNT DROPDOWN
+  ========================== -->
+
+  <script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+      const authBtn = document.getElementById("authBtn");
+      const mobileAuthBtn = document.getElementById("mobileAuthBtn");
+      const welcomeMessage = document.getElementById("welcomeMessage");
+
+      const accountDropdown =
+        document.getElementById("accountDropdown");
+
+      const logoutBtn =
+        document.getElementById("logoutBtn");
+
+
+      const isLoggedIn =
+        localStorage.getItem("uniPilotLoggedIn") === "true";
+
+
+      const savedUser =
+        localStorage.getItem("uniPilotCurrentUser");
+
+
+      if (isLoggedIn && savedUser) {
+
+        try {
+
+          const user = JSON.parse(savedUser);
+
+          if (user.name) {
+
+            /*
+             * Logged-in state
+             */
+
+            authBtn.textContent = "👤 Logged In";
+
+            mobileAuthBtn.textContent = "👤 Logged In";
+
+            welcomeMessage.textContent =
+              "👋 Welcome, " + user.name + "!";
+
+
+            /*
+             * Stop the desktop button from
+             * opening the login page.
+             */
+
+            authBtn.href = "#";
+
+
+            /*
+             * Open / close account dropdown
+             */
+
+            authBtn.addEventListener("click", function (event) {
+
+              event.preventDefault();
+
+              accountDropdown.classList.toggle("active");
+
+            });
+
+
+            /*
+             * Close dropdown when clicking
+             * anywhere outside it.
+             */
+
+            document.addEventListener("click", function (event) {
+
+              if (
+                !event.target.closest(".account-wrapper")
+              ) {
+
+                accountDropdown.classList.remove("active");
+
+              }
+
+            });
+
+
+            /*
+             * LOG OUT
+             */
+
+            logoutBtn.addEventListener("click", function () {
+
+              localStorage.removeItem("uniPilotLoggedIn");
+
+              localStorage.removeItem("uniPilotCurrentUser");
+
+              window.location.href = "auth.html";
+
+            });
+
+          }
+
+        } catch (error) {
+
+          console.log(
+            "Could not load user information."
+          );
+
+        }
+
+      }
+
+    });
+
+  </script>
+
+</body>
+
+</html>

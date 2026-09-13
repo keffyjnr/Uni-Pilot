@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Uni Pilot | Student Tools</title>
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+
+
+  <style>
+
+    /* =========================
+       TOOL MODAL
+    ========================= */
+
+    .tool-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 1200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(6, 59, 38, .38);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+
+    .tool-modal.active {
+      display: flex;
+    }
+
+
+    .tool-modal-box {
+      width: min(100%, 560px);
+      max-height: 90vh;
+      overflow-y: auto;
+      background: var(--white);
+      border-radius: 24px;
+      padding: 30px;
+      position: relative;
+      box-shadow: 0 30px 80px rgba(0,0,0,.22);
+      animation: toolModalPop .25s ease;
+    }
+
+
+    @keyframes toolModalPop {
+
+      from {
+        opacity: 0;
+        transform: translateY(15px) scale(.97);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+
+    }
+
+
+    .tool-modal-close {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      width: 38px;
+      height: 38px;
+      border: none;
+      border-radius: 50%;
+      background: #f1f5f2;
+      color: var(--dark-green);
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+
+
+    .tool-modal-header {
+      padding-right: 45px;
+      margin-bottom: 25px;
+    }
+
+
+    .tool-modal-header h2 {
+      color: var(--dark-green);
+      margin-bottom: 6px;
+    }
+
+
+    .tool-modal-header p {
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+
+    .tool-form-group {
+      margin-bottom: 15px;
+    }
+
+
+    .tool-form-group label {
+      display: block;
+      margin-bottom: 7px;
+      font-size: .82rem;
+      font-weight: 800;
+      color: var(--dark-green);
+    }
+
+
+    .tool-input,
+    .tool-select {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      outline: none;
+      background: #fff;
+      color: var(--text);
+    }
+
+
+    .tool-input:focus,
+    .tool-select:focus {
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px rgba(11, 93, 59, .08);
+    }
+
+
+    .tool-btn {
+      border: none;
+      padding: 12px 18px;
+      border-radius: 12px;
+      background: var(--green);
+      color: var(--white);
+      font-weight: 800;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+
+    .tool-btn:hover {
+      background: var(--dark-green);
+    }
+
+
+    .tool-btn.secondary {
+      background: #eef4f0;
+      color: var(--dark-green);
+    }
+
+
+    .tool-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+
+    .calculator-result {
+      margin-top: 20px;
+      padding: 18px;
+      border-radius: 16px;
+      background: var(--light-green);
+      text-align: center;
+    }
+
+
+    .calculator-result small {
+      display: block;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+
+    .calculator-result strong {
+      font-size: 2rem;
+      color: var(--dark-green);
+    }
+
+
+    /* GPA ROWS */
+
+    .course-row {
+      display: grid;
+      grid-template-columns: 1.4fr .7fr .8fr 40px;
+      gap: 8px;
+      margin-bottom: 10px;
+      align-items: center;
+    }
+
+
+    .remove-course {
+      width: 40px;
+      height: 40px;
+      border: none;
+      border-radius: 10px;
+      background: #fcebea;
+      color: #a33b32;
+      cursor: pointer;
+      font-weight: 800;
+    }
+
+
+    /* COUNTDOWN */
+
+    .countdown-display {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+
+    .countdown-box {
+      padding: 16px 8px;
+      border-radius: 14px;
+      background: var(--light-green);
+      text-align: center;
+    }
+
+
+    .countdown-box strong {
+      display: block;
+      font-size: 1.5rem;
+      color: var(--dark-green);
+    }
+
+
+    .countdown-box span {
+      font-size: .7rem;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+
+    .countdown-message {
+      text-align: center;
+      margin-top: 15px;
+      color: var(--muted);
+      font-size: .85rem;
+    }
+
+
+    @media (max-width: 600px) {
+
+      .tool-modal {
+        padding: 12px;
+      }
+
+
+      .tool-modal-box {
+        padding: 23px 18px;
+        border-radius: 20px;
+      }
+
+
+      .course-row {
+        grid-template-columns: 1fr 70px 80px 38px;
+        gap: 5px;
+      }
+
+
+      .course-row .tool-input,
+      .course-row .tool-select {
+        padding: 10px 7px;
+        font-size: .75rem;
+      }
+
+
+      .countdown-display {
+        gap: 6px;
+      }
+
+
+      .countdown-box {
+        padding: 12px 5px;
+      }
+
+
+      .countdown-box strong {
+        font-size: 1.2rem;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- =========================
+       HEADER
+  ========================= -->
+
+  <header class="header">
+
+    <nav class="navbar">
+
+      <a
+        href="index.html"
+        class="brand"
+      >
+
+        <span class="brand-icon">
+          🎓
+        </span>
+
+        <span>
+          Uni Pilot
+        </span>
+
+      </a>
+
+
+      <div class="desktop-nav">
+
+        <a href="index.html">
+          Home
+        </a>
+
+        <a href="resources.html">
+          Resources
+        </a>
+
+        <a href="guide.html">
+          Student Guide
+        </a>
+
+        <a href="updates.html">
+          Updates
+        </a>
+
+        <a href="tools.html">
+          Tools
+        </a>
+
+      </div>
+
+
+      <div class="nav-actions">
+
+        <button
+          class="icon-btn"
+          id="searchBtn"
+          aria-label="Search"
+          type="button"
+        >
+          🔍
+        </button>
+
+
+        <button
+          class="menu-btn"
+          id="menuBtn"
+          type="button"
+          aria-label="Open menu"
+        >
+          ☰
+        </button>
+
+      </div>
+
+    </nav>
+
+  </header>
+
+
+  <!-- =========================
+       MOBILE MENU
+  ========================= -->
+
+  <div
+    class="menu-overlay"
+    id="menuOverlay"
+  ></div>
+
+
+  <nav
+    class="mobile-menu"
+    id="navLinks"
+  >
+
+    <a href="index.html">
+      Home
+    </a>
+
+    <a href="resources.html">
+      Academic Resources
+    </a>
+
+    <a href="guide.html">
+      Student Guide
+    </a>
+
+    <a href="updates.html">
+      Campus Updates
+    </a>
+
+    <a href="opportunities.html">
+      Opportunities
+    </a>
+
+    <a href="tools.html">
+      Student Tools
+    </a>
+
+    <a href="about.html">
+      About
+    </a>
+
+  </nav>
+
+
+  <!-- =========================
+       MAIN
+  ========================= -->
+
+  <main>
+
+    <section class="tools-section">
+
+      <div class="tools-container">
+
+
+        <div class="tools-intro">
+
+          <span class="section-label">
+            STUDENT TOOLS
+          </span>
+
+
+          <h1>
+            Student Tools, Built for You.
+          </h1>
+
+
+          <p>
+            Simple tools to help you manage your academic life
+            and stay organized.
+          </p>
+
+        </div>
+
+
+        <div class="tools-grid">
+
+
+          <!-- GPA -->
+
+          <button
+            class="tool-card"
+            type="button"
+            data-tool="gpa"
+          >
+
+            <span class="tool-icon">
+              🧮
+            </span>
+
+
+            <div>
+
+              <h3>
+                GPA Calculator
+              </h3>
+
+              <p>
+                Calculate your semester GPA using your course grades and units.
+              </p>
+
+            </div>
+
+
+            <span class="tool-arrow">
+              →
+            </span>
+
+          </button>
+
+
+          <!-- CGPA -->
+
+          <button
+            class="tool-card"
+            type="button"
+            data-tool="cgpa"
+          >
+
+            <span class="tool-icon">
+              🎓
+            </span>
+
+
+            <div>
+
+              <h3>
+                CGPA Calculator
+              </h3>
+
+              <p>
+                Combine your previous and current results to calculate CGPA.
+              </p>
+
+            </div>
+
+
+            <span class="tool-arrow">
+              →
+            </span>
+
+          </button>
+
+
+          <!-- COURSE UNITS -->
+
+          <button
+            class="tool-card"
+            type="button"
+            data-tool="units"
+          >
+
+            <span class="tool-icon">
+              📚
+            </span>
+
+
+            <div>
+
+              <h3>
+                Course Units
+              </h3>
+
+              <p>
+                Add your courses and quickly calculate your total credit units.
+              </p>
+
+            </div>
+
+
+            <span class="tool-arrow">
+              →
+            </span>
+
+          </button>
+
+
+          <!-- AGE -->
+
+          <button
+            class="tool-card"
+            type="button"
+            data-tool="age"
+          >
+
+            <span class="tool-icon">
+              📅
+            </span>
+
+
+            <div>
+
+              <h3>
+                Age Calculator
+              </h3>
+
+              <p>
+                Find your exact age in years, months and days.
+              </p>
+
+            </div>
+
+
+            <span class="tool-arrow">
+              →
+            </span>
+
+          </button>
+
+
+          <!-- COUNTDOWN -->
+
+          <button
+            class="tool-card"
+            type="button"
+            data-tool="countdown"
+          >
+
+            <span class="tool-icon">
+              ⏳
+            </span>
+
+
+            <div>
+
+              <h3>
+                Countdown
+              </h3>
+
+              <p>
+                Set a countdown for exams, events, deadlines and more.
+              </p>
+
+            </div>
+
+
+            <span class="tool-arrow">
+              →
+            </span>
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================
+       TOOL MODAL
+  ========================= -->
+
+  <div
+    class="tool-modal"
+    id="toolModal"
+  >
+
+    <div class="tool-modal-box">
+
+      <button
+        class="tool-modal-close"
+        id="toolModalClose"
+        type="button"
+        aria-label="Close tool"
+      >
+        ×
+      </button>
+
+
+      <div id="toolContent"></div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================
+       FOOTER
+  ========================= -->
+
+  <footer class="footer">
+
+    <div class="footer-container">
+
+
+      <div class="footer-brand">
+
+        <a
+          href="index.html"
+          class="brand"
+        >
+
+          <span class="brand-icon">
+            🎓
+          </span>
+
+          <span>
+            Uni Pilot
+          </span>
+
+        </a>
+
+
+        <p>
+          Your guide to a simpler university experience.
+        </p>
+
+      </div>
+
+
+      <div class="footer-links">
+
+
+        <div>
+
+          <h4>
+            Explore
+          </h4>
+
+          <a href="resources.html">
+            Resources
+          </a>
+
+          <a href="guide.html">
+            Student Guide
+          </a>
+
+          <a href="updates.html">
+            Updates
+          </a>
+
+        </div>
+
+
+        <div>
+
+          <h4>
+            More
+          </h4>
+
+          <a href="tools.html">
+            Student Tools
+          </a>
+
+          <a href="opportunities.html">
+            Opportunities
+          </a>
+
+          <a href="about.html">
+            About
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+      <p>
+        © 2026 Uni Pilot. Built for students.
+      </p>
+
+    </div>
+
+  </footer>
+
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Resources | Uni Pilot</title>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- =========================
+       NAVIGATION
+  ========================== -->
+
+  <header class="header">
+
+    <nav class="navbar">
+
+      <!-- Logo -->
+      <a href="index.html" class="brand">
+
+        <div class="brand-icon">
+          🎓
+        </div>
+
+        <span>Uni Pilot</span>
+
+      </a>
+
+
+      <!-- Desktop Navigation -->
+      <div class="desktop-nav">
+
+        <a href="index.html">Home</a>
+        <a href="resources.html">Resources</a>
+        <a href="guide.html">Student Guide</a>
+        <a href="updates.html">Updates</a>
+        <a href="tools.html">Tools</a>
+
+      </div>
+
+
+      <!-- Navigation Actions -->
+      <div class="nav-actions">
+
+        <button
+          class="icon-btn"
+          aria-label="Search"
+        >
+          🔍
+        </button>
+
+
+        <button
+          class="auth-btn"
+          id="authBtn"
+        >
+          Login / Sign Up
+        </button>
+
+
+        <button
+          class="account-btn"
+          id="accountBtn"
+          style="display: none;"
+        >
+          👤 <span id="accountName"></span> ▾
+        </button>
+
+
+        <button
+          class="menu-btn"
+          id="menuBtn"
+          aria-label="Open Menu"
+        >
+          ☰
+        </button>
+
+      </div>
+
+    </nav>
+
+
+    <!-- Mobile Menu -->
+    <div
+      class="mobile-menu"
+      id="navLinks"
+    >
+
+      <a href="index.html">
+        Home
+      </a>
+
+      <a href="resources.html">
+        Academic Resources
+      </a>
+
+      <a href="guide.html">
+        Student Guide
+      </a>
+
+      <a href="updates.html">
+        Campus Updates
+      </a>
+
+      <a href="opportunities.html">
+        Opportunities
+      </a>
+
+      <a href="tools.html">
+        Student Tools
+      </a>
+
+      <a href="about.html">
+        About
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <!-- Menu Background Overlay -->
+  <div
+    class="menu-overlay"
+    id="menuOverlay"
+  ></div>
+
+
+  <!-- =========================
+       MAIN CONTENT
+  ========================== -->
+
+  <main>
+
+    <!-- =========================
+         RESOURCES
+    ========================== -->
+
+    <section class="section">
+
+      <div class="section-heading section-heading-left">
+
+        <span class="intro-label">
+          ACADEMIC RESOURCES
+        </span>
+
+        <h2>
+          Featured Academic Resources
+        </h2>
+
+        <p>
+          Find course materials, lecture notes, past questions,
+          and other resources to help with your studies.
+        </p>
+
+      </div>
+
+
+      <div class="resource-list">
+
+
+        <!-- Resource 1 -->
+
+        <article class="resource-card">
+
+          <div class="resource-icon">
+            📖
+          </div>
+
+          <div class="resource-content">
+
+            <span class="resource-type">
+              Course Outline
+            </span>
+
+            <h3>
+              GEY 101 Course Outline
+            </h3>
+
+            <p>
+              Course outline covering important topics
+              for Introduction to Geology.
+            </p>
+
+            <small>
+              GEY 101 · Geology
+            </small>
+
+          </div>
+
+        </article>
+
+
+
+        <!-- Resource 2 -->
+
+        <article class="resource-card">
+
+          <div class="resource-icon">
+            📚
+          </div>
+
+          <div class="resource-content">
+
+            <span class="resource-type">
+              Lecture Notes
+            </span>
+
+            <h3>
+              GEY 101 Lecture Notes – Earth Materials
+            </h3>
+
+            <p>
+              Notes covering minerals, rocks,
+              and the rock cycle.
+            </p>
+
+            <small>
+              GEY 101 · Geology
+            </small>
+
+          </div>
+
+        </article>
+
+
+
+        <!-- Resource 3 -->
+
+        <article class="resource-card">
+
+          <div class="resource-icon">
+            📝
+          </div>
+
+          <div class="resource-content">
+
+            <span class="resource-type">
+              Past Questions
+            </span>
+
+            <h3>
+              GEY 101 Past Questions
+            </h3>
+
+            <p>
+              Past examination questions to
+              help students prepare.
+            </p>
+
+            <small>
+              GEY 101 · Geology
+            </small>
+
+          </div>
+
+        </article>
+
+      </div>
+
+
+      <a
+        href="#"
+        class="text-button"
+      >
+        Browse All Resources →
+      </a>
+
+    </section>
+
+  </main>
+
+
+
+  <!-- =========================
+       AUTHENTICATION MODAL
+  ========================== -->
+
+  <div
+    class="auth-modal"
+    id="authModal"
+  >
+
+    <div class="auth-box">
+
+
+      <button
+        class="close-auth"
+        id="closeAuth"
+      >
+        ✕
+      </button>
+
+
+      <!-- SIGN UP FORM -->
+
+      <div
+        class="auth-form"
+        id="signupForm"
+      >
+
+        <div class="auth-logo">
+          🎓
+        </div>
+
+        <h2>
+          Join Uni Pilot
+        </h2>
+
+        <p>
+          Create an account to personalise your experience.
+        </p>
+
+
+        <form id="signup">
+
+          <label>
+            Full Name
+          </label>
+
+          <input
+            type="text"
+            id="signupName"
+            placeholder="Enter your name"
+            required
+          >
+
+
+          <label>
+            Email Address
+          </label>
+
+          <input
+            type="email"
+            id="signupEmail"
+            placeholder="Enter your email"
+            required
+          >
+
+
+          <label>
+            Password
+          </label>
+
+          <input
+            type="password"
+            id="signupPassword"
+            placeholder="Create a password"
+            required
+          >
+
+
+          <button
+            type="submit"
+            class="auth-submit"
+          >
+            Create Account
+          </button>
+
+        </form>
+
+
+        <p class="switch-auth">
+
+          Already have an account?
+
+          <button id="showLogin">
+            Log In
+          </button>
+
+        </p>
+
+      </div>
+
+
+
+      <!-- LOGIN FORM -->
+
+      <div
+        class="auth-form"
+        id="loginForm"
+        style="display: none;"
+      >
+
+        <div class="auth-logo">
+          🎓
+        </div>
+
+        <h2>
+          Welcome Back
+        </h2>
+
+        <p>
+          Log in to continue to Uni Pilot.
+        </p>
+
+
+        <form id="login">
+
+          <label>
+            Email Address
+          </label>
+
+          <input
+            type="email"
+            id="loginEmail"
+            placeholder="Enter your email"
+            required
+          >
+
+
+          <label>
+            Password
+          </label>
+
+          <input
+            type="password"
+            id="loginPassword"
+            placeholder="Enter your password"
+            required
+          >
+
+
+          <button
+            type="submit"
+            class="auth-submit"
+          >
+            Log In
+          </button>
+
+        </form>
+
+
+        <p class="switch-auth">
+
+          Don't have an account?
+
+          <button id="showSignup">
+            Create Account
+          </button>
+
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer>
+
+    <div class="footer-container">
+
+
+      <div class="footer-brand">
+
+        <h2>
+          Uni Pilot
+        </h2>
+
+        <p>
+          Your campus. Your resources. Your guide.
+        </p>
+
+      </div>
+
+
+
+      <div class="footer-links">
+
+
+        <div>
+
+          <h4>
+            Platform
+          </h4>
+
+          <a href="resources.html">
+            Resources
+          </a>
+
+          <a href="guide.html">
+            Student Guide
+          </a>
+
+          <a href="updates.html">
+            Updates
+          </a>
+
+          <a href="tools.html">
+            Student Tools
+          </a>
+
+        </div>
+
+
+
+        <div>
+
+          <h4>
+            Information
+          </h4>
+
+          <a href="about.html">
+            About
+          </a>
+
+          <a href="#">
+            Privacy Policy
+          </a>
+
+          <a href="#">
+            Terms of Use
+          </a>
+
+          <a href="#">
+            Contact
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+      <p>
+        © 2026 Uni Pilot. All rights reserved.
+      </p>
+
+    </div>
+
+  </footer>
+
+
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+
+</body>
+</html>
