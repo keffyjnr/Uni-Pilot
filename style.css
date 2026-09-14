@@ -967,6 +967,8 @@ a:focus {
   padding: 19px;
 }
 
+
+
 .guide-card > span {
   font-size: 1.7rem;
 }
@@ -1653,4 +1655,21 @@ footer {
 
 .auth-form.active {
   display: block;
+}
+.back-button {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 10px 16px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--white);
+  color: var(--dark-green);
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: 0.2s;
+}
+
+.back-button:hover {
+  background: var(--green);
+  color: var(--white);
 }
