@@ -1731,3 +1731,92 @@ document.addEventListener(
 
   }
 );
+
+/* =========================
+   GLOBAL ACCOUNT BUTTON
+========================= */
+
+document.addEventListener(
+  "DOMContentLoaded",
+  () => {
+
+    const navActions =
+      document.querySelector(
+        ".nav-actions"
+      );
+
+
+    if (!navActions) return;
+
+
+    /* Get logged-in user */
+
+    const user =
+      JSON.parse(
+        localStorage.getItem(
+          "uniPilotUser"
+        )
+      );
+
+
+    if (!user) return;
+
+
+    /* Check if account button already exists */
+
+    if (
+      document.getElementById(
+        "accountBtn"
+      )
+    ) {
+
+      return;
+
+    }
+
+
+    /* Create account button */
+
+    const accountBtn =
+      document.createElement(
+        "button"
+      );
+
+
+    accountBtn.className =
+      "account-btn";
+
+
+    accountBtn.id =
+      "accountBtn";
+
+
+    accountBtn.innerHTML =
+      `👤 <span>${user.name}</span> ▾`;
+
+
+    /* Add button before menu button */
+
+    const menuButton =
+      document.getElementById(
+        "menuBtn"
+      );
+
+
+    if (menuButton) {
+
+      navActions.insertBefore(
+        accountBtn,
+        menuButton
+      );
+
+    } else {
+
+      navActions.appendChild(
+        accountBtn
+      );
+
+    }
+
+  }
+);
