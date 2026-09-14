@@ -95,7 +95,6 @@
 <body>
 
 
-
   <!-- =========================
        NAVIGATION
   ========================== -->
@@ -103,7 +102,6 @@
   <header class="header">
 
     <nav class="navbar">
-
 
 
       <!-- Logo -->
@@ -117,7 +115,6 @@
         <span>Uni Pilot</span>
 
       </a>
-
 
 
       <!-- Desktop Navigation -->
@@ -137,11 +134,9 @@
       </div>
 
 
-
       <!-- Navigation Actions -->
 
       <div class="nav-actions">
-
 
 
         <button
@@ -151,7 +146,6 @@
         >
           🔍
         </button>
-
 
 
         <!-- Login / Account -->
@@ -165,7 +159,6 @@
           >
             Login / Sign Up
           </a>
-
 
 
           <!-- Account Dropdown -->
@@ -188,7 +181,6 @@
         </div>
 
 
-
         <!-- Mobile Menu Button -->
 
         <button
@@ -201,11 +193,9 @@
         </button>
 
 
-
       </div>
 
     </nav>
-
 
 
     <!-- Mobile Menu -->
@@ -255,7 +245,6 @@
   </header>
 
 
-
   <!-- Menu Background Overlay -->
 
   <div
@@ -264,13 +253,11 @@
   ></div>
 
 
-
   <!-- =========================
        MAIN CONTENT
   ========================== -->
 
   <main>
-
 
 
     <!-- =========================
@@ -285,11 +272,9 @@
       <div class="welcome-content">
 
 
-
         <div class="welcome-tag">
           🎓 YOUR STUDENT COMPANION
         </div>
-
 
 
         <h1 id="welcomeMessage">
@@ -297,17 +282,14 @@
         </h1>
 
 
-
         <p class="welcome-description">
           What do you want to do today?
         </p>
 
 
-
         <!-- QUICK ACTIONS -->
 
         <div class="action-grid">
-
 
 
           <a
@@ -334,7 +316,6 @@
           </a>
 
 
-
           <a
             href="guide.html"
             class="action-card"
@@ -359,9 +340,10 @@
           </a>
 
 
+          <!-- CHECK RESULTS -->
 
           <a
-            href="guide.html"
+            href="results.html"
             class="action-card"
           >
 
@@ -382,7 +364,6 @@
             <strong>→</strong>
 
           </a>
-
 
 
           <a
@@ -409,7 +390,6 @@
           </a>
 
 
-
           <a
             href="opportunities.html"
             class="action-card"
@@ -432,7 +412,6 @@
             <strong>→</strong>
 
           </a>
-
 
 
           <a
@@ -459,13 +438,11 @@
           </a>
 
 
-
         </div>
 
       </div>
 
     </section>
-
 
 
     <!-- =========================
@@ -477,11 +454,9 @@
       <div class="platform-intro-content">
 
 
-
         <span class="intro-label">
           ALL YOUR STUDENT NEEDS
         </span>
-
 
 
         <h2>
@@ -495,7 +470,6 @@
         </h2>
 
 
-
         <p>
 
           Access academic resources, school guides, campus updates,
@@ -505,9 +479,7 @@
         </p>
 
 
-
         <div class="hero-buttons">
-
 
 
           <a
@@ -518,14 +490,12 @@
           </a>
 
 
-
           <a
             href="guide.html"
             class="btn btn-secondary"
           >
             Student Guide
           </a>
-
 
 
         </div>
@@ -535,9 +505,7 @@
     </section>
 
 
-
   </main>
-
 
 
   <!-- =========================
@@ -547,9 +515,7 @@
   <footer>
 
 
-
     <div class="footer-container">
-
 
 
       <div class="footer-brand">
@@ -565,9 +531,7 @@
       </div>
 
 
-
       <div class="footer-links">
-
 
 
         <div>
@@ -595,7 +559,6 @@
         </div>
 
 
-
         <div>
 
           <h4>
@@ -621,11 +584,9 @@
         </div>
 
 
-
       </div>
 
     </div>
-
 
 
     <div class="footer-bottom">
@@ -637,15 +598,12 @@
     </div>
 
 
-
   </footer>
-
 
 
   <!-- JavaScript -->
 
   <script src="script.js"></script>
-
 
 
   <!-- =========================
@@ -667,15 +625,12 @@
         document.getElementById("logoutBtn");
 
 
-
       const isLoggedIn =
         localStorage.getItem("uniPilotLoggedIn") === "true";
 
 
-
       const savedUser =
         localStorage.getItem("uniPilotCurrentUser");
-
 
 
       if (isLoggedIn && savedUser) {
@@ -687,10 +642,7 @@
           if (user.name) {
 
 
-
-            /*
-             * Logged-in state
-             */
+            /* Logged-in state */
 
             authBtn.textContent = "👤 Logged In";
 
@@ -700,19 +652,13 @@
               "👋 Welcome, " + user.name + "!";
 
 
-
-            /*
-             * Stop the desktop button from
-             * opening the login page.
-             */
+            /* Stop the desktop button from
+               opening the login page */
 
             authBtn.href = "#";
 
 
-
-            /*
-             * Open / close account dropdown
-             */
+            /* Open / close account dropdown */
 
             authBtn.addEventListener("click", function (event) {
 
@@ -723,11 +669,8 @@
             });
 
 
-
-            /*
-             * Close dropdown when clicking
-             * anywhere outside it.
-             */
+            /* Close dropdown when clicking
+               anywhere outside it */
 
             document.addEventListener("click", function (event) {
 
@@ -742,10 +685,7 @@
             });
 
 
-
-            /*
-             * LOG OUT
-             */
+            /* LOG OUT */
 
             logoutBtn.addEventListener("click", function () {
 
@@ -770,12 +710,6 @@
       }
 
     });
-
-  </script>
-
-</body>
-
-</html>
 
   </script>
 
