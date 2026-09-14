@@ -60,32 +60,18 @@
         <button
           class="icon-btn"
           aria-label="Search"
+          type="button"
         >
           🔍
         </button>
 
 
-        <button
-          class="auth-btn"
-          id="authBtn"
-        >
-          Login / Sign Up
-        </button>
-
-
-        <button
-          class="account-btn"
-          id="accountBtn"
-          style="display: none;"
-        >
-          👤 <span id="accountName"></span> ▾
-        </button>
-
-
+        <!-- Mobile Menu Button -->
         <button
           class="menu-btn"
           id="menuBtn"
           aria-label="Open Menu"
+          type="button"
         >
           ☰
         </button>
@@ -286,184 +272,6 @@
   </main>
 
 
-
-  <!-- =========================
-       AUTHENTICATION MODAL
-  ========================== -->
-
-  <div
-    class="auth-modal"
-    id="authModal"
-  >
-
-    <div class="auth-box">
-
-
-      <button
-        class="close-auth"
-        id="closeAuth"
-      >
-        ✕
-      </button>
-
-
-      <!-- SIGN UP FORM -->
-
-      <div
-        class="auth-form"
-        id="signupForm"
-      >
-
-        <div class="auth-logo">
-          🎓
-        </div>
-
-        <h2>
-          Join Uni Pilot
-        </h2>
-
-        <p>
-          Create an account to personalise your experience.
-        </p>
-
-
-        <form id="signup">
-
-          <label>
-            Full Name
-          </label>
-
-          <input
-            type="text"
-            id="signupName"
-            placeholder="Enter your name"
-            required
-          >
-
-
-          <label>
-            Email Address
-          </label>
-
-          <input
-            type="email"
-            id="signupEmail"
-            placeholder="Enter your email"
-            required
-          >
-
-
-          <label>
-            Password
-          </label>
-
-          <input
-            type="password"
-            id="signupPassword"
-            placeholder="Create a password"
-            required
-          >
-
-
-          <button
-            type="submit"
-            class="auth-submit"
-          >
-            Create Account
-          </button>
-
-        </form>
-
-
-        <p class="switch-auth">
-
-          Already have an account?
-
-          <button id="showLogin">
-            Log In
-          </button>
-
-        </p>
-
-      </div>
-
-
-
-      <!-- LOGIN FORM -->
-
-      <div
-        class="auth-form"
-        id="loginForm"
-        style="display: none;"
-      >
-
-        <div class="auth-logo">
-          🎓
-        </div>
-
-        <h2>
-          Welcome Back
-        </h2>
-
-        <p>
-          Log in to continue to Uni Pilot.
-        </p>
-
-
-        <form id="login">
-
-          <label>
-            Email Address
-          </label>
-
-          <input
-            type="email"
-            id="loginEmail"
-            placeholder="Enter your email"
-            required
-          >
-
-
-          <label>
-            Password
-          </label>
-
-          <input
-            type="password"
-            id="loginPassword"
-            placeholder="Enter your password"
-            required
-          >
-
-
-          <button
-            type="submit"
-            class="auth-submit"
-          >
-            Log In
-          </button>
-
-        </form>
-
-
-        <p class="switch-auth">
-
-          Don't have an account?
-
-          <button id="showSignup">
-            Create Account
-          </button>
-
-        </p>
-
-      </div>
-
-    </div>
-
-  </div>
-
-
-
   <!-- =========================
        FOOTER
   ========================== -->
@@ -554,7 +362,6 @@
     </div>
 
   </footer>
-
 
 
   <!-- JavaScript -->
