@@ -442,6 +442,11 @@
 
           <div class="form-group">
 
+  
+
+</div>
+          <div class="form-group">
+
             <label for="loginEmail">
               Email
             </label>
@@ -500,6 +505,20 @@
 
           </div>
 
+<div class="form-group">
+
+  <label for="signupDepartment">
+    Department
+  </label>
+
+  <input
+    type="text"
+    id="signupDepartment"
+    placeholder="Enter your department"
+    required
+  >
+
+</div>
 
           <div class="form-group">
 
@@ -566,223 +585,284 @@
 
   <script>
 
-    const loginTab = document.getElementById("loginTab");
-    const signupTab = document.getElementById("signupTab");
+  const loginTab = document.getElementById("loginTab");
+  const signupTab = document.getElementById("signupTab");
 
-    const loginForm = document.getElementById("loginForm");
-    const signupForm = document.getElementById("signupForm");
+  const loginForm = document.getElementById("loginForm");
+  const signupForm = document.getElementById("signupForm");
 
-    const authTitle = document.getElementById("authTitle");
-    const authSubtitle = document.getElementById("authSubtitle");
+  const authTitle = document.getElementById("authTitle");
+  const authSubtitle = document.getElementById("authSubtitle");
 
-    const message = document.getElementById("message");
+  const message = document.getElementById("message");
 
 
-    /* =========================
-       SWITCH AUTH MODE
-    ========================== */
+  /* =========================
+     SWITCH AUTH MODE
+  ========================== */
 
-    function showLogin() {
+  function showLogin() {
 
-      loginTab.classList.add("active");
-      signupTab.classList.remove("active");
+    loginTab.classList.add("active");
+    signupTab.classList.remove("active");
 
-      loginForm.classList.add("active");
-      signupForm.classList.remove("active");
+    loginForm.classList.add("active");
+    signupForm.classList.remove("active");
 
-      authTitle.textContent = "Welcome Back";
-      authSubtitle.textContent = "Log in to your Uni Pilot account.";
+    authTitle.textContent = "Welcome Back";
+    authSubtitle.textContent = "Log in to your Uni Pilot account.";
 
-      clearMessage();
+    clearMessage();
+  }
+
+
+  function showSignup() {
+
+    signupTab.classList.add("active");
+    loginTab.classList.remove("active");
+
+    signupForm.classList.add("active");
+    loginForm.classList.remove("active");
+
+    authTitle.textContent = "Create Account";
+    authSubtitle.textContent =
+      "Join Uni Pilot and get more from your student experience.";
+
+    clearMessage();
+  }
+
+
+  loginTab.addEventListener("click", showLogin);
+  signupTab.addEventListener("click", showSignup);
+
+
+  /* =========================
+     MESSAGE
+  ========================== */
+
+  function showMessage(text, type) {
+
+    message.textContent = text;
+    message.className = "message show " + type;
+
+  }
+
+
+  function clearMessage() {
+
+    message.textContent = "";
+    message.className = "message";
+
+  }
+
+
+  /* =========================
+     SIGN UP
+  ========================== */
+
+  signupForm.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const name =
+      document.getElementById("signupName").value.trim();
+
+    const department =
+      document.getElementById("signupDepartment").value;
+
+    const email =
+      document.getElementById("signupEmail").value.trim().toLowerCase();
+
+    const password =
+      document.getElementById("signupPassword").value;
+
+
+    /* CHECK DEPARTMENT */
+
+    if (!department) {
+
+      showMessage(
+        "Please select your department.",
+        "error"
+      );
+
+      return;
+
     }
 
 
-    function showSignup() {
+    /* CHECK PASSWORD */
 
-      signupTab.classList.add("active");
-      loginTab.classList.remove("active");
+    if (password.length < 6) {
 
-      signupForm.classList.add("active");
-      loginForm.classList.remove("active");
+      showMessage(
+        "Password must be at least 6 characters.",
+        "error"
+      );
 
-      authTitle.textContent = "Create Account";
-      authSubtitle.textContent = "Join Uni Pilot and get more from your student experience.";
-
-      clearMessage();
-    }
-
-
-    loginTab.addEventListener("click", showLogin);
-
-    signupTab.addEventListener("click", showSignup);
-
-
-    /* =========================
-       MESSAGE
-    ========================== */
-
-    function showMessage(text, type) {
-
-      message.textContent = text;
-
-      message.className = "message show " + type;
-    }
-
-
-    function clearMessage() {
-
-      message.textContent = "";
-      message.className = "message";
+      return;
 
     }
 
 
-    /* =========================
-       SIGN UP
-    ========================== */
+    /* CHECK EXISTING ACCOUNT */
 
-    signupForm.addEventListener("submit", function(event) {
-
-      event.preventDefault();
-
-      const name = document.getElementById("signupName").value.trim();
-      const email = document.getElementById("signupEmail").value.trim().toLowerCase();
-      const password = document.getElementById("signupPassword").value;
+    const existingUser =
+      localStorage.getItem("uniPilotUser");
 
 
-      if (password.length < 6) {
+    if (existingUser) {
+
+      const oldUser =
+        JSON.parse(existingUser);
+
+      if (oldUser.email === email) {
 
         showMessage(
-          "Password must be at least 6 characters.",
+          "An account with this email already exists. Please log in.",
           "error"
         );
 
         return;
-      }
-
-
-      const existingUser = localStorage.getItem("uniPilotUser");
-
-      if (existingUser) {
-
-        const user = JSON.parse(existingUser);
-
-        if (user.email === email) {
-
-          showMessage(
-            "An account with this email already exists. Please log in.",
-            "error"
-          );
-
-          return;
-        }
 
       }
 
+    }
 
-      const user = {
-        name: name,
-        email: email,
-        password: password
-      };
 
+    /* CREATE USER */
+
+    const user = {
+
+      name: name,
+      email: email,
+      password: password,
+      department: department
+
+    };
+
+
+    /* SAVE USER */
+
+    localStorage.setItem(
+      "uniPilotUser",
+      JSON.stringify(user)
+    );
+
+
+    showMessage(
+      "Account created successfully! You can now log in.",
+      "success"
+    );
+
+
+    signupForm.reset();
+
+
+    /* GO TO LOGIN */
+
+    setTimeout(function() {
+
+      showLogin();
+
+      document.getElementById("loginEmail").value = email;
+
+    }, 1200);
+
+  });
+
+
+  /* =========================
+     LOGIN
+  ========================== */
+
+  loginForm.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const email =
+      document.getElementById("loginEmail").value.trim().toLowerCase();
+
+    const password =
+      document.getElementById("loginPassword").value;
+
+
+    const savedUser =
+      localStorage.getItem("uniPilotUser");
+
+
+    if (!savedUser) {
+
+      showMessage(
+        "No account found. Please sign up first.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    const user =
+      JSON.parse(savedUser);
+
+
+    /* CHECK LOGIN */
+
+    if (
+      user.email === email &&
+      user.password === password
+    ) {
+
+      /* SAVE LOGIN STATUS */
 
       localStorage.setItem(
-        "uniPilotUser",
-        JSON.stringify(user)
+        "uniPilotLoggedIn",
+        "true"
+      );
+
+
+      /* SAVE CURRENT USER INCLUDING DEPARTMENT */
+
+      localStorage.setItem(
+        "uniPilotCurrentUser",
+        JSON.stringify({
+
+          name: user.name,
+          email: user.email,
+          department: user.department
+
+        })
       );
 
 
       showMessage(
-        "Account created successfully! You can now log in.",
+        "Login successful! Welcome back, " + user.name + ".",
         "success"
       );
 
 
-      signupForm.reset();
-
+      /* RETURN TO HOME */
 
       setTimeout(function() {
-        showLogin();
 
-        document.getElementById("loginEmail").value = email;
-      }, 1200);
+        window.location.href = "index.html";
 
-    });
+      }, 1000);
 
 
-    /* =========================
-       LOGIN
-    ========================== */
+    } else {
 
-    loginForm.addEventListener("submit", function(event) {
+      showMessage(
+        "Incorrect email or password. Please try again.",
+        "error"
+      );
 
-      event.preventDefault();
+    }
 
-      const email = document.getElementById("loginEmail").value.trim().toLowerCase();
-      const password = document.getElementById("loginPassword").value;
+  });
 
-
-      const savedUser = localStorage.getItem("uniPilotUser");
-
-
-      if (!savedUser) {
-
-        showMessage(
-          "No account found. Please sign up first.",
-          "error"
-        );
-
-        return;
-      }
-
-
-      const user = JSON.parse(savedUser);
-
-
-      if (
-        user.email === email &&
-        user.password === password
-      ) {
-
-        localStorage.setItem(
-          "uniPilotLoggedIn",
-          "true"
-        );
-
-
-        localStorage.setItem(
-          "uniPilotCurrentUser",
-          JSON.stringify({
-            name: user.name,
-            email: user.email
-          })
-        );
-
-
-        showMessage(
-          "Login successful! Welcome back, " + user.name + ".",
-          "success"
-        );
-
-
-        setTimeout(function() {
-          window.location.href = "index.html";
-        }, 1000);
-
-
-      } else {
-
-        showMessage(
-          "Incorrect email or password. Please try again.",
-          "error"
-        );
-
-      }
-
-    });
-
-  </script>
+</script>
 
 </body>
 </html>
