@@ -340,8 +340,10 @@
           </a>
 
 
+          <!-- CHECK RESULTS -->
+
           <a
-            href="guide.html"
+            href="results.html"
             class="action-card"
           >
 
@@ -503,169 +505,6 @@
     </section>
 
 
-    <!-- =========================
-         QUICK ACCESS
-    ========================== -->
-
-    <section class="section quick-access">
-
-
-      <div class="section-heading">
-
-        <h2>
-          Quick Access
-        </h2>
-
-        <p>
-          Jump straight to what you need.
-        </p>
-
-      </div>
-
-
-      <div class="quick-access-grid">
-
-
-        <a
-          href="resources.html"
-          class="access-card"
-        >
-
-          <div class="access-icon">
-            📚
-          </div>
-
-          <h3>
-            Academic Resources
-          </h3>
-
-          <p>
-
-            Access course materials, past questions,
-            notes, and study resources.
-
-          </p>
-
-          <span class="card-link">
-            Open →
-          </span>
-
-        </a>
-
-
-        <a
-          href="guide.html"
-          class="access-card"
-        >
-
-          <div class="access-icon">
-            🎓
-          </div>
-
-          <h3>
-            Student Guide
-          </h3>
-
-          <p>
-
-            Learn about registration, results,
-            school procedures, and more.
-
-          </p>
-
-          <span class="card-link">
-            Open →
-          </span>
-
-        </a>
-
-
-        <a
-          href="updates.html"
-          class="access-card"
-        >
-
-          <div class="access-icon">
-            📢
-          </div>
-
-          <h3>
-            Campus Updates
-          </h3>
-
-          <p>
-
-            Stay updated with announcements,
-            events, deadlines, and campus news.
-
-          </p>
-
-          <span class="card-link">
-            Open →
-          </span>
-
-        </a>
-
-
-        <a
-          href="opportunities.html"
-          class="access-card"
-        >
-
-          <div class="access-icon">
-            💼
-          </div>
-
-          <h3>
-            Opportunities
-          </h3>
-
-          <p>
-
-            Discover scholarships, internships,
-            competitions, and opportunities.
-
-          </p>
-
-          <span class="card-link">
-            Open →
-          </span>
-
-        </a>
-
-
-        <a
-          href="tools.html"
-          class="access-card"
-        >
-
-          <div class="access-icon">
-            🧮
-          </div>
-
-          <h3>
-            Student Tools
-          </h3>
-
-          <p>
-
-            Use helpful tools such as GPA
-            calculators and course unit calculators.
-
-          </p>
-
-          <span class="card-link">
-            Open →
-          </span>
-
-        </a>
-
-
-      </div>
-
-    </section>
-
-
   </main>
 
 
@@ -802,9 +641,8 @@
 
           if (user.name) {
 
-            /*
-             * Logged-in state
-             */
+
+            /* Logged-in state */
 
             authBtn.textContent = "👤 Logged In";
 
@@ -814,17 +652,13 @@
               "👋 Welcome, " + user.name + "!";
 
 
-            /*
-             * Stop the desktop button from
-             * opening the login page.
-             */
+            /* Stop the desktop button from
+               opening the login page */
 
             authBtn.href = "#";
 
 
-            /*
-             * Open / close account dropdown
-             */
+            /* Open / close account dropdown */
 
             authBtn.addEventListener("click", function (event) {
 
@@ -835,10 +669,8 @@
             });
 
 
-            /*
-             * Close dropdown when clicking
-             * anywhere outside it.
-             */
+            /* Close dropdown when clicking
+               anywhere outside it */
 
             document.addEventListener("click", function (event) {
 
@@ -853,9 +685,7 @@
             });
 
 
-            /*
-             * LOG OUT
-             */
+            /* LOG OUT */
 
             logoutBtn.addEventListener("click", function () {
 
