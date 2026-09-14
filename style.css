@@ -1673,3 +1673,150 @@ footer {
   background: var(--green);
   color: var(--white);
 }
+
+/* =========================
+   HOMEPAGE ACTION TILES
+========================= */
+
+.action-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+
+  max-width: 900px;
+  margin: 35px auto 0;
+}
+
+
+.action-card {
+  aspect-ratio: 1 / 1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  padding: 24px;
+
+  border-radius: 24px;
+
+  text-decoration: none;
+
+  background: white;
+
+  border: 1px solid rgba(11, 93, 59, 0.08);
+
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.06);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+.action-card:hover {
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Icon */
+
+.action-card > span {
+  font-size: 32px;
+}
+
+
+/* Title */
+
+.action-card h3 {
+  margin: 0 0 8px;
+
+  font-size: 17px;
+
+  color: var(--text);
+}
+
+
+/* Description */
+
+.action-card p {
+  margin: 0;
+
+  font-size: 13px;
+
+  line-height: 1.5;
+
+  color: var(--muted);
+}
+
+
+/* Arrow */
+
+.action-card strong {
+  align-self: flex-end;
+
+  font-size: 22px;
+
+  color: var(--green);
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 800px) {
+
+  .action-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 500px) {
+
+  .action-grid {
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 12px;
+
+    margin-top: 25px;
+  }
+
+
+  .action-card {
+    padding: 16px;
+
+    border-radius: 20px;
+  }
+
+
+  .action-card > span {
+    font-size: 26px;
+  }
+
+
+  .action-card h3 {
+    font-size: 14px;
+  }
+
+
+  .action-card p {
+    font-size: 11px;
+  }
+
+
+  .action-card strong {
+    font-size: 18px;
+  }
+
+}
