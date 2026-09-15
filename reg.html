@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -10,15 +11,10 @@
     content="width=device-width, initial-scale=1.0"
   >
 
-  <title>Faculty Guide | Uni Pilot</title>
+  <title>Course Registration | Uni Pilot</title>
 
 
-  <!-- GOOGLE FONT -->
-
-  <link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
-  >
+  <!-- Google Font -->
 
   <link
     rel="preconnect"
@@ -51,16 +47,13 @@
 
 
   <!-- =========================
-       HEADER
+       NAVIGATION
   ========================== -->
 
   <header class="header">
 
+    <nav class="navbar">
 
-    <div class="navbar">
-
-
-      <!-- LOGO -->
 
       <a
         href="index.html"
@@ -78,9 +71,9 @@
       </a>
 
 
-      <!-- DESKTOP NAVIGATION -->
+      <!-- Desktop Navigation -->
 
-      <nav class="desktop-nav">
+      <div class="desktop-nav">
 
         <a href="index.html">
           Home
@@ -102,365 +95,321 @@
           Tools
         </a>
 
-      </nav>
+      </div>
 
 
-      <!-- NAVIGATION ACTIONS -->
+      <!-- Navigation Actions -->
 
       <div class="nav-actions">
 
-
         <button
           class="icon-btn"
-          id="searchBtn"
+          aria-label="Search"
           type="button"
         >
           🔍
         </button>
 
 
+        <button
+          class="menu-btn"
+          id="menuBtn"
+          aria-label="Open Menu"
+          type="button"
+        >
+          ☰
+        </button>
+
       </div>
 
+    </nav>
+
+
+    <!-- Mobile Menu -->
+
+    <div
+      class="mobile-menu"
+      id="navLinks"
+    >
+
+      <a href="index.html">
+        Home
+      </a>
+
+      <a href="resources.html">
+        Academic Resources
+      </a>
+
+      <a href="guide.html">
+        Student Guide
+      </a>
+
+      <a href="updates.html">
+        Campus Updates
+      </a>
+
+      <a href="opportunities.html">
+        Opportunities
+      </a>
+
+      <a href="tools.html">
+        Student Tools
+      </a>
+
+      <a href="about.html">
+        About
+      </a>
 
     </div>
-
 
   </header>
 
 
+  <!-- =========================
+       MENU BACKGROUND OVERLAY
+  ========================== -->
+
+  <div
+    class="menu-overlay"
+    id="menuOverlay"
+  ></div>
+
 
   <!-- =========================
-       FACULTY GUIDE
+       MAIN CONTENT
   ========================== -->
 
   <main>
 
 
+    <!-- =========================
+         COURSE REGISTRATION
+    ========================== -->
+
     <section class="section">
-
-
-      <a
-        href="guide.html"
-        class="back-button"
-      >
-        ← Back to Student Guide
-      </a>
-
 
       <div class="section-heading section-heading-left">
 
-
-        <span class="welcome-tag">
-          FACULTY GUIDE
+        <span class="intro-label">
+          STUDENT GUIDE
         </span>
 
 
         <h2>
-          Find Your Faculty
+          Course Registration
         </h2>
 
 
         <p>
-          Select your faculty to view faculty and departmental information.
+          Follow these steps carefully to complete your
+          course registration successfully.
         </p>
-
 
       </div>
 
 
-
-      <!-- FACULTY GRID -->
+      <!-- Registration Steps -->
 
       <div class="guide-grid">
 
 
-        <!-- AGRICULTURE -->
+        <!-- STEP 1 -->
 
-        <a
-          href="agriculture.html"
-          class="guide-card"
-        >
+        <div class="guide-card">
 
           <span>
-            🌾
+            1
           </span>
-
 
           <div>
 
             <h3>
-              Faculty of Agriculture
+              Log in to the student portal
             </h3>
 
             <p>
-              Departments, courses and academic information.
+              Log in to your student portal using your
+              registered student credentials.
             </p>
 
           </div>
 
-        </a>
+        </div>
 
 
+        <!-- STEP 2 -->
 
-        <!-- ALLIED HEALTH SCIENCES -->
-
-        <a
-          href="#"
-          class="guide-card"
-        >
+        <div class="guide-card">
 
           <span>
-            🩺
+            2
           </span>
-
 
           <div>
 
             <h3>
-              Faculty of Allied Health Sciences
+              Navigate to the course registration section
             </h3>
 
             <p>
-              Departments, courses and academic information.
+              Locate and open the course registration
+              section of the student portal.
             </p>
 
           </div>
 
-        </a>
+        </div>
 
 
+        <!-- STEP 3 -->
 
-        <!-- ARTS -->
-
-        <a
-          href="arts.html"
-          class="guide-card"
-        >
+        <div class="guide-card">
 
           <span>
-            📚
+            3
           </span>
-
 
           <div>
 
             <h3>
-              Faculty of Arts
+              Select your academic session and semester
             </h3>
 
             <p>
-              Departments, courses and academic information.
+              Choose the correct academic session and
+              semester for your registration.
             </p>
 
           </div>
 
-        </a>
+        </div>
 
 
+        <!-- STEP 4 -->
 
-        <!-- COMPUTING -->
-
-        <a
-          href="#"
-          class="guide-card"
-        >
+        <div class="guide-card">
 
           <span>
-            💻
+            4
           </span>
-
 
           <div>
 
             <h3>
-              Faculty of Computing
+              Select your courses
             </h3>
 
             <p>
-              Departments, courses and academic information.
+              Select the courses required for your level
+              and department.
             </p>
 
           </div>
 
-        </a>
+        </div>
 
 
+        <!-- STEP 5 -->
 
-        <!-- EDUCATION -->
-
-        <a
-          href="#"
-          class="guide-card"
-        >
+        <div class="guide-card">
 
           <span>
-            🎓
+            5
           </span>
-
 
           <div>
 
             <h3>
-              Faculty of Education
+              Review your selected courses carefully
             </h3>
 
             <p>
-              Departments, courses and academic information.
+              Check your selected courses carefully and
+              make sure all required courses are included.
             </p>
 
           </div>
 
-        </a>
+        </div>
 
 
+        <!-- STEP 6 -->
 
-        <!-- ENVIRONMENTAL DESIGN -->
-
-        <a
-          href="#"
-          class="guide-card"
-        >
+        <div class="guide-card">
 
           <span>
-            🏗️
+            6
           </span>
-
 
           <div>
 
             <h3>
-              Faculty of Environmental Design and Management
+              Submit the registration
             </h3>
 
             <p>
-              Departments, courses and academic information.
+              After confirming that your course selection
+              is correct, submit your registration.
             </p>
 
           </div>
 
-        </a>
+        </div>
 
 
+        <!-- STEP 7 -->
 
-        <!-- LAW -->
-
-        <a
-          href="#"
-          class="guide-card"
-        >
+        <div class="guide-card">
 
           <span>
-            ⚖️
+            7
           </span>
-
 
           <div>
 
             <h3>
-              Faculty of Law
+              Print or download your course registration slip
             </h3>
 
             <p>
-              Departments, courses and academic information.
+              Print or download your course registration
+              slip after successfully submitting your courses.
             </p>
 
           </div>
 
-        </a>
+        </div>
 
 
+        <!-- STEP 8 -->
 
-        <!-- SCIENCE -->
-
-        <a
-          href="#"
-          class="guide-card"
-        >
+        <div class="guide-card">
 
           <span>
-            🔬
+            8
           </span>
-
 
           <div>
 
             <h3>
-              Faculty of Science
+              Submit your course registration slip to your HOD
             </h3>
 
             <p>
-              Departments, courses and academic information.
+              Submit the printed course registration slip
+              to your HOD for proper documentation and signing.
             </p>
 
           </div>
 
-        </a>
-
-
-
-        <!-- SOCIAL SCIENCES -->
-
-        <a
-          href="#"
-          class="guide-card"
-        >
-
-          <span>
-            👥
-          </span>
-
-
-          <div>
-
-            <h3>
-              Faculty of Social Sciences
-            </h3>
-
-            <p>
-              Departments, courses and academic information.
-            </p>
-
-          </div>
-
-        </a>
-
-
-
-        <!-- ADMINISTRATION -->
-
-        <a
-          href="#"
-          class="guide-card"
-        >
-
-          <span>
-            📊
-          </span>
-
-
-          <div>
-
-            <h3>
-              Faculty of Administration and Management Sciences
-            </h3>
-
-            <p>
-              Departments, courses and academic information.
-            </p>
-
-          </div>
-
-        </a>
+        </div>
 
 
       </div>
 
-
     </section>
 
-
   </main>
-
 
 
   <!-- =========================
@@ -468,7 +417,6 @@
   ========================== -->
 
   <footer>
-
 
     <div class="footer-container">
 
@@ -486,7 +434,6 @@
       </div>
 
 
-
       <div class="footer-links">
 
 
@@ -495,7 +442,6 @@
           <h4>
             Platform
           </h4>
-
 
           <a href="resources.html">
             Resources
@@ -513,9 +459,7 @@
             Student Tools
           </a>
 
-
         </div>
-
 
 
         <div>
@@ -523,7 +467,6 @@
           <h4>
             Information
           </h4>
-
 
           <a href="about.html">
             About
@@ -541,15 +484,11 @@
             Contact
           </a>
 
-
         </div>
-
 
       </div>
 
-
     </div>
-
 
 
     <div class="footer-bottom">
@@ -560,12 +499,10 @@
 
     </div>
 
-
   </footer>
 
 
-
-  <!-- JAVASCRIPT -->
+  <!-- JavaScript -->
 
   <script src="script.js"></script>
 
