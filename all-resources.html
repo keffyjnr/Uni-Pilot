@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+  <title>All Resources | Uni Pilot</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<header class="header">
+
+  <nav class="navbar">
+
+    <a href="index.html" class="brand">
+      🎓 Uni Pilot
+    </a>
+
+
+    <div class="desktop-nav">
+
+      <a href="index.html">
+        Home
+      </a>
+
+      <a href="resources.html">
+        Resources
+      </a>
+
+      <a href="guide.html">
+        Student Guide
+      </a>
+
+      <a href="updates.html">
+        Updates
+      </a>
+
+      <a href="tools.html">
+        Tools
+      </a>
+
+    </div>
+
+
+    <div class="nav-actions">
+
+      <button
+        class="icon-btn"
+        aria-label="Search"
+        type="button">
+        🔍
+      </button>
+
+      <button
+        class="menu-btn"
+        id="menuBtn"
+        aria-label="Open Menu"
+        type="button">
+        ☰
+      </button>
+
+    </div>
+
+  </nav>
+
+
+  <div class="mobile-menu" id="navLinks">
+
+    <a href="index.html">
+      Home
+    </a>
+
+    <a href="resources.html">
+      Resources
+    </a>
+
+    <a href="guide.html">
+      Student Guide
+    </a>
+
+    <a href="updates.html">
+      Updates
+    </a>
+
+    <a href="tools.html">
+      Tools
+    </a>
+
+  </div>
+
+</header>
+
+
+<div class="menu-overlay" id="menuOverlay"></div>
+
+
+
+<main>
+
+
+  <!-- HERO -->
+
+  <section class="section all-resource-hero">
+
+    <div class="section-heading">
+
+      <span class="intro-label">
+        UNI PILOT LIBRARY
+      </span>
+
+      <h1>
+        All Academic Resources
+      </h1>
+
+      <p>
+        Search and explore academic resources from different departments and faculties.
+      </p>
+
+    </div>
+
+
+    <!-- SEARCH -->
+
+    <form
+      class="resource-search-box"
+      id="resourceSearchForm"
+      role="search"
+      aria-label="Search academic resources">
+
+      <div class="search-input-wrapper">
+
+        <span class="search-symbol">
+          🔍
+        </span>
+
+        <label
+          for="resourceSearch"
+          class="visually-hidden">
+          Search academic resources
+        </label>
+
+        <input
+          type="search"
+          id="resourceSearch"
+          placeholder="Search resources, departments, courses..."
+          autocomplete="off">
+
+        <button
+          type="button"
+          id="clearResourceSearch"
+          class="clear-search"
+          aria-label="Clear search">
+          ×
+        </button>
+
+      </div>
+
+
+      <button
+        type="submit"
+        class="resource-search-btn">
+        Search
+      </button>
+
+    </form>
+
+
+    <!-- FILTERS -->
+
+    <div class="resource-filter-row">
+
+      <button
+        class="resource-filter active"
+        data-filter="all">
+        All Resources
+      </button>
+
+      <button
+        class="resource-filter"
+        data-filter="course">
+        Course Materials
+      </button>
+
+      <button
+        class="resource-filter"
+        data-filter="notes">
+        Lecture Notes
+      </button>
+
+      <button
+        class="resource-filter"
+        data-filter="questions">
+        Past Questions
+      </button>
+
+      <button
+        class="resource-filter"
+        data-filter="guide">
+        Study Guides
+      </button>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- RESOURCE COUNT -->
+
+  <section class="section resource-results-section">
+
+    <div class="resource-results-top">
+
+      <div>
+
+        <span class="resource-small-label">
+          RESOURCE LIBRARY
+        </span>
+
+        <h2 id="resultsTitle">
+          All Resources
+        </h2>
+
+      </div>
+
+      <span
+        class="resource-count"
+        id="resourceCount">
+        12 resources
+      </span>
+
+    </div>
+
+
+    <!-- RESOURCE GRID -->
+
+    <div
+      class="all-resource-grid"
+      id="allResourceGrid">
+    </div>
+
+
+    <!-- NO RESULTS -->
+
+    <div
+      class="resource-empty"
+      id="resourceEmpty"
+      style="display: none;">
+
+      <div class="resource-empty-icon">
+        🔎
+      </div>
+
+      <h3>
+        No resources found
+      </h3>
+
+      <p>
+        Try a different search term or choose another category.
+      </p>
+
+      <button
+        type="button"
+        id="resetSearch"
+        class="secondary-btn">
+        Show All Resources
+      </button>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+
+<footer class="footer">
+
+  <div class="footer-content">
+
+    <div class="footer-brand">
+
+      <a href="index.html" class="brand">
+        🎓 Uni Pilot
+      </a>
+
+      <p>
+        Helping students navigate smoothly through campus.
+      </p>
+
+    </div>
+
+
+    <div class="footer-links">
+
+      <a href="index.html">
+        Home
+      </a>
+
+      <a href="resources.html">
+        Resources
+      </a>
+
+      <a href="guide.html">
+        Student Guide
+      </a>
+
+      <a href="updates.html">
+        Updates
+      </a>
+
+      <a href="tools.html">
+        Tools
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <div class="footer-bottom">
+
+    <p>
+      © 2026 Uni Pilot. Built for students.
+    </p>
+
+  </div>
+
+</footer>
+
+
+
+<script src="script.js"></script>
+
+
+<script>
+
+
+/* =========================================
+   RESOURCE DATABASE
+========================================= */
+
+const resources = [
+
+  {
+    title: "Course Materials",
+    description: "General course materials and academic resources for students.",
+    department: "All Departments",
+    faculty: "All Faculties",
+    type: "course",
+    icon: "📚"
+  },
+
+  {
+    title: "Lecture Notes",
+    description: "Lecture notes and important topics to help students revise.",
+    department: "All Departments",
+    faculty: "All Faculties",
+    type: "notes",
+    icon: "📝"
+  },
+
+  {
+    title: "Past Examination Questions",
+    description: "Past questions to help students prepare for examinations.",
+    department: "All Departments",
+    faculty: "All Faculties",
+    type: "questions",
+    icon: "📖"
+  },
+
+  {
+    title: "Student Study Guide",
+    description: "Helpful study strategies and academic preparation tips.",
+    department: "All Departments",
+    faculty: "All Faculties",
+    type: "guide",
+    icon: "🎯"
+  },
+
+  {
+    title: "Computer Science Course Materials",
+    description: "Study materials for Computer Science students.",
+    department: "Computer Science",
+    faculty: "Faculty of Computing",
+    type: "course",
+    icon: "💻"
+  },
+
+  {
+    title: "Software Engineering Lecture Notes",
+    description: "Lecture notes and revision materials for Software Engineering.",
+    department: "Software Engineering",
+    faculty: "Faculty of Computing",
+    type: "notes",
+    icon: "💻"
+  },
+
+  {
+    title: "Cyber Security Past Questions",
+    description: "Past examination questions for Cyber Security students.",
+    department: "Cyber Security",
+    faculty: "Faculty of Computing",
+    type: "questions",
+    icon: "🔐"
+  },
+
+  {
+    title: "Agricultural Economics Materials",
+    description: "Course materials for Agricultural Economics students.",
+    department: "Agricultural Economics",
+    faculty: "Faculty of Agriculture",
+    type: "course",
+    icon: "🌱"
+  },
+
+  {
+    title: "Nursing Science Study Guide",
+    description: "Study resources and academic preparation guide for Nursing Science.",
+    department: "Nursing Science",
+    faculty: "Faculty of Allied Health Sciences",
+    type: "guide",
+    icon: "🩺"
+  },
+
+  {
+    title: "Medical Laboratory Science Notes",
+    description: "Lecture and revision notes for Medical Laboratory Science.",
+    department: "Medical Laboratory Science",
+    faculty: "Faculty of Allied Health Sciences",
+    type: "notes",
+    icon: "🔬"
+  },
+
+  {
+    title: "Mass Communication Materials",
+    description: "Academic resources for Mass Communication students.",
+    department: "Mass Communication",
+    faculty: "Faculty of Social Sciences",
+    type: "course",
+    icon: "🎙️"
+  },
+
+  {
+    title: "Law Past Questions",
+    description: "Past examination questions for Law students.",
+    department: "Law",
+    faculty: "Faculty of Law",
+    type: "questions",
+    icon: "⚖️"
+  }
+
+];
+
+
+
+/* =========================================
+   ELEMENTS
+========================================= */
+
+const resourceGrid =
+  document.getElementById("allResourceGrid");
+
+const searchInput =
+  document.getElementById("resourceSearch");
+
+const searchForm =
+  document.getElementById("resourceSearchForm");
+
+const clearButton =
+  document.getElementById("clearResourceSearch");
+
+const resourceCount =
+  document.getElementById("resourceCount");
+
+const emptyState =
+  document.getElementById("resourceEmpty");
+
+const resetButton =
+  document.getElementById("resetSearch");
+
+const filterButtons =
+  document.querySelectorAll(".resource-filter");
+
+
+
+let activeFilter = "all";
+
+
+
+/* =========================================
+   DISPLAY RESOURCES
+========================================= */
+
+function displayResources(list) {
+
+  resourceGrid.innerHTML = "";
+
+
+  if (list.length === 0) {
+
+    emptyState.style.display = "block";
+
+    resourceCount.textContent =
+      "0 resources";
+
+    return;
+
+  }
+
+
+  emptyState.style.display = "none";
+
+
+  resourceCount.textContent =
+    `${list.length} resource${list.length === 1 ? "" : "s"}`;
+
+
+  list.forEach(resource => {
+
+    const card =
+      document.createElement("article");
+
+    card.className =
+      "all-resource-card";
+
+
+    card.innerHTML = `
+
+      <div class="all-resource-icon">
+        ${resource.icon}
+      </div>
+
+      <div class="all-resource-content">
+
+        <div class="resource-card-top">
+
+          <span class="resource-tag">
+            ${getTypeName(resource.type)}
+          </span>
+
+        </div>
+
+        <h3>
+          ${resource.title}
+        </h3>
+
+        <p>
+          ${resource.description}
+        </p>
+
+        <div class="resource-meta">
+
+          <span>
+            🏫 ${resource.faculty}
+          </span>
+
+          <span>
+            🎓 ${resource.department}
+          </span>
+
+        </div>
+
+        <button
+          type="button"
+          class="resource-view-btn"
+          onclick="showResourceMessage('${escapeQuotes(resource.title)}')">
+
+          View Resource
+          <span>→</span>
+
+        </button>
+
+      </div>
+
+    `;
+
+
+    resourceGrid.appendChild(card);
+
+  });
+
+}
+
+
+
+/* =========================================
+   RESOURCE TYPE NAME
+========================================= */
+
+function getTypeName(type) {
+
+  const names = {
+
+    course: "COURSE MATERIALS",
+
+    notes: "LECTURE NOTES",
+
+    questions: "PAST QUESTIONS",
+
+    guide: "STUDY GUIDE"
+
+  };
+
+  return names[type] || "RESOURCE";
+
+}
+
+
+
+/* =========================================
+   SEARCH
+========================================= */
+
+function searchResources() {
+
+  const searchTerm =
+    searchInput.value
+      .trim()
+      .toLowerCase();
+
+
+  const filtered =
+    resources.filter(resource => {
+
+      const matchesSearch =
+        !searchTerm ||
+
+        resource.title
+          .toLowerCase()
+          .includes(searchTerm) ||
+
+        resource.description
+          .toLowerCase()
+          .includes(searchTerm) ||
+
+        resource.department
+          .toLowerCase()
+          .includes(searchTerm) ||
+
+        resource.faculty
+          .toLowerCase()
+          .includes(searchTerm);
+
+
+      const matchesFilter =
+        activeFilter === "all" ||
+        resource.type === activeFilter;
+
+
+      return matchesSearch && matchesFilter;
+
+    });
+
+
+  displayResources(filtered);
+
+}
+
+
+
+/* =========================================
+   FILTER BUTTONS
+========================================= */
+
+filterButtons.forEach(button => {
+
+  button.addEventListener("click", () => {
+
+    filterButtons.forEach(btn =>
+      btn.classList.remove("active")
+    );
+
+    button.classList.add("active");
+
+    activeFilter =
+      button.dataset.filter;
+
+    searchResources();
+
+  });
+
+});
+
+
+
+/* =========================================
+   SEARCH FORM
+========================================= */
+
+searchForm.addEventListener("submit", event => {
+
+  event.preventDefault();
+
+  searchResources();
+
+});
+
+
+
+/* LIVE SEARCH */
+
+searchInput.addEventListener(
+  "input",
+  searchResources
+);
+
+
+
+/* =========================================
+   CLEAR SEARCH
+========================================= */
+
+clearButton.addEventListener("click", () => {
+
+  searchInput.value = "";
+
+  searchResources();
+
+  searchInput.focus();
+
+});
+
+
+
+/* =========================================
+   RESET
+========================================= */
+
+resetButton.addEventListener("click", () => {
+
+  searchInput.value = "";
+
+  activeFilter = "all";
+
+
+  filterButtons.forEach(button => {
+
+    button.classList.remove("active");
+
+    if (button.dataset.filter === "all") {
+      button.classList.add("active");
+    }
+
+  });
+
+
+  searchResources();
+
+});
+
+
+
+/* =========================================
+   RESOURCE MESSAGE
+========================================= */
+
+function showResourceMessage(title) {
+
+  alert(
+    `"${title}" has been added to the Uni Pilot resource library.`
+  );
+
+}
+
+
+
+/* =========================================
+   SAFETY FOR RESOURCE TITLES
+========================================= */
+
+function escapeQuotes(text) {
+
+  return text
+    .replace(/\\/g, "\\\\")
+    .replace(/'/g, "\\'");
+
+}
+
+
+
+/* =========================================
+   INITIAL DISPLAY
+========================================= */
+
+displayResources(resources);
+
+
+</script>
+
+
+</body>
+</html>

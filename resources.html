@@ -1,460 +1,390 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Resources | Uni Pilot</title>
 
-  <!-- Google Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  >
-
-  <!-- CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- =========================
-       NAVIGATION
-  ========================== -->
+<header class="header">
 
-  <header class="header">
+  <nav class="navbar">
 
-    <nav class="navbar">
+    <a href="index.html" class="brand">🎓 Uni Pilot</a>
 
-      <!-- Logo -->
-      <a href="index.html" class="brand">
+    <div class="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="resources.html" class="active">Resources</a>
+      <a href="guide.html">Student Guide</a>
+      <a href="updates.html">Updates</a>
+      <a href="tools.html">Tools</a>
+    </div>
 
-        <div class="brand-icon">
-          🎓
-        </div>
+    <div class="nav-actions">
 
-        <span>Uni Pilot</span>
+      <button
+        class="icon-btn"
+        aria-label="Search"
+        type="button">
+        🔍
+      </button>
 
-      </a>
-
-
-      <!-- Desktop Navigation -->
-      <div class="desktop-nav">
-
-        <a href="index.html">Home</a>
-        <a href="resources.html">Resources</a>
-        <a href="guide.html">Student Guide</a>
-        <a href="updates.html">Updates</a>
-        <a href="tools.html">Tools</a>
-
-      </div>
-
-
-      <!-- Navigation Actions -->
-      <div class="nav-actions">
-
-        <button
-          class="icon-btn"
-          aria-label="Search"
-          type="button"
-        >
-          🔍
-        </button>
-
-
-        <!-- Mobile Menu Button -->
-        <button
-          class="menu-btn"
-          id="menuBtn"
-          aria-label="Open Menu"
-          type="button"
-        >
-          ☰
-        </button>
-
-      </div>
-
-    </nav>
-
-
-    <!-- Mobile Menu -->
-    <div
-      class="mobile-menu"
-      id="navLinks"
-    >
-
-      <a href="index.html">
-        Home
-      </a>
-
-      <a href="resources.html">
-        Academic Resources
-      </a>
-
-      <a href="guide.html">
-        Student Guide
-      </a>
-
-      <a href="updates.html">
-        Campus Updates
-      </a>
-
-      <a href="opportunities.html">
-        Opportunities
-      </a>
-
-      <a href="tools.html">
-        Student Tools
-      </a>
-
-      <a href="about.html">
-        About
-      </a>
+      <button
+        class="menu-btn"
+        id="menuBtn"
+        aria-label="Open Menu"
+        type="button">
+        ☰
+      </button>
 
     </div>
 
-  </header>
+  </nav>
+
+  <div class="mobile-menu" id="navLinks">
+
+    <a href="index.html">Home</a>
+    <a href="resources.html">Resources</a>
+    <a href="guide.html">Student Guide</a>
+    <a href="updates.html">Updates</a>
+    <a href="tools.html">Tools</a>
+
+  </div>
+
+</header>
+
+<div class="menu-overlay" id="menuOverlay"></div>
 
 
-  <!-- Menu Background Overlay -->
-  <div
-    class="menu-overlay"
-    id="menuOverlay"
-  ></div>
+<main>
+
+  <!-- =========================================
+       ONE ACADEMIC RESOURCES INFORMATION BOX
+  ========================================= -->
+
+  <div class="resource-info-box">
+
+    <!-- ACADEMIC RESOURCES -->
+
+    <span class="intro-label">
+      ACADEMIC RESOURCES
+    </span>
 
 
-  <!-- =========================
-       MAIN CONTENT
-  ========================== -->
+    <!-- YOUR ACADEMIC SPACE -->
 
-  <main>
+    <span class="resource-small-label">
+      YOUR ACADEMIC SPACE
+    </span>
 
-    <!-- =========================
-         RESOURCES
-    ========================== -->
 
-    <section class="section">
+    <!-- DEPARTMENT -->
 
-      <div class="section-heading section-heading-left">
+    <h1 id="resourceHeading">
+      Featured Academic Resources
+    </h1>
 
-        <span class="intro-label">
-          ACADEMIC RESOURCES
+
+    <!-- DESCRIPTION -->
+
+    <p id="resourceIntro">
+      Find course materials, lecture notes, past questions, and other resources to help with your studies.
+    </p>
+
+  </div>
+
+
+  <!-- =========================================
+       RESOURCE CARDS - STAY SEPARATE
+  ========================================= -->
+
+  <section class="section">
+
+    <div
+      class="resource-list"
+      id="resourceList">
+
+
+      <!-- COURSE MATERIALS -->
+
+      <article class="resource-card">
+
+        <div class="resource-icon">
+          📚
+        </div>
+
+        <div>
+
+          <span class="resource-type">
+            COURSE MATERIALS
+          </span>
+
+          <h3 id="resourceTitle1">
+            Course Materials
+          </h3>
+
+          <p id="resourceDescription1">
+            Course materials and study resources for your department.
+          </p>
+
+          <a
+            href="all-resources.html"
+            class="resource-link">
+            Explore Materials →
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <!-- LECTURE NOTES -->
+
+      <article class="resource-card">
+
+        <div class="resource-icon">
+          📝
+        </div>
+
+        <div>
+
+          <span class="resource-type">
+            LECTURE NOTES
+          </span>
+
+          <h3 id="resourceTitle2">
+            Lecture Notes
+          </h3>
+
+          <p id="resourceDescription2">
+            Lecture notes and important academic information.
+          </p>
+
+          <a
+            href="all-resources.html"
+            class="resource-link">
+            View Notes →
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <!-- PAST QUESTIONS -->
+
+      <article class="resource-card">
+
+        <div class="resource-icon">
+          📖
+        </div>
+
+        <div>
+
+          <span class="resource-type">
+            PAST QUESTIONS
+          </span>
+
+          <h3 id="resourceTitle3">
+            Past Questions
+          </h3>
+
+          <p id="resourceDescription3">
+            Past examination questions to help you prepare.
+          </p>
+
+          <a
+            href="all-resources.html"
+            class="resource-link">
+            Find Questions →
+          </a>
+
+        </div>
+
+      </article>
+
+    </div>
+
+
+    <!-- =========================================
+         BROWSE ALL
+    ========================================= -->
+
+    <div class="browse-all-card">
+
+      <div class="browse-all-icon">
+        ✨
+      </div>
+
+      <div class="browse-all-content">
+
+        <span class="resource-small-label">
+          COMPLETE RESOURCE LIBRARY
         </span>
 
         <h2>
-          Featured Academic Resources
+          Looking for something else?
         </h2>
 
         <p>
-          Find course materials, lecture notes, past questions,
-          and other resources to help with your studies.
+          Browse resources from different departments, faculties and academic categories in one place.
         </p>
 
       </div>
 
+      <a
+        href="all-resources.html"
+        class="browse-all-btn">
 
-      <div class="resource-list" id="resourceList">
+        Browse All Resources
 
-  <article class="resource-card">
+        <span>
+          →
+        </span>
 
-    <div class="resource-icon">
-      📖
-    </div>
-
-    <div class="resource-content">
-
-      <span class="resource-type">
-        Course Outline
-      </span>
-
-      <h3 id="resourceTitle1">
-        Loading resources...
-      </h3>
-
-      <p id="resourceDescription1">
-        Loading resources for your department.
-      </p>
-
-      <small id="resourceCourse1">
-        Please wait...
-      </small>
-
-    </div>
-
-  </article>
-
-
-  <article class="resource-card">
-
-    <div class="resource-icon">
-      📚
-    </div>
-
-    <div class="resource-content">
-
-      <span class="resource-type">
-        Lecture Notes
-      </span>
-
-      <h3 id="resourceTitle2">
-        Loading resources...
-      </h3>
-
-      <p id="resourceDescription2">
-        Loading resources for your department.
-      </p>
-
-      <small id="resourceCourse2">
-        Please wait...
-      </small>
-
-    </div>
-
-  </article>
-
-
-  <article class="resource-card">
-
-    <div class="resource-icon">
-      📝
-    </div>
-
-    <div class="resource-content">
-
-      <span class="resource-type">
-        Past Questions
-      </span>
-
-      <h3 id="resourceTitle3">
-        Loading resources...
-      </h3>
-
-      <p id="resourceDescription3">
-        Loading resources for your department.
-      </p>
-
-      <small id="resourceCourse3">
-        Please wait...
-      </small>
-
-    </div>
-
-  </article>
-
-</div>
-      >
-        Browse All Resources →
       </a>
 
-    </section>
-
-  </main>
-
-
-  <!-- =========================
-       FOOTER
-  ========================== -->
-
-  <footer>
-
-    <div class="footer-container">
-
-
-      <div class="footer-brand">
-
-        <h2>
-          Uni Pilot
-        </h2>
-
-        <p>
-          Your campus. Your resources. Your guide.
-        </p>
-
-      </div>
-
-
-
-      <div class="footer-links">
-
-
-        <div>
-
-          <h4>
-            Platform
-          </h4>
-
-          <a href="resources.html">
-            Resources
-          </a>
-
-          <a href="guide.html">
-            Student Guide
-          </a>
-
-          <a href="updates.html">
-            Updates
-          </a>
-
-          <a href="tools.html">
-            Student Tools
-          </a>
-
-        </div>
-
-
-
-        <div>
-
-          <h4>
-            Information
-          </h4>
-
-          <a href="about.html">
-            About
-          </a>
-
-          <a href="#">
-            Privacy Policy
-          </a>
-
-          <a href="#">
-            Terms of Use
-          </a>
-
-          <a href="#">
-            Contact
-          </a>
-
-        </div>
-
-      </div>
-
     </div>
 
+  </section>
 
-    <div class="footer-bottom">
+</main>
+
+
+<footer class="footer">
+
+  <div class="footer-content">
+
+    <div class="footer-brand">
+
+      <a href="index.html" class="brand">
+        🎓 Uni Pilot
+      </a>
 
       <p>
-        © 2026 Uni Pilot. All rights reserved.
+        Helping students navigate smoothly through campus.
       </p>
 
     </div>
 
-  </footer>
+
+    <div class="footer-links">
+
+      <a href="index.html">Home</a>
+      <a href="resources.html">Resources</a>
+      <a href="guide.html">Student Guide</a>
+      <a href="updates.html">Updates</a>
+      <a href="tools.html">Tools</a>
+
+    </div>
+
+  </div>
 
 
-  <!-- JavaScript -->
-  <script src="script.js"></script>
+  <div class="footer-bottom">
+
+    <p>
+      © 2026 Uni Pilot. Built for students.
+    </p>
+
+  </div>
+
+</footer>
+
+
+<script src="script.js"></script>
+
 
 <script>
 
-  const currentUser = JSON.parse(
-    localStorage.getItem("uniPilotCurrentUser")
-  );
+  /*
+    PERSONALIZE RESOURCES
+    USING THE LOGGED-IN STUDENT'S DEPARTMENT
+  */
 
-  const resourceTitle1 =
-    document.getElementById("resourceTitle1");
-
-  const resourceDescription1 =
-    document.getElementById("resourceDescription1");
-
-  const resourceCourse1 =
-    document.getElementById("resourceCourse1");
-
-  const resourceTitle2 =
-    document.getElementById("resourceTitle2");
-
-  const resourceDescription2 =
-    document.getElementById("resourceDescription2");
-
-  const resourceCourse2 =
-    document.getElementById("resourceCourse2");
-
-  const resourceTitle3 =
-    document.getElementById("resourceTitle3");
-
-  const resourceDescription3 =
-    document.getElementById("resourceDescription3");
-
-  const resourceCourse3 =
-    document.getElementById("resourceCourse3");
+  const currentUser =
+    JSON.parse(localStorage.getItem("uniPilotCurrentUser"));
 
 
-  if (!currentUser || !currentUser.department) {
+  const resourceHeading =
+    document.getElementById("resourceHeading");
 
-    resourceTitle1.textContent =
-      "Login to see your resources";
-
-    resourceDescription1.textContent =
-      "Please log in and make sure you have entered your department.";
-
-    resourceCourse1.textContent =
-      "Uni Pilot";
+  const resourceIntro =
+    document.getElementById("resourceIntro");
 
 
-    resourceTitle2.textContent =
-      "Department Resources";
-
-    resourceDescription2.textContent =
-      "Your department-specific materials will appear here.";
-
-    resourceCourse2.textContent =
-      "Uni Pilot";
-
-
-    resourceTitle3.textContent =
-      "Past Questions";
-
-    resourceDescription3.textContent =
-      "Log in to access resources for your department.";
-
-    resourceCourse3.textContent =
-      "Uni Pilot";
-
-  } else {
+  if (currentUser && currentUser.department) {
 
     const department =
       currentUser.department.trim();
 
 
-    resourceTitle1.textContent =
-      department + " Course Materials";
+    /*
+      ONE INFORMATION BOX
 
-    resourceDescription1.textContent =
-      "Course outlines and study materials for " +
-      department + " students.";
+      Example:
 
-    resourceCourse1.textContent =
-      department;
+      ACADEMIC RESOURCES
+
+      YOUR ACADEMIC SPACE
+
+      Information and Communication Technology Resources
+
+      Academic materials and study resources for
+      Information and Communication Technology students.
+    */
+
+    resourceHeading.textContent =
+      `${department} Resources`;
+
+    resourceIntro.textContent =
+      `Academic materials and study resources for ${department} students.`;
 
 
-    resourceTitle2.textContent =
-      department + " Lecture Notes";
+    /*
+      COURSE MATERIALS
+    */
 
-    resourceDescription2.textContent =
-      "Lecture notes and important academic materials for " +
-      department + " students.";
+    document.getElementById("resourceTitle1").textContent =
+      `${department} Course Materials`;
 
-    resourceCourse2.textContent =
-      department;
+    document.getElementById("resourceDescription1").textContent =
+      `Course materials and study resources for ${department}.`;
 
 
-    resourceTitle3.textContent =
-      department + " Past Questions";
+    /*
+      LECTURE NOTES
+    */
 
-    resourceDescription3.textContent =
-      "Past examination questions to help " +
-      department + " students prepare.";
+    document.getElementById("resourceTitle2").textContent =
+      `${department} Lecture Notes`;
 
-    resourceCourse3.textContent =
-      department;
+    document.getElementById("resourceDescription2").textContent =
+      `Lecture notes and important academic information for ${department}.`;
+
+
+    /*
+      PAST QUESTIONS
+    */
+
+    document.getElementById("resourceTitle3").textContent =
+      `${department} Past Questions`;
+
+    document.getElementById("resourceDescription3").textContent =
+      `Past examination questions for ${department} students.`;
 
   }
 
 </script>
+
 </body>
 </html>

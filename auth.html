@@ -505,16 +505,382 @@
 
           </div>
 
-<div class="form-group">
+<div class="form-group department-group">
 
-  <label for="signupDepartment">
+  <label for="departmentSearch">
     Department
   </label>
 
+  <div class="department-picker" id="departmentPicker">
+
+    <button
+      type="button"
+      class="department-trigger"
+      id="departmentTrigger"
+    >
+      <span id="selectedDepartment">
+        🎓 Choose your department
+      </span>
+
+      <span class="department-arrow">⌄</span>
+    </button>
+
+    <div class="department-menu" id="departmentMenu">
+
+      <div class="department-search">
+
+        <span>⌕</span>
+
+        <input
+          type="text"
+          id="departmentSearch"
+          placeholder="Search your department..."
+          autocomplete="off"
+        >
+
+      </div>
+
+      <div id="departmentOptions">
+
+        <!-- COMPUTING -->
+
+        <div class="faculty-title">
+          Faculty of Computing
+        </div>
+
+        <button type="button" class="department-option"
+          data-department="Computer Science">
+          💻 <span>Computer Science</span>
+        </button>
+
+        <button type="button" class="department-option"
+          data-department="Cyber Security">
+          🛡️ <span>Cyber Security</span>
+        </button>
+
+        <button type="button" class="department-option"
+          data-department="Data Science and Artificial Intelligence">
+          🤖 <span>Data Science and Artificial Intelligence</span>
+        </button>
+
+        <button type="button" class="department-option"
+          data-department="Information and Communication Technology">
+          🌐 <span>Information and Communication Technology</span>
+        </button>
+
+        <button type="button" class="department-option"
+          data-department="Information Systems">
+          🗂️ <span>Information Systems</span>
+        </button>
+
+        <button type="button" class="department-option"
+          data-department="Software Engineering">
+          ⚙️ <span>Software Engineering</span>
+        </button>
+
+
+        <!-- AGRICULTURE -->
+
+        <div class="faculty-title">
+          Faculty of Agriculture
+        </div>
+
+        <button type="button" class="department-option"
+          data-department="Agricultural Economics">
+          🌱 <span>Agricultural Economics</span>
+        </button>
+
+        <button type="button" class="department-option"
+          data-department="Agricultural Extension and Rural Development">
+          🌾 <span>Agricultural Extension and Rural Development</span>
+        </button>
+
+        <button type="button" class="department-option"
+          data-department="Agronomy">
+          🌿 <span>Agronomy</span>
+        </button>
+
+        <button type="button" class="department-option"
+          data-department="Animal Science">
+          🐄 <span>Animal Science</span>
+        </button>
+
+        <button type="button" class="department-option"
+          data-department="Fisheries and Aquaculture">
+          🐟 <span>Fisheries and Aquaculture</span>
+        </button>
+
+        <button type="button" class="department-option"
+          data-department="Forestry and Wildlife Management">
+          🌳 <span>Forestry and Wildlife Management</span>
+        </button>
+
+        <button type="button" class="department-option"
+          data-department="Food Science and Technology">
+          🍎 <span>Food Science and Technology</span>
+        </button>
+
+
+        <!-- ALLIED HEALTH SCIENCES -->
+
+        <div class="faculty-title">
+          Faculty of Allied Health Sciences
+        </div>
+
+        <button type="button" class="department-option"
+          data-department="Nursing Science">
+          🩺 <span>Nursing Science</span>
+        </button>
+
+        <button type="button" class="department-option"
+          data-department="Medical Laboratory Science">
+          🧪 <span>Medical Laboratory Science</span>
+        </button>
+
+        <button type="button" class="department-option"
+          data-department="Public Health">
+          🏥 <span>Public Health</span>
+        </button>
+
+
+        <!-- ARTS -->
+
+        <div class="faculty-title">
+          Faculty of Arts
+        </div>
+
+        <button type="button" class="department-option"
+          data-department="English Studies">
+          📚 <span>English Studies</span>
+        </button>
+
+        <button type="button" class="department-option"
+          data-department="History and International Studies">
+          🏛️ <span>History and International Studies</span>
+        </button>
+
+        <button type="button" class="department-option"
+          data-department="Linguistics and Languages">
+          🗣️ <span>Linguistics and Languages</span>
+        </button>
+
+        <button type="button" class="department-option"
+          data-department="Philosophy">
+          💭 <span>Philosophy</span>
+        </button>
+
+        <button type="button" class="department-option"
+          data-department="Religion and African Culture">
+          ✝️ <span>Religion and African Culture</span>
+        </button>
+
+        <button type="button" class="department-option"
+          data-department="Performing Arts">
+          🎭 <span>Performing Arts</span>
+        </button>
+
+
+        <!-- SCIENCE -->
+
+        <div class="faculty-title">
+          Faculty of Science
+        </div>
+
+        <button type="button" class="department-option"
+          data-department="Biochemistry">
+          🧬 <span>Biochemistry</span>
+        </button>
+
+        <button type="button" class="department-option"
+          data-department="Chemical Sciences">
+          ⚗️ <span>Chemical Sciences</span>
+        </button>
+
+        <button type="button" class="department-option"
+          data-department="Animal and Environmental Biology">
+          🧬 <span>Animal and Environmental Biology</span>
+        </button>
+
+        <button type="button" class="department-option"
+          data-department="Mathematical Sciences">
+          📐 <span>Mathematical Sciences</span>
+        </button>
+
+        <button type="button" class="department-option"
+          data-department="Microbiology">
+          🔬 <span>Microbiology</span>
+        </button>
+
+        <button type="button" class="department-option"
+          data-department="Physics and Electronics">
+          ⚡ <span>Physics and Electronics</span>
+        </button>
+
+        <button type="button" class="department-option"
+          data-department="Plant Science and Biotechnology">
+          🌱 <span>Plant Science and Biotechnology</span>
+        </button>
+
+
+        <!-- EDUCATION -->
+
+        <div class="faculty-title">
+          Faculty of Education
+        </div>
+
+        <button type="button" class="department-option"
+          data-department="Arts Education">
+          📖 <span>Arts Education</span>
+        </button>
+
+        <button type="button" class="department-option"
+          data-department="Educational Management">
+          🎓 <span>Educational Management</span>
+        </button>
+
+        <button type="button" class="department-option"
+          data-department="Guidance and Counselling">
+          🧭 <span>Guidance and Counselling</span>
+        </button>
+
+        <button type="button" class="department-option"
+          data-department="Science Education">
+          🔬 <span>Science Education</span>
+        </button>
+
+        <button type="button" class="department-option"
+          data-department="Health Education">
+          ❤️ <span>Health Education</span>
+        </button>
+
+        <button type="button" class="department-option"
+          data-department="Adult Education">
+          📘 <span>Adult Education</span>
+        </button>
+
+        <button type="button" class="department-option"
+          data-department="Industrial Technology and Vocational Education">
+          🛠️ <span>Industrial Technology and Vocational Education</span>
+        </button>
+
+
+        <!-- ENVIRONMENTAL -->
+
+        <div class="faculty-title">
+          Faculty of Environmental Design and Management
+        </div>
+
+        <button type="button" class="department-option"
+          data-department="Architecture">
+          🏛️ <span>Architecture</span>
+        </button>
+
+        <button type="button" class="department-option"
+          data-department="Estate Management">
+          🏢 <span>Estate Management</span>
+        </button>
+
+        <button type="button" class="department-option"
+          data-department="Surveying and Geoinformatics">
+          📍 <span>Surveying and Geoinformatics</span>
+        </button>
+
+        <button type="button" class="department-option"
+          data-department="Urban and Regional Planning">
+          🏙️ <span>Urban and Regional Planning</span>
+        </button>
+
+
+        <!-- LAW -->
+
+        <div class="faculty-title">
+          Faculty of Law
+        </div>
+
+        <button type="button" class="department-option"
+          data-department="Law">
+          ⚖️ <span>Law</span>
+        </button>
+
+
+        <!-- ADMINISTRATION -->
+
+        <div class="faculty-title">
+          Faculty of Administration and Management Sciences
+        </div>
+
+        <button type="button" class="department-option"
+          data-department="Accounting">
+          💰 <span>Accounting</span>
+        </button>
+
+        <button type="button" class="department-option"
+          data-department="Banking and Finance">
+          🏦 <span>Banking and Finance</span>
+        </button>
+
+        <button type="button" class="department-option"
+          data-department="Business Administration">
+          💼 <span>Business Administration</span>
+        </button>
+
+        <button type="button" class="department-option"
+          data-department="Public Administration">
+          🏛️ <span>Public Administration</span>
+        </button>
+
+
+        <!-- SOCIAL SCIENCES -->
+
+        <div class="faculty-title">
+          Faculty of Social Sciences
+        </div>
+
+        <button type="button" class="department-option"
+          data-department="Mass Communication">
+          📡 <span>Mass Communication</span>
+        </button>
+
+        <button type="button" class="department-option"
+          data-department="Political Science">
+          🗳️ <span>Political Science</span>
+        </button>
+
+        <button type="button" class="department-option"
+          data-department="Psychology">
+          🧠 <span>Psychology</span>
+        </button>
+
+        <button type="button" class="department-option"
+          data-department="Economics">
+          📊 <span>Economics</span>
+        </button>
+
+        <button type="button" class="department-option"
+          data-department="Geography and Planning Science">
+          🗺️ <span>Geography and Planning Science</span>
+        </button>
+
+        <button type="button" class="department-option"
+          data-department="Sociology">
+          👥 <span>Sociology</span>
+        </button>
+
+      </div>
+
+      <div class="no-department" id="noDepartment">
+        No department found.
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Hidden value used by your existing signup JavaScript -->
+
   <input
-    type="text"
+    type="hidden"
     id="signupDepartment"
-    placeholder="Enter your department"
     required
   >
 
@@ -655,214 +1021,803 @@
 
   }
 
+/* =========================
+   DEPARTMENT PICKER
+========================= */
 
-  /* =========================
-     SIGN UP
-  ========================== */
+const departmentPicker =
+  document.getElementById("departmentPicker");
 
-  signupForm.addEventListener("submit", function(event) {
+const departmentTrigger =
+  document.getElementById("departmentTrigger");
 
-    event.preventDefault();
+const departmentMenu =
+  document.getElementById("departmentMenu");
 
-    const name =
-      document.getElementById("signupName").value.trim();
+const departmentSearch =
+  document.getElementById("departmentSearch");
 
-    const department =
-      document.getElementById("signupDepartment").value;
+const departmentOptions =
+  document.querySelectorAll(".department-option");
 
-    const email =
-      document.getElementById("signupEmail").value.trim().toLowerCase();
+const selectedDepartment =
+  document.getElementById("selectedDepartment");
 
-    const password =
-      document.getElementById("signupPassword").value;
+const signupDepartment =
+  document.getElementById("signupDepartment");
 
-
-    /* CHECK DEPARTMENT */
-
-    if (!department) {
-
-      showMessage(
-        "Please select your department.",
-        "error"
-      );
-
-      return;
-
-    }
+const noDepartment =
+  document.getElementById("noDepartment");
 
 
-    /* CHECK PASSWORD */
+/* OPEN / CLOSE */
 
-    if (password.length < 6) {
+departmentTrigger.addEventListener("click", function() {
 
-      showMessage(
-        "Password must be at least 6 characters.",
-        "error"
-      );
+  const isOpen =
+    departmentMenu.classList.contains("show");
 
-      return;
+  if (isOpen) {
 
-    }
+    closeDepartmentMenu();
 
+  } else {
 
-    /* CHECK EXISTING ACCOUNT */
+    departmentMenu.classList.add("show");
+    departmentTrigger.classList.add("active");
 
-    const existingUser =
-      localStorage.getItem("uniPilotUser");
+    departmentSearch.value = "";
 
-
-    if (existingUser) {
-
-      const oldUser =
-        JSON.parse(existingUser);
-
-      if (oldUser.email === email) {
-
-        showMessage(
-          "An account with this email already exists. Please log in.",
-          "error"
-        );
-
-        return;
-
-      }
-
-    }
-
-
-    /* CREATE USER */
-
-    const user = {
-
-      name: name,
-      email: email,
-      password: password,
-      department: department
-
-    };
-
-
-    /* SAVE USER */
-
-    localStorage.setItem(
-      "uniPilotUser",
-      JSON.stringify(user)
-    );
-
-
-    showMessage(
-      "Account created successfully! You can now log in.",
-      "success"
-    );
-
-
-    signupForm.reset();
-
-
-    /* GO TO LOGIN */
+    filterDepartments("");
 
     setTimeout(function() {
+      departmentSearch.focus();
+    }, 50);
 
-      showLogin();
+  }
 
-      document.getElementById("loginEmail").value = email;
+});
 
-    }, 1200);
+
+/* SELECT DEPARTMENT */
+
+departmentOptions.forEach(function(option) {
+
+  option.addEventListener("click", function() {
+
+    const department =
+      option.dataset.department;
+
+    /* Save selected department */
+
+    signupDepartment.value = department;
+
+    /* Display selected department */
+
+    selectedDepartment.textContent =
+      department;
+
+    departmentTrigger.classList.add("selected");
+
+    /* Highlight selected option */
+
+    departmentOptions.forEach(function(item) {
+      item.classList.remove("selected");
+    });
+
+    option.classList.add("selected");
+
+    closeDepartmentMenu();
+
+  });
+
+});
+
+
+/* SEARCH */
+
+departmentSearch.addEventListener("input", function() {
+
+  filterDepartments(
+    departmentSearch.value.trim().toLowerCase()
+  );
+
+});
+
+
+function filterDepartments(searchTerm) {
+
+  let visibleDepartments = 0;
+
+  departmentOptions.forEach(function(option) {
+
+    const department =
+      option.dataset.department.toLowerCase();
+
+    const matches =
+      department.includes(searchTerm);
+
+    option.style.display =
+      matches ? "flex" : "none";
+
+    if (matches) {
+      visibleDepartments++;
+    }
 
   });
 
 
+  /* Hide faculty headings when their departments
+     aren't visible */
+
+  document.querySelectorAll(".faculty-title")
+    .forEach(function(title) {
+
+      let next = title.nextElementSibling;
+      let hasVisibleDepartment = false;
+
+      while (
+        next &&
+        !next.classList.contains("faculty-title")
+      ) {
+
+        if (
+          next.classList.contains("department-option") &&
+          next.style.display !== "none"
+        ) {
+
+          hasVisibleDepartment = true;
+          break;
+
+        }
+
+        next = next.nextElementSibling;
+      }
+
+      title.style.display =
+        hasVisibleDepartment ? "block" : "none";
+
+    });
+
+
+  noDepartment.classList.toggle(
+    "show",
+    visibleDepartments === 0
+  );
+
+}
+
+
+/* CLOSE MENU */
+
+function closeDepartmentMenu() {
+
+  departmentMenu.classList.remove("show");
+
+  departmentTrigger.classList.remove("active");
+
+}
+
+
+/* CLICK OUTSIDE */
+
+document.addEventListener("click", function(event) {
+
+  if (
+    !departmentPicker.contains(event.target)
+  ) {
+
+    closeDepartmentMenu();
+
+  }
+
+});
+
+ /* =========================
+   SIGN UP
+========================= */
+
+signupForm.addEventListener("submit", function(event) {
+
+  event.preventDefault();
+
+  const name =
+    document.getElementById("signupName").value.trim();
+
+  const department =
+    document.getElementById("signupDepartment").value;
+
+  const email =
+    document.getElementById("signupEmail").value.trim().toLowerCase();
+
+  const password =
+    document.getElementById("signupPassword").value;
+
+
+  /* CHECK DEPARTMENT */
+
+  if (!department) {
+
+    showMessage(
+      "Please select your department.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  /* CHECK PASSWORD */
+
+  if (password.length < 6) {
+
+    showMessage(
+      "Password must be at least 6 characters.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  /* GET ALL SAVED USERS */
+
+  let users = JSON.parse(
+    localStorage.getItem("uniPilotUsers")
+  ) || [];
+
+
+  /* CHECK IF EMAIL ALREADY EXISTS */
+
+  const existingUser =
+    users.find(function(user) {
+
+      return user.email === email;
+
+    });
+
+
+  if (existingUser) {
+
+    showMessage(
+      "An account with this email already exists. Please log in.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  /* CREATE NEW USER */
+
+  const user = {
+
+    name: name,
+
+    email: email,
+
+    password: password,
+
+    department: department
+
+  };
+
+
+  /* ADD NEW USER TO THE ARRAY */
+
+  users.push(user);
+
+
+  /* SAVE ALL USERS */
+
+  localStorage.setItem(
+    "uniPilotUsers",
+    JSON.stringify(users)
+  );
+
+
+  showMessage(
+    "Account created successfully! You can now log in.",
+    "success"
+  );
+
+
+  /* SAVE EMAIL BEFORE RESET */
+
+  const registeredEmail = email;
+
+
+  /* RESET FORM */
+
+  signupForm.reset();
+
+
+  /* RESET DEPARTMENT PICKER */
+
+  signupDepartment.value = "";
+
+  selectedDepartment.textContent =
+    "🎓 Choose your department";
+
+  departmentTrigger.classList.remove("selected");
+
+  departmentOptions.forEach(function(option) {
+
+    option.classList.remove("selected");
+
+  });
+
+
+  /* GO TO LOGIN */
+
+  setTimeout(function() {
+
+    showLogin();
+
+    document.getElementById("loginEmail").value =
+      registeredEmail;
+
+  }, 1200);
+
+});
+
   /* =========================
-     LOGIN
-  ========================== */
+   LOGIN
+========================= */
 
-  loginForm.addEventListener("submit", function(event) {
+loginForm.addEventListener("submit", function(event) {
 
-    event.preventDefault();
-
-    const email =
-      document.getElementById("loginEmail").value.trim().toLowerCase();
-
-    const password =
-      document.getElementById("loginPassword").value;
+  event.preventDefault();
 
 
-    const savedUser =
-      localStorage.getItem("uniPilotUser");
+  const email =
+    document
+      .getElementById("loginEmail")
+      .value
+      .trim()
+      .toLowerCase();
 
 
-    if (!savedUser) {
+  const password =
+    document.getElementById("loginPassword").value;
+
+
+  /* GET ALL SAVED USERS */
+
+  const users = JSON.parse(
+    localStorage.getItem("uniPilotUsers")
+  ) || [];
+
+
+  /* FIND MATCHING ACCOUNT */
+
+  const user =
+    users.find(function(savedUser) {
+
+      return (
+        savedUser.email === email &&
+        savedUser.password === password
+      );
+
+    });
+
+
+  /* NO ACCOUNT */
+
+  if (!user) {
+
+    const emailExists =
+      users.some(function(savedUser) {
+
+        return savedUser.email === email;
+
+      });
+
+
+    if (!emailExists) {
 
       showMessage(
-        "No account found. Please sign up first.",
+        "No account found with this email. Please sign up first.",
         "error"
       );
-
-      return;
-
-    }
-
-
-    const user =
-      JSON.parse(savedUser);
-
-
-    /* CHECK LOGIN */
-
-    if (
-      user.email === email &&
-      user.password === password
-    ) {
-
-      /* SAVE LOGIN STATUS */
-
-      localStorage.setItem(
-        "uniPilotLoggedIn",
-        "true"
-      );
-
-
-      /* SAVE CURRENT USER INCLUDING DEPARTMENT */
-
-      localStorage.setItem(
-        "uniPilotCurrentUser",
-        JSON.stringify({
-
-          name: user.name,
-          email: user.email,
-          department: user.department
-
-        })
-      );
-
-
-      showMessage(
-        "Login successful! Welcome back, " + user.name + ".",
-        "success"
-      );
-
-
-      /* RETURN TO HOME */
-
-      setTimeout(function() {
-
-        window.location.href = "index.html";
-
-      }, 1000);
-
 
     } else {
 
       showMessage(
-        "Incorrect email or password. Please try again.",
+        "Incorrect password. Please try again.",
         "error"
       );
 
     }
 
-  });
+    return;
+  }
 
+
+  /* =========================
+     LOGIN SUCCESSFUL
+  ========================== */
+
+  localStorage.setItem(
+    "uniPilotLoggedIn",
+    "true"
+  );
+
+
+  /* SAVE CURRENT USER */
+
+  localStorage.setItem(
+    "uniPilotCurrentUser",
+    JSON.stringify({
+
+      name: user.name,
+
+      email: user.email,
+
+      department: user.department
+
+    })
+  );
+
+
+  showMessage(
+    "Login successful! Welcome back, " +
+    user.name +
+    ".",
+    "success"
+  );
+
+
+  /* RETURN TO HOME */
+
+  setTimeout(function() {
+
+    window.location.href = "index.html";
+
+  }, 1000);
+
+});
 </script>
 
+<style>
+/* =========================
+   MODERN DEPARTMENT PICKER
+========================= */
+
+.department-group {
+  position: relative;
+}
+
+.department-picker {
+  position: relative;
+  width: 100%;
+}
+
+/* MAIN SELECT BUTTON */
+
+.department-trigger {
+  width: 100%;
+  min-height: 48px;
+
+  padding: 12px 14px;
+
+  border: 1px solid var(--border);
+  border-radius: 11px;
+
+  background: var(--white);
+  color: var(--muted);
+
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.department-trigger:hover {
+  border-color: rgba(11, 93, 59, 0.45);
+}
+
+.department-trigger.active {
+  border-color: var(--green);
+
+  box-shadow:
+    0 0 0 3px rgba(11, 93, 59, 0.08);
+}
+
+.department-trigger.selected {
+  color: var(--text);
+}
+
+.department-arrow {
+  font-size: 1.15rem;
+  color: var(--green);
+
+  transition:
+    transform 0.2s ease;
+}
+
+.department-trigger.active .department-arrow {
+  transform: rotate(180deg);
+}
+
+
+/* =========================
+   DEPARTMENT DROPDOWN
+========================= */
+
+.department-menu {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+
+  top: calc(100% + 8px);
+
+  background: var(--white);
+
+  border: 1px solid var(--border);
+  border-radius: 14px;
+
+  box-shadow:
+    0 18px 45px rgba(6, 59, 38, 0.14);
+
+  padding: 8px;
+
+  z-index: 100;
+
+  display: none;
+
+  animation: departmentDrop 0.18s ease;
+}
+
+.department-menu.show {
+  display: block;
+}
+
+@keyframes departmentDrop {
+
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+
+/* =========================
+   DEPARTMENT SEARCH
+========================= */
+
+.department-search {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  margin-bottom: 7px;
+}
+
+.department-search > span {
+  position: absolute;
+
+  left: 13px;
+
+  font-size: 1.15rem;
+
+  color: var(--muted);
+
+  pointer-events: none;
+}
+
+.department-search input {
+  width: 100%;
+
+  padding: 11px 12px 11px 38px;
+
+  border: 1px solid var(--border);
+  border-radius: 9px;
+
+  outline: none;
+
+  font-family: inherit;
+  font-size: 0.85rem;
+
+  color: var(--text);
+  background: var(--background);
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.department-search input:focus {
+  border-color: var(--green);
+
+  background: var(--white);
+
+  box-shadow:
+    0 0 0 3px rgba(11, 93, 59, 0.07);
+}
+
+
+/* =========================
+   DEPARTMENT OPTIONS
+========================= */
+
+#departmentOptions {
+  max-height: 270px;
+
+  overflow-y: auto;
+
+  padding-right: 3px;
+}
+
+
+/* CUSTOM SCROLLBAR */
+
+#departmentOptions::-webkit-scrollbar {
+  width: 5px;
+}
+
+#departmentOptions::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#departmentOptions::-webkit-scrollbar-thumb {
+  background: #cbd9d0;
+  border-radius: 20px;
+}
+
+
+/* =========================
+   FACULTY HEADINGS
+========================= */
+
+.faculty-title {
+  padding: 12px 10px 6px;
+
+  color: var(--green);
+
+  font-size: 0.69rem;
+  font-weight: 800;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.6px;
+}
+
+
+/* =========================
+   DEPARTMENT OPTIONS
+========================= */
+
+.department-option {
+  width: 100%;
+
+  border: none;
+
+  background: transparent;
+
+  padding: 10px;
+
+  border-radius: 9px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  text-align: left;
+
+  color: var(--text);
+
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    transform 0.15s ease;
+}
+
+.department-option:hover {
+  background: var(--light-green);
+
+  color: var(--green);
+
+  transform: translateX(2px);
+}
+
+.department-option.selected {
+  background: var(--light-green);
+
+  color: var(--green);
+}
+
+.department-option span {
+  flex: 1;
+}
+
+
+/* =========================
+   NO RESULTS
+========================= */
+
+.no-department {
+  display: none;
+
+  padding: 20px 10px;
+
+  text-align: center;
+
+  color: var(--muted);
+
+  font-size: 0.82rem;
+}
+
+.no-department.show {
+  display: block;
+}
+
+
+/* =========================
+   DEPARTMENT PICKER MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+  .department-menu {
+    top: calc(100% + 6px);
+
+    border-radius: 13px;
+
+    padding: 7px;
+
+    box-shadow:
+      0 16px 35px rgba(6, 59, 38, 0.16);
+  }
+
+  #departmentOptions {
+    max-height: 240px;
+  }
+
+  .department-option {
+    padding: 11px 9px;
+
+    font-size: 0.8rem;
+  }
+
+  .faculty-title {
+    padding: 11px 9px 6px;
+
+    font-size: 0.65rem;
+  }
+
+  .department-search input {
+    padding: 12px 12px 12px 38px;
+  }
+
+}
+
+</style>
 </body>
 </html>
