@@ -157,95 +157,112 @@
       </div>
 
 
-      <div class="resource-list" id="resourceList">
-
-  <article class="resource-card">
-
-    <div class="resource-icon">
-      📖
-    </div>
-
-    <div class="resource-content">
-
-      <span class="resource-type">
-        Course Outline
-      </span>
-
-      <h3 id="resourceTitle1">
-        Loading resources...
-      </h3>
-
-      <p id="resourceDescription1">
-        Loading resources for your department.
-      </p>
-
-      <small id="resourceCourse1">
-        Please wait...
-      </small>
-
-    </div>
-
-  </article>
+      <div class="resource-list">
 
 
-  <article class="resource-card">
+        <!-- Resource 1 -->
 
-    <div class="resource-icon">
-      📚
-    </div>
+        <article class="resource-card">
 
-    <div class="resource-content">
+          <div class="resource-icon">
+            📖
+          </div>
 
-      <span class="resource-type">
-        Lecture Notes
-      </span>
+          <div class="resource-content">
 
-      <h3 id="resourceTitle2">
-        Loading resources...
-      </h3>
+            <span class="resource-type">
+              Course Outline
+            </span>
 
-      <p id="resourceDescription2">
-        Loading resources for your department.
-      </p>
+            <h3>
+              GEY 101 Course Outline
+            </h3>
 
-      <small id="resourceCourse2">
-        Please wait...
-      </small>
+            <p>
+              Course outline covering important topics
+              for Introduction to Geology.
+            </p>
 
-    </div>
+            <small>
+              GEY 101 · Geology
+            </small>
 
-  </article>
+          </div>
+
+        </article>
 
 
-  <article class="resource-card">
 
-    <div class="resource-icon">
-      📝
-    </div>
+        <!-- Resource 2 -->
 
-    <div class="resource-content">
+        <article class="resource-card">
 
-      <span class="resource-type">
-        Past Questions
-      </span>
+          <div class="resource-icon">
+            📚
+          </div>
 
-      <h3 id="resourceTitle3">
-        Loading resources...
-      </h3>
+          <div class="resource-content">
 
-      <p id="resourceDescription3">
-        Loading resources for your department.
-      </p>
+            <span class="resource-type">
+              Lecture Notes
+            </span>
 
-      <small id="resourceCourse3">
-        Please wait...
-      </small>
+            <h3>
+              GEY 101 Lecture Notes – Earth Materials
+            </h3>
 
-    </div>
+            <p>
+              Notes covering minerals, rocks,
+              and the rock cycle.
+            </p>
 
-  </article>
+            <small>
+              GEY 101 · Geology
+            </small>
 
-</div>
+          </div>
+
+        </article>
+
+
+
+        <!-- Resource 3 -->
+
+        <article class="resource-card">
+
+          <div class="resource-icon">
+            📝
+          </div>
+
+          <div class="resource-content">
+
+            <span class="resource-type">
+              Past Questions
+            </span>
+
+            <h3>
+              GEY 101 Past Questions
+            </h3>
+
+            <p>
+              Past examination questions to
+              help students prepare.
+            </p>
+
+            <small>
+              GEY 101 · Geology
+            </small>
+
+          </div>
+
+        </article>
+
+      </div>
+
+
+      <a
+        href="#"
+        class="text-button"
       >
         Browse All Resources →
       </a>
@@ -350,111 +367,5 @@
   <!-- JavaScript -->
   <script src="script.js"></script>
 
-<script>
-
-  const currentUser = JSON.parse(
-    localStorage.getItem("uniPilotCurrentUser")
-  );
-
-  const resourceTitle1 =
-    document.getElementById("resourceTitle1");
-
-  const resourceDescription1 =
-    document.getElementById("resourceDescription1");
-
-  const resourceCourse1 =
-    document.getElementById("resourceCourse1");
-
-  const resourceTitle2 =
-    document.getElementById("resourceTitle2");
-
-  const resourceDescription2 =
-    document.getElementById("resourceDescription2");
-
-  const resourceCourse2 =
-    document.getElementById("resourceCourse2");
-
-  const resourceTitle3 =
-    document.getElementById("resourceTitle3");
-
-  const resourceDescription3 =
-    document.getElementById("resourceDescription3");
-
-  const resourceCourse3 =
-    document.getElementById("resourceCourse3");
-
-
-  if (!currentUser || !currentUser.department) {
-
-    resourceTitle1.textContent =
-      "Login to see your resources";
-
-    resourceDescription1.textContent =
-      "Please log in and make sure you have entered your department.";
-
-    resourceCourse1.textContent =
-      "Uni Pilot";
-
-
-    resourceTitle2.textContent =
-      "Department Resources";
-
-    resourceDescription2.textContent =
-      "Your department-specific materials will appear here.";
-
-    resourceCourse2.textContent =
-      "Uni Pilot";
-
-
-    resourceTitle3.textContent =
-      "Past Questions";
-
-    resourceDescription3.textContent =
-      "Log in to access resources for your department.";
-
-    resourceCourse3.textContent =
-      "Uni Pilot";
-
-  } else {
-
-    const department =
-      currentUser.department.trim();
-
-
-    resourceTitle1.textContent =
-      department + " Course Materials";
-
-    resourceDescription1.textContent =
-      "Course outlines and study materials for " +
-      department + " students.";
-
-    resourceCourse1.textContent =
-      department;
-
-
-    resourceTitle2.textContent =
-      department + " Lecture Notes";
-
-    resourceDescription2.textContent =
-      "Lecture notes and important academic materials for " +
-      department + " students.";
-
-    resourceCourse2.textContent =
-      department;
-
-
-    resourceTitle3.textContent =
-      department + " Past Questions";
-
-    resourceDescription3.textContent =
-      "Past examination questions to help " +
-      department + " students prepare.";
-
-    resourceCourse3.textContent =
-      department;
-
-  }
-
-</script>
 </body>
 </html>
