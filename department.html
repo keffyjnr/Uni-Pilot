@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Department | Uni Pilot</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* =====================================================
+           UNI PILOT — DEPARTMENT PAGE
+           ===================================================== */
+
+        .department-page {
+            background:
+                radial-gradient(circle at 10% 10%, rgba(30, 64, 175, 0.08), transparent 30%),
+                radial-gradient(circle at 90% 20%, rgba(16, 185, 129, 0.08), transparent 30%),
+                #f7f9fc;
+            min-height: 100vh;
+        }
+
+        /* HERO */
+        .department-hero {
+            position: relative;
+            overflow: hidden;
+            padding: 90px 6% 75px;
+            background:
+                linear-gradient(135deg, #071426 0%, #0d2340 55%, #0b3b35 100%);
+            color: white;
+        }
+
+        .department-hero::before {
+            content: "";
+            position: absolute;
+            width: 420px;
+            height: 420px;
+            border-radius: 50%;
+            background: rgba(16, 185, 129, 0.13);
+            top: -220px;
+            right: -100px;
+            filter: blur(5px);
+        }
+
+        .department-hero::after {
+            content: "";
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(59, 130, 246, 0.12);
+            bottom: -180px;
+            left: -100px;
+        }
+
+        .department-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1150px;
+            margin: auto;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            margin-bottom: 25px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .breadcrumb a {
+            color: #a7f3d0;
+            text-decoration: none;
+        }
+
+        .department-label {
+            display: inline-flex;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            backdrop-filter: blur(10px);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        .department-hero h1 {
+            max-width: 850px;
+            margin: 0;
+            font-size: clamp(38px, 6vw, 72px);
+            line-height: 1.03;
+            letter-spacing: -2px;
+        }
+
+        .department-hero .faculty-name {
+            margin: 18px 0 0;
+            font-size: 19px;
+            color: #a7f3d0;
+            font-weight: 600;
+        }
+
+        .department-hero-description {
+            max-width: 750px;
+            margin-top: 20px;
+            color: rgba(255, 255, 255, 0.76);
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        .department-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .department-action {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 13px 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 14px;
+            transition: 0.25s ease;
+        }
+
+        .department-action.primary {
+            background: #10b981;
+            color: white;
+        }
+
+        .department-action.secondary {
+            background: rgba(255, 255, 255, 0.09);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+        }
+
+        .department-action:hover {
+            transform: translateY(-3px);
+        }
+
+        /* MAIN */
+        .department-main {
+            max-width: 1150px;
+            margin: auto;
+            padding: 55px 6% 80px;
+        }
+
+        /* QUICK INFO */
+        .quick-info {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-top: -80px;
+            position: relative;
+            z-index: 5;
+        }
+
+        .quick-card {
+            background: rgba(255, 255, 255, 0.96);
+            border: 1px solid #e5e7eb;
+            border-radius: 18px;
+            padding: 23px;
+            box-shadow: 0 15px 45px rgba(15, 23, 42, 0.08);
+        }
+
+        .quick-icon {
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            background: #ecfdf5;
+            font-size: 20px;
+            margin-bottom: 14px;
+        }
+
+        .quick-card span {
+            display: block;
+            font-size: 12px;
+            font-weight: 700;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.7px;
+            margin-bottom: 7px;
+        }
+
+        .quick-card strong {
+            color: #0f172a;
+            font-size: 15px;
+            line-height: 1.4;
+        }
+
+        /* SECTION */
+        .department-section {
+            margin-top: 55px;
+        }
+
+        .section-heading {
+            margin-bottom: 22px;
+        }
+
+        .section-heading span {
+            color: #059669;
+            font-size: 12px;
+            font-weight: 900;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .section-heading h2 {
+            margin: 8px 0 0;
+            color: #0f172a;
+            font-size: clamp(26px, 4vw, 38px);
+            letter-spacing: -1px;
+        }
+
+        .section-heading p {
+            max-width: 700px;
+            color: #64748b;
+            line-height: 1.7;
+            margin-top: 10px;
+        }
+
+        /* ABOUT */
+        .about-box {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 22px;
+            padding: 30px;
+            box-shadow: 0 10px 35px rgba(15, 23, 42, 0.05);
+        }
+
+        .about-box p {
+            color: #475569;
+            line-height: 1.9;
+            margin: 0;
+        }
+
+        /* PROGRAMMES */
+        .programme-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .programme-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 18px;
+            padding: 24px;
+            transition: 0.25s ease;
+        }
+
+        .programme-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(15, 23, 42, 0.08);
+            border-color: #a7f3d0;
+        }
+
+        .programme-card .programme-icon {
+            font-size: 27px;
+            margin-bottom: 15px;
+        }
+
+        .programme-card h3 {
+            margin: 0 0 8px;
+            color: #0f172a;
+            font-size: 18px;
+        }
+
+        .programme-card p {
+            margin: 0;
+            color: #64748b;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        /* COURSES */
+        .courses-box {
+            display: grid;
+            gap: 12px;
+        }
+
+        .level-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .level-button {
+            width: 100%;
+            border: 0;
+            background: white;
+            padding: 20px 22px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            color: #0f172a;
+            font-weight: 800;
+            font-size: 15px;
+            text-align: left;
+        }
+
+        .level-button:hover {
+            background: #f8fafc;
+        }
+
+        .level-arrow {
+            transition: transform 0.25s ease;
+        }
+
+        .level-card.active .level-arrow {
+            transform: rotate(180deg);
+        }
+
+        .course-list {
+            display: none;
+            border-top: 1px solid #e5e7eb;
+            padding: 12px 20px 20px;
+        }
+
+        .level-card.active .course-list {
+            display: block;
+        }
+
+        .course-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 13px 0;
+            border-bottom: 1px solid #f1f5f9;
+            color: #475569;
+            font-size: 14px;
+        }
+
+        .course-row:last-child {
+            border-bottom: 0;
+        }
+
+        .course-code {
+            color: #0f172a;
+            font-weight: 800;
+        }
+
+        .course-unit {
+            color: #059669;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        /* RESOURCES */
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .resource-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 18px;
+            padding: 22px;
+            text-decoration: none;
+            transition: 0.25s ease;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+            border-color: #a7f3d0;
+            box-shadow: 0 14px 30px rgba(15, 23, 42, 0.07);
+        }
+
+        .resource-card .resource-icon {
+            font-size: 27px;
+            margin-bottom: 14px;
+        }
+
+        .resource-card h3 {
+            color: #0f172a;
+            font-size: 16px;
+            margin: 0 0 7px;
+        }
+
+        .resource-card p {
+            color: #64748b;
+            font-size: 13px;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* CONTACT GRID */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .contact-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 20px;
+            padding: 27px;
+        }
+
+        .contact-card h3 {
+            margin: 0 0 18px;
+            color: #0f172a;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 13px;
+            align-items: flex-start;
+            margin-bottom: 16px;
+        }
+
+        .contact-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .contact-item-icon {
+            width: 38px;
+            height: 38px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #ecfdf5;
+            border-radius: 10px;
+        }
+
+        .contact-item span {
+            display: block;
+            color: #64748b;
+            font-size: 12px;
+            margin-bottom: 3px;
+        }
+
+        .contact-item strong {
+            color: #334155;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* HELP */
+        .help-box {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #071426, #0d3b35);
+            border-radius: 24px;
+            padding: 40px;
+            color: white;
+        }
+
+        .help-box h2 {
+            margin: 0 0 10px;
+            font-size: 30px;
+        }
+
+        .help-box p {
+            max-width: 650px;
+            color: rgba(255, 255, 255, 0.72);
+            line-height: 1.7;
+            margin: 0 0 24px;
+        }
+
+        .help-button {
+            display: inline-flex;
+            padding: 13px 20px;
+            border-radius: 12px;
+            background: #10b981;
+            color: white;
+            text-decoration: none;
+            font-weight: 800;
+            transition: 0.25s ease;
+        }
+
+        .help-button:hover {
+            transform: translateY(-3px);
+        }
+
+        /* MOBILE */
+        @media (max-width: 900px) {
+            .quick-info {
+                grid-template-columns: repeat(2, 1fr);
+                margin-top: -55px;
+            }
+
+            .programme-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .resource-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 650px) {
+            .department-hero {
+                padding: 65px 5% 65px;
+            }
+
+            .department-hero h1 {
+                letter-spacing: -1px;
+            }
+
+            .department-main {
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+
+            .quick-info {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+                margin-top: -35px;
+            }
+
+            .quick-card {
+                padding: 17px;
+            }
+
+            .quick-card strong {
+                font-size: 13px;
+            }
+
+            .programme-grid,
+            .resource-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .help-box {
+                padding: 28px;
+            }
+
+            .course-row {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="department-page">
+
+    <!-- =====================================================
+         HERO
+         ===================================================== -->
+
+    <section class="department-hero">
+
+        <div class="department-hero-content">
+
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>›</span>
+                <a href="faculty-guide.html">Faculty Guide</a>
+                <span>›</span>
+                <span>Department</span>
+            </div>
+
+            <span class="department-label">
+                Department Guide
+            </span>
+
+            <h1 id="departmentName">
+                Department Name
+            </h1>
+
+            <p class="faculty-name" id="facultyName">
+                Faculty Name
+            </p>
+
+            <p class="department-hero-description" id="departmentDescription">
+                Discover everything you need to know about your department,
+                including programmes, courses, academic resources,
+                contacts and student support.
+            </p>
+
+            <div class="department-actions">
+
+                <a href="#resources" class="department-action primary">
+                    📚 Resources
+                </a>
+
+                <a href="#courses" class="department-action secondary">
+                    📋 Courses
+                </a>
+
+                <a href="#help" class="department-action secondary">
+                    🆘 Get Help
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+         ===================================================== -->
+
+    <main class="department-main">
+
+        <!-- QUICK INFORMATION -->
+
+        <section class="quick-info">
+
+            <div class="quick-card">
+                <div class="quick-icon">🏛️</div>
+                <span>Faculty</span>
+                <strong id="quickFaculty">
+                    Faculty Name
+                </strong>
+            </div>
+
+            <div class="quick-card">
+                <div class="quick-icon">👨‍🏫</div>
+                <span>HOD</span>
+                <strong id="quickHod">
+                    Information coming soon
+                </strong>
+            </div>
+
+            <div class="quick-card">
+                <div class="quick-icon">🎓</div>
+                <span>Degree</span>
+                <strong id="quickDegree">
+                    Information coming soon
+                </strong>
+            </div>
+
+            <div class="quick-card">
+                <div class="quick-icon">⏱️</div>
+                <span>Duration</span>
+                <strong id="quickDuration">
+                    Information coming soon
+                </strong>
+            </div>
+
+        </section>
+
+
+        <!-- ABOUT -->
+
+        <section class="department-section">
+
+            <div class="section-heading">
+                <span>About the department</span>
+                <h2>Get to know your department</h2>
+            </div>
+
+            <div class="about-box">
+
+                <p id="aboutDepartment">
+                    Department information will be added after the
+                    department research has been verified.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- PROGRAMMES -->
+
+        <section class="department-section">
+
+            <div class="section-heading">
+                <span>Academic programmes</span>
+                <h2>Programmes & Admission</h2>
+                <p>
+                    Explore the programmes offered by the department
+                    and important admission information.
+                </p>
+            </div>
+
+            <div class="programme-grid">
+
+                <div class="programme-card">
+                    <div class="programme-icon">🎓</div>
+                    <h3>Programmes</h3>
+                    <p>
+                        Department programmes and degree options
+                        will appear here.
+                    </p>
+                </div>
+
+                <div class="programme-card">
+                    <div class="programme-icon">📝</div>
+                    <h3>UTME Requirements</h3>
+                    <p>
+                        Verified UTME subjects and admission
+                        requirements will appear here.
+                    </p>
+                </div>
+
+                <div class="programme-card">
+                    <div class="programme-icon">📄</div>
+                    <h3>Direct Entry</h3>
+                    <p>
+                        Direct Entry requirements and information
+                        will appear here.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- COURSES -->
+
+        <section class="department-section" id="courses">
+
+            <div class="section-heading">
+                <span>Academic structure</span>
+                <h2>Courses by Level</h2>
+                <p>
+                    Explore courses, course codes and units for each
+                    academic level.
+                </p>
+            </div>
+
+            <div class="courses-box">
+
+                <!-- 100 LEVEL -->
+
+                <div class="level-card">
+
+                    <button class="level-button" type="button">
+                        <span>100 Level</span>
+                        <span class="level-arrow">⌄</span>
+                    </button>
+
+                    <div class="course-list">
+
+                        <div class="course-row">
+                            <span>
+                                <strong class="course-code">
+                                    Course Code
+                                </strong>
+                                — Course Title
+                            </span>
+
+                            <span class="course-unit">
+                                3 Units
+                            </span>
+                        </div>
+
+                        <div class="course-row">
+                            <span>
+                                <strong class="course-code">
+                                    Course Code
+                                </strong>
+                                — Course Title
+                            </span>
+
+                            <span class="course-unit">
+                                2 Units
+                            </span>
+                        </div>
+
+                        <div class="course-row">
+                            <span>
+                                <strong class="course-code">
+                                    Course Code
+                                </strong>
+                                — Course Title
+                            </span>
+
+                            <span class="course-unit">
+                                3 Units
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- 200 LEVEL -->
+
+                <div class="level-card">
+
+                    <button class="level-button" type="button">
+                        <span>200 Level</span>
+                        <span class="level-arrow">⌄</span>
+                    </button>
+
+                    <div class="course-list">
+
+                        <div class="course-row">
+                            <span>
+                                <strong class="course-code">
+                                    Course Code
+                                </strong>
+                                — Course Title
+                            </span>
+
+                            <span class="course-unit">
+                                3 Units
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- 300 LEVEL -->
+
+                <div class="level-card">
+
+                    <button class="level-button" type="button">
+                        <span>300 Level</span>
+                        <span class="level-arrow">⌄</span>
+                    </button>
+
+                    <div class="course-list">
+
+                        <div class="course-row">
+                            <span>
+                                <strong class="course-code">
+                                    Course Code
+                                </strong>
+                                — Course Title
+                            </span>
+
+                            <span class="course-unit">
+                                3 Units
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- 400 LEVEL -->
+
+                <div class="level-card">
+
+                    <button class="level-button" type="button">
+                        <span>400 Level</span>
+                        <span class="level-arrow">⌄</span>
+                    </button>
+
+                    <div class="course-list">
+
+                        <div class="course-row">
+                            <span>
+                                <strong class="course-code">
+                                    Course Code
+                                </strong>
+                                — Course Title
+                            </span>
+
+                            <span class="course-unit">
+                                3 Units
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- RESOURCES -->
+
+        <section class="department-section" id="resources">
+
+            <div class="section-heading">
+                <span>Study materials</span>
+                <h2>Academic Resources</h2>
+                <p>
+                    Everything students need to study, prepare for
+                    examinations and stay academically organised.
+                </p>
+            </div>
+
+            <div class="resource-grid">
+
+                <a href="all-resources.html" class="resource-card">
+                    <div class="resource-icon">📘</div>
+                    <h3>Course Materials</h3>
+                    <p>
+                        Course materials and learning resources.
+                    </p>
+                </a>
+
+                <a href="all-resources.html" class="resource-card">
+                    <div class="resource-icon">📝</div>
+                    <h3>Lecture Notes</h3>
+                    <p>
+                        Lecture notes and important academic information.
+                    </p>
+                </a>
+
+                <a href="all-resources.html" class="resource-card">
+                    <div class="resource-icon">📄</div>
+                    <h3>Past Questions</h3>
+                    <p>
+                        Previous examination questions for practice.
+                    </p>
+                </a>
+
+                <a href="all-resources.html" class="resource-card">
+                    <div class="resource-icon">📚</div>
+                    <h3>Study Guides</h3>
+                    <p>
+                        Guides and materials to help students study better.
+                    </p>
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONTACT -->
+
+        <section class="department-section">
+
+            <div class="section-heading">
+                <span>Stay connected</span>
+                <h2>Department Contacts</h2>
+            </div>
+
+            <div class="contact-grid">
+
+                <div class="contact-card">
+
+                    <h3>👨‍🏫 Department Office</h3>
+
+                    <div class="contact-item">
+                        <div class="contact-item-icon">📍</div>
+
+                        <div>
+                            <span>Location</span>
+                            <strong>
+                                Information coming soon
+                            </strong>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-item-icon">☎️</div>
+
+                        <div>
+                            <span>Phone</span>
+                            <strong>
+                                Information coming soon
+                            </strong>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-item-icon">✉️</div>
+
+                        <div>
+                            <span>Email</span>
+                            <strong>
+                                Information coming soon
+                            </strong>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="contact-card">
+
+                    <h3>🧑‍🎓 Student Association</h3>
+
+                    <div class="contact-item">
+                        <div class="contact-item-icon">🏷️</div>
+
+                        <div>
+                            <span>Association</span>
+                            <strong>
+                                Information coming soon
+                            </strong>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-item-icon">👤</div>
+
+                        <div>
+                            <span>President</span>
+                            <strong>
+                                Information coming soon
+                            </strong>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-item-icon">📱</div>
+
+                        <div>
+                            <span>Contact</span>
+                            <strong>
+                                Information coming soon
+                            </strong>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- HELP -->
+
+        <section class="department-section" id="help">
+
+            <div class="help-box">
+
+                <h2>Need help with your department?</h2>
+
+                <p>
+                    Find answers to common student problems, get
+                    registration guidance, locate important offices
+                    and find the right person to contact.
+                </p>
+
+                <a href="help.html" class="help-button">
+                    Get Department Help →
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script>
+    /* =====================================================
+       UNI PILOT — DYNAMIC DEPARTMENT SYSTEM
+       ===================================================== */
+
+
+    /* =====================================================
+       COURSE LEVEL ACCORDION
+       ===================================================== */
+
+    document.querySelectorAll(".level-button").forEach(button => {
+
+        button.addEventListener("click", () => {
+
+            const card = button.closest(".level-card");
+
+            card.classList.toggle("active");
+
+        });
+
+    });
+
+
+    /* =====================================================
+       DEPARTMENT DATABASE
+       
+       We will gradually add verified information here.
+       For now, Agricultural Economics is our first department.
+       ===================================================== */
+
+    const departments = {
+
+        "Agricultural Economics": {
+
+            name: "Agricultural Economics",
+
+            faculty: "Faculty of Agriculture",
+
+            description:
+                "Explore academic information, courses, resources and student support for Agricultural Economics students at AAUA.",
+
+            hod: "Information coming soon",
+
+            degree: "B.Agric Agricultural Economics",
+
+            duration: "4 Years",
+
+            about:
+                "Information about the Department of Agricultural Economics will be added here after the department research has been verified by the Uni Pilot team."
+
+        },
+
+        "Agronomy": {
+
+            name: "Agronomy",
+
+            faculty: "Faculty of Agriculture",
+
+            description:
+                "Explore academic information, courses, resources and student support for Agronomy students at AAUA.",
+
+            hod: "Information coming soon",
+
+            degree: "B.Agric Agronomy",
+
+            duration: "4 Years",
+
+            about:
+                "Information about the Department of Agronomy will be added here after the department research has been verified by the Uni Pilot team."
+
+        },
+
+        "Animal Science": {
+
+            name: "Animal Science",
+
+            faculty: "Faculty of Agriculture",
+
+            description:
+                "Explore academic information, courses, resources and student support for Animal Science students at AAUA.",
+
+            hod: "Information coming soon",
+
+            degree: "B.Agric Animal Science",
+
+            duration: "4 Years",
+
+            about:
+                "Information about the Department of Animal Science will be added here after the department research has been verified by the Uni Pilot team."
+
+        }
+
+    };
+
+
+    /* =====================================================
+       READ DEPARTMENT NAME FROM THE URL
+       
+       Example:
+       department.html?name=Agricultural%20Economics
+       ===================================================== */
+
+    const params = new URLSearchParams(window.location.search);
+
+    const requestedDepartment = params.get("name");
+
+
+    /* =====================================================
+       FIND THE REQUESTED DEPARTMENT
+       ===================================================== */
+
+    const departmentData =
+        departments[requestedDepartment];
+
+
+    /* =====================================================
+       DISPLAY DEPARTMENT DATA
+       ===================================================== */
+
+    if (departmentData) {
+
+        document.title =
+            `${departmentData.name} | Uni Pilot`;
+
+
+        document.getElementById("departmentName").textContent =
+            departmentData.name;
+
+
+        document.getElementById("facultyName").textContent =
+            departmentData.faculty;
+
+
+        document.getElementById("departmentDescription").textContent =
+            departmentData.description;
+
+
+        document.getElementById("quickFaculty").textContent =
+            departmentData.faculty;
+
+
+        document.getElementById("quickHod").textContent =
+            departmentData.hod;
+
+
+        document.getElementById("quickDegree").textContent =
+            departmentData.degree;
+
+
+        document.getElementById("quickDuration").textContent =
+            departmentData.duration;
+
+
+        document.getElementById("aboutDepartment").textContent =
+            departmentData.about;
+
+    }
+
+
+    /* =====================================================
+       NO DEPARTMENT FOUND
+       ===================================================== */
+
+    else {
+
+        document.title = "Department Not Found | Uni Pilot";
+
+        document.getElementById("departmentName").textContent =
+            "Department Not Found";
+
+        document.getElementById("facultyName").textContent =
+            "Uni Pilot";
+
+        document.getElementById("departmentDescription").textContent =
+            "The department you're looking for has not been added to Uni Pilot yet.";
+
+        document.getElementById("quickFaculty").textContent =
+            "Not available";
+
+        document.getElementById("quickHod").textContent =
+            "Not available";
+
+        document.getElementById("quickDegree").textContent =
+            "Not available";
+
+        document.getElementById("quickDuration").textContent =
+            "Not available";
+
+        document.getElementById("aboutDepartment").textContent =
+            "Please return to the Faculty Guide and select a department.";
+
+    }
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,2098 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Faculty | AAUA Uni Pilot</title>
+
+  <!-- GOOGLE FONT -->
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- CSS -->
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+
+  <style>
+
+    /* =================================
+       FACULTY PAGE
+    ================================= */
+
+    .faculty-page {
+      background:
+        radial-gradient(
+          circle at top right,
+          rgba(37, 99, 235, 0.10),
+          transparent 35%
+        ),
+        radial-gradient(
+          circle at bottom left,
+          rgba(16, 185, 129, 0.08),
+          transparent 35%
+        );
+    }
+
+
+    /* =================================
+       HERO
+    ================================= */
+
+    .faculty-hero {
+      position: relative;
+      overflow: hidden;
+      padding: 80px 0 70px;
+    }
+
+
+    .faculty-hero::before {
+      content: "";
+      position: absolute;
+
+      width: 420px;
+      height: 420px;
+
+      top: -180px;
+      right: -120px;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(37, 99, 235, 0.15),
+          transparent 70%
+        );
+
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+
+    .faculty-hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 850px;
+    }
+
+
+    .faculty-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      padding: 8px 14px;
+
+      border-radius: 999px;
+
+      background: rgba(37, 99, 235, 0.08);
+      border: 1px solid rgba(37, 99, 235, 0.15);
+
+      color: #2563eb;
+
+      font-size: 12px;
+      font-weight: 800;
+
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+
+      margin-bottom: 18px;
+    }
+
+
+    .faculty-hero h1 {
+      margin: 0 0 16px;
+
+      font-size: clamp(38px, 6vw, 70px);
+
+      line-height: 1.05;
+
+      letter-spacing: -0.04em;
+    }
+
+
+    .faculty-hero h1 span {
+      background:
+        linear-gradient(
+          135deg,
+          #2563eb,
+          #0f766e
+        );
+
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+
+    .faculty-description {
+      max-width: 760px;
+
+      font-size: 17px;
+      line-height: 1.8;
+
+      color: #64748b;
+
+      margin-bottom: 28px;
+    }
+
+
+    /* =================================
+       ACTIONS
+    ================================= */
+
+    .faculty-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+
+    .faculty-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+
+      padding: 13px 18px;
+
+      border-radius: 12px;
+
+      text-decoration: none;
+
+      font-weight: 700;
+
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+
+    .faculty-action:hover {
+      transform: translateY(-2px);
+    }
+
+
+    .faculty-action.primary {
+      color: white;
+      background: #2563eb;
+
+      box-shadow:
+        0 10px 25px rgba(37, 99, 235, 0.20);
+    }
+
+
+    .faculty-action.secondary {
+      color: #1e293b;
+
+      background: white;
+
+      border: 1px solid #e2e8f0;
+    }
+
+
+    /* =================================
+       QUICK INFO
+    ================================= */
+
+    .faculty-info-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+      gap: 16px;
+
+      margin-bottom: 70px;
+    }
+
+
+    .faculty-info-card {
+      padding: 22px;
+
+      border-radius: 18px;
+
+      background:
+        rgba(255, 255, 255, 0.85);
+
+      border: 1px solid #e2e8f0;
+
+      box-shadow:
+        0 10px 35px rgba(15, 23, 42, 0.06);
+
+      backdrop-filter: blur(12px);
+    }
+
+
+    .faculty-info-icon {
+      width: 42px;
+      height: 42px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 12px;
+
+      background: #eff6ff;
+
+      font-size: 20px;
+
+      margin-bottom: 14px;
+    }
+
+
+    .faculty-info-card small {
+      display: block;
+
+      color: #94a3b8;
+
+      font-size: 12px;
+      font-weight: 700;
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.08em;
+
+      margin-bottom: 7px;
+    }
+
+
+    .faculty-info-card strong {
+      display: block;
+
+      color: #0f172a;
+
+      font-size: 15px;
+
+      line-height: 1.5;
+    }
+
+
+    /* =================================
+       CONTENT GRID
+    ================================= */
+
+    .faculty-content-grid {
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1.6fr)
+        minmax(280px, 0.8fr);
+
+      gap: 24px;
+
+      margin-bottom: 70px;
+    }
+
+
+    .faculty-panel {
+      padding: 30px;
+
+      background: white;
+
+      border: 1px solid #e2e8f0;
+
+      border-radius: 22px;
+
+      box-shadow:
+        0 15px 45px rgba(15, 23, 42, 0.06);
+    }
+
+
+    .faculty-panel h2 {
+      margin-top: 0;
+
+      margin-bottom: 12px;
+
+      font-size: 25px;
+    }
+
+
+    .faculty-panel p {
+      color: #64748b;
+
+      line-height: 1.8;
+    }
+
+
+    /* =================================
+       PROGRAMMES
+    ================================= */
+
+    .programme-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+      gap: 14px;
+
+      margin-top: 22px;
+    }
+
+
+    .programme-card {
+      padding: 18px;
+
+      border-radius: 15px;
+
+      background: #f8fafc;
+
+      border: 1px solid #e2e8f0;
+    }
+
+
+    .programme-card strong {
+      display: block;
+
+      margin-bottom: 6px;
+
+      color: #0f172a;
+    }
+
+
+    .programme-card span {
+      color: #64748b;
+
+      font-size: 14px;
+
+      line-height: 1.6;
+    }
+
+
+    /* =================================
+       DEPARTMENTS
+    ================================= */
+
+    .departments-section {
+      margin-bottom: 70px;
+    }
+
+
+    .department-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+      gap: 18px;
+
+      margin-top: 25px;
+    }
+
+
+    .department-card {
+      position: relative;
+
+      display: block;
+
+      padding: 24px;
+
+      background: white;
+
+      border: 1px solid #e2e8f0;
+
+      border-radius: 20px;
+
+      text-decoration: none;
+
+      color: inherit;
+
+      overflow: hidden;
+
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+    }
+
+
+    .department-card::before {
+      content: "";
+
+      position: absolute;
+
+      left: 0;
+      top: 0;
+
+      width: 100%;
+      height: 3px;
+
+      background:
+        linear-gradient(
+          90deg,
+          #2563eb,
+          #14b8a6
+        );
+
+      transform: scaleX(0);
+
+      transform-origin: left;
+
+      transition: transform 0.25s ease;
+    }
+
+
+    .department-card:hover {
+      transform: translateY(-5px);
+
+      border-color: #bfdbfe;
+
+      box-shadow:
+        0 18px 40px rgba(15, 23, 42, 0.10);
+    }
+
+
+    .department-card:hover::before {
+      transform: scaleX(1);
+    }
+
+
+    .department-icon {
+      width: 48px;
+      height: 48px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 14px;
+
+      background: #eff6ff;
+
+      font-size: 22px;
+
+      margin-bottom: 17px;
+    }
+
+
+    .department-card h3 {
+      margin: 0 0 8px;
+
+      font-size: 17px;
+
+      line-height: 1.4;
+    }
+
+
+    .department-card p {
+      margin: 0;
+
+      color: #64748b;
+
+      font-size: 14px;
+
+      line-height: 1.6;
+    }
+
+
+    .department-arrow {
+      display: inline-block;
+
+      margin-top: 18px;
+
+      color: #2563eb;
+
+      font-weight: 800;
+    }
+
+
+    /* =================================
+       FACULTY CONTACT
+    ================================= */
+
+    .faculty-contact {
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1fr);
+
+      gap: 20px;
+
+      margin-bottom: 70px;
+    }
+
+
+    .contact-item {
+      padding: 20px;
+
+      border-radius: 16px;
+
+      background: #f8fafc;
+
+      border: 1px solid #e2e8f0;
+    }
+
+
+    .contact-item small {
+      display: block;
+
+      color: #94a3b8;
+
+      font-size: 12px;
+      font-weight: 800;
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.08em;
+
+      margin-bottom: 7px;
+    }
+
+
+    .contact-item strong {
+      color: #0f172a;
+
+      line-height: 1.5;
+    }
+
+
+    /* =================================
+       MOBILE
+    ================================= */
+
+    @media (max-width: 900px) {
+
+      .faculty-info-grid {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+      }
+
+
+      .faculty-content-grid {
+        grid-template-columns: 1fr;
+      }
+
+
+      .department-grid {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+      }
+
+    }
+
+
+    @media (max-width: 600px) {
+
+      .faculty-hero {
+        padding: 55px 0;
+      }
+
+
+      .faculty-info-grid {
+        grid-template-columns: 1fr;
+      }
+
+
+      .department-grid {
+        grid-template-columns: 1fr;
+      }
+
+
+      .programme-grid {
+        grid-template-columns: 1fr;
+      }
+
+
+      .faculty-contact {
+        grid-template-columns: 1fr;
+      }
+
+
+      .faculty-panel {
+        padding: 22px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body class="faculty-page">
+
+
+  <!-- HEADER -->
+
+  <header class="header">
+
+    <div class="navbar">
+
+      <a
+        href="index.html"
+        class="brand"
+      >
+
+        <div class="brand-icon">
+          🎓
+        </div>
+
+        <span>
+          AAUA Uni Pilot
+        </span>
+
+      </a>
+
+
+      <nav class="desktop-nav">
+
+        <a href="index.html">
+          Home
+        </a>
+
+        <a href="resources.html">
+          Resources
+        </a>
+
+        <a href="guide.html">
+          Student Guide
+        </a>
+
+        <a href="updates.html">
+          Updates
+        </a>
+
+        <a href="tools.html">
+          Tools
+        </a>
+
+      </nav>
+
+
+      <div class="nav-actions">
+
+        <button
+          class="icon-btn"
+          id="searchBtn"
+          type="button"
+        >
+          🔍
+        </button>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- MAIN -->
+
+  <main>
+
+
+    <!-- HERO -->
+
+    <section class="section faculty-hero">
+
+      <a
+        href="faculty-guide.html"
+        class="back-button"
+      >
+        ← Back to Faculty Guide
+      </a>
+
+
+      <div class="faculty-hero-content">
+
+        <span
+          class="faculty-label"
+          id="facultyLabel"
+        >
+          FACULTY
+        </span>
+
+
+        <h1>
+
+          <span id="facultyName">
+            Faculty
+          </span>
+
+        </h1>
+
+
+        <p
+          class="faculty-description"
+          id="facultyDescription"
+        >
+          Explore academic information, departments,
+          programmes and important faculty resources.
+        </p>
+
+
+        <div class="faculty-actions">
+
+          <a
+            href="#departments"
+            class="faculty-action primary"
+          >
+            Explore Departments →
+          </a>
+
+          <a
+            href="#contact"
+            class="faculty-action secondary"
+          >
+            Faculty Contact
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- QUICK INFORMATION -->
+
+    <section class="section">
+
+      <div class="faculty-info-grid">
+
+
+        <div class="faculty-info-card">
+
+          <div class="faculty-info-icon">
+            🏛️
+          </div>
+
+          <small>
+            Faculty
+          </small>
+
+          <strong id="quickFaculty">
+            —
+          </strong>
+
+        </div>
+
+
+        <div class="faculty-info-card">
+
+          <div class="faculty-info-icon">
+            👨‍🏫
+          </div>
+
+          <small>
+            Dean
+          </small>
+
+          <strong id="quickDean">
+            Information coming soon
+          </strong>
+
+        </div>
+
+
+        <div class="faculty-info-card">
+
+          <div class="faculty-info-icon">
+            🎓
+          </div>
+
+          <small>
+            Programmes
+          </small>
+
+          <strong id="quickProgrammes">
+            —
+          </strong>
+
+        </div>
+
+
+        <div class="faculty-info-card">
+
+          <div class="faculty-info-icon">
+            🏢
+          </div>
+
+          <small>
+            Departments
+          </small>
+
+          <strong id="quickDepartments">
+            —
+          </strong>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ABOUT + PROGRAMMES -->
+
+    <section class="section">
+
+      <div class="faculty-content-grid">
+
+
+        <div class="faculty-panel">
+
+          <h2>
+            About the Faculty
+          </h2>
+
+          <p id="facultyAbout">
+            Faculty information will be added after
+            it has been researched and verified by
+            the Uni Pilot team.
+          </p>
+
+        </div>
+
+
+        <div class="faculty-panel">
+
+          <h2>
+            Programmes
+          </h2>
+
+          <div
+            class="programme-grid"
+            id="programmeGrid"
+          ></div>
+
+        </div>
+
+
+      </div>
+
+    </section>
+
+
+    <!-- DEPARTMENTS -->
+
+    <section
+      class="section departments-section"
+      id="departments"
+    >
+
+      <div class="section-heading section-heading-left">
+
+        <span class="welcome-tag">
+          ACADEMIC STRUCTURE
+        </span>
+
+        <h2>
+          Departments
+        </h2>
+
+        <p>
+          Select a department to view its academic
+          information and student resources.
+        </p>
+
+      </div>
+
+
+      <div
+        class="department-grid"
+        id="departmentGrid"
+      ></div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section
+      class="section"
+      id="contact"
+    >
+
+      <div class="section-heading section-heading-left">
+
+        <span class="welcome-tag">
+          FACULTY SUPPORT
+        </span>
+
+        <h2>
+          Faculty Contact
+        </h2>
+
+        <p>
+          Official faculty contact information.
+        </p>
+
+      </div>
+
+
+      <div
+        class="faculty-contact"
+        id="facultyContact"
+      ></div>
+
+    </section>
+
+
+  </main>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div class="footer-container">
+
+
+      <div class="footer-brand">
+
+        <h2>
+          AAUA Uni Pilot
+        </h2>
+
+        <p>
+          Your campus. Your resources. Your guide.
+        </p>
+
+      </div>
+
+
+      <div class="footer-links">
+
+
+        <div>
+
+          <h4>
+            Platform
+          </h4>
+
+          <a href="resources.html">
+            Resources
+          </a>
+
+          <a href="guide.html">
+            Student Guide
+          </a>
+
+          <a href="updates.html">
+            Updates
+          </a>
+
+          <a href="tools.html">
+            Student Tools
+          </a>
+
+        </div>
+
+
+        <div>
+
+          <h4>
+            Information
+          </h4>
+
+          <a href="about.html">
+            About
+          </a>
+
+          <a href="#">
+            Privacy Policy
+          </a>
+
+          <a href="#">
+            Terms of Use
+          </a>
+
+          <a href="#">
+            Contact
+          </a>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+      <p>
+        © 2026 AAUA Uni Pilot. All rights reserved.
+      </p>
+
+    </div>
+
+  </footer>
+
+
+  <!-- JAVASCRIPT -->
+
+  <script>
+
+    /* =========================================
+       FACULTY DATABASE
+    ========================================= */
+
+    const faculties = {
+
+      "Faculty of Agriculture": {
+
+        name: "Faculty of Agriculture",
+        shortName: "AGRICULTURE",
+
+        description:
+          "Explore academic information, departments, programmes and student resources for the Faculty of Agriculture at AAUA.",
+
+        about:
+          "The Faculty of Agriculture provides academic training in agriculture and related disciplines. Faculty information, programmes, departments and student resources will be presented here using information verified by the Uni Pilot team.",
+
+        dean: "Information coming soon",
+
+        programmes: "3 academic programmes",
+
+        departments: [
+
+          {
+            name: "Agricultural Economics",
+            icon: "💰",
+            description: "B. Agric in Agricultural Economics."
+          },
+
+          {
+            name: "Agricultural Extension and Rural Development",
+            icon: "🌱",
+            description: "B. Agric in Agricultural Extension and Rural Development."
+          },
+
+          {
+            name: "Animal Science",
+            icon: "🐄",
+            description: "B. Agric in Animal Science."
+          },
+
+          {
+            name: "Agronomy",
+            icon: "🌾",
+            description: "B. Agric in Agronomy."
+          },
+
+          {
+            name: "Fisheries and Aquaculture",
+            icon: "🐟",
+            description: "B. Fisheries and Aquaculture."
+          },
+
+          {
+            name: "Forestry and Wildlife Management",
+            icon: "🌳",
+            description: "B. Forestry and Wildlife Management."
+          }
+
+        ],
+
+        programmeList: [
+
+          {
+            title: "Bachelor of Agriculture",
+            text: "Agriculture-related undergraduate programmes."
+          },
+
+          {
+            title: "Bachelor of Fisheries",
+            text: "Fisheries and Aquaculture programme."
+          },
+
+          {
+            title: "Bachelor of Forestry",
+            text: "Forestry and Wildlife Management programme."
+          }
+
+        ],
+
+        contact: [
+
+          {
+            label: "Faculty",
+            value: "Faculty of Agriculture"
+          },
+
+          {
+            label: "Dean",
+            value: "Information coming soon"
+          },
+
+          {
+            label: "Email",
+            value: "dean.agriculture@aaua.edu.ng"
+          },
+
+          {
+            label: "Office Hours",
+            value: "Monday – Friday, 9:00 AM – 4:00 PM"
+          }
+
+        ]
+
+      },
+
+
+      "Faculty of Science": {
+
+        name: "Faculty of Science",
+        shortName: "SCIENCE",
+
+        description:
+          "Explore academic information, departments, programmes and student resources for the Faculty of Science at AAUA.",
+
+        about:
+          "The Faculty of Science provides academic training across scientific disciplines. More faculty information will be added after research and verification by the Uni Pilot team.",
+
+        dean: "Information coming soon",
+
+        programmes: "Information coming soon",
+
+        departments: [
+
+          {
+            name: "Biochemistry",
+            icon: "🧬",
+            description: "Faculty department."
+          },
+
+          {
+            name: "Chemical Sciences",
+            icon: "⚗️",
+            description: "Faculty department."
+          },
+
+          {
+            name: "Computer Science",
+            icon: "💻",
+            description: "Faculty department."
+          },
+
+          {
+            name: "Animal and Environmental Biology",
+            icon: "🦋",
+            description: "Faculty department."
+          },
+
+          {
+            name: "Mathematical Sciences",
+            icon: "📐",
+            description: "Faculty department."
+          },
+
+          {
+            name: "Microbiology",
+            icon: "🔬",
+            description: "Faculty department."
+          },
+
+          {
+            name: "Physics and Electronics",
+            icon: "⚡",
+            description: "Faculty department."
+          },
+
+          {
+            name: "Plant Science and Biotechnology",
+            icon: "🌿",
+            description: "Faculty department."
+          }
+
+        ],
+
+        programmeList: [],
+
+        contact: [
+
+          {
+            label: "Faculty",
+            value: "Faculty of Science"
+          },
+
+          {
+            label: "Dean",
+            value: "Information coming soon"
+          },
+
+          {
+            label: "Email",
+            value: "dean.science@aaua.edu.ng"
+          },
+
+          {
+            label: "Office Hours",
+            value: "Monday – Friday, 9:00 AM – 4:00 PM"
+          }
+
+        ]
+
+      },
+
+
+      "Faculty of Arts": {
+
+        name: "Faculty of Arts",
+        shortName: "ARTS",
+
+        description:
+          "Explore academic information, departments, programmes and student resources for the Faculty of Arts at AAUA.",
+
+        about:
+          "The Faculty of Arts provides academic training across the humanities and related disciplines. More faculty information will be added after research and verification by the Uni Pilot team.",
+
+        dean: "Information coming soon",
+
+        programmes: "Information coming soon",
+
+        departments: [
+
+          {
+            name: "Philosophy",
+            icon: "📚",
+            description: "Faculty department."
+          },
+
+          {
+            name: "Religion and African Culture",
+            icon: "🌍",
+            description: "Faculty department."
+          },
+
+          {
+            name: "History and International Studies",
+            icon: "🏛️",
+            description: "Faculty department."
+          },
+
+          {
+            name: "Linguistics and Languages",
+            icon: "🗣️",
+            description: "Faculty department."
+          },
+
+          {
+            name: "English Studies",
+            icon: "✍️",
+            description: "Faculty department."
+          },
+
+          {
+            name: "Performing Arts",
+            icon: "🎭",
+            description: "Faculty department."
+          }
+
+        ],
+
+        programmeList: [],
+
+        contact: [
+
+          {
+            label: "Faculty",
+            value: "Faculty of Arts"
+          },
+
+          {
+            label: "Dean",
+            value: "Information coming soon"
+          },
+
+          {
+            label: "Email",
+            value: "Arts@aaua.edu.ng"
+          },
+
+          {
+            label: "Office Hours",
+            value: "Monday – Friday, 9:00 AM – 4:00 PM"
+          }
+
+        ]
+
+      },
+
+
+      /* =========================================
+         OTHER FACULTIES
+         ========================================= */
+
+      "Faculty of Allied Health Sciences": {
+
+        name: "Faculty of Allied Health Sciences",
+        shortName: "ALLIED HEALTH SCIENCES",
+
+        description:
+          "Explore academic information, departments, programmes and student resources for the Faculty of Allied Health Sciences at AAUA.",
+
+        about:
+          "Faculty information will be added here after research and verification by the Uni Pilot team.",
+
+        dean: "Information coming soon",
+
+        programmes: "Information coming soon",
+
+        departments: [],
+
+        programmeList: [],
+
+        contact: [
+
+          {
+            label: "Faculty",
+            value: "Faculty of Allied Health Sciences"
+          },
+
+          {
+            label: "Dean",
+            value: "Information coming soon"
+          },
+
+          {
+            label: "Email",
+            value: "Information coming soon"
+          },
+
+          {
+            label: "Phone",
+            value: "Information coming soon"
+          }
+
+        ]
+
+      },
+
+
+      "Faculty of Computing": {
+
+        name: "Faculty of Computing",
+        shortName: "COMPUTING",
+
+        description:
+          "Explore academic information, departments, programmes and student resources for the Faculty of Computing at AAUA.",
+
+        about:
+          "Faculty information will be added here after research and verification by the Uni Pilot team.",
+
+        dean: "Information coming soon",
+
+        programmes: "Information coming soon",
+
+        departments: [],
+
+        programmeList: [],
+
+        contact: [
+
+          {
+            label: "Faculty",
+            value: "Faculty of Computing"
+          },
+
+          {
+            label: "Dean",
+            value: "Information coming soon"
+          },
+
+          {
+            label: "Email",
+            value: "Information coming soon"
+          },
+
+          {
+            label: "Phone",
+            value: "Information coming soon"
+          }
+
+        ]
+
+      },
+
+
+      "Faculty of Education": {
+
+        name: "Faculty of Education",
+        shortName: "EDUCATION",
+
+        description:
+          "Explore academic information, departments, programmes and student resources for the Faculty of Education at AAUA.",
+
+        about:
+          "Faculty information will be added here after research and verification by the Uni Pilot team.",
+
+        dean: "Information coming soon",
+
+        programmes: "Information coming soon",
+
+        departments: [],
+
+        programmeList: [],
+
+        contact: [
+
+          {
+            label: "Faculty",
+            value: "Faculty of Education"
+          },
+
+          {
+            label: "Dean",
+            value: "Information coming soon"
+          },
+
+          {
+            label: "Email",
+            value: "Information coming soon"
+          },
+
+          {
+            label: "Phone",
+            value: "Information coming soon"
+          }
+
+        ]
+
+      },
+
+
+      "Faculty of Environmental Design and Management": {
+
+        name: "Faculty of Environmental Design and Management",
+        shortName: "ENVIRONMENTAL DESIGN AND MANAGEMENT",
+
+        description:
+          "Explore academic information, departments, programmes and student resources for the Faculty of Environmental Design and Management at AAUA.",
+
+        about:
+          "Faculty information will be added here after research and verification by the Uni Pilot team.",
+
+        dean: "Information coming soon",
+
+        programmes: "Information coming soon",
+
+        departments: [],
+
+        programmeList: [],
+
+        contact: [
+
+          {
+            label: "Faculty",
+            value: "Faculty of Environmental Design and Management"
+          },
+
+          {
+            label: "Dean",
+            value: "Information coming soon"
+          },
+
+          {
+            label: "Email",
+            value: "Information coming soon"
+          },
+
+          {
+            label: "Phone",
+            value: "Information coming soon"
+          }
+
+        ]
+
+      },
+
+
+      "Faculty of Law": {
+
+        name: "Faculty of Law",
+        shortName: "LAW",
+
+        description:
+          "Explore academic information, departments, programmes and student resources for the Faculty of Law at AAUA.",
+
+        about:
+          "Faculty information will be added here after research and verification by the Uni Pilot team.",
+
+        dean: "Information coming soon",
+
+        programmes: "Information coming soon",
+
+        departments: [],
+
+        programmeList: [],
+
+        contact: [
+
+          {
+            label: "Faculty",
+            value: "Faculty of Law"
+          },
+
+          {
+            label: "Dean",
+            value: "Information coming soon"
+          },
+
+          {
+            label: "Email",
+            value: "Information coming soon"
+          },
+
+          {
+            label: "Phone",
+            value: "Information coming soon"
+          }
+
+        ]
+
+      },
+
+
+      "Faculty of Social Sciences": {
+
+        name: "Faculty of Social Sciences",
+        shortName: "SOCIAL SCIENCES",
+
+        description:
+          "Explore academic information, departments, programmes and student resources for the Faculty of Social Sciences at AAUA.",
+
+        about:
+          "Faculty information will be added here after research and verification by the Uni Pilot team.",
+
+        dean: "Information coming soon",
+
+        programmes: "Information coming soon",
+
+        departments: [],
+
+        programmeList: [],
+
+        contact: [
+
+          {
+            label: "Faculty",
+            value: "Faculty of Social Sciences"
+          },
+
+          {
+            label: "Dean",
+            value: "Information coming soon"
+          },
+
+          {
+            label: "Email",
+            value: "Information coming soon"
+          },
+
+          {
+            label: "Phone",
+            value: "Information coming soon"
+          }
+
+        ]
+
+      },
+
+
+      "Faculty of Administration and Management Sciences": {
+
+        name: "Faculty of Administration and Management Sciences",
+        shortName: "ADMINISTRATION AND MANAGEMENT SCIENCES",
+
+        description:
+          "Explore academic information, departments, programmes and student resources for the Faculty of Administration and Management Sciences at AAUA.",
+
+        about:
+          "Faculty information will be added here after research and verification by the Uni Pilot team.",
+
+        dean: "Information coming soon",
+
+        programmes: "Information coming soon",
+
+        departments: [],
+
+        programmeList: [],
+
+        contact: [
+
+          {
+            label: "Faculty",
+            value: "Faculty of Administration and Management Sciences"
+          },
+
+          {
+            label: "Dean",
+            value: "Information coming soon"
+          },
+
+          {
+            label: "Email",
+            value: "Information coming soon"
+          },
+
+          {
+            label: "Phone",
+            value: "Information coming soon"
+          }
+
+        ]
+
+      }
+
+    };
+
+
+    /* =========================================
+       GET FACULTY FROM URL
+    ========================================= */
+
+    const params =
+      new URLSearchParams(window.location.search);
+
+    const requestedFaculty =
+      params.get("name");
+
+
+    /*
+      If the faculty exists in the database,
+      use its information.
+
+      If it has not been researched yet,
+      create a basic faculty page instead of
+      showing "Faculty Not Found".
+    */
+
+    let faculty =
+      faculties[requestedFaculty];
+
+
+    if (!faculty && requestedFaculty) {
+
+      faculty = {
+
+        name: requestedFaculty,
+
+        shortName:
+          requestedFaculty
+            .replace("Faculty of ", "")
+            .toUpperCase(),
+
+        description:
+          `Explore academic information, departments, programmes and student resources for ${requestedFaculty} at AAUA.`,
+
+        about:
+          "Faculty information will be added here after research and verification by the Uni Pilot team.",
+
+        dean:
+          "Information coming soon",
+
+        programmes:
+          "Information coming soon",
+
+        departments: [],
+
+        programmeList: [],
+
+        contact: [
+
+          {
+            label: "Faculty",
+            value: requestedFaculty
+          },
+
+          {
+            label: "Dean",
+            value: "Information coming soon"
+          },
+
+          {
+            label: "Email",
+            value: "Information coming soon"
+          },
+
+          {
+            label: "Phone",
+            value: "Information coming soon"
+          }
+
+        ]
+
+      };
+
+    }
+
+
+    /* =========================================
+       ELEMENTS
+    ========================================= */
+
+    const facultyName =
+      document.getElementById("facultyName");
+
+    const facultyLabel =
+      document.getElementById("facultyLabel");
+
+    const facultyDescription =
+      document.getElementById("facultyDescription");
+
+    const quickFaculty =
+      document.getElementById("quickFaculty");
+
+    const quickDean =
+      document.getElementById("quickDean");
+
+    const quickProgrammes =
+      document.getElementById("quickProgrammes");
+
+    const quickDepartments =
+      document.getElementById("quickDepartments");
+
+    const facultyAbout =
+      document.getElementById("facultyAbout");
+
+    const programmeGrid =
+      document.getElementById("programmeGrid");
+
+    const departmentGrid =
+      document.getElementById("departmentGrid");
+
+    const facultyContact =
+      document.getElementById("facultyContact");
+
+
+    /* =========================================
+       LOAD FACULTY
+    ========================================= */
+
+    if (faculty) {
+
+      document.title =
+        `${faculty.name} | AAUA Uni Pilot`;
+
+
+      facultyLabel.textContent =
+        faculty.shortName;
+
+
+      facultyName.textContent =
+        faculty.name;
+
+
+      facultyDescription.textContent =
+        faculty.description;
+
+
+      quickFaculty.textContent =
+        faculty.name;
+
+
+      quickDean.textContent =
+        faculty.dean;
+
+
+      quickProgrammes.textContent =
+        faculty.programmes;
+
+
+      quickDepartments.textContent =
+        faculty.departments.length > 0
+          ? `${faculty.departments.length} departments`
+          : "Information coming soon";
+
+
+      facultyAbout.textContent =
+        faculty.about;
+
+
+      /* =======================================
+         PROGRAMMES
+      ======================================= */
+
+      programmeGrid.innerHTML = "";
+
+
+      if (
+        faculty.programmeList &&
+        faculty.programmeList.length > 0
+      ) {
+
+        faculty.programmeList.forEach(
+          programme => {
+
+            programmeGrid.innerHTML += `
+
+              <div class="programme-card">
+
+                <strong>
+                  ${programme.title}
+                </strong>
+
+                <span>
+                  ${programme.text}
+                </span>
+
+              </div>
+
+            `;
+
+          }
+        );
+
+      }
+
+      else {
+
+        programmeGrid.innerHTML = `
+
+          <div class="programme-card">
+
+            <strong>
+              Information coming soon
+            </strong>
+
+            <span>
+              Programme information will be
+              added after research and verification.
+            </span>
+
+          </div>
+
+        `;
+
+      }
+
+
+      /* =======================================
+         DEPARTMENTS
+      ======================================= */
+
+      departmentGrid.innerHTML = "";
+
+
+      if (
+        faculty.departments &&
+        faculty.departments.length > 0
+      ) {
+
+        faculty.departments.forEach(
+          department => {
+
+            const departmentUrl =
+              `department.html?name=${encodeURIComponent(
+                department.name
+              )}`;
+
+
+            departmentGrid.innerHTML += `
+
+              <a
+                href="${departmentUrl}"
+                class="department-card"
+              >
+
+                <div class="department-icon">
+                  ${department.icon}
+                </div>
+
+                <h3>
+                  ${department.name}
+                </h3>
+
+                <p>
+                  ${department.description}
+                </p>
+
+                <span class="department-arrow">
+                  View Department →
+                </span>
+
+              </a>
+
+            `;
+
+          }
+        );
+
+      }
+
+      else {
+
+        departmentGrid.innerHTML = `
+
+          <div class="programme-card">
+
+            <strong>
+              Department information coming soon
+            </strong>
+
+            <span>
+              Your Uni Pilot team is currently
+              researching and verifying the departments
+              for this faculty.
+            </span>
+
+          </div>
+
+        `;
+
+      }
+
+
+      /* =======================================
+         CONTACT
+      ======================================= */
+
+      facultyContact.innerHTML = "";
+
+
+      faculty.contact.forEach(
+        item => {
+
+          facultyContact.innerHTML += `
+
+            <div class="contact-item">
+
+              <small>
+                ${item.label}
+              </small>
+
+              <strong>
+                ${item.value}
+              </strong>
+
+            </div>
+
+          `;
+
+        }
+      );
+
+    }
+
+
+    /*
+      If faculty.html is opened directly without
+      selecting a faculty, show a normal message.
+    */
+
+    else {
+
+      document.title =
+        "Faculty | AAUA Uni Pilot";
+
+
+      facultyLabel.textContent =
+        "FACULTY";
+
+
+      facultyName.textContent =
+        "Select a Faculty";
+
+
+      facultyDescription.textContent =
+        "Please return to the Faculty Guide and select a faculty.";
+
+
+      quickFaculty.textContent =
+        "Information coming soon";
+
+
+      quickDean.textContent =
+        "Information coming soon";
+
+
+      quickProgrammes.textContent =
+        "Information coming soon";
+
+
+      quickDepartments.textContent =
+        "Information coming soon";
+
+
+      facultyAbout.textContent =
+        "Select a faculty from the Faculty Guide to view its information.";
+
+
+      programmeGrid.innerHTML = `
+
+        <div class="programme-card">
+
+          <strong>
+            Information coming soon
+          </strong>
+
+          <span>
+            Select a faculty from the Faculty Guide.
+          </span>
+
+        </div>
+
+      `;
+
+
+      departmentGrid.innerHTML = `
+
+        <div class="programme-card">
+
+          <strong>
+            Information coming soon
+          </strong>
+
+          <span>
+            Select a faculty from the Faculty Guide.
+          </span>
+
+        </div>
+
+      `;
+
+
+      facultyContact.innerHTML = `
+
+        <div class="contact-item">
+
+          <small>
+            Faculty
+          </small>
+
+          <strong>
+            Information coming soon
+          </strong>
+
+        </div>
+
+      `;
+
+    }
+
+  </script>
+
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>

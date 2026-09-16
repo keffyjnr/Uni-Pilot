@@ -10,15 +10,7 @@
     content="width=device-width, initial-scale=1.0"
   >
 
-  <title>Faculty Guide | Uni Pilot</title>
-
-
-  <!-- GOOGLE FONT -->
-
-  <link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
-  >
+  <title>Faculty Guide | AAUA Uni Pilot</title>
 
   <link
     rel="preconnect"
@@ -36,9 +28,6 @@
     rel="stylesheet"
   >
 
-
-  <!-- CSS -->
-
   <link
     rel="stylesheet"
     href="style.css"
@@ -50,26 +39,531 @@
 <body>
 
 
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="header">
+
+  <nav class="navbar">
+
+
+    <!-- BRAND -->
+
+    <a
+      href="index.html"
+      class="brand"
+    >
+
+      <span class="brand-icon">
+        🎓
+      </span>
+
+      <span>
+        AAUA Uni Pilot
+      </span>
+
+    </a>
+
+
+    <!-- DESKTOP NAV -->
+
+    <div class="desktop-nav">
+
+      <a href="index.html">
+        Home
+      </a>
+
+      <a href="resources.html">
+        Resources
+      </a>
+
+      <a href="student-guide.html">
+        Student Guide
+      </a>
+
+      <a href="updates.html">
+        Updates
+      </a>
+
+      <a href="tools.html">
+        Tools
+      </a>
+
+    </div>
+
+
+    <!-- NAV ACTIONS -->
+
+    <div class="nav-actions">
+
+      <button
+        class="icon-btn"
+        type="button"
+        aria-label="Search"
+      >
+        🔍
+      </button>
+
+
+      <!-- LOGIN BUTTON -->
+
+      <a
+        href="auth.html"
+        class="auth-btn"
+        id="authBtn"
+      >
+        Login / Sign Up
+      </a>
+
+
+      <!-- ACCOUNT BUTTON -->
+
+      <button
+        class="account-btn"
+        id="accountBtn"
+        type="button"
+        style="display: none;"
+      >
+        👤
+        <span id="accountName">
+          Account
+        </span>
+        ▾
+      </button>
+
+
+      <!-- MOBILE MENU BUTTON -->
+
+      <button
+        class="menu-btn"
+        id="menuBtn"
+        aria-label="Open Menu"
+        type="button"
+      >
+        ☰
+      </button>
+
+    </div>
+
+  </nav>
+
+
+  <!-- MOBILE MENU -->
+
+  <div
+    class="mobile-menu"
+    id="navLinks"
+  >
+
+    <a href="index.html">
+      Home
+    </a>
+
+    <a href="resources.html">
+      Resources
+    </a>
+
+    <a href="student-guide.html">
+      Student Guide
+    </a>
+
+    <a href="updates.html">
+      Updates
+    </a>
+
+    <a href="tools.html">
+      Tools
+    </a>
+
+    <a
+      href="auth.html"
+      id="mobileAuthBtn"
+    >
+      Login / Sign Up
+    </a>
+
+  </div>
+
+</header>
+
+
+<!-- MENU OVERLAY -->
+
+<div
+  class="menu-overlay"
+  id="menuOverlay"
+></div>
+
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<main>
+
+
+  <!-- BACK TO STUDENT GUIDE -->
+
+  <section
+    class="section"
+    style="padding-bottom: 0;"
+  >
+
+    <a
+      href="student-guide.html"
+      style="
+        display: inline-block;
+        padding: 10px 16px;
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        color: var(--dark-green);
+        font-weight: 700;
+        font-size: 0.9rem;
+      "
+    >
+      ← Back to Student Guide
+    </a>
+
+  </section>
+
+
+
   <!-- =========================
-       HEADER
-  ========================== -->
+       FACULTY GUIDE
+  ========================= -->
 
-  <header class="header">
-
-
-    <div class="navbar">
+  <section class="section">
 
 
-      <!-- LOGO -->
+    <div class="section-heading">
+
+
+      <span class="intro-label">
+        FACULTY GUIDE
+      </span>
+
+
+      <h2>
+        Find Your Faculty
+      </h2>
+
+
+      <p>
+        Select your faculty to view faculty and departmental information.
+      </p>
+
+
+    </div>
+
+
+
+    <!-- =========================
+         FACULTY GRID
+    ========================= -->
+
+    <div class="guide-grid">
+
+
+
+      <!-- 1. AGRICULTURE -->
+
+      <a
+        href="faculty.html?name=Faculty%20of%20Agriculture"
+        class="guide-card"
+      >
+
+        <span>
+          🌾
+        </span>
+
+        <div>
+
+          <h3>
+            Faculty of Agriculture
+          </h3>
+
+          <p>
+            Departments, courses and academic information.
+          </p>
+
+        </div>
+
+      </a>
+
+
+
+      <!-- 2. ALLIED HEALTH SCIENCES -->
+
+      <a
+        href="faculty.html?name=Faculty%20of%20Allied%20Health%20Sciences"
+        class="guide-card"
+      >
+
+        <span>
+          🩺
+        </span>
+
+        <div>
+
+          <h3>
+            Faculty of Allied Health Sciences
+          </h3>
+
+          <p>
+            Departments, courses and academic information.
+          </p>
+
+        </div>
+
+      </a>
+
+
+
+      <!-- 3. ARTS -->
+
+      <a
+        href="faculty.html?name=Faculty%20of%20Arts"
+        class="guide-card"
+      >
+
+        <span>
+          📚
+        </span>
+
+        <div>
+
+          <h3>
+            Faculty of Arts
+          </h3>
+
+          <p>
+            Departments, courses and academic information.
+          </p>
+
+        </div>
+
+      </a>
+
+
+
+      <!-- 4. COMPUTING -->
+
+      <a
+        href="faculty.html?name=Faculty%20of%20Computing"
+        class="guide-card"
+      >
+
+        <span>
+          💻
+        </span>
+
+        <div>
+
+          <h3>
+            Faculty of Computing
+          </h3>
+
+          <p>
+            Departments, courses and academic information.
+          </p>
+
+        </div>
+
+      </a>
+
+
+
+      <!-- 5. EDUCATION -->
+
+      <a
+        href="faculty.html?name=Faculty%20of%20Education"
+        class="guide-card"
+      >
+
+        <span>
+          🎓
+        </span>
+
+        <div>
+
+          <h3>
+            Faculty of Education
+          </h3>
+
+          <p>
+            Departments, courses and academic information.
+          </p>
+
+        </div>
+
+      </a>
+
+
+
+      <!-- 6. ENVIRONMENTAL DESIGN AND MANAGEMENT -->
+
+      <a
+        href="faculty.html?name=Faculty%20of%20Environmental%20Design%20and%20Management"
+        class="guide-card"
+      >
+
+        <span>
+          🏛️
+        </span>
+
+        <div>
+
+          <h3>
+            Faculty of Environmental Design and Management
+          </h3>
+
+          <p>
+            Departments, courses and academic information.
+          </p>
+
+        </div>
+
+      </a>
+
+
+
+      <!-- 7. LAW -->
+
+      <a
+        href="faculty.html?name=Faculty%20of%20Law"
+        class="guide-card"
+      >
+
+        <span>
+          ⚖️
+        </span>
+
+        <div>
+
+          <h3>
+            Faculty of Law
+          </h3>
+
+          <p>
+            Departments, courses and academic information.
+          </p>
+
+        </div>
+
+      </a>
+
+
+
+      <!-- 8. SCIENCE -->
+
+      <a
+        href="faculty.html?name=Faculty%20of%20Science"
+        class="guide-card"
+      >
+
+        <span>
+          🔬
+        </span>
+
+        <div>
+
+          <h3>
+            Faculty of Science
+          </h3>
+
+          <p>
+            Departments, courses and academic information.
+          </p>
+
+        </div>
+
+      </a>
+
+
+
+      <!-- 9. SOCIAL SCIENCES -->
+
+      <a
+        href="faculty.html?name=Faculty%20of%20Social%20Sciences"
+        class="guide-card"
+      >
+
+        <span>
+          🌍
+        </span>
+
+        <div>
+
+          <h3>
+            Faculty of Social Sciences
+          </h3>
+
+          <p>
+            Departments, courses and academic information.
+          </p>
+
+        </div>
+
+      </a>
+
+
+
+      <!-- 10. ADMINISTRATION AND MANAGEMENT SCIENCES -->
+
+      <a
+        href="faculty.html?name=Faculty%20of%20Administration%20and%20Management%20Sciences"
+        class="guide-card"
+      >
+
+        <span>
+          📊
+        </span>
+
+        <div>
+
+          <h3>
+            Faculty of Administration and Management Sciences
+          </h3>
+
+          <p>
+            Departments, courses and academic information.
+          </p>
+
+        </div>
+
+      </a>
+
+
+    </div>
+
+  </section>
+
+</main>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer class="footer">
+
+  <div class="footer-content">
+
+
+    <div class="footer-brand">
 
       <a
         href="index.html"
         class="brand"
       >
 
-        <div class="brand-icon">
+        <span class="brand-icon">
           🎓
-        </div>
+        </span>
 
         <span>
           Uni Pilot
@@ -78,496 +572,121 @@
       </a>
 
 
-      <!-- DESKTOP NAVIGATION -->
-
-      <nav class="desktop-nav">
-
-        <a href="index.html">
-          Home
-        </a>
-
-        <a href="resources.html">
-          Resources
-        </a>
-
-        <a href="guide.html">
-          Student Guide
-        </a>
-
-        <a href="updates.html">
-          Updates
-        </a>
-
-        <a href="tools.html">
-          Tools
-        </a>
-
-      </nav>
-
-
-      <!-- NAVIGATION ACTIONS -->
-
-      <div class="nav-actions">
-
-
-        <button
-          class="icon-btn"
-          id="searchBtn"
-          type="button"
-        >
-          🔍
-        </button>
-
-
-      </div>
-
-
-    </div>
-
-
-  </header>
-
-
-
-  <!-- =========================
-       FACULTY GUIDE
-  ========================== -->
-
-  <main>
-
-
-    <section class="section">
-
-
-      <a
-        href="guide.html"
-        class="back-button"
-      >
-        ← Back to Student Guide
-      </a>
-
-
-      <div class="section-heading section-heading-left">
-
-
-        <span class="welcome-tag">
-          FACULTY GUIDE
-        </span>
-
-
-        <h2>
-          Find Your Faculty
-        </h2>
-
-
-        <p>
-          Select your faculty to view faculty and departmental information.
-        </p>
-
-
-      </div>
-
-
-
-      <!-- FACULTY GRID -->
-
-      <div class="guide-grid">
-
-
-        <!-- AGRICULTURE -->
-
-        <a
-          href="agriculture.html"
-          class="guide-card"
-        >
-
-          <span>
-            🌾
-          </span>
-
-
-          <div>
-
-            <h3>
-              Faculty of Agriculture
-            </h3>
-
-            <p>
-              Departments, courses and academic information.
-            </p>
-
-          </div>
-
-        </a>
-
-
-
-        <!-- ALLIED HEALTH SCIENCES -->
-
-        <a
-          href="#"
-          class="guide-card"
-        >
-
-          <span>
-            🩺
-          </span>
-
-
-          <div>
-
-            <h3>
-              Faculty of Allied Health Sciences
-            </h3>
-
-            <p>
-              Departments, courses and academic information.
-            </p>
-
-          </div>
-
-        </a>
-
-
-
-        <!-- ARTS -->
-
-        <a
-          href="arts.html"
-          class="guide-card"
-        >
-
-          <span>
-            📚
-          </span>
-
-
-          <div>
-
-            <h3>
-              Faculty of Arts
-            </h3>
-
-            <p>
-              Departments, courses and academic information.
-            </p>
-
-          </div>
-
-        </a>
-
-
-
-        <!-- COMPUTING -->
-
-        <a
-          href="#"
-          class="guide-card"
-        >
-
-          <span>
-            💻
-          </span>
-
-
-          <div>
-
-            <h3>
-              Faculty of Computing
-            </h3>
-
-            <p>
-              Departments, courses and academic information.
-            </p>
-
-          </div>
-
-        </a>
-
-
-
-        <!-- EDUCATION -->
-
-        <a
-          href="#"
-          class="guide-card"
-        >
-
-          <span>
-            🎓
-          </span>
-
-
-          <div>
-
-            <h3>
-              Faculty of Education
-            </h3>
-
-            <p>
-              Departments, courses and academic information.
-            </p>
-
-          </div>
-
-        </a>
-
-
-
-        <!-- ENVIRONMENTAL DESIGN -->
-
-        <a
-          href="#"
-          class="guide-card"
-        >
-
-          <span>
-            🏗️
-          </span>
-
-
-          <div>
-
-            <h3>
-              Faculty of Environmental Design and Management
-            </h3>
-
-            <p>
-              Departments, courses and academic information.
-            </p>
-
-          </div>
-
-        </a>
-
-
-
-        <!-- LAW -->
-
-        <a
-          href="#"
-          class="guide-card"
-        >
-
-          <span>
-            ⚖️
-          </span>
-
-
-          <div>
-
-            <h3>
-              Faculty of Law
-            </h3>
-
-            <p>
-              Departments, courses and academic information.
-            </p>
-
-          </div>
-
-        </a>
-
-
-
-        <!-- SCIENCE -->
-
-        <a
-          href="#"
-          class="guide-card"
-        >
-
-          <span>
-            🔬
-          </span>
-
-
-          <div>
-
-            <h3>
-              Faculty of Science
-            </h3>
-
-            <p>
-              Departments, courses and academic information.
-            </p>
-
-          </div>
-
-        </a>
-
-
-
-        <!-- SOCIAL SCIENCES -->
-
-        <a
-          href="#"
-          class="guide-card"
-        >
-
-          <span>
-            👥
-          </span>
-
-
-          <div>
-
-            <h3>
-              Faculty of Social Sciences
-            </h3>
-
-            <p>
-              Departments, courses and academic information.
-            </p>
-
-          </div>
-
-        </a>
-
-
-
-        <!-- ADMINISTRATION -->
-
-        <a
-          href="#"
-          class="guide-card"
-        >
-
-          <span>
-            📊
-          </span>
-
-
-          <div>
-
-            <h3>
-              Faculty of Administration and Management Sciences
-            </h3>
-
-            <p>
-              Departments, courses and academic information.
-            </p>
-
-          </div>
-
-        </a>
-
-
-      </div>
-
-
-    </section>
-
-
-  </main>
-
-
-
-  <!-- =========================
-       FOOTER
-  ========================== -->
-
-  <footer>
-
-
-    <div class="footer-container">
-
-
-      <div class="footer-brand">
-
-        <h2>
-          Uni Pilot
-        </h2>
-
-        <p>
-          Your campus. Your resources. Your guide.
-        </p>
-
-      </div>
-
-
-
-      <div class="footer-links">
-
-
-        <div>
-
-          <h4>
-            Platform
-          </h4>
-
-
-          <a href="resources.html">
-            Resources
-          </a>
-
-          <a href="guide.html">
-            Student Guide
-          </a>
-
-          <a href="updates.html">
-            Updates
-          </a>
-
-          <a href="tools.html">
-            Student Tools
-          </a>
-
-
-        </div>
-
-
-
-        <div>
-
-          <h4>
-            Information
-          </h4>
-
-
-          <a href="about.html">
-            About
-          </a>
-
-          <a href="#">
-            Privacy Policy
-          </a>
-
-          <a href="#">
-            Terms of Use
-          </a>
-
-          <a href="#">
-            Contact
-          </a>
-
-
-        </div>
-
-
-      </div>
-
-
-    </div>
-
-
-
-    <div class="footer-bottom">
-
       <p>
-        © 2026 Uni Pilot. All rights reserved.
+        Helping students navigate smoothly through campus.
       </p>
 
     </div>
 
 
-  </footer>
+
+    <div class="footer-links">
+
+      <a href="index.html">
+        Home
+      </a>
+
+      <a href="resources.html">
+        Resources
+      </a>
+
+      <a href="student-guide.html">
+        Student Guide
+      </a>
+
+      <a href="updates.html">
+        Updates
+      </a>
+
+      <a href="tools.html">
+        Tools
+      </a>
+
+    </div>
+
+
+  </div>
 
 
 
-  <!-- JAVASCRIPT -->
+  <div class="footer-bottom">
 
-  <script src="script.js"></script>
+    <p>
+      © 2026 Uni Pilot. Built for students.
+    </p>
+
+  </div>
+
+</footer>
+
+
+
+<!-- =========================
+     ACCOUNT / LOGIN SCRIPT
+========================= -->
+
+<script>
+
+  const authBtn =
+    document.getElementById("authBtn");
+
+  const accountBtn =
+    document.getElementById("accountBtn");
+
+  const accountName =
+    document.getElementById("accountName");
+
+  const mobileAuthBtn =
+    document.getElementById("mobileAuthBtn");
+
+
+  const loggedIn =
+    localStorage.getItem("uniPilotLoggedIn");
+
+  const currentUser =
+    JSON.parse(
+      localStorage.getItem("uniPilotCurrentUser")
+    );
+
+
+  if (
+    loggedIn === "true" &&
+    currentUser
+  ) {
+
+    authBtn.style.display = "none";
+
+    accountBtn.style.display = "block";
+
+    accountName.textContent =
+      currentUser.name || "Account";
+
+    mobileAuthBtn.textContent =
+      "👤 " +
+      (currentUser.name || "Account");
+
+    mobileAuthBtn.href = "#";
+
+  }
+
+
+
+  accountBtn.addEventListener(
+    "click",
+    function () {
+
+      window.location.href =
+        "index.html";
+
+    }
+  );
+
+
+</script>
+
+
+
+<script src="script.js"></script>
 
 
 </body>
