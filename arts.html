@@ -12,7 +12,6 @@
 
   <title>Faculty of Arts | AAUA Uni Pilot</title>
 
-
   <!-- GOOGLE FONT -->
 
   <link
@@ -22,7 +21,7 @@
 
   <link
     rel="preconnect"
-    href="https://fonts.gstatic.com"
+    href="https://fonts.googleapis.com"
     crossorigin
   >
 
@@ -31,7 +30,6 @@
     rel="stylesheet"
   >
 
-
   <!-- CSS -->
 
   <link
@@ -39,23 +37,614 @@
     href="style.css"
   >
 
+  <style>
+
+    /* =================================
+       FACULTY PAGE
+    ================================= */
+
+    .faculty-page {
+      background:
+        radial-gradient(
+          circle at top right,
+          rgba(11, 93, 59, 0.10),
+          transparent 35%
+        ),
+        radial-gradient(
+          circle at bottom left,
+          rgba(11, 93, 59, 0.08),
+          transparent 35%
+        );
+    }
+
+
+    /* =================================
+       HERO
+    ================================= */
+
+    .faculty-hero {
+      position: relative;
+      overflow: hidden;
+      padding: 80px 0 70px;
+    }
+
+
+    .faculty-hero::before {
+      content: "";
+
+      position: absolute;
+
+      width: 420px;
+      height: 420px;
+
+      top: -180px;
+      right: -120px;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(11, 93, 59, 0.15),
+          transparent 70%
+        );
+
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+
+    .faculty-hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 850px;
+    }
+
+
+    .faculty-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      padding: 8px 14px;
+
+      border-radius: 999px;
+
+      background: rgba(11, 93, 59, 0.08);
+
+      border: 1px solid rgba(11, 93, 59, 0.15);
+
+      color: #0b5d3b;
+
+      font-size: 12px;
+      font-weight: 800;
+
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+
+      margin-bottom: 18px;
+    }
+
+
+    .faculty-hero h1 {
+      margin: 0 0 16px;
+
+      font-size: clamp(38px, 6vw, 70px);
+      line-height: 1.05;
+
+      letter-spacing: -0.04em;
+    }
+
+
+    .faculty-hero h1 span {
+
+      background:
+        linear-gradient(
+          135deg,
+          #0b5d3b,
+          #063b26
+        );
+
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      background-clip: text;
+    }
+
+
+    .faculty-description {
+      max-width: 760px;
+
+      font-size: 17px;
+      line-height: 1.8;
+
+      color: #6d7a72;
+
+      margin-bottom: 28px;
+    }
+
+
+    /* =================================
+       ACTIONS
+    ================================= */
+
+    .faculty-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+
+    .faculty-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+
+      padding: 13px 18px;
+
+      border-radius: 12px;
+
+      text-decoration: none;
+
+      font-weight: 700;
+    }
+
+
+    .faculty-action.primary {
+      color: white;
+
+      background: #0b5d3b;
+
+      box-shadow:
+        0 10px 25px rgba(11, 93, 59, 0.20);
+    }
+
+
+    .faculty-action.secondary {
+      color: #17221c;
+
+      background: white;
+
+      border: 1px solid #dfe8e2;
+    }
+
+
+    /* =================================
+       QUICK INFO
+    ================================= */
+
+    .faculty-info-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+      gap: 16px;
+
+      margin-bottom: 70px;
+    }
+
+
+    .faculty-info-card {
+      padding: 22px;
+
+      border-radius: 18px;
+
+      background:
+        rgba(255, 255, 255, 0.85);
+
+      border: 1px solid #dfe8e2;
+
+      box-shadow:
+        0 10px 35px rgba(6, 59, 38, 0.06);
+
+      backdrop-filter: blur(12px);
+    }
+
+
+    .faculty-info-icon {
+      width: 42px;
+      height: 42px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 12px;
+
+      background: #eaf6ef;
+
+      font-size: 20px;
+
+      margin-bottom: 14px;
+    }
+
+
+    .faculty-info-card small {
+      display: block;
+
+      color: #6d7a72;
+
+      font-size: 12px;
+      font-weight: 700;
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.08em;
+
+      margin-bottom: 7px;
+    }
+
+
+    .faculty-info-card strong {
+      display: block;
+
+      color: #17221c;
+
+      font-size: 15px;
+
+      line-height: 1.5;
+    }
+
+
+    /* =================================
+       CONTENT GRID
+    ================================= */
+
+    .faculty-content-grid {
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1.6fr)
+        minmax(280px, 0.8fr);
+
+      gap: 24px;
+
+      margin-bottom: 70px;
+    }
+
+
+    .faculty-panel {
+      padding: 30px;
+
+      background: white;
+
+      border: 1px solid #dfe8e2;
+
+      border-radius: 22px;
+
+      box-shadow:
+        0 15px 45px rgba(6, 59, 38, 0.06);
+    }
+
+
+    .faculty-panel h2 {
+      margin-top: 0;
+
+      margin-bottom: 12px;
+
+      font-size: 25px;
+
+      color: #17221c;
+    }
+
+
+    .faculty-panel p {
+      color: #6d7a72;
+
+      line-height: 1.8;
+    }
+
+
+    /* =================================
+       PROGRAMMES
+    ================================= */
+
+    .programme-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+      gap: 14px;
+
+      margin-top: 22px;
+    }
+
+
+    .programme-card {
+      padding: 18px;
+
+      border-radius: 15px;
+
+      background: #f7faf8;
+
+      border: 1px solid #dfe8e2;
+    }
+
+
+    .programme-card strong {
+      display: block;
+
+      margin-bottom: 6px;
+
+      color: #17221c;
+    }
+
+
+    .programme-card span {
+      color: #6d7a72;
+
+      font-size: 14px;
+
+      line-height: 1.6;
+    }
+
+
+    /* =================================
+       DEPARTMENTS
+       ONLY DEPARTMENT CARDS HAVE
+       THE MODERN HOVER EFFECT
+    ================================= */
+
+    .departments-section {
+      margin-bottom: 70px;
+    }
+
+
+    .department-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+      gap: 18px;
+
+      margin-top: 25px;
+    }
+
+
+    .department-card {
+      position: relative;
+
+      display: block;
+
+      padding: 24px;
+
+      background: white;
+
+      border: 1px solid #dfe8e2;
+
+      border-radius: 20px;
+
+      text-decoration: none;
+
+      color: inherit;
+
+      overflow: hidden;
+
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+    }
+
+
+    .department-card::before {
+      content: "";
+
+      position: absolute;
+
+      left: 0;
+      top: 0;
+
+      width: 100%;
+      height: 3px;
+
+      background:
+        linear-gradient(
+          90deg,
+          #0b5d3b,
+          #063b26
+        );
+
+      transform: scaleX(0);
+
+      transform-origin: left;
+
+      transition: transform 0.25s ease;
+    }
+
+
+    .department-card:hover {
+      transform: translateY(-5px);
+
+      border-color: #0b5d3b;
+
+      box-shadow:
+        0 18px 40px rgba(6, 59, 38, 0.10);
+    }
+
+
+    .department-card:hover::before {
+      transform: scaleX(1);
+    }
+
+
+    .department-icon {
+      width: 48px;
+      height: 48px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 14px;
+
+      background: #eaf6ef;
+
+      font-size: 22px;
+
+      margin-bottom: 17px;
+    }
+
+
+    .department-card h3 {
+      margin: 0 0 8px;
+
+      font-size: 17px;
+
+      line-height: 1.4;
+
+      color: #17221c;
+    }
+
+
+    .department-card p {
+      margin: 0;
+
+      color: #6d7a72;
+
+      font-size: 14px;
+
+      line-height: 1.6;
+    }
+
+
+    .department-arrow {
+      display: inline-block;
+
+      margin-top: 18px;
+
+      color: #0b5d3b;
+
+      font-weight: 800;
+    }
+
+
+    /* =================================
+       FACULTY CONTACT
+    ================================= */
+
+    .faculty-contact {
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1fr);
+
+      gap: 20px;
+
+      margin-bottom: 70px;
+    }
+
+
+    .contact-item {
+      padding: 20px;
+
+      border-radius: 16px;
+
+      background: #f7faf8;
+
+      border: 1px solid #dfe8e2;
+    }
+
+
+    .contact-item small {
+      display: block;
+
+      color: #6d7a72;
+
+      font-size: 12px;
+      font-weight: 800;
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.08em;
+
+      margin-bottom: 7px;
+    }
+
+
+    .contact-item strong {
+      color: #17221c;
+
+      line-height: 1.5;
+    }
+
+
+    /* =================================
+       MOBILE
+    ================================= */
+
+    @media (max-width: 900px) {
+
+      .faculty-info-grid {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+      }
+
+
+      .faculty-content-grid {
+        grid-template-columns: 1fr;
+      }
+
+
+      .department-grid {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+      }
+
+    }
+
+
+    @media (max-width: 600px) {
+
+      .faculty-hero {
+        padding: 55px 0;
+      }
+
+
+      .faculty-info-grid {
+        grid-template-columns: 1fr;
+      }
+
+
+      .department-grid {
+        grid-template-columns: 1fr;
+      }
+
+
+      .programme-grid {
+        grid-template-columns: 1fr;
+      }
+
+
+      .faculty-contact {
+        grid-template-columns: 1fr;
+      }
+
+
+      .faculty-panel {
+        padding: 22px;
+      }
+
+    }
+
+  </style>
+
 </head>
 
 
-<body>
+<body class="faculty-page">
 
 
-  <!-- =========================
-       HEADER
-  ========================== -->
+  <!-- HEADER -->
 
   <header class="header">
 
-
     <div class="navbar">
 
-
-      <!-- LOGO -->
 
       <a
         href="index.html"
@@ -72,8 +661,6 @@
 
       </a>
 
-
-      <!-- DESKTOP NAVIGATION -->
 
       <nav class="desktop-nav">
 
@@ -100,8 +687,6 @@
       </nav>
 
 
-      <!-- NAVIGATION ACTIONS -->
-
       <div class="nav-actions">
 
         <button
@@ -114,252 +699,561 @@
 
       </div>
 
-
     </div>
-
 
   </header>
 
 
-
-  <!-- =========================
-       FACULTY OF ARTS
-  ========================== -->
+  <!-- MAIN -->
 
   <main>
 
 
-    <section class="section">
+    <!-- HERO -->
 
+    <section class="section faculty-hero">
 
       <a
-       href="faculty-guide.html"
+        href="faculty-guide.html"
         class="back-button"
       >
         ← Back to Faculty Guide
       </a>
 
 
-      <div class="section-heading section-heading-left">
+      <div class="faculty-hero-content">
 
-
-        <span class="welcome-tag">
+        <span class="faculty-label">
           FACULTY OF ARTS
         </span>
 
 
-        <h2>
-          Faculty of Arts
-        </h2>
+        <h1>
+
+          <span>
+            Faculty of Arts
+          </span>
+
+        </h1>
 
 
-        <p>
-          Select a department to view its Bachelor of Arts degree programme and academic information.
+        <p class="faculty-description">
+
+          Explore academic information, departments,
+          programmes and student resources for the
+          Faculty of Arts at Adekunle Ajasin University.
+
         </p>
+
+
+        <div class="faculty-actions">
+
+          <a
+            href="#departments"
+            class="faculty-action primary"
+          >
+            Explore Departments →
+          </a>
+
+          <a
+            href="#contact"
+            class="faculty-action secondary"
+          >
+            Faculty Contact
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- QUICK INFORMATION -->
+
+    <section class="section">
+
+      <div class="faculty-info-grid">
+
+
+        <div class="faculty-info-card">
+
+          <div class="faculty-info-icon">
+            🏛️
+          </div>
+
+          <small>
+            Faculty
+          </small>
+
+          <strong>
+            Faculty of Arts
+          </strong>
+
+        </div>
+
+
+        <div class="faculty-info-card">
+
+          <div class="faculty-info-icon">
+            👨‍🏫
+          </div>
+
+          <small>
+            Dean
+          </small>
+
+          <strong>
+            Professor O. T. Olumuyiwa
+          </strong>
+
+        </div>
+
+
+        <div class="faculty-info-card">
+
+          <div class="faculty-info-icon">
+            🎓
+          </div>
+
+          <small>
+            Programmes
+          </small>
+
+          <strong>
+            10 Degree Programmes
+          </strong>
+
+        </div>
+
+
+        <div class="faculty-info-card">
+
+          <div class="faculty-info-icon">
+            🏢
+          </div>
+
+          <small>
+            Departments
+          </small>
+
+          <strong>
+            7 Departments
+          </strong>
+
+        </div>
 
 
       </div>
 
+    </section>
 
 
-      <!-- DEPARTMENT GRID -->
+    <!-- ABOUT + PROGRAMMES -->
 
-      <div class="guide-grid">
+    <section class="section">
 
-
-        <!-- ENGLISH STUDIES -->
-
-        <a
-          href="#"
-          class="guide-card"
-        >
-
-          <span>
-            📖
-          </span>
+      <div class="faculty-content-grid">
 
 
-          <div>
+        <div class="faculty-panel">
 
-            <h3>
-              English Studies
-            </h3>
+          <h2>
+            About the Faculty
+          </h2>
 
-            <p>
-              <strong>B.A. English Studies</strong>
-            </p>
 
-            <p>
-              Departments, courses and academic information.
-            </p>
+          <p>
+
+            You are welcome to the Faculty of Arts of
+            Adekunle Ajasin University, Akungba-Akoko,
+            Ondo State, Nigeria.
+
+          </p>
+
+
+          <br>
+
+
+          <p>
+
+            The Faculty is in effect a Faculty of Humanities.
+            Its programmes are designed to develop vibrant,
+            thinking and creative minds who can become agents
+            of change and contribute meaningfully to national
+            development.
+
+          </p>
+
+
+          <br>
+
+
+          <p>
+
+            The Faculty also engages in research adapted to
+            its peculiar situation and environment, with the
+            aim of enriching global research across its
+            individual areas and disciplines.
+
+          </p>
+
+
+          <br>
+
+
+          <p>
+
+            The Faculty currently states that it houses seven
+            Departments offering ten degree programmes
+            altogether.
+
+          </p>
+
+
+        </div>
+
+
+        <div class="faculty-panel">
+
+          <h2>
+            Programmes
+          </h2>
+
+
+          <div
+            class="programme-grid"
+          >
+
+
+            <div class="programme-card">
+
+              <strong>
+                Bachelor of Arts
+              </strong>
+
+              <span>
+                Undergraduate degree programmes across
+                the humanities and arts.
+              </span>
+
+            </div>
+
+
+            <div class="programme-card">
+
+              <strong>
+                Language & Literature
+              </strong>
+
+              <span>
+                Programmes covering languages, linguistics,
+                literature and related studies.
+              </span>
+
+            </div>
+
+
+            <div class="programme-card">
+
+              <strong>
+                History & Humanities
+              </strong>
+
+              <span>
+                Programmes covering philosophy, religion,
+                history and international studies.
+              </span>
+
+            </div>
+
 
           </div>
 
-        </a>
+        </div>
 
+
+      </div>
+
+    </section>
+
+
+    <!-- DEPARTMENTS -->
+
+    <section
+      class="section departments-section"
+      id="departments"
+    >
+
+      <div class="section-heading section-heading-left">
+
+        <span class="welcome-tag">
+          ACADEMIC STRUCTURE
+        </span>
+
+        <h2>
+          Departments
+        </h2>
+
+        <p>
+          Select a department to view its academic
+          information and student resources.
+        </p>
+
+      </div>
+
+
+      <div class="department-grid">
 
 
         <!-- PHILOSOPHY -->
 
         <a
-          href="#"
-          class="guide-card"
+          href="philosophy.html"
+          class="department-card"
         >
 
-          <span>
+          <div class="department-icon">
             🧠
-          </span>
-
-
-          <div>
-
-            <h3>
-              Philosophy
-            </h3>
-
-            <p>
-              <strong>B.A. Philosophy</strong>
-            </p>
-
-            <p>
-              Departments, courses and academic information.
-            </p>
-
           </div>
 
-        </a>
+          <h3>
+            Philosophy
+          </h3>
 
+          <p>
+            B.A. Philosophy and studies in theoretical,
+            applied and contemporary African philosophy.
+          </p>
+
+          <span class="department-arrow">
+            View Department →
+          </span>
+
+        </a>
 
 
         <!-- RELIGION AND AFRICAN CULTURE -->
 
         <a
-          href="#"
-          class="guide-card"
+          href="religion-and-african-culture.html"
+          class="department-card"
         >
 
-          <span>
-            🕊️
-          </span>
-
-
-          <div>
-
-            <h3>
-              Religion and African Culture
-            </h3>
-
-            <p>
-              <strong>B.A. Religion and African Culture</strong>
-            </p>
-
-            <p>
-              Departments, courses and academic information.
-            </p>
-
+          <div class="department-icon">
+            📖
           </div>
 
-        </a>
+          <h3>
+            Religion and African Culture
+          </h3>
 
+          <p>
+            Academic study of religion, African culture,
+            values and related humanities subjects.
+          </p>
+
+          <span class="department-arrow">
+            View Department →
+          </span>
+
+        </a>
 
 
         <!-- HISTORY AND INTERNATIONAL STUDIES -->
 
         <a
-          href="#"
-          class="guide-card"
+          href="history-and-international-studies.html"
+          class="department-card"
         >
 
-          <span>
+          <div class="department-icon">
             🌍
-          </span>
-
-
-          <div>
-
-            <h3>
-              History and International Studies
-            </h3>
-
-            <p>
-              <strong>B.A. History and International Studies</strong>
-            </p>
-
-            <p>
-              Departments, courses and academic information.
-            </p>
-
           </div>
 
-        </a>
+          <h3>
+            History and International Studies
+          </h3>
 
+          <p>
+            Study of history, international relations,
+            societies and global affairs.
+          </p>
+
+          <span class="department-arrow">
+            View Department →
+          </span>
+
+        </a>
 
 
         <!-- LINGUISTICS AND LANGUAGES -->
 
         <a
-          href="#"
-          class="guide-card"
+          href="linguistics-and-languages.html"
+          class="department-card"
         >
 
-          <span>
+          <div class="department-icon">
             🗣️
-          </span>
-
-
-          <div>
-
-            <h3>
-              Linguistics and Languages
-            </h3>
-
-            <p>
-              <strong>B.A. Linguistics and Languages</strong>
-            </p>
-
-            <p>
-              Departments, courses and academic information.
-            </p>
-
           </div>
+
+          <h3>
+            Linguistics and Languages
+          </h3>
+
+          <p>
+            Linguistics and language programmes including
+            Linguistics, Yoruba and Linguistics/Yoruba.
+          </p>
+
+          <span class="department-arrow">
+            View Department →
+          </span>
 
         </a>
 
+
+        <!-- ENGLISH STUDIES -->
+
+        <a
+          href="english-studies.html"
+          class="department-card"
+        >
+
+          <div class="department-icon">
+            ✍️
+          </div>
+
+          <h3>
+            English Studies
+          </h3>
+
+          <p>
+            Academic study of English language, literature
+            and related areas of English Studies.
+          </p>
+
+          <span class="department-arrow">
+            View Department →
+          </span>
+
+        </a>
 
 
         <!-- PERFORMING ARTS -->
 
         <a
-          href="#"
-          class="guide-card"
+          href="performing-arts.html"
+          class="department-card"
         >
 
-          <span>
+          <div class="department-icon">
             🎭
-          </span>
-
-
-          <div>
-
-            <h3>
-              Performing Arts
-            </h3>
-
-            <p>
-              <strong>B.A. Performing Arts</strong>
-            </p>
-
-            <p>
-              Departments, courses and academic information.
-            </p>
-
           </div>
+
+          <h3>
+            Performing Arts
+          </h3>
+
+          <p>
+            Creative and academic study of performance,
+            theatre and related performing arts.
+          </p>
+
+          <span class="department-arrow">
+            View Department →
+          </span>
 
         </a>
 
 
       </div>
 
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section
+      class="section"
+      id="contact"
+    >
+
+      <div class="section-heading section-heading-left">
+
+        <span class="welcome-tag">
+          FACULTY SUPPORT
+        </span>
+
+        <h2>
+          Faculty Contact
+        </h2>
+
+        <p>
+          Official faculty contact information.
+        </p>
+
+      </div>
+
+
+      <div class="faculty-contact">
+
+
+        <div class="contact-item">
+
+          <small>
+            Faculty
+          </small>
+
+          <strong>
+            Faculty of Arts
+          </strong>
+
+        </div>
+
+
+        <div class="contact-item">
+
+          <small>
+            Dean
+          </small>
+
+          <strong>
+            Professor O. T. Olumuyiwa
+          </strong>
+
+        </div>
+
+
+        <div class="contact-item">
+
+          <small>
+            Email
+          </small>
+
+          <strong>
+            Arts@aaua.edu.ng
+          </strong>
+
+        </div>
+
+
+        <div class="contact-item">
+
+          <small>
+            Office Hours
+          </small>
+
+          <strong>
+            Mon – Fri<br>
+            9:00 A.M. – 4:00 P.M.
+          </strong>
+
+        </div>
+
+
+      </div>
 
     </section>
 
@@ -367,13 +1261,9 @@
   </main>
 
 
-
-  <!-- =========================
-       FOOTER
-  ========================== -->
+  <!-- FOOTER -->
 
   <footer>
-
 
     <div class="footer-container">
 
@@ -389,7 +1279,6 @@
         </p>
 
       </div>
-
 
 
       <div class="footer-links">
@@ -420,7 +1309,6 @@
         </div>
 
 
-
         <div>
 
           <h4>
@@ -448,9 +1336,7 @@
 
       </div>
 
-
     </div>
-
 
 
     <div class="footer-bottom">
@@ -461,9 +1347,7 @@
 
     </div>
 
-
   </footer>
-
 
 
   <!-- JAVASCRIPT -->
