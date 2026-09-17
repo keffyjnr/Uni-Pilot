@@ -1,0 +1,1609 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Animal & Environmental Biology | AAUA Uni Pilot</title>
+
+
+  <!-- Google Font -->
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+
+  <!-- CSS -->
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+
+
+  <!-- Page Styles -->
+
+  <style>
+
+    /* =========================
+       DEPARTMENT HERO
+    ========================== */
+
+    .department-hero {
+
+      position: relative;
+
+      overflow: hidden;
+
+      max-width: 1100px;
+
+      margin: 35px auto 0;
+
+      padding: 55px 40px;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--dark-green),
+          var(--green)
+        );
+
+      border-radius: 28px;
+
+      color: var(--white);
+
+    }
+
+
+    .department-hero::before {
+
+      content: "BIOLOGY";
+
+      position: absolute;
+
+      right: -20px;
+
+      bottom: -35px;
+
+      font-size: 8rem;
+
+      font-weight: 800;
+
+      line-height: 1;
+
+      color:
+        rgba(
+          255,
+          255,
+          255,
+          0.045
+        );
+
+      pointer-events: none;
+
+    }
+
+
+    .hero-content {
+
+      position: relative;
+
+      z-index: 2;
+
+      max-width: 720px;
+
+    }
+
+
+    .hero-eyebrow {
+
+      display: inline-block;
+
+      margin-bottom: 14px;
+
+      color: var(--yellow);
+
+      font-size: .75rem;
+
+      font-weight: 800;
+
+      letter-spacing: 1.5px;
+
+      text-transform: uppercase;
+
+    }
+
+
+    .department-hero h1 {
+
+      margin: 0 0 14px;
+
+      font-size:
+        clamp(
+          2rem,
+          5vw,
+          3.5rem
+        );
+
+      line-height: 1.05;
+
+      letter-spacing: -1.5px;
+
+    }
+
+
+    .department-hero h1 span {
+
+      color: var(--yellow);
+
+    }
+
+
+    .department-hero p {
+
+      max-width: 650px;
+
+      margin: 0;
+
+      color:
+        rgba(
+          255,
+          255,
+          255,
+          .82
+        );
+
+      font-size: .95rem;
+
+      line-height: 1.7;
+
+    }
+
+
+    /* =========================
+       HERO LINKS
+    ========================== */
+
+    .hero-links {
+
+      position: relative;
+
+      z-index: 3;
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 10px;
+
+      margin-top: 28px;
+
+    }
+
+
+    .hero-link {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      padding:
+        11px
+        18px;
+
+      background:
+        rgba(
+          255,
+          255,
+          255,
+          .1
+        );
+
+      border:
+        1px solid
+        rgba(
+          255,
+          255,
+          255,
+          .18
+        );
+
+      border-radius: 12px;
+
+      color: var(--white);
+
+      font-size: .82rem;
+
+      font-weight: 700;
+
+      text-decoration: none;
+
+      transition: .25s ease;
+
+      backdrop-filter: blur(5px);
+
+    }
+
+
+    .hero-link:hover {
+
+      background: var(--yellow);
+
+      border-color: var(--yellow);
+
+      color: var(--dark-green);
+
+      transform:
+        translateY(-2px);
+
+    }
+
+
+    /* =========================
+       DEPARTMENT CONTENT
+    ========================== */
+
+    .department-container {
+
+      max-width: 1000px;
+
+      margin: auto;
+
+      padding:
+        75px
+        22px;
+
+    }
+
+
+    .department-section {
+
+      scroll-margin-top: 90px;
+
+      margin-bottom: 75px;
+
+    }
+
+
+    /* =========================
+       SECTION HEADING
+    ========================== */
+
+    .section-heading {
+
+      margin-bottom: 25px;
+
+    }
+
+
+    .section-heading span {
+
+      display: block;
+
+      margin-bottom: 7px;
+
+      color: var(--green);
+
+      font-size: .72rem;
+
+      font-weight: 800;
+
+      letter-spacing: 1.4px;
+
+      text-transform: uppercase;
+
+    }
+
+
+    .section-heading h2 {
+
+      margin: 0;
+
+      color: var(--dark-green);
+
+      font-size: 1.8rem;
+
+      letter-spacing: -.6px;
+
+    }
+
+
+    .section-heading p {
+
+      max-width: 650px;
+
+      margin-top: 8px;
+
+      color: var(--muted);
+
+      font-size: .9rem;
+
+      line-height: 1.7;
+
+    }
+
+
+    /* =========================
+       ABOUT
+    ========================== */
+
+    .about-card {
+
+      padding: 28px;
+
+      background: var(--white);
+
+      border:
+        1px solid
+        var(--border);
+
+      border-radius: 22px;
+
+      box-shadow:
+        0 10px 30px
+        rgba(
+          11,
+          93,
+          59,
+          .05
+        );
+
+    }
+
+
+    .about-card > p {
+
+      margin-bottom: 25px;
+
+      color: var(--muted);
+
+      font-size: .9rem;
+
+      line-height: 1.8;
+
+    }
+
+
+    .department-details {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(
+          2,
+          1fr
+        );
+
+      gap: 14px;
+
+    }
+
+
+    .detail-card {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 14px;
+
+      min-height: 72px;
+
+      padding: 15px;
+
+      background:
+        var(--light-green);
+
+      border-radius: 16px;
+
+    }
+
+
+    .detail-icon {
+
+      width: 42px;
+
+      height: 42px;
+
+      min-width: 42px;
+
+      display: grid;
+
+      place-items: center;
+
+      background: var(--green);
+
+      border-radius: 12px;
+
+      color: var(--white);
+
+      font-size: 1rem;
+
+    }
+
+
+    .detail-card small {
+
+      display: block;
+
+      margin-bottom: 3px;
+
+      color: var(--muted);
+
+      font-size: .7rem;
+
+      font-weight: 700;
+
+    }
+
+
+    .detail-card strong {
+
+      color: var(--dark-green);
+
+      font-size: .85rem;
+
+    }
+
+
+    /* =========================
+       LOCATION
+    ========================== */
+
+    .location-button {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+      margin-top: 22px;
+
+      padding:
+        12px
+        17px;
+
+      background: var(--yellow);
+
+      border: none;
+
+      border-radius: 13px;
+
+      color: #000;
+
+      font-size: .8rem;
+
+      font-weight: 800;
+
+      text-decoration: none;
+
+      cursor: pointer;
+
+      transition: .25s ease;
+
+    }
+
+
+    .location-button:hover {
+
+      transform:
+        translateY(-2px);
+
+    }
+
+
+    /* =========================
+       DEPARTMENT COURSES
+    ========================== */
+
+    .course-list {
+
+      display: grid;
+
+      gap: 12px;
+
+    }
+
+
+    .level-button {
+
+      width: 100%;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      padding:
+        20px
+        22px;
+
+      background: var(--white);
+
+      border:
+        1px solid
+        var(--border);
+
+      border-radius: 18px;
+
+      color: var(--dark-green);
+
+      font-family: inherit;
+
+      font-size: .95rem;
+
+      font-weight: 800;
+
+      text-align: left;
+
+      text-decoration: none;
+
+      box-shadow:
+        0 8px 25px
+        rgba(
+          11,
+          93,
+          59,
+          .04
+        );
+
+      transition: .25s ease;
+
+    }
+
+
+    .level-button:hover {
+
+      border-color:
+        var(--green);
+
+      transform:
+        translateY(-2px);
+
+    }
+
+
+    .level-left {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 14px;
+
+    }
+
+
+    .level-number {
+
+      width: 42px;
+
+      height: 42px;
+
+      display: grid;
+
+      place-items: center;
+
+      background: var(--green);
+
+      border-radius: 12px;
+
+      color: var(--white);
+
+      font-size: .8rem;
+
+      font-weight: 800;
+
+    }
+
+
+    .level-arrow {
+
+      color: var(--green);
+
+      font-size: 1.2rem;
+
+    }
+
+
+    /* =========================
+       RESOURCES + WHATSAPP
+       SAME TEMPLATE
+    ========================== */
+
+    .info-card {
+
+      padding:
+        32px
+        25px;
+
+      background:
+        var(--light-green);
+
+      border:
+        1px solid
+        rgba(
+          11,
+          93,
+          59,
+          .08
+        );
+
+      border-radius: 22px;
+
+      text-align: center;
+
+    }
+
+
+    .info-icon {
+
+      width: 52px;
+
+      height: 52px;
+
+      display: grid;
+
+      place-items: center;
+
+      margin:
+        0
+        auto
+        14px;
+
+      background: var(--green);
+
+      border-radius: 15px;
+
+      color: var(--white);
+
+      font-size: 1.2rem;
+
+    }
+
+
+    .info-card h3 {
+
+      margin:
+        0
+        0
+        8px;
+
+      color: var(--dark-green);
+
+      font-size: 1.25rem;
+
+    }
+
+
+    .info-card p {
+
+      max-width: 520px;
+
+      margin:
+        0
+        auto
+        20px;
+
+      color: var(--muted);
+
+      font-size: .85rem;
+
+      line-height: 1.6;
+
+    }
+
+
+    .info-button {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      padding:
+        13px
+        22px;
+
+      background: var(--green);
+
+      border-radius: 13px;
+
+      color: #000;
+
+      font-size: .8rem;
+
+      font-weight: 800;
+
+      text-decoration: none;
+
+      transition: .25s ease;
+
+    }
+
+
+    .info-button:hover {
+
+      background:
+        var(--dark-green);
+
+      color: var(--white);
+
+      transform:
+        translateY(-2px);
+
+    }
+
+
+    /* =========================
+       MOBILE
+    ========================== */
+
+    @media (
+      max-width: 700px
+    ) {
+
+      .department-hero {
+
+        margin:
+          20px
+          15px
+          0;
+
+        padding:
+          40px
+          25px;
+
+        border-radius: 23px;
+
+      }
+
+
+      .department-hero::before {
+
+        font-size: 5rem;
+
+      }
+
+
+      .hero-links {
+
+        display: grid;
+
+        grid-template-columns:
+          repeat(
+            3,
+            1fr
+          );
+
+      }
+
+
+      .hero-link {
+
+        padding:
+          10px
+          8px;
+
+        font-size: .7rem;
+
+      }
+
+
+      .department-container {
+
+        padding:
+          55px
+          17px;
+
+      }
+
+
+      .department-section {
+
+        margin-bottom: 60px;
+
+      }
+
+
+      .department-details {
+
+        grid-template-columns: 1fr;
+
+      }
+
+    }
+
+
+    @media (
+      max-width: 450px
+    ) {
+
+      .hero-links {
+
+        grid-template-columns: 1fr;
+
+      }
+
+
+      .hero-link {
+
+        width: 100%;
+
+      }
+
+
+      .department-hero h1 {
+
+        font-size: 2rem;
+
+      }
+
+
+      .about-card {
+
+        padding: 20px;
+
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- =========================
+       NAVIGATION
+  ========================== -->
+
+  <header class="header">
+
+    <nav class="navbar">
+
+
+      <a
+        href="index.html"
+        class="brand"
+      >
+
+        <div class="brand-icon">
+          🎓
+        </div>
+
+        <span>
+          AAUA Uni Pilot
+        </span>
+
+      </a>
+
+
+      <!-- Desktop Navigation -->
+
+      <div class="desktop-nav">
+
+        <a href="index.html">
+          Home
+        </a>
+
+        <a href="resources.html">
+          Resources
+        </a>
+
+        <a href="guide.html">
+          Student Guide
+        </a>
+
+        <a href="updates.html">
+          Updates
+        </a>
+
+        <a href="tools.html">
+          Tools
+        </a>
+
+      </div>
+
+
+      <!-- Navigation Actions -->
+
+      <div class="nav-actions">
+
+        <button
+          class="icon-btn"
+          aria-label="Search"
+          type="button"
+        >
+          🔍
+        </button>
+
+
+        <button
+          class="menu-btn"
+          id="menuBtn"
+          aria-label="Open Menu"
+          type="button"
+        >
+          ☰
+        </button>
+
+      </div>
+
+    </nav>
+
+
+    <!-- Mobile Menu -->
+
+    <div
+      class="mobile-menu"
+      id="navLinks"
+    >
+
+      <a href="index.html">
+        Home
+      </a>
+
+      <a href="resources.html">
+        Academic Resources
+      </a>
+
+      <a href="guide.html">
+        Student Guide
+      </a>
+
+      <a href="updates.html">
+        Campus Updates
+      </a>
+
+      <a href="opportunities.html">
+        Opportunities
+      </a>
+
+      <a href="tools.html">
+        Student Tools
+      </a>
+
+      <a href="about.html">
+        About
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <!-- =========================
+       MENU OVERLAY
+  ========================== -->
+
+  <div
+    class="menu-overlay"
+    id="menuOverlay"
+  ></div>
+
+
+  <!-- =========================
+       DEPARTMENT HERO
+  ========================== -->
+
+  <section class="department-hero">
+
+    <div class="hero-content">
+
+
+      <span class="hero-eyebrow">
+        DEPARTMENT GUIDE
+      </span>
+
+
+      <h1>
+        Animal & Environmental <span>Biology.</span>
+      </h1>
+
+
+      <p>
+        Your guide to the Animal & Environmental Biology
+        department, courses, academic resources and useful
+        student information.
+      </p>
+
+
+      <div class="hero-links">
+
+        <a
+          href="#about"
+          class="hero-link"
+        >
+          About
+        </a>
+
+
+        <a
+          href="#courses"
+          class="hero-link"
+        >
+          Courses
+        </a>
+
+
+        <a
+          href="#resources"
+          class="hero-link"
+        >
+          Resources
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       MAIN CONTENT
+  ========================== -->
+
+  <main class="department-container">
+
+
+    <!-- =========================
+         ABOUT DEPARTMENT
+    ========================== -->
+
+    <section
+      class="department-section"
+      id="about"
+    >
+
+
+      <div class="section-heading">
+
+        <span>
+          ABOUT THE DEPARTMENT
+        </span>
+
+
+        <h2>
+          Animal & Environmental Biology
+        </h2>
+
+
+        <p>
+          Learn more about the department and find important
+          information you may need as a student.
+        </p>
+
+      </div>
+
+
+      <div class="about-card">
+
+
+        <p>
+          Information about the Animal & Environmental Biology
+          department will be provided here, including its academic
+          focus and other useful details for students.
+        </p>
+
+
+        <div class="department-details">
+
+
+          <!-- HOD -->
+
+          <div class="detail-card">
+
+            <div class="detail-icon">
+              👤
+            </div>
+
+
+            <div>
+
+              <small>
+                Head of Department
+              </small>
+
+
+              <strong>
+                HOD — To be added
+              </strong>
+
+            </div>
+
+          </div>
+
+
+          <!-- CONTACT -->
+
+          <div class="detail-card">
+
+            <div class="detail-icon">
+              ☎
+            </div>
+
+
+            <div>
+
+              <small>
+                Contact
+              </small>
+
+
+              <strong>
+                To be added
+              </strong>
+
+            </div>
+
+          </div>
+
+
+          <!-- DURATION -->
+
+          <div class="detail-card">
+
+            <div class="detail-icon">
+              🎓
+            </div>
+
+
+            <div>
+
+              <small>
+                Programme Duration
+              </small>
+
+
+              <strong>
+                4 Years
+              </strong>
+
+            </div>
+
+          </div>
+
+
+          <!-- PROGRAMME -->
+
+          <div class="detail-card">
+
+            <div class="detail-icon">
+              📚
+            </div>
+
+
+            <div>
+
+              <small>
+                Programme
+              </small>
+
+
+              <strong>
+                B.Sc. Animal & Environmental Biology
+              </strong>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+
+        <!-- LOCATION -->
+
+        <a
+          href="#"
+          class="location-button"
+        >
+          📍 View Department Location
+        </a>
+
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         DEPARTMENT COURSES
+    ========================== -->
+
+    <section
+      class="department-section"
+      id="courses"
+    >
+
+
+      <div class="section-heading">
+
+        <span>
+          ACADEMIC PROGRAMME
+        </span>
+
+
+        <h2>
+          Department Courses
+        </h2>
+
+
+        <p>
+          Select your level below to view the courses offered
+          in each semester.
+        </p>
+
+      </div>
+
+
+      <div class="course-list">
+
+
+        <!-- 100 LEVEL -->
+
+        <a
+          href="100.html"
+          class="level-button"
+        >
+
+          <span class="level-left">
+
+            <span class="level-number">
+              100
+            </span>
+
+
+            <span>
+              100 Level
+            </span>
+
+          </span>
+
+
+          <span class="level-arrow">
+            →
+          </span>
+
+        </a>
+
+
+        <!-- 200 LEVEL -->
+
+        <a
+          href="200.html"
+          class="level-button"
+        >
+
+          <span class="level-left">
+
+            <span class="level-number">
+              200
+            </span>
+
+
+            <span>
+              200 Level
+            </span>
+
+          </span>
+
+
+          <span class="level-arrow">
+            →
+          </span>
+
+        </a>
+
+
+        <!-- 300 LEVEL -->
+
+        <a
+          href="300.html"
+          class="level-button"
+        >
+
+          <span class="level-left">
+
+            <span class="level-number">
+              300
+            </span>
+
+
+            <span>
+              300 Level
+            </span>
+
+          </span>
+
+
+          <span class="level-arrow">
+            →
+          </span>
+
+        </a>
+
+
+        <!-- 400 LEVEL -->
+
+        <a
+          href="400.html"
+          class="level-button"
+        >
+
+          <span class="level-left">
+
+            <span class="level-number">
+              400
+            </span>
+
+
+            <span>
+              400 Level
+            </span>
+
+          </span>
+
+
+          <span class="level-arrow">
+            →
+          </span>
+
+        </a>
+
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         ACADEMIC RESOURCES
+    ========================== -->
+
+    <section
+      class="department-section"
+      id="resources"
+    >
+
+
+      <div class="section-heading">
+
+        <span>
+          STUDY MATERIALS
+        </span>
+
+
+        <h2>
+          Academic Resources
+        </h2>
+
+
+        <p>
+          Access useful materials to support your studies
+          in the department.
+        </p>
+
+      </div>
+
+
+      <!-- SAME TEMPLATE AS WHATSAPP -->
+
+      <div class="info-card">
+
+
+        <div class="info-icon">
+          📄
+        </div>
+
+
+        <h3>
+          Lecture Notes PDF
+        </h3>
+
+
+        <p>
+          Access lecture notes and other useful study materials
+          for Animal & Environmental Biology.
+        </p>
+
+
+        <!-- MediaFire link will be added later -->
+
+        <a
+          href="#"
+          class="info-button"
+        >
+          Download
+        </a>
+
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         WHATSAPP
+    ========================== -->
+
+    <section
+      class="department-section"
+    >
+
+
+      <div class="info-card">
+
+
+        <div class="info-icon">
+          💬
+        </div>
+
+
+        <h3>
+          Connect on WhatsApp
+        </h3>
+
+
+        <p>
+          Join the department WhatsApp group to connect
+          with other students and stay updated with useful
+          information.
+        </p>
+
+
+        <!-- WhatsApp link will be added later -->
+
+        <a
+          href="#"
+          class="info-button"
+        >
+          Connect on WhatsApp
+        </a>
+
+
+      </div>
+
+    </section>
+
+
+  </main>
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer>
+
+    <div class="footer-container">
+
+
+      <div class="footer-brand">
+
+        <h2>
+          AAUA Uni Pilot
+        </h2>
+
+
+        <p>
+          Your campus. Your resources. Your guide.
+        </p>
+
+      </div>
+
+
+      <div class="footer-links">
+
+
+        <div>
+
+          <h4>
+            Platform
+          </h4>
+
+
+          <a href="resources.html">
+            Resources
+          </a>
+
+
+          <a href="guide.html">
+            Student Guide
+          </a>
+
+
+          <a href="updates.html">
+            Updates
+          </a>
+
+
+          <a href="tools.html">
+            Student Tools
+          </a>
+
+        </div>
+
+
+        <div>
+
+          <h4>
+            Information
+          </h4>
+
+
+          <a href="about.html">
+            About
+          </a>
+
+
+          <a href="#">
+            Privacy Policy
+          </a>
+
+
+          <a href="#">
+            Terms of Use
+          </a>
+
+
+          <a href="#">
+            Contact
+          </a>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+      <p>
+        © 2026 AAUA Uni Pilot. All rights reserved.
+      </p>
+
+    </div>
+
+  </footer>
+
+
+  <!-- JavaScript -->
+
+  <script src="script.js"></script>
+
+
+</body>
+
+</html>

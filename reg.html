@@ -40,6 +40,132 @@
     href="style.css"
   >
 
+
+  <!-- Page Styles -->
+
+  <style>
+
+    /* =========================
+       COURSE REGISTRATION
+    ========================== */
+
+    .registration-guide {
+      max-width: 850px;
+
+      margin: auto;
+
+      padding: 75px 22px;
+    }
+
+
+    /* =========================
+       REGISTRATION STEPS
+    ========================== */
+
+    .registration-step {
+      display: flex;
+
+      gap: 20px;
+
+      padding: 25px;
+
+      margin-bottom: 18px;
+
+      background: var(--white);
+
+      border:
+        1px solid
+        var(--border);
+
+      border-radius: 20px;
+
+      box-shadow:
+        0 10px 30px
+        rgba(
+          11,
+          93,
+          59,
+          0.05
+        );
+    }
+
+
+    /* =========================
+       STEP NUMBER
+    ========================== */
+
+    .step-number {
+      width: 48px;
+      height: 48px;
+
+      min-width: 48px;
+
+      display: grid;
+
+      place-items: center;
+
+      background: var(--green);
+
+      color: var(--white);
+
+      border-radius: 14px;
+
+      font-weight: 800;
+
+      font-size: 1.1rem;
+    }
+
+
+    /* =========================
+       STEP CONTENT
+    ========================== */
+
+    .step-content {
+      flex: 1;
+    }
+
+
+    .step-content h2 {
+      color: var(--dark-green);
+
+      font-size: 1.15rem;
+
+      margin-bottom: 8px;
+    }
+
+
+    .step-content p {
+      color: var(--muted);
+
+      font-size: 0.9rem;
+    }
+
+
+    /* =========================
+       MOBILE
+    ========================== */
+
+    @media (
+      max-width: 650px
+    ) {
+
+      .registration-guide {
+        padding:
+          55px
+          17px;
+      }
+
+
+      .registration-step {
+        padding: 20px;
+
+        gap: 15px;
+      }
+
+    }
+
+  </style>
+
 </head>
 
 
@@ -210,22 +336,24 @@
 
       <!-- Registration Steps -->
 
-      <div class="guide-grid">
+      <div class="registration-guide">
 
 
         <!-- STEP 1 -->
 
-        <div class="guide-card">
+        <article class="registration-step">
 
-          <span>
+          <div class="step-number">
             1
-          </span>
+          </div>
 
-          <div>
 
-            <h3>
+          <div class="step-content">
+
+            <h2>
               Log in to the student portal
-            </h3>
+            </h2>
+
 
             <p>
               Log in to your student portal using your
@@ -234,22 +362,25 @@
 
           </div>
 
-        </div>
+        </article>
+
 
 
         <!-- STEP 2 -->
 
-        <div class="guide-card">
+        <article class="registration-step">
 
-          <span>
+          <div class="step-number">
             2
-          </span>
+          </div>
 
-          <div>
 
-            <h3>
+          <div class="step-content">
+
+            <h2>
               Navigate to the course registration section
-            </h3>
+            </h2>
+
 
             <p>
               Locate and open the course registration
@@ -258,22 +389,25 @@
 
           </div>
 
-        </div>
+        </article>
+
 
 
         <!-- STEP 3 -->
 
-        <div class="guide-card">
+        <article class="registration-step">
 
-          <span>
+          <div class="step-number">
             3
-          </span>
+          </div>
 
-          <div>
 
-            <h3>
+          <div class="step-content">
+
+            <h2>
               Select your academic session and semester
-            </h3>
+            </h2>
+
 
             <p>
               Choose the correct academic session and
@@ -282,22 +416,25 @@
 
           </div>
 
-        </div>
+        </article>
+
 
 
         <!-- STEP 4 -->
 
-        <div class="guide-card">
+        <article class="registration-step">
 
-          <span>
+          <div class="step-number">
             4
-          </span>
+          </div>
 
-          <div>
 
-            <h3>
+          <div class="step-content">
+
+            <h2>
               Select your courses
-            </h3>
+            </h2>
+
 
             <p>
               Select the courses required for your level
@@ -306,22 +443,25 @@
 
           </div>
 
-        </div>
+        </article>
+
 
 
         <!-- STEP 5 -->
 
-        <div class="guide-card">
+        <article class="registration-step">
 
-          <span>
+          <div class="step-number">
             5
-          </span>
+          </div>
 
-          <div>
 
-            <h3>
+          <div class="step-content">
+
+            <h2>
               Review your selected courses carefully
-            </h3>
+            </h2>
+
 
             <p>
               Check your selected courses carefully and
@@ -330,22 +470,25 @@
 
           </div>
 
-        </div>
+        </article>
+
 
 
         <!-- STEP 6 -->
 
-        <div class="guide-card">
+        <article class="registration-step">
 
-          <span>
+          <div class="step-number">
             6
-          </span>
+          </div>
 
-          <div>
 
-            <h3>
+          <div class="step-content">
+
+            <h2>
               Submit the registration
-            </h3>
+            </h2>
+
 
             <p>
               After confirming that your course selection
@@ -354,22 +497,25 @@
 
           </div>
 
-        </div>
+        </article>
+
 
 
         <!-- STEP 7 -->
 
-        <div class="guide-card">
+        <article class="registration-step">
 
-          <span>
+          <div class="step-number">
             7
-          </span>
+          </div>
 
-          <div>
 
-            <h3>
+          <div class="step-content">
+
+            <h2>
               Print or download your course registration slip
-            </h3>
+            </h2>
+
 
             <p>
               Print or download your course registration
@@ -378,22 +524,25 @@
 
           </div>
 
-        </div>
+        </article>
+
 
 
         <!-- STEP 8 -->
 
-        <div class="guide-card">
+        <article class="registration-step">
 
-          <span>
+          <div class="step-number">
             8
-          </span>
+          </div>
 
-          <div>
 
-            <h3>
+          <div class="step-content">
+
+            <h2>
               Submit your course registration slip to your HOD
-            </h3>
+            </h2>
+
 
             <p>
               Submit the printed course registration slip
@@ -402,7 +551,7 @@
 
           </div>
 
-        </div>
+        </article>
 
 
       </div>

@@ -59,155 +59,24 @@
 
 
     /* =================================
-       HERO
+       COMPACT FACULTY HERO
     ================================= */
 
-    .faculty-hero {
-      position: relative;
-      overflow: hidden;
-      padding: 80px 0 70px;
-    }
-
-
-    .faculty-hero::before {
-      content: "";
-
-      position: absolute;
-
-      width: 420px;
-      height: 420px;
-
-      top: -180px;
-      right: -120px;
-
-      background:
-        radial-gradient(
-          circle,
-          rgba(11, 93, 59, 0.15),
-          transparent 70%
-        );
-
-      border-radius: 50%;
-
-      pointer-events: none;
-    }
-
-
-    .faculty-hero-content {
-      position: relative;
-      z-index: 1;
-      max-width: 850px;
-    }
-
-
-    .faculty-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-
-      padding: 8px 14px;
-
-      border-radius: 999px;
-
-      background: rgba(11, 93, 59, 0.08);
-
-      border: 1px solid rgba(11, 93, 59, 0.15);
-
-      color: #0b5d3b;
-
-      font-size: 12px;
-      font-weight: 800;
-
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-
-      margin-bottom: 18px;
-    }
-
-
-    .faculty-hero h1 {
-      margin: 0 0 16px;
-
-      font-size: clamp(38px, 6vw, 70px);
-      line-height: 1.05;
-
-      letter-spacing: -0.04em;
-    }
-
-
-    .faculty-hero h1 span {
-
-      background:
-        linear-gradient(
-          135deg,
-          #0b5d3b,
-          #063b26
-        );
-
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-
-      background-clip: text;
-    }
-
-
-    .faculty-description {
-      max-width: 760px;
-
-      font-size: 17px;
-      line-height: 1.8;
-
-      color: #6d7a72;
-
-      margin-bottom: 28px;
-    }
-
-
-    /* =================================
-       ACTIONS
-    ================================= */
-
-    .faculty-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-
-    .faculty-action {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-
-      padding: 13px 18px;
-
-      border-radius: 12px;
-
-      text-decoration: none;
-
-      font-weight: 700;
-    }
-
-
-    .faculty-action.primary {
-      color: white;
-
-      background: #0b5d3b;
-
-      box-shadow:
-        0 10px 25px rgba(11, 93, 59, 0.20);
-    }
-
-
-    .faculty-action.secondary {
-      color: #17221c;
-
-      background: white;
-
-      border: 1px solid #dfe8e2;
-    }
-
+    .faculty-hero { position: relative; overflow: hidden; background: radial-gradient(circle at 85% 15%, rgba(245,197,24,.18), transparent 28%), radial-gradient(circle at 10% 90%, rgba(255,255,255,.06), transparent 25%), linear-gradient(135deg,#063b26 0%,#0b5d3b 55%,#08452d 100%); color:#fff; padding:48px 22px 42px; border-radius:28px; margin:18px 22px 0; isolation:isolate; box-shadow:0 12px 35px rgba(6,59,38,.12); }
+    .faculty-hero-bg { position:absolute; right:-25px; bottom:-28px; font-size:clamp(5rem,13vw,10rem); font-weight:800; line-height:.8; letter-spacing:-6px; color:rgba(255,255,255,.035); pointer-events:none; user-select:none; z-index:-1; }
+    .faculty-hero::before { content:""; position:absolute; width:180px; height:180px; border-radius:50%; border:1px solid rgba(245,197,24,.12); right:-65px; top:-75px; z-index:-1; }
+    .faculty-hero::after { content:""; position:absolute; width:80px; height:80px; border-radius:50%; background:rgba(245,197,24,.045); left:-30px; bottom:25px; z-index:-1; }
+    .faculty-hero-content { position:relative; max-width:750px; margin:auto; text-align:center; z-index:2; }
+    .faculty-eyebrow { display:inline-flex; align-items:center; gap:7px; padding:6px 12px; border:1px solid rgba(245,197,24,.35); border-radius:999px; background:rgba(245,197,24,.08); color:#f5c518; font-size:.62rem; font-weight:800; letter-spacing:1.2px; }
+    .faculty-eyebrow::before { content:""; width:5px; height:5px; border-radius:50%; background:#f5c518; box-shadow:0 0 9px rgba(245,197,24,.8); }
+    .faculty-hero h1 { margin-top:14px; font-size:clamp(2.5rem,6vw,4.5rem); line-height:.95; letter-spacing:-2.5px; font-weight:800; color:#fff; }
+    .faculty-hero h1 span { display:inline-block; color:#f5c518; position:relative; }
+    .faculty-hero h1 span::after { content:""; position:absolute; left:2px; right:2px; bottom:-5px; height:2px; border-radius:999px; background:#f5c518; opacity:.65; }
+    .faculty-description { max-width:540px; margin:18px auto 0; color:rgba(255,255,255,.7); font-size:.85rem; line-height:1.6; }
+    .faculty-hero-guide { display:flex; align-items:center; justify-content:center; gap:9px; margin-top:22px; }
+    .faculty-hero-guide span { width:30px; height:1px; background:rgba(255,255,255,.2); }
+    .faculty-hero-guide small { color:rgba(255,255,255,.45); font-size:.58rem; font-weight:700; letter-spacing:.7px; text-transform:uppercase; }
+    @media (max-width:600px) { .faculty-hero { padding:38px 17px 35px; margin:12px 14px 0; border-radius:24px; } .faculty-hero h1 { font-size:2.65rem; letter-spacing:-1.8px; margin-top:12px; } .faculty-hero h1 span { margin-left:0; } .faculty-description { font-size:.78rem; max-width:330px; margin-top:15px; } .faculty-hero-guide { margin-top:18px; } .faculty-hero-bg { font-size:5.5rem; right:-15px; bottom:-12px; letter-spacing:-4px; } }
 
     /* =================================
        QUICK INFO
@@ -713,55 +582,26 @@
 
     <section class="section faculty-hero">
 
-      <a
-        href="faculty-guide.html"
-        class="back-button"
-      >
-        ← Back to Faculty Guide
-      </a>
-
+      <div class="faculty-hero-bg" aria-hidden="true">ARTS</div>
 
       <div class="faculty-hero-content">
 
-        <span class="faculty-label">
-          FACULTY OF ARTS
+        <span class="faculty-eyebrow">
+          FACULTY GUIDE
         </span>
 
-
         <h1>
-
-          <span>
-            Faculty of Arts
-          </span>
-
+          Faculty of <span>Arts.</span>
         </h1>
 
-
         <p class="faculty-description">
-
-          Explore academic information, departments,
-          programmes and student resources for the
-          Faculty of Arts at Adekunle Ajasin University.
-
+          Explore the Faculty of Arts, discover its departments, programmes, and academic information.
         </p>
 
-
-        <div class="faculty-actions">
-
-          <a
-            href="#departments"
-            class="faculty-action primary"
-          >
-            Explore Departments →
-          </a>
-
-          <a
-            href="#contact"
-            class="faculty-action secondary"
-          >
-            Faculty Contact
-          </a>
-
+        <div class="faculty-hero-guide">
+          <span></span>
+          <small>Explore your faculty below</small>
+          <span></span>
         </div>
 
       </div>

@@ -21,7 +21,7 @@
 
   <link
     rel="preconnect"
-    href="https://fonts.gstatic.com"
+    href="https://fonts.googleapis.com"
     crossorigin
   >
 
@@ -40,32 +40,90 @@
   <style>
 
     /* =================================
-       FACULTY PAGE
+       AGRICULTURE PAGE
     ================================= */
 
     .faculty-page {
       background:
         radial-gradient(
           circle at top right,
-          rgba(11, 93, 59, 0.10),
+          rgba(11, 93, 59, 0.08),
           transparent 35%
         ),
         radial-gradient(
           circle at bottom left,
-          rgba(11, 93, 59, 0.08),
+          rgba(11, 93, 59, 0.06),
           transparent 35%
         );
     }
 
 
     /* =================================
-       HERO
+       COMPACT AGRICULTURE HERO
     ================================= */
 
     .faculty-hero {
       position: relative;
       overflow: hidden;
-      padding: 80px 0 70px;
+
+      background:
+        radial-gradient(
+          circle at 85% 15%,
+          rgba(245, 197, 24, 0.18),
+          transparent 28%
+        ),
+        radial-gradient(
+          circle at 10% 90%,
+          rgba(255, 255, 255, 0.06),
+          transparent 25%
+        ),
+        linear-gradient(
+          135deg,
+          #063b26 0%,
+          #0b5d3b 55%,
+          #08452d 100%
+        );
+
+      color: #ffffff;
+
+      padding: 48px 22px 42px;
+
+      border-radius: 28px;
+
+      margin: 18px 22px 0;
+
+      isolation: isolate;
+
+      box-shadow:
+        0 12px 35px rgba(6, 59, 38, 0.12);
+    }
+
+
+    .faculty-hero-bg {
+      position: absolute;
+
+      right: -25px;
+      bottom: -28px;
+
+      font-size: clamp(
+        5rem,
+        13vw,
+        10rem
+      );
+
+      font-weight: 800;
+
+      line-height: 0.8;
+
+      letter-spacing: -6px;
+
+      color: rgba(255, 255, 255, 0.035);
+
+      pointer-events: none;
+
+      user-select: none;
+
+      z-index: -1;
     }
 
 
@@ -74,92 +132,225 @@
 
       position: absolute;
 
-      width: 420px;
-      height: 420px;
-
-      top: -180px;
-      right: -120px;
-
-      background:
-        radial-gradient(
-          circle,
-          rgba(11, 93, 59, 0.15),
-          transparent 70%
-        );
+      width: 180px;
+      height: 180px;
 
       border-radius: 50%;
 
-      pointer-events: none;
+      border: 1px solid rgba(
+        245,
+        197,
+        24,
+        0.12
+      );
+
+      right: -65px;
+      top: -75px;
+
+      z-index: -1;
+    }
+
+
+    .faculty-hero::after {
+      content: "";
+
+      position: absolute;
+
+      width: 80px;
+      height: 80px;
+
+      border-radius: 50%;
+
+      background: rgba(
+        245,
+        197,
+        24,
+        0.045
+      );
+
+      left: -30px;
+      bottom: 25px;
+
+      z-index: -1;
     }
 
 
     .faculty-hero-content {
       position: relative;
-      z-index: 1;
-      max-width: 850px;
+
+      max-width: 750px;
+
+      margin: auto;
+
+      text-align: center;
+
+      z-index: 2;
     }
 
 
-    .faculty-label {
+    .faculty-eyebrow {
       display: inline-flex;
-      align-items: center;
-      gap: 8px;
 
-      padding: 8px 14px;
+      align-items: center;
+
+      gap: 7px;
+
+      padding: 6px 12px;
+
+      border: 1px solid rgba(
+        245,
+        197,
+        24,
+        0.35
+      );
 
       border-radius: 999px;
 
-      background: rgba(11, 93, 59, 0.08);
+      background: rgba(
+        245,
+        197,
+        24,
+        0.08
+      );
 
-      border: 1px solid rgba(11, 93, 59, 0.15);
+      color: #f5c518;
 
-      color: #0b5d3b;
+      font-size: 0.62rem;
 
-      font-size: 12px;
       font-weight: 800;
 
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
+      letter-spacing: 1.2px;
+    }
 
-      margin-bottom: 18px;
+
+    .faculty-eyebrow::before {
+      content: "";
+
+      width: 5px;
+      height: 5px;
+
+      border-radius: 50%;
+
+      background: #f5c518;
+
+      box-shadow:
+        0 0 9px rgba(
+          245,
+          197,
+          24,
+          0.8
+        );
     }
 
 
     .faculty-hero h1 {
-      margin: 0 0 16px;
+      margin-top: 14px;
 
-      font-size: clamp(38px, 6vw, 70px);
-      line-height: 1.05;
+      font-size: clamp(
+        2.5rem,
+        6vw,
+        4.5rem
+      );
 
-      letter-spacing: -0.04em;
+      line-height: 0.95;
+
+      letter-spacing: -2.5px;
+
+      font-weight: 800;
+
+      color: #ffffff;
     }
 
 
     .faculty-hero h1 span {
+      display: inline-block;
 
-      background:
-        linear-gradient(
-          135deg,
-          #0b5d3b,
-          #063b26
-        );
+      color: #f5c518;
 
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      position: relative;
+    }
 
-      background-clip: text;
+
+    .faculty-hero h1 span::after {
+      content: "";
+
+      position: absolute;
+
+      left: 2px;
+      right: 2px;
+
+      bottom: -5px;
+
+      height: 2px;
+
+      border-radius: 999px;
+
+      background: #f5c518;
+
+      opacity: 0.65;
     }
 
 
     .faculty-description {
-      max-width: 760px;
+      max-width: 540px;
 
-      font-size: 17px;
-      line-height: 1.8;
+      margin: 18px auto 0;
 
-      color: #6d7a72;
+      color: rgba(
+        255,
+        255,
+        255,
+        0.7
+      );
 
-      margin-bottom: 28px;
+      font-size: 0.85rem;
+
+      line-height: 1.6;
+    }
+
+
+    .faculty-hero-guide {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 9px;
+
+      margin-top: 22px;
+    }
+
+
+    .faculty-hero-guide span {
+      width: 30px;
+
+      height: 1px;
+
+      background: rgba(
+        255,
+        255,
+        255,
+        0.2
+      );
+    }
+
+
+    .faculty-hero-guide small {
+      color: rgba(
+        255,
+        255,
+        255,
+        0.45
+      );
+
+      font-size: 0.58rem;
+
+      font-weight: 700;
+
+      letter-spacing: 0.7px;
+
+      text-transform: uppercase;
     }
 
 
@@ -169,48 +360,74 @@
 
     .faculty-actions {
       display: flex;
+
       flex-wrap: wrap;
-      gap: 12px;
+
+      justify-content: center;
+
+      gap: 10px;
+
+      margin-top: 22px;
     }
 
 
     .faculty-action {
       display: inline-flex;
+
       align-items: center;
+
       justify-content: center;
+
       gap: 8px;
 
-      padding: 13px 18px;
+      padding: 11px 16px;
 
       border-radius: 12px;
 
       text-decoration: none;
 
       font-weight: 700;
+
+      font-size: 0.78rem;
     }
 
 
     .faculty-action.primary {
-      color: white;
+      color: #063b26;
 
-      background: #0b5d3b;
+      background: #f5c518;
 
       box-shadow:
-        0 10px 25px rgba(11, 93, 59, 0.20);
+        0 8px 22px rgba(
+          0,
+          0,
+          0,
+          0.12
+        );
     }
 
 
     .faculty-action.secondary {
-      color: #17221c;
+      color: #ffffff;
 
-      background: white;
+      background: rgba(
+        255,
+        255,
+        255,
+        0.08
+      );
 
-      border: 1px solid #dfe8e2;
+      border: 1px solid rgba(
+        255,
+        255,
+        255,
+        0.18
+      );
     }
 
 
     /* =================================
-       QUICK INFO
+       QUICK INFORMATION
     ================================= */
 
     .faculty-info-grid {
@@ -247,7 +464,9 @@
       height: 42px;
 
       display: flex;
+
       align-items: center;
+
       justify-content: center;
 
       border-radius: 12px;
@@ -266,6 +485,7 @@
       color: #6d7a72;
 
       font-size: 12px;
+
       font-weight: 700;
 
       text-transform: uppercase;
@@ -383,8 +603,6 @@
 
     /* =================================
        DEPARTMENTS
-       ONLY DEPARTMENT CARDS HAVE
-       THE MODERN HOVER EFFECT
     ================================= */
 
     .departments-section {
@@ -476,7 +694,9 @@
       height: 48px;
 
       display: flex;
+
       align-items: center;
+
       justify-content: center;
 
       border-radius: 14px;
@@ -556,6 +776,7 @@
       color: #6d7a72;
 
       font-size: 12px;
+
       font-weight: 800;
 
       text-transform: uppercase;
@@ -601,7 +822,70 @@
     @media (max-width: 600px) {
 
       .faculty-hero {
-        padding: 55px 0;
+
+        padding: 38px 17px 35px;
+
+        margin: 12px 14px 0;
+
+        border-radius: 24px;
+      }
+
+
+      .faculty-hero h1 {
+
+        font-size: 2.65rem;
+
+        letter-spacing: -1.8px;
+
+        margin-top: 12px;
+      }
+
+
+      .faculty-hero h1 span {
+
+        margin-left: 0;
+      }
+
+
+      .faculty-description {
+
+        font-size: 0.78rem;
+
+        max-width: 330px;
+
+        margin-top: 15px;
+      }
+
+
+      .faculty-actions {
+
+        margin-top: 18px;
+      }
+
+
+      .faculty-action {
+
+        padding: 10px 13px;
+
+        font-size: 0.72rem;
+      }
+
+
+      .faculty-hero-guide {
+
+        margin-top: 18px;
+      }
+
+
+      .faculty-hero-bg {
+
+        font-size: 5.5rem;
+
+        right: -15px;
+
+        bottom: -12px;
+
+        letter-spacing: -4px;
       }
 
 
@@ -713,25 +997,24 @@
 
     <section class="section faculty-hero">
 
-      <a
-        href="faculty-guide.html"
-        class="back-button"
-      >
-        ← Back to Faculty Guide
-      </a>
+      <div class="faculty-hero-bg">
+        AGRICULTURE
+      </div>
 
 
       <div class="faculty-hero-content">
 
-        <span class="faculty-label">
-          FACULTY OF AGRICULTURE
+        <span class="faculty-eyebrow">
+          FACULTY GUIDE
         </span>
 
 
         <h1>
 
+          Faculty of
+
           <span>
-            Faculty of Agriculture
+            Agriculture.
           </span>
 
         </h1>
@@ -739,11 +1022,24 @@
 
         <p class="faculty-description">
 
-          Explore academic information, departments,
-          programmes and student resources for the
-          Faculty of Agriculture at Adekunle Ajasin University.
+          Explore the Faculty of Agriculture,
+          discover its departments, programmes,
+          and academic information.
 
         </p>
+
+
+        <div class="faculty-hero-guide">
+
+          <span></span>
+
+          <small>
+            Explore your faculty below
+          </small>
+
+          <span></span>
+
+        </div>
 
 
         <div class="faculty-actions">
@@ -921,9 +1217,7 @@
           </h2>
 
 
-          <div
-            class="programme-grid"
-          >
+          <div class="programme-grid">
 
 
             <div class="programme-card">
