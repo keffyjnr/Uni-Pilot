@@ -1,653 +1,892 @@
-<!DOCTYPE html>  <html lang="en">  <head>    <meta charset="UTF-8">  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">    <title>Uni Pilot | Your Student Guide</title>    <!-- Google Font -->    <link rel="preconnect" href="https://fonts.googleapis.com">  
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>    <link  
-    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"  
-    rel="stylesheet"  
-  >    <!-- CSS -->    <link rel="stylesheet" href="style.css">    <style>  
-    /* =========================  
-       ACCOUNT DROPDOWN  
-    ========================== */  
-  
-    .account-wrapper {  
-      position: relative;  
-      display: inline-block;  
-    }  
-  
-    .account-dropdown {  
-      position: absolute;  
-      top: calc(100% + 10px);  
-      right: 0;  
-      min-width: 150px;  
-      padding: 6px;  
-  
-      background: rgba(255, 255, 255, 0.78);  
-      backdrop-filter: blur(14px);  
-      -webkit-backdrop-filter: blur(14px);  
-  
-      border: 1px solid rgba(255, 255, 255, 0.65);  
-      border-radius: 14px;  
-  
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);  
-  
-      opacity: 0;  
-      visibility: hidden;  
-      transform: translateY(-8px);  
-  
-      transition:  
-        opacity 0.2s ease,  
-        transform 0.2s ease,  
-        visibility 0.2s ease;  
-  
-      z-index: 1000;  
-    }  
-  
-    .account-dropdown.active {  
-      opacity: 1;  
-      visibility: visible;  
-      transform: translateY(0);  
-    }  
-  
-    .logout-btn {  
-      width: 100%;  
-      padding: 10px 12px;  
-  
-      border: none;  
-      border-radius: 10px;  
-  
-      background: transparent;  
-  
-      color: var(--text);  
-      font-family: inherit;  
-      font-size: 14px;  
-      font-weight: 600;  
-  
-      text-align: left;  
-  
-      cursor: pointer;  
-  
-      transition: background 0.2s ease;  
-    }  
-  
-    .logout-btn:hover {  
-      background: rgba(11, 93, 59, 0.08);  
-    }  
-  </style>  </head>  <body>    <!-- =========================  
-       NAVIGATION  
-  ========================== -->    <header class="header">  <nav class="navbar">  
-
-
-  <!-- Logo -->  
-
-  <a href="index.html" class="brand">  
-
-    <div class="brand-icon">  
-      🎓  
-    </div>  
-
-    <span>AAUA Uni Pilot</span>  
-
-  </a>  
-
-
-  <!-- Desktop Navigation -->  
-
-  <div class="desktop-nav">  
-
-    <a href="index.html">Home</a>  
-
-    <a href="resources.html">Resources</a>  
-
-    <a href="guide.html">Student Guide</a>  
-
-    <a href="updates.html">Updates</a>  
+<!DOCTYPE html>
+<html lang="en">
 
-    <a href="tools.html">Tools</a>  
+<head>
 
-  </div>  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>Uni Pilot | Your Student Guide</title>
 
-  <!-- Navigation Actions -->  
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <div class="nav-actions">  
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
 
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
 
-    <button  
-      class="icon-btn"  
-      aria-label="Search"  
-      type="button"  
-    >  
-      🔍  
-    </button>  
+  <style>
 
+    /* =========================
+       HOMEPAGE BACKGROUND
+    ========================== */
 
-    <!-- Login / Account -->  
+    body {
+      position: relative;
+    }
 
-    <div class="account-wrapper">  
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
 
-      <a  
-        href="auth.html"  
-        class="auth-btn"  
-        id="authBtn"  
-      >  
-        Login / Sign Up  
-      </a>  
+      background-image:
+        linear-gradient(
+          rgba(247, 250, 248, 0.52),
+          rgba(247, 250, 248, 0.52)
+        ),
+        url("images/home-bg.jpg");
 
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
 
-      <!-- Account Dropdown -->  
+      opacity: 0.5;
 
-      <div  
-        class="account-dropdown"  
-        id="accountDropdown"  
-      >  
+      pointer-events: none;
 
-        <button  
-          class="logout-btn"  
-          id="logoutBtn"  
-          type="button"  
-        >  
-          Log out ↩️  
-        </button>  
+      z-index: -2;
+    }
 
-      </div>  
+    /* Keep the actual page above the background */
 
-    </div>  
+    main,
+    footer {
+      position: relative;
+      z-index: 1;
+    }
 
+    /* =========================
+       WELCOME SECTION
+    ========================== */
 
-    <!-- Mobile Menu Button -->  
+    .welcome-section {
+      position: relative;
 
-    <button  
-      class="menu-btn"  
-      id="menuBtn"  
-      aria-label="Open Menu"  
-      type="button"  
-    >  
-      ☰  
-    </button>  
+      background: transparent !important;
+    }
 
+    /* Remove the old solid-looking background */
 
-  </div>  
+    .welcome-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
 
-</nav>  
+      background: rgba(255, 255, 255, 0.18);
 
+      pointer-events: none;
+    }
 
-<!-- Mobile Menu -->  
+    .welcome-content {
+      position: relative;
+      z-index: 2;
+    }
 
-<div  
-  class="mobile-menu"  
-  id="navLinks"  
->  
+    /* =========================
+       ACTION TILES
+    ========================== */
 
-  <a href="index.html">  
-    Home  
-  </a>  
+    .action-card {
+      background: rgba(255, 255, 255, 0.72) !important;
 
-  <a href="resources.html">  
-    Academic Resources  
-  </a>  
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
 
-  <a href="guide.html">  
-    Student Guide  
-  </a>  
+      border: 1px solid rgba(255, 255, 255, 0.75) !important;
 
-  <a href="updates.html">  
-    Campus Updates  
-  </a>  
+      box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.07);
+    }
 
-  <a href="opportunities.html">  
-    Opportunities  
-  </a>  
+    .action-card:hover {
+      background: rgba(255, 255, 255, 0.82) !important;
+    }
 
-  <a href="tools.html">  
-    Student Tools  
-  </a>  
+    /* =========================
+       ACCOUNT DROPDOWN
+    ========================== */
 
-  <a href="about.html">  
-    About  
-  </a>  
+    .account-wrapper {
+      position: relative;
+      display: inline-block;
+    }
 
-  <a  
-    href="auth.html"  
-    id="mobileAuthBtn"  
-  >  
-    Login / Sign Up  
-  </a>  
+    .account-dropdown {
+      position: absolute;
+      top: calc(100% + 10px);
+      right: 0;
 
-</div>
+      min-width: 150px;
+      padding: 6px;
 
-  </header>    <!-- Menu Background Overlay -->    <div  
-    class="menu-overlay"  
-    id="menuOverlay"  
-  ></div>    <!-- =========================  
-       MAIN CONTENT  
-  ========================== -->    <main>  <!-- =========================  
-     PERSONAL WELCOME HERO  
-========================== -->  
+      background: rgba(255, 255, 255, 0.78);
 
-<section  
-  class="welcome-section"  
-  id="home"  
->  
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
 
-  <div class="welcome-content">  
+      border: 1px solid rgba(255, 255, 255, 0.65);
+      border-radius: 14px;
 
+      box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.12);
 
-    <div class="welcome-tag">  
-      🎓 YOUR STUDENT COMPANION  
-    </div>  
+      opacity: 0;
+      visibility: hidden;
 
+      transform: translateY(-8px);
 
-    <h1 id="welcomeMessage">  
-      👋 Hello, Student!  
-    </h1>  
+      transition:
+        opacity 0.2s ease,
+        transform 0.2s ease,
+        visibility 0.2s ease;
 
+      z-index: 1000;
+    }
 
-    <p class="welcome-description">  
-      What do you want to do today?  
-    </p>  
+    .account-dropdown.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
 
+    .logout-btn {
+      width: 100%;
 
-    <!-- QUICK ACTIONS -->  
+      padding: 10px 12px;
 
-    <div class="action-grid">  
+      border: none;
+      border-radius: 10px;
 
+      background: transparent;
 
-      <a  
-        href="resources.html"  
-        class="action-card"  
-      >  
+      color: var(--text);
 
-        <span>📚</span>  
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
 
-        <div>  
+      text-align: left;
 
-          <h3>  
-            Explore Academic Resources  
-          </h3>  
+      cursor: pointer;
 
-          <p>  
-            Find notes, past questions and course materials.  
-          </p>  
+      transition: background 0.2s ease;
+    }
 
-        </div>  
+    .logout-btn:hover {
+      background: rgba(11, 93, 59, 0.08);
+    }
 
-        <strong>→</strong>  
+  </style>
 
-      </a>  
+</head>
 
 
-      <a  
-        href="guide.html"  
-        class="action-card"  
-      >  
+<body>
 
-        <span>🎓</span>  
 
-        <div>  
+  <!-- =========================
+       NAVIGATION
+  ========================== -->
 
-          <h3>  
-            Student Guide  
-          </h3>  
+  <header class="header">
 
-          <p>  
-            Get help with school procedures and student life.  
-          </p>  
+    <nav class="navbar">
 
-        </div>  
 
-        <strong>→</strong>  
+      <!-- Logo -->
 
-      </a>  
+      <a href="index.html" class="brand">
 
+        <div class="brand-icon">
+          🎓
+        </div>
 
-      <!-- CHECK RESULTS -->  
+        <span>Uni Pilot</span>
 
-      <a  
-        href="results.html"  
-        class="action-card"  
-      >  
+      </a>
 
-        <span>📊</span>  
 
-        <div>  
+      <!-- Desktop Navigation -->
 
-          <h3>  
-            Check Results  
-          </h3>  
+      <div class="desktop-nav">
 
-          <p>  
-            Learn how to access and understand your results.  
-          </p>  
+        <a href="index.html">
+          Home
+        </a>
 
-        </div>  
+        <a href="resources.html">
+          Resources
+        </a>
 
-        <strong>→</strong>  
+        <a href="guide.html">
+          Student Guide
+        </a>
 
-      </a>  
+        <a href="updates.html">
+          Updates
+        </a>
 
+        <a href="tools.html">
+          Tools
+        </a>
 
-      <a  
-        href="updates.html"  
-        class="action-card"  
-      >  
+      </div>
 
-        <span>📢</span>  
 
-        <div>  
+      <!-- Navigation Actions -->
 
-          <h3>  
-            Campus Updates  
-          </h3>  
+      <div class="nav-actions">
 
-          <p>  
-            Stay updated with announcements and deadlines.  
-          </p>  
 
-        </div>  
+        <button
+          class="icon-btn"
+          aria-label="Search"
+          type="button"
+        >
+          🔍
+        </button>
 
-        <strong>→</strong>  
 
-      </a>  
+        <!-- Login / Account -->
 
+        <div class="account-wrapper">
 
-      <a  
-        href="opportunities.html"  
-        class="action-card"  
-      >  
+          <a
+            href="auth.html"
+            class="auth-btn"
+            id="authBtn"
+          >
+            Login / Sign Up
+          </a>
 
-        <span>💼</span>  
 
-        <div>  
+          <!-- Account Dropdown -->
 
-          <h3>  
-            Opportunities  
-          </h3>  
+          <div
+            class="account-dropdown"
+            id="accountDropdown"
+          >
 
-          <p>  
-            Find scholarships, internships and more.  
-          </p>  
+            <button
+              class="logout-btn"
+              id="logoutBtn"
+              type="button"
+            >
+              Log out ↩️
+            </button>
 
-        </div>  
+          </div>
 
-        <strong>→</strong>  
+        </div>
 
-      </a>  
 
+        <!-- Mobile Menu Button -->
 
-      <a  
-        href="tools.html"  
-        class="action-card"  
-      >  
+        <button
+          class="menu-btn"
+          id="menuBtn"
+          aria-label="Open Menu"
+          type="button"
+        >
+          ☰
+        </button>
 
-        <span>🧮</span>  
 
-        <div>  
+      </div>
 
-          <h3>  
-            Student Tools  
-          </h3>  
+    </nav>
 
-          <p>  
-            GPA calculators, course units and useful tools.  
-          </p>  
 
-        </div>  
+    <!-- =========================
+         MOBILE MENU
+    ========================== -->
 
-        <strong>→</strong>  
+    <div
+      class="mobile-menu"
+      id="navLinks"
+    >
 
-      </a>  
+      <a href="index.html">
+        Home
+      </a>
 
+      <a href="resources.html">
+        Academic Resources
+      </a>
 
-    </div>  
+      <a href="guide.html">
+        Student Guide
+      </a>
 
-  </div>  
+      <a href="updates.html">
+        Campus Updates
+      </a>
 
-</section>  
+      <a href="opportunities.html">
+        Opportunities
+      </a>
 
+      <a href="tools.html">
+        Student Tools
+      </a>
 
-<!-- =========================  
-     PLATFORM INTRODUCTION  
-========================== -->  
+      <a href="about.html">
+        About
+      </a>
 
-<section class="platform-intro">  
+      <a
+        href="auth.html"
+        id="mobileAuthBtn"
+      >
+        Login / Sign Up
+      </a>
 
-  <div class="platform-intro-content">  
+    </div>
 
+  </header>
 
-    <span class="intro-label">  
-      ALL YOUR STUDENT NEEDS  
-    </span>  
 
+  <!-- Menu Background Overlay -->
 
-    <h2>  
+  <div
+    class="menu-overlay"
+    id="menuOverlay"
+  ></div>
 
-      Everything Students Need  
 
-      <span>  
-        in One Place.  
-      </span>  
+  <!-- =========================
+       MAIN CONTENT
+  ========================== -->
 
-    </h2>  
+  <main>
 
 
-    <p>  
+    <!-- =========================
+         PERSONAL WELCOME HERO
+    ========================== -->
 
-      Access academic resources, school guides, campus updates,  
-      opportunities, and useful student tools — all designed to  
-      make student life easier.  
+    <section
+      class="welcome-section"
+      id="home"
+    >
 
-    </p>  
+      <div class="welcome-content">
 
 
-    <div class="hero-buttons">  
+        <div class="welcome-tag">
+          🎓 YOUR STUDENT COMPANION
+        </div>
 
 
-      <a  
-        href="resources.html"  
-        class="btn btn-primary"  
-      >  
-        Explore Resources →  
-      </a>  
+        <h1 id="welcomeMessage">
+          👋 Hello, Student!
+        </h1>
 
 
-      <a  
-        href="guide.html"  
-        class="btn btn-secondary"  
-      >  
-        Student Guide  
-      </a>  
+        <p class="welcome-description">
+          What do you want to do today?
+        </p>
 
 
-    </div>  
+        <!-- =========================
+             QUICK ACTIONS
+        ========================== -->
 
-  </div>  
+        <div class="action-grid">
 
-</section>
 
-  </main>    <!-- =========================  
-       FOOTER  
-  ========================== -->    <footer>  <div class="footer-container">  
+          <!-- 1. FACULTY GUIDE -->
 
+          <a
+            href="faculty-guide.html"
+            class="action-card"
+          >
 
-  <div class="footer-brand">  
+            <span>
+              🏛️
+            </span>
 
-    <h2>  
-      AAUA Uni Pilot  
-    </h2>  
+            <div>
 
-    <p>  
-      Your campus. Your resources. Your guide.  
-    </p>  
+              <h3>
+                Faculty Guide
+              </h3>
 
-  </div>  
+              <p>
+                Explore faculties, departments and academic information.
+              </p>
 
+            </div>
 
-  <div class="footer-links">  
+            <strong>
+              →
+            </strong>
 
+          </a>
 
-    <div>  
 
-      <h4>  
-        Platform  
-      </h4>  
+          <!-- 2. ACADEMIC RESOURCES -->
 
-      <a href="resources.html">  
-        Resources  
-      </a>  
+          <a
+            href="resources.html"
+            class="action-card"
+          >
 
-      <a href="guide.html">  
-        Student Guide  
-      </a>  
+            <span>
+              📚
+            </span>
 
-      <a href="updates.html">  
-        Updates  
-      </a>  
+            <div>
 
-      <a href="tools.html">  
-        Student Tools  
-      </a>  
+              <h3>
+                Academic Resources
+              </h3>
 
-    </div>  
+              <p>
+                Find notes, past questions and course materials.
+              </p>
 
+            </div>
 
-    <div>  
+            <strong>
+              →
+            </strong>
 
-      <h4>  
-        Information  
-      </h4>  
+          </a>
 
-      <a href="about.html">  
-        About  
-      </a>  
 
-      <a href="#">  
-        Privacy Policy  
-      </a>  
+          <!-- 3. STUDENT GUIDE -->
 
-      <a href="#">  
-        Terms of Use  
-      </a>  
+          <a
+            href="guide.html"
+            class="action-card"
+          >
 
-      <a href="#">  
-        Contact  
-      </a>  
+            <span>
+              🎓
+            </span>
 
-    </div>  
+            <div>
 
+              <h3>
+                Student Guide
+              </h3>
 
-  </div>  
+              <p>
+                Get help with school procedures and student life.
+              </p>
 
-</div>  
+            </div>
 
+            <strong>
+              →
+            </strong>
 
-<div class="footer-bottom">  
+          </a>
 
-  <p>  
-    © 2026 AAUA Uni Pilot. All rights reserved.  
-  </p>  
 
-</div>
+          <!-- 4. CAMPUS UPDATES -->
 
-  </footer>    <!-- JavaScript -->    <script src="script.js"></script>    <!-- =========================  
-       LOGIN STATE + ACCOUNT DROPDOWN  
-  ========================== -->    <script>  
-  
-    document.addEventListener("DOMContentLoaded", function () {  
-  
-      const authBtn = document.getElementById("authBtn");  
-      const mobileAuthBtn = document.getElementById("mobileAuthBtn");  
-      const welcomeMessage = document.getElementById("welcomeMessage");  
-  
-      const accountDropdown =  
-        document.getElementById("accountDropdown");  
-  
-      const logoutBtn =  
-        document.getElementById("logoutBtn");  
-  
-  
-      const isLoggedIn =  
-        localStorage.getItem("uniPilotLoggedIn") === "true";  
-  
-  
-      const savedUser =  
-        localStorage.getItem("uniPilotCurrentUser");  
-  
-  
-      if (isLoggedIn && savedUser) {  
-  
-        try {  
-  
-          const user = JSON.parse(savedUser);  
-  
-          if (user.name) {  
-  
-  
-            /* Logged-in state */  
-  
-            authBtn.textContent = "👤 Logged In";  
-  
-            mobileAuthBtn.textContent = "👤 Logged In";  
-  
-            welcomeMessage.textContent =  
-              "👋 Welcome, " + user.name + "!";  
-  
-  
-            /* Stop the desktop button from  
-               opening the login page */  
-  
-            authBtn.href = "#";  
-  
-  
-            /* Open / close account dropdown */  
-  
-            authBtn.addEventListener("click", function (event) {  
-  
-              event.preventDefault();  
-  
-              accountDropdown.classList.toggle("active");  
-  
-            });  
-  
-  
-            /* Close dropdown when clicking  
-               anywhere outside it */  
-  
-            document.addEventListener("click", function (event) {  
-  
-              if (  
-                !event.target.closest(".account-wrapper")  
-              ) {  
-  
-                accountDropdown.classList.remove("active");  
-  
-              }  
-  
-            });  
-  
-  
-            /* LOG OUT */  
-  
-            logoutBtn.addEventListener("click", function () {  
-  
-              localStorage.removeItem("uniPilotLoggedIn");  
-  
-              localStorage.removeItem("uniPilotCurrentUser");  
-  
-              window.location.href = "auth.html";  
-  
-            });  
-  
-          }  
-  
-        } catch (error) {  
-  
-          console.log(  
-            "Could not load user information."  
-          );  
-  
-        }  
-  
-      }  
-  
-    });  
-  
-  </script>  </body>  </html>
+          <a
+            href="updates.html"
+            class="action-card"
+          >
+
+            <span>
+              📢
+            </span>
+
+            <div>
+
+              <h3>
+                Campus Updates
+              </h3>
+
+              <p>
+                Stay updated with announcements and deadlines.
+              </p>
+
+            </div>
+
+            <strong>
+              →
+            </strong>
+
+          </a>
+
+
+          <!-- 5. OPPORTUNITIES -->
+
+          <a
+            href="opportunities.html"
+            class="action-card"
+          >
+
+            <span>
+              💼
+            </span>
+
+            <div>
+
+              <h3>
+                Opportunities
+              </h3>
+
+              <p>
+                Find scholarships, internships and more.
+              </p>
+
+            </div>
+
+            <strong>
+              →
+            </strong>
+
+          </a>
+
+
+          <!-- 6. STUDENT TOOLS -->
+
+          <a
+            href="tools.html"
+            class="action-card"
+          >
+
+            <span>
+              🧮
+            </span>
+
+            <div>
+
+              <h3>
+                Student Tools
+              </h3>
+
+              <p>
+                GPA calculators, course units and useful tools.
+              </p>
+
+            </div>
+
+            <strong>
+              →
+            </strong>
+
+          </a>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         PLATFORM INTRODUCTION
+    ========================== -->
+
+    <section class="platform-intro">
+
+      <div class="platform-intro-content">
+
+
+        <span class="intro-label">
+          ALL YOUR STUDENT NEEDS
+        </span>
+
+
+        <h2>
+
+          Everything Students Need
+
+          <span>
+            in One Place.
+          </span>
+
+        </h2>
+
+
+        <p>
+
+          Access academic resources, school guides, campus updates,
+          opportunities, and useful student tools — all designed to
+          make student life easier.
+
+        </p>
+
+
+        <div class="hero-buttons">
+
+
+          <a
+            href="resources.html"
+            class="btn btn-primary"
+          >
+            Explore Resources →
+          </a>
+
+
+          <a
+            href="guide.html"
+            class="btn btn-secondary"
+          >
+            Student Guide
+          </a>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+  </main>
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer>
+
+
+    <div class="footer-container">
+
+
+      <div class="footer-brand">
+
+        <h2>
+          Uni Pilot
+        </h2>
+
+        <p>
+          Your campus. Your resources. Your guide.
+        </p>
+
+      </div>
+
+
+      <div class="footer-links">
+
+
+        <div>
+
+          <h4>
+            Platform
+          </h4>
+
+          <a href="resources.html">
+            Resources
+          </a>
+
+          <a href="guide.html">
+            Student Guide
+          </a>
+
+          <a href="updates.html">
+            Updates
+          </a>
+
+          <a href="tools.html">
+            Student Tools
+          </a>
+
+        </div>
+
+
+        <div>
+
+          <h4>
+            Information
+          </h4>
+
+          <a href="about.html">
+            About
+          </a>
+
+          <a href="#">
+            Privacy Policy
+          </a>
+
+          <a href="#">
+            Terms of Use
+          </a>
+
+          <a href="#">
+            Contact
+          </a>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+      <p>
+        © 2026 Uni Pilot. All rights reserved.
+      </p>
+
+    </div>
+
+
+  </footer>
+
+
+  <!-- JavaScript -->
+
+  <script src="script.js"></script>
+
+
+  <!-- =========================
+       LOGIN STATE + ACCOUNT DROPDOWN
+  ========================== -->
+
+  <script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+      const authBtn =
+        document.getElementById("authBtn");
+
+      const mobileAuthBtn =
+        document.getElementById("mobileAuthBtn");
+
+      const welcomeMessage =
+        document.getElementById("welcomeMessage");
+
+      const accountDropdown =
+        document.getElementById("accountDropdown");
+
+      const logoutBtn =
+        document.getElementById("logoutBtn");
+
+
+      const isLoggedIn =
+        localStorage.getItem("uniPilotLoggedIn") === "true";
+
+
+      const savedUser =
+        localStorage.getItem("uniPilotCurrentUser");
+
+
+      if (isLoggedIn && savedUser) {
+
+        try {
+
+          const user =
+            JSON.parse(savedUser);
+
+
+          if (user.name) {
+
+
+            /* Logged-in state */
+
+            authBtn.textContent =
+              "👤 Logged In";
+
+            mobileAuthBtn.textContent =
+              "👤 Logged In";
+
+
+            welcomeMessage.textContent =
+              "👋 Welcome, " + user.name + "!";
+
+
+            /* Stop desktop button
+               from opening auth page */
+
+            authBtn.href = "#";
+
+
+            /* Account dropdown */
+
+            authBtn.addEventListener(
+              "click",
+              function (event) {
+
+                event.preventDefault();
+
+                accountDropdown.classList.toggle(
+                  "active"
+                );
+
+              }
+            );
+
+
+            /* Close dropdown
+               when clicking outside */
+
+            document.addEventListener(
+              "click",
+              function (event) {
+
+                if (
+                  !event.target.closest(
+                    ".account-wrapper"
+                  )
+                ) {
+
+                  accountDropdown.classList.remove(
+                    "active"
+                  );
+
+                }
+
+              }
+            );
+
+
+            /* LOG OUT */
+
+            logoutBtn.addEventListener(
+              "click",
+              function () {
+
+                localStorage.removeItem(
+                  "uniPilotLoggedIn"
+                );
+
+                localStorage.removeItem(
+                  "uniPilotCurrentUser"
+                );
+
+                window.location.href =
+                  "auth.html";
+
+              }
+            );
+
+          }
+
+        } catch (error) {
+
+          console.log(
+            "Could not load user information."
+          );
+
+        }
+
+      }
+
+    });
+
+  </script>
+
+
+</body>
+
+</html>

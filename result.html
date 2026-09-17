@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Check Results | AAUA Uni Pilot</title>
+
+
+  <!-- Google Font -->
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+
+  <!-- Main CSS -->
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+
+
+  <!-- Page Styles -->
+
+  <style>
+
+    /* =========================
+       RESULTS PAGE
+    ========================== */
+
+    .results-hero {
+      padding: 75px 22px 60px;
+
+      background:
+        radial-gradient(
+          circle at top right,
+          rgba(245, 197, 24, 0.18),
+          transparent 30%
+        ),
+        linear-gradient(
+          135deg,
+          #f6fbf8,
+          #ffffff
+        );
+
+      text-align: center;
+    }
+
+    .results-hero-content {
+      max-width: 800px;
+
+      margin: auto;
+    }
+
+    .results-icon {
+      width: 70px;
+      height: 70px;
+
+      display: grid;
+      place-items: center;
+
+      margin: 0 auto 20px;
+
+      background: var(--light-green);
+
+      border-radius: 20px;
+
+      font-size: 2rem;
+    }
+
+    .results-hero h1 {
+      color: var(--dark-green);
+
+      font-size:
+        clamp(
+          2.3rem,
+          6vw,
+          4rem
+        );
+
+      letter-spacing: -1.5px;
+
+      line-height: 1.1;
+    }
+
+    .results-hero p {
+      max-width: 600px;
+
+      margin: 15px auto 0;
+
+      color: var(--muted);
+
+      font-size: 1rem;
+    }
+
+
+    /* =========================
+       RESULTS GUIDE
+    ========================== */
+
+    .results-guide {
+      max-width: 850px;
+
+      margin: auto;
+
+      padding: 75px 22px;
+    }
+
+
+    .results-step {
+      display: flex;
+
+      gap: 20px;
+
+      padding: 25px;
+
+      margin-bottom: 18px;
+
+      background: var(--white);
+
+      border:
+        1px solid
+        var(--border);
+
+      border-radius: 20px;
+
+      box-shadow:
+        0 10px 30px
+        rgba(
+          11,
+          93,
+          59,
+          0.05
+        );
+    }
+
+
+    .step-number {
+      width: 48px;
+      height: 48px;
+
+      min-width: 48px;
+
+      display: grid;
+      place-items: center;
+
+      background: var(--green);
+
+      color: var(--white);
+
+      border-radius: 14px;
+
+      font-weight: 800;
+
+      font-size: 1.1rem;
+    }
+
+
+    .step-content {
+      flex: 1;
+    }
+
+
+    .step-content h2 {
+      color: var(--dark-green);
+
+      font-size: 1.15rem;
+
+      margin-bottom: 8px;
+    }
+
+
+    .step-content p {
+      color: var(--muted);
+
+      font-size: 0.9rem;
+    }
+
+
+    /* =========================
+       PORTAL BUTTON
+    ========================== */
+
+    .portal-button {
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: center;
+
+      gap: 8px;
+
+      margin-top: 17px;
+
+      padding: 13px 18px;
+
+      background: var(--green);
+
+      color: var(--white);
+
+      border-radius: 12px;
+
+      font-weight: 800;
+
+      transition: 0.2s;
+    }
+
+
+    .portal-button:hover {
+      background: var(--dark-green);
+
+      transform:
+        translateY(-2px);
+    }
+
+
+    /* =========================
+       LOGIN INFO
+    ========================== */
+
+    .login-details {
+      margin-top: 15px;
+
+      padding: 15px;
+
+      background: var(--light-green);
+
+      border-radius: 14px;
+    }
+
+
+    .login-details strong {
+      color: var(--dark-green);
+    }
+
+
+    /* =========================
+       IMPORTANT INFORMATION
+    ========================== */
+
+    .results-info {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, 1fr);
+
+      gap: 18px;
+
+      margin-top: 35px;
+    }
+
+
+    .info-card {
+      padding: 22px;
+
+      background:
+        var(--light-yellow);
+
+      border:
+        1px solid
+        #f0d46b;
+
+      border-radius: 18px;
+    }
+
+
+    .info-card-icon {
+      font-size: 1.6rem;
+
+      margin-bottom: 10px;
+    }
+
+
+    .info-card h3 {
+      color: var(--dark-green);
+
+      font-size: 1rem;
+
+      margin-bottom: 7px;
+    }
+
+
+    .info-card p {
+      color: #6f6750;
+
+      font-size: 0.85rem;
+    }
+
+
+    /* =========================
+       LOGIN HELP
+    ========================== */
+
+    .login-help {
+      margin-top: 18px;
+
+      padding: 24px;
+
+      background: var(--green);
+
+      color: var(--white);
+
+      border-radius: 20px;
+    }
+
+
+    .login-help h3 {
+      font-size: 1.1rem;
+    }
+
+
+    .login-help p {
+      margin-top: 7px;
+
+      color:
+        rgba(
+          255,
+          255,
+          255,
+          0.75
+        );
+
+      font-size: 0.88rem;
+    }
+
+
+    /* =========================
+       MOBILE
+    ========================== */
+
+    @media (
+      max-width: 650px
+    ) {
+
+      .results-hero {
+        padding:
+          55px
+          17px
+          45px;
+      }
+
+
+      .results-guide {
+        padding:
+          55px
+          17px;
+      }
+
+
+      .results-step {
+        padding: 20px;
+
+        gap: 15px;
+      }
+
+
+      .results-info {
+        grid-template-columns:
+          1fr;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+
+  <!-- =========================
+       NAVIGATION
+  ========================== -->
+
+  <header class="header">
+
+    <nav class="navbar">
+
+
+      <!-- Logo -->
+
+      <a
+        href="index.html"
+        class="brand"
+      >
+
+        <div class="brand-icon">
+          🎓
+        </div>
+
+        <span>
+          AAUA Uni Pilot
+        </span>
+
+      </a>
+
+
+
+      <!-- Desktop Navigation -->
+
+      <div class="desktop-nav">
+
+        <a href="index.html">
+          Home
+        </a>
+
+        <a href="resources.html">
+          Resources
+        </a>
+
+        <a href="guide.html">
+          Student Guide
+        </a>
+
+        <a href="updates.html">
+          Updates
+        </a>
+
+        <a href="tools.html">
+          Tools
+        </a>
+
+      </div>
+
+
+
+      <!-- Navigation Actions -->
+
+      <div class="nav-actions">
+
+
+        <button
+          class="icon-btn"
+          aria-label="Search"
+          type="button"
+        >
+          🔍
+        </button>
+
+
+
+        <div class="account-wrapper">
+
+          <a
+            href="auth.html"
+            class="auth-btn"
+            id="authBtn"
+          >
+            Login / Sign Up
+          </a>
+
+        </div>
+
+
+
+        <button
+          class="menu-btn"
+          id="menuBtn"
+          aria-label="Open Menu"
+          type="button"
+        >
+          ☰
+        </button>
+
+
+      </div>
+
+    </nav>
+
+
+
+    <!-- Mobile Menu -->
+
+    <div
+      class="mobile-menu"
+      id="navLinks"
+    >
+
+      <a href="index.html">
+        Home
+      </a>
+
+      <a href="resources.html">
+        Academic Resources
+      </a>
+
+      <a href="guide.html">
+        Student Guide
+      </a>
+
+      <a href="results.html">
+        Check Results
+      </a>
+
+      <a href="updates.html">
+        Campus Updates
+      </a>
+
+      <a href="opportunities.html">
+        Opportunities
+      </a>
+
+      <a href="tools.html">
+        Student Tools
+      </a>
+
+      <a href="about.html">
+        About
+      </a>
+
+      <a
+        href="auth.html"
+        id="mobileAuthBtn"
+      >
+        Login / Sign Up
+      </a>
+
+    </div>
+
+  </header>
+
+
+
+  <!-- Menu Overlay -->
+
+  <div
+    class="menu-overlay"
+    id="menuOverlay"
+  ></div>
+
+
+
+  <!-- =========================
+       MAIN CONTENT
+  ========================== -->
+
+  <main>
+
+
+
+    <!-- =========================
+         RESULTS HERO
+    ========================== -->
+
+    <section class="results-hero">
+
+      <div class="results-hero-content">
+
+
+        <div class="results-icon">
+          📊
+        </div>
+
+
+        <h1>
+          Check Your Results
+        </h1>
+
+
+        <p>
+          A simple guide to accessing and
+          understanding your academic results.
+        </p>
+
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         STEP-BY-STEP GUIDE
+    ========================== -->
+
+    <section class="results-guide">
+
+
+
+      <!-- STEP 1 -->
+
+      <article class="results-step">
+
+        <div class="step-number">
+          1
+        </div>
+
+
+        <div class="step-content">
+
+          <h2>
+            Go to the AAUA AVERS Portal
+          </h2>
+
+
+          <p>
+            Visit the official AAUA AVERS portal
+            to access your academic information
+            and results.
+          </p>
+
+
+          <a
+            href="https://avers.aaua.edu.ng/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="portal-button"
+          >
+            Open AAUA AVERS Portal →
+          </a>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- STEP 2 -->
+
+      <article class="results-step">
+
+        <div class="step-number">
+          2
+        </div>
+
+
+        <div class="step-content">
+
+          <h2>
+            Log In to Your Account
+          </h2>
+
+
+          <p>
+            Enter your matriculation number
+            and password to log in.
+          </p>
+
+
+          <div class="login-details">
+
+            <p>
+              <strong>
+                Login Details:
+              </strong>
+              Use your matric number and your
+              surname as your password.
+            </p>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- STEP 3 -->
+
+      <article class="results-step">
+
+        <div class="step-number">
+          3
+        </div>
+
+
+        <div class="step-content">
+
+          <h2>
+            View Your Results
+          </h2>
+
+
+          <p>
+            After logging in, navigate to your
+            results section to view your academic
+            performance.
+          </p>
+
+
+          <div class="login-details">
+
+            <p>
+              Your GPA is displayed clearly
+              at the top of your results.
+            </p>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- IMPORTANT INFORMATION -->
+
+      <div class="results-info">
+
+
+        <!-- RESULTS RELEASE -->
+
+        <article class="info-card">
+
+          <div class="info-card-icon">
+            ⏳
+          </div>
+
+
+          <h3>
+            When Are Results Released?
+          </h3>
+
+
+          <p>
+            Results are usually released around
+            one to two months after examinations.
+          </p>
+
+        </article>
+
+
+
+        <!-- MISSING RESULTS -->
+
+        <article class="info-card">
+
+          <div class="info-card-icon">
+            📋
+          </div>
+
+
+          <h3>
+            Missing a Result?
+          </h3>
+
+
+          <p>
+            If a course result is missing,
+            contact your Class Representative
+            or Level Adviser for assistance.
+          </p>
+
+        </article>
+
+
+      </div>
+
+
+
+      <!-- LOGIN HELP -->
+
+      <div class="login-help">
+
+        <h3>
+          Having Trouble Logging In?
+        </h3>
+
+
+        <p>
+          If you are unable to log in to the
+          AAUA AVERS Portal, visit ICTAC
+          for assistance.
+        </p>
+
+      </div>
+
+
+    </section>
+
+
+
+  </main>
+
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer>
+
+
+    <div class="footer-container">
+
+
+      <div class="footer-brand">
+
+        <h2>
+          AAUA Uni Pilot
+        </h2>
+
+        <p>
+          Your campus. Your resources. Your guide.
+        </p>
+
+      </div>
+
+
+
+      <div class="footer-links">
+
+
+        <div>
+
+          <h4>
+            Platform
+          </h4>
+
+          <a href="resources.html">
+            Resources
+          </a>
+
+          <a href="guide.html">
+            Student Guide
+          </a>
+
+          <a href="results.html">
+            Check Results
+          </a>
+
+          <a href="updates.html">
+            Updates
+          </a>
+
+          <a href="tools.html">
+            Student Tools
+          </a>
+
+        </div>
+
+
+
+        <div>
+
+          <h4>
+            Information
+          </h4>
+
+          <a href="about.html">
+            About
+          </a>
+
+          <a href="#">
+            Privacy Policy
+          </a>
+
+          <a href="#">
+            Terms of Use
+          </a>
+
+          <a href="#">
+            Contact
+          </a>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+
+
+    <div class="footer-bottom">
+
+      <p>
+        © 2026 AAUA Uni Pilot.
+        All rights reserved.
+      </p>
+
+    </div>
+
+
+  </footer>
+
+
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================== -->
+
+  <script src="script.js"></script>
+
+
+  <!-- =========================
+       LOGIN STATE
+  ========================== -->
+
+  <script>
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      function () {
+
+        const authBtn =
+          document.getElementById(
+            "authBtn"
+          );
+
+        const mobileAuthBtn =
+          document.getElementById(
+            "mobileAuthBtn"
+          );
+
+
+        const isLoggedIn =
+          localStorage.getItem(
+            "uniPilotLoggedIn"
+          ) === "true";
+
+
+        if (isLoggedIn) {
+
+          authBtn.textContent =
+            "👤 Logged In";
+
+          mobileAuthBtn.textContent =
+            "👤 Logged In";
+
+
+          authBtn.href = "#";
+
+        }
+
+      }
+    );
+
+  </script>
+
+
+</body>
+
+</html>
