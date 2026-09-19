@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Search | AAUA Uni Pilot</title>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* =========================
+       SEARCH PAGE
+    ========================== */
+
+    .search-page {
+      min-height: calc(100vh - 80px);
+      padding: 70px 20px 100px;
+      background: var(--background);
+    }
+
+    .search-container {
+      width: min(100%, 900px);
+      margin: 0 auto;
+    }
+
+    .search-heading {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .search-label {
+      display: inline-block;
+      margin-bottom: 12px;
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+    }
+
+    .search-heading h1 {
+      margin: 0;
+      color: var(--text);
+      font-size: clamp(32px, 5vw, 52px);
+      line-height: 1.1;
+    }
+
+    .search-heading h1 span {
+      color: var(--green);
+    }
+
+    .search-heading p {
+      max-width: 650px;
+      margin: 15px auto 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* SEARCH BOX */
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: 0 12px 35px rgba(6, 59, 38, 0.08);
+    }
+
+    .search-box input {
+      flex: 1;
+      min-width: 0;
+      padding: 15px 16px;
+      border: none;
+      outline: none;
+      background: transparent;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 16px;
+    }
+
+    .search-box input::placeholder {
+      color: var(--muted);
+    }
+
+    .search-submit {
+      border: none;
+      padding: 14px 20px;
+      border-radius: 13px;
+      background: var(--green);
+      color: var(--white);
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+    }
+
+    .search-submit:hover {
+      background: var(--dark-green);
+      transform: translateY(-1px);
+    }
+
+    /* RESULTS */
+
+    .search-results {
+      margin-top: 35px;
+    }
+
+    .results-info {
+      margin-bottom: 15px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .result-card {
+      display: block;
+      padding: 22px;
+      margin-bottom: 14px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      text-decoration: none;
+      box-shadow: 0 6px 20px rgba(6, 59, 38, 0.05);
+      transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .result-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(6, 59, 38, 0.10);
+    }
+
+    .result-type {
+      display: inline-block;
+      margin-bottom: 8px;
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .result-card h2 {
+      margin: 0 0 8px;
+      color: var(--text);
+      font-size: 20px;
+    }
+
+    .result-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    .result-arrow {
+      display: block;
+      margin-top: 14px;
+      color: var(--green);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    /* EMPTY STATE */
+
+    .empty-state {
+      padding: 45px 20px;
+      text-align: center;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+    }
+
+    .empty-state .empty-icon {
+      display: block;
+      margin-bottom: 12px;
+      font-size: 40px;
+    }
+
+    .empty-state h2 {
+      margin: 0 0 8px;
+      color: var(--text);
+    }
+
+    .empty-state p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 600px) {
+      .search-page {
+        padding-top: 45px;
+      }
+
+      .search-box {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .search-submit {
+        width: 100%;
+      }
+
+      .result-card {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       NAVIGATION
+  ========================== -->
+
+  <header class="header">
+
+    <nav class="navbar">
+
+      <!-- Logo -->
+      <a href="index.html" class="brand">
+
+        <div class="brand-icon">
+          🎓
+        </div>
+
+        <span>AAUA Uni Pilot</span>
+
+      </a>
+
+      <!-- Desktop Navigation -->
+      <div class="desktop-nav">
+
+        <a href="index.html">Home</a>
+
+        <a href="resources.html">
+          Resources
+        </a>
+
+        <a href="guide.html">
+          Student Guide
+        </a>
+
+        <a href="updates.html">
+          Updates
+        </a>
+
+        <a href="tools.html">
+          Tools
+        </a>
+
+      </div>
+
+      <!-- Navigation Actions -->
+      <div class="nav-actions">
+
+        <a
+          href="search.html"
+          class="icon-btn"
+          aria-label="Search"
+        >
+          🔍
+        </a>
+
+        <a
+          href="auth.html"
+          class="auth-btn"
+        >
+          Login / Sign Up
+        </a>
+
+        <button
+          class="menu-btn"
+          id="menuBtn"
+          aria-label="Open Menu"
+          type="button"
+        >
+          ☰
+        </button>
+
+      </div>
+
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div
+      class="mobile-menu"
+      id="navLinks"
+    >
+
+      <a href="index.html">
+        Home
+      </a>
+
+      <a href="resources.html">
+        Academic Resources
+      </a>
+
+      <a href="guide.html">
+        Student Guide
+      </a>
+
+      <a href="updates.html">
+        Campus Updates
+      </a>
+
+      <a href="opportunities.html">
+        Opportunities
+      </a>
+
+      <a href="tools.html">
+        Student Tools
+      </a>
+
+      <a href="about.html">
+        About
+      </a>
+
+      <a href="auth.html">
+        Login / Sign Up
+      </a>
+
+    </div>
+
+  </header>
+
+  <!-- =========================
+       SEARCH
+  ========================== -->
+
+  <main class="search-page">
+
+    <div class="search-container">
+
+      <div class="search-heading">
+
+        <span class="search-label">
+          AAUA UNI PILOT SEARCH
+        </span>
+
+        <h1>
+          Find what you
+          <span>need.</span>
+        </h1>
+
+        <p>
+          Search across AAUA Uni Pilot for faculties,
+          departments, programmes, guides, resources,
+          tools and other student information.
+        </p>
+
+      </div>
+
+      <!-- Search Box -->
+
+      <form
+        class="search-box"
+        id="searchForm"
+      >
+
+        <input
+          type="search"
+          id="searchInput"
+          placeholder="Search Faculty of Agriculture, Agronomy, Nursing..."
+          autocomplete="off"
+          autofocus
+        >
+
+        <button
+          type="submit"
+          class="search-submit"
+        >
+          🔍 Search
+        </button>
+
+      </form>
+
+      <!-- Results -->
+
+      <section
+        class="search-results"
+        id="searchResults"
+      >
+
+        <div class="empty-state">
+
+          <span class="empty-icon">
+            🔎
+          </span>
+
+          <h2>
+            Start searching
+          </h2>
+
+          <p>
+            Try searching for a faculty, department,
+            programme or student resource.
+          </p>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer>
+
+    <div class="footer-container">
+
+      <div class="footer-brand">
+
+        <h2>
+          AAUA Uni Pilot
+        </h2>
+
+        <p>
+          Your campus. Your resources. Your guide.
+        </p>
+
+      </div>
+
+      <div class="footer-links">
+
+        <div>
+
+          <h4>
+            Platform
+          </h4>
+
+          <a href="resources.html">
+            Resources
+          </a>
+
+          <a href="guide.html">
+            Student Guide
+          </a>
+
+          <a href="updates.html">
+            Updates
+          </a>
+
+          <a href="tools.html">
+            Student Tools
+          </a>
+
+        </div>
+
+        <div>
+
+          <h4>
+            Information
+          </h4>
+
+          <a href="about.html">
+            About
+          </a>
+
+          <a href="#">
+            Privacy Policy
+          </a>
+
+          <a href="#">
+            Terms of Use
+          </a>
+
+          <a href="#">
+            Contact
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+      <p>
+        © 2026 AAUA Uni Pilot. All rights reserved.
+      </p>
+
+    </div>
+
+  </footer>
+
+  <!-- =========================
+       SEARCH DATA
+  ========================== -->
+
+  <script src="search-data.js"></script>
+
+  <!-- =========================
+       SEARCH ENGINE
+  ========================== -->
+
+  <script>
+
+    const searchForm =
+      document.getElementById("searchForm");
+
+    const searchInput =
+      document.getElementById("searchInput");
+
+    const searchResults =
+      document.getElementById("searchResults");
+
+
+    function normalise(text) {
+
+      return text
+        .toLowerCase()
+        .replace(/[^a-z0-9\s]/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+
+    }
+
+
+    function searchSite(query) {
+
+      const cleanQuery = normalise(query);
+
+      if (!cleanQuery) {
+
+        searchResults.innerHTML = `
+          <div class="empty-state">
+
+            <span class="empty-icon">
+              🔎
+            </span>
+
+            <h2>
+              Start searching
+            </h2>
+
+            <p>
+              Type something to search Uni Pilot.
+            </p>
+
+          </div>
+        `;
+
+        return;
+
+      }
+
+
+      const words =
+        cleanQuery.split(" ");
+
+
+      const matches =
+        searchData
+          .map(page => {
+
+            const title =
+              normalise(page.title);
+
+            const description =
+              normalise(page.description);
+
+            const keywords =
+              normalise(
+                (page.keywords || []).join(" ")
+              );
+
+            const content =
+              normalise(page.content || "");
+
+
+            let score = 0;
+
+
+            words.forEach(word => {
+
+              if (title.includes(word)) {
+                score += 10;
+              }
+
+              if (keywords.includes(word)) {
+                score += 8;
+              }
+
+              if (description.includes(word)) {
+                score += 5;
+              }
+
+              if (content.includes(word)) {
+                score += 2;
+              }
+
+            });
+
+
+            return {
+              ...page,
+              score
+            };
+
+          })
+
+          .filter(page => page.score > 0)
+
+          .sort(
+            (a, b) => b.score - a.score
+          );
+
+
+      if (matches.length === 0) {
+
+        searchResults.innerHTML = `
+          <div class="empty-state">
+
+            <span class="empty-icon">
+              😕
+            </span>
+
+            <h2>
+              Nothing found
+            </h2>
+
+            <p>
+              We couldn't find anything matching
+              "<strong>${query}</strong>".
+            </p>
+
+          </div>
+        `;
+
+        return;
+
+      }
+
+
+      searchResults.innerHTML = `
+
+        <div class="results-info">
+
+          Found
+          <strong>${matches.length}</strong>
+          result${matches.length === 1 ? "" : "s"}
+
+          for
+          <strong>${query}</strong>
+
+        </div>
+
+        ${matches.map(page => `
+
+          <a
+            href="${page.url}"
+            class="result-card"
+          >
+
+            <span class="result-type">
+              ${page.type}
+            </span>
+
+            <h2>
+              ${page.title}
+            </h2>
+
+            <p>
+              ${page.description}
+            </p>
+
+            <span class="result-arrow">
+              Open ${page.title} →
+            </span>
+
+          </a>
+
+        `).join("")}
+
+      `;
+
+    }
+
+
+    searchForm.addEventListener(
+      "submit",
+      function(event) {
+
+        event.preventDefault();
+
+        searchSite(searchInput.value);
+
+      }
+    );
+
+
+    searchInput.addEventListener(
+      "input",
+      function() {
+
+        if (searchInput.value.trim() === "") {
+
+          searchSite("");
+
+        }
+
+      }
+    );
+
+
+  </script>
+
+  <!-- =========================
+       MOBILE MENU
+  ========================== -->
+
+  <script>
+
+    const menuBtn =
+      document.getElementById("menuBtn");
+
+    const navLinks =
+      document.getElementById("navLinks");
+
+    const menuOverlay =
+      document.getElementById("menuOverlay");
+
+
+    if (menuBtn && navLinks) {
+
+      menuBtn.addEventListener(
+        "click",
+        function() {
+
+          navLinks.classList.toggle("active");
+
+          if (menuOverlay) {
+            menuOverlay.classList.toggle("active");
+          }
+
+        }
+      );
+
+    }
+
+  </script>
+
+</body>
+</html>

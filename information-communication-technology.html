@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Information and Communication Technology | AAUA Uni Pilot</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<style>
+/* =========================================================
+   ICT DEPARTMENT PAGE
+   CHEMISTRY-STYLE DEPARTMENT DESIGN
+   GREEN + YELLOW — NO BLUE
+========================================================= */
+
+:root{
+  --green:#0b5d3b;
+  --dark-green:#063b26;
+  --light-green:#eaf6ef;
+  --yellow:#f5c518;
+  --white:#ffffff;
+  --background:#f7faf8;
+  --text:#17221c;
+  --muted:#6d7a72;
+  --border:#dfe8e2;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:"Manrope",Arial,Helvetica,sans-serif;
+  background:var(--background);
+  color:var(--text);
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+button{
+  font-family:inherit;
+}
+
+.department-page{
+  min-height:100vh;
+  background:
+    radial-gradient(circle at top right,rgba(11,93,59,.06),transparent 30%),
+    radial-gradient(circle at bottom left,rgba(245,197,24,.045),transparent 30%),
+    var(--background);
+}
+
+/* =========================================================
+   HERO — SAME VISUAL LANGUAGE AS CHEMISTRY
+========================================================= */
+
+.department-hero{
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 82% 18%,rgba(245,197,24,.16),transparent 28%),
+    linear-gradient(135deg,#07120d 0%,var(--dark-green) 48%,var(--green) 100%);
+  color:var(--white);
+  padding:58px 22px 50px;
+  border-radius:30px;
+  margin:18px 22px 0;
+  isolation:isolate;
+  box-shadow:0 18px 50px rgba(6,59,38,.14);
+}
+
+.department-hero::before{
+  content:"";
+  position:absolute;
+  width:230px;
+  height:230px;
+  border-radius:50%;
+  border:1px solid rgba(245,197,24,.12);
+  right:-85px;
+  top:-100px;
+  z-index:-1;
+}
+
+.department-hero::after{
+  content:"ICT";
+  position:absolute;
+  right:22px;
+  bottom:-25px;
+  font-size:clamp(5rem,15vw,11rem);
+  line-height:.8;
+  font-weight:800;
+  letter-spacing:-7px;
+  color:rgba(255,255,255,.035);
+  z-index:-1;
+  pointer-events:none;
+}
+
+.department-hero-content{
+  position:relative;
+  max-width:820px;
+  margin:auto;
+  text-align:center;
+  z-index:2;
+}
+
+.breadcrumb{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:7px;
+  margin-bottom:22px;
+  color:rgba(255,255,255,.62);
+  font-size:.67rem;
+  font-weight:600;
+}
+
+.breadcrumb a{
+  color:rgba(255,255,255,.86);
+}
+
+.breadcrumb a:hover{
+  color:var(--yellow);
+}
+
+.department-label{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  padding:7px 13px;
+  border:1px solid rgba(245,197,24,.35);
+  border-radius:999px;
+  background:rgba(245,197,24,.08);
+  color:var(--yellow);
+  font-size:.62rem;
+  font-weight:800;
+  letter-spacing:1.2px;
+  text-transform:uppercase;
+}
+
+.department-label::before{
+  content:"";
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:var(--yellow);
+  box-shadow:0 0 9px rgba(245,197,24,.8);
+}
+
+.department-hero h1{
+  margin:16px auto 0;
+  max-width:850px;
+  color:#fff;
+  font-size:clamp(2.35rem,5.7vw,4.35rem);
+  line-height:1;
+  letter-spacing:-2.5px;
+  font-weight:800;
+}
+
+.department-hero h1 span{
+  display:inline-block;
+  color:var(--yellow);
+  position:relative;
+}
+
+.department-hero h1 span::after{
+  content:"";
+  position:absolute;
+  left:2px;
+  right:2px;
+  bottom:-6px;
+  height:2px;
+  border-radius:999px;
+  background:var(--yellow);
+  opacity:.7;
+}
+
+.faculty-name{
+  margin:19px 0 0;
+  color:var(--yellow);
+  font-size:.9rem;
+  font-weight:800;
+}
+
+.department-hero-description{
+  max-width:620px;
+  margin:15px auto 0;
+  color:rgba(255,255,255,.72);
+  font-size:.82rem;
+  line-height:1.7;
+}
+
+.department-actions{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:9px;
+  margin-top:23px;
+}
+
+.department-action{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:40px;
+  padding:0 15px;
+  border-radius:999px;
+  font-size:.67rem;
+  font-weight:800;
+  transition:.2s ease;
+}
+
+.department-action:hover{
+  transform:translateY(-2px);
+}
+
+.department-action.primary{
+  background:var(--yellow);
+  color:var(--dark-green);
+}
+
+.department-action.primary:hover{
+  background:#e6b600;
+}
+
+.department-action.secondary{
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.08);
+  color:#fff;
+}
+
+.department-action.secondary:hover{
+  background:rgba(255,255,255,.15);
+}
+
+/* =========================================================
+   MAIN CONTAINER
+========================================================= */
+
+.department-main{
+  width:min(1080px,calc(100% - 44px));
+  margin:0 auto;
+  padding:42px 0 70px;
+  position:relative;
+}
+
+/* =========================================================
+   QUICK INFO — ALL FOUR COLUMNS
+========================================================= */
+
+.quick-info{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:14px;
+  margin-bottom:70px;
+}
+
+.quick-card{
+  min-height:125px;
+  padding:19px;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:20px;
+  box-shadow:0 12px 35px rgba(6,59,38,.055);
+  transition:.2s ease;
+}
+
+.quick-card:hover{
+  transform:translateY(-4px);
+  border-color:rgba(11,93,59,.25);
+  box-shadow:0 18px 42px rgba(6,59,38,.09);
+}
+
+.quick-icon{
+  width:42px;
+  height:42px;
+  display:grid;
+  place-items:center;
+  margin-bottom:12px;
+  border-radius:13px;
+  background:var(--light-green);
+  font-size:18px;
+}
+
+.quick-card span{
+  display:block;
+  margin-bottom:6px;
+  color:var(--muted);
+  font-size:.61rem;
+  font-weight:800;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+
+.quick-card strong{
+  display:block;
+  color:var(--text);
+  font-size:.78rem;
+  line-height:1.45;
+}
+
+/* =========================================================
+   SECTIONS
+========================================================= */
+
+.department-section{
+  margin-bottom:70px;
+  scroll-margin-top:30px;
+}
+
+.section-heading{
+  margin-bottom:23px;
+}
+
+.section-heading span{
+  display:block;
+  margin-bottom:7px;
+  color:var(--green);
+  font-size:.64rem;
+  font-weight:800;
+  letter-spacing:1.1px;
+  text-transform:uppercase;
+}
+
+.section-heading h2{
+  margin:0;
+  color:var(--text);
+  font-size:clamp(1.8rem,4vw,2.4rem);
+  line-height:1.05;
+  letter-spacing:-1.2px;
+}
+
+/* =========================================================
+   ABOUT
+========================================================= */
+
+.about-box{
+  padding:28px;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:22px;
+  box-shadow:0 15px 45px rgba(6,59,38,.06);
+}
+
+.about-box p{
+  margin:0;
+  color:var(--muted);
+  font-size:.84rem;
+  line-height:1.85;
+}
+
+/* =========================================================
+   PROGRAMMES
+========================================================= */
+
+.programme-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:14px;
+}
+
+.programme-card{
+  padding:24px;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:20px;
+  box-shadow:0 12px 35px rgba(6,59,38,.05);
+  transition:.2s ease;
+}
+
+.programme-card:hover{
+  transform:translateY(-4px);
+  border-color:rgba(11,93,59,.3);
+  background:#fbfdfb;
+}
+
+.programme-icon{
+  width:48px;
+  height:48px;
+  display:grid;
+  place-items:center;
+  margin-bottom:16px;
+  border-radius:14px;
+  background:var(--light-green);
+  font-size:21px;
+}
+
+.programme-card h3{
+  margin:0 0 9px;
+  color:var(--text);
+  font-size:.98rem;
+  line-height:1.45;
+}
+
+.programme-card p{
+  margin:0;
+  color:var(--muted);
+  font-size:.8rem;
+  line-height:1.7;
+}
+
+/* =========================================================
+   COURSES — ACCORDION KEPT FROM YOUR ORIGINAL ICT CODE
+========================================================= */
+
+.courses-box{
+  display:grid;
+  gap:12px;
+}
+
+.level-card{
+  overflow:hidden;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:18px;
+  box-shadow:0 10px 30px rgba(6,59,38,.045);
+}
+
+.level-button{
+  width:100%;
+  min-height:62px;
+  padding:0 20px;
+  border:0;
+  background:#fff;
+  color:var(--text);
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  font-size:.84rem;
+  font-weight:800;
+  text-align:left;
+  transition:.2s ease;
+}
+
+.level-button:hover{
+  background:var(--light-green);
+}
+
+.level-arrow{
+  width:31px;
+  height:31px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:var(--light-green);
+  color:var(--green);
+  font-size:.7rem;
+  transition:transform .2s ease;
+}
+
+.level-card.active .level-arrow{
+  transform:rotate(180deg);
+}
+
+.course-list{
+  display:none;
+  border-top:1px solid var(--border);
+}
+
+.level-card.active .course-list{
+  display:block;
+}
+
+.course-row{
+  display:grid;
+  grid-template-columns:150px 1fr 90px;
+  gap:15px;
+  padding:16px 20px;
+  border-bottom:1px solid var(--border);
+  color:var(--muted);
+  font-size:.76rem;
+  line-height:1.5;
+}
+
+.course-row:last-child{
+  border-bottom:none;
+}
+
+.course-code{
+  color:var(--green);
+  font-weight:800;
+}
+
+.course-unit{
+  text-align:right;
+  font-weight:800;
+}
+
+/* =========================================================
+   RESOURCES — ALL THREE COLUMNS
+========================================================= */
+
+.resource-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
+}
+
+.resource-card{
+  display:block;
+  padding:24px;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:20px;
+  box-shadow:0 12px 35px rgba(6,59,38,.05);
+  transition:.2s ease;
+}
+
+.resource-card:hover{
+  transform:translateY(-4px);
+  border-color:rgba(11,93,59,.3);
+  background:#fbfdfb;
+}
+
+.resource-icon{
+  width:48px;
+  height:48px;
+  display:grid;
+  place-items:center;
+  margin-bottom:16px;
+  border-radius:14px;
+  background:var(--light-green);
+  font-size:21px;
+}
+
+.resource-card h3{
+  margin:0 0 8px;
+  color:var(--text);
+  font-size:.96rem;
+}
+
+.resource-card p{
+  margin:0;
+  color:var(--muted);
+  font-size:.78rem;
+  line-height:1.7;
+}
+
+/* =========================================================
+   CONTACT — TWO COLUMNS
+========================================================= */
+
+.contact-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:14px;
+}
+
+.contact-card{
+  padding:25px;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:20px;
+  box-shadow:0 12px 35px rgba(6,59,38,.05);
+}
+
+.contact-card h3{
+  margin:0 0 21px;
+  color:var(--text);
+  font-size:.98rem;
+}
+
+.contact-item{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  margin-bottom:17px;
+}
+
+.contact-item:last-child{
+  margin-bottom:0;
+}
+
+.contact-item-icon{
+  width:39px;
+  height:39px;
+  flex:0 0 39px;
+  display:grid;
+  place-items:center;
+  border-radius:11px;
+  background:var(--light-green);
+  font-size:17px;
+}
+
+.contact-item span{
+  display:block;
+  margin-bottom:4px;
+  color:var(--muted);
+  font-size:.62rem;
+  font-weight:800;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+
+.contact-item strong{
+  color:var(--text);
+  font-size:.78rem;
+  line-height:1.5;
+}
+
+/* =========================================================
+   HELP
+========================================================= */
+
+.help-box{
+  padding:40px 25px;
+  border-radius:24px;
+  background:
+    radial-gradient(circle at 85% 15%,rgba(245,197,24,.13),transparent 28%),
+    var(--dark-green);
+  color:#fff;
+  text-align:center;
+}
+
+.help-box h2{
+  margin:0 0 11px;
+  font-size:clamp(1.5rem,4vw,2rem);
+  letter-spacing:-.8px;
+}
+
+.help-box p{
+  max-width:650px;
+  margin:0 auto 22px;
+  color:rgba(255,255,255,.74);
+  font-size:.8rem;
+  line-height:1.7;
+}
+
+.help-button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:42px;
+  padding:0 18px;
+  border-radius:999px;
+  background:var(--yellow);
+  color:var(--dark-green);
+  font-size:.7rem;
+  font-weight:800;
+  transition:.2s ease;
+}
+
+.help-button:hover{
+  background:#e6b600;
+  transform:translateY(-2px);
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+  border-top:1px solid var(--border);
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:900px){
+  .quick-info{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .resource-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .programme-grid,
+  .contact-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:650px){
+  .department-hero{
+    padding:40px 17px 36px;
+    margin:12px 14px 0;
+    border-radius:24px;
+  }
+
+  .department-hero h1{
+    font-size:2.65rem;
+    letter-spacing:-1.8px;
+  }
+
+  .faculty-name{
+    font-size:.8rem;
+  }
+
+  .department-description{
+    font-size:.77rem;
+  }
+
+  .department-main{
+    width:min(100% - 34px,1080px);
+    padding-top:35px;
+  }
+
+  .quick-info{
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin-bottom:55px;
+  }
+
+  .quick-card{
+    min-height:112px;
+    padding:16px;
+  }
+
+  .resource-grid{
+    grid-template-columns:1fr;
+  }
+
+  .department-actions{
+    gap:7px;
+  }
+
+  .department-action{
+    min-height:38px;
+    padding:0 13px;
+  }
+
+  .about-box,
+  .programme-card,
+  .resource-card,
+  .contact-card{
+    padding:21px;
+  }
+
+  .course-row{
+    grid-template-columns:1fr;
+    gap:5px;
+  }
+
+  .course-unit{
+    text-align:left;
+  }
+}
+
+@media(max-width:430px){
+  .quick-info{
+    grid-template-columns:1fr;
+  }
+
+  .breadcrumb{
+    font-size:.6rem;
+  }
+}
+</style>
+</head>
+
+<body class="department-page">
+
+<!-- =====================================================
+     HERO
+====================================================== -->
+
+<section class="department-hero">
+  <div class="department-hero-content">
+
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span>›</span>
+      <a href="faculty-guide.html">Faculty Guide</a>
+      <span>›</span>
+      <span>Information and Communication Technology</span>
+    </div>
+
+    <span class="department-label">Department Guide</span>
+
+    <h1>
+      Department of <span>Information &amp; Communication Technology.</span>
+    </h1>
+
+    <p class="faculty-name">Faculty of Computing</p>
+
+    <p class="department-hero-description">
+      Welcome to the Information and Communication Technology programme
+      at Adekunle Ajasin University. Explore your programme, courses,
+      academic resources and useful departmental information in one place.
+    </p>
+
+    <div class="department-actions">
+      <a href="#resources" class="department-action primary">📚 Resources</a>
+      <a href="#courses" class="department-action secondary">📋 Courses</a>
+      <a href="#help" class="department-action secondary">🆘 Get Help</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- =====================================================
+     MAIN
+====================================================== -->
+
+<main class="department-main">
+
+  <!-- ===================================================
+       QUICK INFORMATION — ALL FOUR COLUMNS
+  ==================================================== -->
+
+  <section class="quick-info">
+
+    <div class="quick-card">
+      <div class="quick-icon">🏛️</div>
+      <span>Faculty</span>
+      <strong>Faculty of Computing</strong>
+    </div>
+
+    <div class="quick-card">
+      <div class="quick-icon">👨‍🏫</div>
+      <span>Head of Department</span>
+      <strong>Information coming soon</strong>
+    </div>
+
+    <div class="quick-card">
+      <div class="quick-icon">🎓</div>
+      <span>Degree</span>
+      <strong>B.Sc. Information and Communication Technology</strong>
+    </div>
+
+    <div class="quick-card">
+      <div class="quick-icon">⏳</div>
+      <span>Duration</span>
+      <strong>4 Years</strong>
+    </div>
+
+  </section>
+
+  <!-- ===================================================
+       ABOUT
+  ==================================================== -->
+
+  <section class="department-section">
+    <div class="section-heading">
+      <span>About the Department</span>
+      <h2>Information and Communication Technology</h2>
+    </div>
+
+    <div class="about-box">
+      <p>
+        The Information and Communication Technology programme is part of
+        the Faculty of Computing at Adekunle Ajasin University, Akungba-Akoko.
+        The programme focuses on the use of computing and communication
+        technologies to support information systems, digital services,
+        technology-driven solutions and modern computing needs.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===================================================
+       PROGRAMMES — ALL TWO COLUMNS
+  ==================================================== -->
+
+  <section class="department-section">
+    <div class="section-heading">
+      <span>Academic Programme</span>
+      <h2>Programme &amp; Admission</h2>
+    </div>
+
+    <div class="programme-grid">
+
+      <div class="programme-card">
+        <div class="programme-icon">🎓</div>
+
+        <h3>
+          B.Sc. Information and Communication Technology
+        </h3>
+
+        <p>
+          Bachelor of Science programme in Information and Communication
+          Technology.
+        </p>
+      </div>
+
+      <div class="programme-card">
+        <div class="programme-icon">💻</div>
+
+        <h3>
+          Information and Communication Technology
+        </h3>
+
+        <p>
+          Study computing and communication technologies and how they are
+          applied to information systems, digital solutions and modern
+          technology environments.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================================================
+       COURSES
+  ==================================================== -->
+
+  <section class="department-section" id="courses">
+    <div class="section-heading">
+      <span>Academic Information</span>
+      <h2>Courses by Level</h2>
+    </div>
+
+    <div class="courses-box">
+
+      <!-- 100 LEVEL -->
+      <div class="level-card">
+        <button class="level-button" type="button">
+          <span>100 Level</span>
+          <span class="level-arrow">▼</span>
+        </button>
+
+        <div class="course-list">
+          <div class="course-row">
+            <span class="course-code">Course Code</span>
+            <span>Course Title</span>
+            <span class="course-unit">3 Units</span>
+          </div>
+
+          <div class="course-row">
+            <span class="course-code">Course Code</span>
+            <span>Course Title</span>
+            <span class="course-unit">2 Units</span>
+          </div>
+
+          <div class="course-row">
+            <span class="course-code">Course Code</span>
+            <span>Course Title</span>
+            <span class="course-unit">3 Units</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 200 LEVEL -->
+      <div class="level-card">
+        <button class="level-button" type="button">
+          <span>200 Level</span>
+          <span class="level-arrow">▼</span>
+        </button>
+
+        <div class="course-list">
+          <div class="course-row">
+            <span class="course-code">Course Code</span>
+            <span>Course Title</span>
+            <span class="course-unit">3 Units</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 300 LEVEL -->
+      <div class="level-card">
+        <button class="level-button" type="button">
+          <span>300 Level</span>
+          <span class="level-arrow">▼</span>
+        </button>
+
+        <div class="course-list">
+          <div class="course-row">
+            <span class="course-code">Course Code</span>
+            <span>Course Title</span>
+            <span class="course-unit">3 Units</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 400 LEVEL -->
+      <div class="level-card">
+        <button class="level-button" type="button">
+          <span>400 Level</span>
+          <span class="level-arrow">▼</span>
+        </button>
+
+        <div class="course-list">
+          <div class="course-row">
+            <span class="course-code">Course Code</span>
+            <span>Course Title</span>
+            <span class="course-unit">3 Units</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================================================
+       RESOURCES — ALL THREE COLUMNS
+  ==================================================== -->
+
+  <section class="department-section" id="resources">
+    <div class="section-heading">
+      <span>Student Support</span>
+      <h2>Academic Resources</h2>
+    </div>
+
+    <div class="resource-grid">
+
+      <a href="#" class="resource-card">
+        <div class="resource-icon">📖</div>
+
+        <h3>Department Guide</h3>
+
+        <p>
+          Find useful information about the Information and Communication
+          Technology programme and your academic structure.
+        </p>
+      </a>
+
+      <a href="#" class="resource-card">
+        <div class="resource-icon">📝</div>
+
+        <h3>Course Information</h3>
+
+        <p>
+          Access information about ICT courses and academic levels.
+        </p>
+      </a>
+
+      <a href="#" class="resource-card">
+        <div class="resource-icon">🎓</div>
+
+        <h3>Student Resources</h3>
+
+        <p>
+          Useful academic materials and information for Information and
+          Communication Technology students.
+        </p>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ===================================================
+       CONTACT — TWO COLUMNS
+  ==================================================== -->
+
+  <section class="department-section">
+    <div class="section-heading">
+      <span>Get in Touch</span>
+      <h2>Department Contacts</h2>
+    </div>
+
+    <div class="contact-grid">
+
+      <div class="contact-card">
+        <h3>Department Information</h3>
+
+        <div class="contact-item">
+          <div class="contact-item-icon">🏛️</div>
+
+          <div>
+            <span>Faculty</span>
+            <strong>Faculty of Computing</strong>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-item-icon">🎓</div>
+
+          <div>
+            <span>Department</span>
+            <strong>
+              Information and Communication Technology
+            </strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-card">
+        <h3>University</h3>
+
+        <div class="contact-item">
+          <div class="contact-item-icon">📍</div>
+
+          <div>
+            <span>Location</span>
+            <strong>
+              Adekunle Ajasin University,
+              Akungba-Akoko, Ondo State
+            </strong>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-item-icon">🏫</div>
+
+          <div>
+            <span>Faculty</span>
+            <strong>Faculty of Computing</strong>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================================================
+       HELP
+  ==================================================== -->
+
+  <section class="department-section" id="help">
+    <div class="help-box">
+
+      <h2>Need help with your department?</h2>
+
+      <p>
+        If you need help with registration, courses, departmental
+        information or other student matters, use the Uni Pilot
+        student help system.
+      </p>
+
+      <a href="help.html" class="help-button">Get Help</a>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- =====================================================
+     FOOTER — SAME STRUCTURE AS INDEX
+====================================================== -->
+
+<footer>
+  <div class="footer-container">
+
+    <div class="footer-brand">
+      <a href="index.html" class="brand">🎓 Uni Pilot</a>
+      <p>Your campus. Your resources. Your guide.</p>
+    </div>
+
+    <div class="footer-links">
+
+      <div>
+        <h4>Platform</h4>
+        <a href="resources.html">Resources</a>
+        <a href="guide.html">Student Guide</a>
+        <a href="updates.html">Updates</a>
+        <a href="tools.html">Student Tools</a>
+      </div>
+
+      <div>
+        <h4>Information</h4>
+        <a href="about.html">About</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Use</a>
+        <a href="contact.html">Contact</a>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 Uni Pilot. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+/* =========================================================
+   COURSE ACCORDION
+========================================================= */
+
+document.querySelectorAll(".level-button").forEach(button => {
+  button.addEventListener("click", () => {
+    const card = button.closest(".level-card");
+    card.classList.toggle("active");
+  });
+});
+</script>
+
+</body>
+</html>

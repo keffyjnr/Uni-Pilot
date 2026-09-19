@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Faculty of Computing | AAUA Uni Pilot</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* =================================
+       FACULTY PAGE
+    ================================= */
+
+    .faculty-page {
+      background:
+        radial-gradient(circle at top right, rgba(11, 93, 59, 0.10), transparent 35%),
+        radial-gradient(circle at bottom left, rgba(11, 93, 59, 0.08), transparent 35%);
+    }
+
+    /* =================================
+       COMPACT FACULTY HERO
+    ================================= */
+
+    .faculty-hero {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 85% 15%, rgba(245,197,24,.18), transparent 28%),
+        radial-gradient(circle at 10% 90%, rgba(255,255,255,.06), transparent 25%),
+        linear-gradient(135deg, #063b26 0%, #0b5d3b 55%, #08452d 100%);
+      color:#fff;
+      padding:48px 22px 42px;
+      border-radius:28px;
+      margin:18px 22px 0;
+      isolation:isolate;
+      box-shadow:0 12px 35px rgba(6,59,38,.12);
+    }
+
+    .faculty-hero-bg {
+      position:absolute;
+      right:-25px;
+      bottom:-28px;
+      font-size:clamp(5rem,13vw,10rem);
+      font-weight:800;
+      line-height:.8;
+      letter-spacing:-6px;
+      color:rgba(255,255,255,.035);
+      pointer-events:none;
+      user-select:none;
+      z-index:-1;
+    }
+
+    .faculty-hero::before {
+      content:"";
+      position:absolute;
+      width:180px;
+      height:180px;
+      border-radius:50%;
+      border:1px solid rgba(245,197,24,.12);
+      right:-65px;
+      top:-75px;
+      z-index:-1;
+    }
+
+    .faculty-hero::after {
+      content:"";
+      position:absolute;
+      width:80px;
+      height:80px;
+      border-radius:50%;
+      background:rgba(245,197,24,.045);
+      left:-30px;
+      bottom:25px;
+      z-index:-1;
+    }
+
+    .faculty-hero-content {
+      position:relative;
+      max-width:750px;
+      margin:auto;
+      text-align:center;
+      z-index:2;
+    }
+
+    .faculty-eyebrow {
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
+      padding:6px 12px;
+      border:1px solid rgba(245,197,24,.35);
+      border-radius:999px;
+      background:rgba(245,197,24,.08);
+      color:#f5c518;
+      font-size:.62rem;
+      font-weight:800;
+      letter-spacing:1.2px;
+    }
+
+    .faculty-eyebrow::before {
+      content:"";
+      width:5px;
+      height:5px;
+      border-radius:50%;
+      background:#f5c518;
+      box-shadow:0 0 9px rgba(245,197,24,.8);
+    }
+
+    .faculty-hero h1 {
+      margin-top:14px;
+      font-size:clamp(2.5rem,6vw,4.5rem);
+      line-height:.95;
+      letter-spacing:-2.5px;
+      font-weight:800;
+      color:#fff;
+    }
+
+    .faculty-hero h1 span {
+      display:inline-block;
+      color:#f5c518;
+      position:relative;
+    }
+
+    .faculty-hero h1 span::after {
+      content:"";
+      position:absolute;
+      left:2px;
+      right:2px;
+      bottom:-5px;
+      height:2px;
+      border-radius:999px;
+      background:#f5c518;
+      opacity:.65;
+    }
+
+    .faculty-description {
+      max-width:540px;
+      margin:18px auto 0;
+      color:rgba(255,255,255,.7);
+      font-size:.85rem;
+      line-height:1.6;
+    }
+
+    .faculty-hero-guide {
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:9px;
+      margin-top:22px;
+    }
+
+    .faculty-hero-guide span {
+      width:30px;
+      height:1px;
+      background:rgba(255,255,255,.2);
+    }
+
+    .faculty-hero-guide small {
+      color:rgba(255,255,255,.45);
+      font-size:.58rem;
+      font-weight:700;
+      letter-spacing:.7px;
+      text-transform:uppercase;
+    }
+
+    .faculty-hero-actions {
+      display:flex;
+      justify-content:center;
+      margin-top:22px;
+    }
+
+    .faculty-explore-btn {
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:11px 18px;
+      border-radius:999px;
+      background:#f5c518;
+      color:#063b26;
+      text-decoration:none;
+      font-size:.72rem;
+      font-weight:800;
+      box-shadow:0 8px 20px rgba(245,197,24,.16);
+      transition:transform .2s ease, box-shadow .2s ease;
+    }
+
+    .faculty-explore-btn:hover {
+      transform:translateY(-2px);
+      box-shadow:0 10px 24px rgba(245,197,24,.22);
+    }
+
+    html {
+      scroll-behavior:smooth;
+    }
+
+    @media (max-width:600px) {
+      .faculty-hero {
+        padding:38px 17px 35px;
+        margin:12px 14px 0;
+        border-radius:24px;
+      }
+
+      .faculty-hero h1 {
+        font-size:2.65rem;
+        letter-spacing:-1.8px;
+        margin-top:12px;
+      }
+
+      .faculty-description {
+        font-size:.78rem;
+        max-width:330px;
+        margin-top:15px;
+      }
+
+      .faculty-hero-guide {
+        margin-top:18px;
+      }
+
+      .faculty-hero-bg {
+        font-size:5.5rem;
+        right:-15px;
+        bottom:-12px;
+        letter-spacing:-4px;
+      }
+    }
+
+    /* =================================
+       QUICK INFO
+    ================================= */
+
+    .faculty-info-grid {
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:16px;
+      margin-bottom:70px;
+    }
+
+    .faculty-info-card {
+      padding:22px;
+      border-radius:18px;
+      background:rgba(255,255,255,.85);
+      border:1px solid #dfe8e2;
+      box-shadow:0 10px 35px rgba(6,59,38,.06);
+      backdrop-filter:blur(12px);
+    }
+
+    .faculty-info-icon {
+      width:42px;
+      height:42px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:12px;
+      background:#eaf6ef;
+      font-size:20px;
+      margin-bottom:14px;
+    }
+
+    .faculty-info-card small {
+      display:block;
+      color:#6d7a72;
+      font-size:12px;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      margin-bottom:7px;
+    }
+
+    .faculty-info-card strong {
+      display:block;
+      color:#17221c;
+      font-size:15px;
+      line-height:1.5;
+    }
+
+    /* =================================
+       CONTENT GRID
+    ================================= */
+
+    .faculty-content-grid {
+      display:grid;
+      grid-template-columns:minmax(0,1.6fr) minmax(280px,.8fr);
+      gap:24px;
+      margin-bottom:70px;
+    }
+
+    .faculty-panel {
+      padding:30px;
+      background:white;
+      border:1px solid #dfe8e2;
+      border-radius:22px;
+      box-shadow:0 15px 45px rgba(6,59,38,.06);
+    }
+
+    .faculty-panel h2 {
+      margin-top:0;
+      margin-bottom:12px;
+      font-size:25px;
+      color:#17221c;
+    }
+
+    .faculty-panel p {
+      color:#6d7a72;
+      line-height:1.8;
+    }
+
+    /* =================================
+       PROGRAMMES
+    ================================= */
+
+    .programme-grid {
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:14px;
+      margin-top:22px;
+    }
+
+    .programme-card {
+      padding:18px;
+      border-radius:15px;
+      background:#f7faf8;
+      border:1px solid #dfe8e2;
+    }
+
+    .programme-card strong {
+      display:block;
+      margin-bottom:6px;
+      color:#17221c;
+    }
+
+    .programme-card span {
+      color:#6d7a72;
+      font-size:14px;
+      line-height:1.6;
+    }
+
+    /* =================================
+       DEPARTMENTS
+       EACH PROGRAMME HAS ITS OWN PAGE
+    ================================= */
+
+    .departments-section {
+      margin-bottom:70px;
+    }
+
+    .department-grid {
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:18px;
+      margin-top:25px;
+    }
+
+    .department-card {
+      position:relative;
+      display:block;
+      padding:24px;
+      background:white;
+      border:1px solid #dfe8e2;
+      border-radius:20px;
+      text-decoration:none;
+      color:inherit;
+      overflow:hidden;
+      transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+
+    .department-card::before {
+      content:"";
+      position:absolute;
+      left:0;
+      top:0;
+      width:100%;
+      height:3px;
+      background:linear-gradient(90deg,#0b5d3b,#063b26);
+      transform:scaleX(0);
+      transform-origin:left;
+      transition:transform .25s ease;
+    }
+
+    .department-card:hover {
+      transform:translateY(-5px);
+      border-color:#0b5d3b;
+      box-shadow:0 18px 40px rgba(6,59,38,.10);
+    }
+
+    .department-card:hover::before {
+      transform:scaleX(1);
+    }
+
+    .department-icon {
+      width:48px;
+      height:48px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:14px;
+      background:#eaf6ef;
+      font-size:22px;
+      margin-bottom:17px;
+    }
+
+    .department-card h3 {
+      margin:0 0 8px;
+      font-size:17px;
+      line-height:1.4;
+      color:#17221c;
+    }
+
+    .department-card p {
+      margin:0;
+      color:#6d7a72;
+      font-size:14px;
+      line-height:1.6;
+    }
+
+    .department-arrow {
+      display:inline-block;
+      margin-top:18px;
+      color:#0b5d3b;
+      font-weight:800;
+    }
+
+    /* =================================
+       FACULTY CONTACT
+    ================================= */
+
+    .faculty-contact {
+      display:grid;
+      grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+      gap:20px;
+      margin-bottom:70px;
+    }
+
+    .contact-item {
+      padding:20px;
+      border-radius:16px;
+      background:#f7faf8;
+      border:1px solid #dfe8e2;
+    }
+
+    .contact-item small {
+      display:block;
+      color:#6d7a72;
+      font-size:12px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      margin-bottom:7px;
+    }
+
+    .contact-item strong {
+      color:#17221c;
+      line-height:1.5;
+    }
+
+    /* =================================
+       MOBILE
+    ================================= */
+
+    @media (max-width:900px) {
+      .faculty-info-grid {
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+
+      .faculty-content-grid {
+        grid-template-columns:1fr;
+      }
+
+      .department-grid {
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+    }
+
+    @media (max-width:600px) {
+      .faculty-hero {
+        padding:55px 0;
+      }
+
+      .faculty-info-grid {
+        grid-template-columns:1fr;
+      }
+
+      .department-grid {
+        grid-template-columns:1fr;
+      }
+
+      .programme-grid {
+        grid-template-columns:1fr;
+      }
+
+      .faculty-contact {
+        grid-template-columns:1fr;
+      }
+
+      .faculty-panel {
+        padding:22px;
+      }
+    }
+  </style>
+</head>
+
+<body class="faculty-page">
+
+  <!-- HEADER -->
+
+  <header class="header">
+    <div class="navbar">
+
+      <a href="index.html" class="brand">
+        <div class="brand-icon">🎓</div>
+        <span>AAUA Uni Pilot</span>
+      </a>
+
+      <nav class="desktop-nav">
+        <a href="index.html">Home</a>
+        <a href="resources.html">Resources</a>
+        <a href="guide.html">Student Guide</a>
+        <a href="updates.html">Updates</a>
+        <a href="tools.html">Tools</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="icon-btn" id="searchBtn" type="button">🔍</button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- MAIN -->
+
+  <main>
+
+    <!-- HERO -->
+
+    <section class="section faculty-hero">
+
+      <div class="faculty-hero-bg" aria-hidden="true">
+        COMPUTING
+      </div>
+
+      <div class="faculty-hero-content">
+
+        <span class="faculty-eyebrow">
+          FACULTY GUIDE
+        </span>
+
+        <h1>
+          Faculty of <span>Computing.</span>
+        </h1>
+
+        <p class="faculty-description">
+          Explore the Faculty of Computing at Adekunle Ajasin University, discover its programmes, departments, and academic information.
+        </p>
+
+        <div class="faculty-hero-guide">
+          <span></span>
+          <small>Explore your faculty below</small>
+          <span></span>
+        </div>
+
+        <div class="faculty-hero-actions">
+          <a href="#departments" class="faculty-explore-btn">
+            Explore Departments
+            <span>↓</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- QUICK INFORMATION -->
+
+    <section class="section">
+
+      <div class="faculty-info-grid">
+
+        <div class="faculty-info-card">
+          <div class="faculty-info-icon">💻</div>
+          <small>Faculty</small>
+          <strong>Faculty of Computing</strong>
+        </div>
+
+        <div class="faculty-info-card">
+          <div class="faculty-info-icon">👨‍🏫</div>
+          <small>Dean</small>
+          <strong>Prof. Sunday Olatunji</strong>
+        </div>
+
+        <div class="faculty-info-card">
+          <div class="faculty-info-icon">🎓</div>
+          <small>Programmes</small>
+          <strong>6 Academic Programmes</strong>
+        </div>
+
+        <div class="faculty-info-card">
+          <div class="faculty-info-icon">🏢</div>
+          <small>Departments</small>
+          <strong>6 Academic Departments</strong>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ABOUT + PROGRAMMES -->
+
+    <section class="section">
+
+      <div class="faculty-content-grid">
+
+        <div class="faculty-panel">
+
+          <h2>About the Faculty</h2>
+
+          <p>
+            Welcome to the Faculty of Computing at Adekunle Ajasin University, Akungba-Akoko, a community of innovators, thinkers, and problem-solvers preparing students for the opportunities and challenges of the digital age.
+          </p>
+
+          <br>
+
+          <p>
+            The Faculty is committed to providing a strong learning environment in computing and related digital disciplines. Its academic areas include software development, artificial intelligence, data science, information and communication technology, information systems, and cybersecurity.
+          </p>
+
+          <br>
+
+          <p>
+            Students are encouraged to develop practical skills, critical thinking, creativity, collaboration, and problem-solving abilities while learning from academic staff and researchers.
+          </p>
+
+          <br>
+
+          <p>
+            Explore the departments below to discover the programmes and academic information available within the Faculty of Computing.
+          </p>
+
+        </div>
+
+        <div class="faculty-panel">
+
+          <h2>Programmes</h2>
+
+          <div class="programme-grid">
+
+            <div class="programme-card">
+              <strong>B.Sc. Computer Science</strong>
+              <span>
+                Study computing principles, programming, algorithms, software, systems, and related areas of computer science.
+              </span>
+            </div>
+
+            <div class="programme-card">
+              <strong>B.Sc. Cyber Security</strong>
+              <span>
+                Focus on protecting computer systems, networks, applications, data, and digital environments.
+              </span>
+            </div>
+
+            <div class="programme-card">
+              <strong>B.Sc. Data Science</strong>
+              <span>
+                Explore data analysis, computational methods, statistics, and techniques for extracting useful insights from data.
+              </span>
+            </div>
+
+            <div class="programme-card">
+              <strong>B.Sc. Information and Communication Technology</strong>
+              <span>
+                Study digital technologies, communication systems, information processing, and ICT applications.
+              </span>
+            </div>
+
+            <div class="programme-card">
+              <strong>B.Sc. Information Systems</strong>
+              <span>
+                Explore the design and use of information systems that support organisations, people, and business processes.
+              </span>
+            </div>
+
+            <div class="programme-card">
+              <strong>B.Sc. Software Engineering</strong>
+              <span>
+                Focus on software development, software design, testing, maintenance, and engineering practices.
+              </span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- DEPARTMENTS -->
+
+    <section class="section departments-section" id="departments">
+
+      <div class="section-heading section-heading-left">
+
+        <span class="welcome-tag">
+          ACADEMIC STRUCTURE
+        </span>
+
+        <h2>Departments</h2>
+
+        <p>
+          Select a department to explore its programmes and academic information.
+        </p>
+
+      </div>
+
+      <div class="department-grid">
+
+        <a href="computer-science.html" class="department-card">
+          <div class="department-icon">💻</div>
+          <h3>Computer Science</h3>
+          <p>B.Sc. Computer Science</p>
+          <span class="department-arrow">View Department →</span>
+        </a>
+
+        <a href="cyber-security.html" class="department-card">
+          <div class="department-icon">🔐</div>
+          <h3>Cyber Security</h3>
+          <p>B.Sc. Cyber Security</p>
+          <span class="department-arrow">View Department →</span>
+        </a>
+
+        <a href="data-science.html" class="department-card">
+          <div class="department-icon">📊</div>
+          <h3>Data Science</h3>
+          <p>B.Sc. Data Science</p>
+          <span class="department-arrow">View Department →</span>
+        </a>
+
+        <a href="information-communication-technology.html" class="department-card">
+          <div class="department-icon">🌐</div>
+          <h3>Information and Communication Technology</h3>
+          <p>B.Sc. Information and Communication Technology</p>
+          <span class="department-arrow">View Department →</span>
+        </a>
+
+        <a href="information-systems.html" class="department-card">
+          <div class="department-icon">🗂️</div>
+          <h3>Information Systems</h3>
+          <p>B.Sc. Information Systems</p>
+          <span class="department-arrow">View Department →</span>
+        </a>
+
+        <a href="software-engineering.html" class="department-card">
+          <div class="department-icon">⚙️</div>
+          <h3>Software Engineering</h3>
+          <p>B.Sc. Software Engineering</p>
+          <span class="department-arrow">View Department →</span>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+
+    <section class="section" id="contact">
+
+      <div class="section-heading section-heading-left">
+
+        <span class="welcome-tag">
+          FACULTY SUPPORT
+        </span>
+
+        <h2>Faculty Contact</h2>
+
+        <p>
+          Official faculty contact information.
+        </p>
+
+      </div>
+
+      <div class="faculty-contact">
+
+        <div class="contact-item">
+          <small>Faculty</small>
+          <strong>Faculty of Computing, AAUA</strong>
+        </div>
+
+        <div class="contact-item">
+          <small>Dean</small>
+          <strong>Prof. Sunday Olatunji</strong>
+        </div>
+
+        <div class="contact-item">
+          <small>Phone</small>
+          <strong>08155790588</strong>
+        </div>
+
+        <div class="contact-item">
+          <small>Email</small>
+          <strong>sunday.olatunji@aaua.edu.ng</strong>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div class="footer-container">
+
+      <div class="footer-brand">
+        <h2>AAUA Uni Pilot</h2>
+        <p>Your campus. Your resources. Your guide.</p>
+      </div>
+
+      <div class="footer-links">
+
+        <div>
+          <h4>Platform</h4>
+          <a href="resources.html">Resources</a>
+          <a href="guide.html">Student Guide</a>
+          <a href="updates.html">Updates</a>
+          <a href="tools.html">Student Tools</a>
+        </div>
+
+        <div>
+          <h4>Information</h4>
+          <a href="about.html">About</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Use</a>
+          <a href="#">Contact</a>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 AAUA Uni Pilot. All rights reserved.</p>
+    </div>
+
+  </footer>
+
+  <script src="script.js"></script>
+
+</body>
+</html>

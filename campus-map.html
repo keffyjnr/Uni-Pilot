@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Uni-Pilot — AAUA Realistic Campus Map</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="campus-map.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><b>UP</b><span><strong>Uni-Pilot</strong><small>AAUA Realistic Campus Map</small></span></div>
+  <div class="top-actions">
+    <button id="buildingsBtn">🏢 Buildings</button>
+    <button id="satelliteBtn">🛰 Satellite</button>
+    <button id="locateBtn">◎ My location</button>
+    <button id="resetBtn">⌂ AAUA</button>
+  </div>
+</header>
+
+<main>
+  <aside id="panel">
+    <div class="head">
+      <div><small>CAMPUS NAVIGATION</small><h1>Find your destination</h1></div>
+      <button id="closePanel">×</button>
+    </div>
+    <div class="search"><span>⌕</span><input id="search" placeholder="Try “Computer Science” or “Senate”"><button id="clear">×</button></div>
+    <div id="chips" class="chips"></div>
+    <div class="quick">
+      <button data-q="Computer Science">Computer Science</button>
+      <button data-q="Lecture">Lecture Halls</button>
+      <button data-q="Hostel">Hostels</button>
+      <button data-q="Senate">Senate</button>
+    </div>
+    <div id="status" class="status"></div>
+    <div id="results"></div>
+    <div class="legend">
+      <span><i class="ref"></i> Reference source</span>
+      <span><i class="approx"></i> Approximate point</span>
+    </div>
+  </aside>
+
+  <button id="openPanel" class="open">☰ Search campus</button>
+  <div id="map"></div>
+
+  <div class="map-note" id="mapNote">
+    <b>Realistic building mode</b>
+    <span>Architecture is modeled from the supplied AAUA video reference. Footprints are illustrative until surveyed.</span>
+  </div>
+
+  <section id="detail" hidden>
+    <button id="detailClose">×</button>
+    <div class="detail-tag" id="detailCat"></div>
+    <h2 id="detailName"></h2>
+    <p id="detailDesc"></p>
+    <div id="detailDepartments"></div>
+    <div id="detailVerify"></div>
+    <div class="actions"><button id="navigate">Navigate</button><button id="maps">Google Maps</button></div>
+  </section>
+</main>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="campus-locations.js"></script>
+<script src="campus-map.js"></script>
+</body>
+</html>

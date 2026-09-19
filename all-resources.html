@@ -9,7 +9,7 @@
     name="viewport"
     content="width=device-width, initial-scale=1.0">
 
-  <title>All Resources | AAUA Uni Pilot</title>
+  <title>All Resources | Uni Pilot</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
 
@@ -24,6 +24,210 @@
 
   <link rel="stylesheet" href="style.css">
 
+<style id="all-resources-page-style">
+:root{--green:#0b5d3b;--dark-green:#063b26;--light-green:#eaf6ef;--yellow:#f5c518;--light-yellow:#fff8dc;--white:#fff;--background:#f7faf8;--text:#17221c;--muted:#6d7a72;--border:#dfe8e2}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at top left,rgba(11,93,59,.06),transparent 34%),var(--background);color:var(--text);font-family:"Manrope",sans-serif}
+.header{background:rgba(255,255,255,.94);border-bottom:1px solid var(--border);box-shadow:0 5px 20px rgba(6,59,38,.07)}
+.navbar{width:min(1200px,calc(100% - 40px));min-height:76px;margin:0 auto}
+.brand{color:var(--dark-green);font-weight:800;text-decoration:none}
+.desktop-nav a{color:var(--text);font-weight:700;text-decoration:none;transition:color .2s ease,background .2s ease}
+.desktop-nav a:hover{color:var(--green)}
+.nav-actions .icon-btn,.nav-actions .menu-btn{border:1px solid var(--border);border-radius:12px;background:var(--white);color:var(--green);transition:background .2s ease,transform .2s ease,border-color .2s ease}
+.nav-actions .icon-btn:hover,.nav-actions .menu-btn:hover{background:var(--light-green);border-color:var(--green);transform:translateY(-1px)}
+.mobile-menu{background:var(--white);border:1px solid var(--border);border-radius:16px;box-shadow:0 12px 28px rgba(6,59,38,.1)}
+.mobile-menu a{color:var(--text);font-weight:700;text-decoration:none;border-radius:10px}
+.mobile-menu a:hover{background:var(--light-green);color:var(--green)}
+.all-resource-hero{position:relative;overflow:hidden;padding:56px 20px 44px;background:linear-gradient(135deg,rgba(234,246,239,.96),rgba(255,255,255,.98));border-bottom:1px solid var(--border)}
+.all-resource-hero:after{content:"";position:absolute;width:260px;height:260px;right:-110px;top:-130px;border-radius:50%;background:rgba(245,197,24,.12);pointer-events:none}
+.section-heading{position:relative;z-index:1;max-width:780px;margin:0 auto 28px;text-align:center}
+.intro-label,.resource-small-label{color:var(--green);font-size:.74rem;font-weight:800;letter-spacing:.14em}
+.section-heading h1{margin:10px 0 12px;color:var(--dark-green);font-size:clamp(2.1rem,5vw,3.5rem);line-height:1.08;letter-spacing:-.035em}
+.section-heading p{max-width:680px;margin:0 auto;color:var(--muted);line-height:1.75}
+.resource-search-box{position:relative;z-index:2;width:min(850px,100%);margin:0 auto 22px;display:flex;gap:10px;padding:8px;border:1px solid var(--border);border-radius:18px;background:rgba(255,255,255,.92);box-shadow:0 12px 28px rgba(6,59,38,.08)}
+.search-input-wrapper{position:relative;flex:1;min-width:0;display:flex;align-items:center}
+.search-symbol{position:absolute;left:16px;color:var(--green);font-size:1rem}
+.search-input-wrapper input{width:100%;height:50px;padding:0 44px;border:0;outline:none;border-radius:12px;background:var(--background);color:var(--text);font:inherit}
+.search-input-wrapper input:focus{background:var(--white);box-shadow:inset 0 0 0 2px rgba(11,93,59,.14)}
+.clear-search{position:absolute;right:8px;width:34px;height:34px;border:0;border-radius:9px;background:transparent;color:var(--muted);cursor:pointer;font-size:1.25rem}
+.clear-search:hover{background:var(--light-green);color:var(--green)}
+.resource-search-btn,.resource-view-btn,.secondary-btn{border:0;border-radius:12px;background:var(--green);color:var(--white);font:inherit;font-weight:800;cursor:pointer;transition:background .2s ease,transform .2s ease}
+.resource-search-btn{min-width:110px;padding:0 20px}
+.resource-search-btn:hover,.resource-view-btn:hover,.secondary-btn:hover{background:var(--dark-green);transform:translateY(-1px)}
+.resource-filter-row{position:relative;z-index:2;display:flex;justify-content:center;flex-wrap:wrap;gap:9px}
+.resource-filter{border:1px solid var(--border);border-radius:999px;padding:9px 14px;background:var(--white);color:var(--muted);font:inherit;font-size:.78rem;font-weight:800;cursor:pointer;transition:background .2s ease,color .2s ease,border-color .2s ease,transform .2s ease}
+.resource-filter:hover{color:var(--green);border-color:var(--green);transform:translateY(-1px)}
+.resource-filter.active{background:var(--green);border-color:var(--green);color:var(--white)}
+.resource-results-section{padding:34px 20px 50px;background:var(--white)}
+.resource-results-top{width:min(1100px,100%);margin:0 auto 24px;display:flex;align-items:end;justify-content:space-between;gap:20px}
+.resource-results-top h2{margin:7px 0 0;color:var(--dark-green);font-size:1.5rem}
+.resource-count{padding:8px 12px;border:1px solid var(--border);border-radius:999px;background:var(--light-green);color:var(--green);font-size:.78rem;font-weight:800}
+.all-resource-grid{width:min(1100px,100%);margin:0 auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.all-resource-card{min-width:0;display:flex;flex-direction:column;padding:22px;border:1px solid var(--border);border-radius:20px;background:var(--white);box-shadow:0 6px 20px rgba(6,59,38,.05);transition:transform .22s ease,background .22s ease,border-color .22s ease,box-shadow .22s ease}
+.all-resource-card:hover{transform:translateY(-5px);background:var(--light-green);border-color:rgba(11,93,59,.3);box-shadow:0 14px 28px rgba(6,59,38,.1)}
+.all-resource-icon{width:54px;height:54px;display:grid;place-items:center;margin-bottom:18px;border-radius:15px;background:var(--light-green);font-size:1.45rem}
+.all-resource-content{display:flex;flex:1;flex-direction:column}
+.resource-card-top{margin-bottom:10px}
+.resource-tag{display:inline-flex;align-items:center;min-height:26px;padding:5px 9px;border-radius:999px;background:var(--light-yellow);color:#735c00;font-size:.62rem;font-weight:800;letter-spacing:.06em}
+.all-resource-content h3{margin:0 0 9px;color:var(--dark-green);font-size:1.04rem;line-height:1.4}
+.all-resource-content p{margin:0 0 18px;color:var(--muted);font-size:.86rem;line-height:1.65}
+.resource-meta{display:grid;gap:7px;margin-top:auto;margin-bottom:17px;color:var(--muted);font-size:.73rem;line-height:1.45}
+.resource-view-btn{width:100%;min-height:42px;display:flex;align-items:center;justify-content:space-between;padding:0 14px}
+.resource-empty{width:min(700px,100%);margin:25px auto 0;padding:45px 20px;text-align:center;border:1px dashed var(--border);border-radius:20px;background:var(--background)}
+.resource-empty-icon{font-size:2.2rem}
+.resource-empty h3{margin:10px 0 6px;color:var(--dark-green)}
+.resource-empty p{margin:0 0 18px;color:var(--muted)}
+.footer{background:var(--dark-green)}
+.footer-brand .brand{color:var(--white)}
+.footer-links a{color:rgba(255,255,255,.82)}
+.footer-links a:hover{color:var(--yellow)}
+.footer-bottom{border-top-color:rgba(255,255,255,.15);color:rgba(255,255,255,.65)}
+.visually-hidden{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+@media(max-width:950px){.all-resource-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){.navbar{width:calc(100% - 24px)}.all-resource-hero{padding:40px 16px 32px}.resource-search-box{flex-direction:column;padding:7px}.resource-search-btn{min-height:48px}.resource-results-section{padding:28px 16px 40px}.resource-results-top{align-items:flex-start;flex-direction:column}.all-resource-grid{grid-template-columns:1fr}.all-resource-card{border-radius:17px}}
+
+/* ===== INDEX FOOTER — same structure, modern finish ===== */
+.footer {
+  position: relative;
+  margin-top: 0;
+  background:
+    linear-gradient(180deg, rgba(6,59,38,.98), rgba(4,48,31,1));
+  color: rgba(255,255,255,.84);
+  overflow: hidden;
+}
+
+.footer::before {
+  content: "";
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  top: -300px;
+  right: -120px;
+  border: 1px solid rgba(245,197,24,.12);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.footer::after {
+  content: "";
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  bottom: -190px;
+  left: -90px;
+  border: 1px solid rgba(255,255,255,.05);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.footer-container {
+  position: relative;
+  z-index: 1;
+  width: min(1120px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 54px 0 42px;
+  display: grid;
+  grid-template-columns: minmax(240px, 1.15fr) minmax(320px, .85fr);
+  gap: 70px;
+  align-items: start;
+}
+
+.footer-brand .brand {
+  display: inline-flex;
+  align-items: center;
+  color: var(--white);
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: -.02em;
+}
+
+.footer-brand p {
+  max-width: 300px;
+  margin: 13px 0 0;
+  color: rgba(255,255,255,.64);
+  font-size: .88rem;
+  line-height: 1.7;
+}
+
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 44px;
+}
+
+.footer-column {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+}
+
+.footer-column h4 {
+  margin: 0 0 8px;
+  color: var(--yellow);
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.footer-column a {
+  width: fit-content;
+  color: rgba(255,255,255,.72);
+  text-decoration: none;
+  font-size: .86rem;
+  line-height: 1.5;
+  transition: color .2s ease, transform .2s ease;
+}
+
+.footer-column a:hover {
+  color: var(--white);
+  transform: translateX(3px);
+}
+
+.footer-bottom {
+  position: relative;
+  z-index: 1;
+  width: min(1120px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 18px 0 22px;
+  border-top: 1px solid rgba(255,255,255,.12);
+}
+
+.footer-bottom p {
+  margin: 0;
+  color: rgba(255,255,255,.5);
+  font-size: .75rem;
+  text-align: center;
+}
+
+@media (max-width: 720px) {
+  .footer-container {
+    width: min(100% - 32px, 560px);
+    grid-template-columns: 1fr;
+    gap: 34px;
+    padding: 42px 0 34px;
+  }
+
+  .footer-links {
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 28px;
+  }
+
+  .footer-bottom {
+    width: min(100% - 32px, 560px);
+  }
+}
+
+@media (max-width: 430px) {
+  .footer-links {
+    grid-template-columns: 1fr;
+  }
+}
+
+</style>
+
+
 </head>
 
 
@@ -35,7 +239,7 @@
   <nav class="navbar">
 
     <a href="index.html" class="brand">
-      🎓 AAUA Uni Pilot
+      🎓 Uni Pilot
     </a>
 
 
@@ -66,12 +270,14 @@
 
     <div class="nav-actions">
 
-      <button
+      <a
+        href="search.html"
         class="icon-btn"
-        aria-label="Search"
-        type="button">
+        aria-label="Search Uni Pilot"
+        title="Search Uni Pilot"
+        style="display:grid;place-items:center;text-decoration:none;">
         🔍
-      </button>
+      </a>
 
       <button
         class="menu-btn"
@@ -297,57 +503,34 @@
 
 
 <footer class="footer">
-
-  <div class="footer-content">
-
+  <div class="footer-container">
     <div class="footer-brand">
-
-      <a href="index.html" class="brand">
-        🎓 Uni Pilot
-      </a>
-
-      <p>
-        Helping students navigate smoothly through campus.
-      </p>
-
+      <a href="index.html" class="brand">🎓 Uni Pilot</a>
+      <p>Your campus. Your resources. Your guide.</p>
     </div>
-
 
     <div class="footer-links">
+      <div class="footer-column">
+        <h4>Platform</h4>
+        <a href="resources.html">Resources</a>
+        <a href="guide.html">Student Guide</a>
+        <a href="updates.html">Updates</a>
+        <a href="tools.html">Student Tools</a>
+      </div>
 
-      <a href="index.html">
-        Home
-      </a>
-
-      <a href="resources.html">
-        Resources
-      </a>
-
-      <a href="guide.html">
-        Student Guide
-      </a>
-
-      <a href="updates.html">
-        Updates
-      </a>
-
-      <a href="tools.html">
-        Tools
-      </a>
-
+      <div class="footer-column">
+        <h4>Information</h4>
+        <a href="about.html">About</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Use</a>
+        <a href="contact.html">Contact</a>
+      </div>
     </div>
-
   </div>
-
 
   <div class="footer-bottom">
-
-    <p>
-      © 2026 Uni Pilot. Built for students.
-    </p>
-
+    <p>© 2026 Uni Pilot. All rights reserved.</p>
   </div>
-
 </footer>
 
 
