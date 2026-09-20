@@ -11,12 +11,6 @@
 <link rel="stylesheet" href="style.css">
 
 <style>
-/* =========================================================
-   ICT DEPARTMENT PAGE
-   CHEMISTRY-STYLE DEPARTMENT DESIGN
-   GREEN + YELLOW — NO BLUE
-========================================================= */
-
 :root{
   --green:#0b5d3b;
   --dark-green:#063b26;
@@ -27,31 +21,13 @@
   --text:#17221c;
   --muted:#6d7a72;
   --border:#dfe8e2;
+  --soft:#fbfdfb;
 }
-
-html{
-  scroll-behavior:smooth;
-}
-
-*{
-  box-sizing:border-box;
-}
-
-body{
-  margin:0;
-  font-family:"Manrope",Arial,Helvetica,sans-serif;
-  background:var(--background);
-  color:var(--text);
-}
-
-a{
-  color:inherit;
-  text-decoration:none;
-}
-
-button{
-  font-family:inherit;
-}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Manrope",Arial,Helvetica,sans-serif;background:var(--background);color:var(--text)}
+a{color:inherit;text-decoration:none}
+button,input{font-family:inherit}
 
 .department-page{
   min-height:100vh;
@@ -61,1085 +37,726 @@ button{
     var(--background);
 }
 
-/* =========================================================
-   HERO — SAME VISUAL LANGUAGE AS CHEMISTRY
-========================================================= */
-
+/* HERO */
 .department-hero{
-  position:relative;
-  overflow:hidden;
+  position:relative;overflow:hidden;
   background:
     radial-gradient(circle at 82% 18%,rgba(245,197,24,.16),transparent 28%),
     linear-gradient(135deg,#07120d 0%,var(--dark-green) 48%,var(--green) 100%);
-  color:var(--white);
-  padding:58px 22px 50px;
-  border-radius:30px;
-  margin:18px 22px 0;
-  isolation:isolate;
+  color:#fff;padding:58px 22px 50px;border-radius:30px;margin:18px 22px 0;
   box-shadow:0 18px 50px rgba(6,59,38,.14);
 }
-
-.department-hero::before{
-  content:"";
-  position:absolute;
-  width:230px;
-  height:230px;
-  border-radius:50%;
-  border:1px solid rgba(245,197,24,.12);
-  right:-85px;
-  top:-100px;
-  z-index:-1;
-}
-
 .department-hero::after{
-  content:"ICT";
-  position:absolute;
-  right:22px;
-  bottom:-25px;
-  font-size:clamp(5rem,15vw,11rem);
-  line-height:.8;
-  font-weight:800;
-  letter-spacing:-7px;
-  color:rgba(255,255,255,.035);
-  z-index:-1;
-  pointer-events:none;
+  content:"ICT";position:absolute;right:22px;bottom:-25px;
+  font-size:clamp(5rem,15vw,11rem);line-height:.8;font-weight:800;
+  letter-spacing:-7px;color:rgba(255,255,255,.035);pointer-events:none;
 }
-
-.department-hero-content{
-  position:relative;
-  max-width:820px;
-  margin:auto;
-  text-align:center;
-  z-index:2;
-}
-
-.breadcrumb{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  flex-wrap:wrap;
-  gap:7px;
-  margin-bottom:22px;
-  color:rgba(255,255,255,.62);
-  font-size:.67rem;
-  font-weight:600;
-}
-
-.breadcrumb a{
-  color:rgba(255,255,255,.86);
-}
-
-.breadcrumb a:hover{
-  color:var(--yellow);
-}
-
+.department-hero-content{position:relative;max-width:900px;margin:auto;text-align:center;z-index:2}
+.breadcrumb{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:7px;margin-bottom:22px;color:rgba(255,255,255,.62);font-size:.67rem;font-weight:600}
+.breadcrumb a{color:rgba(255,255,255,.86)}
+.breadcrumb a:hover{color:var(--yellow)}
 .department-label{
-  display:inline-flex;
-  align-items:center;
-  gap:7px;
-  padding:7px 13px;
-  border:1px solid rgba(245,197,24,.35);
-  border-radius:999px;
-  background:rgba(245,197,24,.08);
-  color:var(--yellow);
-  font-size:.62rem;
-  font-weight:800;
-  letter-spacing:1.2px;
-  text-transform:uppercase;
+  display:inline-flex;align-items:center;gap:7px;padding:7px 13px;
+  border:1px solid rgba(245,197,24,.35);border-radius:999px;
+  background:rgba(245,197,24,.08);color:var(--yellow);
+  font-size:.62rem;font-weight:800;letter-spacing:1.2px;text-transform:uppercase
+}
+.department-label::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--yellow)}
+.department-hero h1{margin:16px auto 0;max-width:900px;color:#fff;font-size:clamp(2.35rem,5.7vw,4.35rem);line-height:1;letter-spacing:-2.5px;font-weight:800}
+.department-hero h1 span{color:var(--yellow)}
+.faculty-name{margin:19px 0 0;color:var(--yellow);font-size:.9rem;font-weight:800}
+.department-hero-description{max-width:700px;margin:15px auto 0;color:rgba(255,255,255,.72);font-size:.82rem;line-height:1.7}
+.department-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:9px;margin-top:23px}
+.department-action{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:0 15px;border-radius:999px;font-size:.67rem;font-weight:800;transition:.2s ease}
+.department-action:hover{transform:translateY(-2px)}
+.department-action.primary{background:var(--yellow);color:var(--dark-green)}
+.department-action.secondary{border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.08);color:#fff}
+
+/* MAIN */
+.department-main{width:min(1120px,calc(100% - 44px));margin:0 auto;padding:42px 0 70px}
+.quick-info{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:70px}
+.quick-card,.content-card,.programme-card,.resource-card,.contact-card,.table-card,.rule-card{
+  background:#fff;border:1px solid var(--border);border-radius:20px;
+  box-shadow:0 12px 35px rgba(6,59,38,.05)
+}
+.quick-card{min-height:125px;padding:19px;transition:.2s ease}
+.quick-card:hover,.programme-card:hover,.resource-card:hover{transform:translateY(-3px);border-color:rgba(11,93,59,.25)}
+.quick-icon,.programme-icon,.resource-icon{
+  width:42px;height:42px;display:grid;place-items:center;margin-bottom:12px;
+  border-radius:13px;background:var(--light-green);font-size:18px
+}
+.quick-card span,.mini-label{
+  display:block;margin-bottom:6px;color:var(--muted);font-size:.61rem;
+  font-weight:800;letter-spacing:.06em;text-transform:uppercase
+}
+.quick-card strong{display:block;color:var(--text);font-size:.78rem;line-height:1.45}
+
+.department-section{margin-bottom:70px;scroll-margin-top:30px}
+.section-heading{margin-bottom:23px}
+.section-heading span{display:block;margin-bottom:7px;color:var(--green);font-size:.64rem;font-weight:800;letter-spacing:1.1px;text-transform:uppercase}
+.section-heading h2{margin:0;color:var(--text);font-size:clamp(1.8rem,4vw,2.4rem);line-height:1.05;letter-spacing:-1.2px}
+.section-heading p{margin:9px 0 0;color:var(--muted);font-size:.8rem;line-height:1.6}
+
+.about-box{padding:28px}
+.about-box p{margin:0 0 17px;color:var(--muted);font-size:.84rem;line-height:1.85}
+.about-box p:last-child{margin-bottom:0}
+.location-button,.action-button,.download-button,.upload-button,.whatsapp-button{
+  display:inline-flex;align-items:center;justify-content:center;gap:7px;
+  min-height:40px;padding:0 15px;border-radius:11px;font-size:.68rem;font-weight:800;
+  border:0;cursor:pointer;transition:.2s ease
+}
+.location-button,.download-button{background:var(--green);color:#fff}
+.location-button:hover,.download-button:hover{background:var(--dark-green);transform:translateY(-2px)}
+.upload-button{background:var(--yellow);color:var(--dark-green)}
+.whatsapp-button{background:var(--light-green);color:var(--green)}
+.upload-status{margin:9px 0 0;color:var(--muted);font-size:.7rem;line-height:1.5}
+
+.programme-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.programme-card{padding:24px;transition:.2s ease}
+.programme-icon{width:48px;height:48px;font-size:21px}
+.programme-card h3{margin:0 0 9px;color:var(--text);font-size:.98rem;line-height:1.45}
+.programme-card p{margin:0;color:var(--muted);font-size:.8rem;line-height:1.7}
+
+/* INFORMATION CARDS */
+.info-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.content-card{padding:24px}
+.content-card h3{margin:0 0 12px;font-size:1rem}
+.content-card p,.content-card li{color:var(--muted);font-size:.79rem;line-height:1.75}
+.content-card ul,.content-card ol{margin:0;padding-left:20px}
+.content-card li{margin-bottom:6px}
+.content-card li:last-child{margin-bottom:0}
+.full-card{grid-column:1/-1}
+
+/* COURSE STRUCTURE */
+.level-nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.level-nav a{padding:9px 13px;border-radius:999px;background:var(--light-green);color:var(--green);font-size:.68rem;font-weight:800}
+.level-nav a:hover{background:var(--yellow);color:var(--dark-green)}
+
+.course-block{margin-bottom:18px}
+.course-block:last-child{margin-bottom:0}
+.course-block h3{margin:0 0 10px;color:var(--green);font-size:.92rem}
+.table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:16px;background:#fff}
+.course-table{width:100%;border-collapse:collapse;min-width:760px}
+.course-table th,.course-table td{padding:10px 11px;border-bottom:1px solid var(--border);text-align:left;font-size:.69rem;vertical-align:top}
+.course-table th{background:var(--light-green);color:var(--green);font-size:.62rem;letter-spacing:.04em;text-transform:uppercase}
+.course-table td:first-child{font-weight:800;color:var(--green);white-space:nowrap}
+.course-table tr:last-child td{border-bottom:0}
+.course-table .total-row td{font-weight:800;background:#fbfdfb;color:var(--text)}
+.note{margin:10px 0 0;color:var(--muted);font-size:.7rem;line-height:1.65}
+
+/* SUMMARY */
+.summary-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.summary-card{padding:24px;background:#fff;border:1px solid var(--border);border-radius:20px}
+.summary-card h3{margin:0 0 15px;font-size:.95rem}
+.summary-stat{display:flex;justify-content:space-between;gap:15px;padding:10px 0;border-bottom:1px solid var(--border);font-size:.74rem}
+.summary-stat:last-child{border-bottom:0}
+.summary-stat span{color:var(--muted)}
+.summary-stat strong{color:var(--green)}
+
+/* RESOURCES */
+.resource-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.resource-card{display:block;padding:24px;transition:.2s ease}
+.resource-icon{width:48px;height:48px;font-size:21px}
+.resource-card h3{margin:0 0 8px;font-size:.96rem}
+.resource-card p{margin:0;color:var(--muted);font-size:.78rem;line-height:1.7}
+.resource-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}
+.file-input{display:none}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.contact-card{padding:25px}
+.contact-card h3{margin:0 0 21px;font-size:.98rem}
+.contact-item{display:flex;align-items:flex-start;gap:12px;margin-bottom:17px}
+.contact-item:last-child{margin-bottom:0}
+.contact-item-icon{width:39px;height:39px;flex:0 0 39px;display:grid;place-items:center;border-radius:11px;background:var(--light-green);font-size:17px}
+.contact-item span{display:block;margin-bottom:4px;color:var(--muted);font-size:.62rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+.contact-item strong{color:var(--text);font-size:.78rem;line-height:1.5}
+
+/* HELP */
+.help-box{padding:40px 25px;border-radius:24px;background:radial-gradient(circle at 85% 15%,rgba(245,197,24,.13),transparent 28%),var(--dark-green);color:#fff;text-align:center}
+.help-box h2{margin:0 0 11px;font-size:clamp(1.5rem,4vw,2rem);letter-spacing:-.8px}
+.help-box p{max-width:700px;margin:0 auto 22px;color:rgba(255,255,255,.74);font-size:.8rem;line-height:1.7}
+.help-button{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 18px;border-radius:999px;background:var(--yellow);color:var(--dark-green);font-size:.7rem;font-weight:800}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border)}
+
+@media(max-width:950px){
+  .quick-info{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .resource-grid,.summary-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .programme-grid,.contact-grid,.info-grid{grid-template-columns:1fr}
 }
-
-.department-label::before{
-  content:"";
-  width:5px;
-  height:5px;
-  border-radius:50%;
-  background:var(--yellow);
-  box-shadow:0 0 9px rgba(245,197,24,.8);
-}
-
-.department-hero h1{
-  margin:16px auto 0;
-  max-width:850px;
-  color:#fff;
-  font-size:clamp(2.35rem,5.7vw,4.35rem);
-  line-height:1;
-  letter-spacing:-2.5px;
-  font-weight:800;
-}
-
-.department-hero h1 span{
-  display:inline-block;
-  color:var(--yellow);
-  position:relative;
-}
-
-.department-hero h1 span::after{
-  content:"";
-  position:absolute;
-  left:2px;
-  right:2px;
-  bottom:-6px;
-  height:2px;
-  border-radius:999px;
-  background:var(--yellow);
-  opacity:.7;
-}
-
-.faculty-name{
-  margin:19px 0 0;
-  color:var(--yellow);
-  font-size:.9rem;
-  font-weight:800;
-}
-
-.department-hero-description{
-  max-width:620px;
-  margin:15px auto 0;
-  color:rgba(255,255,255,.72);
-  font-size:.82rem;
-  line-height:1.7;
-}
-
-.department-actions{
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:9px;
-  margin-top:23px;
-}
-
-.department-action{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  min-height:40px;
-  padding:0 15px;
-  border-radius:999px;
-  font-size:.67rem;
-  font-weight:800;
-  transition:.2s ease;
-}
-
-.department-action:hover{
-  transform:translateY(-2px);
-}
-
-.department-action.primary{
-  background:var(--yellow);
-  color:var(--dark-green);
-}
-
-.department-action.primary:hover{
-  background:#e6b600;
-}
-
-.department-action.secondary{
-  border:1px solid rgba(255,255,255,.14);
-  background:rgba(255,255,255,.08);
-  color:#fff;
-}
-
-.department-action.secondary:hover{
-  background:rgba(255,255,255,.15);
-}
-
-/* =========================================================
-   MAIN CONTAINER
-========================================================= */
-
-.department-main{
-  width:min(1080px,calc(100% - 44px));
-  margin:0 auto;
-  padding:42px 0 70px;
-  position:relative;
-}
-
-/* =========================================================
-   QUICK INFO — ALL FOUR COLUMNS
-========================================================= */
-
-.quick-info{
-  display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:14px;
-  margin-bottom:70px;
-}
-
-.quick-card{
-  min-height:125px;
-  padding:19px;
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:20px;
-  box-shadow:0 12px 35px rgba(6,59,38,.055);
-  transition:.2s ease;
-}
-
-.quick-card:hover{
-  transform:translateY(-4px);
-  border-color:rgba(11,93,59,.25);
-  box-shadow:0 18px 42px rgba(6,59,38,.09);
-}
-
-.quick-icon{
-  width:42px;
-  height:42px;
-  display:grid;
-  place-items:center;
-  margin-bottom:12px;
-  border-radius:13px;
-  background:var(--light-green);
-  font-size:18px;
-}
-
-.quick-card span{
-  display:block;
-  margin-bottom:6px;
-  color:var(--muted);
-  font-size:.61rem;
-  font-weight:800;
-  letter-spacing:.06em;
-  text-transform:uppercase;
-}
-
-.quick-card strong{
-  display:block;
-  color:var(--text);
-  font-size:.78rem;
-  line-height:1.45;
-}
-
-/* =========================================================
-   SECTIONS
-========================================================= */
-
-.department-section{
-  margin-bottom:70px;
-  scroll-margin-top:30px;
-}
-
-.section-heading{
-  margin-bottom:23px;
-}
-
-.section-heading span{
-  display:block;
-  margin-bottom:7px;
-  color:var(--green);
-  font-size:.64rem;
-  font-weight:800;
-  letter-spacing:1.1px;
-  text-transform:uppercase;
-}
-
-.section-heading h2{
-  margin:0;
-  color:var(--text);
-  font-size:clamp(1.8rem,4vw,2.4rem);
-  line-height:1.05;
-  letter-spacing:-1.2px;
-}
-
-/* =========================================================
-   ABOUT
-========================================================= */
-
-.about-box{
-  padding:28px;
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:22px;
-  box-shadow:0 15px 45px rgba(6,59,38,.06);
-}
-
-.about-box p{
-  margin:0;
-  color:var(--muted);
-  font-size:.84rem;
-  line-height:1.85;
-}
-
-/* =========================================================
-   PROGRAMMES
-========================================================= */
-
-.programme-grid{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:14px;
-}
-
-.programme-card{
-  padding:24px;
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:20px;
-  box-shadow:0 12px 35px rgba(6,59,38,.05);
-  transition:.2s ease;
-}
-
-.programme-card:hover{
-  transform:translateY(-4px);
-  border-color:rgba(11,93,59,.3);
-  background:#fbfdfb;
-}
-
-.programme-icon{
-  width:48px;
-  height:48px;
-  display:grid;
-  place-items:center;
-  margin-bottom:16px;
-  border-radius:14px;
-  background:var(--light-green);
-  font-size:21px;
-}
-
-.programme-card h3{
-  margin:0 0 9px;
-  color:var(--text);
-  font-size:.98rem;
-  line-height:1.45;
-}
-
-.programme-card p{
-  margin:0;
-  color:var(--muted);
-  font-size:.8rem;
-  line-height:1.7;
-}
-
-/* =========================================================
-   COURSES — ACCORDION KEPT FROM YOUR ORIGINAL ICT CODE
-========================================================= */
-
-.courses-box{
-  display:grid;
-  gap:12px;
-}
-
-.level-card{
-  overflow:hidden;
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:18px;
-  box-shadow:0 10px 30px rgba(6,59,38,.045);
-}
-
-.level-button{
-  width:100%;
-  min-height:62px;
-  padding:0 20px;
-  border:0;
-  background:#fff;
-  color:var(--text);
-  cursor:pointer;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  font-size:.84rem;
-  font-weight:800;
-  text-align:left;
-  transition:.2s ease;
-}
-
-.level-button:hover{
-  background:var(--light-green);
-}
-
-.level-arrow{
-  width:31px;
-  height:31px;
-  display:grid;
-  place-items:center;
-  border-radius:50%;
-  background:var(--light-green);
-  color:var(--green);
-  font-size:.7rem;
-  transition:transform .2s ease;
-}
-
-.level-card.active .level-arrow{
-  transform:rotate(180deg);
-}
-
-.course-list{
-  display:none;
-  border-top:1px solid var(--border);
-}
-
-.level-card.active .course-list{
-  display:block;
-}
-
-.course-row{
-  display:grid;
-  grid-template-columns:150px 1fr 90px;
-  gap:15px;
-  padding:16px 20px;
-  border-bottom:1px solid var(--border);
-  color:var(--muted);
-  font-size:.76rem;
-  line-height:1.5;
-}
-
-.course-row:last-child{
-  border-bottom:none;
-}
-
-.course-code{
-  color:var(--green);
-  font-weight:800;
-}
-
-.course-unit{
-  text-align:right;
-  font-weight:800;
-}
-
-/* =========================================================
-   RESOURCES — ALL THREE COLUMNS
-========================================================= */
-
-.resource-grid{
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:14px;
-}
-
-.resource-card{
-  display:block;
-  padding:24px;
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:20px;
-  box-shadow:0 12px 35px rgba(6,59,38,.05);
-  transition:.2s ease;
-}
-
-.resource-card:hover{
-  transform:translateY(-4px);
-  border-color:rgba(11,93,59,.3);
-  background:#fbfdfb;
-}
-
-.resource-icon{
-  width:48px;
-  height:48px;
-  display:grid;
-  place-items:center;
-  margin-bottom:16px;
-  border-radius:14px;
-  background:var(--light-green);
-  font-size:21px;
-}
-
-.resource-card h3{
-  margin:0 0 8px;
-  color:var(--text);
-  font-size:.96rem;
-}
-
-.resource-card p{
-  margin:0;
-  color:var(--muted);
-  font-size:.78rem;
-  line-height:1.7;
-}
-
-/* =========================================================
-   CONTACT — TWO COLUMNS
-========================================================= */
-
-.contact-grid{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:14px;
-}
-
-.contact-card{
-  padding:25px;
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:20px;
-  box-shadow:0 12px 35px rgba(6,59,38,.05);
-}
-
-.contact-card h3{
-  margin:0 0 21px;
-  color:var(--text);
-  font-size:.98rem;
-}
-
-.contact-item{
-  display:flex;
-  align-items:flex-start;
-  gap:12px;
-  margin-bottom:17px;
-}
-
-.contact-item:last-child{
-  margin-bottom:0;
-}
-
-.contact-item-icon{
-  width:39px;
-  height:39px;
-  flex:0 0 39px;
-  display:grid;
-  place-items:center;
-  border-radius:11px;
-  background:var(--light-green);
-  font-size:17px;
-}
-
-.contact-item span{
-  display:block;
-  margin-bottom:4px;
-  color:var(--muted);
-  font-size:.62rem;
-  font-weight:800;
-  letter-spacing:.06em;
-  text-transform:uppercase;
-}
-
-.contact-item strong{
-  color:var(--text);
-  font-size:.78rem;
-  line-height:1.5;
-}
-
-/* =========================================================
-   HELP
-========================================================= */
-
-.help-box{
-  padding:40px 25px;
-  border-radius:24px;
-  background:
-    radial-gradient(circle at 85% 15%,rgba(245,197,24,.13),transparent 28%),
-    var(--dark-green);
-  color:#fff;
-  text-align:center;
-}
-
-.help-box h2{
-  margin:0 0 11px;
-  font-size:clamp(1.5rem,4vw,2rem);
-  letter-spacing:-.8px;
-}
-
-.help-box p{
-  max-width:650px;
-  margin:0 auto 22px;
-  color:rgba(255,255,255,.74);
-  font-size:.8rem;
-  line-height:1.7;
-}
-
-.help-button{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  min-height:42px;
-  padding:0 18px;
-  border-radius:999px;
-  background:var(--yellow);
-  color:var(--dark-green);
-  font-size:.7rem;
-  font-weight:800;
-  transition:.2s ease;
-}
-
-.help-button:hover{
-  background:#e6b600;
-  transform:translateY(-2px);
-}
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-footer{
-  border-top:1px solid var(--border);
-}
-
-/* =========================================================
-   RESPONSIVE
-========================================================= */
-
-@media(max-width:900px){
-  .quick-info{
-    grid-template-columns:repeat(2,minmax(0,1fr));
-  }
-
-  .resource-grid{
-    grid-template-columns:repeat(2,minmax(0,1fr));
-  }
-
-  .programme-grid,
-  .contact-grid{
-    grid-template-columns:1fr;
-  }
-}
-
 @media(max-width:650px){
-  .department-hero{
-    padding:40px 17px 36px;
-    margin:12px 14px 0;
-    border-radius:24px;
-  }
-
-  .department-hero h1{
-    font-size:2.65rem;
-    letter-spacing:-1.8px;
-  }
-
-  .faculty-name{
-    font-size:.8rem;
-  }
-
-  .department-description{
-    font-size:.77rem;
-  }
-
-  .department-main{
-    width:min(100% - 34px,1080px);
-    padding-top:35px;
-  }
-
-  .quick-info{
-    grid-template-columns:1fr 1fr;
-    gap:10px;
-    margin-bottom:55px;
-  }
-
-  .quick-card{
-    min-height:112px;
-    padding:16px;
-  }
-
-  .resource-grid{
-    grid-template-columns:1fr;
-  }
-
-  .department-actions{
-    gap:7px;
-  }
-
-  .department-action{
-    min-height:38px;
-    padding:0 13px;
-  }
-
-  .about-box,
-  .programme-card,
-  .resource-card,
-  .contact-card{
-    padding:21px;
-  }
-
-  .course-row{
-    grid-template-columns:1fr;
-    gap:5px;
-  }
-
-  .course-unit{
-    text-align:left;
-  }
+  .department-hero{padding:40px 17px 36px;margin:12px 14px 0;border-radius:24px}
+  .department-hero h1{font-size:2.65rem;letter-spacing:-1.8px}
+  .department-main{width:min(100% - 34px,1120px);padding-top:35px}
+  .quick-info{grid-template-columns:1fr 1fr;gap:10px;margin-bottom:55px}
+  .quick-card{min-height:112px;padding:16px}
+  .resource-grid,.summary-grid{grid-template-columns:1fr}
+  .about-box,.programme-card,.resource-card,.contact-card,.content-card,.summary-card{padding:21px}
+  .department-actions{gap:7px}
+  .department-action{min-height:38px;padding:0 13px}
 }
-
-@media(max-width:430px){
-  .quick-info{
-    grid-template-columns:1fr;
-  }
-
-  .breadcrumb{
-    font-size:.6rem;
-  }
-}
+@media(max-width:430px){.quick-info{grid-template-columns:1fr}.breadcrumb{font-size:.6rem}}
 </style>
 </head>
 
 <body class="department-page">
 
-<!-- =====================================================
-     HERO
-====================================================== -->
-
 <section class="department-hero">
   <div class="department-hero-content">
-
     <div class="breadcrumb">
-      <a href="index.html">Home</a>
-      <span>›</span>
-      <a href="faculty-guide.html">Faculty Guide</a>
-      <span>›</span>
+      <a href="index.html">Home</a><span>›</span>
+      <a href="faculty-guide.html">Faculty Guide</a><span>›</span>
       <span>Information and Communication Technology</span>
     </div>
-
     <span class="department-label">Department Guide</span>
-
-    <h1>
-      Department of <span>Information &amp; Communication Technology.</span>
-    </h1>
-
+    <h1>Department of <span>Information &amp; Communication Technology.</span></h1>
     <p class="faculty-name">Faculty of Computing</p>
-
     <p class="department-hero-description">
-      Welcome to the Information and Communication Technology programme
-      at Adekunle Ajasin University. Explore your programme, courses,
-      academic resources and useful departmental information in one place.
+      Department information, programme structure, admission requirements,
+      course structure, SIWES, graduation requirements and student resources
+      for B.Sc. Information and Communication Technology at AAUA.
     </p>
-
     <div class="department-actions">
-      <a href="#resources" class="department-action primary">📚 Resources</a>
+      <a href="#overview" class="department-action primary">📚 Overview</a>
       <a href="#courses" class="department-action secondary">📋 Courses</a>
+      <a href="#resources" class="department-action secondary">📁 Resources</a>
       <a href="#help" class="department-action secondary">🆘 Get Help</a>
     </div>
-
   </div>
 </section>
 
-<!-- =====================================================
-     MAIN
-====================================================== -->
-
 <main class="department-main">
 
-  <!-- ===================================================
-       QUICK INFORMATION — ALL FOUR COLUMNS
-  ==================================================== -->
+<section class="quick-info">
+  <div class="quick-card"><div class="quick-icon">🏛️</div><span>Faculty</span><strong>Faculty of Computing</strong></div>
+  <div class="quick-card"><div class="quick-icon">👨‍🏫</div><span>Head of Department</span><strong>Dr. A. O. Akingbesote</strong></div>
+  <div class="quick-card"><div class="quick-icon">🎓</div><span>Degree</span><strong>B.Sc. Information and Communication Technology</strong></div>
+  <div class="quick-card"><div class="quick-icon">⏳</div><span>Duration</span><strong>4 years UTME · 3 years Direct Entry</strong></div>
+</section>
 
-  <section class="quick-info">
+<section class="department-section" id="overview">
+  <div class="section-heading">
+    <span>Introduction &amp; General Background</span>
+    <h2>Information and Communication Technology</h2>
+  </div>
+  <div class="about-box">
+    <p>
+      It is with great pleasure and immense honor that I welcome you all to the
+      Department of Information and Communication Technology (ICT) at Adekunle
+      Ajasin University, Akungba-Akoko.
+    </p>
+    <p>
+      In the fast-evolving digital era, ICT plays a fundamental role in shaping
+      the way we communicate, work, and interact with the world. Our department
+      is committed to excellence in teaching, research, and industry
+      collaboration, ensuring that our students are equipped with the knowledge
+      and skills needed for the ICT field.
+    </p>
+    <p>
+      We take pride in our dynamic curriculum, state-of-the-art facilities,
+      and dedicated faculty who are passionate about driving technological
+      advancement. We foster an environment of creativity, critical thinking,
+      and problem-solving to prepare future leaders, innovators, and
+      professionals in the ICT field.
+    </p>
+    <p>
+      To our new students, welcome to a journey of learning and discovery.
+      You are now part of a community that values knowledge, collaboration,
+      and continuous growth. We encourage you to take advantage of the
+      resources available, engage with your peers and mentors, and embrace
+      challenges as opportunities for growth.
+    </p>
+    <p>
+      As we embark on this academic programme, let us remain steadfast in our
+      pursuit of knowledge, innovation, and excellence. The future of ICT is
+      bright, and with dedication and hard work, we can drive meaningful change
+      and contribute to the ever-evolving digital landscape.
+    </p>
+    <p><strong>Dr. A. O. Akingbesote<br>HOD-ICT</strong></p>
+    <p>
+      <strong>General Overview:</strong> Globally, there is a growing demand
+      for Information and Communication Technology specialists to power and
+      drive processes in business and non-business organisations. Information
+      and Communication Technology has tremendous potential to boost operations
+      efficiency, increase productivity and operate uninterruptedly with no
+      downtime. The degree programme aims at producing ICT graduates with
+      sufficient professional knowledge and skills to manage organisations'
+      computing infrastructure and provide adequate support for computer users
+      in order to enhance productivity and increase business value.
+    </p>
+    <a href="campus-map.html" class="location-button">📍 View Department Location</a>
+  </div>
+</section>
 
-    <div class="quick-card">
-      <div class="quick-icon">🏛️</div>
-      <span>Faculty</span>
-      <strong>Faculty of Computing</strong>
-    </div>
-
-    <div class="quick-card">
-      <div class="quick-icon">👨‍🏫</div>
-      <span>Head of Department</span>
-      <strong>Information coming soon</strong>
-    </div>
-
-    <div class="quick-card">
-      <div class="quick-icon">🎓</div>
-      <span>Degree</span>
-      <strong>B.Sc. Information and Communication Technology</strong>
-    </div>
-
-    <div class="quick-card">
-      <div class="quick-icon">⏳</div>
-      <span>Duration</span>
-      <strong>4 Years</strong>
-    </div>
-
-  </section>
-
-  <!-- ===================================================
-       ABOUT
-  ==================================================== -->
-
-  <section class="department-section">
-    <div class="section-heading">
-      <span>About the Department</span>
-      <h2>Information and Communication Technology</h2>
-    </div>
-
-    <div class="about-box">
+<section class="department-section">
+  <div class="section-heading">
+    <span>Programme Philosophy &amp; Objectives</span>
+    <h2>What the Programme Aims to Develop</h2>
+  </div>
+  <div class="info-grid">
+    <div class="content-card">
+      <h3>Philosophy</h3>
       <p>
-        The Information and Communication Technology programme is part of
-        the Faculty of Computing at Adekunle Ajasin University, Akungba-Akoko.
-        The programme focuses on the use of computing and communication
-        technologies to support information systems, digital services,
-        technology-driven solutions and modern computing needs.
+        The guiding principles of the programme is to equip Information and
+        Communication Technology students with adequate skills and knowledge
+        to provide seamless organisations' ICT integration for effective
+        productivity and to support organisations' computer system users
+        through best practices and professional standards.
       </p>
     </div>
-  </section>
-
-  <!-- ===================================================
-       PROGRAMMES — ALL TWO COLUMNS
-  ==================================================== -->
-
-  <section class="department-section">
-    <div class="section-heading">
-      <span>Academic Programme</span>
-      <h2>Programme &amp; Admission</h2>
+    <div class="content-card">
+      <h3>Objectives</h3>
+      <ol>
+        <li>Provide students with a broad knowledge and practical skills in Information and Communication Technology.</li>
+        <li>Empower students to be problem-solvers through Information and Communication Technologies tools.</li>
+        <li>Equip students with the capacity for professional practice in the Information and Communication Technology sector.</li>
+      </ol>
     </div>
+  </div>
+</section>
 
-    <div class="programme-grid">
-
-      <div class="programme-card">
-        <div class="programme-icon">🎓</div>
-
-        <h3>
-          B.Sc. Information and Communication Technology
-        </h3>
-
-        <p>
-          Bachelor of Science programme in Information and Communication
-          Technology.
-        </p>
-      </div>
-
-      <div class="programme-card">
-        <div class="programme-icon">💻</div>
-
-        <h3>
-          Information and Communication Technology
-        </h3>
-
-        <p>
-          Study computing and communication technologies and how they are
-          applied to information systems, digital solutions and modern
-          technology environments.
-        </p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ===================================================
-       COURSES
-  ==================================================== -->
-
-  <section class="department-section" id="courses">
-    <div class="section-heading">
-      <span>Academic Information</span>
-      <h2>Courses by Level</h2>
-    </div>
-
-    <div class="courses-box">
-
-      <!-- 100 LEVEL -->
-      <div class="level-card">
-        <button class="level-button" type="button">
-          <span>100 Level</span>
-          <span class="level-arrow">▼</span>
-        </button>
-
-        <div class="course-list">
-          <div class="course-row">
-            <span class="course-code">Course Code</span>
-            <span>Course Title</span>
-            <span class="course-unit">3 Units</span>
-          </div>
-
-          <div class="course-row">
-            <span class="course-code">Course Code</span>
-            <span>Course Title</span>
-            <span class="course-unit">2 Units</span>
-          </div>
-
-          <div class="course-row">
-            <span class="course-code">Course Code</span>
-            <span>Course Title</span>
-            <span class="course-unit">3 Units</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 200 LEVEL -->
-      <div class="level-card">
-        <button class="level-button" type="button">
-          <span>200 Level</span>
-          <span class="level-arrow">▼</span>
-        </button>
-
-        <div class="course-list">
-          <div class="course-row">
-            <span class="course-code">Course Code</span>
-            <span>Course Title</span>
-            <span class="course-unit">3 Units</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 300 LEVEL -->
-      <div class="level-card">
-        <button class="level-button" type="button">
-          <span>300 Level</span>
-          <span class="level-arrow">▼</span>
-        </button>
-
-        <div class="course-list">
-          <div class="course-row">
-            <span class="course-code">Course Code</span>
-            <span>Course Title</span>
-            <span class="course-unit">3 Units</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 400 LEVEL -->
-      <div class="level-card">
-        <button class="level-button" type="button">
-          <span>400 Level</span>
-          <span class="level-arrow">▼</span>
-        </button>
-
-        <div class="course-list">
-          <div class="course-row">
-            <span class="course-code">Course Code</span>
-            <span>Course Title</span>
-            <span class="course-unit">3 Units</span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ===================================================
-       RESOURCES — ALL THREE COLUMNS
-  ==================================================== -->
-
-  <section class="department-section" id="resources">
-    <div class="section-heading">
-      <span>Student Support</span>
-      <h2>Academic Resources</h2>
-    </div>
-
-    <div class="resource-grid">
-
-      <a href="#" class="resource-card">
-        <div class="resource-icon">📖</div>
-
-        <h3>Department Guide</h3>
-
-        <p>
-          Find useful information about the Information and Communication
-          Technology programme and your academic structure.
-        </p>
-      </a>
-
-      <a href="#" class="resource-card">
-        <div class="resource-icon">📝</div>
-
-        <h3>Course Information</h3>
-
-        <p>
-          Access information about ICT courses and academic levels.
-        </p>
-      </a>
-
-      <a href="#" class="resource-card">
-        <div class="resource-icon">🎓</div>
-
-        <h3>Student Resources</h3>
-
-        <p>
-          Useful academic materials and information for Information and
-          Communication Technology students.
-        </p>
-      </a>
-
-    </div>
-  </section>
-
-  <!-- ===================================================
-       CONTACT — TWO COLUMNS
-  ==================================================== -->
-
-  <section class="department-section">
-    <div class="section-heading">
-      <span>Get in Touch</span>
-      <h2>Department Contacts</h2>
-    </div>
-
-    <div class="contact-grid">
-
-      <div class="contact-card">
-        <h3>Department Information</h3>
-
-        <div class="contact-item">
-          <div class="contact-item-icon">🏛️</div>
-
-          <div>
-            <span>Faculty</span>
-            <strong>Faculty of Computing</strong>
-          </div>
-        </div>
-
-        <div class="contact-item">
-          <div class="contact-item-icon">🎓</div>
-
-          <div>
-            <span>Department</span>
-            <strong>
-              Information and Communication Technology
-            </strong>
-          </div>
-        </div>
-      </div>
-
-      <div class="contact-card">
-        <h3>University</h3>
-
-        <div class="contact-item">
-          <div class="contact-item-icon">📍</div>
-
-          <div>
-            <span>Location</span>
-            <strong>
-              Adekunle Ajasin University,
-              Akungba-Akoko, Ondo State
-            </strong>
-          </div>
-        </div>
-
-        <div class="contact-item">
-          <div class="contact-item-icon">🏫</div>
-
-          <div>
-            <span>Faculty</span>
-            <strong>Faculty of Computing</strong>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ===================================================
-       HELP
-  ==================================================== -->
-
-  <section class="department-section" id="help">
-    <div class="help-box">
-
-      <h2>Need help with your department?</h2>
-
+<section class="department-section">
+  <div class="section-heading">
+    <span>Programme Offered &amp; Duration</span>
+    <h2>B.Sc. Information and Communication Technology</h2>
+  </div>
+  <div class="programme-grid">
+    <div class="programme-card">
+      <div class="programme-icon">🎓</div>
+      <h3>Bachelor of Science Degree in ICT</h3>
       <p>
-        If you need help with registration, courses, departmental
-        information or other student matters, use the Uni Pilot
-        student help system.
+        The programme offered is Bachelor of Science Degree in Information and
+        Communication Technology.
       </p>
-
-      <a href="help.html" class="help-button">Get Help</a>
-
     </div>
-  </section>
+    <div class="programme-card">
+      <div class="programme-icon">⏱️</div>
+      <h3>Duration</h3>
+      <p>
+        Candidates who enter through UTME normally spend 4 years (minimum),
+        while Direct Entry candidates spend 3 years (minimum).
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="department-section">
+  <div class="section-heading">
+    <span>Admission</span>
+    <h2>Admission Requirements</h2>
+  </div>
+  <div class="info-grid">
+    <div class="content-card">
+      <h3>UTME Entry Requirements</h3>
+      <ol>
+        <li>
+          Five O'Level credit passes at SSCE (WAEC, GCE, NECO and NABTEB) at
+          not more than two sittings, including English Language and
+          Mathematics, Physics, and two from Chemistry, Biology, Agricultural
+          Science, Statistics, Additional Mathematics, Computer Studies,
+          Studies, ICT or Basic Electronics.
+        </li>
+        <li>
+          UTME subjects must include Mathematics, Physics, and one of Biology,
+          Chemistry, Agric Science, Economics, Geography or Computer Studies.
+        </li>
+        <li>
+          Candidates successful in the pre-degree programme (Science) of
+          Adekunle Ajasin University, Akungba-Akoko can also be considered.
+        </li>
+      </ol>
+    </div>
+    <div class="content-card">
+      <h3>Direct Entry Requirements</h3>
+      <p>Students coming into 200 level must satisfy one of the following:</p>
+      <ol>
+        <li>Passes in two A'Level subjects which must include Mathematics, provided the O'Level requirement is satisfied.</li>
+        <li>At least Upper Credit Pass in ND Computer Science, Statistics or Electronics/Electrical Engineering, provided the O'Level requirement is satisfied.</li>
+        <li>NCE with at least Merit Pass in Computer Science, Mathematics or Statistics can also be considered, provided the O'Level requirement is satisfied.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="department-section">
+  <div class="section-heading">
+    <span>Graduation</span>
+    <h2>Graduation Requirements</h2>
+  </div>
+  <div class="content-card">
+    <ol>
+      <li>Passed all core courses, university and faculty/school required courses and electives.</li>
+      <li>Accumulated a minimum of 146 course units for students admitted through UTME and 113 course units for students admitted to 200 level.</li>
+      <li>Attain a minimum CGPA of 1.00.</li>
+      <li>Be found worthy in character throughout the period of studentship and accumulate the total units prescribed for the programme from Core, Faculty and General Studies courses as well as SIWES, Seminar and Final Year Project.</li>
+    </ol>
+  </div>
+</section>
+
+<section class="department-section">
+  <div class="section-heading">
+    <span>Registration</span>
+    <h2>Registration for Courses</h2>
+  </div>
+  <div class="info-grid">
+    <div class="rule-card content-card">
+      <h3>Course Categories</h3>
+      <p><strong>Compulsory Courses:</strong> Courses which students must offer and pass before graduation.</p>
+      <p><strong>Elective Courses:</strong> Departmental-prescribed courses required to be registered and passed to meet the minimum requirements of the University before graduation.</p>
+    </div>
+    <div class="rule-card content-card">
+      <h3>Registration Rules</h3>
+      <ul>
+        <li>The minimum work load is 15 units and the maximum is 28 units per semester.</li>
+        <li>A student can withdraw from a course within the time stipulated by Senate without penalty only with the approval of the HOD on completion of Add and Delete form.</li>
+        <li>Any student who withdraws without due permission will be deemed to have failed the course.</li>
+        <li>Any course examination sat for without registration will be cancelled.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="department-section">
+  <div class="section-heading">
+    <span>Academic Structure</span>
+    <h2>3-Year and 4-Year Programme Structure</h2>
+  </div>
+  <div class="info-grid">
+    <div class="content-card">
+      <h3>3-Year Programme</h3>
+      <div class="table-wrap">
+        <table class="course-table">
+          <thead><tr><th>Level</th><th>Compulsory 1st</th><th>Compulsory 2nd</th><th>GST 1st</th><th>GST 2nd</th><th>ENT 1st</th><th>ENT 2nd</th><th>Elective 1st</th><th>Elective 2nd</th><th>Total 1st</th><th>Total 2nd</th></tr></thead>
+          <tbody>
+            <tr><td>200</td><td>15</td><td>16</td><td>-</td><td>2</td><td>2</td><td>-</td><td>2</td><td>2</td><td>19</td><td>20</td></tr>
+            <tr><td>300</td><td>16</td><td>15</td><td>-</td><td>-</td><td>-</td><td>-</td><td>2</td><td>-</td><td>18</td><td>15</td></tr>
+            <tr><td>400</td><td>15</td><td>14</td><td>-</td><td>2</td><td>-</td><td>2</td><td>2</td><td>2</td><td>17</td><td>20</td></tr>
+            <tr class="total-row"><td>Total</td><td>46</td><td>45</td><td>-</td><td>4</td><td>2</td><td>2</td><td>6</td><td>6</td><td>54</td><td>55</td></tr>
+            <tr class="total-row"><td>Minimum</td><td colspan="8">91 compulsory + 4 GST + 4 ENT + 14 elective units as prescribed</td><td colspan="2">113</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">Students on the 3-Year programme must offer, in addition to the specified courses, 4 units of GST courses offered by students on the 4-Year programme in their first year (100 Level). Students are to register for the courses on the advice of the department.</p>
+    </div>
+
+    <div class="content-card">
+      <h3>4-Year Programme</h3>
+      <div class="table-wrap">
+        <table class="course-table">
+          <thead><tr><th>Level</th><th>Compulsory 1st</th><th>Compulsory 2nd</th><th>GST 1st</th><th>GST 2nd</th><th>ENT 1st</th><th>ENT 2nd</th><th>Elective 1st</th><th>Elective 2nd</th><th>Total 1st</th><th>Total 2nd</th></tr></thead>
+          <tbody>
+            <tr><td>100</td><td>17</td><td>15</td><td>2</td><td>2</td><td>-</td><td>-</td><td>-</td><td>-</td><td>19</td><td>17</td></tr>
+            <tr><td>200</td><td>15</td><td>16</td><td>-</td><td>2</td><td>2</td><td>-</td><td>2</td><td>2</td><td>19</td><td>20</td></tr>
+            <tr><td>300</td><td>16</td><td>15</td><td>-</td><td>-</td><td>-</td><td>-</td><td>2</td><td>-</td><td>18</td><td>15</td></tr>
+            <tr><td>400</td><td>15</td><td>14</td><td>-</td><td>2</td><td>-</td><td>2</td><td>2</td><td>2</td><td>17</td><td>20</td></tr>
+            <tr class="total-row"><td>Sub-Total</td><td>63</td><td>61</td><td>2</td><td>6</td><td>2</td><td>2</td><td>6</td><td>4</td><td>73</td><td>73</td></tr>
+            <tr class="total-row"><td>Total</td><td colspan="8">Minimum programme structure shown in the handbook</td><td colspan="2">146</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="department-section" id="courses">
+  <div class="section-heading">
+    <span>Course Structure</span>
+    <h2>Courses by Level and Semester</h2>
+    <p>Course codes, titles, units, status, lecture hours (LH) and practical hours (PH) are reproduced from the supplied ICT document.</p>
+  </div>
+
+  <div class="level-nav">
+    <a href="#level100">100 Level</a>
+    <a href="#level200">200 Level</a>
+    <a href="#level300">300 Level</a>
+    <a href="#level400">400 Level</a>
+    <a href="#siwes">SIWES</a>
+  </div>
+
+  <div class="course-block" id="level100">
+    <h3>100 Level — First Semester</h3>
+    <div class="table-wrap"><table class="course-table">
+      <thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
+      <tbody>
+        <tr><td>GST 111</td><td>Communication in English</td><td>2</td><td>C</td><td>15</td><td>45</td></tr>
+        <tr><td>MTH 101</td><td>Elementary Mathematics I</td><td>2</td><td>C</td><td>30</td><td>0</td></tr>
+        <tr><td>PHY 101</td><td>General Physics I</td><td>2</td><td>C</td><td>30</td><td>0</td></tr>
+        <tr><td>PHY 107</td><td>General Practical Physics I</td><td>1</td><td>C</td><td>0</td><td>45</td></tr>
+        <tr><td>COS 101</td><td>Introduction to Computing Sciences</td><td>3</td><td>C</td><td>30</td><td>45</td></tr>
+        <tr><td>BIO 101</td><td>General Biology I</td><td>2</td><td>C</td><td>30</td><td>0</td></tr>
+        <tr><td>STA 111</td><td>Descriptive Statistics</td><td>3</td><td>C</td><td>45</td><td>0</td></tr>
+        <tr><td>AAUA-CSC 103</td><td>Computer Hardware &amp; Installation Management</td><td>2</td><td>C</td><td>15</td><td>45</td></tr>
+        <tr><td>AAUA-CSC 111</td><td>Statistical Computing</td><td>2</td><td>C</td><td>15</td><td>45</td></tr>
+        <tr class="total-row"><td>Total</td><td></td><td>19</td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="course-block">
+    <h3>100 Level — Second Semester</h3>
+    <div class="table-wrap"><table class="course-table">
+      <thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
+      <tbody>
+        <tr><td>GST 112</td><td>Nigerian Peoples and Culture</td><td>2</td><td>C</td><td>30</td><td>0</td></tr>
+        <tr><td>MTH 102</td><td>Elementary Mathematics II</td><td>2</td><td>C</td><td>30</td><td>0</td></tr>
+        <tr><td>PHY 102</td><td>General Physics II</td><td>2</td><td>C</td><td>30</td><td>0</td></tr>
+        <tr><td>PHY 108</td><td>General Practical Physics II</td><td>1</td><td>C</td><td>0</td><td>45</td></tr>
+        <tr><td>COS 102</td><td>Problem Solving Programming Techniques (VB/C)</td><td>2</td><td>C</td><td>30</td><td>0</td></tr>
+        <tr><td>BIO 102</td><td>General Biology II</td><td>2</td><td>C</td><td>30</td><td>0</td></tr>
+        <tr><td>MTH 104</td><td>Elementary Mathematics III</td><td>2</td><td>C</td><td>30</td><td>0</td></tr>
+        <tr><td>AAUA-CSC 112</td><td>Computer Graphics &amp; Image Processing</td><td>2</td><td>C</td><td>15</td><td>45</td></tr>
+        <tr><td>AAUA-CYB 102</td><td>Internet and its Application</td><td>2</td><td>C</td><td>15</td><td>45</td></tr>
+        <tr class="total-row"><td>Total</td><td></td><td>17</td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="course-block" id="level200">
+    <h3>200 Level — First Semester</h3>
+    <div class="table-wrap"><table class="course-table">
+      <thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
+      <tbody>
+        <tr><td>COS 201</td><td>Computer Programming I (C++/Java)</td><td>3</td><td>C</td><td>30</td><td>45</td></tr>
+        <tr><td>ICT 201</td><td>Introduction to Information and Communication Technology</td><td>2</td><td>C</td><td>30</td><td>0</td></tr>
+        <tr><td>CYB 201</td><td>Introduction to Cyber Security Strategy</td><td>2</td><td>C</td><td>30</td><td>0</td></tr>
+        <tr><td>MTH 201</td><td>Mathematical Methods</td><td>2</td><td>C</td><td>30</td><td>0</td></tr>
+        <tr><td>CSC 203</td><td>Discrete Structures</td><td>2</td><td>C</td><td>30</td><td>0</td></tr>
+        <tr><td>ENT 211</td><td>Entrepreneurship and Innovation</td><td>2</td><td>C</td><td>30</td><td>0</td></tr>
+        <tr><td>IFT 203</td><td>Introduction to Web Technologies</td><td>2</td><td>C</td><td>30</td><td>45</td></tr>
+        <tr><td>AAUA-CSC 203</td><td>Assembly Language Programming</td><td>2</td><td>C</td><td>15</td><td>45</td></tr>
+        <tr><td>Elective</td><td>Elective (minimum of 2 units)</td><td>2</td><td>E</td><td></td><td></td></tr>
+        <tr class="total-row"><td>Total</td><td></td><td>19</td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table></div>
+    <p class="note"><strong>Electives — minimum of 2 units:</strong> DTS 201 Introduction to Data Science; INS 202 Human-Computer Interaction (HCI); DTS 211 Introduction to R Programming; IFT 211 Digital Logic Design; AAUA-SEN 201 Introduction to Scripting and Programming with Java.</p>
+  </div>
+
+  <div class="course-block">
+    <h3>200 Level — Second Semester</h3>
+    <div class="table-wrap"><table class="course-table">
+      <thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
+      <tbody>
+        <tr><td>COS 202</td><td>Computer Programming II (Python)</td><td>3</td><td>C</td><td>30</td><td>45</td></tr>
+        <tr><td>INS 202</td><td>Human-Computer Interaction</td><td>2</td><td>C</td><td>30</td><td>0</td></tr>
+        <tr><td>MTH 202</td><td>Elementary Differential Equations</td><td>2</td><td>C</td><td>30</td><td>0</td></tr>
+        <tr><td>GST 212</td><td>Philosophy, Logic And Human Existence</td><td>2</td><td>C</td><td>30</td><td>0</td></tr>
+        <tr><td>IFT 212</td><td>Computer Architecture and Organization</td><td>2</td><td>C</td><td>15</td><td>45</td></tr>
+        <tr><td>AAUA-CSC 202</td><td>File Organization &amp; Data Processing</td><td>2</td><td>C</td><td>30</td><td>0</td></tr>
+        <tr><td>AAUA-CSC 218</td><td>Introduction to Data Communication</td><td>2</td><td>C</td><td>30</td><td>0</td></tr>
+        <tr><td>Elective</td><td>Elective (minimum of 2 units)</td><td>2</td><td>E</td><td></td><td></td></tr>
+        <tr class="total-row"><td>Total</td><td></td><td>20</td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table></div>
+    <p class="note"><strong>SIWES I &amp; SIWES II Combined electives:</strong> INS 204 System Analysis and Design (2 units, E, LH 30, PH 45); DTS 204 Statistical Computing II — Inference and Modelling (3 units, E, LH 30, PH 0).</p>
+  </div>
+
+  <div class="course-block" id="level300">
+    <h3>300 Level — First Semester</h3>
+    <div class="table-wrap"><table class="course-table">
+      <thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
+      <tbody>
+        <tr><td>CSC 301</td><td>Data Structures and Algorithm</td><td>3</td><td>C</td><td>30</td><td>45</td></tr>
+        <tr><td>ICT 301</td><td>Satellite Communication</td><td>2</td><td>C</td><td>15</td><td>45</td></tr>
+        <tr><td>CYB 301</td><td>Cryptography Techniques, Algorithms and Applications</td><td>2</td><td>C</td><td>15</td><td>45</td></tr>
+        <tr><td>ICT 305</td><td>Data Communication System &amp; Network</td><td>2</td><td>C</td><td>15</td><td>45</td></tr>
+        <tr><td>ICT 309</td><td>Mobile Communication and Network</td><td>3</td><td>C</td><td>30</td><td>45</td></tr>
+        <tr><td>CSC 309</td><td>Artificial Intelligence</td><td>2</td><td>C</td><td>15</td><td>45</td></tr>
+        <tr><td>AAUA-DTS 303</td><td>Machine Learning</td><td>2</td><td>C</td><td>15</td><td>45</td></tr>
+        <tr><td>Elective</td><td>Elective (minimum of 2 units)</td><td>2</td><td>E</td><td></td><td></td></tr>
+        <tr class="total-row"><td>Total</td><td></td><td>18</td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table></div>
+    <p class="note"><strong>Electives — minimum of 2 units:</strong> CYB 303 Cybersecurity Risks Analysis, Challenges and Mitigation; CYB 305 Digital Forensics and Investigation Methods; INS 311 E-Business Systems Development.</p>
+  </div>
+
+  <div class="course-block">
+    <h3>300 Level — Second Semester / SIWES</h3>
+    <div class="table-wrap"><table class="course-table">
+      <thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
+      <tbody>
+        <tr><td>SIWES 398A</td><td>SIWES Report Writing</td><td>3</td><td>C</td><td>0</td><td>135</td></tr>
+        <tr><td>SIWES 398B</td><td>Industrial based SIWES Assessment</td><td>2</td><td>C</td><td>0</td><td>135</td></tr>
+        <tr><td>SIWES 398C</td><td>SIWES Site Visit Assessment</td><td>3</td><td>C</td><td>0</td><td>135</td></tr>
+        <tr><td>SIWES 398D</td><td>SIWES Logbook Assessment</td><td>3</td><td>C</td><td>0</td><td>135</td></tr>
+        <tr><td>SIWES 398E</td><td>SIWES Seminar Presentation/Examination</td><td>4</td><td>C</td><td>0</td><td>135</td></tr>
+        <tr class="total-row"><td>Total</td><td></td><td>15</td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="course-block" id="level400">
+    <h3>400 Level — First Semester</h3>
+    <div class="table-wrap"><table class="course-table">
+      <thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
+      <tbody>
+        <tr><td>INS 401</td><td>Project Management</td><td>2</td><td>C</td><td>30</td><td>0</td></tr>
+        <tr><td>DTS 403</td><td>Data Visualization for data-driven Decision Making</td><td>2</td><td>C</td><td>15</td><td>45</td></tr>
+        <tr><td>CSC 409</td><td>Research Methodology and Technical Report Writing</td><td>2</td><td>C</td><td>30</td><td>0</td></tr>
+        <tr><td>ICT 497</td><td>Final Project I (Seminar)</td><td>3</td><td>C</td><td>0</td><td>135</td></tr>
+        <tr><td>AAUA-ICT 403</td><td>Web Programming</td><td>2</td><td>C</td><td>15</td><td>45</td></tr>
+        <tr><td>AAUA-ICT 407</td><td>System Analysis and Design II</td><td>2</td><td>C</td><td>15</td><td>45</td></tr>
+        <tr><td>Elective</td><td>Elective (minimum of 2 units)</td><td>2</td><td>E</td><td></td><td></td></tr>
+        <tr class="total-row"><td>Total</td><td></td><td>17</td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table></div>
+    <p class="note"><strong>Electives — minimum of 2 units:</strong> CYB 405 Ethical Hacking and Reverse Engineering; AAUA-ICT 405 Formal Methods in Software Development.</p>
+  </div>
+
+  <div class="course-block">
+    <h3>400 Level — Second Semester</h3>
+    <div class="table-wrap"><table class="course-table">
+      <thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
+      <tbody>
+        <tr><td>CSC 408</td><td>Operating Systems</td><td>3</td><td>C</td><td>30</td><td>45</td></tr>
+        <tr><td>ICT 418</td><td>Design &amp; Installation of Electrical &amp; ICT Services</td><td>2</td><td>C</td><td>30</td><td>45</td></tr>
+        <tr><td>ICT 422</td><td>ICT Innovation and Entrepreneurship</td><td>2</td><td>C</td><td>15</td><td>45</td></tr>
+        <tr><td>GST 312</td><td>Peace and Conflict Resolution</td><td>2</td><td>C</td><td>30</td><td>0</td></tr>
+        <tr><td>ENT 312</td><td>Venture Creation</td><td>2</td><td>C</td><td>15</td><td>45</td></tr>
+        <tr><td>CSC 432</td><td>Distributed Computing Systems</td><td>2</td><td>C</td><td>45</td><td>0</td></tr>
+        <tr><td>AAUA-ICT 442</td><td>Wireless Communications and Networking</td><td>3</td><td>C</td><td>45</td><td>45</td></tr>
+        <tr><td>ICT 498</td><td>Final Project II</td><td>3</td><td>C</td><td>0</td><td>135</td></tr>
+        <tr><td>Elective</td><td>Elective (minimum of 2 units)</td><td>2</td><td>E</td><td></td><td></td></tr>
+        <tr class="total-row"><td>Total</td><td></td><td>21</td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table></div>
+    <p class="note"><strong>Electives — minimum of 2 units:</strong> INS 202 Human Computer Interaction; DTS 404 Data Management I; AAUA-SEN 402 Parallel Programming; AAUA-ICT 406 Computer System Modelling &amp; Simulation; AAUA-ICT 408 Cryptoanalysis; AAUA-CSC 442 Operation Research.</p>
+  </div>
+</section>
+
+<section class="department-section" id="siwes">
+  <div class="section-heading">
+    <span>SIWES</span>
+    <h2>Industrial Training Structure</h2>
+  </div>
+  <div class="content-card">
+    <p>
+      The supplied programme structure includes a combined SIWES I &amp; SIWES II
+      component and dedicated 300-level second-semester SIWES assessment
+      courses covering report writing, industrial-based assessment, site visit
+      assessment, logbook assessment, and seminar presentation/examination.
+    </p>
+  </div>
+</section>
+
+<section class="department-section">
+  <div class="section-heading">
+    <span>Programme Summary</span>
+    <h2>Minimum Course Unit Summary</h2>
+  </div>
+  <div class="summary-grid">
+    <div class="summary-card">
+      <h3>4-Year Programme</h3>
+      <div class="summary-stat"><span>Compulsory Courses</span><strong>124 units</strong></div>
+      <div class="summary-stat"><span>Elective Courses</span><strong>10 units</strong></div>
+      <div class="summary-stat"><span>GST Courses</span><strong>8 units</strong></div>
+      <div class="summary-stat"><span>ENT Courses</span><strong>4 units</strong></div>
+      <div class="summary-stat"><span>Minimum Total</span><strong>146 units</strong></div>
+    </div>
+    <div class="summary-card">
+      <h3>3-Year Programme</h3>
+      <div class="summary-stat"><span>Compulsory Courses</span><strong>91 units</strong></div>
+      <div class="summary-stat"><span>Elective Courses</span><strong>10 units</strong></div>
+      <div class="summary-stat"><span>GST Courses</span><strong>8 units</strong></div>
+      <div class="summary-stat"><span>ENT Courses</span><strong>4 units</strong></div>
+      <div class="summary-stat"><span>Minimum Total</span><strong>113 units</strong></div>
+    </div>
+  </div>
+</section>
+
+<section class="department-section">
+  <div class="section-heading">
+    <span>Administrative Staff List</span>
+    <h2>Department Administration</h2>
+  </div>
+  <div class="table-wrap">
+    <table class="course-table">
+      <thead><tr><th>S/N</th><th>Name</th><th>Qualification</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Alice Oluwatoyin Aguda (Mrs)</td><td>B.Ed (Akungba); HND, OGT (Owo); Dip Data Processing, NABTEB, SSC</td><td>Principal Personal Secretary</td></tr>
+        <tr><td>2</td><td>Mathew. O. ADEYEMI (Mr)</td><td>B.A (Akungba); SSC</td><td>Senior Executive</td></tr>
+        <tr><td>3</td><td>F.T. ABIDAKUN (Mrs)</td><td>B.Sc (Akungba); NABTEB</td><td>Senior Office Attendant</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="department-section" id="resources">
+  <div class="section-heading">
+    <span>Student Support</span>
+    <h2>Academic Resources</h2>
+  </div>
+  <div class="resource-grid">
+    <div class="resource-card">
+      <div class="resource-icon">📖</div>
+      <h3>Department Guide</h3>
+      <p>Use this page to review the programme background, admission requirements, graduation requirements and academic structure.</p>
+    </div>
+
+    <div class="resource-card">
+      <div class="resource-icon">📄</div>
+      <h3>Lecture Notes PDF</h3>
+      <p>Download the department document or select a PDF/course note from your device.</p>
+      <div class="resource-actions">
+        <a class="download-button" href="DOC-20260920-WA0045.pdf" download>⬇ Download</a>
+        <label class="upload-button" for="ictPdfUpload">⬆ Upload PDF</label>
+        <input id="ictPdfUpload" class="file-input" type="file" accept="application/pdf,.pdf">
+      </div>
+      <p id="uploadStatus" class="upload-status">No PDF selected.</p>
+    </div>
+
+    <div class="resource-card">
+      <div class="resource-icon">💬</div>
+      <h3>Connect on WhatsApp</h3>
+      <p>Use the department/student support WhatsApp channel when the official link is available.</p>
+      <div class="resource-actions">
+        <a class="whatsapp-button" href="#" aria-label="Connect on WhatsApp">💬 Meet on WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="department-section">
+  <div class="section-heading">
+    <span>Get in Touch</span>
+    <h2>Department Contacts</h2>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-card">
+      <h3>Department Information</h3>
+      <div class="contact-item"><div class="contact-item-icon">🏛️</div><div><span>Faculty</span><strong>Faculty of Computing</strong></div></div>
+      <div class="contact-item"><div class="contact-item-icon">🎓</div><div><span>Department</span><strong>Information and Communication Technology</strong></div></div>
+      <div class="contact-item"><div class="contact-item-icon">👨‍🏫</div><div><span>HOD</span><strong>Dr. A. O. Akingbesote</strong></div></div>
+    </div>
+    <div class="contact-card">
+      <h3>University</h3>
+      <div class="contact-item"><div class="contact-item-icon">📍</div><div><span>Location</span><strong>Adekunle Ajasin University, Akungba-Akoko, Ondo State</strong></div></div>
+      <div class="contact-item"><div class="contact-item-icon">🏫</div><div><span>Faculty</span><strong>Faculty of Computing</strong></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="department-section" id="help">
+  <div class="help-box">
+    <h2>Need help with your department?</h2>
+    <p>
+      If you need help with registration, courses, departmental information or
+      other student matters, use the Uni Pilot student help system.
+    </p>
+    <a href="help.html" class="help-button">Get Department Help →</a>
+  </div>
+</section>
 
 </main>
 
-<!-- =====================================================
-     FOOTER — SAME STRUCTURE AS INDEX
-====================================================== -->
-
 <footer>
   <div class="footer-container">
-
     <div class="footer-brand">
       <a href="index.html" class="brand">🎓 Uni Pilot</a>
       <p>Your campus. Your resources. Your guide.</p>
     </div>
-
     <div class="footer-links">
-
       <div>
         <h4>Platform</h4>
         <a href="resources.html">Resources</a>
@@ -1147,7 +764,6 @@ footer{
         <a href="updates.html">Updates</a>
         <a href="tools.html">Student Tools</a>
       </div>
-
       <div>
         <h4>Information</h4>
         <a href="about.html">About</a>
@@ -1155,25 +771,30 @@ footer{
         <a href="terms.html">Terms of Use</a>
         <a href="contact.html">Contact</a>
       </div>
-
     </div>
   </div>
-
-  <div class="footer-bottom">
-    <p>© 2026 Uni Pilot. All rights reserved.</p>
-  </div>
+  <div class="footer-bottom"><p>© 2026 Uni Pilot. All rights reserved.</p></div>
 </footer>
 
 <script>
-/* =========================================================
-   COURSE ACCORDION
-========================================================= */
+document.getElementById("ictPdfUpload").addEventListener("change", function(){
+  const status = document.getElementById("uploadStatus");
+  const file = this.files[0];
 
-document.querySelectorAll(".level-button").forEach(button => {
-  button.addEventListener("click", () => {
-    const card = button.closest(".level-card");
-    card.classList.toggle("active");
-  });
+  if(!file){
+    status.textContent = "No PDF selected.";
+    return;
+  }
+
+  const isPdf = file.type === "application/pdf" || file.name.toLowerCase().endsWith(".pdf");
+
+  if(!isPdf){
+    this.value = "";
+    status.textContent = "Please select a PDF file.";
+    return;
+  }
+
+  status.textContent = "Selected: " + file.name + " (ready for upload)";
 });
 </script>
 
