@@ -79,6 +79,42 @@
     @media (max-width:600px) { .faculty-hero { padding:38px 17px 35px; margin:12px 14px 0; border-radius:24px; } .faculty-hero h1 { font-size:2.65rem; letter-spacing:-1.8px; margin-top:12px; } .faculty-hero h1 span { margin-left:0; } .faculty-description { font-size:.78rem; max-width:330px; margin-top:15px; } .faculty-hero-guide { margin-top:18px; } .faculty-hero-bg { font-size:5.5rem; right:-15px; bottom:-12px; letter-spacing:-4px; } }
 
     /* =================================
+       HERO LOCATION BUTTON STYLE
+    ================================= */
+
+    .hero-location-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 18px;
+      padding: 10px 22px;
+      background: rgba(245, 197, 24, 0.15);
+      border: 1px solid rgba(245, 197, 24, 0.35);
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: 700;
+      border-radius: 999px;
+      text-decoration: none;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .hero-location-btn:hover {
+      background: rgba(245, 197, 24, 0.25);
+      transform: translateY(-2px);
+      border-color: rgba(245, 197, 24, 0.6);
+    }
+
+    .hero-location-btn svg {
+      width: 16px;
+      height: 16px;
+      fill: #f5c518;
+    }
+
+
+    /* =================================
        QUICK INFO
     ================================= */
 
@@ -444,31 +480,6 @@
 
 
     /* =================================
-       LOCATION BUTTON STYLE
-    ================================= */
-
-    .location-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 8px 16px;
-      background: #0b5d3b;
-      color: #fff;
-      font-size: 14px;
-      font-weight: 600;
-      border-radius: 999px;
-      text-decoration: none;
-      transition: background 0.2s ease, transform 0.2s ease;
-      box-shadow: 0 4px 12px rgba(11, 93, 59, 0.2);
-    }
-
-    .location-btn:hover {
-      background: #063b26;
-      transform: translateY(-1px);
-    }
-
-
-    /* =================================
        MOBILE
     ================================= */
 
@@ -584,15 +595,6 @@
 
       <div class="nav-actions">
 
-        <a
-          href="https://maps.app.goo.gl/DSQwzGEr71bRinf87"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="location-btn"
-        >
-          📍 Location
-        </a>
-
         <button
           class="icon-btn"
           id="searchBtn"
@@ -638,6 +640,18 @@
           <small>Explore your faculty below</small>
           <span></span>
         </div>
+
+        <a
+          href="https://maps.app.goo.gl/DSQwzGEr71bRinf87"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hero-location-btn"
+        >
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+          </svg>
+          View Faculty Location
+        </a>
 
       </div>
 
