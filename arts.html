@@ -425,6 +425,7 @@
       color: #6d7a72;
 
       font-size: 12px;
+
       font-weight: 800;
 
       text-transform: uppercase;
@@ -439,6 +440,31 @@
       color: #17221c;
 
       line-height: 1.5;
+    }
+
+
+    /* =================================
+       LOCATION BUTTON STYLE
+    ================================= */
+
+    .location-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      background: #0b5d3b;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: background 0.2s ease, transform 0.2s ease;
+      box-shadow: 0 4px 12px rgba(11, 93, 59, 0.2);
+    }
+
+    .location-btn:hover {
+      background: #063b26;
+      transform: translateY(-1px);
     }
 
 
@@ -557,6 +583,15 @@
 
 
       <div class="nav-actions">
+
+        <a
+          href="https://maps.app.goo.gl/DSQwzGEr71bRinf87"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="location-btn"
+        >
+          📍 Location
+        </a>
 
         <button
           class="icon-btn"
