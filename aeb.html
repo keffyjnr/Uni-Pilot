@@ -1,1609 +1,331 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 
 <html lang="en">
-
 <head>
-
-  <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
-  <title>Animal & Environmental Biology | AAUA Uni Pilot</title>
-
-
-  <!-- Google Font -->
-
-  <link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
-  >
-
-  <link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
-    crossorigin
-  >
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  >
-
-
-  <!-- CSS -->
-
-  <link
-    rel="stylesheet"
-    href="style.css"
-  >
-
-
-  <!-- Page Styles -->
-
-  <style>
-
-    /* =========================
-       DEPARTMENT HERO
-    ========================== */
-
-    .department-hero {
-
-      position: relative;
-
-      overflow: hidden;
-
-      max-width: 1100px;
-
-      margin: 35px auto 0;
-
-      padding: 55px 40px;
-
-      background:
-        linear-gradient(
-          135deg,
-          var(--dark-green),
-          var(--green)
-        );
-
-      border-radius: 28px;
-
-      color: var(--white);
-
-    }
-
-
-    .department-hero::before {
-
-      content: "BIOLOGY";
-
-      position: absolute;
-
-      right: -20px;
-
-      bottom: -35px;
-
-      font-size: 8rem;
-
-      font-weight: 800;
-
-      line-height: 1;
-
-      color:
-        rgba(
-          255,
-          255,
-          255,
-          0.045
-        );
-
-      pointer-events: none;
-
-    }
-
-
-    .hero-content {
-
-      position: relative;
-
-      z-index: 2;
-
-      max-width: 720px;
-
-    }
-
-
-    .hero-eyebrow {
-
-      display: inline-block;
-
-      margin-bottom: 14px;
-
-      color: var(--yellow);
-
-      font-size: .75rem;
-
-      font-weight: 800;
-
-      letter-spacing: 1.5px;
-
-      text-transform: uppercase;
-
-    }
-
-
-    .department-hero h1 {
-
-      margin: 0 0 14px;
-
-      font-size:
-        clamp(
-          2rem,
-          5vw,
-          3.5rem
-        );
-
-      line-height: 1.05;
-
-      letter-spacing: -1.5px;
-
-    }
-
-
-    .department-hero h1 span {
-
-      color: var(--yellow);
-
-    }
-
-
-    .department-hero p {
-
-      max-width: 650px;
-
-      margin: 0;
-
-      color:
-        rgba(
-          255,
-          255,
-          255,
-          .82
-        );
-
-      font-size: .95rem;
-
-      line-height: 1.7;
-
-    }
-
-
-    /* =========================
-       HERO LINKS
-    ========================== */
-
-    .hero-links {
-
-      position: relative;
-
-      z-index: 3;
-
-      display: flex;
-
-      flex-wrap: wrap;
-
-      gap: 10px;
-
-      margin-top: 28px;
-
-    }
-
-
-    .hero-link {
-
-      display: inline-flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      padding:
-        11px
-        18px;
-
-      background:
-        rgba(
-          255,
-          255,
-          255,
-          .1
-        );
-
-      border:
-        1px solid
-        rgba(
-          255,
-          255,
-          255,
-          .18
-        );
-
-      border-radius: 12px;
-
-      color: var(--white);
-
-      font-size: .82rem;
-
-      font-weight: 700;
-
-      text-decoration: none;
-
-      transition: .25s ease;
-
-      backdrop-filter: blur(5px);
-
-    }
-
-
-    .hero-link:hover {
-
-      background: var(--yellow);
-
-      border-color: var(--yellow);
-
-      color: var(--dark-green);
-
-      transform:
-        translateY(-2px);
-
-    }
-
-
-    /* =========================
-       DEPARTMENT CONTENT
-    ========================== */
-
-    .department-container {
-
-      max-width: 1000px;
-
-      margin: auto;
-
-      padding:
-        75px
-        22px;
-
-    }
-
-
-    .department-section {
-
-      scroll-margin-top: 90px;
-
-      margin-bottom: 75px;
-
-    }
-
-
-    /* =========================
-       SECTION HEADING
-    ========================== */
-
-    .section-heading {
-
-      margin-bottom: 25px;
-
-    }
-
-
-    .section-heading span {
-
-      display: block;
-
-      margin-bottom: 7px;
-
-      color: var(--green);
-
-      font-size: .72rem;
-
-      font-weight: 800;
-
-      letter-spacing: 1.4px;
-
-      text-transform: uppercase;
-
-    }
-
-
-    .section-heading h2 {
-
-      margin: 0;
-
-      color: var(--dark-green);
-
-      font-size: 1.8rem;
-
-      letter-spacing: -.6px;
-
-    }
-
-
-    .section-heading p {
-
-      max-width: 650px;
-
-      margin-top: 8px;
-
-      color: var(--muted);
-
-      font-size: .9rem;
-
-      line-height: 1.7;
-
-    }
-
-
-    /* =========================
-       ABOUT
-    ========================== */
-
-    .about-card {
-
-      padding: 28px;
-
-      background: var(--white);
-
-      border:
-        1px solid
-        var(--border);
-
-      border-radius: 22px;
-
-      box-shadow:
-        0 10px 30px
-        rgba(
-          11,
-          93,
-          59,
-          .05
-        );
-
-    }
-
-
-    .about-card > p {
-
-      margin-bottom: 25px;
-
-      color: var(--muted);
-
-      font-size: .9rem;
-
-      line-height: 1.8;
-
-    }
-
-
-    .department-details {
-
-      display: grid;
-
-      grid-template-columns:
-        repeat(
-          2,
-          1fr
-        );
-
-      gap: 14px;
-
-    }
-
-
-    .detail-card {
-
-      display: flex;
-
-      align-items: center;
-
-      gap: 14px;
-
-      min-height: 72px;
-
-      padding: 15px;
-
-      background:
-        var(--light-green);
-
-      border-radius: 16px;
-
-    }
-
-
-    .detail-icon {
-
-      width: 42px;
-
-      height: 42px;
-
-      min-width: 42px;
-
-      display: grid;
-
-      place-items: center;
-
-      background: var(--green);
-
-      border-radius: 12px;
-
-      color: var(--white);
-
-      font-size: 1rem;
-
-    }
-
-
-    .detail-card small {
-
-      display: block;
-
-      margin-bottom: 3px;
-
-      color: var(--muted);
-
-      font-size: .7rem;
-
-      font-weight: 700;
-
-    }
-
-
-    .detail-card strong {
-
-      color: var(--dark-green);
-
-      font-size: .85rem;
-
-    }
-
-
-    /* =========================
-       LOCATION
-    ========================== */
-
-    .location-button {
-
-      display: inline-flex;
-
-      align-items: center;
-
-      gap: 8px;
-
-      margin-top: 22px;
-
-      padding:
-        12px
-        17px;
-
-      background: var(--yellow);
-
-      border: none;
-
-      border-radius: 13px;
-
-      color: #000;
-
-      font-size: .8rem;
-
-      font-weight: 800;
-
-      text-decoration: none;
-
-      cursor: pointer;
-
-      transition: .25s ease;
-
-    }
-
-
-    .location-button:hover {
-
-      transform:
-        translateY(-2px);
-
-    }
-
-
-    /* =========================
-       DEPARTMENT COURSES
-    ========================== */
-
-    .course-list {
-
-      display: grid;
-
-      gap: 12px;
-
-    }
-
-
-    .level-button {
-
-      width: 100%;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: space-between;
-
-      padding:
-        20px
-        22px;
-
-      background: var(--white);
-
-      border:
-        1px solid
-        var(--border);
-
-      border-radius: 18px;
-
-      color: var(--dark-green);
-
-      font-family: inherit;
-
-      font-size: .95rem;
-
-      font-weight: 800;
-
-      text-align: left;
-
-      text-decoration: none;
-
-      box-shadow:
-        0 8px 25px
-        rgba(
-          11,
-          93,
-          59,
-          .04
-        );
-
-      transition: .25s ease;
-
-    }
-
-
-    .level-button:hover {
-
-      border-color:
-        var(--green);
-
-      transform:
-        translateY(-2px);
-
-    }
-
-
-    .level-left {
-
-      display: flex;
-
-      align-items: center;
-
-      gap: 14px;
-
-    }
-
-
-    .level-number {
-
-      width: 42px;
-
-      height: 42px;
-
-      display: grid;
-
-      place-items: center;
-
-      background: var(--green);
-
-      border-radius: 12px;
-
-      color: var(--white);
-
-      font-size: .8rem;
-
-      font-weight: 800;
-
-    }
-
-
-    .level-arrow {
-
-      color: var(--green);
-
-      font-size: 1.2rem;
-
-    }
-
-
-    /* =========================
-       RESOURCES + WHATSAPP
-       SAME TEMPLATE
-    ========================== */
-
-    .info-card {
-
-      padding:
-        32px
-        25px;
-
-      background:
-        var(--light-green);
-
-      border:
-        1px solid
-        rgba(
-          11,
-          93,
-          59,
-          .08
-        );
-
-      border-radius: 22px;
-
-      text-align: center;
-
-    }
-
-
-    .info-icon {
-
-      width: 52px;
-
-      height: 52px;
-
-      display: grid;
-
-      place-items: center;
-
-      margin:
-        0
-        auto
-        14px;
-
-      background: var(--green);
-
-      border-radius: 15px;
-
-      color: var(--white);
-
-      font-size: 1.2rem;
-
-    }
-
-
-    .info-card h3 {
-
-      margin:
-        0
-        0
-        8px;
-
-      color: var(--dark-green);
-
-      font-size: 1.25rem;
-
-    }
-
-
-    .info-card p {
-
-      max-width: 520px;
-
-      margin:
-        0
-        auto
-        20px;
-
-      color: var(--muted);
-
-      font-size: .85rem;
-
-      line-height: 1.6;
-
-    }
-
-
-    .info-button {
-
-      display: inline-flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      padding:
-        13px
-        22px;
-
-      background: var(--green);
-
-      border-radius: 13px;
-
-      color: #000;
-
-      font-size: .8rem;
-
-      font-weight: 800;
-
-      text-decoration: none;
-
-      transition: .25s ease;
-
-    }
-
-
-    .info-button:hover {
-
-      background:
-        var(--dark-green);
-
-      color: var(--white);
-
-      transform:
-        translateY(-2px);
-
-    }
-
-
-    /* =========================
-       MOBILE
-    ========================== */
-
-    @media (
-      max-width: 700px
-    ) {
-
-      .department-hero {
-
-        margin:
-          20px
-          15px
-          0;
-
-        padding:
-          40px
-          25px;
-
-        border-radius: 23px;
-
-      }
-
-
-      .department-hero::before {
-
-        font-size: 5rem;
-
-      }
-
-
-      .hero-links {
-
-        display: grid;
-
-        grid-template-columns:
-          repeat(
-            3,
-            1fr
-          );
-
-      }
-
-
-      .hero-link {
-
-        padding:
-          10px
-          8px;
-
-        font-size: .7rem;
-
-      }
-
-
-      .department-container {
-
-        padding:
-          55px
-          17px;
-
-      }
-
-
-      .department-section {
-
-        margin-bottom: 60px;
-
-      }
-
-
-      .department-details {
-
-        grid-template-columns: 1fr;
-
-      }
-
-    }
-
-
-    @media (
-      max-width: 450px
-    ) {
-
-      .hero-links {
-
-        grid-template-columns: 1fr;
-
-      }
-
-
-      .hero-link {
-
-        width: 100%;
-
-      }
-
-
-      .department-hero h1 {
-
-        font-size: 2rem;
-
-      }
-
-
-      .about-card {
-
-        padding: 20px;
-
-      }
-
-    }
-
-  </style>
-
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Animal and Environmental Biology | AAUA Uni Pilot</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="style.css" rel="stylesheet"/>
+<style>
+:root{
+  --green:#0b5d3b;
+  --dark-green:#063b26;
+  --light-green:#eaf6ef;
+  --yellow:#f5c518;
+  --white:#ffffff;
+  --background:#f7faf8;
+  --text:#17221c;
+  --muted:#6d7a72;
+  --border:#dfe8e2;
+  --soft:#fbfdfb;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Manrope",Arial,Helvetica,sans-serif;background:var(--background);color:var(--text)}
+a{color:inherit;text-decoration:none}
+button,input{font-family:inherit}
+
+.department-page{
+  min-height:100vh;
+  background:
+    radial-gradient(circle at top right,rgba(11,93,59,.06),transparent 30%),
+    radial-gradient(circle at bottom left,rgba(245,197,24,.045),transparent 30%),
+    var(--background);
+}
+
+/* HERO */
+.department-hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(circle at 82% 18%,rgba(245,197,24,.16),transparent 28%),
+    linear-gradient(135deg,#07120d 0%,var(--dark-green) 48%,var(--green) 100%);
+  color:#fff;padding:58px 22px 50px;border-radius:30px;margin:18px 22px 0;
+  box-shadow:0 18px 50px rgba(6,59,38,.14);
+}
+.department-hero::after{
+  content:"ICT";position:absolute;right:22px;bottom:-25px;
+  font-size:clamp(5rem,15vw,11rem);line-height:.8;font-weight:800;
+  letter-spacing:-7px;color:rgba(255,255,255,.035);pointer-events:none;
+}
+.department-hero-content{position:relative;max-width:900px;margin:auto;text-align:center;z-index:2}
+.breadcrumb{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:7px;margin-bottom:22px;color:rgba(255,255,255,.62);font-size:.67rem;font-weight:600}
+.breadcrumb a{color:rgba(255,255,255,.86)}
+.breadcrumb a:hover{color:var(--yellow)}
+.department-label{
+  display:inline-flex;align-items:center;gap:7px;padding:7px 13px;
+  border:1px solid rgba(245,197,24,.35);border-radius:999px;
+  background:rgba(245,197,24,.08);color:var(--yellow);
+  font-size:.62rem;font-weight:800;letter-spacing:1.2px;text-transform:uppercase
+}
+.department-label::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--yellow)}
+.department-hero h1{margin:16px auto 0;max-width:900px;color:#fff;font-size:clamp(2.35rem,5.7vw,4.35rem);line-height:1;letter-spacing:-2.5px;font-weight:800}
+.department-hero h1 span{color:var(--yellow)}
+.faculty-name{margin:19px 0 0;color:var(--yellow);font-size:.9rem;font-weight:800}
+.department-hero-description{max-width:700px;margin:15px auto 0;color:rgba(255,255,255,.72);font-size:.82rem;line-height:1.7}
+.department-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:9px;margin-top:23px}
+.department-action{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:0 15px;border-radius:999px;font-size:.67rem;font-weight:800;transition:.2s ease}
+.department-action:hover{transform:translateY(-2px)}
+.department-action.primary{background:var(--yellow);color:var(--dark-green)}
+.department-action.secondary{border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.08);color:#fff}
+
+/* MAIN */
+.department-main{width:min(1120px,calc(100% - 44px));margin:0 auto;padding:42px 0 70px}
+.quick-info{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:70px}
+.quick-card,.content-card,.programme-card,.resource-card,.contact-card,.table-card,.rule-card{
+  background:#fff;border:1px solid var(--border);border-radius:20px;
+  box-shadow:0 12px 35px rgba(6,59,38,.05)
+}
+.quick-card{min-height:125px;padding:19px;transition:.2s ease}
+.quick-card:hover,.programme-card:hover,.resource-card:hover{transform:translateY(-3px);border-color:rgba(11,93,59,.25)}
+.quick-icon,.programme-icon,.resource-icon{
+  width:42px;height:42px;display:grid;place-items:center;margin-bottom:12px;
+  border-radius:13px;background:var(--light-green);font-size:18px
+}
+.quick-card span,.mini-label{
+  display:block;margin-bottom:6px;color:var(--muted);font-size:.61rem;
+  font-weight:800;letter-spacing:.06em;text-transform:uppercase
+}
+.quick-card strong{display:block;color:var(--text);font-size:.78rem;line-height:1.45}
+
+.department-section{margin-bottom:70px;scroll-margin-top:30px}
+.section-heading{margin-bottom:23px}
+.section-heading span{display:block;margin-bottom:7px;color:var(--green);font-size:.64rem;font-weight:800;letter-spacing:1.1px;text-transform:uppercase}
+.section-heading h2{margin:0;color:var(--text);font-size:clamp(1.8rem,4vw,2.4rem);line-height:1.05;letter-spacing:-1.2px}
+.section-heading p{margin:9px 0 0;color:var(--muted);font-size:.8rem;line-height:1.6}
+
+.about-box{padding:28px}
+.about-box p{margin:0 0 17px;color:var(--muted);font-size:.84rem;line-height:1.85}
+.about-box p:last-child{margin-bottom:0}
+.location-button,.action-button,.download-button,.upload-button,.whatsapp-button{
+  display:inline-flex;align-items:center;justify-content:center;gap:7px;
+  min-height:40px;padding:0 15px;border-radius:11px;font-size:.68rem;font-weight:800;
+  border:0;cursor:pointer;transition:.2s ease
+}
+.location-button,.download-button{background:var(--green);color:#fff}
+.location-button:hover,.download-button:hover{background:var(--dark-green);transform:translateY(-2px)}
+.upload-button{background:var(--yellow);color:var(--dark-green)}
+.whatsapp-button{background:var(--light-green);color:var(--green)}
+.upload-status{margin:9px 0 0;color:var(--muted);font-size:.7rem;line-height:1.5}
+
+.programme-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.programme-card{padding:24px;transition:.2s ease}
+.programme-icon{width:48px;height:48px;font-size:21px}
+.programme-card h3{margin:0 0 9px;color:var(--text);font-size:.98rem;line-height:1.45}
+.programme-card p{margin:0;color:var(--muted);font-size:.8rem;line-height:1.7}
+
+/* INFORMATION CARDS */
+.info-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.content-card{padding:24px}
+.content-card h3{margin:0 0 12px;font-size:1rem}
+.content-card p,.content-card li{color:var(--muted);font-size:.79rem;line-height:1.75}
+.content-card ul,.content-card ol{margin:0;padding-left:20px}
+.content-card li{margin-bottom:6px}
+.content-card li:last-child{margin-bottom:0}
+.full-card{grid-column:1/-1}
+
+/* COURSE STRUCTURE */
+.level-nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.level-nav a{padding:9px 13px;border-radius:999px;background:var(--light-green);color:var(--green);font-size:.68rem;font-weight:800}
+.level-nav a:hover{background:var(--yellow);color:var(--dark-green)}
+
+.course-block{margin-bottom:18px}
+.course-block:last-child{margin-bottom:0}
+.course-block h3{margin:0 0 10px;color:var(--green);font-size:.92rem}
+.table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:16px;background:#fff}
+.course-table{width:100%;border-collapse:collapse;min-width:760px}
+.course-table th,.course-table td{padding:10px 11px;border-bottom:1px solid var(--border);text-align:left;font-size:.69rem;vertical-align:top}
+.course-table th{background:var(--light-green);color:var(--green);font-size:.62rem;letter-spacing:.04em;text-transform:uppercase}
+.course-table td:first-child{font-weight:800;color:var(--green);white-space:nowrap}
+.course-table tr:last-child td{border-bottom:0}
+.course-table .total-row td{font-weight:800;background:#fbfdfb;color:var(--text)}
+.note{margin:10px 0 0;color:var(--muted);font-size:.7rem;line-height:1.65}
+
+/* SUMMARY */
+.summary-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.summary-card{padding:24px;background:#fff;border:1px solid var(--border);border-radius:20px}
+.summary-card h3{margin:0 0 15px;font-size:.95rem}
+.summary-stat{display:flex;justify-content:space-between;gap:15px;padding:10px 0;border-bottom:1px solid var(--border);font-size:.74rem}
+.summary-stat:last-child{border-bottom:0}
+.summary-stat span{color:var(--muted)}
+.summary-stat strong{color:var(--green)}
+
+/* RESOURCES */
+.resource-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.resource-card{display:block;padding:24px;transition:.2s ease}
+.resource-icon{width:48px;height:48px;font-size:21px}
+.resource-card h3{margin:0 0 8px;font-size:.96rem}
+.resource-card p{margin:0;color:var(--muted);font-size:.78rem;line-height:1.7}
+.resource-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}
+.file-input{display:none}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.contact-card{padding:25px}
+.contact-card h3{margin:0 0 21px;font-size:.98rem}
+.contact-item{display:flex;align-items:flex-start;gap:12px;margin-bottom:17px}
+.contact-item:last-child{margin-bottom:0}
+.contact-item-icon{width:39px;height:39px;flex:0 0 39px;display:grid;place-items:center;border-radius:11px;background:var(--light-green);font-size:17px}
+.contact-item span{display:block;margin-bottom:4px;color:var(--muted);font-size:.62rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+.contact-item strong{color:var(--text);font-size:.78rem;line-height:1.5}
+
+/* HELP */
+.help-box{padding:40px 25px;border-radius:24px;background:radial-gradient(circle at 85% 15%,rgba(245,197,24,.13),transparent 28%),var(--dark-green);color:#fff;text-align:center}
+.help-box h2{margin:0 0 11px;font-size:clamp(1.5rem,4vw,2rem);letter-spacing:-.8px}
+.help-box p{max-width:700px;margin:0 auto 22px;color:rgba(255,255,255,.74);font-size:.8rem;line-height:1.7}
+.help-button{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 18px;border-radius:999px;background:var(--yellow);color:var(--dark-green);font-size:.7rem;font-weight:800}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border)}
+
+@media(max-width:950px){
+  .quick-info{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .resource-grid,.summary-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .programme-grid,.contact-grid,.info-grid{grid-template-columns:1fr}
+}
+@media(max-width:650px){
+  .department-hero{padding:40px 17px 36px;margin:12px 14px 0;border-radius:24px}
+  .department-hero h1{font-size:2.65rem;letter-spacing:-1.8px}
+  .department-main{width:min(100% - 34px,1120px);padding-top:35px}
+  .quick-info{grid-template-columns:1fr 1fr;gap:10px;margin-bottom:55px}
+  .quick-card{min-height:112px;padding:16px}
+  .resource-grid,.summary-grid{grid-template-columns:1fr}
+  .about-box,.programme-card,.resource-card,.contact-card,.content-card,.summary-card{padding:21px}
+  .department-actions{gap:7px}
+  .department-action{min-height:38px;padding:0 13px}
+}
+@media(max-width:430px){.quick-info{grid-template-columns:1fr}.breadcrumb{font-size:.6rem}}
+
+.staff-toggle{display:inline-flex;align-items:center;gap:8px;margin-top:18px;padding:12px 16px;border:0;border-radius:11px;background:var(--green);color:#fff;font:800 .75rem Manrope,Arial,sans-serif;cursor:pointer}
+.staff-toggle:hover{background:var(--dark-green)}
+.staff-list[hidden]{display:none}
+.staff-list{margin-top:16px}
+.staff-person{padding:15px 0;border-bottom:1px solid var(--border)}
+.staff-person:last-child{border-bottom:0}
+.staff-person h4{margin:0 0 5px;font-size:.82rem;color:var(--green)}
+.staff-person p{margin:3px 0;font-size:.73rem;line-height:1.6;color:var(--muted)}
+.badge{display:inline-block;margin-left:6px;padding:3px 7px;border-radius:999px;background:var(--light-green);color:var(--green);font-size:.6rem;font-weight:800}
+
+
+/* COLLAPSIBLE COURSE LEVELS */
+.level-dropdowns{display:grid;gap:12px;margin-top:8px}
+.level-dropdown,.semester-dropdown{border:1px solid var(--border);border-radius:16px;background:#fff;overflow:hidden}
+.level-summary{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 18px;background:var(--light-green);color:var(--green);font-size:.9rem;font-weight:900;cursor:pointer;list-style:none}
+.level-summary::-webkit-details-marker,.semester-dropdown summary::-webkit-details-marker{display:none}
+.level-summary::after,.semester-dropdown summary::after{content:'＋';font-size:1.05rem;font-weight:900}
+.level-dropdown[open]>.level-summary::after,.semester-dropdown[open]>summary::after{content:'−'}
+.dropdown-hint{margin-left:auto;color:var(--muted);font-size:.68rem;font-weight:600}
+.semester-dropdown{margin:12px;border-radius:12px}
+.semester-dropdown summary{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 15px;color:var(--text);font-size:.78rem;font-weight:800;cursor:pointer;list-style:none}
+.semester-dropdown[open] summary{border-bottom:1px solid var(--border)}
+.semester-dropdown .table-wrap{border:0;border-radius:0}
+.pdf-resource-card{border:1px solid rgba(11,93,59,.18)}
+.download-button{border-radius:999px;padding:0 18px;text-decoration:none}
+@media(max-width:600px){.level-summary{align-items:flex-start;flex-direction:column}.dropdown-hint{margin-left:0}.semester-dropdown{margin:8px}}
+</style>
 </head>
-
-
-<body>
-
-
-  <!-- =========================
-       NAVIGATION
-  ========================== -->
-
-  <header class="header">
-
-    <nav class="navbar">
-
-
-      <a
-        href="index.html"
-        class="brand"
-      >
-
-        <div class="brand-icon">
-          🎓
-        </div>
-
-        <span>
-          AAUA Uni Pilot
-        </span>
-
-      </a>
-
-
-      <!-- Desktop Navigation -->
-
-      <div class="desktop-nav">
-
-        <a href="index.html">
-          Home
-        </a>
-
-        <a href="resources.html">
-          Resources
-        </a>
-
-        <a href="guide.html">
-          Student Guide
-        </a>
-
-        <a href="updates.html">
-          Updates
-        </a>
-
-        <a href="tools.html">
-          Tools
-        </a>
-
-      </div>
-
-
-      <!-- Navigation Actions -->
-
-      <div class="nav-actions">
-
-        <button
-          class="icon-btn"
-          aria-label="Search"
-          type="button"
-        >
-          🔍
-        </button>
-
-
-        <button
-          class="menu-btn"
-          id="menuBtn"
-          aria-label="Open Menu"
-          type="button"
-        >
-          ☰
-        </button>
-
-      </div>
-
-    </nav>
-
-
-    <!-- Mobile Menu -->
-
-    <div
-      class="mobile-menu"
-      id="navLinks"
-    >
-
-      <a href="index.html">
-        Home
-      </a>
-
-      <a href="resources.html">
-        Academic Resources
-      </a>
-
-      <a href="guide.html">
-        Student Guide
-      </a>
-
-      <a href="updates.html">
-        Campus Updates
-      </a>
-
-      <a href="opportunities.html">
-        Opportunities
-      </a>
-
-      <a href="tools.html">
-        Student Tools
-      </a>
-
-      <a href="about.html">
-        About
-      </a>
-
-    </div>
-
-  </header>
-
-
-  <!-- =========================
-       MENU OVERLAY
-  ========================== -->
-
-  <div
-    class="menu-overlay"
-    id="menuOverlay"
-  ></div>
-
-
-  <!-- =========================
-       DEPARTMENT HERO
-  ========================== -->
-
-  <section class="department-hero">
-
-    <div class="hero-content">
-
-
-      <span class="hero-eyebrow">
-        DEPARTMENT GUIDE
-      </span>
-
-
-      <h1>
-        Animal & Environmental <span>Biology.</span>
-      </h1>
-
-
-      <p>
-        Your guide to the Animal & Environmental Biology
-        department, courses, academic resources and useful
-        student information.
-      </p>
-
-
-      <div class="hero-links">
-
-        <a
-          href="#about"
-          class="hero-link"
-        >
-          About
-        </a>
-
-
-        <a
-          href="#courses"
-          class="hero-link"
-        >
-          Courses
-        </a>
-
-
-        <a
-          href="#resources"
-          class="hero-link"
-        >
-          Resources
-        </a>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================
-       MAIN CONTENT
-  ========================== -->
-
-  <main class="department-container">
-
-
-    <!-- =========================
-         ABOUT DEPARTMENT
-    ========================== -->
-
-    <section
-      class="department-section"
-      id="about"
-    >
-
-
-      <div class="section-heading">
-
-        <span>
-          ABOUT THE DEPARTMENT
-        </span>
-
-
-        <h2>
-          Animal & Environmental Biology
-        </h2>
-
-
-        <p>
-          Learn more about the department and find important
-          information you may need as a student.
-        </p>
-
-      </div>
-
-
-      <div class="about-card">
-
-
-        <p>
-          Information about the Animal & Environmental Biology
-          department will be provided here, including its academic
-          focus and other useful details for students.
-        </p>
-
-
-        <div class="department-details">
-
-
-          <!-- HOD -->
-
-          <div class="detail-card">
-
-            <div class="detail-icon">
-              👤
-            </div>
-
-
-            <div>
-
-              <small>
-                Head of Department
-              </small>
-
-
-              <strong>
-                HOD — To be added
-              </strong>
-
-            </div>
-
-          </div>
-
-
-          <!-- CONTACT -->
-
-          <div class="detail-card">
-
-            <div class="detail-icon">
-              ☎
-            </div>
-
-
-            <div>
-
-              <small>
-                Contact
-              </small>
-
-
-              <strong>
-                To be added
-              </strong>
-
-            </div>
-
-          </div>
-
-
-          <!-- DURATION -->
-
-          <div class="detail-card">
-
-            <div class="detail-icon">
-              🎓
-            </div>
-
-
-            <div>
-
-              <small>
-                Programme Duration
-              </small>
-
-
-              <strong>
-                4 Years
-              </strong>
-
-            </div>
-
-          </div>
-
-
-          <!-- PROGRAMME -->
-
-          <div class="detail-card">
-
-            <div class="detail-icon">
-              📚
-            </div>
-
-
-            <div>
-
-              <small>
-                Programme
-              </small>
-
-
-              <strong>
-                B.Sc. Animal & Environmental Biology
-              </strong>
-
-            </div>
-
-          </div>
-
-
-        </div>
-
-
-        <!-- LOCATION -->
-
-        <a
-          href="#"
-          class="location-button"
-        >
-          📍 View Department Location
-        </a>
-
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         DEPARTMENT COURSES
-    ========================== -->
-
-    <section
-      class="department-section"
-      id="courses"
-    >
-
-
-      <div class="section-heading">
-
-        <span>
-          ACADEMIC PROGRAMME
-        </span>
-
-
-        <h2>
-          Department Courses
-        </h2>
-
-
-        <p>
-          Select your level below to view the courses offered
-          in each semester.
-        </p>
-
-      </div>
-
-
-      <div class="course-list">
-
-
-        <!-- 100 LEVEL -->
-
-        <a
-          href="100.html"
-          class="level-button"
-        >
-
-          <span class="level-left">
-
-            <span class="level-number">
-              100
-            </span>
-
-
-            <span>
-              100 Level
-            </span>
-
-          </span>
-
-
-          <span class="level-arrow">
-            →
-          </span>
-
-        </a>
-
-
-        <!-- 200 LEVEL -->
-
-        <a
-          href="200.html"
-          class="level-button"
-        >
-
-          <span class="level-left">
-
-            <span class="level-number">
-              200
-            </span>
-
-
-            <span>
-              200 Level
-            </span>
-
-          </span>
-
-
-          <span class="level-arrow">
-            →
-          </span>
-
-        </a>
-
-
-        <!-- 300 LEVEL -->
-
-        <a
-          href="300.html"
-          class="level-button"
-        >
-
-          <span class="level-left">
-
-            <span class="level-number">
-              300
-            </span>
-
-
-            <span>
-              300 Level
-            </span>
-
-          </span>
-
-
-          <span class="level-arrow">
-            →
-          </span>
-
-        </a>
-
-
-        <!-- 400 LEVEL -->
-
-        <a
-          href="400.html"
-          class="level-button"
-        >
-
-          <span class="level-left">
-
-            <span class="level-number">
-              400
-            </span>
-
-
-            <span>
-              400 Level
-            </span>
-
-          </span>
-
-
-          <span class="level-arrow">
-            →
-          </span>
-
-        </a>
-
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         ACADEMIC RESOURCES
-    ========================== -->
-
-    <section
-      class="department-section"
-      id="resources"
-    >
-
-
-      <div class="section-heading">
-
-        <span>
-          STUDY MATERIALS
-        </span>
-
-
-        <h2>
-          Academic Resources
-        </h2>
-
-
-        <p>
-          Access useful materials to support your studies
-          in the department.
-        </p>
-
-      </div>
-
-
-      <!-- SAME TEMPLATE AS WHATSAPP -->
-
-      <div class="info-card">
-
-
-        <div class="info-icon">
-          📄
-        </div>
-
-
-        <h3>
-          Lecture Notes PDF
-        </h3>
-
-
-        <p>
-          Access lecture notes and other useful study materials
-          for Animal & Environmental Biology.
-        </p>
-
-
-        <!-- MediaFire link will be added later -->
-
-        <a
-          href="#"
-          class="info-button"
-        >
-          Download
-        </a>
-
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         WHATSAPP
-    ========================== -->
-
-    <section
-      class="department-section"
-    >
-
-
-      <div class="info-card">
-
-
-        <div class="info-icon">
-          💬
-        </div>
-
-
-        <h3>
-          Connect on WhatsApp
-        </h3>
-
-
-        <p>
-          Join the department WhatsApp group to connect
-          with other students and stay updated with useful
-          information.
-        </p>
-
-
-        <!-- WhatsApp link will be added later -->
-
-        <a
-          href="#"
-          class="info-button"
-        >
-          Connect on WhatsApp
-        </a>
-
-
-      </div>
-
-    </section>
-
-
-  </main>
-
-
-  <!-- =========================
-       FOOTER
-  ========================== -->
-
-  <footer>
-
-    <div class="footer-container">
-
-
-      <div class="footer-brand">
-
-        <h2>
-          AAUA Uni Pilot
-        </h2>
-
-
-        <p>
-          Your campus. Your resources. Your guide.
-        </p>
-
-      </div>
-
-
-      <div class="footer-links">
-
-
-        <div>
-
-          <h4>
-            Platform
-          </h4>
-
-
-          <a href="resources.html">
-            Resources
-          </a>
-
-
-          <a href="guide.html">
-            Student Guide
-          </a>
-
-
-          <a href="updates.html">
-            Updates
-          </a>
-
-
-          <a href="tools.html">
-            Student Tools
-          </a>
-
-        </div>
-
-
-        <div>
-
-          <h4>
-            Information
-          </h4>
-
-
-          <a href="about.html">
-            About
-          </a>
-
-
-          <a href="#">
-            Privacy Policy
-          </a>
-
-
-          <a href="#">
-            Terms of Use
-          </a>
-
-
-          <a href="#">
-            Contact
-          </a>
-
-        </div>
-
-
-      </div>
-
-    </div>
-
-
-    <div class="footer-bottom">
-
-      <p>
-        © 2026 AAUA Uni Pilot. All rights reserved.
-      </p>
-
-    </div>
-
-  </footer>
-
-
-  <!-- JavaScript -->
-
-  <script src="script.js"></script>
-
-
+<body class="department-page">
+<section class="department-hero"><div class="department-hero-content">
+<div class="breadcrumb"><a href="index.html">Home</a><span>›</span><a href="faculty-guide.html">Faculty Guide</a><span>›</span><span>Animal and Environmental Biology</span></div>
+<span class="department-label">Department Guide</span>
+<h1>Department of <span>Animal &amp; Environmental Biology.</span></h1>
+<p class="faculty-name">Faculty of Science</p>
+<p class="department-hero-description">Department information, programme details, admission requirements, course structure, grading, graduation requirements and student resources for Animal and Environmental Biology at AAUA.</p>
+<div class="department-actions"><a class="department-action primary" href="#overview">📚 Overview</a><a class="department-action secondary" href="#courses">📋 Courses</a><a class="department-action secondary" href="#staff">👩‍🏫 Staff</a><a class="department-action secondary" href="#resources">📁 Resources</a><a class="department-action secondary" href="#help">🆘 Get Help</a></div>
+</div></section>
+<main class="department-main">
+<section class="quick-info">
+<div class="quick-card"><div class="quick-icon">🏛️</div><span>Faculty</span><strong>Faculty of Science</strong></div>
+<div class="quick-card"><div class="quick-icon">👨‍🏫</div><span>Head of Department</span><strong>Prof. Dominic Olabode Odedeyi</strong></div>
+<div class="quick-card"><div class="quick-icon">🎓</div><span>Degree programme</span><strong>B.Sc. Environmental Biology and Fisheries / Animal and Environmental Biology</strong></div>
+<div class="quick-card"><div class="quick-icon">⏳</div><span>Duration</span><strong>4 years UTME · 3 years Direct Entry (published programme duration)</strong></div>
+</section>
+<section class="department-section" id="overview"><div class="section-heading"><span>Welcome &amp; Background</span><h2>About the Department</h2></div><div class="content-card about-box">
+<p><strong>Welcome from the Head of Department</strong><br/>Welcome to the Department of Animal and Environmental Biology at Adekunle Ajasin University, Akungba-Akoko. The programme explores animal life and the relationships between organisms and their environment, combining classroom learning with laboratory and field-based study.</p>
+<p><strong>General overview:</strong> The department was established as one of the university's foundation departments in 1999. The university's programme description highlights environmental processes, biodiversity, conservation, pollution control, sustainable food production and aquatic living resources. The department's history notes that it was renamed from Environmental Biology and Fisheries to Animal and Environmental Biology in 2015.</p>
+<p><strong>Areas of specialization include:</strong> Fish Biology and Production, Genetics and Molecular Biology, Parasitology, Ecology, and Environmental Studies.</p>
+<a aria-disabled="true" class="location-button" href="#" onclick="return false;" title="Google Maps link will be added later">📍 View Department Location · Link coming soon</a>
+<p class="note">Official department page: <a href="https://aaua.edu.ng/department/animal-and-environmental-biology" rel="noopener" target="_blank">AAUA Animal and Environmental Biology</a>.</p>
+</div></section>
+<section class="department-section"><div class="section-heading"><span>Programme Philosophy &amp; Objectives</span><h2>What the Programme Aims to Develop</h2></div><div class="info-grid">
+<div class="content-card"><h3>Philosophy</h3><p>To provide a sound understanding of traditional and modern zoology concepts, meet societal needs, and equip students with practical skills relevant to animal biology and environmental study.</p></div>
+<div class="content-card"><h3>Objectives</h3><ol><li>Develop understanding of animal biology, ecosystems and biological organisms.</li><li>Build subject-specific and transferable skills for fisheries, disease control, laboratories, teaching and forensic-related work.</li><li>Provide a foundation for postgraduate study and professional careers.</li><li>Enable students to apply scientific knowledge to practical problems and to design, conduct and interpret research.</li><li>Build interest in zoology across levels of biological organization and in modern molecular techniques.</li><li>Strengthen communication, presentation and lifelong-learning skills.</li><li>Develop critical thinking, computational and numerical skills.</li></ol></div>
+</div></section>
+<section class="department-section"><div class="section-heading"><span>Programme Offered &amp; Duration</span><h2>Degree Programmes</h2><p>The university website lists Environmental Biology and Fisheries; the supplied departmental information also names Animal and Environmental Biology. The exact award title may depend on the applicable curriculum version.</p></div><div class="programme-grid">
+<div class="programme-card"><div class="programme-icon">🎓</div><h3>B.Sc. Environmental Biology and Fisheries</h3><p>Listed on the official AAUA department webpage.</p></div>
+<div class="programme-card"><div class="programme-icon">🔬</div><h3>B.Sc. Animal and Environmental Biology</h3><p>Programme title provided in the department information supplied for this page.</p></div>
+<div class="programme-card"><div class="programme-icon">⏱️</div><h3>Duration</h3><p>UTME: minimum of four years (eight semesters). Direct Entry: minimum of three years (six semesters), according to the official department page.</p></div>
+<div class="programme-card"><div class="programme-icon">🐟</div><h3>Study areas</h3><p>Animal biology, ecology, fisheries, parasitology, genetics, environmental studies and related laboratory and field techniques.</p></div>
+</div></section>
+<section class="department-section"><div class="section-heading"><span>Admission</span><h2>Admission Requirements</h2></div><div class="info-grid">
+<div class="content-card"><h3>UTME Entry Requirements</h3><ul><li>Five relevant O'Level credit passes, including English Language, Mathematics, Biology and Chemistry, plus one other relevant science subject (preferably Physics).</li><li>UTME subject combination supplied: English Language (compulsory), Biology, Chemistry, and Physics or Mathematics.</li><li>An acceptable UTME result is required for 100-Level entry.</li></ul><p class="note">Confirm current-year eligibility and subject combinations with the official AAUA/JAMB admission requirements before applying.</p></div>
+<div class="content-card"><h3>Direct Entry</h3><p>The supplied programme document states five relevant SSC-equivalent credit passes, with two at Advanced Level. The following additional qualifications were also supplied and should be checked against the current AAUA admission notice:</p><ul><li>ND/NID: minimum Upper Credit</li><li>HND: minimum Lower Credit</li><li>NCE: minimum 8 points</li><li>JUPEB: minimum 6 points</li><li>First degree: Second Class Lower (2:2) or higher</li><li>A-Levels: passes in two relevant subjects, subject to programme rules</li></ul><p class="note">Applicants must complete JAMB Direct Entry registration and AAUA screening when the respective portals open, and submit the required results and certificates.</p></div>
+</div></section>
+<section class="department-section"><div class="section-heading"><span>Assessment &amp; Graduation</span><h2>Examination, Grading and Degree Classification</h2></div><div class="info-grid">
+<div class="content-card"><h3>Examination System</h3><ul><li>Each course is examined at the end of the semester in which it is offered.</li><li>Continuous assessment may include tests, practicals, written assignments and other accepted methods.</li><li>Each course is scored out of 100%; continuous assessment contributes 30%.</li></ul><h3 style="margin-top:22px">Marks and Grade Points</h3><div class="table-wrap"><table class="course-table" style="min-width:400px"><thead><tr><th>Mark</th><th>Grade</th><th>Grade Point</th></tr></thead><tbody><tr><td>70–100</td><td>A</td><td>5</td></tr><tr><td>60–69</td><td>B</td><td>4</td></tr><tr><td>50–59</td><td>C</td><td>3</td></tr><tr><td>45–49</td><td>D</td><td>2</td></tr><tr><td>40–44</td><td>E</td><td>1</td></tr><tr><td>0–39</td><td>F (Fail)</td><td>0</td></tr></tbody></table></div></div>
+<div class="content-card"><h3>Graduation Requirements</h3><ul><li>UTME entrants: minimum 120 credit units, according to the supplied programme information.</li><li>Direct Entry entrants: minimum 90 credit units, according to the supplied programme information.</li><li>Students must successfully complete all prescribed courses.</li><li>Minimum duration is typically four years for UTME and three years for Direct Entry.</li></ul><h3 style="margin-top:22px">Degree Classification</h3><div class="table-wrap"><table class="course-table" style="min-width:400px"><thead><tr><th>CGPA</th><th>Classification</th></tr></thead><tbody><tr><td>4.50–5.00</td><td>First Class Honours</td></tr><tr><td>3.50–4.49</td><td>Second Class Honours, Upper Division</td></tr><tr><td>2.40–3.49</td><td>Second Class Honours, Lower Division</td></tr><tr><td>1.50–2.39</td><td>Third Class</td></tr><tr><td>1.00–1.49</td><td>Pass</td></tr></tbody></table></div><p class="note">These grading and classification details reproduce the information supplied; confirm the current regulations with the university.</p></div>
+</div></section>
+<section class="department-section" id="courses"><div class="section-heading"><span>Course Structure</span><h2>Courses by Level and Semester</h2><p>Course codes, titles, credit units, compulsory/elective status and lecture/practical hours are reproduced from the information supplied. C = compulsory; E = elective; LH = lecture hours; PH = practical hours.</p></div><div class="level-dropdowns"><details class="level-dropdown" id="level100"><summary class="level-summary">100L<span class="dropdown-hint">View first and second semester courses</span></summary><details class="semester-dropdown"><summary>First Semester</summary><div class="table-wrap"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead><tbody><tr><td>GST 111</td><td>Communication in English</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>MTH 101</td><td>Elementary Mathematics I</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>CSC 101</td><td>Introduction to Computing Sciences</td><td>3</td><td>C</td><td>30</td><td>45</td></tr><tr><td>BIO 101</td><td>General Biology I</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>BIO 107</td><td>General Biology Practical I</td><td>1</td><td>C</td><td>—</td><td>45</td></tr><tr><td>CHM 101</td><td>General Chemistry I</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>CHM 107</td><td>General Chemistry Practical I</td><td>1</td><td>C</td><td>—</td><td>45</td></tr><tr><td>PHY 101</td><td>General Physics I</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>PHY 107</td><td>General Physics Practical I</td><td>1</td><td>C</td><td>—</td><td>45</td></tr><tr><td>ZOO 101</td><td>The Mammalian Body</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr class="total-row"><td colspan="2">Semester Total (as supplied)</td><td>18</td><td colspan="3">C = Compulsory · E = Elective</td></tr></tbody></table></div></details><details class="semester-dropdown"><summary>Second Semester</summary><div class="table-wrap"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead><tbody><tr><td>GST 112</td><td>Nigerian Peoples and Culture</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>MTH 102</td><td>Elementary Mathematics II</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>BIO 102</td><td>General Biology II</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>BIO 108</td><td>General Biology Practical II</td><td>1</td><td>C</td><td>—</td><td>45</td></tr><tr><td>CHM 102</td><td>General Chemistry II</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>CHM 108</td><td>General Chemistry Practical II</td><td>1</td><td>C</td><td>—</td><td>45</td></tr><tr><td>PHY 102</td><td>General Physics II</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>PHY 108</td><td>General Physics Practical II</td><td>1</td><td>C</td><td>—</td><td>45</td></tr><tr><td>ZOO 102</td><td>Animal Diversity</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr class="total-row"><td colspan="2">Semester Total (as supplied)</td><td>15</td><td colspan="3">C = Compulsory · E = Elective</td></tr></tbody></table></div></details></details><details class="level-dropdown" id="level200"><summary class="level-summary">200L<span class="dropdown-hint">View first and second semester courses</span></summary><details class="semester-dropdown"><summary>First Semester</summary><div class="table-wrap"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead><tbody><tr><td>ENT 211</td><td>Entrepreneurship and Innovation</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>BIO 201</td><td>Genetics I</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>BIO 203</td><td>General Physiology</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>AAUA-BCH 201</td><td>General Biochemistry I</td><td>2</td><td>E</td><td>30</td><td>—</td></tr><tr><td>AAUA-MCB 221</td><td>General Microbiology</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>AAUA-CHM 201</td><td>Organic Chemistry I</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>STA 201</td><td>Statistics for Agriculture &amp; Biological Sciences</td><td>3</td><td>C</td><td>45</td><td>—</td></tr><tr><td>AAUA-ZOO 205</td><td>Introductory Developmental and Cell Biology</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>ZOO 211</td><td>Invertebrate Zoology I</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>BOT 203</td><td>Seedless Plants</td><td>2</td><td>E</td><td>30</td><td>—</td></tr><tr class="total-row"><td colspan="2">Semester Total (as supplied)</td><td>21</td><td colspan="3">C = Compulsory · E = Elective</td></tr></tbody></table></div></details><details class="semester-dropdown"><summary>Second Semester</summary><div class="table-wrap"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead><tbody><tr><td>GST 212</td><td>Philosophy, Logic and Human Existence</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>BIO 202</td><td>Introductory Ecology</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>AAUA-ZOO 204</td><td>Biological Techniques</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>AAUA-ZOO 206</td><td>Hydrobiology</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>ZOO 212</td><td>Invertebrate Zoology II</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>AAUA-ZOO 214</td><td>Animal Systematics</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>BCH 202</td><td>General Biochemistry II</td><td>2</td><td>E</td><td>30</td><td>—</td></tr><tr><td>AAUA-MCB 202</td><td>General Microbiology II</td><td>2</td><td>C</td><td>30</td><td>30</td></tr><tr class="total-row"><td colspan="2">Semester Total (as supplied)</td><td>16</td><td colspan="3">C = Compulsory · E = Elective</td></tr></tbody></table></div></details></details><details class="level-dropdown" id="level300"><summary class="level-summary">300L<span class="dropdown-hint">View first and second semester courses</span></summary><details class="semester-dropdown"><summary>First Semester</summary><div class="table-wrap"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead><tbody><tr><td>BIO 307</td><td>Field Course I</td><td>1</td><td>C</td><td>—</td><td>45</td></tr><tr><td>ZOO 301</td><td>Vertebrate Zoology</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>ZOO 311</td><td>Comparative Animal Physiology</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>ZOO 313</td><td>Arthropod Diversity</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>AAUA-ZOO 303</td><td>Ichthyology</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>AAUA-ZOO 305</td><td>Introductory Immunology</td><td>2</td><td>E</td><td>15</td><td>45</td></tr><tr><td>AAUA-ZOO 309</td><td>Animal Ecology and Behaviour</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>ZOO 399</td><td>Industrial Attachment II (12 weeks)</td><td>3</td><td>C</td><td>—</td><td>135</td></tr><tr class="total-row"><td colspan="2">Semester Total (as supplied)</td><td>16</td><td colspan="3">C = Compulsory · E = Elective</td></tr></tbody></table></div></details><details class="semester-dropdown"><summary>Second Semester</summary><div class="table-wrap"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead><tbody><tr><td>GST 312</td><td>Peace and Conflict Resolution</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>ENT 312</td><td>Venture Creation</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>AAUA-ZOO 302</td><td>Ecotoxicology</td><td>2</td><td>E</td><td>15</td><td>45</td></tr><tr><td>AAUA-ZOO 304</td><td>Molecular Biology and Genetics</td><td>3</td><td>C</td><td>15</td><td>45</td></tr><tr><td>ZOO 318</td><td>Principles of Animal Development</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>ZOO 312</td><td>The Biology of Tropical Parasites</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>ZOO 316</td><td>Histology</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr class="total-row"><td colspan="2">Semester Total (as supplied)</td><td>15</td><td colspan="3">C = Compulsory · E = Elective</td></tr></tbody></table></div></details></details><details class="level-dropdown" id="level400"><summary class="level-summary">400L<span class="dropdown-hint">View first and second semester courses</span></summary><details class="semester-dropdown"><summary>First Semester</summary><div class="table-wrap"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead><tbody><tr><td>BIO 407</td><td>Field Course II</td><td>2</td><td>C</td><td>—</td><td>90</td></tr><tr><td>ZOO 411</td><td>Entomology</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>ZOO 419</td><td>Essay Topic in Zoology / Seminar</td><td>2</td><td>C</td><td>—</td><td>90</td></tr><tr><td>ZOO 499</td><td>Project</td><td>6</td><td>C</td><td>—</td><td>270</td></tr><tr><td>AAUA-ZOO 405</td><td>Bioclimatology and Zoogeography</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>AAUA-ZOO 409</td><td>Research Techniques in Zoology</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr class="total-row"><td colspan="2">Semester Total (as supplied)</td><td>16</td><td colspan="3">C = Compulsory · E = Elective</td></tr></tbody></table></div></details><details class="semester-dropdown"><summary>Second Semester</summary><div class="table-wrap"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead><tbody><tr><td>AAUA-ZOO 402</td><td>Environmental Biotechnology</td><td>2</td><td>E</td><td>15</td><td>45</td></tr><tr><td>AAUA-ZOO 404</td><td>Environmental Impact Assessment and Geographic Information Systems</td><td>2</td><td>E</td><td>15</td><td>45</td></tr><tr><td>AAUA-ZOO 406</td><td>Fish Production and Management</td><td>3</td><td>E</td><td>30</td><td>45</td></tr><tr><td>AAUA-ZOO 408</td><td>Advanced Developmental Biology</td><td>3</td><td>E</td><td>30</td><td>45</td></tr><tr><td>ZOO 412</td><td>Parasitology</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>AAUA-ZOO 414</td><td>Applied Immunology</td><td>2</td><td>E</td><td>15</td><td>45</td></tr><tr><td>ZOO 422</td><td>Entrepreneurship and Economic Zoology</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr class="total-row"><td colspan="2">Semester Total (as supplied)</td><td>16</td><td colspan="3">C = Compulsory · E = Elective</td></tr></tbody></table></div></details></details></div>
+
+
+
+
+
+
+
+
+</section>
+<section class="department-section" id="siwes"><div class="section-heading"><span>Industrial Training</span><h2>SIWES &amp; Field Experience</h2></div><div class="content-card"><p>The supplied course structure lists <strong>ZOO 399 — Industrial Attachment II (12 weeks)</strong> in 300 Level, First Semester, worth 3 units with 135 practical hours.</p><p>Additional SIWES eligibility, assessment, reporting and documentation details were not supplied, so they have not been assumed.</p><p class="note">The department-specific SIWES process should be confirmed with the university's Industrial Training Unit.</p></div></section>
+<section class="department-section"><div class="section-heading"><span>Programme Summary</span><h2>Credit Unit Requirements</h2></div><div class="summary-grid"><div class="summary-card"><h3>Minimum Programme Requirements</h3><div class="summary-stat"><span>UTME entrants</span><strong>120 units minimum</strong></div><div class="summary-stat"><span>Direct Entry entrants</span><strong>90 units minimum</strong></div><div class="summary-stat"><span>Course status</span><strong>C = Compulsory · E = Elective</strong></div></div><div class="summary-card"><h3>Course Structure Notes</h3><div class="summary-stat"><span>Levels listed</span><strong>100–400</strong></div><div class="summary-stat"><span>Semesters listed</span><strong>8</strong></div><div class="summary-stat"><span>Industrial attachment listed</span><strong>ZOO 399 · 12 weeks</strong></div><p class="note">Semester totals are shown beside each course table as supplied. Because some courses are electives, totals for all listed courses may not equal each student's selected registration total.</p></div></div></section>
+<section class="department-section" id="staff"><div class="section-heading"><span>Department Team</span><h2>Academic Staff</h2><p>The current HOD is displayed below. Tap the button to view the remaining academic staff details provided.</p></div><div class="content-card"><div class="staff-person"><h4>Prof. Dominic Olabode Odedeyi <span class="badge">Head of Department</span></h4><p><strong>Qualification:</strong> B.Sc. (Ilorin); M.Tech.; Ph.D. (Akure)</p><p><strong>Status:</strong> Professor</p><p><strong>Specialization:</strong> Fisheries Biology and Aquaculture</p></div><button aria-controls="allStaff" aria-expanded="false" class="staff-toggle" id="staffToggle" type="button">＋ View All Other Staff</button><div class="staff-list" hidden="" id="allStaff"><div class="staff-person"><h4>Prof. Felix O. Akinwumi</h4><p><strong>Qualification:</strong> B.Sc. (Calabar); M.Sc. (Ibadan); Ph.D. (Akure)</p><p><strong>Status:</strong> Professor</p><p><strong>Specialization:</strong> Fish Processing and Preservation</p></div><div class="staff-person"><h4>Prof. Olusegun M. Akanbi</h4><p><strong>Qualification:</strong> B.Sc. (Calabar); M.Sc., Ph.D. (Ibadan)</p><p><strong>Status:</strong> Professor</p><p><strong>Specialization:</strong> Parasitology and Immunology</p></div><div class="staff-person"><h4>Prof. Olatunde Oginni</h4><p><strong>Qualification:</strong> M.Tech.; Ph.D. (Akure)</p><p><strong>Status:</strong> Professor</p><p><strong>Specialization:</strong> Fisheries Management and Aquaculture</p></div><div class="staff-person"><h4>Prof. Adeyemo M. Adewole</h4><p><strong>Qualification:</strong> B.Sc. (Ilorin); M.Phil.; M.Sc.; Ph.D. (Ibadan)</p><p><strong>Status:</strong> Professor</p><p><strong>Specialization:</strong> Fish Nutrition and Biochemistry</p></div><div class="staff-person"><h4>Prof. Adelodun O. Fadare</h4><p><strong>Qualification:</strong> B. Agric.; M. Agric.; Ph.D. (Abeokuta)</p><p><strong>Status:</strong> Professor</p><p><strong>Specialization:</strong> Animal Genetics</p></div><div class="staff-person"><h4>Dr. Josephine O. Olayinka-Olagunju</h4><p><strong>Qualification:</strong> B.Sc. (Akungba); M.Sc. (Essex); Ph.D. (Wits)</p><p><strong>Status:</strong> Senior Lecturer</p><p><strong>Specialization:</strong> Environmental Studies</p></div><div class="staff-person"><h4>Dr. Oluwaremilekun G. Ajakaye</h4><p><strong>Qualification:</strong> B.Sc. (Ilorin); M.Sc. (Port Harcourt); Ph.D. (Akure)</p><p><strong>Status:</strong> Lecturer I</p><p><strong>Specialization:</strong> Applied Parasitology</p></div><div class="staff-person"><h4>Adetola M. Olatunji-Ojo</h4><p><strong>Qualification:</strong> B.Sc. (Akungba); M.Sc. (Ibadan)</p><p><strong>Status:</strong> Lecturer I</p><p><strong>Specialization:</strong> Environmental Toxicology and Bioremediation</p></div><div class="staff-person"><h4>Dr. Akintayo L. Adeyekun</h4><p><strong>Qualification:</strong> B.Tech.; M.Tech.; Ph.D. (Akure)</p><p><strong>Status:</strong> Lecturer I</p><p><strong>Specialization:</strong> Applied Parasitology</p></div><div class="staff-person"><h4>Wuraola I. Oluseyifunmi</h4><p><strong>Qualification:</strong> B. Agric. Tech.; M. Agric. Tech. (Akure)</p><p><strong>Status:</strong> Lecturer II (Study Leave)</p><p><strong>Specialization:</strong> Reproductive and Environmental Physiology</p></div><div class="staff-person"><h4>Rotimi Y. Fasimoye</h4><p><strong>Qualification:</strong> B.Sc. (Akungba); M.Sc. (Liverpool); Ph.D. (Aberdeen)</p><p><strong>Status:</strong> Lecturer II (Study Leave)</p><p><strong>Specialization:</strong> Reproductive and Environmental Physiology</p></div><div class="staff-person"><h4>Oluwabunmi P. Femi-Oloye</h4><p><strong>Qualification:</strong> B.Sc. (Akungba); M.Sc. (Akure)</p><p><strong>Status:</strong> Lecturer II (Study Leave)</p><p><strong>Specialization:</strong> Toxicology</p></div><div class="staff-person"><h4>Temitope H. Balogun</h4><p><strong>Qualification:</strong> B.Sc. (Ado-Ekiti); M.Sc. (Ile-Ife)</p><p><strong>Status:</strong> Lecturer II</p><p><strong>Specialization:</strong> Medical Parasitology</p></div><div class="staff-person"><h4>Irewole M. Aworetan</h4><p><strong>Qualification:</strong> B.Sc. (Akungba); M.Sc. (Ilorin)</p><p><strong>Status:</strong> Lecturer II</p><p><strong>Specialization:</strong> Entomology</p></div><div class="staff-person"><h4>Kehinde E. Olatunji</h4><p><strong>Qualification:</strong> B.Sc.; M.Sc.; Ph.D. (Akungba)</p><p><strong>Status:</strong> Lecturer II</p><p><strong>Specialization:</strong> Fish Biology and Ecology</p></div><div class="staff-person"><h4>Ayokunle O. Awosusi</h4><p><strong>Qualification:</strong> B.Sc. (Akungba); M.Sc. (Akungba)</p><p><strong>Status:</strong> Lecturer II</p><p><strong>Specialization:</strong> Fish Nutrition and Post-Harvest Technology</p></div><div class="staff-person"><h4>Esther M. Ola</h4><p><strong>Qualification:</strong> B.Sc. (Akungba); M.Sc. (Akungba)</p><p><strong>Status:</strong> Assistant Lecturer</p><p><strong>Specialization:</strong> Applied Parasitology</p></div></div><p class="note">Staff roles and qualifications above are based on the supplied staff list; please confirm current appointments where necessary.</p></div></section>
+<section class="department-section" id="resources"><div class="section-heading"><span>Student Resources</span><h2>Academic Resources</h2></div><div class="resource-grid"><div class="resource-card pdf-resource-card"><div class="resource-icon">📄</div><h3>Department PDFs</h3><p>Browse and download available course outlines, lecture notes and other AEB documents from the department resources page.</p><div class="resource-actions"><a class="download-button" href="aeb-resources.html">Browse &amp; Download PDFs</a></div></div>
+<div class="resource-card"><div class="resource-icon">📘</div><h3>Department Handbook</h3><p>The handbook is currently available as a physical copy. No download is provided on this page.</p></div>
+<div class="resource-card"><div class="resource-icon">📍</div><h3>Department Location</h3><p>A direct Google Maps link will be added when supplied.</p><div class="resource-actions"><a aria-disabled="true" class="location-button" href="#" onclick="return false;">Location link coming soon</a></div></div>
+<div class="resource-card"><div class="resource-icon">💬</div><h3>WhatsApp Community</h3><p>The department WhatsApp group link has not been created yet.</p><div class="resource-actions"><span class="whatsapp-button">Link coming soon</span></div></div>
+</div></section>
+<section class="department-section"><div class="section-heading"><span>Contact</span><h2>Department Contact Information</h2></div><div class="contact-grid">
+<div class="contact-card"><h3>Office of the Head of Department</h3><div class="contact-item"><div class="contact-item-icon">👨‍🏫</div><div><span>Head of Department</span><strong>Prof. Dominic Olabode Odedeyi</strong></div></div><div class="contact-item"><div class="contact-item-icon">📞</div><div><span>Phone</span><strong><a href="tel:08062066927">08062066927</a></strong></div></div><div class="contact-item"><div class="contact-item-icon">✉️</div><div><span>Email</span><strong><a href="mailto:bodeyi@yahoo.com">bodeyi@yahoo.com</a></strong></div></div></div>
+<div class="contact-card"><h3>University Information</h3><div class="contact-item"><div class="contact-item-icon">🏛️</div><div><span>Address</span><strong>Adekunle Ajasin University, Akungba-Akoko, Ondo State, Nigeria</strong></div></div><div class="contact-item"><div class="contact-item-icon">🌐</div><div><span>Official website</span><strong><a href="https://aaua.edu.ng/department/animal-and-environmental-biology" rel="noopener" target="_blank">AAUA AEB Department Page</a></strong></div></div><div class="contact-item"><div class="contact-item-icon">🕒</div><div><span>Office hours listed online</span><strong>Monday–Friday, 9:00 AM–4:00 PM</strong></div></div></div>
+</div><p class="note">Contact details are taken from the university's department webpage and may change; please check the official page for updates.</p></section>
+<section class="department-section" id="help"><div class="help-box"><h2>Need Help With AEB?</h2><p>For current admission rules, course registration, official course handbooks or departmental guidance, contact the Department of Animal and Environmental Biology or consult the official AAUA website.</p><a class="help-button" href="https://aaua.edu.ng/department/animal-and-environmental-biology" rel="noopener" target="_blank">Visit Official Department Page</a></div></section>
+</main>
+<footer>
+<div class="footer-container">
+<div class="footer-brand">
+<a class="brand" href="index.html">🎓 Uni Pilot</a>
+<p>Your campus. Your resources. Your guide.</p>
+</div>
+<div class="footer-links">
+<div>
+<h4>Platform</h4>
+<a href="resources.html">Resources</a>
+<a href="guide.html">Student Guide</a>
+<a href="updates.html">Updates</a>
+<a href="tools.html">Student Tools</a>
+</div>
+<div>
+<h4>Information</h4>
+<a href="about.html">About</a>
+<a href="privacy.html">Privacy Policy</a>
+<a href="terms.html">Terms of Use</a>
+<a href="contact.html">Contact</a>
+</div>
+</div>
+</div>
+<div class="footer-bottom"><p>© 2026 Uni Pilot. All rights reserved.</p></div>
+</footer>
+<script>
+const staffToggle = document.getElementById('staffToggle');
+const staffList = document.getElementById('allStaff');
+staffToggle.addEventListener('click', function () {
+  const isOpen = this.getAttribute('aria-expanded') === 'true';
+  this.setAttribute('aria-expanded', String(!isOpen));
+  staffList.hidden = isOpen;
+  this.textContent = isOpen ? '＋ View All Other Staff' : '− Hide Staff List';
+});
+</script>
 </body>
-
 </html>
