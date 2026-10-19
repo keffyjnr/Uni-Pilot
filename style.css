@@ -2716,3 +2716,24 @@ html[data-theme="dark"] .info-grid .content-card.full-card p{margin:0;max-width:
 html[data-theme="dark"] .info-grid .content-card.full-card h3{margin-bottom:6px}
 html[data-theme="dark"] .hero .btn-secondary,html[data-theme="dark"] .hero-content .btn-secondary{color:#fff!important}
 @media(max-width:640px){html[data-theme="dark"] .info-grid{grid-template-columns:minmax(0,1fr)}}
+
+/* FACULTY CONTACT ITEMS — DARK THEME READABILITY */
+html[data-theme="dark"] .faculty-contact .contact-item {
+  background: rgba(5, 12, 15, .58) !important;
+  color: #f4f8fa !important;
+  border: 1px solid rgba(112, 151, 164, .28) !important;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, .14) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+html[data-theme="dark"] .faculty-contact .contact-item small,
+html[data-theme="dark"] .faculty-contact .contact-item strong,
+html[data-theme="dark"] .faculty-contact .contact-item p,
+html[data-theme="dark"] .faculty-contact .contact-item a,
+html[data-theme="dark"] .faculty-contact .contact-item span {
+  color: #f4f8fa !important;
+}
+html[data-theme="dark"] .faculty-contact .contact-item small {
+  color: #a9c7ba !important;
+}
+
