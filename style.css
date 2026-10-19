@@ -2188,10 +2188,10 @@ html[data-theme="dark"] .auth-form input {
 html[data-theme="dark"] .menu-overlay.active {
   background: rgba(0, 0, 0, .38);
 }
-/* The homepage has a custom inline background; tune it for dark mode too. */
+/* Keep the homepage campus image visible in dark mode with an emerald overlay. */
 html[data-theme="dark"] body::before {
-  background-image: linear-gradient(rgba(4, 12, 16, .82), rgba(4, 12, 16, .82)), url("images/home-bg.jpg") !important;
-  opacity: .55 !important;
+  background-image: linear-gradient(rgba(6, 59, 38, .55), rgba(6, 59, 38, .55)), url("images/home-bg.jpg") !important;
+  opacity: .85 !important;
 }
 html[data-theme="dark"] .welcome-section::before {
   background: linear-gradient(120deg, rgba(0, 214, 154, .15), rgba(4, 16, 20, .65)) !important;
