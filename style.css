@@ -2057,3 +2057,285 @@ footer {
   }
 
 }
+
+/* =========================
+   UNI PILOT THEME SYSTEM
+========================= */
+:root {
+  color-scheme: light;
+  --page-bg: #f7faf8;
+  --surface: #ffffff;
+  --surface-soft: #f1f7f3;
+  --primary-text: #17221c;
+  --secondary-text: #6d7a72;
+  --line: #dfe8e2;
+  --accent: #0b5d3b;
+  --accent-strong: #063b26;
+  --accent-soft: #eaf6ef;
+}
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --background: #070d12;
+  --white: #0d1720;
+  --text: #eef4f7;
+  --muted: #a6b5c5;
+  --border: #243746;
+  --green: #00d69a;
+  --dark-green: #00bd86;
+  --light-green: #073b30;
+  --light-yellow: #292615;
+  --page-bg: #070d12;
+  --surface: #0d1720;
+  --surface-soft: #101e28;
+  --primary-text: #eef4f7;
+  --secondary-text: #a6b5c5;
+  --line: #243746;
+  --accent: #00d69a;
+  --accent-strong: #00bd86;
+  --accent-soft: #073b30;
+}
+html[data-theme="dark"] body {
+  background: #070d12;
+  color: #eef4f7;
+}
+html[data-theme="dark"] .header {
+  background: rgba(7, 13, 18, .94);
+  border-color: #20313d;
+}
+html[data-theme="dark"] .brand,
+html[data-theme="dark"] .desktop-nav a,
+html[data-theme="dark"] .section-heading h2,
+html[data-theme="dark"] .welcome-content h1,
+html[data-theme="dark"] .action-card h3,
+html[data-theme="dark"] .section-heading-left h2,
+html[data-theme="dark"] .tools-intro h1,
+html[data-theme="dark"] .resource-content h3,
+html[data-theme="dark"] .update-card h3,
+html[data-theme="dark"] .event-info h3,
+html[data-theme="dark"] .guide-card h3,
+html[data-theme="dark"] .opportunity-card h3,
+html[data-theme="dark"] .auth-form h2,
+html[data-theme="dark"] .auth-form label {
+  color: #f3f7fa;
+}
+html[data-theme="dark"] .action-card,
+html[data-theme="dark"] .access-card,
+html[data-theme="dark"] .resource-card,
+html[data-theme="dark"] .update-card,
+html[data-theme="dark"] .event-card,
+html[data-theme="dark"] .guide-card,
+html[data-theme="dark"] .opportunity-card,
+html[data-theme="dark"] .auth-box,
+html[data-theme="dark"] .tools-section,
+html[data-theme="dark"] .mobile-menu,
+html[data-theme="dark"] .account-dropdown {
+  background: #0d1720 !important;
+  border-color: #243746 !important;
+  color: #eef4f7;
+}
+html[data-theme="dark"] .action-card:hover,
+html[data-theme="dark"] .mobile-menu a:hover,
+html[data-theme="dark"] .mobile-menu a:active {
+  background: #102820 !important;
+}
+html[data-theme="dark"] .action-card p,
+html[data-theme="dark"] .welcome-description,
+html[data-theme="dark"] .section-heading p,
+html[data-theme="dark"] .resource-content p,
+html[data-theme="dark"] .update-card p,
+html[data-theme="dark"] .event-info p,
+html[data-theme="dark"] .guide-card p,
+html[data-theme="dark"] .opportunity-card p,
+html[data-theme="dark"] .tools-intro p {
+  color: #a6b5c5;
+}
+html[data-theme="dark"] .icon-btn,
+html[data-theme="dark"] .menu-btn,
+html[data-theme="dark"] .back-button,
+html[data-theme="dark"] .auth-form input,
+html[data-theme="dark"] .close-auth {
+  background: #101e28;
+  color: #eef4f7;
+  border-color: #243746;
+}
+html[data-theme="dark"] .welcome-tag {
+  background: #173328;
+  color: #f5d65e;
+}
+html[data-theme="dark"] .action-card > span,
+html[data-theme="dark"] .resource-icon,
+html[data-theme="dark"] .auth-logo {
+  background: #10382e;
+}
+html[data-theme="dark"] .platform-intro,
+html[data-theme="dark"] .cta,
+html[data-theme="dark"] footer {
+  background: #041c16;
+}
+html[data-theme="dark"] .update-featured,
+html[data-theme="dark"] .disclaimer {
+  background: #252315 !important;
+  border-color: #6e5b18 !important;
+}
+html[data-theme="dark"] .update-featured h3,
+html[data-theme="dark"] .disclaimer h3 {
+  color: #f4e8ae;
+}
+html[data-theme="dark"] .auth-form input {
+  background: #0a131b;
+  color: #eef4f7;
+}
+html[data-theme="dark"] .menu-overlay.active {
+  background: rgba(0, 0, 0, .38);
+}
+/* The homepage has a custom inline background; tune it for dark mode too. */
+html[data-theme="dark"] body::before {
+  background-image: linear-gradient(rgba(4, 12, 16, .82), rgba(4, 12, 16, .82)), url("images/home-bg.jpg") !important;
+  opacity: .55 !important;
+}
+html[data-theme="dark"] .welcome-section::before {
+  background: linear-gradient(120deg, rgba(0, 214, 154, .15), rgba(4, 16, 20, .65)) !important;
+}
+html[data-theme="dark"] .action-card {
+  background: rgba(13, 23, 32, .91) !important;
+  box-shadow: 0 8px 25px rgba(0,0,0,.18);
+}
+html[data-theme="dark"] .action-card:hover {
+  background: rgba(16, 40, 32, .96) !important;
+}
+
+/* Theme menu entry */
+.theme-menu-trigger {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 14px 15px;
+  border: 0;
+  border-radius: 13px;
+  background: transparent;
+  color: var(--dark-green);
+  text-align: left;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+.theme-menu-trigger:hover { background: var(--light-green); }
+.theme-current-label {
+  margin-left: auto;
+  color: var(--muted);
+  font-size: .72rem;
+  font-weight: 700;
+}
+html[data-theme="dark"] .theme-menu-trigger { color: #eef4f7; }
+html[data-theme="dark"] .theme-menu-trigger:hover { background: #102820; }
+
+/* Theme selection pop-up */
+.theme-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(3, 12, 10, .48);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .22s ease, visibility .22s ease;
+}
+.theme-modal-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+.theme-modal {
+  position: relative;
+  width: min(100%, 390px);
+  padding: 28px;
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  background: var(--surface);
+  color: var(--primary-text);
+  box-shadow: 0 25px 80px rgba(0,0,0,.3);
+  transform: translateY(10px) scale(.98);
+  transition: transform .22s ease;
+}
+.theme-modal-backdrop.active .theme-modal { transform: translateY(0) scale(1); }
+.theme-modal-close {
+  position: absolute;
+  top: 13px;
+  right: 14px;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--surface-soft);
+  color: var(--primary-text);
+  font-size: 22px;
+  cursor: pointer;
+}
+.theme-modal-icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 16px;
+  border-radius: 15px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 26px;
+}
+.theme-modal h2 { font-size: 1.35rem; margin-bottom: 4px; color: var(--primary-text); }
+.theme-modal > p { color: var(--secondary-text); font-size: .85rem; }
+.theme-options { display: grid; gap: 9px; margin: 22px 0 15px; }
+.theme-option {
+  display: grid;
+  grid-template-columns: 42px 1fr 20px;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 15px;
+  background: var(--surface);
+  color: var(--primary-text);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color .18s ease, background .18s ease, transform .18s ease;
+}
+.theme-option:hover { transform: translateY(-1px); border-color: var(--accent); }
+.theme-option[aria-checked="true"] { border-color: var(--accent); background: var(--accent-soft); }
+.theme-option-symbol {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: var(--surface-soft);
+  color: var(--accent);
+  font-size: 21px;
+}
+.theme-option strong, .theme-option small { display: block; }
+.theme-option strong { font-size: .9rem; }
+.theme-option small { margin-top: 2px; color: var(--secondary-text); font-size: .73rem; }
+.theme-radio {
+  width: 17px;
+  height: 17px;
+  border: 2px solid #8a9892;
+  border-radius: 50%;
+  position: relative;
+}
+.theme-option[aria-checked="true"] .theme-radio { border-color: var(--accent); }
+.theme-option[aria-checked="true"] .theme-radio::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.theme-modal-note { text-align: center; font-size: .72rem !important; color: var(--secondary-text); }
+@media (max-width: 430px) { .theme-modal { padding: 24px 20px; } }
