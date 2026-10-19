@@ -2339,3 +2339,142 @@ html[data-theme="dark"] .theme-menu-trigger:hover { background: #102820; }
 }
 .theme-modal-note { text-align: center; font-size: .72rem !important; color: var(--secondary-text); }
 @media (max-width: 430px) { .theme-modal { padding: 24px 20px; } }
+
+
+/* =========================
+   DARK THEME CONSISTENCY PATCH
+   Shared by current and future pages using style.css
+========================= */
+html[data-theme="dark"] {
+  --white: #0d1720;
+  --background: #070d12;
+  --text: #eef4f7;
+  --muted: #a6b5c5;
+  --border: #243746;
+  --green: #00d69a;
+  --dark-green: #00bd86;
+  --light-green: #10382e;
+  --light-yellow: #292615;
+}
+html[data-theme="dark"] body,
+html[data-theme="dark"] main,
+html[data-theme="dark"] .home-page,
+html[data-theme="dark"] .faculty-page,
+html[data-theme="dark"] .department-page {
+  background-color: #070d12;
+  color: #eef4f7;
+}
+html[data-theme="dark"] h1,
+html[data-theme="dark"] h2,
+html[data-theme="dark"] h3,
+html[data-theme="dark"] h4,
+html[data-theme="dark"] h5,
+html[data-theme="dark"] .section-heading h2,
+html[data-theme="dark"] .faculty-grid-heading h2,
+html[data-theme="dark"] .department-main h2,
+html[data-theme="dark"] .department-main h3,
+html[data-theme="dark"] .faculty-content h2,
+html[data-theme="dark"] .faculty-content h3 {
+  color: #f3f7fa;
+}
+html[data-theme="dark"] p,
+html[data-theme="dark"] li,
+html[data-theme="dark"] label,
+html[data-theme="dark"] .faculty-description,
+html[data-theme="dark"] .department-hero-description,
+html[data-theme="dark"] .faculty-hero p {
+  color: #b4c2ce;
+}
+html[data-theme="dark"] .faculty-card,
+html[data-theme="dark"] .faculty-tile,
+html[data-theme="dark"] .faculty-guide-card,
+html[data-theme="dark"] .department-card,
+html[data-theme="dark"] .department-tile,
+html[data-theme="dark"] .department-info-card,
+html[data-theme="dark"] .info-card,
+html[data-theme="dark"] .staff-card,
+html[data-theme="dark"] .contact-card,
+html[data-theme="dark"] .detail-card,
+html[data-theme="dark"] .stat-card,
+html[data-theme="dark"] .course-card,
+html[data-theme="dark"] .course-level-card,
+html[data-theme="dark"] .semester-card,
+html[data-theme="dark"] .course-semester,
+html[data-theme="dark"] .course-table-wrap,
+html[data-theme="dark"] .table-wrap,
+html[data-theme="dark"] .department-main .card,
+html[data-theme="dark"] .department-main [class*="card"],
+html[data-theme="dark"] .department-main [class*="tile"],
+html[data-theme="dark"] .faculty-content [class*="card"],
+html[data-theme="dark"] .faculty-content [class*="tile"] {
+  background: rgba(13, 23, 32, .84) !important;
+  color: #eef4f7 !important;
+  border-color: #263b49 !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+html[data-theme="dark"] .department-main table,
+html[data-theme="dark"] .department-main thead,
+html[data-theme="dark"] .department-main tbody,
+html[data-theme="dark"] .department-main tr,
+html[data-theme="dark"] .department-main td,
+html[data-theme="dark"] .department-main th,
+html[data-theme="dark"] .faculty-content table,
+html[data-theme="dark"] .faculty-content thead,
+html[data-theme="dark"] .faculty-content tbody,
+html[data-theme="dark"] .faculty-content tr,
+html[data-theme="dark"] .faculty-content td,
+html[data-theme="dark"] .faculty-content th {
+  background-color: transparent;
+  color: #eaf1f5;
+  border-color: #263b49;
+}
+html[data-theme="dark"] input,
+html[data-theme="dark"] textarea,
+html[data-theme="dark"] select {
+  background-color: #0a141c;
+  color: #eef4f7;
+  border-color: #304452;
+}
+html[data-theme="dark"] .desktop-nav a { color: #e5edf2; }
+html[data-theme="dark"] .desktop-nav a:hover { color: #00d69a; }
+html[data-theme="dark"] .menu-btn,
+html[data-theme="dark"] .icon-btn { color: #eef4f7; background: #101e28; border-color: #243746; }
+html[data-theme="dark"] .faculty-hero h1 span,
+html[data-theme="dark"] .department-hero h1 span { color: #00d69a; }
+html[data-theme="dark"] .faculty-hero,
+html[data-theme="dark"] .department-hero {
+  color: #f3f7fa;
+}
+html[data-theme="dark"] .faculty-grid-heading p { color: #a6b5c5; }
+html[data-theme="dark"] .faculty-hero-guide,
+html[data-theme="dark"] .department-action,
+html[data-theme="dark"] .faculty-explore-btn {
+  color: #eaf7f1;
+}
+html[data-theme="dark"] .section-heading h2,
+html[data-theme="dark"] .section-heading-left h2 {
+  color: #f3f7fa !important;
+}
+html[data-theme="dark"] .welcome-content h1,
+html[data-theme="dark"] .welcome-content h2,
+html[data-theme="dark"] .welcome-section h2 {
+  color: #ffffff !important;
+}
+@media (min-width: 1001px) {
+  .desktop-nav { display: flex !important; }
+  .menu-btn { display: none !important; }
+}
+@media (max-width: 1000px) {
+  .desktop-nav { display: none !important; }
+  .menu-btn { display: inline-flex; align-items: center; justify-content: center; }
+}
+
+html[data-theme="dark"] .needs-section h2,
+html[data-theme="dark"] .student-needs h2,
+html[data-theme="dark"] .everything-needs h2,
+html[data-theme="dark"] #needs h2,
+html[data-theme="dark"] .section-heading h2 {
+  color: #ffffff !important;
+}
