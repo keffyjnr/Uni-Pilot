@@ -2536,3 +2536,167 @@ html[data-theme="dark"] .faculty-page .departments-section > h2,
 html[data-theme="dark"] .faculty-page .departments-section .section-title {
   color: #f7fafb !important;
 }
+
+
+/* =====================================================
+   DARK MODE READABILITY AND DEPARTMENT COURSE FIX
+   Shared rules for current and future pages using style.css
+===================================================== */
+html[data-theme="dark"] .faculty-info-card,
+html[data-theme="dark"] .faculty-info-card *,
+html[data-theme="dark"] .faculty-panel,
+html[data-theme="dark"] .faculty-panel *,
+html[data-theme="dark"] .programme-card,
+html[data-theme="dark"] .programme-card *,
+html[data-theme="dark"] .faculty-contact,
+html[data-theme="dark"] .faculty-contact *,
+html[data-theme="dark"] .department-hero + section,
+html[data-theme="dark"] .department-hero + section * {
+  text-shadow: none;
+}
+html[data-theme="dark"] .faculty-info-card strong,
+html[data-theme="dark"] .faculty-info-card small,
+html[data-theme="dark"] .faculty-info-card p,
+html[data-theme="dark"] .faculty-info-card span,
+html[data-theme="dark"] .faculty-info-card label,
+html[data-theme="dark"] .programme-card strong,
+html[data-theme="dark"] .programme-card h3,
+html[data-theme="dark"] .programme-card h4,
+html[data-theme="dark"] .programme-card li,
+html[data-theme="dark"] .programme-card a,
+html[data-theme="dark"] .faculty-panel strong,
+html[data-theme="dark"] .faculty-panel h3,
+html[data-theme="dark"] .faculty-panel h4,
+html[data-theme="dark"] .faculty-contact strong,
+html[data-theme="dark"] .faculty-contact h3,
+html[data-theme="dark"] .faculty-contact h4 {
+  color: #f4f8fa !important;
+}
+html[data-theme="dark"] .faculty-info-card span,
+html[data-theme="dark"] .programme-card span,
+html[data-theme="dark"] .faculty-panel p,
+html[data-theme="dark"] .faculty-contact p {
+  color: #c2d0d9 !important;
+}
+
+/* Restore the original emerald faculty/department hero treatment. */
+html[data-theme="dark"] .department-hero {
+  background:
+    radial-gradient(circle at 82% 18%, rgba(245, 197, 24, .13), transparent 28%),
+    linear-gradient(135deg, #07120d 0%, #063b26 48%, #0b5d3b 100%) !important;
+  color: #ffffff !important;
+}
+html[data-theme="dark"] .department-hero h1,
+html[data-theme="dark"] .department-hero h1 span {
+  color: #ffffff !important;
+}
+html[data-theme="dark"] .department-hero h1 span {
+  color: #f5c518 !important;
+}
+html[data-theme="dark"] .department-hero p,
+html[data-theme="dark"] .department-hero .department-hero-description {
+  color: rgba(255, 255, 255, .84) !important;
+}
+
+/* Dark green action tiles with pale-green labels, like the Coming Soon tiles. */
+html[data-theme="dark"] .staff-toggle,
+html[data-theme="dark"] .resource-actions a,
+html[data-theme="dark"] .resource-actions button,
+html[data-theme="dark"] .whatsapp-button,
+html[data-theme="dark"] .department-action,
+html[data-theme="dark"] .resource-button,
+html[data-theme="dark"] .programme-card .button,
+html[data-theme="dark"] .resource-card .button {
+  background: #063b26 !important;
+  color: #b8f5d6 !important;
+  border: 1px solid rgba(0, 214, 154, .28) !important;
+}
+html[data-theme="dark"] .staff-toggle:hover,
+html[data-theme="dark"] .resource-actions a:hover,
+html[data-theme="dark"] .resource-actions button:hover,
+html[data-theme="dark"] .whatsapp-button:hover {
+  background: #084b32 !important;
+  color: #d9ffea !important;
+}
+
+/* All department information and course accordion cards use dark translucent surfaces. */
+html[data-theme="dark"] .programme-grid .programme-card,
+html[data-theme="dark"] .level-dropdown,
+html[data-theme="dark"] .semester-dropdown,
+html[data-theme="dark"] .course-block,
+html[data-theme="dark"] .table-card,
+html[data-theme="dark"] .rule-card,
+html[data-theme="dark"] .contact-card,
+html[data-theme="dark"] .content-card,
+html[data-theme="dark"] .summary-card,
+html[data-theme="dark"] .staff-person,
+html[data-theme="dark"] .resource-grid .resource-card,
+html[data-theme="dark"] .level-dropdown > *,
+html[data-theme="dark"] .semester-dropdown > * {
+  background-color: rgba(13, 23, 32, .88) !important;
+  color: #eef4f7 !important;
+  border-color: #263b49 !important;
+}
+html[data-theme="dark"] .level-summary,
+html[data-theme="dark"] .semester-dropdown summary,
+html[data-theme="dark"] .course-block summary {
+  background: rgba(13, 23, 32, .94) !important;
+  color: #f4f8fa !important;
+}
+html[data-theme="dark"] .level-summary *,
+html[data-theme="dark"] .semester-dropdown summary *,
+html[data-theme="dark"] .course-block summary *,
+html[data-theme="dark"] .programme-card strong,
+html[data-theme="dark"] .programme-card h3,
+html[data-theme="dark"] .programme-card h4,
+html[data-theme="dark"] .resource-card h3,
+html[data-theme="dark"] .staff-person strong {
+  color: #f4f8fa !important;
+}
+html[data-theme="dark"] .course-table,
+html[data-theme="dark"] .course-table tbody,
+html[data-theme="dark"] .course-table tr,
+html[data-theme="dark"] .course-table td,
+html[data-theme="dark"] .course-table th {
+  background: transparent !important;
+  color: #eef4f7 !important;
+  border-color: #263b49 !important;
+}
+html[data-theme="dark"] .course-table th {
+  background: #10382e !important;
+  color: #b8f5d6 !important;
+}
+html[data-theme="dark"] .course-table td:first-child {
+  color: #b8f5d6 !important;
+}
+html[data-theme="dark"] .course-table .total-row td {
+  background: rgba(6, 59, 38, .55) !important;
+  color: #f4f8fa !important;
+}
+html[data-theme="dark"] .table-wrap {
+  max-width: 100%;
+  overflow-x: auto !important;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+}
+html[data-theme="dark"] .course-table {
+  min-width: 760px;
+}
+html[data-theme="dark"] body {
+  overflow-x: hidden;
+}
+html[data-theme="dark"] .resource-card h3,
+html[data-theme="dark"] .resource-card p,
+html[data-theme="dark"] .resource-card strong,
+html[data-theme="dark"] .resource-card span {
+  color: #eef4f7 !important;
+}
+html[data-theme="dark"] .resource-card,
+html[data-theme="dark"] .programme-card,
+html[data-theme="dark"] .contact-card,
+html[data-theme="dark"] .table-card,
+html[data-theme="dark"] .rule-card {
+  background: rgba(13, 23, 32, .86) !important;
+  border-color: #263b49 !important;
+}
