@@ -752,140 +752,90 @@
   <!-- =========================
        LOGIN STATE + ACCOUNT DROPDOWN
   ========================== -->
-
   <script>
-
     document.addEventListener("DOMContentLoaded", function () {
+      const authBtn = document.getElementById("authBtn");
+      const mobileAuthBtn = document.getElementById("mobileAuthBtn");
+      const welcomeMessage = document.getElementById("welcomeMessage");
+      const accountDropdown = document.getElementById("accountDropdown");
+      const logoutBtn = document.getElementById("logoutBtn");
 
-      const authBtn =
-        document.getElementById("authBtn");
-
-      const mobileAuthBtn =
-        document.getElementById("mobileAuthBtn");
-
-      const welcomeMessage =
-        document.getElementById("welcomeMessage");
-
-      const accountDropdown =
-        document.getElementById("accountDropdown");
-
-      const logoutBtn =
-        document.getElementById("logoutBtn");
-
-
-      const isLoggedIn =
-        localStorage.getItem("uniPilotLoggedIn") === "true";
-
-
-      const savedUser =
-        localStorage.getItem("uniPilotCurrentUser");
-
-
-      if (isLoggedIn && savedUser) {
-
-        try {
-
-          const user =
-            JSON.parse(savedUser);
-
-
-          if (user.name) {
-
-
-            /* Logged-in state */
-
-            authBtn.textContent =
-              "👤 Logged In";
-
-            mobileAuthBtn.textContent =
-              "👤 Logged In";
-
-
-            welcomeMessage.textContent =
-              "👋 Welcome, " + user.name + "!";
-
-
-            /* Stop desktop button
-               from opening auth page */
-
-            authBtn.href = "#";
-
-
-            /* Account dropdown */
-
-            authBtn.addEventListener(
-              "click",
-              function (event) {
-
-                event.preventDefault();
-
-                accountDropdown.classList.toggle(
-                  "active"
-                );
-
-              }
-            );
-
-
-            /* Close dropdown
-               when clicking outside */
-
-            document.addEventListener(
-              "click",
-              function (event) {
-
-                if (
-                  !event.target.closest(
-                    ".account-wrapper"
-                  )
-                ) {
-
-                  accountDropdown.classList.remove(
-                    "active"
-                  );
-
-                }
-
-              }
-            );
-
-
-            /* LOG OUT */
-
-            logoutBtn.addEventListener(
-              "click",
-              function () {
-
-                localStorage.removeItem(
-                  "uniPilotLoggedIn"
-                );
-
-                localStorage.removeItem(
-                  "uniPilotCurrentUser"
-                );
-
-                window.location.href =
-                  "auth.html";
-
-              }
-            );
-
-          }
-
-        } catch (error) {
-
-          console.log(
-            "Could not load user information."
-          );
-
-        }
-
+      function clearLoginSession() {
+        localStorage.removeItem("uniPilotLoggedIn");
+        localStorage.removeItem("uniPilotCurrentUser");
       }
 
+      function logOut() {
+        clearLoginSession();
+        window.location.href = "index.html";
+      }
+
+      const isLoggedIn = localStorage.getItem("uniPilotLoggedIn") === "true";
+      const savedUser = localStorage.getItem("uniPilotCurrentUser");
+
+      if (!isLoggedIn || !savedUser) return;
+
+      let user;
+      try {
+        user = JSON.parse(savedUser);
+      } catch (error) {
+        clearLoginSession();
+        return;
+      }
+
+      if (!user || !user.name) {
+        clearLoginSession();
+        return;
+      }
+
+      if (welcomeMessage) {
+        welcomeMessage.textContent = "👋 Welcome, " + user.name + "!";
+      }
+
+      if (authBtn) {
+        authBtn.textContent = "👤 " + user.name;
+        authBtn.href = "#";
+        authBtn.setAttribute("aria-expanded", "false");
+
+        authBtn.addEventListener("click", function (event) {
+          event.preventDefault();
+          if (!accountDropdown) return;
+
+          const isOpen = accountDropdown.classList.toggle("active");
+          authBtn.setAttribute("aria-expanded", String(isOpen));
+        });
+      }
+
+      if (logoutBtn) {
+        logoutBtn.addEventListener("click", logOut);
+      }
+
+      if (mobileAuthBtn) {
+        mobileAuthBtn.textContent = "Log out ↩️";
+        mobileAuthBtn.addEventListener("click", function (event) {
+          event.preventDefault();
+          logOut();
+        });
+      }
+
+      document.addEventListener("click", function (event) {
+        if (
+          accountDropdown &&
+          !event.target.closest(".account-wrapper")
+        ) {
+          accountDropdown.classList.remove("active");
+          if (authBtn) authBtn.setAttribute("aria-expanded", "false");
+        }
+      });
+
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && accountDropdown) {
+          accountDropdown.classList.remove("active");
+          if (authBtn) authBtn.setAttribute("aria-expanded", "false");
+        }
+      });
     });
-
   </script>
-
 
 </body>
 
