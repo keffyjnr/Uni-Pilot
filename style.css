@@ -2478,3 +2478,61 @@ html[data-theme="dark"] #needs h2,
 html[data-theme="dark"] .section-heading h2 {
   color: #ffffff !important;
 }
+
+
+/* =========================
+   FACULTY CARD DARK-MODE TARGETING
+   Keep faculty layouts translucent and readable.
+========================= */
+html[data-theme="dark"] .faculty-info-card,
+html[data-theme="dark"] .faculty-panel,
+html[data-theme="dark"] .programme-card,
+html[data-theme="dark"] .department-card,
+html[data-theme="dark"] .faculty-contact,
+html[data-theme="dark"] .department-grid .department-card {
+  background: rgba(12, 24, 32, .82) !important;
+  color: #eef4f7 !important;
+  border: 1px solid rgba(91, 126, 145, .32) !important;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, .14);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+html[data-theme="dark"] .faculty-info-card h1,
+html[data-theme="dark"] .faculty-info-card h2,
+html[data-theme="dark"] .faculty-info-card h3,
+html[data-theme="dark"] .faculty-panel h1,
+html[data-theme="dark"] .faculty-panel h2,
+html[data-theme="dark"] .faculty-panel h3,
+html[data-theme="dark"] .programme-card h1,
+html[data-theme="dark"] .programme-card h2,
+html[data-theme="dark"] .programme-card h3,
+html[data-theme="dark"] .department-card h1,
+html[data-theme="dark"] .department-card h2,
+html[data-theme="dark"] .department-card h3,
+html[data-theme="dark"] .faculty-contact h2,
+html[data-theme="dark"] .faculty-contact h3 {
+  color: #f4f8fa !important;
+}
+html[data-theme="dark"] .faculty-info-card p,
+html[data-theme="dark"] .faculty-panel p,
+html[data-theme="dark"] .programme-card p,
+html[data-theme="dark"] .department-card p,
+html[data-theme="dark"] .faculty-contact p {
+  color: #aebfca !important;
+}
+html[data-theme="dark"] .department-card:hover {
+  background: rgba(12, 42, 34, .9) !important;
+  border-color: rgba(0, 214, 154, .4) !important;
+}
+html[data-theme="dark"] .faculty-page .faculty-hero-bg {
+  opacity: .88;
+}
+html[data-theme="dark"] .faculty-page .faculty-hero h1,
+html[data-theme="dark"] .faculty-page .faculty-hero h2,
+html[data-theme="dark"] .faculty-page .faculty-hero h3 {
+  color: #f7fafb;
+}
+html[data-theme="dark"] .faculty-page .departments-section > h2,
+html[data-theme="dark"] .faculty-page .departments-section .section-title {
+  color: #f7fafb !important;
+}
