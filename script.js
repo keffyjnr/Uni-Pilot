@@ -1731,3 +1731,76 @@ document.addEventListener(
 
   }
 );
+
+
+/* =========================
+   UNI PILOT THEME CONTROLS
+========================= */
+(function () {
+  const storageKey = "uniPilotTheme";
+  const root = document.documentElement;
+  const choices = ["light", "dark", "system"];
+
+  function savedChoice() {
+    const value = localStorage.getItem(storageKey);
+    return choices.includes(value) ? value : "system";
+  }
+  function applyTheme(choice) {
+    const mode = choice === "system"
+      ? (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")
+      : choice;
+    root.dataset.theme = mode;
+    root.dataset.themeChoice = choice;
+    document.querySelectorAll("[data-theme-choice]").forEach(button => {
+      const selected = button.dataset.themeChoice === choice;
+      button.setAttribute("aria-checked", String(selected));
+    });
+    const label = document.getElementById("themeCurrentLabel");
+    if (label) label.textContent = choice === "system" ? "System Default" : choice === "dark" ? "Dark" : "Light";
+  }
+  function chooseTheme(choice) {
+    if (!choices.includes(choice)) return;
+    localStorage.setItem(storageKey, choice);
+    applyTheme(choice);
+  }
+  const trigger = document.getElementById("themeMenuTrigger");
+  const modal = document.getElementById("themeModal");
+  const closeButton = document.getElementById("themeModalClose");
+  function openModal() {
+    if (!modal) return;
+    applyTheme(savedChoice());
+    modal.classList.add("active");
+    modal.setAttribute("aria-hidden", "false");
+    if (trigger) trigger.setAttribute("aria-expanded", "true");
+    if (window.closeMenu) window.closeMenu();
+    if (closeButton) closeButton.focus();
+  }
+  function closeModal() {
+    if (!modal) return;
+    modal.classList.remove("active");
+    modal.setAttribute("aria-hidden", "true");
+    if (trigger) {
+      trigger.setAttribute("aria-expanded", "false");
+      trigger.focus();
+    }
+  }
+  if (trigger) trigger.addEventListener("click", openModal);
+  if (closeButton) closeButton.addEventListener("click", closeModal);
+  if (modal) {
+    modal.addEventListener("click", event => {
+      if (event.target === modal) closeModal();
+    });
+    modal.querySelectorAll("[data-theme-choice]").forEach(button => {
+      button.addEventListener("click", () => chooseTheme(button.dataset.themeChoice));
+    });
+  }
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape" && modal && modal.classList.contains("active")) closeModal();
+  });
+  applyTheme(savedChoice());
+  if (window.matchMedia) {
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener?.("change", () => {
+      if (savedChoice() === "system") applyTheme("system");
+    });
+  }
+})();
