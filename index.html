@@ -340,6 +340,11 @@
         About
       </a>
 
+
+      <button class="theme-menu-trigger" id="themeMenuTrigger" type="button" aria-haspopup="dialog">
+        <span aria-hidden="true">◐</span> Theme <span class="theme-current-label" id="themeCurrentLabel">System Default</span>
+      </button>
+
       <a
         href="auth.html"
         id="mobileAuthBtn"
@@ -350,6 +355,24 @@
     </div>
 
   </header>
+
+
+
+  <!-- Theme selection modal -->
+  <div class="theme-modal-backdrop" id="themeModal" aria-hidden="true">
+    <section class="theme-modal" role="dialog" aria-modal="true" aria-labelledby="themeModalTitle">
+      <button class="theme-modal-close" id="themeModalClose" type="button" aria-label="Close theme settings">×</button>
+      <div class="theme-modal-icon" aria-hidden="true">◐</div>
+      <h2 id="themeModalTitle">Choose your theme</h2>
+      <p>Make Uni Pilot feel right for you.</p>
+      <div class="theme-options" role="radiogroup" aria-label="Website theme">
+        <button class="theme-option" type="button" data-theme-choice="light" role="radio" aria-checked="false"><span class="theme-option-symbol">☀</span><span><strong>Light</strong><small>Bright and familiar</small></span><span class="theme-radio"></span></button>
+        <button class="theme-option" type="button" data-theme-choice="dark" role="radio" aria-checked="false"><span class="theme-option-symbol">☾</span><span><strong>Dark</strong><small>Deep charcoal and emerald</small></span><span class="theme-radio"></span></button>
+        <button class="theme-option" type="button" data-theme-choice="system" role="radio" aria-checked="false"><span class="theme-option-symbol">◑</span><span><strong>System Default</strong><small>Follow your device settings</small></span><span class="theme-radio"></span></button>
+      </div>
+      <p class="theme-modal-note">Your choice is saved on this device.</p>
+    </section>
+  </div>
 
 
   <!-- Menu Background Overlay -->
