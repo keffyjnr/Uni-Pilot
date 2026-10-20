@@ -1743,7 +1743,7 @@ document.addEventListener(
 
   function savedChoice() {
     const value = localStorage.getItem(storageKey);
-    return choices.includes(value) ? value : "system";
+    return choices.includes(value) ? value : "light";
   }
   function applyTheme(choice) {
     const mode = choice === "system"
