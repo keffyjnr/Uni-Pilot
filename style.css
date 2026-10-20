@@ -2190,8 +2190,8 @@ html[data-theme="dark"] .menu-overlay.active {
 }
 /* Keep the homepage campus image visible in dark mode with an emerald overlay. */
 html[data-theme="dark"] body::before {
-  background-image: linear-gradient(rgba(6, 59, 38, .55), rgba(6, 59, 38, .55)), url("images/home-bg.jpg") !important;
-  opacity: .85 !important;
+  background-image: linear-gradient(rgba(6, 59, 38, .22), rgba(6, 59, 38, .22)), url("images/home-bg.jpg") !important;
+  opacity: .95 !important;
 }
 html[data-theme="dark"] .welcome-section::before {
   background: linear-gradient(120deg, rgba(0, 214, 154, .15), rgba(4, 16, 20, .65)) !important;
