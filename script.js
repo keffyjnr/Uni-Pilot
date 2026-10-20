@@ -1741,6 +1741,18 @@ document.addEventListener(
   const root = document.documentElement;
   const choices = ["light", "dark", "system"];
 
+  // One-time migration: make Light the temporary site default for visitors
+  // who previously inherited/used System Default, without overriding later choices.
+  try {
+    const migrationKey = "uniPilotLightDefaultMigrationV1";
+    if (localStorage.getItem(migrationKey) !== "done") {
+      if (!localStorage.getItem(storageKey) || localStorage.getItem(storageKey) === "system") {
+        localStorage.setItem(storageKey, "light");
+      }
+      localStorage.setItem(migrationKey, "done");
+    }
+  } catch (e) {}
+
   function savedChoice() {
     const value = localStorage.getItem(storageKey);
     return choices.includes(value) ? value : "light";
