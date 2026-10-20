@@ -132,9 +132,27 @@ button,input{font-family:inherit}
 .level-nav a{padding:9px 13px;border-radius:999px;background:var(--light-green);color:var(--green);font-size:.68rem;font-weight:800}
 .level-nav a:hover{background:var(--yellow);color:var(--dark-green)}
 
-.course-block{margin-bottom:18px}
+.course-block{margin-bottom:12px;display:none}
+.course-block.open{display:block}
 .course-block:last-child{margin-bottom:0}
 .course-block h3{margin:0 0 10px;color:var(--green);font-size:.92rem}
+.course-level-button{
+  width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:16px 18px;border:1px solid var(--border);border-radius:16px;background:#fff;
+  color:var(--green);font:inherit;font-size:.8rem;font-weight:800;cursor:pointer;text-align:left;
+  box-shadow:0 8px 24px rgba(6,59,38,.045);transition:.2s ease
+}
+.course-level-button:hover{border-color:rgba(11,93,59,.25);background:var(--light-green);transform:translateY(-1px)}
+.course-level-button::after{
+  content:"⌄";width:28px;height:28px;display:grid;place-items:center;flex:0 0 28px;
+  border-radius:9px;background:var(--light-green);color:var(--green);font-size:1rem;
+  transition:transform .2s ease,background .2s ease
+}
+.course-level-button.active{border-color:rgba(11,93,59,.25);background:var(--light-green)}
+.course-level-button.active::after{transform:rotate(180deg);background:var(--yellow);color:var(--dark-green)}
+.course-level-group{margin-bottom:10px}
+.course-level-group:last-child{margin-bottom:0}
+.course-level-group .course-block{margin:8px 0 0;padding:0 4px}
 .table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:16px;background:#fff}
 .course-table{width:100%;border-collapse:collapse;min-width:760px}
 .course-table th,.course-table td{padding:10px 11px;border-bottom:1px solid var(--border);text-align:left;font-size:.69rem;vertical-align:top}
@@ -198,10 +216,111 @@ footer{border-top:1px solid var(--border)}
   .department-action{min-height:38px;padding:0 13px}
 }
 @media(max-width:430px){.quick-info{grid-template-columns:1fr}.breadcrumb{font-size:.6rem}}
+
+.level-nav{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:16px
+}
+.level-nav .course-level-button{
+  border-radius:999px;padding:10px 13px;min-height:42px;justify-content:center;font-size:.68rem;box-shadow:none
+}
+.level-nav .course-level-button::after{display:none}
+.level-nav > a{
+  display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:10px 13px;
+  border-radius:999px;background:var(--light-green);color:var(--green);font-size:.68rem;font-weight:800
+}
+.level-nav > a:hover{background:var(--yellow);color:var(--dark-green)}
+.course-level-content{display:none}
+.course-level-content.open{display:block}
+.course-level-content .course-block{display:block}
+@media(max-width:650px){.level-nav{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+
+.programme-structure-list{display:grid;gap:10px}
+.programme-structure-item{border-radius:16px}
+.programme-toggle{width:100%;display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border:1px solid var(--border);border-radius:16px;background:#fff;color:var(--green);font:inherit;font-size:.8rem;font-weight:800;cursor:pointer;text-align:left;box-shadow:0 8px 24px rgba(6,59,38,.045);transition:.2s ease}
+.programme-toggle:hover,.programme-toggle.active{border-color:rgba(11,93,59,.25);background:var(--light-green)}
+.programme-toggle span{width:28px;height:28px;display:grid;place-items:center;border-radius:9px;background:var(--light-green);font-size:1rem}
+.programme-toggle.active span{background:var(--yellow);color:var(--dark-green)}
+.programme-content{display:none;margin-top:8px}
+.programme-content.open{display:block}
+.programme-content .content-card{padding:21px}
 </style>
 </head>
 
 <body class="department-page">
+
+<header class="header">
+
+    <nav class="navbar">
+
+      <a
+        href="index.html"
+        class="brand"
+      >
+
+        <span class="brand-icon">
+          🎓
+        </span>
+
+        <span>
+          AAUA Uni Pilot
+        </span>
+
+      </a>
+
+
+      <div class="desktop-nav">
+
+        <a href="index.html">
+          Home
+        </a>
+
+        <a href="resources.html">
+          Resources
+        </a>
+
+        <a href="guide.html">
+          Student Guide
+        </a>
+
+        <a href="updates.html">
+          Updates
+        </a>
+
+        <a href="tools.html" class="active">
+          Tools
+        </a>
+
+      </div>
+
+
+      <div class="nav-actions">
+
+        <a
+          href="search.html"
+          class="icon-btn"
+          aria-label="Search AAUA Uni Pilot"
+          title="Search AAUA Uni Pilot"
+          style="display:grid;place-items:center;text-decoration:none;"
+        >
+          🔍
+        </a>
+
+
+        <button
+          class="menu-btn"
+          id="menuBtn"
+          type="button"
+          aria-label="Open menu"
+        >
+          ☰
+        </button>
+
+      </div>
+
+    </nav>
+
+  </header>
 
 <section class="department-hero">
   <div class="department-hero-content">
@@ -423,39 +542,38 @@ footer{border-top:1px solid var(--border)}
     <span>Academic Structure</span>
     <h2>3-Year and 4-Year Programme Structure</h2>
   </div>
-  <div class="info-grid">
-    <div class="content-card">
-      <h3>3-Year Programme</h3>
-      <div class="table-wrap">
-        <table class="course-table">
-          <thead><tr><th>Level</th><th>Compulsory 1st</th><th>Compulsory 2nd</th><th>GST 1st</th><th>GST 2nd</th><th>ENT 1st</th><th>ENT 2nd</th><th>Elective 1st</th><th>Elective 2nd</th><th>Total 1st</th><th>Total 2nd</th></tr></thead>
-          <tbody>
-            <tr><td>200</td><td>15</td><td>16</td><td>-</td><td>2</td><td>2</td><td>-</td><td>2</td><td>2</td><td>19</td><td>20</td></tr>
-            <tr><td>300</td><td>16</td><td>15</td><td>-</td><td>-</td><td>-</td><td>-</td><td>2</td><td>-</td><td>18</td><td>15</td></tr>
-            <tr><td>400</td><td>15</td><td>14</td><td>-</td><td>2</td><td>-</td><td>2</td><td>2</td><td>2</td><td>17</td><td>20</td></tr>
-            <tr class="total-row"><td>Total</td><td>46</td><td>45</td><td>-</td><td>4</td><td>2</td><td>2</td><td>6</td><td>6</td><td>54</td><td>55</td></tr>
-            <tr class="total-row"><td>Minimum</td><td colspan="8">91 compulsory + 4 GST + 4 ENT + 14 elective units as prescribed</td><td colspan="2">113</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="note">Students on the 3-Year programme must offer, in addition to the specified courses, 4 units of GST courses offered by students on the 4-Year programme in their first year (100 Level). Students are to register for the courses on the advice of the department.</p>
-    </div>
 
-    <div class="content-card">
-      <h3>4-Year Programme</h3>
-      <div class="table-wrap">
-        <table class="course-table">
-          <thead><tr><th>Level</th><th>Compulsory 1st</th><th>Compulsory 2nd</th><th>GST 1st</th><th>GST 2nd</th><th>ENT 1st</th><th>ENT 2nd</th><th>Elective 1st</th><th>Elective 2nd</th><th>Total 1st</th><th>Total 2nd</th></tr></thead>
-          <tbody>
-            <tr><td>100</td><td>17</td><td>15</td><td>2</td><td>2</td><td>-</td><td>-</td><td>-</td><td>-</td><td>19</td><td>17</td></tr>
-            <tr><td>200</td><td>15</td><td>16</td><td>-</td><td>2</td><td>2</td><td>-</td><td>2</td><td>2</td><td>19</td><td>20</td></tr>
-            <tr><td>300</td><td>16</td><td>15</td><td>-</td><td>-</td><td>-</td><td>-</td><td>2</td><td>-</td><td>18</td><td>15</td></tr>
-            <tr><td>400</td><td>15</td><td>14</td><td>-</td><td>2</td><td>-</td><td>2</td><td>2</td><td>2</td><td>17</td><td>20</td></tr>
-            <tr class="total-row"><td>Sub-Total</td><td>63</td><td>61</td><td>2</td><td>6</td><td>2</td><td>2</td><td>6</td><td>4</td><td>73</td><td>73</td></tr>
-            <tr class="total-row"><td>Total</td><td colspan="8">Minimum programme structure shown in the handbook</td><td colspan="2">146</td></tr>
-          </tbody>
-        </table>
-      </div>
+  <div class="content-card">
+    <h3>3-Year Programme</h3>
+    <div class="table-wrap">
+      <table class="course-table">
+        <thead><tr><th>Level</th><th>Compulsory 1st</th><th>Compulsory 2nd</th><th>GST 1st</th><th>GST 2nd</th><th>ENT 1st</th><th>ENT 2nd</th><th>Elective 1st</th><th>Elective 2nd</th><th>Total 1st</th><th>Total 2nd</th></tr></thead>
+        <tbody>
+          <tr><td>200</td><td>15</td><td>16</td><td>-</td><td>2</td><td>2</td><td>-</td><td>2</td><td>2</td><td>19</td><td>20</td></tr>
+          <tr><td>300</td><td>16</td><td>15</td><td>-</td><td>-</td><td>-</td><td>-</td><td>2</td><td>-</td><td>18</td><td>15</td></tr>
+          <tr><td>400</td><td>15</td><td>14</td><td>-</td><td>2</td><td>-</td><td>2</td><td>2</td><td>2</td><td>17</td><td>20</td></tr>
+          <tr class="total-row"><td>Total</td><td>46</td><td>45</td><td>-</td><td>4</td><td>2</td><td>2</td><td>6</td><td>6</td><td>54</td><td>55</td></tr>
+          <tr class="total-row"><td>Minimum</td><td colspan="8">91 compulsory + 4 GST + 4 ENT + 14 elective units as prescribed</td><td colspan="2">113</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Students on the 3-Year programme must offer, in addition to the specified courses, 4 units of GST courses offered by students on the 4-Year programme in their first year (100 Level). Students are to register for the courses on the advice of the department.</p>
+  </div>
+
+  <div class="content-card" style="margin-top:12px;">
+    <h3>4-Year Programme</h3>
+    <div class="table-wrap">
+      <table class="course-table">
+        <thead><tr><th>Level</th><th>Compulsory 1st</th><th>Compulsory 2nd</th><th>GST 1st</th><th>GST 2nd</th><th>ENT 1st</th><th>ENT 2nd</th><th>Elective 1st</th><th>Elective 2nd</th><th>Total 1st</th><th>Total 2nd</th></tr></thead>
+        <tbody>
+          <tr><td>100</td><td>17</td><td>15</td><td>2</td><td>2</td><td>-</td><td>-</td><td>-</td><td>-</td><td>19</td><td>17</td></tr>
+          <tr><td>200</td><td>15</td><td>16</td><td>-</td><td>2</td><td>2</td><td>-</td><td>2</td><td>2</td><td>19</td><td>20</td></tr>
+          <tr><td>300</td><td>16</td><td>15</td><td>-</td><td>-</td><td>-</td><td>-</td><td>2</td><td>-</td><td>18</td><td>15</td></tr>
+          <tr><td>400</td><td>15</td><td>14</td><td>-</td><td>2</td><td>-</td><td>2</td><td>2</td><td>2</td><td>17</td><td>20</td></tr>
+          <tr class="total-row"><td>Sub-Total</td><td>63</td><td>61</td><td>2</td><td>6</td><td>2</td><td>2</td><td>6</td><td>4</td><td>73</td><td>73</td></tr>
+          <tr class="total-row"><td>Total</td><td colspan="8">Minimum programme structure shown in the handbook</td><td colspan="2">146</td></tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </section>
@@ -468,14 +586,19 @@ footer{border-top:1px solid var(--border)}
   </div>
 
   <div class="level-nav">
-    <a href="#level100">100 Level</a>
-    <a href="#level200">200 Level</a>
-    <a href="#level300">300 Level</a>
-    <a href="#level400">400 Level</a>
+    <button type="button" class="course-level-button" data-level="100">100 Level</button>
+    <button type="button" class="course-level-button" data-level="200">200 Level</button>
+    <button type="button" class="course-level-button" data-level="300">300 Level</button>
+    <button type="button" class="course-level-button" data-level="400">400 Level</button>
     <a href="#siwes">SIWES</a>
   </div>
 
-  <div class="course-block" id="level100">
+  <div class="course-level-group">
+    <button type="button" class="course-level-button" data-level-toggle="100" aria-expanded="false">
+      100 Level <span aria-hidden="true">+</span>
+    </button>
+    <div class="course-level-content" data-level-content="100">
+<div class="course-block" data-level="100" id="level100">
     <h3>100 Level — First Semester</h3>
     <div class="table-wrap"><table class="course-table">
       <thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
@@ -493,8 +616,7 @@ footer{border-top:1px solid var(--border)}
       </tbody>
     </table></div>
   </div>
-
-  <div class="course-block">
+<div class="course-block" data-level="100">
     <h3>100 Level — Second Semester</h3>
     <div class="table-wrap"><table class="course-table">
       <thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
@@ -512,8 +634,14 @@ footer{border-top:1px solid var(--border)}
       </tbody>
     </table></div>
   </div>
-
-  <div class="course-block" id="level200">
+    </div>
+  </div>
+  <div class="course-level-group">
+    <button type="button" class="course-level-button" data-level-toggle="200" aria-expanded="false">
+      200 Level <span aria-hidden="true">+</span>
+    </button>
+    <div class="course-level-content" data-level-content="200">
+<div class="course-block" data-level="200" id="level200">
     <h3>200 Level — First Semester</h3>
     <div class="table-wrap"><table class="course-table">
       <thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
@@ -532,8 +660,7 @@ footer{border-top:1px solid var(--border)}
     </table></div>
     <p class="note"><strong>Electives — minimum of 2 units:</strong> DTS 201 Introduction to Data Science; INS 202 Human-Computer Interaction (HCI); DTS 211 Introduction to R Programming; IFT 211 Digital Logic Design; AAUA-SEN 201 Introduction to Scripting and Programming with Java.</p>
   </div>
-
-  <div class="course-block">
+<div class="course-block" data-level="200">
     <h3>200 Level — Second Semester</h3>
     <div class="table-wrap"><table class="course-table">
       <thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
@@ -551,8 +678,14 @@ footer{border-top:1px solid var(--border)}
     </table></div>
     <p class="note"><strong>SIWES I &amp; SIWES II Combined electives:</strong> INS 204 System Analysis and Design (2 units, E, LH 30, PH 45); DTS 204 Statistical Computing II — Inference and Modelling (3 units, E, LH 30, PH 0).</p>
   </div>
-
-  <div class="course-block" id="level300">
+    </div>
+  </div>
+  <div class="course-level-group">
+    <button type="button" class="course-level-button" data-level-toggle="300" aria-expanded="false">
+      300 Level <span aria-hidden="true">+</span>
+    </button>
+    <div class="course-level-content" data-level-content="300">
+<div class="course-block" data-level="300" id="level300">
     <h3>300 Level — First Semester</h3>
     <div class="table-wrap"><table class="course-table">
       <thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
@@ -570,8 +703,7 @@ footer{border-top:1px solid var(--border)}
     </table></div>
     <p class="note"><strong>Electives — minimum of 2 units:</strong> CYB 303 Cybersecurity Risks Analysis, Challenges and Mitigation; CYB 305 Digital Forensics and Investigation Methods; INS 311 E-Business Systems Development.</p>
   </div>
-
-  <div class="course-block">
+<div class="course-block" data-level="300">
     <h3>300 Level — Second Semester / SIWES</h3>
     <div class="table-wrap"><table class="course-table">
       <thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
@@ -585,8 +717,14 @@ footer{border-top:1px solid var(--border)}
       </tbody>
     </table></div>
   </div>
-
-  <div class="course-block" id="level400">
+    </div>
+  </div>
+  <div class="course-level-group">
+    <button type="button" class="course-level-button" data-level-toggle="400" aria-expanded="false">
+      400 Level <span aria-hidden="true">+</span>
+    </button>
+    <div class="course-level-content" data-level-content="400">
+<div class="course-block" data-level="400" id="level400">
     <h3>400 Level — First Semester</h3>
     <div class="table-wrap"><table class="course-table">
       <thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
@@ -603,8 +741,7 @@ footer{border-top:1px solid var(--border)}
     </table></div>
     <p class="note"><strong>Electives — minimum of 2 units:</strong> CYB 405 Ethical Hacking and Reverse Engineering; AAUA-ICT 405 Formal Methods in Software Development.</p>
   </div>
-
-  <div class="course-block">
+<div class="course-block" data-level="400">
     <h3>400 Level — Second Semester</h3>
     <div class="table-wrap"><table class="course-table">
       <thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
@@ -622,6 +759,9 @@ footer{border-top:1px solid var(--border)}
       </tbody>
     </table></div>
     <p class="note"><strong>Electives — minimum of 2 units:</strong> INS 202 Human Computer Interaction; DTS 404 Data Management I; AAUA-SEN 402 Parallel Programming; AAUA-ICT 406 Computer System Modelling &amp; Simulation; AAUA-ICT 408 Cryptoanalysis; AAUA-CSC 442 Operation Research.</p>
+  </div>
+</section>
+    </div>
   </div>
 </section>
 
@@ -742,7 +882,7 @@ footer{border-top:1px solid var(--border)}
     <h2>Need help with your department?</h2>
     <p>
       If you need help with registration, courses, departmental information or
-      other student matters, use the Uni Pilot student help system.
+      other student matters, use the AAUA Uni Pilot student help system.
     </p>
     <a href="help.html" class="help-button">Get Department Help →</a>
   </div>
@@ -753,7 +893,7 @@ footer{border-top:1px solid var(--border)}
 <footer>
   <div class="footer-container">
     <div class="footer-brand">
-      <a href="index.html" class="brand">🎓 Uni Pilot</a>
+      <a href="index.html" class="brand">🎓 AAUA Uni Pilot</a>
       <p>Your campus. Your resources. Your guide.</p>
     </div>
     <div class="footer-links">
@@ -775,6 +915,60 @@ footer{border-top:1px solid var(--border)}
   </div>
   <div class="footer-bottom"><p>© 2026 Uni Pilot. All rights reserved.</p></div>
 </footer>
+
+
+<script>
+document.querySelectorAll(".programme-toggle").forEach(button => {
+  button.addEventListener("click", function(){
+    const content = this.nextElementSibling;
+    const isOpen = content.classList.contains("open");
+    document.querySelectorAll(".programme-content").forEach(item => item.classList.remove("open"));
+    document.querySelectorAll(".programme-toggle").forEach(item => {
+      item.classList.remove("active");
+      item.setAttribute("aria-expanded", "false");
+      item.querySelector("span").textContent = "+";
+    });
+    if(!isOpen){
+      content.classList.add("open");
+      this.classList.add("active");
+      this.setAttribute("aria-expanded", "true");
+      this.querySelector("span").textContent = "−";
+    }
+  });
+});
+</script>
+<script>
+document.querySelectorAll(".course-level-button[data-level-toggle]").forEach(button => {
+  button.addEventListener("click", function(){
+    const level = this.dataset.levelToggle;
+    const content = document.querySelector(`[data-level-content="${level}"]`);
+    const isOpen = content.classList.contains("open");
+
+    document.querySelectorAll(".course-level-content").forEach(item => item.classList.remove("open"));
+    document.querySelectorAll(".course-level-button[data-level-toggle]").forEach(item => {
+      item.classList.remove("active");
+      item.setAttribute("aria-expanded", "false");
+      const symbol = item.querySelector("span");
+      if(symbol) symbol.textContent = "+";
+    });
+
+    if(!isOpen){
+      content.classList.add("open");
+      this.classList.add("active");
+      this.setAttribute("aria-expanded", "true");
+      const symbol = this.querySelector("span");
+      if(symbol) symbol.textContent = "−";
+    }
+  });
+});
+
+document.querySelectorAll(".level-nav .course-level-button[data-level]").forEach(button => {
+  button.addEventListener("click", function(){
+    const target = document.querySelector(`[data-level-toggle="${this.dataset.level}"]`);
+    if(target) target.click();
+  });
+});
+</script>
 
 <script>
 document.getElementById("ictPdfUpload").addEventListener("change", function(){

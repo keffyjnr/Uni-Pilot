@@ -194,6 +194,20 @@
       background: rgba(11, 93, 59, 0.08);
     }
 
+    /* Keep the existing homepage photo visible in Dark Mode too. */
+    html[data-theme="dark"] body::before {
+      background-image:
+        linear-gradient(
+          rgba(12, 18, 15, 0.48),
+          rgba(12, 18, 15, 0.48)
+        ),
+        url("images/home-bg.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 1;
+    }
+
   </style>
 
 <style>
@@ -752,15 +766,15 @@ html[data-theme="dark"] .btn-secondary { color:#ffffff !important; }
             About
           </a>
 
-          <a href="#">
+          <a href="privacy.html">
             Privacy Policy
           </a>
 
-          <a href="#">
+          <a href="terms.html">
             Terms of Use
           </a>
 
-          <a href="#">
+          <a href="contact.html">
             Contact
           </a>
 

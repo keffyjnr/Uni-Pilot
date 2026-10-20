@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact the Uni Pilot team.">
+  <title>Contact | Uni Pilot</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .info-page { max-width: 900px; margin: 0 auto; padding: 64px 24px 80px; }
+    .info-hero { padding: clamp(28px, 6vw, 52px); border-radius: 24px; background: var(--card, #fff); border: 1px solid var(--border, #e5e7eb); margin-bottom: 28px; }
+    .info-kicker { color: var(--primary, #0b5d3b); font-size: .78rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    .info-page h1 { font-size: clamp(2rem, 5vw, 3rem); line-height: 1.12; margin: 12px 0 18px; }
+    .info-page p, .info-page li { line-height: 1.8; color: var(--muted, #5b6470); }
+    .info-note { padding: 16px 18px; border-left: 4px solid var(--primary, #0b5d3b); background: var(--soft, #f1f7f3); border-radius: 8px; margin: 22px 0; }
+    @media (max-width: 600px) { .info-page { padding: 36px 16px 56px; } }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <nav class="navbar">
+      <a href="index.html" class="brand"><span class="brand-icon">🎓</span><span>Uni Pilot</span></a>
+      <div class="desktop-nav"><a href="index.html">Home</a><a href="resources.html">Resources</a><a href="guide.html">Student Guide</a><a href="updates.html">Updates</a><a href="tools.html">Tools</a></div>
+      <div class="nav-actions"><button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" type="button">☰</button></div>
+    </nav>
+    <div class="mobile-menu" id="navLinks">
+      <a href="index.html">Home</a><a href="resources.html">Academic Resources</a><a href="guide.html">Student Guide</a><a href="updates.html">Campus Updates</a><a href="opportunities.html">Opportunities</a><a href="tools.html">Student Tools</a><a href="about.html">About</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Use</a><a href="contact.html" aria-current="page">Contact</a>
+    </div>
+  </header>
+  <div class="menu-overlay" id="menuOverlay"></div>
+  <main class="info-page">
+    <section class="info-hero">
+      <span class="info-kicker">We'd like to hear from you</span>
+      <h1>Contact Uni Pilot</h1>
+      <p>Use this page to plan how students can send feedback, report errors, ask questions, or suggest features.</p>
+    </section>
+    <div class="info-note"><strong>Not connected yet:</strong> This starter page does not send messages. Add a monitored email address or connect a form to a backend/form service before publishing.</div>
+    <section>
+      <h2>What can you contact us about?</h2>
+      <ul><li>Reporting incorrect or outdated information.</li><li>Suggesting a new feature or improvement.</li><li>Reporting a technical issue.</li><li>Questions about privacy or these terms.</li><li>Partnership or collaboration enquiries.</li></ul>
+      <h2>Contact details</h2>
+      <p>Project email: [Add official email]</p>
+      <p>Response time: [Add a realistic response-time expectation, if the team wishes to provide one]</p>
+      <p>Until these details are added, please do not treat this page as a working support channel.</p>
+    </section>
+  </main>
+  <footer>
+    <div class="footer-container"><div class="footer-brand"><h2>Uni Pilot</h2><p>Your campus. Your resources. Your guide.</p></div>
+      <div class="footer-links"><div><h4>Platform</h4><a href="resources.html">Resources</a><a href="guide.html">Student Guide</a><a href="updates.html">Updates</a><a href="tools.html">Student Tools</a></div><div><h4>Information</h4><a href="about.html">About</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Use</a><a href="contact.html">Contact</a></div></div>
+    </div><div class="footer-bottom"><p>© 2026 Uni Pilot. All rights reserved.</p></div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

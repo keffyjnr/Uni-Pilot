@@ -1,12 +1,14 @@
 const AAUA_CENTER=[7.4787,5.7482];
-const map=L.map("map").setView(AAUA_CENTER,16);
+const map=L.map("map",{maxZoom:20}).setView(AAUA_CENTER,16);
 
 const street=L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{
   maxZoom:20, attribution:"&copy; OpenStreetMap contributors"
 }).addTo(map);
 
 const satellite=L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",{
-  maxZoom:20, attribution:"Tiles &copy; Esri"
+  // AAUA imagery is available at this level; above it, reuse the closest
+  // imagery tiles instead of showing Esri's "Map data not yet available" tiles.
+  maxNativeZoom:16, maxZoom:20, attribution:"Tiles &copy; Esri"
 });
 
 const cats=["All","Faculties","Lecture Halls","Administration","Student Services","Hostels","Health","Food","Sports"];
