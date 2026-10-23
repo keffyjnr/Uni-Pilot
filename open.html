@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#102c20">
+<title>AAUA UNI PILOT — Navigate Your Way Through Campus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+:root{--green:#0b5d3b;--dark-green:#063b26;--light-green:#eaf6ef;--yellow:#f5c518;--white:#ffffff;--text:#17221c;--muted:#66736c;--glass:rgba(255,255,255,.16);--glass-light:rgba(255,255,255,.22);--glass-border:rgba(255,255,255,.38);--danger:#c62828;--shadow:0 30px 80px rgba(0,0,0,.28);--transition:.25s ease;--green-deep:#063b26;--gold:#f5c518;--cream:#f2eee4;--ink:#17251c}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:Manrope,system-ui,sans-serif}
+body{background:var(--deep);color:var(--cream);overflow:hidden}
+button,a{font:inherit}
+a{color:inherit}
+.intro{position:relative;isolation:isolate;min-height:100svh;overflow:hidden;background:#063b26}
+.backdrop{position:absolute;inset:0;z-index:-4;background:radial-gradient(ellipse at 18% 76%,rgba(245,197,24,.13) 0%,transparent 37%),linear-gradient(115deg,#063b26 0%,#0b5d3b 48%,#063b26 100%);transition:filter 1.4s ease,transform 1.8s cubic-bezier(.2,.7,.2,1)}
+.backdrop:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(3,25,17,.58) 0%,rgba(3,25,17,.42) 45%,rgba(3,25,17,.28) 100%);z-index:1}
+.backdrop:after{content:"";position:absolute;inset:0;opacity:.13;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.88' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");mix-blend-mode:screen}
+.grid-lines{position:absolute;inset:0;z-index:-2;opacity:.15;background:linear-gradient(90deg,#fff 1px,transparent 1px);background-size:9.09% 100%;mask-image:linear-gradient(90deg,transparent,#000 15%,#000 80%,transparent)}
+    .header {
+      position: relative;
+      z-index: 20;
+
+      background: rgba(4, 28, 19, 0.38);
+
+      border-bottom:
+        1px solid rgba(255, 255, 255, 0.16);
+
+      backdrop-filter: blur(18px) saturate(130%);
+      -webkit-backdrop-filter: blur(18px) saturate(130%);
+    }
+
+
+    .navbar {
+      width: min(1200px, 92%);
+      margin: auto;
+
+      min-height: 76px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+
+    .brand {
+      text-decoration: none;
+      color: var(--white);
+
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      font-size: 1.18rem;
+      font-weight: 800;
+
+      text-shadow:
+        0 2px 12px rgba(0, 0, 0, 0.25);
+    }
+
+
+    .brand-icon {
+      width: 42px;
+      height: 42px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 13px;
+
+      background:
+        rgba(255, 255, 255, 0.18);
+
+      border:
+        1px solid rgba(255, 255, 255, 0.30);
+
+      box-shadow:
+        inset 0 1px 1px rgba(255,255,255,0.25),
+        0 8px 25px rgba(0,0,0,0.18);
+
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+
+      font-size: 1.35rem;
+    }
+
+
+    .back-home {
+      color: rgba(255,255,255,0.92);
+
+      text-decoration: none;
+
+      font-size: 0.88rem;
+      font-weight: 700;
+
+      padding: 9px 14px;
+
+      border:
+        1px solid rgba(255,255,255,0.20);
+
+      border-radius: 999px;
+
+      background:
+        rgba(255,255,255,0.08);
+
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+
+      transition: var(--transition);
+    }
+
+
+    .back-home:hover {
+      background:
+        rgba(255,255,255,0.18);
+
+      transform: translateY(-1px);
+    }
+
+
+
+    .skip{position:absolute;z-index:15;right:clamp(22px,5vw,76px);top:92px;border:0;border-bottom:1px solid #f5c51875;padding:7px 0;background:transparent;color:#d7dfd1;font-size:.7rem;letter-spacing:.08em;cursor:pointer;opacity:0;transition:color .2s}.skip.visible{opacity:1}.skip:hover{color:var(--gold)}
+.stage{position:relative;z-index:2;min-height:100svh;width:min(1440px,100%);margin:auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,.86fr);align-items:center;padding:120px clamp(22px,8.5vw,130px) 85px;gap:clamp(30px,7vw,110px)}
+.copy{position:relative;z-index:4;max-width:660px;opacity:0;transform:translateY(28px);transition:opacity .8s ease .35s,transform .9s cubic-bezier(.16,1,.3,1) .35s}
+.overline{display:flex;align-items:center;gap:13px;color:var(--gold);font-size:.7rem;font-weight:700;letter-spacing:.26em;text-transform:uppercase;margin:0 0 24px}
+.overline:before{content:"";height:1px;width:34px;background:var(--gold)}
+h1{margin:0;font-size:clamp(3.5rem,7.5vw,7.9rem);line-height:.82;letter-spacing:-.095em;font-weight:800}
+h1 .line-two{display:block;color:var(--gold);padding-top:13px}
+.intro-text{max-width:420px;color:#d0d3c7;font-size:clamp(.9rem,1.2vw,1.02rem);line-height:1.85;margin:30px 0 0}
+.copy-bottom{display:flex;align-items:center;gap:18px;margin-top:37px}
+.gold-rule{width:52px;height:1px;background:var(--gold)}
+.copy-bottom span{color:#aebbad;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase}
+.visual{position:relative;min-height:min(62vh,590px);display:grid;place-items:center;opacity:0;transform:translate(30px,12px) scale(.96);transition:opacity 1s ease .5s,transform 1.15s cubic-bezier(.16,1,.3,1) .5s}
+.visual-frame{position:relative;width:min(100%,390px);height:min(60vh,510px);min-height:340px;border:1px solid #f5c5188c;padding:12px;transform:rotate(2deg);transition:transform 1s cubic-bezier(.2,.8,.2,1);background:#ffffff05;box-shadow:0 28px 90px #0004}
+.visual-inner{height:100%;position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 36%,#96643e 0%,#493426 44%,#1a241b 100%);display:grid;place-items:center}
+.visual-inner:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#0d171133 0%,transparent 42%,#07130dcc 100%);z-index:1}
+.visual-inner:after{content:"";position:absolute;inset:18px;border:1px solid #fff3;z-index:2;pointer-events:none}
+.cap-illustration{position:relative;z-index:2;font-size:clamp(9rem,18vw,15rem);filter:drop-shadow(0 24px 22px #0008);transform:translateY(8px);animation:capFloat 4.5s ease-in-out infinite}
+.visual-caption{position:absolute;z-index:3;left:24px;right:24px;bottom:25px;display:flex;justify-content:space-between;align-items:end;gap:12px}
+.visual-caption strong{display:block;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase}
+.visual-caption small{display:block;margin-top:6px;color:#d2d1c1;font-size:.65rem}
+.visual-caption .number{font-size:1.6rem;font-weight:700;color:var(--gold);letter-spacing:-.06em}
+.frame-corner{position:absolute;width:48px;height:48px;border-color:var(--gold);border-style:solid;z-index:4}
+.frame-corner.tl{top:-8px;left:-8px;border-width:1px 0 0 1px}.frame-corner.br{bottom:-8px;right:-8px;border-width:0 1px 1px 0}
+.visual-side-note{position:absolute;right:-34px;top:50%;writing-mode:vertical-rl;transform:translateY(-50%);font-size:.6rem;letter-spacing:.2em;color:#c6d0c4;text-transform:uppercase}
+.bottom-meta{position:absolute;z-index:4;left:clamp(22px,5vw,76px);right:clamp(22px,5vw,76px);bottom:24px;display:flex;justify-content:space-between;gap:15px;color:#a9b7a9;font-size:.63rem;letter-spacing:.13em;text-transform:uppercase}
+.bottom-meta span:last-child{color:#d4c68c}
+.welcome-screen.entered .copy,.welcome-screen.entered .visual{opacity:1;transform:translate(0,0) scale(1)}
+.welcome-screen.entered .visual-frame{animation:frameIn 1s .4s both}
+.welcome-screen.leaving .copy{opacity:0;transform:translateX(-28px);transition:opacity .4s,transform .5s}
+.welcome-screen.leaving .visual{position:fixed;inset:0;z-index:20;min-height:100svh;transform:none;transition:opacity .5s}
+.welcome-screen.leaving .visual-frame{position:absolute;left:50%;top:50%;width:100vmax;height:100vmax;min-height:0;max-width:none;padding:0;border:0;transform:translate(-50%,-50%) rotate(0);transition:width 1.2s cubic-bezier(.7,0,.2,1),height 1.2s cubic-bezier(.7,0,.2,1)}
+.welcome-screen.leaving .visual-inner{border-radius:50%;transition:border-radius 1s}
+.welcome-screen.leaving .cap-illustration{animation:none;transform:scale(1.8)}
+.nav-screen{position:absolute;inset:0;z-index:5;display:grid;place-items:center;text-align:center;padding:110px 24px 80px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .75s ease,visibility .75s}
+.nav-screen:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 45%,#45613d55,transparent 55%);pointer-events:none}
+.nav-screen.active{opacity:1;visibility:visible;pointer-events:auto}
+.nav-content{position:relative;max-width:980px;transform:translateY(28px);opacity:0;filter:blur(7px);transition:transform .9s cubic-bezier(.16,1,.3,1),opacity .8s,filter .9s}
+.nav-screen.active .nav-content{transform:translateY(0);opacity:1;filter:blur(0)}
+.nav-overline{font-size:.68rem;letter-spacing:.3em;color:var(--gold);font-weight:700;text-transform:uppercase}
+.nav-content h2{margin:23px 0 22px;font-size:clamp(3.7rem,10vw,9.5rem);line-height:.8;letter-spacing:-.095em;font-weight:800}
+.nav-content h2 span{display:block;color:var(--gold);padding-top:13px}
+.nav-content p{max-width:530px;margin:0 auto;color:#d0d3c7;line-height:1.85;font-size:clamp(.9rem,1.3vw,1.04rem)}
+.nav-link{position:relative;display:inline-flex;align-items:center;gap:28px;margin-top:38px;padding:17px 23px;min-width:218px;justify-content:space-between;text-decoration:none;background:var(--gold);color:#17291d;font-size:.76rem;font-weight:800;letter-spacing:.1em;border:1px solid var(--gold);transition:background .25s,color .25s,transform .25s;overflow:hidden}
+.nav-link:before{content:"";position:absolute;left:-100%;top:0;bottom:0;width:80%;background:linear-gradient(100deg,transparent,#fff9,transparent);transform:skewX(-20deg);transition:left .65s}
+.nav-link:hover{background:#f4e4a1;transform:translateY(-3px)}.nav-link:hover:before{left:130%}.nav-link .arrow{font-size:1.15rem;transition:transform .25s}.nav-link:hover .arrow{transform:translate(3px,-3px)}
+.nav-foot{margin-top:27px;color:#9cae9e;font-size:.65rem;letter-spacing:.16em;text-transform:uppercase}
+.transition-flash{position:fixed;inset:0;background:var(--cream);z-index:30;opacity:0;pointer-events:none}.transition-flash.fire{animation:flash .65s ease forwards}
+@keyframes headerIn{to{opacity:1;transform:translateY(0)}}
+@keyframes capFloat{0%,100%{transform:translateY(8px) rotate(-3deg)}50%{transform:translateY(-12px) rotate(3deg)}}
+@keyframes frameIn{from{clip-path:inset(12% 12% 12% 12%);opacity:.3}to{clip-path:inset(0);opacity:1}}
+@keyframes flash{0%{opacity:0}30%{opacity:.85}100%{opacity:0}}
+@media(max-width:760px){.header{padding:18px 20px}.header-right{font-size:.58rem;gap:10px}.header-right .status{display:none}.stage{grid-template-columns:1fr;grid-template-rows:auto auto;gap:22px;align-content:center;padding:105px 25px 70px;text-align:center}.copy{order:1}.visual{order:0;min-height:0;margin:0 auto;width:100%;max-width:340px}.visual-frame{width:min(68vw,270px);height:min(34vh,330px);min-height:230px;padding:8px}.cap-illustration{font-size:clamp(7rem,32vw,10rem)}.visual-side-note{right:-20px;font-size:.5rem}.overline{justify-content:center;margin-bottom:18px}.overline:before{display:none}h1{font-size:clamp(3.1rem,13vw,5.5rem)}.intro-text{margin:19px auto 0;max-width:440px;font-size:.86rem;line-height:1.7}.copy-bottom{justify-content:center;margin-top:22px}.bottom-meta{bottom:11px;font-size:.52rem;letter-spacing:.08em}.skip{top:74px;right:22px}.nav-content h2{font-size:clamp(3.5rem,13vw,6rem)}.nav-content p{max-width:400px}.nav-link{margin-top:29px}}
+@media(max-width:390px){.stage{gap:14px;padding-top:96px}.visual-frame{height:225px}.intro-text{font-size:.81rem}.bottom-meta span:first-child{max-width:170px}.brand small{font-size:.53rem}}
+@media(max-height:700px) and (min-width:761px){.stage{padding-top:90px;padding-bottom:65px}.visual-frame{height:55vh;min-height:280px}.copy h1{font-size:clamp(3rem,6.5vw,6rem)}.intro-text{margin-top:20px}.copy-bottom{margin-top:22px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<main class="intro welcome-screen" id="welcomeScreen">
+  <div class="backdrop"></div><div class="grid-lines"></div>
+  <header class="header">
+
+    <nav class="navbar">
+
+      <a href="index.html" class="brand">
+
+        <span class="brand-icon">
+          🎓
+        </span>
+
+        <span>
+          AAUA Uni Pilot
+        </span>
+
+      </a>
+
+
+       
+
+    </nav>
+
+  </header>
+  <button class="skip" id="skipIntro" type="button">SKIP INTRO ↗</button>
+  <section class="stage" aria-label="Welcome to AAUA Uni Pilot">
+    <div class="copy">
+      <p class="overline">WELCOME TO</p>
+      <h1>AAUA <span class="line-two">UNI PILOT.</span></h1>
+      <p class="intro-text">A smarter way to find your bearings at Adekunle Ajasin University. Discover places, resources, and the next step in your campus journey.</p>
+      <div class="copy-bottom"><span class="gold-rule"></span><span>Find your way. At The Comfort of Your Home.</span></div>
+    </div>
+    <div class="visual" aria-hidden="true">
+      <div class="visual-frame"><span class="frame-corner tl"></span><span class="frame-corner br"></span><div class="visual-inner"><div class="cap-illustration">🎓</div><div class="visual-caption"><div><strong>YOUR CAMPUS COMPANION</strong><small>Navigate campus with confidence</small></div><span class="number">01</span></div></div></div>
+      <div class="visual-side-note">AAUA UNI PILOT</div>
+    </div>
+  </section>
+  <section class="nav-screen" id="navScreen" aria-label="Start navigating">
+    <div class="nav-content">
+      <div class="nav-overline">AAUA · Your campus, at your fingertips</div>
+      <h2>START <span>NAVIGATING.</span></h2>
+      <p>Find your direction. Discover what matters. Make your university experience easier, one step at a time.</p>
+      <a class="nav-link" id="loginLink" href="auth.html"><span>LOGIN / SIGN IN</span><span class="arrow" aria-hidden="true">↗</span></a>
+      <div class="nav-foot">Your next step starts here</div>
+    </div>
+  </section>
+  <div class="transition-flash" id="flash" aria-hidden="true"></div>
+  <div class="bottom-meta"><span>AAUA UNI PILOT — BUILT FOR STUDENT BY STUDENTS</span><span>Explore · Navigate · Thrive</span></div>
+</main>
+<script>
+(()=> {
+ const welcome=document.getElementById('welcomeScreen');
+ const nav=document.getElementById('navScreen');
+ const skip=document.getElementById('skipIntro');
+ const flash=document.getElementById('flash');
+ const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+ let timers=[],done=false;
+ const later=(fn,ms)=>timers.push(setTimeout(fn,reduced?0:ms));
+ function revealNav(){
+   if(done)return; done=true; timers.forEach(clearTimeout);
+   welcome.classList.add('leaving'); skip.classList.remove('visible');
+   later(()=>nav.classList.add('active'),reduced?0:650);
+ }
+ function start(){
+   welcome.classList.add('entered'); skip.classList.add('visible');
+   later(revealNav, reduced?100:3200);
+ }
+ addEventListener('load',start,{once:true});
+ skip.addEventListener('click',revealNav);
+ document.getElementById('loginLink').addEventListener('click',e=>{
+   if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;
+   flash.classList.add('fire');
+ });
+})();
+</script>
+</body>
+</html>
