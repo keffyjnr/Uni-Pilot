@@ -244,6 +244,32 @@ footer{border-top:1px solid var(--border)}
 .programme-content{display:none;margin-top:8px}
 .programme-content.open{display:block}
 .programme-content .content-card{padding:21px}
+
+/* LIFE + MOTION: polished entrance, reveal, and responsive hover feedback */
+.department-back-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 22px}
+.department-back-button{display:inline-flex;align-items:center;gap:9px;min-height:40px;padding:0 15px;border:1px solid var(--border);border-radius:999px;background:#fff;color:var(--green);font:inherit;font-size:.72rem;font-weight:800;cursor:pointer;box-shadow:0 7px 20px rgba(6,59,38,.06);transition:transform .22s ease,box-shadow .22s ease,background .22s ease}
+.department-back-button span{font-size:1.1rem;transition:transform .22s ease}
+.department-back-button:hover{transform:translateY(-2px);background:var(--light-green);box-shadow:0 12px 25px rgba(6,59,38,.12)}
+.department-back-button:hover span{transform:translateX(-3px)}
+.back-hint{color:var(--muted);font-size:.68rem}
+.department-hero{animation:ictHeroEnter .8s cubic-bezier(.2,.75,.25,1) both}
+.department-hero-content{animation:ictContentEnter .9s .12s cubic-bezier(.2,.75,.25,1) both}
+.department-hero::after{animation:ictWatermarkFloat 9s ease-in-out infinite}
+@keyframes ictHeroEnter{from{opacity:0;transform:translateY(18px) scale(.99)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes ictContentEnter{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes ictWatermarkFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+.quick-card,.content-card,.programme-card,.resource-card,.contact-card,.summary-card,.help-box{transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.quick-card:hover,.content-card:hover,.contact-card:hover,.summary-card:hover{transform:translateY(-4px);box-shadow:0 18px 42px rgba(6,59,38,.1);border-color:rgba(11,93,59,.24)}
+.resource-card:hover{box-shadow:0 18px 42px rgba(6,59,38,.1)}
+.location-button,.download-button,.upload-button,.whatsapp-button,.help-button,.department-action{transition:transform .22s ease,box-shadow .22s ease,background .22s ease}
+.location-button:hover,.download-button:hover,.upload-button:hover,.whatsapp-button:hover,.help-button:hover,.department-action:hover{transform:translateY(-2px);box-shadow:0 9px 22px rgba(6,59,38,.12)}
+.reveal-on-scroll{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s cubic-bezier(.2,.75,.25,1)}
+.reveal-on-scroll.is-visible{opacity:1;transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .reveal-on-scroll{opacity:1;transform:none}
+}
+
 </style>
 </head>
 
@@ -347,6 +373,12 @@ footer{border-top:1px solid var(--border)}
 </section>
 
 <main class="department-main">
+  <div class="department-back-row">
+    <button class="department-back-button" id="departmentBackButton" type="button">
+      <span aria-hidden="true">←</span> Go Back
+    </button>
+    <span class="back-hint">Return to the page you came from</span>
+  </div>
 
 <section class="quick-info">
   <div class="quick-card"><div class="quick-icon">🏛️</div><span>Faculty</span><strong>Faculty of Computing</strong></div>
@@ -405,7 +437,7 @@ footer{border-top:1px solid var(--border)}
       computing infrastructure and provide adequate support for computer users
       in order to enhance productivity and increase business value.
     </p>
-    <a href="campus-map.html" class="location-button">📍 View Department Location</a>
+    <a href="https://maps.app.goo.gl/LFdSjuyxmvMU5Qav9" class="location-button" target="_blank" rel="noopener noreferrer">📍 View Department Location ↗</a>
   </div>
 </section>
 
@@ -851,7 +883,7 @@ footer{border-top:1px solid var(--border)}
       <h3>Connect on WhatsApp</h3>
       <p>Use the department/student support WhatsApp channel when the official link is available.</p>
       <div class="resource-actions">
-        <a class="whatsapp-button" href="#" aria-label="Connect on WhatsApp">💬 Meet on WhatsApp</a>
+        <a class="whatsapp-button" href="https://chat.whatsapp.com/H1mmIscMgXeHTxxnC6ej8l" target="_blank" rel="noopener noreferrer" aria-label="Join the ICT WhatsApp group">💬 Join WhatsApp Group ↗</a>
       </div>
     </div>
   </div>
@@ -990,6 +1022,43 @@ document.getElementById("ictPdfUpload").addEventListener("change", function(){
 
   status.textContent = "Selected: " + file.name + " (ready for upload)";
 });
+</script>
+
+
+<script>
+  // Return to the referring page when possible; use the faculty guide as a safe fallback.
+  document.getElementById("departmentBackButton").addEventListener("click", function () {
+    if (window.history.length > 1 && document.referrer && new URL(document.referrer).origin === window.location.origin) {
+      window.history.back();
+    } else {
+      window.location.href = "faculty-guide.html";
+    }
+  });
+
+  // Reveal content as it enters the viewport.
+  (function () {
+    const items = document.querySelectorAll(".quick-card, .department-section, .programme-card, .content-card, .resource-card, .contact-card, .summary-card");
+    items.forEach((item, index) => {
+      item.classList.add("reveal-on-scroll");
+      item.style.transitionDelay = (index % 4) * 55 + "ms";
+    });
+
+    if (!("IntersectionObserver" in window)) {
+      items.forEach(item => item.classList.add("is-visible"));
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries, activeObserver) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          activeObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    items.forEach(item => observer.observe(item));
+  })();
 </script>
 
 </body>

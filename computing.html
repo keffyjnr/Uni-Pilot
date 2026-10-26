@@ -207,6 +207,115 @@
       box-shadow:0 10px 24px rgba(245,197,24,.22);
     }
 
+    /* Faculty location button */
+    .faculty-location-wrap {
+      margin: 0 0 22px;
+    }
+
+    .faculty-location-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 17px;
+      border: 1px solid rgba(11,93,59,.22);
+      border-radius: 13px;
+      color: #0b5d3b;
+      background: linear-gradient(135deg, #f2fbf5, #ffffff);
+      box-shadow: 0 8px 22px rgba(6,59,38,.08);
+      text-decoration: none;
+      font-weight: 800;
+      font-size: .82rem;
+      transition: transform .22s ease, box-shadow .22s ease, background .22s ease;
+    }
+
+    .faculty-location-btn:hover {
+      transform: translateY(-3px);
+      background: #eaf6ef;
+      box-shadow: 0 14px 28px rgba(6,59,38,.13);
+    }
+
+    .faculty-location-btn .location-pin {
+      display: inline-grid;
+      place-items: center;
+      width: 29px;
+      height: 29px;
+      border-radius: 9px;
+      background: #0b5d3b;
+      color: #fff;
+      font-size: 1rem;
+    }
+
+    /* Subtle motion to make the page feel more alive */
+    @keyframes facultyFadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes facultyGlow {
+      0%, 100% { box-shadow: 0 12px 35px rgba(6,59,38,.12); }
+      50% { box-shadow: 0 18px 48px rgba(6,59,38,.22); }
+    }
+
+    .faculty-hero {
+      animation: facultyFadeUp .75s cubic-bezier(.2,.75,.25,1) both, facultyGlow 7s ease-in-out 1s infinite;
+    }
+
+    .faculty-info-card,
+    .faculty-panel,
+    .department-card,
+    .contact-item {
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+
+    .faculty-info-card:hover,
+    .faculty-panel:hover,
+    .contact-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 42px rgba(6,59,38,.11);
+      border-color: rgba(11,93,59,.25);
+    }
+
+    .faculty-info-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .faculty-info-card::after {
+      content: "";
+      position: absolute;
+      width: 90px;
+      height: 90px;
+      right: -42px;
+      bottom: -48px;
+      border-radius: 50%;
+      background: rgba(245,197,24,.12);
+      transition: transform .3s ease;
+    }
+
+    .faculty-info-card:hover::after { transform: scale(1.5); }
+
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .65s ease, transform .65s cubic-bezier(.2,.75,.25,1);
+    }
+
+    .reveal-on-scroll.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
+      .reveal-on-scroll { opacity: 1; transform: none; }
+    }
+
     html {
       scroll-behavior:smooth;
     }
@@ -248,7 +357,7 @@
 
     .faculty-info-grid {
       display:grid;
-      grid-template-columns:repeat(4,minmax(0,1fr));
+      grid-template-columns:repeat(3,minmax(0,1fr));
       gap:16px;
       margin-bottom:70px;
     }
@@ -604,6 +713,18 @@
         </div>
 
         <div class="faculty-info-card">
+          <div class="faculty-info-icon">🧑‍💼</div>
+          <small>Sub-Dean</small>
+          <strong>Ayodeji Olusegun Akinwumi</strong>
+        </div>
+
+        <div class="faculty-info-card">
+          <div class="faculty-info-icon">📋</div>
+          <small>Faculty Officer</small>
+          <strong>Info coming</strong>
+        </div>
+
+        <div class="faculty-info-card">
           <div class="faculty-info-icon">🎓</div>
           <small>Programmes</small>
           <strong>6 Academic Programmes</strong>
@@ -625,6 +746,18 @@
       <div class="faculty-content-grid">
 
         <div class="faculty-panel">
+
+          <div class="faculty-location-wrap">
+            <a class="faculty-location-btn"
+               href="https://maps.app.goo.gl/ZHFSUGsym9mGLSQe8"
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="View the Faculty of Computing location on Google Maps">
+              <span class="location-pin" aria-hidden="true">⌖</span>
+              View Faculty Location
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
 
           <h2>About the Faculty</h2>
 
@@ -854,6 +987,34 @@
 
   </footer>
 
+  <script>
+    // Gentle reveal animations as sections enter the viewport.
+    (function () {
+      const revealTargets = document.querySelectorAll(
+        '.faculty-info-card, .faculty-panel, .department-card, .contact-item, .section-heading'
+      );
+
+      revealTargets.forEach((element, index) => {
+        element.classList.add('reveal-on-scroll');
+        element.style.transitionDelay = (index % 6) * 65 + 'ms';
+      });
+
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries, activeObserver) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              activeObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12 });
+
+        revealTargets.forEach(element => observer.observe(element));
+      } else {
+        revealTargets.forEach(element => element.classList.add('is-visible'));
+      }
+    })();
+  </script>
   <script src="script.js"></script>
 
 </body>

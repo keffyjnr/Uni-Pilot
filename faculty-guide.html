@@ -508,6 +508,20 @@
 
   </style>
 
+
+<style id="uni-pilot-float-animations">
+/* Uni Pilot: smooth floating and scroll-reveal effects */
+@media (prefers-reduced-motion: no-preference) {
+  .up-reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+  .up-reveal.up-visible { opacity: 1; transform: translateY(0); }
+  .up-float { animation: upGentleFloat 5s ease-in-out infinite; }
+  .up-hover-float { transition: transform .28s ease, box-shadow .28s ease; }
+  .up-hover-float:hover { transform: translateY(-6px); }
+  @keyframes upGentleFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+}
+@media (prefers-reduced-motion: reduce) { .up-reveal { opacity: 1; transform: none; } }
+</style>
+
 </head>
 
 
@@ -545,27 +559,27 @@
 
     <div class="desktop-nav">
 
-      <a href="index.html">
-        Home
-      </a>
+        <a href="index.html">
+          Home
+        </a>
 
-      <a href="resources.html">
-        Resources
-      </a>
+        <a href="resources.html">
+          Resources
+        </a>
 
-      <a href="student-guide.html">
-        Student Guide
-      </a>
+        <a href="guide.html">
+          Student Guide
+        </a>
 
-      <a href="updates.html">
-        Updates
-      </a>
+        <a href="updates.html">
+          Updates
+        </a>
 
-      <a href="tools.html">
-        Tools
-      </a>
+        <a href="tools.html">
+          Tools
+        </a>
 
-    </div>
+      </div>
 
 
     <!-- NAV ACTIONS -->
@@ -644,7 +658,7 @@
       Resources
     </a>
 
-    <a href="student-guide.html">
+    <a href="guide.html">
       Student Guide
     </a>
 
@@ -1066,73 +1080,97 @@
 
 <footer class="footer">
 
-  <div class="footer-content">
+    <div class="footer-container">
+
+      <div class="footer-brand">
+
+        <a
+          href="index.html"
+          class="brand"
+        >
+
+          <span class="brand-icon">
+            🎓
+          </span>
+
+          <span>
+            Uni Pilot
+          </span>
+
+        </a>
+
+        <p>
+          Your campus. Your resources. Your guide.
+        </p>
+
+      </div>
 
 
-    <div class="footer-brand">
+      <div class="footer-links">
 
-      <a
-        href="index.html"
-        class="brand"
-      >
+        <div class="footer-column">
 
-        <span class="brand-icon">
-          🎓
-        </span>
+          <h4>
+            Platform
+          </h4>
 
-        <span>
-          Uni Pilot
-        </span>
+          <a href="resources.html">
+            Resources
+          </a>
 
-      </a>
+          <a href="guide.html">
+            Student Guide
+          </a>
 
+          <a href="updates.html">
+            Updates
+          </a>
+
+          <a href="tools.html">
+            Student Tools
+          </a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+          <h4>
+            Information
+          </h4>
+
+          <a href="about.html">
+            About
+          </a>
+
+          <a href="privacy.html">
+            Privacy Policy
+          </a>
+
+          <a href="terms.html">
+            Terms of Use
+          </a>
+
+          <a href="contact.html">
+            Contact
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
 
       <p>
-        Helping students navigate smoothly through campus.
+        © 2026 Uni Pilot. All rights reserved.
       </p>
 
     </div>
 
-
-
-    <div class="footer-links">
-
-      <a href="index.html">
-        Home
-      </a>
-
-      <a href="resources.html">
-        Resources
-      </a>
-
-      <a href="student-guide.html">
-        Student Guide
-      </a>
-
-      <a href="updates.html">
-        Updates
-      </a>
-
-      <a href="tools.html">
-        Tools
-      </a>
-
-    </div>
-
-
-  </div>
-
-
-
-  <div class="footer-bottom">
-
-    <p>
-      © 2026 Uni Pilot. Built for students.
-    </p>
-
-  </div>
-
-</footer>
+  </footer>
 
 
 
@@ -1212,6 +1250,34 @@
 
 <script src="script.js"></script>
 
+
+
+<script id="uni-pilot-float-script">
+(() => {
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const revealSelectors = 'main > section, main > article, .faculty-hero-content, .section-heading, .platform-intro, .tools-section, .resource-card, .tool-card, .update-card, .browse-all-card, .faculty-card, .department-card, .quick-info-card, .program-card, .contact-card';
+  const candidates = [...document.querySelectorAll(revealSelectors)];
+  const seen = new Set();
+  candidates.forEach((el, i) => {
+    if (seen.has(el) || el.closest('footer, nav, .desktop-nav, .mobile-nav, .theme-modal')) return;
+    seen.add(el);
+    el.classList.add('up-reveal');
+    if (el.matches('.resource-card, .tool-card, .update-card, .browse-all-card, .faculty-card, .department-card, .quick-info-card, .program-card, .contact-card')) el.classList.add('up-hover-float');
+    if (el.matches('.faculty-hero-content, .platform-intro')) el.classList.add('up-float');
+    el.style.transitionDelay = `${Math.min(i % 5, 4) * 70}ms`;
+  });
+  if (reduced || !('IntersectionObserver' in window)) {
+    document.querySelectorAll('.up-reveal').forEach(el => el.classList.add('up-visible'));
+    return;
+  }
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('up-visible'); observer.unobserve(entry.target); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -35px 0px' });
+  document.querySelectorAll('.up-reveal').forEach(el => observer.observe(el));
+})();
+</script>
 
 </body>
 

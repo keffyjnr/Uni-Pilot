@@ -1,17 +1,944 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="refresh" content="0; url=open.html">
-  <title>AAUA UNI PILOT</title>
-  <script>
-    window.location.replace("open.html");
-  </script>
-</head>
-<body>
-  <p>Opening AAUA Uni Pilot...</p>
-  <p><a href="open.html">Click here if you are not redirected.</a></p>
-</body>
-</html>
 
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Uni Pilot | Your Student Guide</title>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem("uniPilotTheme") || "light";
+    var dark = saved === "dark" || (saved === "system" && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
+    document.documentElement.dataset.theme = dark ? "dark" : "light";
+    document.documentElement.dataset.themeChoice = ["light", "dark", "system"].includes(saved) ? saved : "light";
+  } catch (e) {
+    document.documentElement.dataset.theme = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  }
+})();
+</script>
+
+  <style>
+
+    /* =========================
+       HOMEPAGE BACKGROUND
+    ========================== */
+
+    body {
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+
+      background-image:
+        linear-gradient(
+          rgba(247, 250, 248, 0.52),
+          rgba(247, 250, 248, 0.52)
+        ),
+        url("images/home-bg.jpg");
+
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      opacity: 0.5;
+
+      pointer-events: none;
+
+      z-index: -2;
+    }
+
+    /* Keep the actual page above the background */
+
+    main,
+    footer {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* =========================
+       WELCOME SECTION
+    ========================== */
+
+    .welcome-section {
+      position: relative;
+
+      background: transparent !important;
+    }
+
+    /* Remove the old solid-looking background */
+
+    .welcome-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+
+      background: rgba(255, 255, 255, 0.18);
+
+      pointer-events: none;
+    }
+
+    .welcome-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* =========================
+       ACTION TILES
+    ========================== */
+
+    .action-card {
+      background: rgba(255, 255, 255, 0.72) !important;
+
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+
+      border: 1px solid rgba(255, 255, 255, 0.75) !important;
+
+      box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.07);
+    }
+
+    .action-card:hover {
+      background: rgba(255, 255, 255, 0.82) !important;
+    }
+
+    /* =========================
+       ACCOUNT DROPDOWN
+    ========================== */
+
+    .account-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    .account-dropdown {
+      position: absolute;
+      top: calc(100% + 10px);
+      right: 0;
+
+      min-width: 150px;
+      padding: 6px;
+
+      background: rgba(255, 255, 255, 0.78);
+
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+
+      border: 1px solid rgba(255, 255, 255, 0.65);
+      border-radius: 14px;
+
+      box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.12);
+
+      opacity: 0;
+      visibility: hidden;
+
+      transform: translateY(-8px);
+
+      transition:
+        opacity 0.2s ease,
+        transform 0.2s ease,
+        visibility 0.2s ease;
+
+      z-index: 1000;
+    }
+
+    .account-dropdown.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .logout-btn {
+      width: 100%;
+
+      padding: 10px 12px;
+
+      border: none;
+      border-radius: 10px;
+
+      background: transparent;
+
+      color: var(--text);
+
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
+
+      text-align: left;
+
+      cursor: pointer;
+
+      transition: background 0.2s ease;
+    }
+
+    .logout-btn:hover {
+      background: rgba(11, 93, 59, 0.08);
+    }
+
+    /* Keep the existing homepage photo visible in Dark Mode too. */
+    html[data-theme="dark"] body::before {
+      background-image:
+        linear-gradient(
+          rgba(12, 18, 15, 0.48),
+          rgba(12, 18, 15, 0.48)
+        ),
+        url("images/home-bg.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 1;
+    }
+
+  </style>
+
+<style>
+/* STUDENT GUIDE DARK MODE VISIBILITY */
+html[data-theme="dark"] .action-card h3,
+html[data-theme="dark"] .btn-secondary { color:#ffffff !important; }
+</style>
+
+<style id="uni-pilot-float-animations">
+/* Uni Pilot: smooth floating and scroll-reveal effects */
+@media (prefers-reduced-motion: no-preference) {
+  .up-reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+  .up-reveal.up-visible { opacity: 1; transform: translateY(0); }
+  .up-float { animation: upGentleFloat 5s ease-in-out infinite; }
+  .up-hover-float { transition: transform .28s ease, box-shadow .28s ease; }
+  .up-hover-float:hover { transform: translateY(-6px); }
+  @keyframes upGentleFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+}
+@media (prefers-reduced-motion: reduce) { .up-reveal { opacity: 1; transform: none; } }
+</style>
+
+</head>
+
+
+<body>
+
+
+  <!-- =========================
+       NAVIGATION
+  ========================== -->
+
+  <header class="header">
+
+    <nav class="navbar">
+
+
+      <!-- Logo -->
+
+      <a href="index.html" class="brand">
+
+        <div class="brand-icon">
+          🎓
+        </div>
+
+        <span>Uni Pilot</span>
+
+      </a>
+
+
+      <!-- Desktop Navigation -->
+
+      <div class="desktop-nav">
+
+        <a href="index.html" class="active">
+          Home
+        </a>
+
+        <a href="resources.html">
+          Resources
+        </a>
+
+        <a href="guide.html">
+          Student Guide
+        </a>
+
+        <a href="updates.html">
+          Updates
+        </a>
+
+        <a href="tools.html">
+          Tools
+        </a>
+
+      </div>
+
+
+      <!-- Navigation Actions -->
+
+      <div class="nav-actions">
+
+
+        <button
+          class="icon-btn"
+          aria-label="Search"
+          type="button"
+        >
+          🔍
+        </button>
+
+
+        <!-- Login / Account -->
+
+        <div class="account-wrapper">
+
+          <a
+            href="auth.html"
+            class="auth-btn"
+            id="authBtn"
+          >
+            Login / Sign Up
+          </a>
+
+
+          <!-- Account Dropdown -->
+
+          <div
+            class="account-dropdown"
+            id="accountDropdown"
+          >
+
+            <button
+              class="logout-btn"
+              id="logoutBtn"
+              type="button"
+            >
+              Log out ↩️
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- Mobile Menu Button -->
+
+        <button
+          class="menu-btn"
+          id="menuBtn"
+          aria-label="Open Menu"
+          type="button"
+        >
+          ☰
+        </button>
+
+
+      </div>
+
+    </nav>
+
+
+    <!-- =========================
+         MOBILE MENU
+    ========================== -->
+
+    <div
+      class="mobile-menu"
+      id="navLinks"
+    >
+
+      <a href="index.html">
+        Home
+      </a>
+
+      <a href="resources.html">
+        Academic Resources
+      </a>
+
+      <a href="guide.html">
+        Student Guide
+      </a>
+
+      <a href="updates.html">
+        Campus Updates
+      </a>
+
+      <a href="opportunities.html">
+        Opportunities
+      </a>
+
+      <a href="tools.html">
+        Student Tools
+      </a>
+
+      <a href="about.html">
+        About
+      </a>
+
+
+      <button class="theme-menu-trigger" id="themeMenuTrigger" type="button" aria-haspopup="dialog">
+        <span aria-hidden="true">◐</span> Theme <span class="theme-current-label" id="themeCurrentLabel">System Default</span>
+      </button>
+
+      <a
+        href="auth.html"
+        id="mobileAuthBtn"
+      >
+        Login / Sign Up
+      </a>
+
+    </div>
+
+  </header>
+
+
+
+  <!-- Theme selection modal -->
+  <div class="theme-modal-backdrop" id="themeModal" aria-hidden="true">
+    <section class="theme-modal" role="dialog" aria-modal="true" aria-labelledby="themeModalTitle">
+      <button class="theme-modal-close" id="themeModalClose" type="button" aria-label="Close theme settings">×</button>
+      <div class="theme-modal-icon" aria-hidden="true">◐</div>
+      <h2 id="themeModalTitle">Choose your theme</h2>
+      <p>Make Uni Pilot feel right for you.</p>
+      <div class="theme-options" role="radiogroup" aria-label="Website theme">
+        <button class="theme-option" type="button" data-theme-choice="light" role="radio" aria-checked="false"><span class="theme-option-symbol">☀</span><span><strong>Light</strong><small>Bright and familiar</small></span><span class="theme-radio"></span></button>
+        <button class="theme-option" type="button" data-theme-choice="dark" role="radio" aria-checked="false"><span class="theme-option-symbol">☾</span><span><strong>Dark</strong><small>Deep charcoal and emerald</small></span><span class="theme-radio"></span></button>
+        <button class="theme-option" type="button" data-theme-choice="system" role="radio" aria-checked="false"><span class="theme-option-symbol">◑</span><span><strong>System Default</strong><small>Follow your device settings</small></span><span class="theme-radio"></span></button>
+      </div>
+      <p class="theme-modal-note">Your choice is saved on this device.</p>
+    </section>
+  </div>
+
+
+  <!-- Menu Background Overlay -->
+
+  <div
+    class="menu-overlay"
+    id="menuOverlay"
+  ></div>
+
+
+  <!-- =========================
+       MAIN CONTENT
+  ========================== -->
+
+  <main>
+
+
+    <!-- =========================
+         PERSONAL WELCOME HERO
+    ========================== -->
+
+    <section
+      class="welcome-section"
+      id="home"
+    >
+
+      <div class="welcome-content">
+
+
+        <div class="welcome-tag">
+          🎓 YOUR STUDENT COMPANION
+        </div>
+
+
+        <h1 id="welcomeMessage">
+          👋 Hello, Student!
+        </h1>
+
+
+        <p class="welcome-description">
+          What do you want to do today?
+        </p>
+
+
+        <!-- =========================
+             QUICK ACTIONS
+        ========================== -->
+
+        <div class="action-grid">
+
+
+          <!-- 1. FACULTY GUIDE -->
+
+          <a
+            href="faculty-guide.html"
+            class="action-card"
+          >
+
+            <span>
+              🏛️
+            </span>
+
+            <div>
+
+              <h3>
+                Faculty Guide
+              </h3>
+
+              <p>
+                Explore faculties, departments and academic information.
+              </p>
+
+            </div>
+
+            <strong>
+              →
+            </strong>
+
+          </a>
+
+
+          <!-- 2. ACADEMIC RESOURCES -->
+
+          <a
+            href="resources.html"
+            class="action-card"
+          >
+
+            <span>
+              📚
+            </span>
+
+            <div>
+
+              <h3>
+                Academic Resources
+              </h3>
+
+              <p>
+                Find notes, past questions and course materials.
+              </p>
+
+            </div>
+
+            <strong>
+              →
+            </strong>
+
+          </a>
+
+
+          <!-- 3. STUDENT GUIDE -->
+
+          <a
+            href="guide.html"
+            class="action-card"
+          >
+
+            <span>
+              🎓
+            </span>
+
+            <div>
+
+              <h3>
+                Student Guide
+              </h3>
+
+              <p>
+                Get help with school procedures and student life.
+              </p>
+
+            </div>
+
+            <strong>
+              →
+            </strong>
+
+          </a>
+
+
+          <!-- 4. CAMPUS UPDATES -->
+
+          <a
+            href="updates.html"
+            class="action-card"
+          >
+
+            <span>
+              📢
+            </span>
+
+            <div>
+
+              <h3>
+                Campus Updates
+              </h3>
+
+              <p>
+                Stay updated with announcements and deadlines.
+              </p>
+
+            </div>
+
+            <strong>
+              →
+            </strong>
+
+          </a>
+
+
+          <!-- 5. OPPORTUNITIES -->
+
+          <a
+            href="opportunities.html"
+            class="action-card"
+          >
+
+            <span>
+              💼
+            </span>
+
+            <div>
+
+              <h3>
+                Opportunities
+              </h3>
+
+              <p>
+                Find scholarships, internships and more.
+              </p>
+
+            </div>
+
+            <strong>
+              →
+            </strong>
+
+          </a>
+
+
+          <!-- 6. STUDENT TOOLS -->
+
+          <a
+            href="tools.html"
+            class="action-card"
+          >
+
+            <span>
+              🧮
+            </span>
+
+            <div>
+
+              <h3>
+                Student Tools
+              </h3>
+
+              <p>
+                GPA calculators, course units and useful tools.
+              </p>
+
+            </div>
+
+            <strong>
+              →
+            </strong>
+
+          </a>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         PLATFORM INTRODUCTION
+    ========================== -->
+
+    <section class="platform-intro">
+
+      <div class="platform-intro-content">
+
+
+        <span class="intro-label">
+          ALL YOUR STUDENT NEEDS
+        </span>
+
+
+        <h2>
+
+          Everything Students Need
+
+          <span>
+            in One Place.
+          </span>
+
+        </h2>
+
+
+        <p>
+
+          Access academic resources, school guides, campus updates,
+          opportunities, and useful student tools — all designed to
+          make student life easier.
+
+        </p>
+
+
+        <div class="hero-buttons">
+
+
+          <a
+            href="resources.html"
+            class="btn btn-primary"
+          >
+            Explore Resources →
+          </a>
+
+
+          <a
+            href="guide.html"
+            class="btn btn-secondary"
+          >
+            Student Guide
+          </a>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+  </main>
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer class="footer">
+
+    <div class="footer-container">
+
+      <div class="footer-brand">
+
+        <a
+          href="index.html"
+          class="brand"
+        >
+
+          <span class="brand-icon">
+            🎓
+          </span>
+
+          <span>
+            Uni Pilot
+          </span>
+
+        </a>
+
+        <p>
+          Your campus. Your resources. Your guide.
+        </p>
+
+      </div>
+
+
+      <div class="footer-links">
+
+        <div class="footer-column">
+
+          <h4>
+            Platform
+          </h4>
+
+          <a href="resources.html">
+            Resources
+          </a>
+
+          <a href="guide.html">
+            Student Guide
+          </a>
+
+          <a href="updates.html">
+            Updates
+          </a>
+
+          <a href="tools.html">
+            Student Tools
+          </a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+          <h4>
+            Information
+          </h4>
+
+          <a href="about.html">
+            About
+          </a>
+
+          <a href="privacy.html">
+            Privacy Policy
+          </a>
+
+          <a href="terms.html">
+            Terms of Use
+          </a>
+
+          <a href="contact.html">
+            Contact
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+      <p>
+        © 2026 Uni Pilot. All rights reserved.
+      </p>
+
+    </div>
+
+  </footer>
+
+
+  <!-- JavaScript -->
+
+  <script src="script.js"></script>
+
+
+  <!-- =========================
+       LOGIN STATE + ACCOUNT DROPDOWN
+  ========================== -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const authBtn = document.getElementById("authBtn");
+      const mobileAuthBtn = document.getElementById("mobileAuthBtn");
+      const welcomeMessage = document.getElementById("welcomeMessage");
+      const accountDropdown = document.getElementById("accountDropdown");
+      const logoutBtn = document.getElementById("logoutBtn");
+
+      function clearLoginSession() {
+        localStorage.removeItem("uniPilotLoggedIn");
+        localStorage.removeItem("uniPilotCurrentUser");
+      }
+
+      function logOut() {
+        clearLoginSession();
+        window.location.href = "index.html";
+      }
+
+      const isLoggedIn = localStorage.getItem("uniPilotLoggedIn") === "true";
+      const savedUser = localStorage.getItem("uniPilotCurrentUser");
+
+      if (!isLoggedIn || !savedUser) return;
+
+      let user;
+      try {
+        user = JSON.parse(savedUser);
+      } catch (error) {
+        clearLoginSession();
+        return;
+      }
+
+      if (!user || !user.name) {
+        clearLoginSession();
+        return;
+      }
+
+      if (welcomeMessage) {
+        welcomeMessage.textContent = "👋 Welcome, " + user.name + "!";
+      }
+
+      if (authBtn) {
+        authBtn.textContent = "👤 " + user.name;
+        authBtn.href = "#";
+        authBtn.setAttribute("aria-expanded", "false");
+
+        authBtn.addEventListener("click", function (event) {
+          event.preventDefault();
+          if (!accountDropdown) return;
+
+          const isOpen = accountDropdown.classList.toggle("active");
+          authBtn.setAttribute("aria-expanded", String(isOpen));
+        });
+      }
+
+      if (logoutBtn) {
+        logoutBtn.addEventListener("click", logOut);
+      }
+
+      if (mobileAuthBtn) {
+        mobileAuthBtn.textContent = "Log out ↩️";
+        mobileAuthBtn.addEventListener("click", function (event) {
+          event.preventDefault();
+          logOut();
+        });
+      }
+
+      document.addEventListener("click", function (event) {
+        if (
+          accountDropdown &&
+          !event.target.closest(".account-wrapper")
+        ) {
+          accountDropdown.classList.remove("active");
+          if (authBtn) authBtn.setAttribute("aria-expanded", "false");
+        }
+      });
+
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && accountDropdown) {
+          accountDropdown.classList.remove("active");
+          if (authBtn) authBtn.setAttribute("aria-expanded", "false");
+        }
+      });
+    });
+  </script>
+
+
+<script id="uni-pilot-float-script">
+(() => {
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const revealSelectors = 'main > section, main > article, .faculty-hero-content, .section-heading, .platform-intro, .tools-section, .resource-card, .tool-card, .update-card, .browse-all-card, .faculty-card, .department-card, .quick-info-card, .program-card, .contact-card';
+  const candidates = [...document.querySelectorAll(revealSelectors)];
+  const seen = new Set();
+  candidates.forEach((el, i) => {
+    if (seen.has(el) || el.closest('footer, nav, .desktop-nav, .mobile-nav, .theme-modal')) return;
+    seen.add(el);
+    el.classList.add('up-reveal');
+    if (el.matches('.resource-card, .tool-card, .update-card, .browse-all-card, .faculty-card, .department-card, .quick-info-card, .program-card, .contact-card')) el.classList.add('up-hover-float');
+    if (el.matches('.faculty-hero-content, .platform-intro')) el.classList.add('up-float');
+    el.style.transitionDelay = `${Math.min(i % 5, 4) * 70}ms`;
+  });
+  if (reduced || !('IntersectionObserver' in window)) {
+    document.querySelectorAll('.up-reveal').forEach(el => el.classList.add('up-visible'));
+    return;
+  }
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('up-visible'); observer.unobserve(entry.target); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -35px 0px' });
+  document.querySelectorAll('.up-reveal').forEach(el => observer.observe(el));
+})();
+</script>
+
+</body>
+
+</html>
