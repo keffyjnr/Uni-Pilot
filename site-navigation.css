@@ -1,0 +1,30 @@
+/* Uni Pilot shared navigation fix */
+.site-nav-fix .header{position:sticky;top:0;z-index:1000;background:var(--nav-header-bg,#fff);box-shadow:0 3px 18px rgba(0,0,0,.06)}
+.site-nav-fix .navbar{width:min(1240px,calc(100% - 36px));min-height:76px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.site-nav-fix .brand{display:inline-flex;align-items:center;gap:10px;font-weight:800;color:var(--nav-text,#17221c);white-space:nowrap}
+.site-nav-fix .brand-icon{font-size:1.4rem}
+.site-nav-fix .desktop-nav{display:flex!important;align-items:center;gap:clamp(10px,1.5vw,22px);margin-left:auto}
+.site-nav-fix .desktop-nav a{font-size:.82rem;font-weight:800;color:var(--nav-text,#17221c);padding:10px 2px;text-decoration:none}
+.site-nav-fix .desktop-nav a:hover,.site-nav-fix .desktop-nav a.active{color:#0b5d3b}
+.site-nav-fix .nav-actions{display:flex;align-items:center;gap:9px}
+.site-nav-fix .nav-actions .icon-btn,.site-nav-fix .menu-btn,.site-nav-fix .site-theme-btn{min-width:42px;min-height:42px;border:1px solid var(--nav-border,#dfe8e2);border-radius:13px;background:var(--nav-button-bg,#fff);color:var(--nav-text,#17221c);font-size:1.05rem;cursor:pointer}
+.site-nav-fix .menu-btn{display:none}
+.site-nav-fix .site-theme-btn{padding:0 12px;font-size:.78rem;font-weight:800;white-space:nowrap}
+.site-nav-fix .mobile-menu{display:none;position:fixed;z-index:1200;top:84px;right:14px;left:auto;width:min(320px,calc(100vw - 28px));max-height:calc(100vh - 105px);overflow:auto;padding:12px;background:var(--nav-menu-bg,#fff);border:1px solid var(--nav-border,#dfe8e2);border-radius:20px;box-shadow:0 20px 55px rgba(0,0,0,.2)}
+.site-nav-fix .mobile-menu.is-open{display:flex!important;flex-direction:column;gap:4px}
+.site-nav-fix .mobile-menu a,.site-nav-fix .mobile-menu button{display:flex;align-items:center;width:100%;padding:13px 14px;border:0;border-radius:12px;background:transparent;color:var(--nav-text,#17221c);text-decoration:none;text-align:left;font:800 .85rem Manrope,Arial,sans-serif;cursor:pointer}
+.site-nav-fix .mobile-menu a:hover,.site-nav-fix .mobile-menu button:hover{background:#eaf6ef;color:#0b5d3b}
+.site-nav-fix .menu-overlay{display:none;position:fixed;inset:0;z-index:1100;background:rgba(0,0,0,.22);backdrop-filter:blur(2px)}
+.site-nav-fix .menu-overlay.is-open{display:block}
+html[data-theme="dark"] .site-nav-fix .header{--nav-header-bg:#101512;--nav-text:#f4f7f5;--nav-border:#2d3b32;--nav-button-bg:#151d18;--nav-menu-bg:#101512}
+html[data-theme="dark"] .site-nav-fix .desktop-nav a:hover,html[data-theme="dark"] .site-nav-fix .desktop-nav a.active{color:#f5c518}
+html[data-theme="dark"] .site-nav-fix .mobile-menu a:hover,html[data-theme="dark"] .site-nav-fix .mobile-menu button:hover{background:#20382a;color:#f5c518}
+.site-theme-backdrop{display:none;position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.55);backdrop-filter:blur(5px);align-items:center;justify-content:center;padding:18px}
+.site-theme-backdrop.is-open{display:flex}
+.site-theme-dialog{width:min(410px,100%);padding:24px;border-radius:22px;background:#fff;color:#17221c;box-shadow:0 24px 80px rgba(0,0,0,.28)}
+.site-theme-dialog h2{margin:0 0 8px;font-size:1.35rem}.site-theme-dialog p{color:#6d7a72;font-size:.88rem}
+.site-theme-dialog .site-theme-choice{width:100%;display:flex;align-items:center;gap:12px;padding:13px;margin-top:8px;border:1px solid #dfe8e2;border-radius:13px;background:#fff;text-align:left;color:#17221c;cursor:pointer;font-weight:800}
+.site-theme-dialog .site-theme-choice[aria-checked="true"]{border-color:#0b5d3b;background:#eaf6ef}
+.site-theme-dialog .site-theme-close{float:right;border:0;background:transparent;font-size:1.5rem;cursor:pointer}
+@media(max-width:820px){.site-nav-fix .navbar{width:calc(100% - 24px);min-height:68px;gap:8px}.site-nav-fix .desktop-nav{display:none!important}.site-nav-fix .menu-btn{display:inline-flex;align-items:center;justify-content:center}.site-nav-fix .site-theme-btn{display:none}.site-nav-fix .brand{font-size:.95rem}.site-nav-fix .nav-actions{gap:7px}}
+@media(min-width:821px){.site-nav-fix .mobile-menu,.site-nav-fix .menu-overlay{display:none!important}}
