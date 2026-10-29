@@ -230,6 +230,98 @@ html[data-theme="dark"] .btn-secondary { color:#ffffff !important; }
 </style>
 
   <link rel="stylesheet" href="site-navigation.css">
+
+  <!-- Homepage-only mobile width fix: prevent horizontal page scrolling without changing tile layout. -->
+  <style id="homepage-width-fix">
+    html {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: clip;
+    }
+
+    body {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    .header,
+    .navbar,
+    main,
+    .welcome-section,
+    .welcome-content,
+    .platform-intro,
+    .platform-intro-content,
+    footer,
+    .footer-container {
+      min-width: 0;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+
+    .navbar {
+      width: 100%;
+    }
+
+    .brand,
+    .nav-actions {
+      min-width: 0;
+    }
+
+    .action-grid {
+      width: 100%;
+      max-width: 900px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .action-card {
+      min-width: 0;
+      max-width: 100%;
+      overflow-wrap: anywhere;
+    }
+
+    .action-card > div {
+      min-width: 0;
+      max-width: 100%;
+    }
+
+    .action-card h3,
+    .action-card p {
+      overflow-wrap: anywhere;
+      word-break: normal;
+    }
+
+    .hero-buttons {
+      min-width: 0;
+      max-width: 100%;
+    }
+
+    @media (max-width: 800px) {
+      .action-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 500px) {
+      .welcome-section {
+        padding-left: 17px;
+        padding-right: 17px;
+      }
+
+      .action-grid {
+        gap: 12px;
+      }
+
+      .action-card {
+        padding: 16px;
+      }
+
+      .platform-intro {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+    }
+  </style>
 </head>
 
 
