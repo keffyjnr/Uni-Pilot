@@ -40,6 +40,9 @@
 
     body {
       position: relative;
+      /* Keep the fixed background image inside the page's paint order,
+         above the body colour but behind all page content. */
+      isolation: isolate;
     }
 
     body::before {
@@ -62,7 +65,7 @@
 
       pointer-events: none;
 
-      z-index: -2;
+      z-index: -1;
     }
 
     /* Keep the actual page above the background */
@@ -196,16 +199,30 @@
 
     /* Keep the existing homepage photo visible in Dark Mode too. */
     html[data-theme="dark"] body::before {
+      /* A light tint keeps the photo visible without losing dark-mode contrast. */
       background-image:
         linear-gradient(
-          rgba(12, 18, 15, 0.48),
-          rgba(12, 18, 15, 0.48)
+          rgba(7, 13, 18, 0.18),
+          rgba(7, 13, 18, 0.18)
         ),
         url("images/home-bg.jpg");
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
       opacity: 1;
+    }
+
+    html[data-theme="dark"] .welcome-section::before {
+      background: rgba(7, 13, 18, 0.12);
+    }
+
+    /* Keep homepage tiles readable while allowing the photo to show through. */
+    html[data-theme="dark"] .action-card {
+      background: rgba(13, 23, 32, 0.72) !important;
+    }
+
+    html[data-theme="dark"] .action-card:hover {
+      background: rgba(13, 23, 32, 0.84) !important;
     }
 
   </style>
