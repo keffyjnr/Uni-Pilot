@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Information Systems | AAUA Uni Pilot</title>
+<title>Informatics and Information Systems | AAUA Uni Pilot</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="style.css">
 
 <style>
+
 :root{
   --green:#0b5d3b;
   --dark-green:#063b26;
@@ -47,7 +48,7 @@ button,input{font-family:inherit}
   box-shadow:0 18px 50px rgba(6,59,38,.14);
 }
 .department-hero::after{
-  content:"ICT";position:absolute;right:22px;bottom:-25px;
+  content:"INS";position:absolute;right:22px;bottom:-25px;
   font-size:clamp(5rem,15vw,11rem);line-height:.8;font-weight:800;
   letter-spacing:-7px;color:rgba(255,255,255,.035);pointer-events:none;
 }
@@ -271,6 +272,8 @@ footer{border-top:1px solid var(--border)}
 }
 
 
+
+/* Information Systems table and disclosure components, styled to match the ICT template */
 .staff-table{min-width:850px}.staff-table td:first-child{font-weight:700}
 .course-details{margin:12px 0;border:1px solid var(--border);border-radius:16px;background:#fff;overflow:hidden}
 .course-details summary{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 18px;cursor:pointer;color:var(--green);font-weight:800;font-size:.82rem;list-style:none}
@@ -283,6 +286,7 @@ footer{border-top:1px solid var(--border)}
 .warning-note{padding:16px 18px;border:1px solid #eadca7;border-radius:14px;background:#fff9e6;color:#5d4b16;font-size:.76rem;line-height:1.7}
 .resource-card.static{cursor:default}.resource-card.static:hover{transform:none}
 @media(max-width:650px){.course-details summary{align-items:flex-start;flex-direction:column}}
+
 
 </style>
   <link rel="stylesheet" href="site-navigation.css">
@@ -362,13 +366,14 @@ footer{border-top:1px solid var(--border)}
     </nav>
 
   </header>
+
 <section class="department-hero">
   <div class="department-hero-content">
-    <div class="breadcrumb"><a href="index.html">Home</a><span>›</span><a href="computing.html">Faculty of Computing</a><span>›</span><span>Information Systems</span></div>
+    <div class="breadcrumb"><a href="index.html">Home</a><span>›</span><a href="computing.html">Faculty of Computing</a><span>›</span><span>Informatics and Information Systems</span></div>
     <span class="department-label">Department Guide</span>
     <h1>Department of <span>Informatics &amp; Information Systems.</span></h1>
     <p class="faculty-name">Faculty of Computing</p>
-    <p class="department-hero-description">B.Sc. Information Systems: programme information, admission requirements, staff directory, course structure, SIWES and academic resources.</p>
+    <p class="department-hero-description">Department information, programme structure, admission requirements, course structure, SIWES, staff directory and student resources for B.Sc. Information Systems at AAUA.</p>
     <div class="department-actions"><a href="#overview" class="department-action primary">📚 Overview</a><a href="#courses" class="department-action secondary">📋 Courses</a><a href="#staff" class="department-action secondary">👥 Staff</a><a href="#resources" class="department-action secondary">📁 Resources</a></div>
   </div>
 </section>
@@ -532,20 +537,120 @@ footer{border-top:1px solid var(--border)}
   </div>
   <div class="footer-bottom"><p>© 2026 Uni Pilot. All rights reserved.</p></div>
 </footer>
+
+
 <script>
-document.getElementById("departmentBackButton")?.addEventListener("click", function () {
-  if (window.history.length > 1) window.history.back();
-  else window.location.href = "computing.html";
+document.querySelectorAll(".programme-toggle").forEach(button => {
+  button.addEventListener("click", function(){
+    const content = this.nextElementSibling;
+    const isOpen = content.classList.contains("open");
+    document.querySelectorAll(".programme-content").forEach(item => item.classList.remove("open"));
+    document.querySelectorAll(".programme-toggle").forEach(item => {
+      item.classList.remove("active");
+      item.setAttribute("aria-expanded", "false");
+      item.querySelector("span").textContent = "+";
+    });
+    if(!isOpen){
+      content.classList.add("open");
+      this.classList.add("active");
+      this.setAttribute("aria-expanded", "true");
+      this.querySelector("span").textContent = "−";
+    }
+  });
 });
-(function(){
-  const targets=document.querySelectorAll(".quick-card,.content-card,.programme-card,.resource-card,.contact-card,.summary-card,.section-heading,.staff-group");
-  targets.forEach((el,i)=>{el.classList.add("reveal-on-scroll");el.style.transitionDelay=(i%5)*55+"ms";});
-  if("IntersectionObserver" in window){
-    const observer=new IntersectionObserver((entries,active)=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("is-visible");active.unobserve(entry.target);}}),{threshold:.1});
-    targets.forEach(el=>observer.observe(el));
-  }else targets.forEach(el=>el.classList.add("is-visible"));
-})();
 </script>
-<script src="site-navigation.js"></script>
+<script>
+document.querySelectorAll(".course-level-button[data-level-toggle]").forEach(button => {
+  button.addEventListener("click", function(){
+    const level = this.dataset.levelToggle;
+    const content = document.querySelector(`[data-level-content="${level}"]`);
+    const isOpen = content.classList.contains("open");
+
+    document.querySelectorAll(".course-level-content").forEach(item => item.classList.remove("open"));
+    document.querySelectorAll(".course-level-button[data-level-toggle]").forEach(item => {
+      item.classList.remove("active");
+      item.setAttribute("aria-expanded", "false");
+      const symbol = item.querySelector("span");
+      if(symbol) symbol.textContent = "+";
+    });
+
+    if(!isOpen){
+      content.classList.add("open");
+      this.classList.add("active");
+      this.setAttribute("aria-expanded", "true");
+      const symbol = this.querySelector("span");
+      if(symbol) symbol.textContent = "−";
+    }
+  });
+});
+
+document.querySelectorAll(".level-nav .course-level-button[data-level]").forEach(button => {
+  button.addEventListener("click", function(){
+    const target = document.querySelector(`[data-level-toggle="${this.dataset.level}"]`);
+    if(target) target.click();
+  });
+});
+</script>
+
+<script>
+document.getElementById("ictPdfUpload").addEventListener("change", function(){
+  const status = document.getElementById("uploadStatus");
+  const file = this.files[0];
+
+  if(!file){
+    status.textContent = "No PDF selected.";
+    return;
+  }
+
+  const isPdf = file.type === "application/pdf" || file.name.toLowerCase().endsWith(".pdf");
+
+  if(!isPdf){
+    this.value = "";
+    status.textContent = "Please select a PDF file.";
+    return;
+  }
+
+  status.textContent = "Selected: " + file.name + " (ready for upload)";
+});
+</script>
+
+
+<script>
+  // Return to the referring page when possible; use the faculty guide as a safe fallback.
+  document.getElementById("departmentBackButton").addEventListener("click", function () {
+    if (window.history.length > 1 && document.referrer && new URL(document.referrer).origin === window.location.origin) {
+      window.history.back();
+    } else {
+      window.location.href = "faculty-guide.html";
+    }
+  });
+
+  // Reveal content as it enters the viewport.
+  (function () {
+    const items = document.querySelectorAll(".quick-card, .department-section, .programme-card, .content-card, .resource-card, .contact-card, .summary-card");
+    items.forEach((item, index) => {
+      item.classList.add("reveal-on-scroll");
+      item.style.transitionDelay = (index % 4) * 55 + "ms";
+    });
+
+    if (!("IntersectionObserver" in window)) {
+      items.forEach(item => item.classList.add("is-visible"));
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries, activeObserver) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          activeObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    items.forEach(item => observer.observe(item));
+  })();
+</script>
+
+  <script src="site-navigation.js"></script>
 </body>
 </html>
