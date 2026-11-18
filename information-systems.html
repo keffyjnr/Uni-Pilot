@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Information Systems | AAUA Uni Pilot</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<style>
+:root{
+  --green:#0b5d3b;
+  --dark-green:#063b26;
+  --light-green:#eaf6ef;
+  --yellow:#f5c518;
+  --white:#ffffff;
+  --background:#f7faf8;
+  --text:#17221c;
+  --muted:#6d7a72;
+  --border:#dfe8e2;
+  --soft:#fbfdfb;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Manrope",Arial,Helvetica,sans-serif;background:var(--background);color:var(--text)}
+a{color:inherit;text-decoration:none}
+button,input{font-family:inherit}
+
+.department-page{
+  min-height:100vh;
+  background:
+    radial-gradient(circle at top right,rgba(11,93,59,.06),transparent 30%),
+    radial-gradient(circle at bottom left,rgba(245,197,24,.045),transparent 30%),
+    var(--background);
+}
+
+/* HERO */
+.department-hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(circle at 82% 18%,rgba(245,197,24,.16),transparent 28%),
+    linear-gradient(135deg,#07120d 0%,var(--dark-green) 48%,var(--green) 100%);
+  color:#fff;padding:58px 22px 50px;border-radius:30px;margin:18px 22px 0;
+  box-shadow:0 18px 50px rgba(6,59,38,.14);
+}
+.department-hero::after{
+  content:"ICT";position:absolute;right:22px;bottom:-25px;
+  font-size:clamp(5rem,15vw,11rem);line-height:.8;font-weight:800;
+  letter-spacing:-7px;color:rgba(255,255,255,.035);pointer-events:none;
+}
+.department-hero-content{position:relative;max-width:900px;margin:auto;text-align:center;z-index:2}
+.breadcrumb{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:7px;margin-bottom:22px;color:rgba(255,255,255,.62);font-size:.67rem;font-weight:600}
+.breadcrumb a{color:rgba(255,255,255,.86)}
+.breadcrumb a:hover{color:var(--yellow)}
+.department-label{
+  display:inline-flex;align-items:center;gap:7px;padding:7px 13px;
+  border:1px solid rgba(245,197,24,.35);border-radius:999px;
+  background:rgba(245,197,24,.08);color:var(--yellow);
+  font-size:.62rem;font-weight:800;letter-spacing:1.2px;text-transform:uppercase
+}
+.department-label::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--yellow)}
+.department-hero h1{margin:16px auto 0;max-width:900px;color:#fff;font-size:clamp(2.35rem,5.7vw,4.35rem);line-height:1;letter-spacing:-2.5px;font-weight:800}
+.department-hero h1 span{color:var(--yellow)}
+.faculty-name{margin:19px 0 0;color:var(--yellow);font-size:.9rem;font-weight:800}
+.department-hero-description{max-width:700px;margin:15px auto 0;color:rgba(255,255,255,.72);font-size:.82rem;line-height:1.7}
+.department-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:9px;margin-top:23px}
+.department-action{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:0 15px;border-radius:999px;font-size:.67rem;font-weight:800;transition:.2s ease}
+.department-action:hover{transform:translateY(-2px)}
+.department-action.primary{background:var(--yellow);color:var(--dark-green)}
+.department-action.secondary{border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.08);color:#fff}
+
+/* MAIN */
+.department-main{width:min(1120px,calc(100% - 44px));margin:0 auto;padding:42px 0 70px}
+.quick-info{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:70px}
+.quick-card,.content-card,.programme-card,.resource-card,.contact-card,.table-card,.rule-card{
+  background:#fff;border:1px solid var(--border);border-radius:20px;
+  box-shadow:0 12px 35px rgba(6,59,38,.05)
+}
+.quick-card{min-height:125px;padding:19px;transition:.2s ease}
+.quick-card:hover,.programme-card:hover,.resource-card:hover{transform:translateY(-3px);border-color:rgba(11,93,59,.25)}
+.quick-icon,.programme-icon,.resource-icon{
+  width:42px;height:42px;display:grid;place-items:center;margin-bottom:12px;
+  border-radius:13px;background:var(--light-green);font-size:18px
+}
+.quick-card span,.mini-label{
+  display:block;margin-bottom:6px;color:var(--muted);font-size:.61rem;
+  font-weight:800;letter-spacing:.06em;text-transform:uppercase
+}
+.quick-card strong{display:block;color:var(--text);font-size:.78rem;line-height:1.45}
+
+.department-section{margin-bottom:70px;scroll-margin-top:30px}
+.section-heading{margin-bottom:23px}
+.section-heading span{display:block;margin-bottom:7px;color:var(--green);font-size:.64rem;font-weight:800;letter-spacing:1.1px;text-transform:uppercase}
+.section-heading h2{margin:0;color:var(--text);font-size:clamp(1.8rem,4vw,2.4rem);line-height:1.05;letter-spacing:-1.2px}
+.section-heading p{margin:9px 0 0;color:var(--muted);font-size:.8rem;line-height:1.6}
+
+.about-box{padding:28px}
+.about-box p{margin:0 0 17px;color:var(--muted);font-size:.84rem;line-height:1.85}
+.about-box p:last-child{margin-bottom:0}
+.location-button,.action-button,.download-button,.upload-button,.whatsapp-button{
+  display:inline-flex;align-items:center;justify-content:center;gap:7px;
+  min-height:40px;padding:0 15px;border-radius:11px;font-size:.68rem;font-weight:800;
+  border:0;cursor:pointer;transition:.2s ease
+}
+.location-button,.download-button{background:var(--green);color:#fff}
+.location-button:hover,.download-button:hover{background:var(--dark-green);transform:translateY(-2px)}
+.upload-button{background:var(--yellow);color:var(--dark-green)}
+.whatsapp-button{background:var(--light-green);color:var(--green)}
+.upload-status{margin:9px 0 0;color:var(--muted);font-size:.7rem;line-height:1.5}
+
+.programme-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.programme-card{padding:24px;transition:.2s ease}
+.programme-icon{width:48px;height:48px;font-size:21px}
+.programme-card h3{margin:0 0 9px;color:var(--text);font-size:.98rem;line-height:1.45}
+.programme-card p{margin:0;color:var(--muted);font-size:.8rem;line-height:1.7}
+
+/* INFORMATION CARDS */
+.info-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.content-card{padding:24px}
+.content-card h3{margin:0 0 12px;font-size:1rem}
+.content-card p,.content-card li{color:var(--muted);font-size:.79rem;line-height:1.75}
+.content-card ul,.content-card ol{margin:0;padding-left:20px}
+.content-card li{margin-bottom:6px}
+.content-card li:last-child{margin-bottom:0}
+.full-card{grid-column:1/-1}
+
+/* COURSE STRUCTURE */
+.level-nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.level-nav a{padding:9px 13px;border-radius:999px;background:var(--light-green);color:var(--green);font-size:.68rem;font-weight:800}
+.level-nav a:hover{background:var(--yellow);color:var(--dark-green)}
+
+.course-block{margin-bottom:12px;display:none}
+.course-block.open{display:block}
+.course-block:last-child{margin-bottom:0}
+.course-block h3{margin:0 0 10px;color:var(--green);font-size:.92rem}
+.course-level-button{
+  width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:16px 18px;border:1px solid var(--border);border-radius:16px;background:#fff;
+  color:var(--green);font:inherit;font-size:.8rem;font-weight:800;cursor:pointer;text-align:left;
+  box-shadow:0 8px 24px rgba(6,59,38,.045);transition:.2s ease
+}
+.course-level-button:hover{border-color:rgba(11,93,59,.25);background:var(--light-green);transform:translateY(-1px)}
+.course-level-button::after{
+  content:"⌄";width:28px;height:28px;display:grid;place-items:center;flex:0 0 28px;
+  border-radius:9px;background:var(--light-green);color:var(--green);font-size:1rem;
+  transition:transform .2s ease,background .2s ease
+}
+.course-level-button.active{border-color:rgba(11,93,59,.25);background:var(--light-green)}
+.course-level-button.active::after{transform:rotate(180deg);background:var(--yellow);color:var(--dark-green)}
+.course-level-group{margin-bottom:10px}
+.course-level-group:last-child{margin-bottom:0}
+.course-level-group .course-block{margin:8px 0 0;padding:0 4px}
+.table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:16px;background:#fff}
+.course-table{width:100%;border-collapse:collapse;min-width:760px}
+.course-table th,.course-table td{padding:10px 11px;border-bottom:1px solid var(--border);text-align:left;font-size:.69rem;vertical-align:top}
+.course-table th{background:var(--light-green);color:var(--green);font-size:.62rem;letter-spacing:.04em;text-transform:uppercase}
+.course-table td:first-child{font-weight:800;color:var(--green);white-space:nowrap}
+.course-table tr:last-child td{border-bottom:0}
+.course-table .total-row td{font-weight:800;background:#fbfdfb;color:var(--text)}
+.note{margin:10px 0 0;color:var(--muted);font-size:.7rem;line-height:1.65}
+
+/* SUMMARY */
+.summary-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.summary-card{padding:24px;background:#fff;border:1px solid var(--border);border-radius:20px}
+.summary-card h3{margin:0 0 15px;font-size:.95rem}
+.summary-stat{display:flex;justify-content:space-between;gap:15px;padding:10px 0;border-bottom:1px solid var(--border);font-size:.74rem}
+.summary-stat:last-child{border-bottom:0}
+.summary-stat span{color:var(--muted)}
+.summary-stat strong{color:var(--green)}
+
+/* RESOURCES */
+.resource-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.resource-card{display:block;padding:24px;transition:.2s ease}
+.resource-icon{width:48px;height:48px;font-size:21px}
+.resource-card h3{margin:0 0 8px;font-size:.96rem}
+.resource-card p{margin:0;color:var(--muted);font-size:.78rem;line-height:1.7}
+.resource-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}
+.file-input{display:none}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.contact-card{padding:25px}
+.contact-card h3{margin:0 0 21px;font-size:.98rem}
+.contact-item{display:flex;align-items:flex-start;gap:12px;margin-bottom:17px}
+.contact-item:last-child{margin-bottom:0}
+.contact-item-icon{width:39px;height:39px;flex:0 0 39px;display:grid;place-items:center;border-radius:11px;background:var(--light-green);font-size:17px}
+.contact-item span{display:block;margin-bottom:4px;color:var(--muted);font-size:.62rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+.contact-item strong{color:var(--text);font-size:.78rem;line-height:1.5}
+
+/* HELP */
+.help-box{padding:40px 25px;border-radius:24px;background:radial-gradient(circle at 85% 15%,rgba(245,197,24,.13),transparent 28%),var(--dark-green);color:#fff;text-align:center}
+.help-box h2{margin:0 0 11px;font-size:clamp(1.5rem,4vw,2rem);letter-spacing:-.8px}
+.help-box p{max-width:700px;margin:0 auto 22px;color:rgba(255,255,255,.74);font-size:.8rem;line-height:1.7}
+.help-button{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 18px;border-radius:999px;background:var(--yellow);color:var(--dark-green);font-size:.7rem;font-weight:800}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border)}
+
+@media(max-width:950px){
+  .quick-info{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .resource-grid,.summary-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .programme-grid,.contact-grid,.info-grid{grid-template-columns:1fr}
+}
+@media(max-width:650px){
+  .department-hero{padding:40px 17px 36px;margin:12px 14px 0;border-radius:24px}
+  .department-hero h1{font-size:2.65rem;letter-spacing:-1.8px}
+  .department-main{width:min(100% - 34px,1120px);padding-top:35px}
+  .quick-info{grid-template-columns:1fr 1fr;gap:10px;margin-bottom:55px}
+  .quick-card{min-height:112px;padding:16px}
+  .resource-grid,.summary-grid{grid-template-columns:1fr}
+  .about-box,.programme-card,.resource-card,.contact-card,.content-card,.summary-card{padding:21px}
+  .department-actions{gap:7px}
+  .department-action{min-height:38px;padding:0 13px}
+}
+@media(max-width:430px){.quick-info{grid-template-columns:1fr}.breadcrumb{font-size:.6rem}}
+
+.level-nav{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:16px
+}
+.level-nav .course-level-button{
+  border-radius:999px;padding:10px 13px;min-height:42px;justify-content:center;font-size:.68rem;box-shadow:none
+}
+.level-nav .course-level-button::after{display:none}
+.level-nav > a{
+  display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:10px 13px;
+  border-radius:999px;background:var(--light-green);color:var(--green);font-size:.68rem;font-weight:800
+}
+.level-nav > a:hover{background:var(--yellow);color:var(--dark-green)}
+.course-level-content{display:none}
+.course-level-content.open{display:block}
+.course-level-content .course-block{display:block}
+@media(max-width:650px){.level-nav{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+
+.programme-structure-list{display:grid;gap:10px}
+.programme-structure-item{border-radius:16px}
+.programme-toggle{width:100%;display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border:1px solid var(--border);border-radius:16px;background:#fff;color:var(--green);font:inherit;font-size:.8rem;font-weight:800;cursor:pointer;text-align:left;box-shadow:0 8px 24px rgba(6,59,38,.045);transition:.2s ease}
+.programme-toggle:hover,.programme-toggle.active{border-color:rgba(11,93,59,.25);background:var(--light-green)}
+.programme-toggle span{width:28px;height:28px;display:grid;place-items:center;border-radius:9px;background:var(--light-green);font-size:1rem}
+.programme-toggle.active span{background:var(--yellow);color:var(--dark-green)}
+.programme-content{display:none;margin-top:8px}
+.programme-content.open{display:block}
+.programme-content .content-card{padding:21px}
+
+/* LIFE + MOTION: polished entrance, reveal, and responsive hover feedback */
+.department-back-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 22px}
+.department-back-button{display:inline-flex;align-items:center;gap:9px;min-height:40px;padding:0 15px;border:1px solid var(--border);border-radius:999px;background:#fff;color:var(--green);font:inherit;font-size:.72rem;font-weight:800;cursor:pointer;box-shadow:0 7px 20px rgba(6,59,38,.06);transition:transform .22s ease,box-shadow .22s ease,background .22s ease}
+.department-back-button span{font-size:1.1rem;transition:transform .22s ease}
+.department-back-button:hover{transform:translateY(-2px);background:var(--light-green);box-shadow:0 12px 25px rgba(6,59,38,.12)}
+.department-back-button:hover span{transform:translateX(-3px)}
+.back-hint{color:var(--muted);font-size:.68rem}
+.department-hero{animation:ictHeroEnter .8s cubic-bezier(.2,.75,.25,1) both}
+.department-hero-content{animation:ictContentEnter .9s .12s cubic-bezier(.2,.75,.25,1) both}
+.department-hero::after{animation:ictWatermarkFloat 9s ease-in-out infinite}
+@keyframes ictHeroEnter{from{opacity:0;transform:translateY(18px) scale(.99)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes ictContentEnter{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes ictWatermarkFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+.quick-card,.content-card,.programme-card,.resource-card,.contact-card,.summary-card,.help-box{transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.quick-card:hover,.content-card:hover,.contact-card:hover,.summary-card:hover{transform:translateY(-4px);box-shadow:0 18px 42px rgba(6,59,38,.1);border-color:rgba(11,93,59,.24)}
+.resource-card:hover{box-shadow:0 18px 42px rgba(6,59,38,.1)}
+.location-button,.download-button,.upload-button,.whatsapp-button,.help-button,.department-action{transition:transform .22s ease,box-shadow .22s ease,background .22s ease}
+.location-button:hover,.download-button:hover,.upload-button:hover,.whatsapp-button:hover,.help-button:hover,.department-action:hover{transform:translateY(-2px);box-shadow:0 9px 22px rgba(6,59,38,.12)}
+.reveal-on-scroll{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s cubic-bezier(.2,.75,.25,1)}
+.reveal-on-scroll.is-visible{opacity:1;transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .reveal-on-scroll{opacity:1;transform:none}
+}
+
+
+.staff-table{min-width:850px}.staff-table td:first-child{font-weight:700}
+.course-details{margin:12px 0;border:1px solid var(--border);border-radius:16px;background:#fff;overflow:hidden}
+.course-details summary{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 18px;cursor:pointer;color:var(--green);font-weight:800;font-size:.82rem;list-style:none}
+.course-details summary::-webkit-details-marker{display:none}
+.course-details summary::after{content:"+";font-size:1.2rem;color:var(--green)}
+.course-details[open] summary::after{content:"−"}
+.course-details summary span{font-size:.68rem;color:var(--muted);font-weight:700}
+.course-details .table-wrap{border:0;border-radius:0;border-top:1px solid var(--border)}
+.staff-group{margin:18px 0 30px}.staff-group h3{margin:0 0 12px;color:var(--green);font-size:1rem}
+.warning-note{padding:16px 18px;border:1px solid #eadca7;border-radius:14px;background:#fff9e6;color:#5d4b16;font-size:.76rem;line-height:1.7}
+.resource-card.static{cursor:default}.resource-card.static:hover{transform:none}
+@media(max-width:650px){.course-details summary{align-items:flex-start;flex-direction:column}}
+
+</style>
+  <link rel="stylesheet" href="site-navigation.css">
+
+
+<header class="header">
+
+    <nav class="navbar">
+
+      <a
+        href="index.html"
+        class="brand"
+      >
+
+        <span class="brand-icon">
+          🎓
+        </span>
+
+        <span>
+          AAUA Uni Pilot
+        </span>
+
+      </a>
+
+
+      <div class="desktop-nav">
+
+        <a href="index.html">
+          Home
+        </a>
+
+        <a href="resources.html">
+          Resources
+        </a>
+
+        <a href="guide.html">
+          Student Guide
+        </a>
+
+        <a href="updates.html">
+          Updates
+        </a>
+
+        <a href="tools.html" class="active">
+          Tools
+        </a>
+
+      </div>
+
+
+      <div class="nav-actions">
+
+        <a
+          href="search.html"
+          class="icon-btn"
+          aria-label="Search AAUA Uni Pilot"
+          title="Search AAUA Uni Pilot"
+          style="display:grid;place-items:center;text-decoration:none;"
+        >
+          🔍
+        </a>
+
+
+        <button
+          class="menu-btn"
+          id="menuBtn"
+          type="button"
+          aria-label="Open menu"
+        >
+          ☰
+        </button>
+
+      </div>
+
+    </nav>
+
+  </header>
+<section class="department-hero">
+  <div class="department-hero-content">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>›</span><a href="computing.html">Faculty of Computing</a><span>›</span><span>Information Systems</span></div>
+    <span class="department-label">Department Guide</span>
+    <h1>Department of <span>Informatics &amp; Information Systems.</span></h1>
+    <p class="faculty-name">Faculty of Computing</p>
+    <p class="department-hero-description">B.Sc. Information Systems: programme information, admission requirements, staff directory, course structure, SIWES and academic resources.</p>
+    <div class="department-actions"><a href="#overview" class="department-action primary">📚 Overview</a><a href="#courses" class="department-action secondary">📋 Courses</a><a href="#staff" class="department-action secondary">👥 Staff</a><a href="#resources" class="department-action secondary">📁 Resources</a></div>
+  </div>
+</section>
+<main class="department-main">
+  <div class="department-back-row"><button class="department-back-button" id="departmentBackButton" type="button"><span aria-hidden="true">←</span> Go Back</button><span class="back-hint">Return to the page you came from</span></div>
+  <section class="quick-info">
+    <div class="quick-card"><div class="quick-icon">🏛️</div><span>Faculty</span><strong>Faculty of Computing</strong></div>
+    <div class="quick-card"><div class="quick-icon">🎓</div><span>Programme</span><strong>B.Sc. Information Systems</strong></div>
+    <div class="quick-card"><div class="quick-icon">👨‍🏫</div><span>Head of Department</span><strong>Dr. S.O. Ogunlana</strong></div>
+    <div class="quick-card"><div class="quick-icon">⏳</div><span>Minimum Duration</span><strong>4 years UTME · 3 years Direct Entry</strong></div>
+  </section>
+
+  <section class="department-section" id="overview">
+    <div class="section-heading"><span>18.2 · Programme Overview</span><h2>Welcome to Information Systems</h2><p>Department of Informatics and Information Systems, Adekunle Ajasin University.</p></div>
+    <div class="content-card about-box">
+      <p>It is with great pleasure and a deep sense of honor that I welcome you all to the Department of Informatics and Information Systems. Whether you are a new student embarking on an exciting academic journey, a returning student advancing your knowledge, or a faculty and staff member committed to shaping the future of this field, we are delighted to have you as part of our vibrant academic community.</p>
+      <p>In today's rapidly evolving digital world, Informatics and Information Systems play a crucial role in shaping industries, businesses, healthcare, security, education, and virtually every aspect of human life. Our department is dedicated to providing cutting-edge education, fostering innovative research, and preparing students to become leaders in the fields of information technology, data science, cybersecurity, artificial intelligence, and more.</p>
+      <p>We take pride in our distinguished faculty, who are not only educators but also researchers and industry experts working on groundbreaking advancements in the field. Our state-of-the-art facilities, industry partnerships, and hands-on learning experiences ensure that our students are well-equipped with the knowledge and practical skills needed to excel in the ever-evolving tech landscape.</p>
+      <p>To our new students, you are embarking on a journey that will challenge you, inspire you, and equip you with the skills necessary to make meaningful contributions to society. We encourage you to take advantage of the various learning resources, research opportunities, and mentorship programs available within the department. To our returning students, we commend your dedication and perseverance, and we urge you to continue striving for excellence in your academic pursuits.</p>
+      <p>Collaboration and innovation are at the heart of what we do, and we invite all of you to actively engage in research initiatives, tech-driven projects, and knowledge-sharing platforms. The future belongs to those who can harness the power of information and technology to drive change, and we are committed to nurturing a community of thinkers, problem-solvers, and innovators.</p>
+      <p>As we embark on this new academic session, let us embrace the opportunities ahead with curiosity, determination, and a commitment to excellence. Together, we will push the boundaries of knowledge and contribute to the advancement of informatics and information systems.</p>
+      <p>Once again, welcome to the Department of Informatics and Information Systems. We look forward to an exciting and productive journey with you all!</p>
+      <p><strong>Dr. S.O. Ogunlana</strong></p>
+    </div>
+    <div class="section-heading" style="margin-top:30px"><span>General Overview</span><h2>Why Information Systems?</h2></div>
+    <div class="content-card about-box"><p>Information is a critical resource in driving all aspects of human endeavours, for optimal productivity and continuity for survival in a dynamic business environment. Information systems is the key enabler for running and managing processes in organisations today in a global economy. In the world today, entire sectors of economy rely heavily on information systems to thrive. Rational decision-making could only be made about business activities through a well-developed information system. The information system synopsis are aimed at producing information system specialists with adequate professional knowledge and skills to support organisation information needs to drive its core operations through adequate course work, practical and applied project experience.</p></div>
+  </section>
+
+  <section class="department-section" id="programme">
+    <div class="section-heading"><span>Programme Framework</span><h2>Philosophy &amp; Objectives</h2></div>
+    <div class="info-grid">
+      <div class="content-card"><h3>Programme Philosophy</h3><p>The philosophy of the programme is to equip Information Systems graduates with sufficient knowledge and skills to collect, process, store, distribute information and to use information systems to support decision making, control and coordination in an organisation for increased productivity through best practices and professional standards.</p></div>
+      <div class="content-card"><h3>Programme Objectives</h3><ol>
+        <li>Create the consciousness of the relevance of information systems as a primary driver in all economic sectors.</li>
+        <li>Equip students with appropriate skills and knowledge to develop and manage information system resources in an organisation.</li>
+        <li>Empower students with problem-solving skills.</li>
+        <li>Develop students with the ability to use information systems to improve business operations.</li>
+        <li>Develop students with capacity to manage various information systems in an organisation to best serve the people (manager, staff and customers).</li>
+        <li>Equip students with demonstrable business knowledge and applications of software proficiency.</li>
+        <li>Equip students with capacity for professional practice in information systems and communication.</li>
+      </ol></div>
+    </div>
+    <div class="section-heading" style="margin-top:30px"><span>18.3 · Programme Offered and Duration</span><h2>B.Sc. Information Systems</h2></div>
+    <div class="programme-grid">
+      <div class="programme-card"><div class="programme-icon">🎓</div><h3>UTME Entry</h3><p>Minimum duration: 4 academic sessions.</p></div>
+      <div class="programme-card"><div class="programme-icon">📘</div><h3>Direct Entry</h3><p>Admission into 200 Level. Minimum duration: 3 academic sessions.</p></div>
+    </div>
+  </section>
+
+  <section class="department-section" id="admission">
+    <div class="section-heading"><span>18.4 · Admission Requirements</span><h2>Entry Requirements</h2><p>Requirements reproduced from the supplied department prospectus transcription.</p></div>
+    <div class="info-grid">
+      <div class="content-card"><h3>UTME Entry Requirements</h3><ol>
+        <li>Five O'Level credit passes at SSCE (WAEC, GCE, NECO, and NABTEB) at no more than two sittings, including English Language, Mathematics, Physics, and two from Chemistry, Biology/Agric Science, Statistics, Additional Mathematics, Computer Studies, ICT, or Basic Electronics.</li>
+        <li>UTME subjects must include Use of English, Mathematics, Physics, and one of Biology, Chemistry, Agric Science, Economics, Geography, and Computer Studies.</li>
+        <li>Candidates successful in the pre-degree programme (Science) of Adekunle Ajasin University, Akungba-Akoko can also be considered.</li>
+      </ol></div>
+      <div class="content-card"><h3>Direct Entry Requirements</h3><p>Students entering 200 Level must satisfy one of the following, provided the O'Level requirement in 18.4(a) is satisfied:</p><ol>
+        <li>Passes in two A' Level subjects, which must include Mathematics.</li>
+        <li>At least Upper Credit in ND Computer Science, Statistics, or Electronics/Electrical Engineering.</li>
+        <li>NCE with at least Merit in Computer Science, Mathematics, or Statistics.</li>
+      </ol><p><strong>Minimum duration:</strong> 4 sessions for UTME and 3 sessions for candidates admitted to 200 Level.</p></div>
+    </div>
+  </section>
+
+  <section class="department-section" id="graduation">
+    <div class="section-heading"><span>18.5–18.6 · Academic Regulations</span><h2>Graduation &amp; Course Registration</h2></div>
+    <div class="info-grid">
+      <div class="content-card"><h3>Graduation Requirements</h3><ul>
+        <li>Pass all core courses, university and faculty/school required courses, and electives.</li>
+        <li>Accumulate a minimum of 146 course units for UTME students and 114 course units for students admitted to 200 Level.</li>
+        <li>Attain a minimum CGPA of 1.00.</li>
+        <li>Be found worthy in character throughout the period of studentship.</li>
+        <li>Accumulate the prescribed units from Core, Faculty, General Studies courses, SIWES, Seminar, and Final Year Project.</li>
+      </ul><p class="note">The source page's heading refers to a “Bachelor degree in Data Science” although this section appears within the Information Systems prospectus. The wording is retained here as a source discrepancy, not treated as an Information Systems rule without departmental confirmation.</p></div>
+      <div class="content-card"><h3>Course Registration Rules</h3><ul>
+        <li>Students must register for the appropriate compulsory and elective courses.</li>
+        <li>Compulsory courses must be offered and passed before graduation.</li>
+        <li>Electives are department-prescribed courses required to meet University minimum requirements.</li>
+        <li>Minimum workload: 15 units per semester.</li>
+        <li>Maximum workload: 28 units per semester.</li>
+        <li>Course withdrawal requires HOD approval and completion of the Add and Delete form within the Senate-approved period.</li>
+        <li>An examination taken for an unregistered course will be cancelled.</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <section class="department-section" id="unit-summary">
+    <div class="section-heading"><span>Programme Unit Summary</span><h2>Degree Unit Requirements</h2></div>
+    <div class="summary-grid">
+      <div class="summary-card"><h3>4-Year Programme (UTME)</h3>
+        <div class="summary-stat"><span>Compulsory Courses</span><strong>124 units</strong></div><div class="summary-stat"><span>Elective Courses</span><strong>10 units</strong></div><div class="summary-stat"><span>GST Courses</span><strong>8 units</strong></div><div class="summary-stat"><span>ENT Courses</span><strong>4 units</strong></div><div class="summary-stat"><span>Minimum Total</span><strong>146 units</strong></div>
+      </div>
+      <div class="summary-card"><h3>3-Year Programme (Direct Entry)</h3>
+        <div class="summary-stat"><span>Compulsory Courses</span><strong>92 units</strong></div><div class="summary-stat"><span>Elective Courses</span><strong>10 units</strong></div><div class="summary-stat"><span>GST Courses</span><strong>8 units</strong></div><div class="summary-stat"><span>ENT Courses</span><strong>4 units</strong></div><div class="summary-stat"><span>Minimum Total</span><strong>114 units</strong></div>
+      </div>
+    </div>
+    <p class="note">The detailed 3-year table on page 48 also appears to show 12 elective units, 4 GST units and 2 ENT units before an additional 4 GST units, while the summary table shows 10 elective, 8 GST and 4 ENT units. The prospectus figures are reproduced without silently reconciling the discrepancy.</p>
+  </section>
+
+  <section class="department-section" id="courses">
+    <div class="section-heading"><span>18.7 · Course Structure</span><h2>Course Catalogue</h2><p>Course codes, titles, units, status, lecture hours (LH) and practical hours (PH) are transcribed from the supplied pages. Expand a semester to view its table.</p></div>
+    <details class="course-details" open><summary>100L First Semester <span>18 units in listed rows</span></summary><div class="table-wrap"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead><tbody><tr><td><strong>GST 111</strong></td><td>Communication in English</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td><strong>MTH 101</strong></td><td>Elementary Mathematics I</td><td>2</td><td>C</td><td>30</td><td>0</td></tr><tr><td><strong>PHY 101</strong></td><td>General Physics I</td><td>2</td><td>C</td><td>30</td><td>0</td></tr><tr><td><strong>PHY 107</strong></td><td>General Practical Physics I</td><td>1</td><td>C</td><td>0</td><td>45</td></tr><tr><td><strong>COS 101</strong></td><td>Introduction to Computing Science</td><td>3</td><td>C</td><td>30</td><td>45</td></tr><tr><td><strong>BIO 101</strong></td><td>General Biology I</td><td>2</td><td>C</td><td>30</td><td>0</td></tr><tr><td><strong>STA 111</strong></td><td>Descriptive Statistics</td><td>2</td><td>C</td><td>45</td><td>0</td></tr><tr><td><strong>AAUA-CSC 111</strong></td><td>Statistical Computing</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td><strong>AAUA-CSC 103</strong></td><td>Computer Hardware &amp; Installation Management</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr class="total-row"><td colspan="2">Published semester total</td><td colspan="4">19 units</td></tr></tbody></table></div></details><details class="course-details" ><summary>100L Second Semester <span>17 units in listed rows</span></summary><div class="table-wrap"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead><tbody><tr><td><strong>GST 112</strong></td><td>Nigerian Peoples and Culture</td><td>2</td><td>C</td><td>30</td><td>0</td></tr><tr><td><strong>MTH 102</strong></td><td>Elementary Mathematics II</td><td>2</td><td>C</td><td>30</td><td>0</td></tr><tr><td><strong>PHY 102</strong></td><td>General Physics II</td><td>2</td><td>C</td><td>30</td><td>0</td></tr><tr><td><strong>PHY 108</strong></td><td>General Practical Physics II</td><td>1</td><td>C</td><td>0</td><td>45</td></tr><tr><td><strong>COS 102</strong></td><td>Problem Solving Programming Language</td><td>2</td><td>C</td><td>30</td><td>0</td></tr><tr><td><strong>MTH 104</strong></td><td>Elementary Mathematics III</td><td>2</td><td>C</td><td>30</td><td>0</td></tr><tr><td><strong>BIO 102</strong></td><td>General Biology II</td><td>2</td><td>C</td><td>30</td><td>0</td></tr><tr><td><strong>AAUA-CSC 112</strong></td><td>Computer Graphics and Image Processing</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td><strong>AAUA-CYB 102</strong></td><td>Internet and its Application</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr class="total-row"><td colspan="2">Published semester total</td><td colspan="4">17 units</td></tr></tbody></table></div></details><details class="course-details" ><summary>200L First Semester <span>20 units in listed rows</span></summary><div class="table-wrap"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead><tbody><tr><td><strong>COS 201</strong></td><td>Computer Programming I (C++/Java)</td><td>3</td><td>C</td><td>30</td><td>45</td></tr><tr><td><strong>MAT 201</strong></td><td>Mathematical Methods I</td><td>2</td><td>C</td><td>30</td><td>0</td></tr><tr><td><strong>ENT 211</strong></td><td>Entrepreneurship and Innovation</td><td>2</td><td>C</td><td>30</td><td>0</td></tr><tr><td><strong>INS 207</strong></td><td>Introduction to Information Systems</td><td>2</td><td>C</td><td>30</td><td>0</td></tr><tr><td><strong>SEN 201</strong></td><td>Introduction to Software Engineering</td><td>2</td><td>C</td><td>30</td><td>0</td></tr><tr><td><strong>STA 121</strong></td><td>Statistical Inference I</td><td>3</td><td>C</td><td>45</td><td>0</td></tr><tr><td><strong>AAUA-INS 201</strong></td><td>Strategy Development</td><td>2</td><td>C</td><td>30</td><td>0</td></tr><tr><td><strong>AAUA-INS 203</strong></td><td>Implications of Information Systems for People, Enterprises and Society</td><td>2</td><td>C</td><td>30</td><td>0</td></tr><tr><td><strong>Elective</strong></td><td>Minimum of 2 units</td><td>2</td><td>E</td><td>Unclear</td><td>Unclear</td></tr><tr class="total-row"><td colspan="2">Published semester total</td><td colspan="4">20 units</td></tr></tbody></table></div></details><details class="course-details" ><summary>200L Second Semester <span>14 units in listed rows</span></summary><div class="table-wrap"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead><tbody><tr><td><strong>GST 212</strong></td><td>Philosophy, Logic and Human Existence</td><td>2</td><td>C</td><td>30</td><td>0</td></tr><tr><td><strong>COS 202</strong></td><td>Computer Programming II (Python)</td><td>2</td><td>C</td><td>30</td><td>45</td></tr><tr><td><strong>INS 202</strong></td><td>Human Computer Interaction</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td><strong>INS 204</strong></td><td>System Analysis and Design</td><td>2</td><td>C</td><td>30</td><td>0</td></tr><tr><td><strong>BUA 102</strong></td><td>Introduction to Business</td><td>2</td><td>C</td><td>30</td><td>0</td></tr><tr><td><strong>AAUA-INS 202</strong></td><td>File Organization &amp; Data Processing</td><td>2</td><td>C</td><td>30</td><td>0</td></tr><tr><td><strong>AAUA-INS 218</strong></td><td>Introduction to Data Communication</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr class="total-row"><td colspan="2">Published semester total</td><td colspan="4">17 units</td></tr></tbody></table></div></details><details class="course-details" ><summary>300L First Semester <span>19 units in listed rows</span></summary><div class="table-wrap"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead><tbody><tr><td><strong>INS 301</strong></td><td>Business Process Management</td><td>2</td><td>C</td><td>30</td><td>0</td></tr><tr><td><strong>CYB 305</strong></td><td>Digital Forensics and Investigation Methods</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td><strong>ICT 305</strong></td><td>Data Communications System and Networking</td><td>3</td><td>C</td><td>30</td><td>45</td></tr><tr><td><strong>INS 305</strong></td><td>Management Theory</td><td>2</td><td>C</td><td>30</td><td>0</td></tr><tr><td><strong>CSC 309</strong></td><td>Artificial Intelligence</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td><strong>INS 311</strong></td><td>E-Business Systems Development</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td><strong>AAUA-INS 303</strong></td><td>Machine Learning</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td><strong>AAUA-INS 305</strong></td><td>Process Modelling and Solution</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td><strong>Elective</strong></td><td>Minimum of 2 units</td><td>2</td><td>E</td><td>15</td><td>45</td></tr><tr class="total-row"><td colspan="2">Published semester total</td><td colspan="4">19 units</td></tr></tbody></table></div></details><details class="course-details" ><summary>300L Second Semester (SIWES) <span>15 units in listed rows</span></summary><div class="table-wrap"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead><tbody><tr><td><strong>SIWES 398A</strong></td><td>SIWES Report Writing</td><td>2</td><td>C</td><td>0</td><td>135</td></tr><tr><td><strong>SIWES 398B</strong></td><td>Industrial based SIWES Assessment</td><td>3</td><td>C</td><td>0</td><td>135</td></tr><tr><td><strong>SIWES 398C</strong></td><td>SIWES Site Visit Assessment</td><td>3</td><td>C</td><td>0</td><td>135</td></tr><tr><td><strong>SIWES 398D</strong></td><td>SIWES Logbook Assessment</td><td>3</td><td>C</td><td>0</td><td>135</td></tr><tr><td><strong>SIWES 398E</strong></td><td>SIWES Seminar Presentation/Examination</td><td>4</td><td>C</td><td>0</td><td>135</td></tr><tr class="total-row"><td colspan="2">Published semester total</td><td colspan="4">15 units</td></tr></tbody></table></div></details><details class="course-details" ><summary>400L First Semester <span>18 units in listed rows</span></summary><div class="table-wrap"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead><tbody><tr><td><strong>INS 401</strong></td><td>Project Management</td><td>2</td><td>C</td><td>30</td><td>0</td></tr><tr><td><strong>INS 403</strong></td><td>Business Process Re-engineering</td><td>2</td><td>C</td><td>30</td><td>0</td></tr><tr><td><strong>COS 409</strong></td><td>Research Methodology and Technical Writing</td><td>3</td><td>C</td><td>0</td><td>45</td></tr><tr><td><strong>INS 497</strong></td><td>Final Year Project I (Seminar)</td><td>3</td><td>C</td><td>0</td><td>45</td></tr><tr><td><strong>AAUA-INS 401</strong></td><td>Natural Language Processing</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td><strong>AAUA-INS 403</strong></td><td>Decision Support Systems</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td><strong>AAUA-INS 405</strong></td><td>Speech Processing</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td><strong>Elective</strong></td><td>Minimum of 1 course</td><td>2</td><td>E</td><td>15</td><td>45</td></tr><tr class="total-row"><td colspan="2">Published semester total</td><td colspan="4">18 units</td></tr></tbody></table></div></details><details class="course-details" ><summary>400L Second Semester <span>21 units in listed rows</span></summary><div class="table-wrap"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead><tbody><tr><td><strong>INS 498</strong></td><td>Final Year Project II</td><td>3</td><td>C</td><td>0</td><td>45</td></tr><tr><td><strong>GST 312</strong></td><td>Peace and Conflict Resolution</td><td>2</td><td>C</td><td>30</td><td>0</td></tr><tr><td><strong>ENT 312</strong></td><td>Venture Creation</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td><strong>DTS 404</strong></td><td>Data Management</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td><strong>CSC 408</strong></td><td>Operating Systems</td><td>3</td><td>C</td><td>45</td><td>0</td></tr><tr><td><strong>INS 422</strong></td><td>Information Systems Innovation and New Technology</td><td>3</td><td>C</td><td>30</td><td>0</td></tr><tr><td><strong>DTS 414</strong></td><td>Data Management II</td><td>2</td><td>C</td><td>30</td><td>0</td></tr><tr><td><strong>AAUA-INS 404</strong></td><td>Information Security and Privacy</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td><strong>Elective</strong></td><td>Minimum of 1 course</td><td>2</td><td>E</td><td>15</td><td>45</td></tr><tr class="total-row"><td colspan="2">Published semester total</td><td colspan="4">21 units</td></tr></tbody></table></div></details>
+    <div class="warning-note"><strong>Course-table notes:</strong> The 200 Level Second Semester table lists 14 units across its visible compulsory course rows but prints a total of 17 units. The 200 Level First Semester elective row has unclear LH/PH values. The 400 Level Second Semester elective hours are difficult to verify from the photograph. Published totals are preserved as printed; no missing course rows have been invented.</div>
+  </section>
+
+  <section class="department-section" id="electives">
+    <div class="section-heading"><span>Elective Options</span><h2>Departmental Electives</h2><p>Elective course options shown in the supplied prospectus pages.</p></div>
+    <details class="course-details"><summary>200L First Semester Electives</summary><p class="note">Students are free to choose a minimum of 2 units from the following.</p><div class="table-wrap"><table class="course-table staff-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>LH</th><th>PH</th></tr></thead><tbody><tr><td>1</td><td>ICT 201</td><td>Introduction to Information and Communication Technology</td><td>Not stated</td><td>Not stated</td><td>Not stated</td></tr><tr><td>2</td><td>CYB 201</td><td>Introduction to Cyber Security and Strategy</td><td>Not stated</td><td>Not stated</td><td>Not stated</td></tr><tr><td>3</td><td>DTS 201</td><td>Introduction to Data Science</td><td>Not stated</td><td>Not stated</td><td>Not stated</td></tr><tr><td>4</td><td>CSC 203</td><td>Discrete Structures</td><td>Not stated</td><td>Not stated</td><td>Not stated</td></tr><tr><td>5</td><td>DTS 211</td><td>Introduction to R Programming</td><td>Not stated</td><td>Not stated</td><td>Not stated</td></tr></tbody></table></div></details><details class="course-details"><summary>SIWES I &amp; SIWES II Combined: Elective Courses</summary><p class="note">Students are free to choose a minimum of 2 courses from the following.</p><div class="table-wrap"><table class="course-table staff-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>LH</th><th>PH</th></tr></thead><tbody><tr><td>1</td><td>MAT 204</td><td>Linear Algebra II</td><td>2</td><td>Not stated</td><td>Not stated</td></tr><tr><td>2</td><td>DTS 204</td><td>Statistical Computing Inference and Modelling</td><td>3</td><td>Not stated</td><td>Not stated</td></tr><tr><td>3</td><td>AAUA-CSC 212</td><td>Computer Architecture and Organization</td><td>2</td><td>Not stated</td><td>Not stated</td></tr></tbody></table></div></details><details class="course-details"><summary>300L Electives</summary><p class="note">Students are free to choose a minimum of 1 course from the following.</p><div class="table-wrap"><table class="course-table staff-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>LH</th><th>PH</th></tr></thead><tbody><tr><td>1</td><td>CSC 301</td><td>Data Structures and Algorithm</td><td>3</td><td>30</td><td>45</td></tr><tr><td>2</td><td>CYB 301</td><td>Cryptography Techniques, Algorithms and Applications</td><td>2</td><td>15</td><td>45</td></tr><tr><td>3</td><td>AAUA-INS 301</td><td>Enterprise System and Integration</td><td>2</td><td>30</td><td>0</td></tr><tr><td>4</td><td>SEN 301</td><td>Object Oriented Analysis and Design</td><td>2</td><td>15</td><td>45</td></tr></tbody></table></div></details><details class="course-details"><summary>400L First Semester Electives</summary><p class="note">Students are free to choose a minimum of 1 course from the following.</p><div class="table-wrap"><table class="course-table staff-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>LH</th><th>PH</th></tr></thead><tbody><tr><td>1</td><td>CYB 401</td><td>System Vulnerability Assessment and Testing</td><td>2</td><td>15</td><td>45</td></tr><tr><td>2</td><td>DTS 403</td><td>Data Visualisation Decision Making for Data-driven [title appears incomplete]</td><td>2</td><td>15</td><td>45</td></tr><tr><td>3</td><td>CYB 405</td><td>Ethical Hacking and Reverse Engineering</td><td>2</td><td>15</td><td>45</td></tr></tbody></table></div></details><details class="course-details"><summary>400L Second Semester Electives</summary><p class="note">Students are free to choose a minimum of 1 course from the following.</p><div class="table-wrap"><table class="course-table staff-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>LH</th><th>PH</th></tr></thead><tbody><tr><td>1</td><td>AAUA-INS 402</td><td>Cloud Computing</td><td>2</td><td>15</td><td>45</td></tr><tr><td>2</td><td>CYB 402</td><td>Stenography Access Methods and Data Hiding [printed title; verify spelling]</td><td>2</td><td>15</td><td>45</td></tr><tr><td>3</td><td>CYB 404</td><td>Cloud Computing Security</td><td>2</td><td>30</td><td>0</td></tr><tr><td>4</td><td>AAUA-CSC 406</td><td>Computer System Modelling &amp; Simulation</td><td>2</td><td>15</td><td>45</td></tr><tr><td>5</td><td>AAUA-CSC 442</td><td>Operation Research</td><td>2</td><td>30</td><td>0</td></tr><tr><td>6</td><td>DTS 302</td><td>Big Data Computing</td><td>2</td><td>15</td><td>45</td></tr><tr><td>7</td><td>CYB 302</td><td>Biometric Security</td><td>2</td><td>15</td><td>45</td></tr><tr><td>8</td><td>AAUA-INS 412</td><td>Access Control Systems and Methodology</td><td>2</td><td>15</td><td>45</td></tr></tbody></table></div></details>
+  </section>
+
+  <section class="department-section" id="staff">
+    <div class="section-heading"><span>18.1 · Department Directory</span><h2>Staff of the Department</h2><p>Staff names, specialisations, qualifications and ranks as transcribed from pages 44–45.</p></div>
+    <div class="staff-group"><h3>Academic Staff</h3><div class="table-wrap"><table class="course-table staff-table"><thead><tr><th>S/N</th><th>Name</th><th>Area of Specialization</th><th>Discipline</th><th>Qualification</th><th>Rank</th></tr></thead><tbody><tr><td>1</td><td>Samuel Oluwatayo OGUNLANA</td><td>Biometrics and Information Technology</td><td>Computer Science</td><td>B.Sc. (Ado-Ekiti), M.Tech, Ph.D. (Akure)</td><td>Ag. HOD</td></tr><tr><td>2</td><td>Dr. Felix O. ARANUWA</td><td>Informatics, Biometrics &amp; Machine Learning</td><td>Computer Science</td><td>B.Sc. (Ado-Ekiti), M.Sc. (Ibadan), Ph.D. (Malaysia)</td><td>Reader</td></tr><tr><td>3</td><td>Dr. Alaba O. AKINGBESOTE</td><td>Expert System and e-Mobile System</td><td>Computer Science</td><td>B.Sc. (Ago-Iwoye), M.Tech (Akure), Ph.D. (South Africa)</td><td>Reader</td></tr><tr><td>4</td><td>Dr. Olusola O. AJAYI</td><td>Software Engineering &amp; Programming Languages</td><td>Computer Science</td><td>B.Sc. (Ilorin), M.Sc., Ph.D. (Benin)</td><td>Reader</td></tr><tr><td>5</td><td>Dr. Oluwafemi ORIOLA</td><td>Cyber Security, Data Mining and [NNP/NLP unclear]</td><td>Computer Science</td><td>B.Sc. (Akungba), M.Sc., Ph.D. (Ibadan)</td><td>Reader</td></tr><tr><td>6</td><td>Prof. Olatunbosun OLABODE</td><td>Database Management</td><td>Computer Science</td><td>B.Tech, M.Tech, Ph.D. (FUTA)</td><td>Professor (Visiting)</td></tr><tr><td>7</td><td>Prof. Gabriel B. IWASOKUN</td><td>Pattern Recognition</td><td>Computer Science</td><td>B.Tech, M.Tech, Ph.D. (FUTA)</td><td>Professor (Visiting)</td></tr><tr><td>8</td><td>Dr. Ednah O. ALIYU</td><td>Compiler Engineering</td><td>Computer Science</td><td>B.Sc. (Minna), M.Sc., Ph.D. (Akure)</td><td>Senior Lecturer</td></tr><tr><td>9</td><td>Dr. David A. AKINWUMI</td><td>Network/Cyber Security</td><td>Computer Science</td><td>B.Sc. (Ado-Ekiti), M.Tech, Ph.D. (FUTA)</td><td>Senior Lecturer</td></tr><tr><td>10</td><td>Dr. David B. ADEWOLE</td><td>Wireless Computing</td><td>Computer Science</td><td>B.Sc. (Ife), M.Tech, Ph.D. (Akure)</td><td>Senior Lecturer</td></tr><tr><td>11</td><td>Dr. Folake AKINBOHUN</td><td>ICT</td><td>Computer Science</td><td>B.Sc., M.Sc. (FUTA/Akure [check image])</td><td>Senior Lecturer</td></tr><tr><td>12</td><td>Dr. Oladele S. ADEOLA</td><td>Data Mining &amp; Intelligent Systems</td><td>Computer Science</td><td>B.Tech, M.Tech (Akure), Ph.D. (Ogbomoso)</td><td>Senior Lecturer (Visiting)</td></tr><tr><td>13</td><td>Omojokun G. [name partly cut off]</td><td>Computer Networks and Security</td><td>Computer Science</td><td>B.Sc. (Sunderland), M.Sc. (Greenwich), Ph.D. (Benin)</td><td>Senior Lecturer</td></tr><tr><td>14</td><td>Samuel Oluwatayo OGUNLANA</td><td>Biometrics and Information Technology</td><td>Computer Science</td><td>B.Sc. (Ado-Ekiti), M.Tech, Ph.D. (Akure)</td><td>Lecturer I</td></tr><tr><td>15</td><td>Ayokunle IGE</td><td>Data Science &amp; HCI</td><td>Computer Science</td><td>B.Sc., M.Sc. (Akungba), Ph.D. (Malaysia)</td><td>Lecturer II</td></tr><tr><td>16</td><td>Adewuyi ADEGBITE</td><td>Intelligent &amp; Information Systems</td><td>Computer Science</td><td>B.Sc., M.Sc., Ph.D. (OAU)</td><td>Lecturer II</td></tr><tr><td>17</td><td>Taiwo G. OMOMULE</td><td>Data Science &amp; Machine Learning</td><td>Computer Science</td><td>B.Sc. (Akungba), M.Tech (Akure)</td><td>Lecturer II</td></tr><tr><td>18</td><td>Oluwatosin L. OGBEIDE</td><td>Artificial Intelligent [sic]</td><td>Computer Science</td><td>B.Sc., M.Sc. (Akungba)</td><td>Lecturer II</td></tr><tr><td>19</td><td>Oluwole A. AYEG BUSI [surname check image]</td><td>Software Engineering</td><td>Computer Science</td><td>B.Sc. (Akungba), M.Sc.</td><td>Lecturer II</td></tr><tr><td>20</td><td>Ayodeji O. AKINWUMI</td><td>Network Security &amp; Information Systems</td><td>Computer Science</td><td>B.Sc., M.Sc. (Akungba)</td><td>Lecturer II</td></tr><tr><td>21</td><td>Olatunde David AKINROLABU</td><td>Data Science &amp; AI</td><td>Computer Science</td><td>B.Sc., M.Sc. (Akungba)</td><td>Assistant Lecturer</td></tr><tr><td>22</td><td>Bolu AKINGBESOTE</td><td>Data Science &amp; AI</td><td>Computer Science</td><td>B.Sc. (Akungba)</td><td>Teaching Assistant</td></tr></tbody></table></div></div>
+    <div class="staff-group"><h3>Technical Staff</h3><div class="table-wrap"><table class="course-table staff-table"><thead><tr><th>S/N</th><th>Name</th><th>Qualification</th><th>Status</th></tr></thead><tbody><tr><td>1</td><td>Jenyo V. OLOWOKERE</td><td>B.Eng. Computer Engineering</td><td>Network Engineer</td></tr><tr><td>2</td><td>Akin EBITIGHA</td><td>B.Sc. (Akungba)</td><td>System Analyst/Programmer I</td></tr><tr><td>3</td><td>Blessing OLOTUAH (Mrs.)</td><td>B.Sc. (Akungba)</td><td>System Analyst/Programmer I</td></tr><tr><td>4</td><td>Femi OJO (Mr.)</td><td>HND (E/E), B.Sc. (Owo)</td><td>Assistant Chief Technologist</td></tr><tr><td>5</td><td>Timothy O. OGBEYE</td><td>B.Sc., M.Sc. (Akungba)</td><td>System Analyst I</td></tr><tr><td>6</td><td>Tosin OGUNLANA (Miss)</td><td>B.Sc., M.Sc. (Owo)</td><td>System Analyst I</td></tr><tr><td>7</td><td>Isaac K. IBITOYE (Mr.)</td><td>B.Sc. (Akungba)</td><td>System Analyst I</td></tr><tr><td>8</td><td>Margaret ILEKURA (Mrs.)</td><td>SSC, Grade II</td><td>Senior Lab Assistant</td></tr></tbody></table></div></div>
+    <div class="staff-group"><h3>Administrative Staff</h3><div class="table-wrap"><table class="course-table staff-table"><thead><tr><th>S/N</th><th>Name</th><th>Qualification</th><th>Status</th></tr></thead><tbody><tr><td>1</td><td>Alice Oluwatoyin AGUDA (Mrs.)</td><td>B.Ed. (Akungba); HND, OGT (Owo); Diploma Data Processing; NABTEB; SSC</td><td>Senior Personal Secretary</td></tr><tr><td>2</td><td>Mathew O. ADEYEMI (Mr.)</td><td>B.A. (Akungba); SSC</td><td>Senior Executive Officer</td></tr><tr><td>3</td><td>F.T. ABIDAKUN (Mrs.)</td><td>B.Sc. (Akungba); NABTEB</td><td>Senior Office Attendant</td></tr></tbody></table></div></div>
+    <p class="note">Some staff names and qualification details were marked unclear in the OCR transcription. These have been visibly flagged rather than guessed.</p>
+  </section>
+
+  <section class="department-section" id="resources">
+    <div class="section-heading"><span>Student Support</span><h2>Academic Resources</h2><p>Department-specific materials and support links will be added when official links are supplied.</p></div>
+    <div class="resource-grid">
+      <div class="resource-card static"><div class="resource-icon">📘</div><h3>Department Guide</h3><p>The available programme information is presented on this page. An official downloadable department guide has not yet been supplied.</p></div>
+      <div class="resource-card static"><div class="resource-icon">📝</div><h3>Lecture Notes</h3><p>Official lecture-note downloads will be linked here when the department's approved materials are available.</p></div>
+      <div class="resource-card static"><div class="resource-icon">💬</div><h3>Department Community</h3><p>An official WhatsApp or student-community link has not yet been provided.</p></div>
+    </div>
+  </section>
+
+  <section class="department-section" id="contact">
+    <div class="section-heading"><span>Department Contact</span><h2>Reach the Department</h2></div>
+    <div class="contact-grid">
+      <div class="contact-card"><h3>Head of Department</h3><div class="contact-item"><div class="contact-item-icon">👨‍🏫</div><div><span>Name</span><strong>Dr. S.O. Ogunlana</strong></div></div><div class="contact-item"><div class="contact-item-icon">🎓</div><div><span>Qualification</span><strong>B.Sc. (Ado-Ekiti), M.Tech, Ph.D. (Akure)</strong></div></div></div>
+      <div class="contact-card"><h3>Official Contact Details</h3><div class="contact-item"><div class="contact-item-icon">📧</div><div><span>Email</span><strong>Not provided in the supplied prospectus pages</strong></div></div><div class="contact-item"><div class="contact-item-icon">☎️</div><div><span>Telephone / Office</span><strong>Not provided in the supplied prospectus pages</strong></div></div></div>
+    </div>
+  </section>
+
+  <section class="department-section" id="help"><div class="help-box"><h2>Need Help with Information Systems?</h2><p>Use the programme details and course tables above as a reference. Confirm unclear entries and current registration advice with the Department before making academic decisions.</p><a href="#admission" class="help-button">Review Entry Requirements ↑</a></div></section>
+</main>
+<footer>
+  <div class="footer-container">
+    <div class="footer-brand">
+      <a href="index.html" class="brand">🎓 AAUA Uni Pilot</a>
+      <p>Your campus. Your resources. Your guide.</p>
+    </div>
+    <div class="footer-links">
+      <div>
+        <h4>Platform</h4>
+        <a href="resources.html">Resources</a>
+        <a href="guide.html">Student Guide</a>
+        <a href="updates.html">Updates</a>
+        <a href="tools.html">Student Tools</a>
+      </div>
+      <div>
+        <h4>Information</h4>
+        <a href="about.html">About</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Use</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 Uni Pilot. All rights reserved.</p></div>
+</footer>
+<script>
+document.getElementById("departmentBackButton")?.addEventListener("click", function () {
+  if (window.history.length > 1) window.history.back();
+  else window.location.href = "computing.html";
+});
+(function(){
+  const targets=document.querySelectorAll(".quick-card,.content-card,.programme-card,.resource-card,.contact-card,.summary-card,.section-heading,.staff-group");
+  targets.forEach((el,i)=>{el.classList.add("reveal-on-scroll");el.style.transitionDelay=(i%5)*55+"ms";});
+  if("IntersectionObserver" in window){
+    const observer=new IntersectionObserver((entries,active)=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("is-visible");active.unobserve(entry.target);}}),{threshold:.1});
+    targets.forEach(el=>observer.observe(el));
+  }else targets.forEach(el=>el.classList.add("is-visible"));
+})();
+</script>
+<script src="site-navigation.js"></script>
+</body>
+</html>
