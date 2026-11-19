@@ -36,6 +36,68 @@
     const saved=(()=>{try{return localStorage.getItem("uniPilotTheme")||"system"}catch(e){return "system"}})();applyTheme(saved);
     const mobileTheme=menu.querySelector("#themeMenuTrigger");
     if(!mobileTheme){const b=document.createElement("button");b.type="button";b.textContent="◐ Theme settings";b.addEventListener("click",openTheme);menu.appendChild(b);}
+
+    // Draggable Uni Pilot AI shortcut, shared across pages using this script.
+    if (!document.getElementById("uniPilotAIFloat")) {
+      const floatStyle = document.createElement("style");
+      floatStyle.textContent = `
+        #uniPilotAIFloat{position:fixed;right:22px;bottom:24px;z-index:9998;width:62px;height:62px;border:0;border-radius:50%;display:flex;align-items:center;justify-content:center;gap:0;background:linear-gradient(145deg,#0b5d3b,#063b26);color:#fff;box-shadow:0 8px 24px rgba(6,59,38,.32);font:800 23px Manrope,sans-serif;cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none;transition:box-shadow .2s ease,transform .2s ease}
+        #uniPilotAIFloat::after{content:"AI";position:absolute;right:-2px;bottom:-2px;min-width:22px;height:22px;padding:0 4px;border:2px solid #fff;border-radius:12px;background:#f5c518;color:#173b2b;font:800 10px/18px Manrope,sans-serif;text-align:center}
+        #uniPilotAIFloat:active{cursor:grabbing;transform:scale(.96)}
+        @media(prefers-reduced-motion:no-preference){#uniPilotAIFloat{animation:upAiFloat 3.6s ease-in-out infinite}@keyframes upAiFloat{0%,100%{translate:0 0}50%{translate:0 -7px}}}
+        html[data-theme="dark"] #uniPilotAIFloat::after{border-color:#0d1720}
+      `;
+      document.head.appendChild(floatStyle);
+      const aiFloat = document.createElement("button");
+      aiFloat.id = "uniPilotAIFloat";
+      aiFloat.type = "button";
+      aiFloat.setAttribute("aria-label","Open Uni Pilot AI");
+      aiFloat.setAttribute("title","Chat with Uni Pilot AI — drag to move");
+      aiFloat.textContent = "🎓";
+      document.body.appendChild(aiFloat);
+
+      let moved = false, startX = 0, startY = 0, startLeft = 0, startTop = 0;
+      try {
+        const savedPos = JSON.parse(localStorage.getItem("uniPilotAIButtonPosition") || "null");
+        if (savedPos && Number.isFinite(savedPos.left) && Number.isFinite(savedPos.top)) {
+          aiFloat.style.left = Math.max(8,Math.min(innerWidth-70,savedPos.left)) + "px";
+          aiFloat.style.top = Math.max(8,Math.min(innerHeight-70,savedPos.top)) + "px";
+          aiFloat.style.right = "auto"; aiFloat.style.bottom = "auto";
+        }
+      } catch(e) {}
+      aiFloat.addEventListener("pointerdown", e => {
+        moved = false; startX=e.clientX; startY=e.clientY;
+        const rect=aiFloat.getBoundingClientRect(); startLeft=rect.left; startTop=rect.top;
+        aiFloat.setPointerCapture(e.pointerId);
+      });
+      aiFloat.addEventListener("pointermove", e => {
+        if (!aiFloat.hasPointerCapture(e.pointerId)) return;
+        const dx=e.clientX-startX, dy=e.clientY-startY;
+        if (Math.abs(dx)+Math.abs(dy)>7) moved=true;
+        if (!moved) return;
+        const left=Math.max(8,Math.min(innerWidth-aiFloat.offsetWidth-8,startLeft+dx));
+        const top=Math.max(8,Math.min(innerHeight-aiFloat.offsetHeight-8,startTop+dy));
+        aiFloat.style.left=left+"px"; aiFloat.style.top=top+"px";
+        aiFloat.style.right="auto"; aiFloat.style.bottom="auto";
+      });
+      aiFloat.addEventListener("pointerup", () => {
+        if (moved) {
+          const rect=aiFloat.getBoundingClientRect();
+          try { localStorage.setItem("uniPilotAIButtonPosition",JSON.stringify({left:rect.left,top:rect.top})); } catch(e) {}
+        }
+      });
+      aiFloat.addEventListener("click", () => {
+        if (moved) { moved=false; return; }
+        location.href = "ai.html";
+      });
+      window.addEventListener("resize", () => {
+        const rect=aiFloat.getBoundingClientRect();
+        const left=Math.max(8,Math.min(innerWidth-aiFloat.offsetWidth-8,rect.left));
+        const top=Math.max(8,Math.min(innerHeight-aiFloat.offsetHeight-8,rect.top));
+        aiFloat.style.left=left+"px"; aiFloat.style.top=top+"px";
+        aiFloat.style.right="auto"; aiFloat.style.bottom="auto";
+      });
+    }
   }
   if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init);else init();
 })();
