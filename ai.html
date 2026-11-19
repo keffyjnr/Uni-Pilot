@@ -53,6 +53,32 @@
     .message.error { background:#fff0ed; color:#9b3020; }
     .assistant-response { align-self:flex-start; max-width:min(85%,680px); }
     .assistant-response .message { max-width:100%; }
+    .assistant-response .message > p,
+    .assistant-response .message > h1,
+    .assistant-response .message > h2,
+    .assistant-response .message > h3,
+    .assistant-response .message li,
+    .assistant-response .message pre,
+    .assistant-response .message blockquote {
+      opacity:0;
+      animation: answerFadeIn .32s ease forwards;
+    }
+    @keyframes answerFadeIn {
+      from { opacity:0; transform:translateY(5px); }
+      to { opacity:1; transform:translateY(0); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .assistant-response .message > p,
+      .assistant-response .message > h1,
+      .assistant-response .message > h2,
+      .assistant-response .message > h3,
+      .assistant-response .message li,
+      .assistant-response .message pre,
+      .assistant-response .message blockquote {
+        opacity:1;
+        animation:none;
+      }
+    }
     .fine-print { margin:5px 5px 0; color:var(--muted,#6d7a72); font-size:.65rem; line-height:1.45; }
     .composer-wrap { flex:0 0 auto; padding:11px 14px max(12px, env(safe-area-inset-bottom)); border-top:1px solid var(--border,#dfe8e2); background:var(--white,#fff); }
     .composer { display:flex; gap:9px; align-items:flex-end; padding:7px; border:1px solid var(--border,#dfe8e2); border-radius:22px; background:var(--background,#f7faf8); }
@@ -195,12 +221,26 @@
         const bubble = document.createElement("div");
         bubble.className = "message assistant";
         bubble.innerHTML = formatAssistantText(text);
+
+        // Fade the answer in from its first paragraph downward.
+        const answerParts = bubble.querySelectorAll("p,h1,h2,h3,li,pre,blockquote");
+        answerParts.forEach((part, index) => {
+          part.style.animationDelay = Math.min(index * 45, 1500) + "ms";
+        });
+
         const note = document.createElement("p");
         note.className = "fine-print";
         note.textContent = "AI can make mistakes. Confirm important admission and administrative information with official university sources.";
         wrap.append(bubble, note);
         messagesEl.appendChild(wrap);
-        messagesEl.scrollTop = messagesEl.scrollHeight;
+
+        // Bring the beginning of this new answer into view, not its ending.
+        requestAnimationFrame(() => {
+          const answerTop = wrap.getBoundingClientRect().top
+            - messagesEl.getBoundingClientRect().top
+            + messagesEl.scrollTop;
+          messagesEl.scrollTop = Math.max(0, answerTop - 4);
+        });
         return wrap;
       }
 
