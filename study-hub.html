@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#0b5d3b">
@@ -1385,114 +1386,355 @@ button:disabled{cursor:not-allowed;filter:saturate(.55)}
 }
 
 
-/* =========================================================
-   GLASS SELECT SYSTEM — all native dropdown controls
-   The closed controls use translucent glass. Native option
-   menus use a deep-green surface for readable contrast.
-   ========================================================= */
-:root{
-  --select-glass: rgba(255,255,255,.68);
-  --select-glass-hover: rgba(255,255,255,.86);
-  --select-edge: rgba(9,91,55,.23);
-  --select-ink: #153528;
-  --select-menu: #073b2a;
-  --select-menu-hover: #126344;
+/* PDF INTELLIGENCE */
+.pdf-intelligence-panel{
+  margin:0 0 20px;padding:24px;border:1px solid rgba(255,255,255,.95);
+  border-radius:18px;background:linear-gradient(145deg,rgba(255,255,255,.96),rgba(239,248,242,.88));
+  box-shadow:0 14px 38px rgba(9,62,37,.055),inset 0 1px rgba(255,255,255,.95)
 }
-select,
-.materials-toolbar select,
-.cbt-form select,
-.pdf-source-select,
-#courseFilter,
-#cbtCourse,
-#cbtCount,
-#cbtDuration,
-#cbtPdfSource{
-  width:100%;
-  min-width:0;
-  min-height:52px;
-  appearance:none;
-  -webkit-appearance:none;
-  color:var(--select-ink);
-  font:inherit;
-  font-size:13px;
-  font-weight:600;
-  line-height:1.35;
-  padding:13px 48px 13px 16px;
-  border:1px solid var(--select-edge);
-  border-radius:14px;
-  background-color:var(--select-glass);
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23085d3d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
-  background-repeat:no-repeat;
-  background-position:right 16px center;
-  background-size:17px;
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.95),
-    0 7px 20px rgba(5,57,34,.045);
-  backdrop-filter:blur(18px) saturate(145%);
-  -webkit-backdrop-filter:blur(18px) saturate(145%);
-  cursor:pointer;
-  transition:border-color .2s ease,background-color .2s ease,box-shadow .2s ease,transform .2s ease;
-}
-select:hover{
-  background-color:var(--select-glass-hover);
-  border-color:rgba(8,115,74,.42);
-  box-shadow:inset 0 1px 0 #fff,0 9px 24px rgba(5,57,34,.075);
-}
-select:focus,
-select:focus-visible{
-  outline:none;
-  border-color:#0b8052;
-  background-color:rgba(255,255,255,.91);
-  box-shadow:
-    0 0 0 4px rgba(11,128,82,.12),
-    0 10px 25px rgba(5,57,34,.08),
-    inset 0 1px 0 #fff;
-}
-select:disabled{
-  opacity:.55;
-  cursor:not-allowed;
-}
-/* Chromium/Edge/Firefox honour option colours even though their
-   native popup does not support backdrop-filter transparency. */
-select option,
-select optgroup{
-  color:#effaf2;
-  background:#073b2a;
-  font-weight:500;
-}
-select option{
-  padding:12px 14px;
-}
-select option:checked,
-select option:hover{
-  color:#fff;
-  background:#126344;
-}
-select optgroup{
-  color:#a9e1bf;
-  font-weight:800;
-  font-size:11px;
-  letter-spacing:.08em;
-}
-/* Consistent sizing in the CBT configuration row */
-.cbt-form > div{min-width:0}
-.cbt-form select{margin-top:2px}
-.materials-toolbar select{max-width:340px}
-.pdf-source-controls select{flex:1}
+.pdf-intelligence-top{display:flex;justify-content:space-between;align-items:flex-start;gap:18px}
+.pdf-intelligence-top h2{font:800 19px Manrope;margin:0}
+.pdf-ai-badge{flex:none;padding:8px 11px;border-radius:30px;background:#e5f5eb;color:#08734a;font-size:8px;font-weight:800;letter-spacing:1px}
+.pdf-intelligence-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:18px}
+.pdf-extract-status{font-size:11px;color:#718078;line-height:1.5}
+.pdf-extract-progress{height:7px;margin-top:17px;border-radius:20px;background:#e5eee8;overflow:hidden}
+.pdf-extract-progress span{display:block;width:0;height:100%;border-radius:20px;background:linear-gradient(90deg,#0b5d3b,#62b889);transition:width .2s}
+.pdf-extract-result{margin-top:18px;padding-top:17px;border-top:1px solid #e4eee7}
+.pdf-extract-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:15px}
+.pdf-extract-stats>div{padding:13px;border-radius:12px;background:rgba(255,255,255,.8);border:1px solid #e7f0e9}
+.pdf-extract-stats b,.pdf-extract-stats small{display:block}
+.pdf-extract-stats b{font:800 21px Manrope;color:#075c3b}
+.pdf-extract-stats small{font-size:9px;color:#718078}
+.pdf-text-preview{margin:12px 0}
+.pdf-text-preview summary{cursor:pointer;color:#0b6842;font-size:11px;font-weight:700}
+.pdf-text-preview pre{max-height:220px;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere;padding:13px;border-radius:10px;background:#f4f8f5;color:#35453b;font:11px/1.65 'DM Sans',sans-serif}
+.pdf-draft-warning{font-size:10px;line-height:1.65;color:#87631c;background:#fff8e8;border:1px solid #f2e4bd;padding:11px 13px;border-radius:10px}
+#extractPdfBtn:disabled,#startPdfPracticeBtn:disabled{opacity:.55;cursor:wait;transform:none}
 @media(max-width:700px){
-  select,
-  .materials-toolbar select,
-  .cbt-form select,
-  .pdf-source-select{
-    min-height:50px;
-    border-radius:12px;
-  }
+ .pdf-intelligence-panel{padding:17px}
+ .pdf-intelligence-top{flex-direction:column}
+ .pdf-extract-stats{gap:7px}
+ .pdf-extract-stats>div{padding:10px}
 }
-/* Reduce the old browser's default focus ring without removing focus visibility */
-select::-ms-expand{display:none}
+
+
+/* AI STUDY PACK */
+.ai-study-pack{margin-top:22px;padding:20px;border:1px solid rgba(11,93,59,.16);border-radius:17px;background:linear-gradient(145deg,rgba(248,253,249,.98),rgba(235,247,239,.88))}
+.ai-study-pack-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}
+.ai-study-pack-head h3{margin:0;font:800 17px Manrope;color:#153d2b}
+.ai-study-pack-head .sub{margin:7px 0 0;max-width:560px}
+.ai-status-pill{white-space:nowrap;border-radius:30px;padding:7px 10px;background:#e0f3e7;color:#08734a;font-size:8px;font-weight:900;letter-spacing:1px}
+.ai-controls{display:flex;align-items:end;gap:12px;flex-wrap:wrap;margin-top:17px}
+.ai-controls label{display:grid;gap:6px;color:#56665d;font-size:10px;font-weight:700}
+.ai-controls select{min-height:42px;padding:0 12px;border:1px solid #d6e5da;border-radius:10px;background:rgba(255,255,255,.8);color:#193b2b}
+.ai-status{font-size:11px;color:#66786d;margin:12px 0 0}
+.ai-study-output{display:grid;gap:12px;margin-top:17px}
+.ai-output-block{padding:15px;border:1px solid #e1ede4;border-radius:12px;background:rgba(255,255,255,.84)}
+.ai-output-block h4{margin:0 0 10px;color:#0b5d3b;font:800 13px Manrope}
+.ai-output-block p{margin:7px 0;font-size:12px;line-height:1.7;color:#35483c}
+.ai-output-block ul{margin:0;padding-left:19px}
+.ai-output-block li{margin:6px 0;font-size:12px;line-height:1.6}
+.ai-question-card,.ai-flashcard{padding:12px 0;border-top:1px solid #e8efe9}
+.ai-question-card:first-child,.ai-flashcard:first-child{border-top:0;padding-top:0}
+.ai-question-card strong,.ai-flashcard strong{display:block;font-size:12px;color:#263e30;line-height:1.6}
+.ai-question-card ol{margin:8px 0;padding-left:23px}
+.ai-question-card li{font-size:11px;margin:5px 0;color:#52645a}
+.ai-answer{font-size:11px!important;color:#08734a!important;font-weight:700}
+.ai-flashcard details{margin-top:7px}
+.ai-flashcard summary{cursor:pointer;color:#08734a;font-size:11px;font-weight:800}
+.ai-flashcard p{padding:9px;background:#f2f8f3;border-radius:8px}
+.ai-source-note{font-size:10px;color:#8a6a28;line-height:1.6;margin:0}
+#generateAiStudyPackBtn:disabled{opacity:.55;cursor:wait}
+@media(max-width:650px){.ai-study-pack{padding:15px}.ai-study-pack-head{flex-direction:column}.ai-controls>*{width:100%}.ai-controls button{justify-content:center}}
+
+
+/* FLASHCARDS + LEARNING PROGRESS */
+.study-section-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin:8px 0 24px}
+.study-section-head h1{font:800 clamp(26px,4vw,36px) Manrope;margin:5px 0}
+.study-section-head p{color:var(--muted);font-size:13px}
+.study-stat-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:20px 0}
+.study-stat{background:#fff;border:1px solid var(--line);border-radius:17px;padding:18px}
+.study-stat small{display:block;color:var(--muted);font-size:11px}
+.study-stat strong{display:block;font:800 27px Manrope;margin-top:8px;color:var(--g)}
+.study-panel{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;margin:18px 0}
+.study-panel h2{font:800 17px Manrope;margin:0 0 8px}
+.study-panel p.muted{color:var(--muted);font-size:12px;line-height:1.6}
+.flashcard-toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}
+.flashcard-toolbar input,.flashcard-toolbar select,.flashcard-form input,.flashcard-form textarea{border:1px solid var(--line);border-radius:11px;padding:12px;background:#fff;color:var(--ink);min-width:0}
+.flashcard-toolbar input{flex:1;min-width:180px}
+.flashcard-stage{max-width:720px;margin:22px auto}
+.flashcard-face{min-height:245px;border:1px solid #dcebe1;border-radius:22px;background:linear-gradient(140deg,#fff,#f0f8f3);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:32px;cursor:pointer;box-shadow:0 16px 40px rgba(10,70,40,.07)}
+.flashcard-face .eyebrow{margin-bottom:18px}
+.flashcard-face h2{font:800 clamp(20px,3vw,28px) Manrope;line-height:1.45;max-width:580px}
+.flashcard-face .flip-hint{font-size:11px;color:var(--muted);margin-top:22px}
+.flashcard-controls{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:16px}
+.study-btn{border:1px solid var(--line);border-radius:11px;padding:11px 16px;background:#fff;color:var(--ink);font-weight:700}
+.study-btn.primary-btn{background:var(--g);color:#fff;border-color:var(--g)}
+.study-btn.good{background:#eaf6ef;color:#087144;border-color:#cce7d6}
+.study-btn.again{background:#fff5e5;color:#8b5a00;border-color:#f2dfb6}
+.flashcard-empty,.progress-empty{border:1px dashed #cbded1;border-radius:16px;padding:34px;text-align:center;color:var(--muted)}
+.flashcard-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:18px}
+.flashcard-row{border:1px solid var(--line);border-radius:13px;padding:14px;display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.flashcard-row b{display:block;font-size:13px}
+.flashcard-row small{color:var(--muted);font-size:11px}
+.flashcard-form{display:grid;grid-template-columns:1fr 1fr auto;gap:10px;margin-top:16px}
+.flashcard-form textarea{grid-column:1/-1;min-height:74px;resize:vertical}
+.progress-bar{height:9px;border-radius:20px;background:#edf3ef;overflow:hidden}
+.progress-bar span{display:block;height:100%;background:linear-gradient(90deg,#0b5d3b,#59ae7b);border-radius:20px}
+.progress-history{width:100%;border-collapse:collapse;font-size:12px}
+.progress-history th,.progress-history td{text-align:left;padding:12px 9px;border-bottom:1px solid var(--line)}
+.progress-history th{color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.7px}
+.progress-history-wrap{overflow-x:auto}
+@media(max-width:760px){.study-stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.flashcard-form{grid-template-columns:1fr}.flashcard-form textarea{grid-column:auto}.flashcard-list{grid-template-columns:1fr}.study-panel{padding:16px}.study-section-head{align-items:flex-start;flex-direction:column}}
+
+
+/* FINAL POLISH */
+:where(button, a, input, select, textarea):focus-visible {
+    outline: 3px solid rgba(11, 93, 59, .28);
+    outline-offset: 2px;
+}
+select {
+    color-scheme: light;
+    border: 1px solid rgba(11, 93, 59, .16);
+    border-radius: 12px;
+    background-color: rgba(255,255,255,.82);
+    transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+}
+select:hover {
+    border-color: rgba(11, 93, 59, .42);
+    background-color: #fff;
+}
+select:focus {
+    border-color: var(--g);
+    box-shadow: 0 0 0 4px rgba(11, 93, 59, .10);
+}
+option {
+    background: #f8fcf9;
+    color: #17221c;
+}
+button:disabled {
+    cursor: not-allowed;
+}
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
+}
+
+
+/* =========================================================
+   2026 FINISH — UNI PILOT BRAND, GLASS NAV + FULL FOOTER
+   Retains the existing green / mint / gold design language.
+   ========================================================= */
+.brand-cap{
+  display:grid;
+  place-items:center;
+  font-size:25px;
+  line-height:1;
+  background:linear-gradient(145deg,#0a6a45,#06432e) !important;
+  color:#fff;
+  border:1px solid rgba(255,255,255,.42);
+  box-shadow:0 8px 22px rgba(4,65,41,.22),inset 0 1px 0 rgba(255,255,255,.35);
+}
+.brand-cap::after{content:none !important}
+
+/* Glass side rail: translucent, layered and softly illuminated. */
+.sidebar{
+  background:
+    radial-gradient(ellipse at 18% 0%,rgba(255,255,255,.78),transparent 44%),
+    linear-gradient(155deg,rgba(255,255,255,.78),rgba(235,246,239,.66)) !important;
+  -webkit-backdrop-filter:blur(28px) saturate(165%);
+  backdrop-filter:blur(28px) saturate(165%);
+  border-right:1px solid rgba(255,255,255,.78) !important;
+  box-shadow:12px 0 42px rgba(17,65,42,.08),inset -1px 0 0 rgba(11,93,59,.055);
+}
+.sidebar::before{
+  content:"";
+  position:absolute;
+  inset:0 0 auto;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.95),transparent);
+  pointer-events:none;
+}
+.sidebar .brand{position:relative}
+.sidebar nav{gap:7px}
+.sidebar .nav-item,
+.sidebar .side-link{
+  position:relative;
+  isolation:isolate;
+  border:1px solid transparent !important;
+  background:rgba(255,255,255,.22) !important;
+  color:#5e7066 !important;
+  border-radius:13px !important;
+  transition:background .24s ease,border-color .24s ease,transform .24s ease,box-shadow .24s ease !important;
+}
+.sidebar .nav-item:hover,
+.sidebar .side-link:hover{
+  background:rgba(255,255,255,.66) !important;
+  border-color:rgba(255,255,255,.88) !important;
+  box-shadow:0 7px 18px rgba(15,67,43,.075),inset 0 1px 0 #fff;
+  transform:translateX(2px);
+}
+.sidebar .nav-item.active{
+  color:#075c3b !important;
+  font-weight:800;
+  background:linear-gradient(120deg,rgba(255,255,255,.88),rgba(220,242,229,.78)) !important;
+  border-color:rgba(255,255,255,.95) !important;
+  box-shadow:0 8px 22px rgba(9,91,56,.10),inset 0 1px 0 #fff,inset 0 0 0 1px rgba(11,93,59,.06);
+}
+.sidebar .nav-item.active::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:22%;
+  bottom:22%;
+  width:3px;
+  border-radius:0 4px 4px 0;
+  background:linear-gradient(180deg,#0d8657,#0b5d3b);
+}
+.sidebar .side-label{color:#91a49a}
+.sidebar .help-card{
+  background:rgba(255,255,255,.48) !important;
+  border:1px solid rgba(255,255,255,.82) !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.9);
+  -webkit-backdrop-filter:blur(14px);
+  backdrop-filter:blur(14px);
+}
+.sidebar .back-link{border-radius:10px}
+.topbar{
+  background:rgba(255,255,255,.76) !important;
+  -webkit-backdrop-filter:blur(22px) saturate(150%);
+  backdrop-filter:blur(22px) saturate(150%);
+  border-bottom:1px solid rgba(255,255,255,.85);
+}
+
+/* Keep the learning workspace legible against the glass navigation. */
+.content .panel,.content .feature,.content .material-card,
+.content .cbt-settings,.content .cbt-exam,.content .cbt-result,
+.content .cbt-empty,.content .pdf-source-panel,.content .course-catalog{
+  background-color:rgba(255,255,255,.94);
+}
+
+/* Full Uni Pilot footer, available at the end of every Study Hub view. */
+.study-footer{
+  position:relative;
+  margin:42px 0 0;
+  padding:30px 30px 16px;
+  color:#dcebe2;
+  background:
+    radial-gradient(ellipse at 10% 0%,rgba(40,143,93,.24),transparent 42%),
+    linear-gradient(135deg,#062f21 0%,#08432e 58%,#063523 100%);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:22px 22px 0 0;
+  overflow:hidden;
+  box-shadow:0 -10px 35px rgba(7,57,36,.07);
+}
+.study-footer::before{
+  content:"";
+  position:absolute;
+  top:0;left:8%;right:8%;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.62),transparent);
+}
+.study-footer-main{
+  display:grid;
+  grid-template-columns:minmax(190px,.85fr) minmax(0,1.5fr);
+  gap:44px;
+  padding-bottom:27px;
+}
+.study-footer-logo{
+  display:inline-flex;
+  align-items:center;
+  gap:11px;
+  color:#fff !important;
+  text-decoration:none;
+  font:800 20px Manrope,Arial,sans-serif;
+  letter-spacing:-.6px;
+}
+.study-footer-cap{
+  display:grid;
+  place-items:center;
+  width:43px;height:43px;
+  border-radius:14px;
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.24);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.22);
+  font-size:23px;
+}
+.study-footer-brand p{
+  margin:15px 0 7px;
+  color:#f1f8f3;
+  font-size:13px;
+  font-weight:700;
+}
+.study-footer-note{
+  color:rgba(222,239,228,.68);
+  font-size:11px;
+  line-height:1.7;
+}
+.study-footer-links{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:24px;
+}
+.study-footer-column{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+.study-footer-column h4{
+  margin:3px 0 5px;
+  color:#fff;
+  font:800 11px Manrope,Arial,sans-serif;
+  letter-spacing:.75px;
+}
+.study-footer-column a{
+  color:rgba(225,240,230,.72);
+  text-decoration:none;
+  font-size:11px;
+  line-height:1.5;
+  transition:color .2s ease,transform .2s ease;
+}
+.study-footer-column a:hover{
+  color:#fff;
+  transform:translateX(3px);
+}
+.study-footer-bottom{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:12px;
+  padding-top:15px;
+  border-top:1px solid rgba(255,255,255,.14);
+  color:rgba(222,239,228,.62);
+  font-size:10px;
+}
+.study-footer-bottom a{color:#f3d88d;text-decoration:none;font-weight:700}
+.study-footer-bottom a:hover{color:#fff}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  .sidebar,.topbar{background:rgba(246,251,247,.97) !important}
+}
+@media(prefers-reduced-transparency:reduce){
+  .sidebar,.topbar,.sidebar .help-card{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(246,251,247,.98) !important}
+}
+@media(max-width:900px){
+  .study-footer{padding:25px 22px 15px}
+  .study-footer-main{gap:28px}
+}
+@media(max-width:700px){
+  .study-footer{margin:30px -16px 0;padding:25px 19px 16px;border-radius:19px 19px 0 0}
+  .study-footer-main{grid-template-columns:1fr;gap:25px}
+  .study-footer-links{grid-template-columns:repeat(2,minmax(0,1fr));gap:23px 18px}
+  .study-footer-column:last-child{grid-column:1/-1}
+  .study-footer-column:last-child a{display:inline-block;margin-right:12px}
+  .study-footer-bottom{align-items:flex-start;flex-direction:column;gap:8px}
+}
+@media(max-width:380px){
+  .study-footer-links{grid-template-columns:1fr 1fr}
+  .study-footer-column a{font-size:10px}
+}
 
 </style>
-  <link rel="stylesheet" href="site-navigation.css">
 </head>
 
 <body>
@@ -1502,7 +1744,7 @@ select::-ms-expand{display:none}
 <aside class="sidebar" id="sidebar">
 
     <a class="brand" href="index.html">
-        <span class="brand-mark">UP</span>
+        <span class="brand-mark brand-cap" aria-hidden="true">🎓</span>
         <span>
             <strong>UNI PILOT</strong>
             <small>STUDY HUB</small>
@@ -1663,7 +1905,7 @@ select::-ms-expand{display:none}
                 <div>
                     <i class="amber">◉</i>
                     <span>
-                        <b>0</b>
+                        <b id="overviewTests">0</b>
                         <small>Tests completed</small>
                     </span>
                 </div>
@@ -1671,7 +1913,7 @@ select::-ms-expand{display:none}
                 <div>
                     <i class="violet">★</i>
                     <span>
-                        <b>—</b>
+                        <b id="overviewAverage">—</b>
                         <small>Average score</small>
                     </span>
                 </div>
@@ -1756,6 +1998,66 @@ select::-ms-expand{display:none}
 
 
 
+
+<!-- FLASHCARDS -->
+<section id="flashcardsView" hidden>
+  <div class="study-section-head">
+    <div><p class="eyebrow">ACTIVE RECALL · SPACED REVISION</p><h1>Flashcards<span>.</span></h1><p>Build your own revision deck and practise remembering what you learn.</p></div>
+    <button class="primary" id="flashcardAddFocus">＋ Create flashcard</button>
+  </div>
+  <div class="study-stat-grid">
+    <div class="study-stat"><small>Total cards</small><strong id="fcTotal">0</strong></div>
+    <div class="study-stat"><small>Mastered</small><strong id="fcMastered">0</strong></div>
+    <div class="study-stat"><small>Still learning</small><strong id="fcLearning">0</strong></div>
+    <div class="study-stat"><small>Reviewed today</small><strong id="fcToday">0</strong></div>
+  </div>
+  <div class="study-panel">
+    <h2>Your revision session</h2><p class="muted">Choose a deck or study all cards. Tap the card to reveal the answer, then mark how well you remembered it.</p>
+    <div class="flashcard-toolbar">
+      <select id="fcDeckFilter" aria-label="Filter flashcards"><option value="all">All decks</option></select>
+      <button class="study-btn" id="fcShuffle">Shuffle</button>
+    </div>
+    <div id="fcStudyArea">
+      <div class="flashcard-empty"><b>No flashcards yet</b><p>Create cards below or generate them from your lecture notes when the AI service is connected.</p></div>
+    </div>
+  </div>
+  <div class="study-panel" id="fcCreatePanel">
+    <h2>Create a flashcard</h2><p class="muted">Add a question on the front and its answer on the back. Cards are saved to this signed-in browser profile.</p>
+    <form class="flashcard-form" id="flashcardForm">
+      <input id="fcFront" required maxlength="240" placeholder="Front: What do you want to remember?">
+      <input id="fcDeck" maxlength="80" placeholder="Deck / course (e.g. BIO 101)">
+      <textarea id="fcBack" required maxlength="1200" placeholder="Back: Write the answer or explanation..."></textarea>
+      <button class="primary" type="submit">Save flashcard</button>
+    </form>
+  </div>
+  <div class="study-panel">
+    <h2>Your cards</h2><div id="fcCardList" class="flashcard-list"><div class="flashcard-empty">Your saved cards will appear here.</div></div>
+  </div>
+</section>
+
+<!-- MY PROGRESS -->
+<section id="progressView" hidden>
+  <div class="study-section-head">
+    <div><p class="eyebrow">YOUR LEARNING ANALYTICS</p><h1>My Progress<span>.</span></h1><p>A personal snapshot of your study activity on this device.</p></div>
+    <button class="study-btn" id="progressRefresh">Refresh stats</button>
+  </div>
+  <div class="study-stat-grid">
+    <div class="study-stat"><small>Tests completed</small><strong id="prTests">0</strong></div>
+    <div class="study-stat"><small>Average test score</small><strong id="prAverage">—</strong></div>
+    <div class="study-stat"><small>Flashcards reviewed</small><strong id="prReviewed">0</strong></div>
+    <div class="study-stat"><small>Materials uploaded</small><strong id="prMaterials">0</strong></div>
+  </div>
+  <div class="study-panel">
+    <h2>Flashcard mastery</h2><p class="muted" id="prMasteryText">No flashcards reviewed yet.</p>
+    <div class="progress-bar"><span id="prMasteryBar" style="width:0%"></span></div>
+  </div>
+  <div class="study-panel">
+    <h2>Recent test history</h2><p class="muted">Scores from CBT sessions completed while signed into this browser.</p>
+    <div class="progress-history-wrap" id="prHistory"><div class="progress-empty">Your completed tests will appear here.</div></div>
+  </div>
+  <p class="muted">Progress is currently stored locally in this browser and is associated with your signed-in account on this device. It is not yet synchronised across devices.</p>
+</section>
+
 <!-- CBT PRACTICE -->
 <section id="practiceView" hidden>
     <div class="cbt-heading">
@@ -1769,7 +2071,7 @@ select::-ms-expand{display:none}
     <div id="cbtSetup">
         <div class="section-title"><div><p class="eyebrow">GET STARTED</p><h2>Choose your examination mode</h2></div></div>
         <div class="cbt-mode-grid">
-            <button type="button" class="cbt-mode selected" data-mode="practice">
+            <button type="button" id="cbtModePractice" class="cbt-mode selected" data-mode="practice">
                 <i class="icon amber">◉</i><h3>Practice Mode</h3>
                 <p>Work at your own pace and review your answers after submission.</p>
             </button>
@@ -1798,7 +2100,59 @@ select::-ms-expand{display:none}
             <p class="pdf-source-status" id="cbtPdfStatus" aria-live="polite">Upload a PDF in My Materials to see it here.</p>
         </section>
 
-        <div class="cbt-settings">
+        <section class="pdf-intelligence-panel" aria-labelledby="pdfIntelligenceTitle">
+            <div class="pdf-intelligence-top">
+                <div>
+                    <p class="eyebrow">PDF INTELLIGENCE · PHASE 1</p>
+                    <h2 id="pdfIntelligenceTitle">Turn your notes into practice</h2>
+                    <p class="sub">Extract selectable text from your uploaded PDF and create a draft cloze-practice set based on its wording.</p>
+                </div>
+                <span class="pdf-ai-badge">ON-DEVICE EXTRACTION</span>
+            </div>
+            <div class="pdf-intelligence-actions">
+                <button type="button" class="primary" id="extractPdfBtn">Extract PDF & build practice set</button>
+                <span id="pdfExtractStatus" class="pdf-extract-status" role="status" aria-live="polite">Choose a PDF above to begin.</span>
+            </div>
+            <div class="pdf-extract-progress" id="pdfExtractProgress" hidden><span id="pdfExtractProgressFill"></span></div>
+            <div class="pdf-extract-result" id="pdfExtractResult" hidden>
+                <div class="pdf-extract-stats">
+                    <div><b id="pdfPageCount">0</b><small>Pages read</small></div>
+                    <div><b id="pdfWordCount">0</b><small>Words extracted</small></div>
+                    <div><b id="pdfQuestionCount">0</b><small>Draft questions</small></div>
+                </div>
+                <details class="pdf-text-preview">
+                    <summary>Preview extracted text</summary>
+                    <pre id="pdfExtractPreview"></pre>
+                </details>
+                <p class="pdf-draft-warning">These are automatically assembled draft cloze questions, not expert-written or AI-verified exam questions. Review the source PDF and each question before relying on them for revision.</p>
+                <button type="button" class="primary" id="startPdfPracticeBtn">Practise from this PDF →</button>
+
+                <section class="ai-study-pack" aria-labelledby="aiStudyPackTitle">
+                    <div class="ai-study-pack-head">
+                        <div><p class="eyebrow">AI STUDY ASSISTANT</p><h3 id="aiStudyPackTitle">Understand your notes faster</h3>
+                        <p class="sub">Generate a source-grounded summary, revision questions and flashcards from the extracted PDF text.</p></div>
+                        <span class="ai-status-pill">GEMINI AI</span>
+                    </div>
+                    <div class="ai-controls">
+                        <label>Question count
+                            <select id="aiQuestionCount"><option value="5">5 questions</option><option value="10" selected>10 questions</option><option value="15">15 questions</option></select>
+                        </label>
+                        <button type="button" class="primary" id="generateAiStudyPackBtn">✦ Generate AI study pack</button>
+                    </div>
+                    <p id="aiStudyPackStatus" class="ai-status" role="status" aria-live="polite">Extract a PDF first, then generate your study pack.</p>
+                    <div id="aiStudyPackOutput" class="ai-study-output" hidden>
+                        <div class="ai-output-block"><h4>📘 Summary</h4><div id="aiSummary"></div></div>
+                        <div class="ai-output-block"><h4>🧠 Key concepts</h4><ul id="aiKeyPoints"></ul></div>
+                        <div class="ai-output-block"><h4>✍️ Practice questions</h4><div id="aiQuestions"></div></div>
+                        <div class="ai-output-block"><h4>🗂️ Flashcards</h4><div id="aiFlashcards"></div></div>
+                        <p class="ai-source-note">AI-generated study aid. Verify important details against the original lecture material. The assistant is instructed not to add facts absent from your PDF.</p>
+                    </div>
+                </section>
+
+            </div>
+        </section>
+
+        <div class="cbt-settings" id="cbtSettings">
             <h2>Configure your CBT</h2>
             <div class="cbt-form">
                 <div><label for="cbtCourse">Select course</label><select id="cbtCourse"><option value="">Choose a course</option></select></div>
@@ -1850,9 +2204,47 @@ select::-ms-expand{display:none}
     <div id="cbtResults" hidden></div>
 </section>
 
-<footer>
-    © <span id="year"></span> Uni Pilot
-    <span>Built for the AAUA student community.</span>
+<footer class="study-footer">
+    <div class="study-footer-main">
+        <div class="study-footer-brand">
+            <a class="study-footer-logo" href="index.html" aria-label="Uni Pilot home">
+                <span class="study-footer-cap" aria-hidden="true">🎓</span>
+                <span>Uni Pilot</span>
+            </a>
+            <p>Your campus. Your resources. Your guide.</p>
+            <span class="study-footer-note">A smarter academic space for every AAUA student.</span>
+        </div>
+
+        <div class="study-footer-links">
+            <div class="study-footer-column">
+                <h4>Platform</h4>
+                <a href="resources.html">Resources</a>
+                <a href="guide.html">Student Guide</a>
+                <a href="updates.html">Updates</a>
+                <a href="tools.html">Student Tools</a>
+            </div>
+            <div class="study-footer-column">
+                <h4>Information</h4>
+                <a href="about.html">About Uni Pilot</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Use</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="study-footer-column">
+                <h4>Study Hub</h4>
+                <a href="#overviewView" data-footer-view="overview">Overview</a>
+                <a href="#materialsView" data-footer-view="materials">My materials</a>
+                <a href="#practiceView" data-footer-view="practice">CBT practice</a>
+                <a href="#flashcardsView" data-footer-view="flashcards">Flashcards</a>
+                <a href="#progressView" data-footer-view="progress">My progress</a>
+            </div>
+        </div>
+    </div>
+    <div class="study-footer-bottom">
+        <span>© <span id="year"></span> Uni Pilot. All rights reserved.</span>
+        <span>Built for the AAUA student community.</span>
+        <a href="index.html">← Back to Uni Pilot</a>
+    </div>
 </footer>
 
 </div>
@@ -1869,6 +2261,7 @@ select::-ms-expand{display:none}
 /* FIREBASE AUTHENTICATION */
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-app.js";
+import { getFunctions, httpsCallable } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-functions.js";
 
 import {
     getAuth,
@@ -1890,6 +2283,8 @@ const firebaseConfig = {
 
 const firebaseApp = initializeApp(firebaseConfig);
 const auth = getAuth(firebaseApp);
+const functions = getFunctions(firebaseApp, 'us-central1');
+const generateStudyPackAI = httpsCallable(functions, 'generateStudyPack');
 
 
 /* HELPERS */
@@ -1955,6 +2350,8 @@ function showView(view) {
     $('#overviewView').hidden = view !== 'overview';
     $('#materialsView').hidden = view !== 'materials';
     $('#practiceView').hidden = view !== 'practice';
+    $('#flashcardsView').hidden = view !== 'flashcards';
+    $('#progressView').hidden = view !== 'progress';
 
     if (view === 'practice') updateCBTCourses();
 
@@ -1969,13 +2366,8 @@ function showView(view) {
         updateCBTPdfChoices();
         updateCBTCourses();
     }
-
-    const messages = {
-        flashcards: 'Flashcard creation is coming soon.',
-        progress: 'Your learning analytics are coming soon.'
-    };
-
-    if (messages[view]) toast(messages[view]);
+    if (view === 'flashcards') renderFlashcards();
+    if (view === 'progress') renderStudyProgress();
 
     closeSidebar();
 }
@@ -2374,6 +2766,7 @@ async function startStudyHub() {
             }
 
             currentStudent = user;
+            loadStudyRecords();
 
             const accountButton = $('#account');
 
@@ -2388,6 +2781,8 @@ async function startStudyHub() {
                 user.displayName || user.email || 'Student account';
 
             await loadMaterials();
+            renderFlashcards();
+            renderStudyProgress();
 
         });
 
@@ -2481,7 +2876,7 @@ if(openCbtPdfButton)openCbtPdfButton.addEventListener("click",()=>{
    }
    answer is the zero-based option index (0 to 3).
 */
-const CBT_QUESTIONS = [];
+let CBT_QUESTIONS = [];
 
 let cbtMode = 'practice';
 let cbtQuestions = [];
@@ -2490,6 +2885,419 @@ let cbtCurrent = 0;
 let cbtSecondsLeft = 0;
 let cbtTimerInterval = null;
 let cbtSubmitted = false;
+
+
+/* PDF TEXT EXTRACTION + SOURCE-BASED DRAFT PRACTICE
+   PDF.js extracts selectable text in the browser. No PDF is uploaded to a
+   third-party service. Draft questions are simple cloze items and must be
+   reviewed; this is not semantic AI question generation.
+*/
+let pdfjsModulePromise = null;
+let activePdfDraftQuestions = [];
+let activePdfSourceName = "";
+let activePdfExtractedText = "";
+
+const pdfStopWords = new Set((
+ "about above after again against all also among an and any are around as at be because been before being below between both but by can could did do does doing down during each few for from further had has have having he her here hers herself him himself his how i if in into is it its itself just more most my myself no nor not of off on once only or other our ours ourselves out over own same she should so some such than that the their theirs them themselves then there these they this those through to too under until up very was we were what when where which while who whom why will with would you your yours"
+).split(/\s+/));
+
+function pdfExtractSetStatus(message, isError=false){
+    const node = document.getElementById('pdfExtractStatus');
+    if(node){ node.textContent = message; node.style.color = isError ? '#b5473c' : ''; }
+}
+
+async function loadPdfJs(){
+    if(!pdfjsModulePromise){
+        pdfjsModulePromise = import('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.min.mjs')
+          .then(pdfjs=>{
+             pdfjs.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.worker.min.mjs';
+             return pdfjs;
+          })
+          .catch(error=>{ pdfjsModulePromise=null; throw error; });
+    }
+    return pdfjsModulePromise;
+}
+
+function splitPdfSentences(pageTexts){
+    const rows=[];
+    pageTexts.forEach((text,pageIndex)=>{
+        const sentences=(text.replace(/\s+/g,' ').match(/[^.!?]+[.!?]?/g)||[])
+          .map(value=>value.trim())
+          .filter(value=>value.length>=55 && value.length<=260 && value.split(/\s+/).length>=9);
+        sentences.forEach(sentence=>rows.push({sentence,page:pageIndex+1}));
+    });
+    return rows;
+}
+
+function makePdfClozeQuestions(pageTexts, courseName, sourceName){
+    const sentences=splitPdfSentences(pageTexts);
+    const frequency=new Map();
+    const candidates=[];
+    for(const {sentence,page} of sentences){
+        const words=sentence.match(/\b[A-Za-z][A-Za-z-]{5,}\b/g)||[];
+        for(const raw of words){
+            const word=raw.toLowerCase();
+            if(pdfStopWords.has(word) || /^\d+$/.test(word)) continue;
+            frequency.set(word,(frequency.get(word)||0)+1);
+        }
+        candidates.push({sentence,page,words});
+    }
+    const ranked=[...frequency.entries()]
+      .filter(([word,count])=>count>=2 && word.length>=6)
+      .sort((a,b)=>b[1]-a[1] || b[0].length-a[0].length)
+      .map(([word])=>word);
+    const questions=[];
+    const used=new Set();
+    for(const row of candidates){
+        if(questions.length>=40) break;
+        const answer=row.words.map(w=>w.toLowerCase()).find(word=>ranked.includes(word) && !used.has(word));
+        if(!answer) continue;
+        const distractors=ranked.filter(word=>word!==answer && !row.sentence.toLowerCase().includes(word)).slice(0,3);
+        if(distractors.length<3) continue;
+        const blanked=row.sentence.replace(new RegExp('\\b'+answer.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'\\b','i'),'________');
+        if(blanked===row.sentence) continue;
+        const options=[answer,...distractors].sort(()=>Math.random()-.5);
+        questions.push({
+          course:courseName,
+          question:`According to ${sourceName}, which term completes this statement?\\n\\n${blanked}`,
+          options,
+          answer:options.indexOf(answer),
+          explanation:`Source: ${sourceName}, page ${row.page}. This is an automatically generated cloze draft. Check the original page to confirm the context.`,
+          sourcePage:row.page,
+          sourceName
+        });
+        used.add(answer);
+    }
+    return questions;
+}
+
+async function extractSelectedPdf(){
+    const select=document.getElementById('cbtPdfSource');
+    const material=allMaterials.find(item=>String(item.id)===select.value);
+    if(!material){pdfExtractSetStatus('Choose an uploaded PDF first.',true);return;}
+    if(!material.file || typeof material.file.arrayBuffer!=='function'){
+        pdfExtractSetStatus('This saved item does not contain a readable PDF file.',true);return;
+    }
+
+    const button=document.getElementById('extractPdfBtn');
+    const progress=document.getElementById('pdfExtractProgress');
+    const fill=document.getElementById('pdfExtractProgressFill');
+    const result=document.getElementById('pdfExtractResult');
+    button.disabled=true; result.hidden=true; progress.hidden=false; fill.style.width='3%';
+    activePdfDraftQuestions=[]; activePdfSourceName=material.name;
+    try{
+        pdfExtractSetStatus('Loading PDF text engine…');
+        const pdfjs=await loadPdfJs();
+        const bytes=await material.file.arrayBuffer();
+        const pdf=await pdfjs.getDocument({data:new Uint8Array(bytes)}).promise;
+        const maxPages=Math.min(pdf.numPages,100);
+        const pageTexts=[];
+        for(let pageNumber=1;pageNumber<=maxPages;pageNumber++){
+            const page=await pdf.getPage(pageNumber);
+            const content=await page.getTextContent();
+            pageTexts.push(content.items.map(item=>item.str||'').join(' '));
+            fill.style.width=`${Math.max(5,Math.round(pageNumber/maxPages*90))}%`;
+            pdfExtractSetStatus(`Extracting page ${pageNumber} of ${maxPages}…`);
+        }
+        const fullText=pageTexts.join('\n\n').trim();
+        activePdfExtractedText = fullText;
+        const wordCount=(fullText.match(/\b[\w'-]+\b/g)||[]).length;
+        if(wordCount<80){
+            throw new Error('Very little selectable text was found. This PDF may be scanned; OCR support is not included in this first phase.');
+        }
+        activePdfDraftQuestions=makePdfClozeQuestions(pageTexts,material.course||material.name,material.name);
+        if(!activePdfDraftQuestions.length){
+            throw new Error('Text was extracted, but there were not enough repeated key terms to assemble draft questions. Try a text-based lecture note with more content.');
+        }
+        document.getElementById('pdfPageCount').textContent=maxPages+(pdf.numPages>maxPages?' / '+pdf.numPages:'');
+        document.getElementById('pdfWordCount').textContent=wordCount.toLocaleString();
+        document.getElementById('pdfQuestionCount').textContent=activePdfDraftQuestions.length;
+        document.getElementById('pdfExtractPreview').textContent=fullText.slice(0,9000)+(fullText.length>9000?'\n\n[Preview shortened]':'');
+        result.hidden=false;fill.style.width='100%';
+        pdfExtractSetStatus(`Extracted ${wordCount.toLocaleString()} words from ${material.name}. Draft practice set is ready.`);
+    }catch(error){
+        console.error('PDF extraction failed:',error);
+        pdfExtractSetStatus(error.message||'Could not extract text from this PDF.',true);
+    }finally{
+        button.disabled=false;
+        setTimeout(()=>{progress.hidden=true;fill.style.width='0%';},700);
+    }
+}
+
+document.getElementById('extractPdfBtn').addEventListener('click',extractSelectedPdf);
+document.getElementById('startPdfPracticeBtn').addEventListener('click',()=>{
+    if(!activePdfDraftQuestions.length){pdfExtractSetStatus('Extract a PDF first.',true);return;}
+    CBT_QUESTIONS=CBT_QUESTIONS.filter(item=>!item.sourceName);
+    CBT_QUESTIONS.push(...activePdfDraftQuestions);
+    const courseSelect=document.getElementById('cbtCourse');
+    courseSelect.value=activePdfDraftQuestions[0].course;
+    updateCBTCourses();
+    courseSelect.value=activePdfDraftQuestions[0].course;
+    document.getElementById('cbtCount').value=String(Math.min(10,activePdfDraftQuestions.length));
+    document.getElementById('cbtModePractice')?.click();
+    document.getElementById('startCBT').disabled=false;
+    document.getElementById('startCBT').style.opacity='1';
+    toast(`Added ${activePdfDraftQuestions.length} draft questions from ${activePdfSourceName}.`);
+    document.getElementById('cbtSettings')?.scrollIntoView({behavior:'smooth',block:'center'});
+});
+
+
+
+/* SECURE AI STUDY PACK
+   The browser sends extracted text to an authenticated Firebase callable
+   function. The Gemini API key remains in Firebase Secret Manager.
+*/
+function setAiStudyStatus(message, isError=false){
+    const node=document.getElementById('aiStudyPackStatus');
+    node.textContent=message;
+    node.style.color=isError?'#b5473c':'';
+}
+function addTextElement(parent,tag,text,className=''){
+    const node=document.createElement(tag);
+    if(className) node.className=className;
+    node.textContent=String(text??'');
+    parent.appendChild(node);
+    return node;
+}
+
+/* FLASHCARDS + PROGRESS (LOCAL, ACCOUNT-SCOPED) */
+let flashcards = [];
+let testHistory = [];
+let fcQueue = [];
+let fcIndex = 0;
+let fcRevealed = false;
+
+function studyStorageKey(kind) {
+    const uid = currentStudent?.uid || 'guest';
+    return `uniPilotStudyHub:${uid}:${kind}`;
+}
+function readStudyData(kind) {
+    try { return JSON.parse(localStorage.getItem(studyStorageKey(kind)) || '[]'); }
+    catch (error) { console.warn('Could not read study data', error); return []; }
+}
+function writeStudyData(kind, value) {
+    try {
+        localStorage.setItem(studyStorageKey(kind), JSON.stringify(value));
+        return true;
+    } catch (error) {
+        console.error('Study Hub storage error:', error);
+        toast('Could not save your changes. Check browser storage space and permissions.');
+        return false;
+    }
+}
+function loadStudyRecords() {
+    flashcards = readStudyData('flashcards').filter(card =>
+        card && typeof card.front === 'string' && typeof card.back === 'string'
+    );
+    testHistory = readStudyData('tests').filter(test =>
+        test && Number.isFinite(Number(test.percentage)) &&
+        Number.isFinite(Number(test.correct)) && Number.isFinite(Number(test.total))
+    );
+}
+function saveFlashcards() { writeStudyData('flashcards', flashcards); }
+function addFlashcardsFromAI(cards, deckName) {
+    const additions = (cards || []).filter(c => c && String(c.front || '').trim() && String(c.back || '').trim())
+      .map(c => ({id: (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()+Math.random())), front:String(c.front).trim(), back:String(c.back).trim(), deck:String(deckName || 'AI Study Pack'), mastered:false, reviews:0, createdAt:new Date().toISOString(), lastReviewed:null}));
+    if (!additions.length) return;
+    const existing = new Set(flashcards.map(c => `${c.front.toLowerCase()}|${c.back.toLowerCase()}`));
+    const unique = additions.filter(c => !existing.has(`${c.front.toLowerCase()}|${c.back.toLowerCase()}`));
+    flashcards.push(...unique); saveFlashcards();
+}
+function renderFlashcards() {
+    const deckSelect = document.getElementById('fcDeckFilter');
+    const previous = deckSelect.value || 'all';
+    const decks = [...new Set(flashcards.map(c => c.deck || 'General'))].sort();
+    deckSelect.replaceChildren(new Option('All decks', 'all'));
+    decks.forEach(deck => deckSelect.add(new Option(deck, deck)));
+    deckSelect.value = decks.includes(previous) ? previous : 'all';
+
+    const cards = flashcards.filter(c => deckSelect.value === 'all' || (c.deck || 'General') === deckSelect.value);
+    document.getElementById('fcTotal').textContent = flashcards.length;
+    document.getElementById('fcMastered').textContent = flashcards.filter(c => c.mastered).length;
+    document.getElementById('fcLearning').textContent = flashcards.filter(c => !c.mastered).length;
+    const now = new Date();
+    const today = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
+    document.getElementById('fcToday').textContent = flashcards.filter(c => {
+      if (!c.lastReviewed) return false;
+      const reviewed = new Date(c.lastReviewed);
+      return !Number.isNaN(reviewed.getTime()) &&
+        reviewed.getFullYear() === now.getFullYear() &&
+        reviewed.getMonth() === now.getMonth() &&
+        reviewed.getDate() === now.getDate();
+    }).length;
+
+    const list = document.getElementById('fcCardList'); list.replaceChildren();
+    if (!flashcards.length) {
+      const empty = document.createElement('div'); empty.className='flashcard-empty'; empty.textContent='No saved cards yet.'; list.appendChild(empty);
+    } else flashcards.slice().reverse().forEach(card => {
+      const row=document.createElement('div'); row.className='flashcard-row';
+      const info=document.createElement('div'); const front=document.createElement('b'); front.textContent=card.front;
+      const meta=document.createElement('small'); meta.textContent=`${card.deck || 'General'} · ${card.mastered?'Mastered':'Learning'} · ${card.reviews||0} reviews`;
+      info.append(front,meta);
+      const del=document.createElement('button'); del.type='button'; del.className='study-btn'; del.textContent='Delete'; del.setAttribute('aria-label','Delete flashcard');
+      del.addEventListener('click',()=>{flashcards=flashcards.filter(c=>c.id!==card.id);saveFlashcards();renderFlashcards();});
+      row.append(info,del);list.appendChild(row);
+    });
+    fcQueue = cards.slice(); fcIndex = 0; fcRevealed = false; renderCurrentFlashcard();
+}
+function renderCurrentFlashcard() {
+    const area=document.getElementById('fcStudyArea'); area.replaceChildren();
+    if (!fcQueue.length) {
+      const empty=document.createElement('div');empty.className='flashcard-empty';empty.textContent='No cards in this deck yet. Add a card or choose another deck.';area.appendChild(empty);return;
+    }
+    const card=fcQueue[fcIndex];
+    const stage=document.createElement('div');stage.className='flashcard-stage';
+    const face=document.createElement('button');face.type='button';face.className='flashcard-face';
+    const label=document.createElement('span');label.className='eyebrow';label.textContent=fcRevealed?'ANSWER':'QUESTION';
+    const title=document.createElement('h2');title.textContent=fcRevealed?card.back:card.front;
+    const hint=document.createElement('span');hint.className='flip-hint';hint.textContent=fcRevealed?'Tap to see question':'Tap card to reveal answer';
+    face.setAttribute('aria-label', fcRevealed ? 'Show flashcard question' : 'Reveal flashcard answer');
+    face.setAttribute('aria-live', 'polite');
+    face.append(label,title,hint);
+    face.addEventListener('click',()=>{
+        fcRevealed=!fcRevealed;
+        renderCurrentFlashcard();
+    });
+    const count=document.createElement('p');count.className='muted';count.style.textAlign='center';count.textContent=`Card ${fcIndex+1} of ${fcQueue.length} · ${card.deck||'General'}`;
+    const controls=document.createElement('div');controls.className='flashcard-controls';
+    const prev=document.createElement('button');prev.type='button';prev.className='study-btn';prev.textContent='← Previous';prev.disabled=fcIndex===0;prev.addEventListener('click',()=>{fcIndex--;fcRevealed=false;renderCurrentFlashcard();});
+    const flip=document.createElement('button');flip.type='button';flip.className='study-btn';flip.textContent=fcRevealed?'Show question':'Reveal answer';flip.addEventListener('click',()=>{fcRevealed=!fcRevealed;renderCurrentFlashcard();});
+    const next=document.createElement('button');next.type='button';next.className='study-btn';next.textContent='Next →';next.disabled=fcIndex===fcQueue.length-1;next.addEventListener('click',()=>{fcIndex++;fcRevealed=false;renderCurrentFlashcard();});
+    controls.append(prev,flip,next);
+    const grade=document.createElement('div');grade.className='flashcard-controls';
+    const again=document.createElement('button');again.type='button';again.className='study-btn again';again.textContent='Need to practise';again.disabled=!fcRevealed;
+    again.addEventListener('click',()=>gradeFlashcard(card,false));
+    const known=document.createElement('button');known.type='button';known.className='study-btn good';known.textContent='I know this';known.disabled=!fcRevealed;
+    known.addEventListener('click',()=>gradeFlashcard(card,true));
+    grade.append(again,known);
+    stage.append(face,count,controls,grade);area.appendChild(stage);
+}
+function gradeFlashcard(card, mastered) {
+    const target=flashcards.find(c=>c.id===card.id); if(!target)return;
+    target.mastered=mastered;target.reviews=(target.reviews||0)+1;target.lastReviewed=new Date().toISOString();
+    saveFlashcards();
+    if(fcIndex<fcQueue.length-1){fcIndex++;fcRevealed=false;fcQueue[fcIndex]=flashcards.find(c=>c.id===fcQueue[fcIndex].id)||fcQueue[fcIndex];renderCurrentFlashcard();}
+    else {renderFlashcards();toast('Deck completed. Great work!');}
+}
+document.getElementById('flashcardForm').addEventListener('submit',event=>{
+    event.preventDefault();
+    const front=document.getElementById('fcFront').value.trim(),back=document.getElementById('fcBack').value.trim();
+    if(!front||!back)return;
+    flashcards.push({id:(crypto.randomUUID?crypto.randomUUID():String(Date.now())),front,back,deck:document.getElementById('fcDeck').value.trim()||'General',mastered:false,reviews:0,createdAt:new Date().toISOString(),lastReviewed:null});
+    saveFlashcards();event.target.reset();renderFlashcards();toast('Flashcard saved.');
+});
+document.getElementById('fcDeckFilter').addEventListener('change',renderFlashcards);
+document.getElementById('fcShuffle').addEventListener('click',()=>{fcQueue.sort(()=>Math.random()-.5);fcIndex=0;fcRevealed=false;renderCurrentFlashcard();});
+document.getElementById('flashcardAddFocus').addEventListener('click',()=>{document.getElementById('fcFront').focus();document.getElementById('fcCreatePanel').scrollIntoView({behavior:'smooth',block:'center'});});
+
+function renderStudyProgress() {
+    const total= testHistory.length;
+    const average=total?Math.round(testHistory.reduce((sum,t)=>sum+t.percentage,0)/total):null;
+    const reviewed=flashcards.reduce((sum,c)=>sum+(c.reviews||0),0);
+    const mastered=flashcards.filter(c=>c.mastered).length;
+    document.getElementById('prTests').textContent=total;
+    document.getElementById('prAverage').textContent=average===null?'—':average+'%';
+    document.getElementById('prReviewed').textContent=reviewed;
+    document.getElementById('prMaterials').textContent=allMaterials.length;
+    const mastery=flashcards.length?Math.round(mastered/flashcards.length*100):0;
+    document.getElementById('prMasteryText').textContent=flashcards.length?`${mastered} of ${flashcards.length} cards mastered (${mastery}%).`:'No flashcards reviewed yet.';
+    document.getElementById('prMasteryBar').style.width=mastery+'%';
+    const wrap=document.getElementById('prHistory');wrap.replaceChildren();
+    if(!testHistory.length){const empty=document.createElement('div');empty.className='progress-empty';empty.textContent='No completed tests yet. Your CBT results will appear here.';wrap.appendChild(empty);return;}
+    const table=document.createElement('table');table.className='progress-history';
+    const thead=document.createElement('thead'),tr=document.createElement('tr');
+    ['Course','Date','Score','Result'].forEach(label=>{const th=document.createElement('th');th.textContent=label;tr.appendChild(th);});thead.appendChild(tr);table.appendChild(thead);
+    const tbody=document.createElement('tbody');
+    testHistory.slice().reverse().slice(0,20).forEach(t=>{
+        const row=document.createElement('tr');
+        const parsedDate = new Date(t.date);
+        const dateLabel = Number.isNaN(parsedDate.getTime())
+            ? 'Date unavailable'
+            : parsedDate.toLocaleDateString('en-NG');
+        [t.course || 'CBT Practice',dateLabel,`${t.correct}/${t.total}`,`${t.percentage}%`]
+          .forEach(value=>{
+              const td=document.createElement('td');
+              td.textContent=value;
+              row.appendChild(td);
+          });
+        tbody.appendChild(row);
+    });
+    table.appendChild(tbody);wrap.appendChild(table);
+}
+document.getElementById('progressRefresh').addEventListener('click',()=>{
+    renderStudyProgress();
+    toast('Your progress is up to date.');
+});
+document.getElementById('fcDeckFilter').addEventListener('change',()=>{
+    fcQueue=[];
+    fcIndex=0;
+    fcRevealed=false;
+    renderFlashcards();
+});
+
+/* END FLASHCARDS + PROGRESS */
+
+
+function renderAiStudyPack(pack){
+    const output=document.getElementById('aiStudyPackOutput');
+    document.getElementById('aiSummary').replaceChildren();
+    (pack.summary||[]).forEach(line=>addTextElement(document.getElementById('aiSummary'),'p',line));
+    const points=document.getElementById('aiKeyPoints');
+    points.replaceChildren();
+    (pack.keyPoints||[]).forEach(point=>addTextElement(points,'li',point));
+    const questions=document.getElementById('aiQuestions');
+    questions.replaceChildren();
+    (pack.questions||[]).forEach((q,index)=>{
+        const card=addTextElement(questions,'div','', 'ai-question-card');
+        addTextElement(card,'strong',`${index+1}. ${q.question}`);
+        const list=addTextElement(card,'ol','');
+        (q.options||[]).forEach(option=>addTextElement(list,'li',option));
+        addTextElement(card,'p',`Answer: ${q.options[q.answerIndex]||'Not supplied'}`,'ai-answer');
+        addTextElement(card,'p',q.explanation||'');
+    });
+    const flashcards=document.getElementById('aiFlashcards');
+    flashcards.replaceChildren();
+    (pack.flashcards||[]).forEach(cardData=>{
+        const card=addTextElement(flashcards,'div','','ai-flashcard');
+        addTextElement(card,'strong',cardData.front);
+        const details=addTextElement(card,'details','');
+        addTextElement(details,'summary','Reveal answer');
+        addTextElement(details,'p',cardData.back);
+    });
+    addFlashcardsFromAI(pack.flashcards || [], activePdfSourceName || 'AI Study Pack');
+    output.hidden=false;
+}
+async function generateAiStudyPack(){
+    if(!activePdfExtractedText || activePdfExtractedText.length<100){
+        setAiStudyStatus('Extract a PDF before asking AI to create a study pack.',true);return;
+    }
+    const button=document.getElementById('generateAiStudyPackBtn');
+    button.disabled=true;
+    document.getElementById('aiStudyPackOutput').hidden=true;
+    setAiStudyStatus('AI is reading your lecture notes and preparing your study pack…');
+    try{
+        const response=await generateStudyPackAI({
+            text:activePdfExtractedText.slice(0,60000),
+            sourceName:activePdfSourceName,
+            questionCount:Number(document.getElementById('aiQuestionCount').value)
+        });
+        const pack=response.data?.studyPack;
+        if(!pack || !Array.isArray(pack.questions) || !pack.questions.length) {
+            throw new Error('The AI response did not contain a valid question set. Please try again.');
+        }
+        renderAiStudyPack(pack);
+        setAiStudyStatus(`Study pack generated from ${activePdfSourceName}. Review it against your notes.`);
+    }catch(error){
+        console.error('AI study pack error:',error);
+        const code=error.code||'';
+        let message=error.message||'Could not generate the AI study pack.';
+        if(code==='functions/unauthenticated') message='Please sign in again to use the AI Study Assistant.';
+        else if(code==='functions/unavailable' || code==='functions/not-found') message='The AI backend is not deployed yet. Follow the Firebase setup guide included with this project.';
+        setAiStudyStatus(message,true);
+    }finally{button.disabled=false;}
+}
+document.getElementById('generateAiStudyPackBtn').addEventListener('click',generateAiStudyPack);
+
 
 function updateCBTCourses() {
     const courseSelect = document.getElementById('cbtCourse');
@@ -2635,6 +3443,9 @@ function finishCBT(autoSubmitted = false) {
         total + (cbtAnswers[index] === question.answer ? 1 : 0), 0);
     const total = cbtQuestions.length;
     const percentage = Math.round((correct / total) * 100);
+    testHistory.push({course:document.getElementById('cbtCourse').value || 'CBT Practice',correct,total,percentage,date:new Date().toISOString(),mode:cbtMode});
+    testHistory=testHistory.slice(-100);
+    writeStudyData('tests',testHistory);
     const results = document.getElementById('cbtResults');
 
     results.replaceChildren();
@@ -2738,6 +3549,20 @@ startStudyHub();
 
 </script>
 
-  <script src="site-navigation.js"></script>
+
+<script>
+/* Study Hub footer shortcuts reuse the existing sidebar view navigation. */
+document.querySelectorAll('[data-footer-view]').forEach(link => {
+  link.addEventListener('click', event => {
+    const view = link.getAttribute('data-footer-view');
+    const navButton = document.querySelector('.nav-item[data-view="' + view + '"]');
+    if (!navButton) return;
+    event.preventDefault();
+    navButton.click();
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+});
+</script>
+
 </body>
 </html>
