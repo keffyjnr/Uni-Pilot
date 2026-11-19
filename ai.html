@@ -23,26 +23,21 @@
     })();
   </script>
   <style>
-    :root { --ai-green:#0b5d3b; --ai-dark:#063b26; --ai-yellow:#f5c518; }
+    :root { --ai-green:#0b5d3b; --ai-dark:#063b26; }
     * { box-sizing:border-box; }
-    body { margin:0; font-family:Manrope,sans-serif; background:var(--background,#f7faf8); color:var(--text,#17221c); }
-    .ai-page { width:min(100% - 28px, 980px); margin:28px auto 50px; }
-    .ai-hero { padding:25px 24px; border-radius:24px; background:linear-gradient(130deg,#063b26,#0b5d3b); color:#fff; position:relative; overflow:hidden; }
-    .ai-hero:after { content:"✦"; position:absolute; right:28px; top:0; font-size:110px; opacity:.10; }
-    .ai-kicker { display:inline-flex; align-items:center; gap:7px; font-size:.72rem; font-weight:800; letter-spacing:.11em; color:#f5d95d; }
-    .ai-hero h1 { margin:10px 0 6px; font-size:clamp(1.65rem,5vw,2.35rem); color:#fff; }
-    .ai-hero p { margin:0; max-width:620px; color:rgba(255,255,255,.82); line-height:1.65; font-size:.92rem; }
-    .ai-layout { margin-top:18px; display:grid; grid-template-columns: minmax(0,1fr); gap:16px; }
-    .chat-card { background:var(--white,#fff); border:1px solid var(--border,#dfe8e2); border-radius:22px; overflow:hidden; box-shadow:0 12px 35px rgba(14,45,30,.07); }
-    .chat-head { padding:15px 18px; display:flex; align-items:center; justify-content:space-between; gap:12px; border-bottom:1px solid var(--border,#dfe8e2); }
+    html, body { width:100%; height:100%; margin:0; overflow:hidden; }
+    body { font-family:Manrope,sans-serif; background:var(--background,#f7faf8); color:var(--text,#17221c); }
+    .ai-page { width:min(100%, 920px); height:100vh; height:100dvh; margin:0 auto; padding:0; }
+    .chat-card { height:100%; display:flex; flex-direction:column; background:var(--white,#fff); border-left:1px solid var(--border,#dfe8e2); border-right:1px solid var(--border,#dfe8e2); overflow:hidden; }
+    .chat-head { flex:0 0 auto; min-height:72px; padding:12px 18px; display:flex; align-items:center; justify-content:space-between; gap:12px; border-bottom:1px solid var(--border,#dfe8e2); background:var(--white,#fff); z-index:2; }
     .assistant-id { display:flex; align-items:center; gap:11px; min-width:0; }
-    .assistant-icon { width:42px; height:42px; display:grid; place-items:center; border-radius:14px; background:#eaf6ef; font-size:22px; }
-    .assistant-name { font-weight:800; font-size:.95rem; }
-    .assistant-status { color:#16834e; font-size:.72rem; font-weight:700; margin-top:2px; }
-    .clear-btn { border:1px solid var(--border,#dfe8e2); background:transparent; color:var(--text,#17221c); border-radius:10px; padding:8px 11px; font:700 .75rem Manrope,sans-serif; cursor:pointer; }
-    .messages { height:min(58vh,570px); min-height:360px; overflow-y:auto; padding:20px; display:flex; flex-direction:column; gap:15px; scroll-behavior:smooth; }
+    .assistant-icon { width:44px; height:44px; flex:0 0 44px; display:grid; place-items:center; border-radius:50%; background:#eaf6ef; font-size:23px; }
+    .assistant-name { font-weight:800; font-size:.98rem; }
+    .assistant-status { color:#16834e; font-size:.72rem; font-weight:700; margin-top:3px; }
+    .clear-btn { border:1px solid var(--border,#dfe8e2); background:transparent; color:var(--text,#17221c); border-radius:999px; padding:8px 12px; font:700 .75rem Manrope,sans-serif; cursor:pointer; }
+    .messages { flex:1 1 auto; min-height:0; overflow-y:auto; overscroll-behavior:contain; padding:20px clamp(12px,3vw,25px); display:flex; flex-direction:column; gap:13px; scroll-behavior:smooth; }
     .message { max-width:min(85%,680px); padding:12px 15px; border-radius:17px; font-size:.9rem; line-height:1.65; white-space:pre-wrap; overflow-wrap:anywhere; }
-    .message.assistant { white-space:normal; }
+    .message.assistant { white-space:normal; align-self:flex-start; background:var(--light-green,#eaf6ef); color:var(--text,#17221c); border-bottom-left-radius:5px; }
     .message.assistant p { margin:0 0 10px; }
     .message.assistant p:last-child { margin-bottom:0; }
     .message.assistant h1,.message.assistant h2,.message.assistant h3 { margin:13px 0 7px; line-height:1.3; }
@@ -53,86 +48,71 @@
     .message.assistant pre { white-space:pre-wrap; overflow-wrap:anywhere; background:rgba(0,0,0,.08); padding:11px; border-radius:9px; }
     .message.assistant pre code { background:transparent; padding:0; }
     .message.assistant blockquote { margin:8px 0; padding-left:12px; border-left:3px solid var(--ai-green); opacity:.9; }
-    .message.assistant { align-self:flex-start; background:var(--light-green,#eaf6ef); color:var(--text,#17221c); border-bottom-left-radius:5px; }
     .message.user { align-self:flex-end; background:var(--ai-green); color:#fff; border-bottom-right-radius:5px; }
     .message.error { background:#fff0ed; color:#9b3020; }
-    .welcome-title { font-weight:800; margin-bottom:5px; }
-    .suggestions { padding:0 18px 17px; display:flex; flex-wrap:wrap; gap:8px; }
-    .suggestion { border:1px solid var(--border,#dfe8e2); background:transparent; color:var(--text,#17221c); padding:9px 12px; border-radius:999px; font:600 .75rem Manrope,sans-serif; cursor:pointer; }
-    .suggestion:hover { border-color:var(--ai-green); color:var(--ai-green); }
-    .composer-wrap { padding:14px 16px 16px; border-top:1px solid var(--border,#dfe8e2); }
-    .composer { display:flex; gap:9px; align-items:flex-end; padding:8px; border:1px solid var(--border,#dfe8e2); border-radius:16px; background:var(--background,#f7faf8); }
-    .composer textarea { flex:1; min-width:0; max-height:130px; min-height:44px; resize:vertical; border:0; outline:0; background:transparent; color:var(--text,#17221c); padding:11px 8px; font:500 .88rem Manrope,sans-serif; }
-    .send-btn { flex:0 0 44px; height:44px; border:0; border-radius:12px; background:var(--ai-green); color:#fff; font-size:19px; cursor:pointer; }
+    .assistant-response { align-self:flex-start; max-width:min(85%,680px); }
+    .assistant-response .message { max-width:100%; }
+    .fine-print { margin:5px 5px 0; color:var(--muted,#6d7a72); font-size:.65rem; line-height:1.45; }
+    .composer-wrap { flex:0 0 auto; padding:11px 14px max(12px, env(safe-area-inset-bottom)); border-top:1px solid var(--border,#dfe8e2); background:var(--white,#fff); }
+    .composer { display:flex; gap:9px; align-items:flex-end; padding:7px; border:1px solid var(--border,#dfe8e2); border-radius:22px; background:var(--background,#f7faf8); }
+    .composer textarea { flex:1; min-width:0; max-height:125px; min-height:43px; resize:none; border:0; outline:0; background:transparent; color:var(--text,#17221c); padding:11px 9px; font:500 .88rem Manrope,sans-serif; }
+    .send-btn { flex:0 0 44px; height:44px; border:0; border-radius:50%; background:var(--ai-green); color:#fff; font-size:19px; cursor:pointer; }
     .send-btn:disabled { opacity:.5; cursor:not-allowed; }
-    .fine-print { margin:10px 3px 0; color:var(--muted,#6d7a72); font-size:.68rem; line-height:1.5; text-align:center; }
-    .typing { color:var(--muted,#6d7a72); font-size:.78rem; padding:0 4px 4px; }
-    .back-link { display:inline-flex; margin:0 0 15px; color:var(--ai-green); text-decoration:none; font-size:.82rem; font-weight:800; }
+    .typing-bubble { display:flex; align-items:center; gap:5px; min-width:62px; min-height:42px; }
+    .typing-bubble span { width:8px; height:8px; border-radius:50%; background:#16834e; animation:typingPulse 1.15s infinite ease-in-out; }
+    .typing-bubble span:nth-child(2) { animation-delay:.16s; }
+    .typing-bubble span:nth-child(3) { animation-delay:.32s; }
+    @keyframes typingPulse { 0%,60%,100% { transform:translateY(0); opacity:.45; } 30% { transform:translateY(-5px); opacity:1; } }
     html[data-theme="dark"] body { background:#070d12; color:#eef4f7; }
-    html[data-theme="dark"] .chat-card { background:#0d1720; border-color:#263b49; }
-    html[data-theme="dark"] .chat-head, html[data-theme="dark"] .composer-wrap { border-color:#263b49; }
+    html[data-theme="dark"] .chat-card, html[data-theme="dark"] .chat-head, html[data-theme="dark"] .composer-wrap { background:#0d1720; border-color:#263b49; }
     html[data-theme="dark"] .assistant-icon { background:#10382e; }
     html[data-theme="dark"] .message.assistant { background:#10382e; color:#eef4f7; }
-    html[data-theme="dark"] .clear-btn, html[data-theme="dark"] .suggestion { color:#eef4f7; border-color:#304452; }
+    html[data-theme="dark"] .clear-btn { color:#eef4f7; border-color:#304452; }
     html[data-theme="dark"] .composer { background:#0a141c; border-color:#304452; }
     html[data-theme="dark"] .composer textarea { color:#eef4f7; }
     @media(max-width:600px) {
-      .ai-page { width:min(100% - 18px,980px); margin:14px auto 28px; }
-      .ai-hero { padding:21px 18px; border-radius:19px; }
-      .messages { height:56vh; min-height:330px; padding:15px 12px; }
-      .message { max-width:92%; font-size:.86rem; }
-      .chat-head { padding:12px; }
-      .suggestions { padding:0 12px 14px; }
-      .composer-wrap { padding:11px; }
+      .chat-card { border:0; }
+      .chat-head { min-height:66px; padding:9px 13px; }
+      .assistant-icon { width:41px; height:41px; flex-basis:41px; }
+      .messages { padding:14px 11px; gap:11px; }
+      .message, .assistant-response { max-width:93%; }
+      .message { font-size:.86rem; padding:10px 13px; }
+      .composer-wrap { padding:9px 10px max(10px, env(safe-area-inset-bottom)); }
     }
   </style>
 </head>
 <body>
   <main class="ai-page">
-    <a class="back-link" href="index.html">← Back to Uni Pilot</a>
-    <section class="ai-hero">
-      <span class="ai-kicker">✦ YOUR ACADEMIC COMPANION</span>
-      <h1>Meet Uni Pilot AI</h1>
-      <p>Ask questions, understand difficult topics and get help navigating university life. Let's figure it out together.</p>
-    </section>
-
-    <section class="ai-layout">
-      <div class="chat-card">
-        <div class="chat-head">
-          <div class="assistant-id">
-            <div class="assistant-icon">🎓</div>
-            <div>
-              <div class="assistant-name">Uni Pilot AI</div>
-              <div class="assistant-status" id="statusText">● Ready to help</div>
-            </div>
+    <section class="chat-card">
+      <header class="chat-head">
+        <div class="assistant-id">
+          <div class="assistant-icon" aria-hidden="true">🎓</div>
+          <div>
+            <div class="assistant-name">Uni Pilot AI</div>
+            <div class="assistant-status" id="statusText">● Online</div>
           </div>
-          <button class="clear-btn" id="clearChat" type="button">New chat ↻</button>
         </div>
+        <button class="clear-btn" id="clearChat" type="button">New chat ↻</button>
+      </header>
 
-        <div class="messages" id="messages" aria-live="polite">
+      <div class="messages" id="messages" aria-live="polite">
+        <div class="assistant-response">
           <div class="message assistant">
-            <div class="welcome-title">Hello! Welcome to Uni Pilot AI 👋</div>
-            I'm here to help with your studies, course questions and university life. What would you like to explore today?
+            <p><strong>Hello! 👋</strong></p>
+            <p>I'm here to help with your studies, learning and university life. What would you like to understand today?</p>
           </div>
-        </div>
-
-        <div class="suggestions" id="suggestions">
-          <button class="suggestion" type="button">Explain a difficult topic</button>
-          <button class="suggestion" type="button">Help me calculate GPA</button>
-          <button class="suggestion" type="button">Tell me about Geology</button>
-        </div>
-
-        <div class="composer-wrap">
-          <form class="composer" id="chatForm">
-            <textarea id="userInput" rows="1" maxlength="3000" placeholder="Message Uni Pilot AI..." aria-label="Your message" required></textarea>
-            <button class="send-btn" id="sendBtn" type="submit" aria-label="Send message">➤</button>
-          </form>
           <p class="fine-print">AI can make mistakes. Confirm important admission and administrative information with official university sources.</p>
         </div>
       </div>
+
+      <div class="composer-wrap">
+        <form class="composer" id="chatForm">
+          <textarea id="userInput" rows="1" maxlength="3000" placeholder="Message Uni Pilot AI..." aria-label="Your message" required></textarea>
+          <button class="send-btn" id="sendBtn" type="submit" aria-label="Send message">➤</button>
+        </form>
+      </div>
     </section>
   </main>
-
   <script>
     const API_URL = "https://uni-pilot-ai.keffyjnr0.workers.dev/chat";
     const messagesEl = document.getElementById("messages");
@@ -191,10 +171,34 @@
     }
 
     function addMessage(text, role, extraClass) {
+      if (role === "assistant" && !extraClass) {
+        const wrap = document.createElement("div");
+        wrap.className = "assistant-response";
+        const bubble = document.createElement("div");
+        bubble.className = "message assistant";
+        bubble.innerHTML = formatAssistantText(text);
+        const note = document.createElement("p");
+        note.className = "fine-print";
+        note.textContent = "AI can make mistakes. Confirm important admission and administrative information with official university sources.";
+        wrap.append(bubble, note);
+        messagesEl.appendChild(wrap);
+        messagesEl.scrollTop = messagesEl.scrollHeight;
+        return wrap;
+      }
+
       const item = document.createElement("div");
       item.className = "message " + role + (extraClass ? " " + extraClass : "");
-      if (role === "assistant" && !extraClass && text !== "Uni Pilot AI is thinking…") item.innerHTML = formatAssistantText(text);
-      else item.textContent = text;
+      item.textContent = text;
+      messagesEl.appendChild(item);
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+      return item;
+    }
+
+    function addTypingIndicator() {
+      const item = document.createElement("div");
+      item.className = "message assistant typing-bubble";
+      item.setAttribute("aria-label", "Uni Pilot AI is typing");
+      item.innerHTML = "<span></span><span></span><span></span>";
       messagesEl.appendChild(item);
       messagesEl.scrollTop = messagesEl.scrollHeight;
       return item;
@@ -208,8 +212,8 @@
       history.push({ role: "user", content: clean });
       input.value = "";
       sendBtn.disabled = true;
-      statusText.textContent = "● Thinking...";
-      const typing = addMessage("Uni Pilot AI is thinking…", "assistant");
+      statusText.textContent = "● Typing...";
+      const typing = addTypingIndicator();
 
       try {
         const response = await fetch(API_URL, {
@@ -253,15 +257,12 @@
 
     document.getElementById("clearChat").addEventListener("click", () => {
       history.length = 0;
-      messagesEl.innerHTML = '<div class="message assistant"><div class="welcome-title">New conversation started 👋</div>What can I help you understand today?</div>';
+      messagesEl.innerHTML = '<div class="assistant-response"><div class="message assistant"><p><strong>New conversation 👋</strong></p><p>What would you like to understand today?</p></div><p class="fine-print">AI can make mistakes. Confirm important admission and administrative information with official university sources.</p></div>';
       statusText.textContent = "● Ready to help";
       input.focus();
     });
 
-    document.getElementById("suggestions").addEventListener("click", event => {
-      const button = event.target.closest("button");
-      if (button) sendMessage(button.textContent);
-    });
+
   </script>
 </body>
 </html>
