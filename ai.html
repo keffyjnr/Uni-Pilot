@@ -26,11 +26,11 @@
     :root { --ai-green:#0b5d3b; --ai-dark:#063b26; }
     * { box-sizing:border-box; }
     html, body { width:100%; height:100%; margin:0; overflow:hidden; }
-    body { font-family:Manrope,sans-serif; background:var(--background,#f7faf8); color:var(--text,#17221c); }
-    .ai-page { width:min(100%, 920px); height:100vh; height:100dvh; margin:0 auto; padding:0; }
+    body { position:fixed; inset:0; width:100%; height:100%; font-family:Manrope,sans-serif; background:var(--background,#f7faf8); color:var(--text,#17221c); }
+    .ai-page { position:fixed; inset:0; width:min(100%, 920px); height:100vh; height:100dvh; margin:0 auto; padding:0; }
     .chat-card { height:100%; display:flex; flex-direction:column; background:var(--white,#fff); border-left:1px solid var(--border,#dfe8e2); border-right:1px solid var(--border,#dfe8e2); overflow:hidden; }
     .chat-card { padding-top:72px; }
-    .chat-head { position:fixed; top:0; left:50%; transform:translateX(-50%); width:min(100%,920px); flex:0 0 auto; min-height:72px; padding:12px 18px; display:flex; align-items:center; justify-content:space-between; gap:12px; border-bottom:1px solid var(--border,#dfe8e2); background:var(--white,#fff); z-index:20; }
+    .chat-head { position:fixed; top:var(--visual-viewport-top, 0px); left:50%; transform:translateX(-50%); width:min(100%,920px); flex:0 0 auto; min-height:72px; padding:12px 18px; display:flex; align-items:center; justify-content:space-between; gap:12px; border-bottom:1px solid var(--border,#dfe8e2); background:var(--white,#fff); z-index:20; }
     .assistant-id { display:flex; align-items:center; gap:11px; min-width:0; }
     .assistant-icon { width:44px; height:44px; flex:0 0 44px; display:grid; place-items:center; border-radius:50%; background:#eaf6ef; font-size:23px; }
     .assistant-name { font-weight:800; font-size:.98rem; }
@@ -123,6 +123,22 @@
     const sendBtn = document.getElementById("sendBtn");
     const statusText = document.getElementById("statusText");
     const history = [];
+
+    // Keep the chat header aligned with the visible phone screen when the
+    // on-screen keyboard opens and the browser changes its visual viewport.
+    function syncVisualViewport() {
+      if (!window.visualViewport) return;
+      document.documentElement.style.setProperty(
+        "--visual-viewport-top",
+        Math.max(0, window.visualViewport.offsetTop) + "px"
+      );
+    }
+    if (window.visualViewport) {
+      syncVisualViewport();
+      window.visualViewport.addEventListener("resize", syncVisualViewport);
+      window.visualViewport.addEventListener("scroll", syncVisualViewport);
+    }
+    window.addEventListener("orientationchange", syncVisualViewport);
 
     function formatAssistantText(text) {
       const escapeHtml = value => value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
