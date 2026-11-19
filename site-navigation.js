@@ -28,7 +28,8 @@
     if(!modal){modal=document.createElement("div");modal.id="siteThemeModal";modal.className="site-theme-backdrop";modal.innerHTML='<section class="site-theme-dialog" role="dialog" aria-modal="true" aria-labelledby="siteThemeTitle"><button class="site-theme-close" type="button" aria-label="Close theme settings">×</button><h2 id="siteThemeTitle">Choose your theme</h2><p>Your theme is saved on this device.</p><button class="site-theme-choice" data-choice="light" role="radio" aria-checked="false">☀️ &nbsp; Light</button><button class="site-theme-choice" data-choice="dark" role="radio" aria-checked="false">🌙 &nbsp; Dark</button><button class="site-theme-choice" data-choice="system" role="radio" aria-checked="false">◐ &nbsp; System Default</button></section>';document.body.appendChild(modal);}
     function applyTheme(choice){if(!["light","dark","system"].includes(choice))choice="system";try{localStorage.setItem("uniPilotTheme",choice)}catch(e){}const dark=choice==="dark"||(choice==="system"&&window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches);document.documentElement.dataset.theme=dark?"dark":"light";document.documentElement.dataset.themeChoice=choice;modal.querySelectorAll("[data-choice]").forEach(b=>b.setAttribute("aria-checked",String(b.dataset.choice===choice)));modal.querySelectorAll("[data-choice]").forEach(b=>b.style.fontWeight=b.dataset.choice===choice?"900":"700");}
     function openTheme(){modal.classList.add("is-open");menu.classList.remove("is-open");menu.style.right="";menu.style.transform="";menu.style.opacity="";overlay.classList.remove("is-open");}
-    document.querySelectorAll("[data-open-site-theme]").forEach(b=>{if(!b.dataset.siteThemeBound){b.dataset.siteThemeBound="1";b.addEventListener("click",openTheme);}});\n    if(!document.getElementById("themeModal")) document.querySelectorAll("#themeMenuTrigger").forEach(b=>{if(!b.dataset.siteThemeBound){b.dataset.siteThemeBound="1";b.addEventListener("click",openTheme);}});
+    document.querySelectorAll("[data-open-site-theme]").forEach(b=>{if(!b.dataset.siteThemeBound){b.dataset.siteThemeBound="1";b.addEventListener("click",openTheme);}});
+    if(!document.getElementById("themeModal")) document.querySelectorAll("#themeMenuTrigger").forEach(b=>{if(!b.dataset.siteThemeBound){b.dataset.siteThemeBound="1";b.addEventListener("click",openTheme);}});
     modal.querySelector(".site-theme-close").onclick=()=>modal.classList.remove("is-open");
     modal.onclick=e=>{if(e.target===modal)modal.classList.remove("is-open")};
     modal.querySelectorAll("[data-choice]").forEach(b=>b.onclick=()=>{applyTheme(b.dataset.choice);modal.classList.remove("is-open")});
@@ -41,7 +42,7 @@
     if (!document.getElementById("uniPilotAIFloat")) {
       const floatStyle = document.createElement("style");
       floatStyle.textContent = `
-        #uniPilotAIFloat{position:fixed;right:22px;bottom:24px;z-index:9998;width:62px;height:62px;border:0;border-radius:50%;display:flex;align-items:center;justify-content:center;gap:0;background:linear-gradient(145deg,#0b5d3b,#063b26);color:#fff;box-shadow:0 8px 24px rgba(6,59,38,.32);font:800 23px Manrope,sans-serif;cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none;transition:box-shadow .2s ease,transform .2s ease}
+        #uniPilotAIFloat{position:fixed;right:22px;bottom:24px;z-index:9998;width:66px;height:66px;border:0;border-radius:50%;display:flex;align-items:center;justify-content:center;gap:0;background:linear-gradient(145deg,#0b5d3b,#063b26);color:#fff;box-shadow:0 8px 24px rgba(6,59,38,.32);font:900 29px Manrope,sans-serif;cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none;transition:box-shadow .2s ease,transform .2s ease}
         #uniPilotAIFloat::after{content:"AI";position:absolute;right:-2px;bottom:-2px;min-width:22px;height:22px;padding:0 4px;border:2px solid #fff;border-radius:12px;background:#f5c518;color:#173b2b;font:800 10px/18px Manrope,sans-serif;text-align:center}
         #uniPilotAIFloat:active{cursor:grabbing;transform:scale(.96)}
         @media(prefers-reduced-motion:no-preference){#uniPilotAIFloat{animation:upAiFloat 3.6s ease-in-out infinite}@keyframes upAiFloat{0%,100%{translate:0 0}50%{translate:0 -7px}}}
@@ -53,7 +54,7 @@
       aiFloat.type = "button";
       aiFloat.setAttribute("aria-label","Open Uni Pilot AI");
       aiFloat.setAttribute("title","Chat with Uni Pilot AI — drag to move");
-      aiFloat.textContent = "🎓";
+      aiFloat.textContent = "✦";
       document.body.appendChild(aiFloat);
 
       let moved = false, startX = 0, startY = 0, startLeft = 0, startTop = 0;
