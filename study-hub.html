@@ -1,0 +1,2741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b5d3b">
+<meta name="description" content="Uni Pilot Study Hub for AAUA students">
+<title>Study Hub — Uni Pilot</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --g:#0b5d3b;
+    --d:#063b26;
+    --mint:#eaf6ef;
+    --ink:#17221c;
+    --muted:#718078;
+    --line:#e6ece8;
+    --bg:#f6f9f7;
+}
+
+* {
+    box-sizing:border-box;
+}
+
+body {
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'DM Sans',Arial,sans-serif;
+}
+
+button,a,input,select {
+    font:inherit;
+}
+
+button {
+    cursor:pointer;
+}
+
+[hidden] {
+    display:none!important;
+}
+
+/* SIDEBAR */
+
+.sidebar {
+    position:fixed;
+    inset:0 auto 0 0;
+    width:250px;
+    background:rgba(255,255,255,.85);
+    backdrop-filter:blur(22px);
+    -webkit-backdrop-filter:blur(22px);
+    border-right:1px solid rgba(255,255,255,.8);
+    padding:26px 18px;
+    display:flex;
+    flex-direction:column;
+    z-index:20;
+    transition:.3s;
+}
+
+.brand {
+    display:flex;
+    gap:11px;
+    align-items:center;
+    text-decoration:none;
+    color:var(--ink);
+    padding:0 9px 35px;
+}
+
+.brand-mark {
+    width:40px;
+    height:40px;
+    border-radius:13px;
+    background:var(--g);
+    color:white;
+    display:grid;
+    place-items:center;
+    font-weight:800;
+}
+
+.brand strong,.brand small {
+    display:block;
+    letter-spacing:1.3px;
+}
+
+.brand strong {
+    font:800 13px Manrope;
+}
+
+.brand small {
+    font-size:9px;
+    color:var(--g);
+    font-weight:700;
+    margin-top:3px;
+}
+
+.side-label,.eyebrow {
+    font-size:9px;
+    letter-spacing:1.7px;
+    font-weight:700;
+    color:var(--g);
+}
+
+.side-label {
+    padding:0 12px 10px;
+    color:#9aa69f;
+}
+
+.side-label.quick {
+    margin-top:29px;
+}
+
+.nav-item,.side-link {
+    display:flex;
+    width:100%;
+    border:0;
+    background:transparent;
+    text-decoration:none;
+    color:#65736b;
+    padding:12px;
+    border-radius:9px;
+    text-align:left;
+    font-size:13px;
+    transition:.25s;
+}
+
+.nav-item.active,.nav-item:hover,.side-link:hover {
+    background:var(--mint);
+    color:var(--g);
+    font-weight:700;
+}
+
+.sidebar-bottom {
+    margin-top:auto;
+}
+
+.help-card {
+    background:#f3f8f4;
+    border:1px solid #e5efe8;
+    padding:15px;
+    border-radius:12px;
+    font-size:12px;
+}
+
+.help-card p {
+    font-size:11px;
+    line-height:1.5;
+    color:var(--muted);
+    margin-bottom:0;
+}
+
+.back-link {
+    display:block;
+    padding:19px 8px 0;
+    color:var(--g);
+    font-size:12px;
+    text-decoration:none;
+    font-weight:700;
+}
+
+/* MOBILE OVERLAY */
+
+.sidebar-overlay {
+    position:fixed;
+    inset:0;
+    z-index:15;
+    background:rgba(4,25,15,.4);
+    backdrop-filter:blur(4px);
+    opacity:0;
+    visibility:hidden;
+    transition:.3s;
+}
+
+.sidebar-overlay.active {
+    opacity:1;
+    visibility:visible;
+}
+
+/* MAIN */
+
+.main {
+    margin-left:250px;
+    min-height:100vh;
+}
+
+.topbar {
+    height:68px;
+    background:rgba(255,255,255,.78);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    border-bottom:1px solid var(--line);
+    display:flex;
+    align-items:center;
+    gap:15px;
+    padding:0 5%;
+    position:sticky;
+    top:0;
+    z-index:10;
+}
+
+.crumb {
+    font-size:12px;
+    color:#89958e;
+    flex:1;
+}
+
+.crumb span {
+    padding:0 8px;
+    color:#c0c9c3;
+}
+
+.crumb b {
+    color:var(--ink);
+}
+
+.campus {
+    font-size:9px;
+    letter-spacing:1px;
+    color:var(--g);
+    font-weight:700;
+    background:var(--mint);
+    padding:9px 12px;
+    border-radius:25px;
+}
+
+.avatar {
+    border:0;
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    background:var(--d);
+    color:white;
+    font-weight:700;
+}
+
+.menu {
+    display:none;
+    border:0;
+    background:none;
+    color:var(--g);
+    font-size:25px;
+}
+
+.content {
+    max-width:1250px;
+    margin:auto;
+    padding:40px 5% 22px;
+}
+
+/* GENERAL */
+
+.eyebrow {
+    margin:0 0 8px;
+}
+
+.sub {
+    font-size:13px;
+    color:var(--muted);
+    margin:8px 0 0;
+}
+
+.primary {
+    background:#f2c65d;
+    color:#27351f;
+    border:0;
+    padding:12px 16px;
+    border-radius:8px;
+    font-size:11px;
+    font-weight:700;
+    transition:.25s;
+}
+
+.primary:hover {
+    transform:translateY(-3px);
+    background:#ffda7d;
+    box-shadow:0 8px 20px #0002;
+}
+
+/* OVERVIEW */
+
+.welcome {
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+    margin-bottom:26px;
+}
+
+.welcome h1,.materials-heading h1 {
+    font:800 clamp(30px,4vw,43px) Manrope;
+    letter-spacing:-1.7px;
+    margin:0;
+}
+
+.welcome h1 span,.materials-heading h1 span {
+    color:#d9ad43;
+}
+
+.date {
+    font-size:11px;
+    color:#7c8981;
+    background:white;
+    border:1px solid var(--line);
+    padding:10px;
+    border-radius:8px;
+}
+
+.hero {
+    min-height:235px;
+    background:linear-gradient(110deg,#073d29,#0b6842);
+    border-radius:17px;
+    padding:34px 38px;
+    color:white;
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    box-shadow:0 18px 35px #063b2620;
+}
+
+.hero-copy {
+    position:relative;
+    z-index:2;
+}
+
+.tag {
+    font-size:9px;
+    letter-spacing:1.5px;
+    color:#bde2ca;
+    font-weight:700;
+}
+
+.hero h2 {
+    font:800 clamp(23px,3vw,31px) Manrope;
+    line-height:1.25;
+    margin:13px 0 9px;
+}
+
+.hero p {
+    font-size:12px;
+    color:#d2e6d9;
+    margin:0 0 19px;
+}
+
+.art {
+    position:absolute;
+    right:9%;
+    top:0;
+    width:280px;
+    height:100%;
+    opacity:.9;
+}
+
+.ring {
+    position:absolute;
+    width:235px;
+    height:235px;
+    border:1px solid #ffffff25;
+    border-radius:50%;
+    right:5px;
+    top:0;
+}
+
+.book {
+    position:absolute;
+    width:100px;
+    height:130px;
+    top:53px;
+    right:85px;
+    border-radius:7px 12px 12px 7px;
+    box-shadow:12px 15px 25px #002d1b66;
+}
+
+.book.back {
+    background:#e6b94e;
+    right:111px;
+    top:64px;
+    transform:rotate(-8deg);
+}
+
+.book.front {
+    background:linear-gradient(145deg,#f6d77d,#d49b32);
+    border:5px solid #f8df9b;
+    display:grid;
+    place-content:center;
+    text-align:center;
+    color:#654a16;
+    font:800 14px Manrope;
+    transform:rotate(12deg);
+}
+
+.spark {
+    position:absolute;
+    right:18px;
+    top:45px;
+    color:#f5d77e;
+    font-size:28px;
+}
+
+.section-title {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin:32px 0 15px;
+}
+
+.section-title h2,.panel h2 {
+    font:800 18px Manrope;
+    margin:0;
+}
+
+.section-title small {
+    font-size:10px;
+    color:#9aa59e;
+}
+
+/* GLOSSY CARDS */
+
+.cards {
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:13px;
+}
+
+.feature {
+    position:relative;
+    overflow:hidden;
+    text-align:left;
+    border:1px solid rgba(255,255,255,.9);
+    background:rgba(255,255,255,.78);
+    backdrop-filter:blur(15px);
+    -webkit-backdrop-filter:blur(15px);
+    border-radius:12px;
+    padding:17px 15px;
+    min-height:170px;
+    transition:.3s;
+    color:var(--ink);
+    box-shadow:0 8px 25px #123a2708;
+}
+
+.feature:hover {
+    transform:translateY(-6px);
+    box-shadow:0 18px 35px #123a2718;
+    border-color:#c8dfd0;
+}
+
+.feature::after {
+    content:"";
+    position:absolute;
+    top:0;
+    left:-120%;
+    width:60%;
+    height:100%;
+    background:linear-gradient(100deg,transparent,#ffffffaa,transparent);
+    transform:skewX(-20deg);
+    transition:.7s;
+    pointer-events:none;
+}
+
+.feature:hover::after {
+    left:140%;
+}
+
+.icon {
+    width:34px;
+    height:34px;
+    border-radius:10px;
+    display:grid;
+    place-items:center;
+    font-style:normal;
+    margin-bottom:15px;
+}
+
+.green {background:#e8f5ed;color:#16814e}
+.amber {background:#fff5df;color:#c28b18}
+.violet {background:#f2edff;color:#8061c9}
+.blue {background:#eaf3ff;color:#4c82c7}
+
+.feature b {
+    display:block;
+    font:700 13px Manrope;
+}
+
+.feature p {
+    font-size:10px;
+    line-height:1.6;
+    color:var(--muted);
+    margin:7px 0 12px;
+}
+
+.feature small {
+    font-size:8px;
+    letter-spacing:1px;
+    color:var(--g);
+    font-weight:700;
+}
+
+/* LOWER PANELS */
+
+.lower {
+    display:grid;
+    grid-template-columns:1.2fr .8fr;
+    gap:14px;
+    margin-top:16px;
+}
+
+.panel {
+    background:rgba(255,255,255,.85);
+    border:1px solid white;
+    border-radius:12px;
+    padding:19px;
+    backdrop-filter:blur(15px);
+}
+
+.panel h2 {
+    font-size:15px;
+}
+
+.empty {
+    text-align:center;
+    padding:25px 10px 12px;
+}
+
+.empty-icon {
+    width:42px;
+    height:42px;
+    margin:0 auto 10px;
+    background:var(--mint);
+    color:var(--g);
+    border-radius:12px;
+    display:grid;
+    place-items:center;
+    font-size:20px;
+}
+
+.empty b {
+    font:700 12px Manrope;
+}
+
+.empty p,.privacy {
+    font-size:10px;
+    color:var(--muted);
+}
+
+.text-button {
+    border:0;
+    background:none;
+    color:var(--g);
+    font-weight:700;
+    font-size:10px;
+}
+
+.stats {
+    display:grid;
+    gap:16px;
+    margin:22px 0;
+}
+
+.stats>div {
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.stats i {
+    width:33px;
+    height:33px;
+    border-radius:10px;
+    background:var(--mint);
+    color:var(--g);
+    display:grid;
+    place-items:center;
+    font-style:normal;
+}
+
+.stats b,.stats small {
+    display:block;
+}
+
+.stats b {
+    font:800 16px Manrope;
+}
+
+.stats small {
+    font-size:9px;
+    color:var(--muted);
+}
+
+.privacy {
+    border-top:1px solid var(--line);
+    padding-top:11px;
+    line-height:1.5;
+}
+
+/* MY MATERIALS */
+
+.materials-heading {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    margin-bottom:25px;
+}
+
+.materials-heading h1 {
+    font-size:clamp(28px,4vw,40px);
+}
+
+.materials-stats {
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:15px;
+    margin-bottom:20px;
+}
+
+.material-stat {
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:18px;
+    background:rgba(255,255,255,.78);
+    backdrop-filter:blur(15px);
+    border:1px solid white;
+    border-radius:13px;
+    box-shadow:0 8px 25px #063b2609;
+}
+
+.material-stat>span {
+    width:42px;
+    height:42px;
+    display:grid;
+    place-items:center;
+    background:var(--mint);
+    color:var(--g);
+    border-radius:12px;
+    font-size:20px;
+}
+
+.material-stat b,.material-stat small {
+    display:block;
+}
+
+.material-stat b {
+    font:800 20px Manrope;
+}
+
+.material-stat small {
+    color:var(--muted);
+    font-size:10px;
+}
+
+.materials-toolbar {
+    display:flex;
+    gap:12px;
+    margin-bottom:20px;
+}
+
+.materials-toolbar input,.materials-toolbar select {
+    min-width:0;
+    padding:13px 15px;
+    border:1px solid var(--line);
+    border-radius:9px;
+    background:rgba(255,255,255,.85);
+    color:var(--ink);
+    outline:none;
+}
+
+.materials-toolbar input {
+    flex:1;
+}
+
+.materials-toolbar input:focus,.materials-toolbar select:focus {
+    border-color:var(--g);
+}
+
+.upload-box {
+    text-align:center;
+    padding:35px 15px;
+    border:1.5px dashed #a8c9b4;
+    background:rgba(234,246,239,.55);
+    border-radius:15px;
+    margin-bottom:25px;
+    transition:.3s;
+}
+
+.upload-box.dragging {
+    background:#dff2e5;
+    border-color:var(--g);
+    transform:scale(1.01);
+}
+
+.upload-symbol {
+    width:48px;
+    height:48px;
+    margin:auto;
+    display:grid;
+    place-items:center;
+    background:white;
+    color:var(--g);
+    border-radius:14px;
+    font-size:25px;
+    box-shadow:0 5px 20px #063b2610;
+}
+
+.upload-box h3 {
+    font:700 15px Manrope;
+    margin:13px 0 5px;
+}
+
+.upload-box p {
+    color:var(--muted);
+    font-size:11px;
+}
+
+.upload-box small {
+    display:block;
+    margin-top:12px;
+    color:#9aa59e;
+    font-size:9px;
+}
+
+.materials-grid {
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:15px;
+}
+
+.material-card {
+    position:relative;
+    overflow:hidden;
+    background:rgba(255,255,255,.85);
+    backdrop-filter:blur(15px);
+    border:1px solid white;
+    border-radius:13px;
+    padding:17px;
+    box-shadow:0 8px 25px #063b2608;
+    transition:.3s;
+}
+
+.material-card:hover {
+    transform:translateY(-5px);
+    box-shadow:0 16px 35px #063b2615;
+}
+
+.material-card::before {
+    content:"";
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:50%;
+    height:100%;
+    background:linear-gradient(100deg,transparent,#ffffff90,transparent);
+    transition:.6s;
+    pointer-events:none;
+}
+
+.material-card:hover::before {
+    left:130%;
+}
+
+.pdf-icon {
+    width:42px;
+    height:45px;
+    display:grid;
+    place-items:center;
+    background:#fff0ed;
+    color:#d64e3f;
+    border-radius:10px;
+    font-weight:800;
+    font-size:12px;
+    margin-bottom:15px;
+}
+
+.material-card h3 {
+    font:700 13px Manrope;
+    overflow-wrap:anywhere;
+    margin:0 0 7px;
+}
+
+.material-card p {
+    color:var(--muted);
+    font-size:10px;
+    margin:5px 0;
+}
+
+.material-course {
+    display:inline-block;
+    background:var(--mint);
+    color:var(--g);
+    padding:6px 9px;
+    border-radius:6px;
+    font-size:9px;
+    font-weight:700;
+    margin:7px 0 13px;
+}
+
+.material-actions {
+    display:flex;
+    gap:8px;
+    border-top:1px solid var(--line);
+    padding-top:12px;
+}
+
+.material-actions button {
+    flex:1;
+    border:0;
+    border-radius:7px;
+    padding:9px 5px;
+    background:var(--mint);
+    color:var(--g);
+    font-size:10px;
+    font-weight:700;
+}
+
+.material-actions button.delete {
+    background:#fff0ed;
+    color:#c84b3e;
+}
+
+.materials-empty {
+    text-align:center;
+    padding:40px 15px;
+    color:var(--muted);
+}
+
+.materials-empty div {
+    font-size:35px;
+    color:var(--g);
+}
+
+.materials-empty h3 {
+    font:700 15px Manrope;
+    color:var(--ink);
+}
+
+.materials-empty p {
+    font-size:11px;
+}
+
+footer {
+    display:flex;
+    justify-content:space-between;
+    color:#9aa59e;
+    font-size:9px;
+    padding:23px 0;
+}
+
+/* TOAST */
+
+.toast {
+    position:fixed;
+    bottom:22px;
+    left:50%;
+    transform:translate(-50%,20px);
+    opacity:0;
+    transition:.2s;
+    background:#172b20;
+    color:white;
+    padding:12px 17px;
+    border-radius:9px;
+    font-size:12px;
+    z-index:50;
+    pointer-events:none;
+}
+
+.toast.show {
+    opacity:1;
+    transform:translate(-50%,0);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1050px) {
+    .cards {
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .art {
+        right:0;
+        opacity:.5;
+    }
+
+    .materials-grid {
+        grid-template-columns:repeat(2,minmax(0,1fr));
+    }
+}
+
+@media(max-width:700px) {
+    .sidebar {
+        transform:translateX(-105%);
+        box-shadow:15px 0 35px #102b1c18;
+    }
+
+    .sidebar.open {
+        transform:translateX(0);
+    }
+
+    .main {
+        margin-left:0;
+    }
+
+    .menu {
+        display:block;
+    }
+
+    .topbar {
+        height:60px;
+        padding:0 15px;
+    }
+
+    .campus {
+        font-size:7px;
+        padding:8px;
+    }
+
+    .content {
+        padding:27px 17px;
+    }
+
+    .date {
+        display:none;
+    }
+
+    .hero {
+        padding:25px 21px;
+        min-height:245px;
+    }
+
+    .hero h2 {
+        font-size:24px;
+    }
+
+    .art {
+        right:-110px;
+        opacity:.25;
+    }
+
+    .cards {
+        gap:9px;
+    }
+
+    .feature {
+        padding:14px 12px;
+        min-height:175px;
+    }
+
+    .lower {
+        grid-template-columns:1fr;
+    }
+
+    .materials-heading {
+        align-items:flex-start;
+        flex-direction:column;
+    }
+
+    .materials-stats {
+        gap:8px;
+    }
+
+    .material-stat {
+        padding:12px;
+    }
+
+    .materials-toolbar {
+        flex-direction:column;
+    }
+
+    .materials-grid {
+        grid-template-columns:1fr;
+    }
+
+    footer {
+        gap:10px;
+        flex-wrap:wrap;
+    }
+}
+
+@media(prefers-reduced-motion:reduce) {
+    *,*::before,*::after {
+        transition:none!important;
+        animation:none!important;
+    }
+}
+
+
+/* CBT PRACTICE */
+.cbt-heading{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:25px}
+.cbt-heading h1{font:800 clamp(28px,4vw,40px) Manrope;margin:0}
+.cbt-heading h1 span{color:#d9ad43}
+.cbt-mode-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;margin-bottom:20px}
+.cbt-mode{background:#fff;border:1px solid var(--line);border-radius:13px;padding:20px;text-align:left;transition:.2s;color:var(--ink)}
+.cbt-mode:hover,.cbt-mode.selected{border-color:var(--g);background:var(--mint)}
+.cbt-mode h3{font:700 15px Manrope;margin:10px 0 6px}
+.cbt-mode p{font-size:11px;color:var(--muted);line-height:1.6;margin:0}
+.cbt-settings,.cbt-exam,.cbt-result{background:#fff;border:1px solid var(--line);border-radius:13px;padding:22px;margin-bottom:20px}
+.cbt-settings h2{font:800 17px Manrope;margin:0 0 18px}
+.cbt-form{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.cbt-form label{display:block;font-size:11px;font-weight:700;margin-bottom:7px}
+.cbt-form select{width:100%;padding:12px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink)}
+.cbt-start{width:100%;margin-top:20px;padding:14px}
+.cbt-empty{text-align:center;background:#fff;border:1px dashed #a8c9b4;padding:30px 20px;border-radius:13px}
+.cbt-empty .empty-icon{font-size:25px}
+.cbt-empty h3{font:700 15px Manrope}
+.cbt-empty p{font-size:11px;color:var(--muted);line-height:1.6}
+.cbt-exam-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:15px}
+.cbt-timer{background:var(--mint);color:var(--g);padding:10px 15px;border-radius:8px;font-weight:800;font-size:14px}
+.cbt-progress{height:7px;background:#edf2ee;border-radius:10px;margin:20px 0;overflow:hidden}
+.cbt-progress-fill{height:100%;width:0;background:var(--g);transition:.2s}
+.cbt-question-number{color:var(--g);font-size:10px;font-weight:800;letter-spacing:1px}
+.cbt-question{font:700 19px Manrope;line-height:1.5;margin:15px 0 22px}
+.cbt-options{display:grid;gap:11px}
+.cbt-option{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:#f8faf8;border:1px solid var(--line);border-radius:9px;padding:14px;font-size:12px;color:var(--ink)}
+.cbt-option:hover,.cbt-option.selected{border-color:var(--g);background:var(--mint)}
+.cbt-option.selected{color:var(--g);font-weight:700}
+.cbt-option-letter{width:27px;height:27px;border-radius:7px;display:grid;place-items:center;background:#fff;font-weight:800;flex-shrink:0}
+.cbt-navigation{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:25px;padding-top:18px;border-top:1px solid var(--line)}
+.cbt-secondary,.cbt-submit{padding:12px 18px;border:0;border-radius:8px;font-size:11px;font-weight:700}
+.cbt-secondary{background:#edf4ef;color:var(--g)}
+.cbt-submit{background:#0b5d3b;color:#fff}
+.cbt-score{width:120px;height:120px;border-radius:50%;background:var(--mint);color:var(--g);display:grid;place-items:center;margin:20px auto;font:800 30px Manrope}
+.cbt-review{text-align:left;margin-top:25px}
+.cbt-review-item{padding:15px;border:1px solid var(--line);border-radius:9px;margin-bottom:10px}
+.cbt-review-item p{font-size:12px;line-height:1.6}
+.cbt-correct{color:#16814e;font-weight:700}.cbt-wrong{color:#c84b3e;font-weight:700}
+@media(max-width:700px){.cbt-mode-grid,.cbt-form{grid-template-columns:1fr}.cbt-exam,.cbt-settings{padding:15px}.cbt-question{font-size:16px}}
+
+
+/* MODERN FINISH — preserves the original Uni Pilot green/gold identity */
+:root{
+    --g:#0b5d3b;--d:#063b26;--mint:#eaf6ef;--ink:#17221c;
+    --muted:#718078;--line:#e2ebe5;--bg:#f5f8f6;
+    --surface:#ffffff;--radius:16px;
+}
+body{background:radial-gradient(circle at 90% 0%,#e8f4ec 0,transparent 28%),var(--bg)}
+.sidebar{background:rgba(255,255,255,.91);border-right:1px solid #e4ece6;box-shadow:8px 0 35px #123a2706}
+.brand-mark{box-shadow:0 7px 16px #0b5d3b2b}
+.nav-item,.side-link{border-radius:11px}
+.main{min-width:0}
+.topbar{box-shadow:0 5px 22px #123a2707}
+.hero{border-radius:22px;background:linear-gradient(115deg,#052f20 0%,#0b6842 62%,#168052 100%)}
+.feature,.panel,.material-stat,.material-card,.cbt-settings,.cbt-exam,.cbt-result,.cbt-empty{
+    border:1px solid #e8eee9;border-radius:16px;box-shadow:0 10px 28px #123a2708
+}
+.feature:hover,.material-card:hover{border-color:#c8dfd0}
+.primary,.cbt-submit{border-radius:10px}
+.materials-toolbar input,.materials-toolbar select,.cbt-form select,.pdf-source-select{
+    min-height:46px;border-radius:10px
+}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{
+    outline:3px solid #d9ad4380;outline-offset:2px
+}
+.pdf-source-panel{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;margin:0 0 22px;box-shadow:0 10px 28px #123a2707}
+.pdf-source-head{display:flex;justify-content:space-between;gap:15px;align-items:flex-start;margin-bottom:14px}
+.pdf-source-head h2{font:800 17px Manrope;margin:0}
+.pdf-source-controls{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px}
+.pdf-source-select{width:100%;padding:12px;border:1px solid var(--line);background:#fff;color:var(--ink)}
+.pdf-source-note{font-size:11px;line-height:1.6;color:var(--muted);margin:12px 0 0}
+.pdf-source-status{font-size:11px;color:var(--g);font-weight:700;margin-top:10px}
+.course-catalog{margin-top:24px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px}
+.course-catalog-head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:15px}
+.course-catalog-head h2{font:800 17px Manrope;margin:0}
+.course-catalog-head p{font-size:11px;color:var(--muted);margin:5px 0 0}
+.course-search{min-width:min(100%,240px);padding:11px 13px;border:1px solid var(--line);border-radius:9px}
+.faculty-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.faculty-group{border:1px solid var(--line);border-radius:12px;padding:14px;background:#fbfdfb}
+.faculty-group h3{font:700 12px Manrope;margin:0 0 9px;color:var(--g)}
+.faculty-group ul{padding-left:17px;margin:0;color:#56645c;font-size:11px;line-height:1.85}
+.catalog-disclaimer{font-size:10px;color:var(--muted);line-height:1.6;margin:14px 0 0}
+.cbt-source-chip{display:inline-flex;align-items:center;gap:7px;background:var(--mint);color:var(--g);border-radius:20px;padding:7px 11px;font-size:10px;font-weight:700;margin-top:12px}
+@media(max-width:700px){
+ .pdf-source-controls{grid-template-columns:1fr}
+ .faculty-list{grid-template-columns:1fr}
+ .pdf-source-panel,.course-catalog{padding:15px}
+}
+
+
+/* =========================================================
+   UNI PILOT STUDY HUB — VISUAL REDESIGN
+   Keeps the existing Firebase, IndexedDB and CBT behaviour.
+   ========================================================= */
+:root{
+  --g:#08734a;
+  --d:#042f21;
+  --mint:#e5f5ec;
+  --ink:#14251c;
+  --muted:#718078;
+  --line:rgba(14,76,48,.13);
+  --bg:#edf4ef;
+  --gold:#f2c65d;
+  --glass:rgba(255,255,255,.76);
+}
+html{scroll-behavior:smooth}
+body{
+  background:
+    radial-gradient(ellipse at 85% 8%,rgba(46,137,91,.14),transparent 30%),
+    radial-gradient(ellipse at 45% 90%,rgba(242,198,93,.09),transparent 35%),
+    linear-gradient(135deg,#edf4ef,#f7faf8 52%,#e8f1eb);
+  color:var(--ink);
+  font-family:'DM Sans',sans-serif;
+}
+.sidebar{
+  width:258px;
+  padding:25px 17px 20px;
+  color:#e9f4ed;
+  background:
+    radial-gradient(circle at 5% 0%,rgba(63,151,104,.28),transparent 32%),
+    linear-gradient(165deg,#062f21 0%,#073d2a 58%,#04291d 100%);
+  border-right:1px solid rgba(255,255,255,.12);
+  box-shadow:14px 0 45px rgba(3,37,24,.12);
+}
+.brand{color:#fff;padding:0 9px 42px}
+.brand-mark{
+  width:43px;height:43px;border-radius:14px;
+  background:linear-gradient(145deg,#168653,#075333);
+  border:1px solid rgba(255,255,255,.25);
+  box-shadow:0 8px 24px rgba(0,0,0,.2),inset 0 1px rgba(255,255,255,.25);
+}
+.brand strong{letter-spacing:1.5px}
+.brand small{color:#a9dfbd;letter-spacing:2px}
+.side-label{color:#8eae9c}
+.side-label.quick{margin-top:34px}
+.nav-item,.side-link{
+  color:#c3d5ca;
+  border:1px solid transparent;
+  border-radius:12px;
+  padding:13px 14px;
+  margin:3px 0;
+  font-size:12px;
+  letter-spacing:.1px;
+  transition:background .22s,border-color .22s,transform .22s,color .22s;
+}
+.nav-item.active,.nav-item:hover,.side-link:hover{
+  color:#fff;
+  background:linear-gradient(100deg,rgba(58,157,103,.3),rgba(255,255,255,.07));
+  border-color:rgba(184,229,199,.15);
+  box-shadow:inset 3px 0 #f2c65d;
+  transform:translateX(2px);
+}
+.help-card{
+  color:#eaf4ed;
+  background:linear-gradient(145deg,rgba(255,255,255,.11),rgba(255,255,255,.045));
+  border:1px solid rgba(255,255,255,.13);
+  border-radius:15px;
+  padding:16px;
+  box-shadow:inset 0 1px rgba(255,255,255,.08);
+}
+.help-card p{color:#b1c9ba}
+.back-link{color:#c5ebd2}
+.main{margin-left:258px;min-width:0}
+.topbar{
+  height:74px;
+  padding:0 clamp(20px,4vw,58px);
+  background:rgba(250,253,251,.78);
+  border-bottom:1px solid rgba(17,75,48,.1);
+  backdrop-filter:blur(24px);
+  -webkit-backdrop-filter:blur(24px);
+  box-shadow:0 8px 30px rgba(9,55,34,.035);
+}
+.crumb{font-size:12px;color:#839188}
+.crumb b{font-weight:800}
+.campus{
+  color:#08734a;
+  background:#e4f4e9;
+  border:1px solid #d5ebdc;
+  padding:10px 15px;
+  letter-spacing:1.2px;
+}
+.avatar{
+  width:40px;height:40px;
+  background:linear-gradient(145deg,#0b7048,#043522);
+  border:2px solid #d8eee0;
+  box-shadow:0 5px 15px rgba(4,57,34,.16);
+}
+.content{
+  max-width:1440px;
+  padding:38px clamp(20px,4vw,58px) 30px;
+}
+.welcome{margin-bottom:28px}
+.eyebrow{color:#168052;letter-spacing:2px;font-size:9px}
+.welcome h1,.materials-heading h1,.cbt-heading h1{
+  font-family:Manrope,sans-serif;
+  font-weight:800;
+  letter-spacing:-1.8px;
+}
+.welcome h1 span,.materials-heading h1 span,.cbt-heading h1 span{color:#d9a936}
+.sub{font-size:13px;line-height:1.65;color:#78877e}
+.date{
+  border-radius:30px;
+  background:rgba(255,255,255,.7);
+  border:1px solid rgba(16,88,53,.12);
+  padding:11px 15px;
+}
+.hero{
+  min-height:260px;
+  padding:42px clamp(24px,4vw,48px);
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:24px;
+  background:
+    radial-gradient(circle at 80% 20%,rgba(99,180,128,.34),transparent 25%),
+    linear-gradient(115deg,#042e20 0%,#075638 52%,#0b7549 100%);
+  box-shadow:0 22px 55px rgba(4,59,36,.2),inset 0 1px rgba(255,255,255,.13);
+}
+.hero:after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(120deg,transparent 42%,rgba(255,255,255,.055),transparent 72%);
+}
+.tag{font-size:9px;letter-spacing:2px;color:#bce5ca}
+.hero h2{font-size:clamp(25px,3.1vw,36px);letter-spacing:-1.1px}
+.hero p{font-size:12px;line-height:1.7;color:#d3e8da;max-width:480px}
+.primary{
+  color:#25351f;
+  background:linear-gradient(135deg,#ffe08a,#e9b94d);
+  border:1px solid rgba(255,255,255,.35);
+  border-radius:11px;
+  padding:13px 18px;
+  box-shadow:0 8px 22px rgba(0,0,0,.12),inset 0 1px rgba(255,255,255,.6);
+}
+.primary:hover{background:linear-gradient(135deg,#ffe9a9,#f0c65e);transform:translateY(-2px)}
+.art{right:8%;width:300px}
+.ring{width:260px;height:260px;border-color:rgba(255,255,255,.2);box-shadow:0 0 55px rgba(157,220,177,.1)}
+.book{filter:drop-shadow(0 15px 15px rgba(0,0,0,.2))}
+.section-title{margin:38px 0 17px}
+.section-title h2,.panel h2{font-size:19px;letter-spacing:-.4px}
+.section-title small{font-size:10px}
+.cards{gap:15px}
+.feature{
+  min-height:182px;
+  padding:20px 18px;
+  border:1px solid rgba(255,255,255,.85);
+  border-radius:17px;
+  background:linear-gradient(145deg,rgba(255,255,255,.93),rgba(247,251,248,.72));
+  box-shadow:0 12px 32px rgba(12,64,39,.055),inset 0 1px rgba(255,255,255,.95);
+}
+.feature:hover{
+  transform:translateY(-5px);
+  border-color:#b8d9c4;
+  box-shadow:0 20px 42px rgba(12,64,39,.11);
+}
+.icon{width:39px;height:39px;border-radius:12px;font-size:16px}
+.feature b{font-size:14px}
+.feature p{font-size:11px;line-height:1.7}
+.feature small{font-size:8px;letter-spacing:1.25px}
+.panel,.material-stat,.material-card,.cbt-settings,.cbt-exam,.cbt-result,.cbt-empty,
+.pdf-source-panel,.course-catalog{
+  background:linear-gradient(145deg,rgba(255,255,255,.94),rgba(248,251,249,.82));
+  border:1px solid rgba(255,255,255,.95);
+  border-radius:18px;
+  box-shadow:0 14px 38px rgba(9,62,37,.055),inset 0 1px rgba(255,255,255,.95);
+}
+.panel{padding:23px}
+.empty{padding:30px 10px 15px}
+.empty-icon{border-radius:14px;background:linear-gradient(145deg,#e9f7ee,#d9eee1)}
+.stats{gap:19px}
+.stats i,.material-stat>span{border-radius:13px}
+.privacy{font-size:10px}
+.materials-heading{margin-bottom:28px}
+.material-stat{padding:20px;border-radius:16px}
+.material-stat>span{width:46px;height:46px}
+.materials-toolbar input,.materials-toolbar select,.cbt-form select,.pdf-source-select,.course-search{
+  min-height:48px;
+  padding:13px 15px;
+  border:1px solid rgba(17,82,50,.16);
+  border-radius:12px;
+  background:rgba(255,255,255,.88);
+  color:var(--ink);
+  box-shadow:0 4px 14px rgba(7,57,34,.025);
+  outline:none;
+}
+.materials-toolbar input:focus,.materials-toolbar select:focus,.cbt-form select:focus,
+.pdf-source-select:focus,.course-search:focus{
+  border-color:#168052;
+  box-shadow:0 0 0 4px rgba(22,128,82,.1);
+}
+.upload-box{
+  border:1.5px dashed #91c2a3;
+  border-radius:18px;
+  background:linear-gradient(135deg,rgba(230,246,236,.8),rgba(255,255,255,.8));
+  padding:42px 18px;
+}
+.upload-box.dragging{background:#d9f0e1;border-color:#08734a}
+.upload-symbol{width:54px;height:54px;border-radius:16px;box-shadow:0 8px 22px rgba(7,75,43,.08)}
+.material-card{border-radius:16px;padding:19px}
+.material-card:hover{transform:translateY(-5px);border-color:#b8d9c4;box-shadow:0 18px 40px rgba(9,62,37,.1)}
+.material-actions button{border-radius:9px;padding:10px}
+.cbt-heading{margin-bottom:30px}
+.cbt-mode-grid{gap:16px}
+.cbt-mode{
+  position:relative;
+  overflow:hidden;
+  min-height:155px;
+  padding:23px;
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,.95);
+  background:linear-gradient(145deg,rgba(255,255,255,.95),rgba(244,249,246,.85));
+  box-shadow:0 12px 32px rgba(9,62,37,.05);
+}
+.cbt-mode:after{
+  content:"";position:absolute;width:125px;height:125px;right:-45px;bottom:-65px;
+  border:1px solid rgba(8,115,74,.12);border-radius:50%;
+  box-shadow:0 0 0 16px rgba(8,115,74,.035),0 0 0 32px rgba(8,115,74,.025);
+}
+.cbt-mode:hover,.cbt-mode.selected{
+  border-color:#83bd98;
+  background:linear-gradient(145deg,#f2faf5,#e5f4eb);
+  box-shadow:0 15px 34px rgba(9,89,49,.09);
+}
+.cbt-mode.selected{outline:2px solid rgba(8,115,74,.12)}
+.cbt-mode h3{font-size:16px}
+.cbt-mode p{font-size:12px;max-width:390px}
+.pdf-source-panel,.course-catalog{padding:24px;margin-bottom:22px}
+.pdf-source-head h2,.course-catalog-head h2,.cbt-settings h2{font-size:19px;letter-spacing:-.4px}
+.pdf-source-controls{gap:12px}
+.pdf-source-select{min-width:0}
+.pdf-source-note{line-height:1.7}
+.cbt-settings{padding:25px}
+.cbt-form{gap:17px}
+.cbt-form label{font-size:11px;color:#53645a;margin-bottom:9px}
+.cbt-start{min-height:49px;font-size:12px}
+.cbt-empty{border-style:dashed;border-color:#a9cdb5;padding:38px 22px}
+.cbt-empty h3{font-size:16px}
+.cbt-empty p{max-width:550px;margin:8px auto;line-height:1.7}
+.faculty-group{
+  background:linear-gradient(145deg,#fff,#f6faf7);
+  border:1px solid rgba(16,85,50,.12);
+  border-radius:14px;
+  padding:17px;
+  transition:.2s;
+}
+.faculty-group:hover{border-color:#b6d7c1;transform:translateY(-2px)}
+.faculty-group h3{font-size:12px;letter-spacing:.3px}
+.faculty-group ul{line-height:2}
+.cbt-exam{padding:27px}
+.cbt-timer{border:1px solid #d2e9da;border-radius:12px;font-variant-numeric:tabular-nums}
+.cbt-progress{height:8px;background:#e7efe9;border-radius:20px}
+.cbt-progress-fill{background:linear-gradient(90deg,#0b5d3b,#3b9a69);border-radius:20px}
+.cbt-question{font-size:clamp(18px,2vw,23px);letter-spacing:-.35px}
+.cbt-option{
+  min-height:55px;
+  border-radius:12px;
+  background:rgba(247,250,248,.9);
+  border:1px solid #e3ece6;
+  padding:13px 15px;
+  font-size:13px;
+  transition:.2s;
+}
+.cbt-option:hover,.cbt-option.selected{
+  background:#e9f6ed;border-color:#8dbfa0;
+  box-shadow:0 5px 15px rgba(8,87,48,.05);
+}
+.cbt-option-letter{width:31px;height:31px;border-radius:9px;background:white;color:#0b6842}
+.cbt-secondary,.cbt-submit{border-radius:10px;padding:13px 19px}
+.cbt-submit{background:linear-gradient(135deg,#0b7048,#06452d)}
+.cbt-score{background:conic-gradient(#0b7048 0 75%,#e5f3e9 75%);box-shadow:inset 0 0 0 9px #eaf6ef}
+.cbt-review-item{background:#fbfdfb;border-radius:13px;padding:17px}
+footer{color:#89988f;font-size:10px;padding:30px 0 18px}
+.toast{border:1px solid rgba(255,255,255,.15);box-shadow:0 12px 35px rgba(0,0,0,.2);border-radius:12px}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{
+  outline:3px solid rgba(242,198,93,.75);outline-offset:3px
+}
+button:disabled{cursor:not-allowed;filter:saturate(.55)}
+@media(max-width:1050px){
+  .sidebar{width:235px}.main{margin-left:235px}
+  .content{padding-left:28px;padding-right:28px}
+  .cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:700px){
+  .sidebar{width:270px;transform:translateX(-105%)}
+  .main{margin-left:0}
+  .topbar{height:64px;padding:0 15px}
+  .content{padding:25px 16px 20px}
+  .hero{min-height:250px;padding:28px 22px;border-radius:19px}
+  .art{right:-115px;opacity:.22}
+  .cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .feature{min-height:175px;padding:15px 13px}
+  .lower{grid-template-columns:1fr}
+  .cbt-mode-grid,.cbt-form,.faculty-list{grid-template-columns:1fr}
+  .pdf-source-controls{grid-template-columns:1fr}
+  .pdf-source-panel,.course-catalog,.cbt-settings,.cbt-exam{padding:17px}
+  .materials-grid{grid-template-columns:1fr}
+}
+@media(max-width:390px){
+  .cards{grid-template-columns:1fr}
+  .campus{display:none}
+}
+
+
+/* =========================================================
+   GLASS SELECT SYSTEM — all native dropdown controls
+   The closed controls use translucent glass. Native option
+   menus use a deep-green surface for readable contrast.
+   ========================================================= */
+:root{
+  --select-glass: rgba(255,255,255,.68);
+  --select-glass-hover: rgba(255,255,255,.86);
+  --select-edge: rgba(9,91,55,.23);
+  --select-ink: #153528;
+  --select-menu: #073b2a;
+  --select-menu-hover: #126344;
+}
+select,
+.materials-toolbar select,
+.cbt-form select,
+.pdf-source-select,
+#courseFilter,
+#cbtCourse,
+#cbtCount,
+#cbtDuration,
+#cbtPdfSource{
+  width:100%;
+  min-width:0;
+  min-height:52px;
+  appearance:none;
+  -webkit-appearance:none;
+  color:var(--select-ink);
+  font:inherit;
+  font-size:13px;
+  font-weight:600;
+  line-height:1.35;
+  padding:13px 48px 13px 16px;
+  border:1px solid var(--select-edge);
+  border-radius:14px;
+  background-color:var(--select-glass);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23085d3d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-position:right 16px center;
+  background-size:17px;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.95),
+    0 7px 20px rgba(5,57,34,.045);
+  backdrop-filter:blur(18px) saturate(145%);
+  -webkit-backdrop-filter:blur(18px) saturate(145%);
+  cursor:pointer;
+  transition:border-color .2s ease,background-color .2s ease,box-shadow .2s ease,transform .2s ease;
+}
+select:hover{
+  background-color:var(--select-glass-hover);
+  border-color:rgba(8,115,74,.42);
+  box-shadow:inset 0 1px 0 #fff,0 9px 24px rgba(5,57,34,.075);
+}
+select:focus,
+select:focus-visible{
+  outline:none;
+  border-color:#0b8052;
+  background-color:rgba(255,255,255,.91);
+  box-shadow:
+    0 0 0 4px rgba(11,128,82,.12),
+    0 10px 25px rgba(5,57,34,.08),
+    inset 0 1px 0 #fff;
+}
+select:disabled{
+  opacity:.55;
+  cursor:not-allowed;
+}
+/* Chromium/Edge/Firefox honour option colours even though their
+   native popup does not support backdrop-filter transparency. */
+select option,
+select optgroup{
+  color:#effaf2;
+  background:#073b2a;
+  font-weight:500;
+}
+select option{
+  padding:12px 14px;
+}
+select option:checked,
+select option:hover{
+  color:#fff;
+  background:#126344;
+}
+select optgroup{
+  color:#a9e1bf;
+  font-weight:800;
+  font-size:11px;
+  letter-spacing:.08em;
+}
+/* Consistent sizing in the CBT configuration row */
+.cbt-form > div{min-width:0}
+.cbt-form select{margin-top:2px}
+.materials-toolbar select{max-width:340px}
+.pdf-source-controls select{flex:1}
+@media(max-width:700px){
+  select,
+  .materials-toolbar select,
+  .cbt-form select,
+  .pdf-source-select{
+    min-height:50px;
+    border-radius:12px;
+  }
+}
+/* Reduce the old browser's default focus ring without removing focus visibility */
+select::-ms-expand{display:none}
+
+</style>
+</head>
+
+<body>
+
+<div class="app-shell">
+
+<aside class="sidebar" id="sidebar">
+
+    <a class="brand" href="index.html">
+        <span class="brand-mark">UP</span>
+        <span>
+            <strong>UNI PILOT</strong>
+            <small>STUDY HUB</small>
+        </span>
+    </a>
+
+    <p class="side-label">WORKSPACE</p>
+
+    <nav>
+        <button class="nav-item active" data-view="overview">▦ &nbsp; Overview</button>
+        <button class="nav-item" data-view="materials">▤ &nbsp; My materials</button>
+        <button class="nav-item" data-view="practice">◉ &nbsp; CBT practice</button>
+        <button class="nav-item" data-view="flashcards">▧ &nbsp; Flashcards</button>
+        <button class="nav-item" data-view="progress">↗ &nbsp; My progress</button>
+    </nav>
+
+    <p class="side-label quick">QUICK ACCESS</p>
+
+    <a class="side-link" href="resources.html">▣ &nbsp; Resources</a>
+    <a class="side-link" href="faculty-guide.html">⌂ &nbsp; Faculty guide</a>
+    <a class="side-link" href="tools.html">⚙ &nbsp; Student tools</a>
+
+    <div class="sidebar-bottom">
+        <div class="help-card">
+            <b>✦ Your study space</b>
+            <p>Upload your notes and turn what you learn into practice.</p>
+        </div>
+
+        <a class="back-link" href="index.html">← Back to Uni Pilot</a>
+    </div>
+
+</aside>
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<main class="main">
+
+<header class="topbar">
+
+    <button id="menu" class="menu" aria-label="Toggle navigation">☰</button>
+
+    <div class="crumb">
+        Uni Pilot <span>/</span> <b>Study Hub</b>
+    </div>
+
+    <span class="campus">● AAUA STUDENT SPACE</span>
+
+    <button id="account" class="avatar">S</button>
+
+</header>
+
+<div class="content">
+
+<!-- OVERVIEW -->
+
+<section id="overviewView">
+
+    <div class="welcome">
+        <div>
+            <p class="eyebrow">YOUR ACADEMIC WORKSPACE</p>
+            <h1>Study smarter<span>.</span></h1>
+            <p class="sub">Your notes, practice tests and learning progress — all in one place.</p>
+        </div>
+
+        <span class="date" id="date"></span>
+    </div>
+
+    <section class="hero">
+
+        <div class="hero-copy">
+            <span class="tag">✦ LEARN · PRACTISE · IMPROVE</span>
+
+            <h2>Turn your lecture notes<br>into your next best score.</h2>
+
+            <p>Bring your course materials. Build a question bank. Practise at your own pace.</p>
+
+            <button class="primary" data-upload>＋ Upload study material</button>
+        </div>
+
+        <div class="art">
+            <div class="ring"></div>
+            <div class="book back"></div>
+            <div class="book front">STUDY<br>SMART</div>
+            <span class="spark">✦</span>
+        </div>
+
+    </section>
+
+    <div class="section-title">
+        <div>
+            <p class="eyebrow">GET STARTED</p>
+            <h2>Your study tools</h2>
+        </div>
+
+        <small>More features are coming</small>
+    </div>
+
+    <section class="cards">
+
+        <button class="feature" data-view="materials">
+            <i class="icon green">↑</i>
+            <b>PDF to CBT</b>
+            <p>Upload lecture notes and prepare them for question generation.</p>
+            <small>START WITH A PDF ↗</small>
+        </button>
+
+        <button class="feature" data-view="practice">
+            <i class="icon amber">◉</i>
+            <b>CBT practice</b>
+            <p>Practise with built-in AAUA question banks and generated tests.</p>
+            <small>CHOOSE A COURSE ↗</small>
+        </button>
+
+        <button class="feature" data-view="flashcards">
+            <i class="icon violet">▧</i>
+            <b>Flashcards</b>
+            <p>Revise key terms, concepts and definitions.</p>
+            <small>REVISE QUICKLY ↗</small>
+        </button>
+
+        <button class="feature" data-view="progress">
+            <i class="icon blue">↗</i>
+            <b>My progress</b>
+            <p>Keep track of your practice history and performance.</p>
+            <small>TRACK YOUR GROWTH ↗</small>
+        </button>
+
+    </section>
+
+    <div class="lower">
+
+        <section class="panel">
+            <p class="eyebrow">YOUR LEARNING</p>
+            <h2>Continue studying</h2>
+
+            <div class="empty">
+                <div class="empty-icon">▤</div>
+                <b>Your study library is waiting</b>
+                <p>Upload a PDF to start building your personal study materials.</p>
+                <button class="text-button" data-view="materials">Open my materials →</button>
+            </div>
+        </section>
+
+        <section class="panel">
+            <p class="eyebrow">YOUR ACTIVITY</p>
+            <h2>Study overview</h2>
+
+            <div class="stats">
+
+                <div>
+                    <i>▤</i>
+                    <span>
+                        <b id="overviewCount">0</b>
+                        <small>Materials uploaded</small>
+                    </span>
+                </div>
+
+                <div>
+                    <i class="amber">◉</i>
+                    <span>
+                        <b>0</b>
+                        <small>Tests completed</small>
+                    </span>
+                </div>
+
+                <div>
+                    <i class="violet">★</i>
+                    <span>
+                        <b>—</b>
+                        <small>Average score</small>
+                    </span>
+                </div>
+
+            </div>
+
+            <p class="privacy">Your personal study records will appear here after account setup.</p>
+        </section>
+
+    </div>
+
+</section>
+
+
+<!-- MY MATERIALS -->
+
+<section id="materialsView" hidden>
+
+    <div class="materials-heading">
+        <div>
+            <p class="eyebrow">YOUR PERSONAL LIBRARY</p>
+            <h1>My Materials<span>.</span></h1>
+            <p class="sub">Your lecture notes, handouts and study documents.</p>
+        </div>
+
+        <button class="primary" id="uploadMaterial">＋ Upload PDF</button>
+    </div>
+
+    <div class="materials-stats">
+
+        <div class="material-stat">
+            <span>▤</span>
+            <div>
+                <b id="materialCount">0</b>
+                <small>Total materials</small>
+            </div>
+        </div>
+
+        <div class="material-stat">
+            <span>◈</span>
+            <div>
+                <b id="materialSize">0 MB</b>
+                <small>Storage used</small>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="materials-toolbar">
+
+        <input type="search" id="materialSearch" placeholder="Search your materials...">
+
+        <select id="courseFilter">
+            <option value="all">All courses</option>
+        </select>
+
+    </div>
+
+    <div class="upload-box" id="uploadBox">
+
+        <div class="upload-symbol">↑</div>
+
+        <h3>Upload your study materials</h3>
+
+        <p>Choose your lecture notes, handouts and textbooks.</p>
+
+        <button class="text-button" id="chooseMaterial">Browse files →</button>
+
+        <small>PDF documents only</small>
+
+    </div>
+
+    <div class="materials-grid" id="materialsGrid"></div>
+
+    <div class="materials-empty" id="materialsEmpty">
+        <div>▤</div>
+        <h3>Your library is empty</h3>
+        <p>Upload your first PDF to start building your study library.</p>
+    </div>
+
+</section>
+
+
+
+<!-- CBT PRACTICE -->
+<section id="practiceView" hidden>
+    <div class="cbt-heading">
+        <div>
+            <p class="eyebrow">TEST YOUR KNOWLEDGE</p>
+            <h1>CBT Practice<span>.</span></h1>
+            <p class="sub">Prepare, practise and improve your performance.</p>
+        </div>
+    </div>
+
+    <div id="cbtSetup">
+        <div class="section-title"><div><p class="eyebrow">GET STARTED</p><h2>Choose your examination mode</h2></div></div>
+        <div class="cbt-mode-grid">
+            <button type="button" class="cbt-mode selected" data-mode="practice">
+                <i class="icon amber">◉</i><h3>Practice Mode</h3>
+                <p>Work at your own pace and review your answers after submission.</p>
+            </button>
+            <button type="button" class="cbt-mode" data-mode="exam">
+                <i class="icon green">◷</i><h3>Exam Mode</h3>
+                <p>Take a timed examination and submit when you finish.</p>
+            </button>
+        </div>
+
+        <section class="pdf-source-panel" aria-labelledby="pdfSourceTitle">
+            <div class="pdf-source-head">
+                <div>
+                    <p class="eyebrow">STUDY FROM YOUR OWN NOTES</p>
+                    <h2 id="pdfSourceTitle">Choose from my uploaded PDFs</h2>
+                    <p class="sub">Select a document already saved in your Study Hub library.</p>
+                </div>
+                <span class="icon green">▤</span>
+            </div>
+            <div class="pdf-source-controls">
+                <select id="cbtPdfSource" class="pdf-source-select" aria-label="Choose an uploaded PDF">
+                    <option value="">No uploaded PDFs yet</option>
+                </select>
+                <button type="button" class="primary" id="openCbtPdf">Open selected PDF</button>
+            </div>
+            <p class="pdf-source-note">Your PDF stays in this browser's local Study Hub library. Selecting it helps you study from the right material; questions are not automatically extracted from the PDF in this version.</p>
+            <p class="pdf-source-status" id="cbtPdfStatus" aria-live="polite">Upload a PDF in My Materials to see it here.</p>
+        </section>
+
+        <div class="cbt-settings">
+            <h2>Configure your CBT</h2>
+            <div class="cbt-form">
+                <div><label for="cbtCourse">Select course</label><select id="cbtCourse"><option value="">Choose a course</option></select></div>
+                <div><label for="cbtCount">Number of questions</label><select id="cbtCount"><option value="10">10 Questions</option><option value="20">20 Questions</option><option value="30">30 Questions</option><option value="50">50 Questions</option></select></div>
+                <div><label for="cbtDuration">Examination duration</label><select id="cbtDuration"><option value="15">15 Minutes</option><option value="30" selected>30 Minutes</option><option value="45">45 Minutes</option><option value="60">60 Minutes</option></select></div>
+            </div>
+            <button type="button" class="primary cbt-start" id="startCBT">Start CBT →</button>
+        </div>
+
+        <div class="cbt-empty" id="cbtEmpty">
+            <div class="empty-icon">◉</div>
+            <h3>Your question bank is being prepared</h3>
+            <p>There are no questions in the question bank yet. Add verified course questions to the CBT question bank in the script to make tests available.</p>
+        </div>
+    </div>
+
+        <section class="course-catalog" aria-labelledby="courseCatalogTitle">
+            <div class="course-catalog-head">
+                <div>
+                    <p class="eyebrow">AAUA ACADEMIC DIRECTORY</p>
+                    <h2 id="courseCatalogTitle">Explore faculties & departments</h2>
+                    <p>Department and programme areas listed on AAUA's official website.</p>
+                </div>
+                <input id="courseCatalogSearch" class="course-search" type="search" placeholder="Find a faculty or department..." aria-label="Search AAUA faculties and departments">
+            </div>
+            <div class="faculty-list" id="facultyList"></div>
+            <p class="catalog-disclaimer">This is a department-level directory, not a complete semester course-code list. AAUA's website pages can change; confirm current degree titles, options and course registrations with the relevant faculty handbook or department.</p>
+        </section>
+    </div>
+
+    <div id="cbtExamArea" hidden>
+        <div class="cbt-exam">
+            <div class="cbt-exam-top">
+                <div><p class="eyebrow">UNI PILOT CBT</p><b id="cbtExamCourse">Course Examination</b></div>
+                <div class="cbt-timer" id="cbtTimer" hidden>30:00</div>
+            </div>
+            <div class="cbt-progress"><div class="cbt-progress-fill" id="cbtProgressFill"></div></div>
+            <p class="cbt-question-number" id="cbtQuestionNumber">QUESTION 1</p>
+            <h2 class="cbt-question" id="cbtQuestion"></h2>
+            <div class="cbt-options" id="cbtOptions"></div>
+            <div class="cbt-navigation">
+                <button type="button" class="cbt-secondary" id="cbtPrevious">← Previous</button>
+                <button type="button" class="cbt-secondary" id="cbtNext">Next →</button>
+                <button type="button" class="cbt-submit" id="cbtSubmit">Submit CBT</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="cbtResults" hidden></div>
+</section>
+
+<footer>
+    © <span id="year"></span> Uni Pilot
+    <span>Built for the AAUA student community.</span>
+</footer>
+
+</div>
+</main>
+</div>
+
+<div id="toast" class="toast" role="status"></div>
+
+<input id="pdfInput" type="file" accept="application/pdf,.pdf" multiple hidden>
+
+
+<script type="module">
+
+/* FIREBASE AUTHENTICATION */
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-app.js";
+
+import {
+    getAuth,
+    onAuthStateChanged,
+    setPersistence,
+    browserLocalPersistence
+} from "https://www.gstatic.com/firebasejs/13.1.0/firebase-auth.js";
+
+
+const firebaseConfig = {
+    apiKey: "AIzaSyDHuitFp-hlbKNuS5Ac8yRZfa4Gkynl9A8",
+    authDomain: "aaua-uni-pilot.firebaseapp.com",
+    projectId: "aaua-uni-pilot",
+    storageBucket: "aaua-uni-pilot.firebasestorage.app",
+    messagingSenderId: "64037390722",
+    appId: "1:64037390722:web:34ae79aa14e52c3b0f279b",
+    measurementId: "G-GLJ7CYN4BQ"
+};
+
+const firebaseApp = initializeApp(firebaseConfig);
+const auth = getAuth(firebaseApp);
+
+
+/* HELPERS */
+
+const $ = selector => document.querySelector(selector);
+
+const toast = message => {
+    const notification = $('#toast');
+
+    notification.textContent = message;
+    notification.classList.add('show');
+
+    clearTimeout(window.toastTimer);
+
+    window.toastTimer = setTimeout(() => {
+        notification.classList.remove('show');
+    }, 3000);
+};
+
+
+/* DATE */
+
+$('#date').textContent = new Intl.DateTimeFormat('en-NG', {
+    weekday: 'short',
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric'
+}).format(new Date());
+
+$('#year').textContent = new Date().getFullYear();
+
+
+/* NAVIGATION */
+
+const sidebar = $('#sidebar');
+const overlay = $('#sidebarOverlay');
+
+function openSidebar() {
+    sidebar.classList.add('open');
+    overlay.classList.add('active');
+}
+
+function closeSidebar() {
+    sidebar.classList.remove('open');
+    overlay.classList.remove('active');
+}
+
+$('#menu').addEventListener('click', () => {
+    sidebar.classList.contains('open') ? closeSidebar() : openSidebar();
+});
+
+overlay.addEventListener('click', closeSidebar);
+
+document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') closeSidebar();
+});
+
+
+/* VIEW SWITCHING */
+
+function showView(view) {
+
+    $('#overviewView').hidden = view !== 'overview';
+    $('#materialsView').hidden = view !== 'materials';
+    $('#practiceView').hidden = view !== 'practice';
+
+    if (view === 'practice') updateCBTCourses();
+
+    document.querySelectorAll('.nav-item').forEach(button => {
+        button.classList.toggle('active', button.dataset.view === view);
+    });
+
+    if (view === 'materials') {
+        loadMaterials();
+    }
+    if (view === 'practice') {
+        updateCBTPdfChoices();
+        updateCBTCourses();
+    }
+
+    const messages = {
+        flashcards: 'Flashcard creation is coming soon.',
+        progress: 'Your learning analytics are coming soon.'
+    };
+
+    if (messages[view]) toast(messages[view]);
+
+    closeSidebar();
+}
+
+document.querySelectorAll('[data-view]').forEach(button => {
+    button.addEventListener('click', () => {
+        showView(button.dataset.view);
+    });
+});
+
+
+/* DATABASE */
+
+const DB_NAME = 'UniPilotStudyHub';
+const STORE_NAME = 'materials';
+
+function openDatabase() {
+
+    return new Promise((resolve, reject) => {
+
+        const request = indexedDB.open(DB_NAME, 1);
+
+        request.onupgradeneeded = event => {
+
+            const db = event.target.result;
+
+            if (!db.objectStoreNames.contains(STORE_NAME)) {
+                db.createObjectStore(STORE_NAME, {
+                    keyPath: 'id',
+                    autoIncrement: true
+                });
+            }
+
+        };
+
+        request.onsuccess = () => resolve(request.result);
+        request.onerror = () => reject(request.error);
+
+    });
+}
+
+async function databaseAction(mode, action, data) {
+
+    const db = await openDatabase();
+
+    return new Promise((resolve, reject) => {
+
+        const transaction = db.transaction(STORE_NAME, mode);
+        const store = transaction.objectStore(STORE_NAME);
+
+        let request;
+
+        if (action === 'add') {
+            request = store.add(data);
+        } else if (action === 'delete') {
+            request = store.delete(data);
+        } else {
+            request = store.getAll();
+        }
+
+        request.onsuccess = () => resolve(request.result);
+        request.onerror = () => reject(request.error);
+
+        transaction.oncomplete = () => db.close();
+        transaction.onerror = () => reject(transaction.error);
+
+    });
+}
+
+
+/* PDF UPLOAD */
+
+const pdfInput = $('#pdfInput');
+
+document.querySelectorAll('[data-upload]').forEach(button => {
+    button.addEventListener('click', () => {
+        showView('materials');
+        pdfInput.click();
+    });
+});
+
+$('#uploadMaterial').addEventListener('click', () => pdfInput.click());
+$('#chooseMaterial').addEventListener('click', () => pdfInput.click());
+
+
+async function saveFiles(files) {
+
+    for (const file of files) {
+
+        if (
+            file.type !== 'application/pdf' &&
+            !file.name.toLowerCase().endsWith('.pdf')
+        ) {
+            toast('Only PDF documents are allowed.');
+            continue;
+        }
+
+        try {
+
+            await databaseAction('readwrite', 'add', {
+                name: file.name,
+                size: file.size,
+                course: 'Uncategorised',
+                date: new Date().toISOString(),
+                file: file
+            });
+
+            toast(file.name + ' added successfully.');
+
+        } catch (error) {
+
+            console.error(error);
+            toast('Could not save this PDF. Check browser storage.');
+
+        }
+
+    }
+
+    loadMaterials();
+}
+
+pdfInput.addEventListener('change', event => {
+    saveFiles(event.target.files);
+    event.target.value = '';
+});
+
+
+/* DRAG AND DROP */
+
+const uploadBox = $('#uploadBox');
+
+uploadBox.addEventListener('dragover', event => {
+    event.preventDefault();
+    uploadBox.classList.add('dragging');
+});
+
+uploadBox.addEventListener('dragleave', () => {
+    uploadBox.classList.remove('dragging');
+});
+
+uploadBox.addEventListener('drop', event => {
+    event.preventDefault();
+    uploadBox.classList.remove('dragging');
+    saveFiles(event.dataTransfer.files);
+});
+
+
+/* LOAD MATERIALS */
+
+let allMaterials = [];
+
+async function loadMaterials() {
+
+    try {
+
+        allMaterials = await databaseAction('readonly', 'getAll');
+
+        updateCBTPdfChoices();
+        updateMaterialStats();
+        updateCourseFilter();
+        renderMaterials();
+
+        $('#overviewCount').textContent = allMaterials.length;
+
+    } catch (error) {
+
+        console.error(error);
+        toast('Could not load your materials.');
+
+    }
+}
+
+
+/* STATISTICS */
+
+function updateMaterialStats() {
+
+    $('#materialCount').textContent = allMaterials.length;
+
+    const totalSize = allMaterials.reduce(
+        (sum, material) => sum + material.size,
+        0
+    );
+
+    $('#materialSize').textContent =
+        (totalSize / (1024 * 1024)).toFixed(2) + ' MB';
+}
+
+
+/* COURSE FILTER */
+
+function updateCourseFilter() {
+
+    const filter = $('#courseFilter');
+    const selected = filter.value;
+
+    const courses = [
+        ...new Set(allMaterials.map(material => material.course))
+    ];
+
+    filter.innerHTML = '<option value="all">All courses</option>';
+
+    courses.forEach(course => {
+
+        const option = document.createElement('option');
+
+        option.value = course;
+        option.textContent = course;
+
+        filter.appendChild(option);
+
+    });
+
+    filter.value = courses.includes(selected) ? selected : 'all';
+}
+
+
+/* DISPLAY MATERIALS */
+
+function renderMaterials() {
+
+    const grid = $('#materialsGrid');
+    const empty = $('#materialsEmpty');
+
+    grid.innerHTML = '';
+
+    const search = $('#materialSearch').value.toLowerCase();
+    const course = $('#courseFilter').value;
+
+    const filtered = allMaterials.filter(material => {
+
+        const matchesSearch =
+            material.name.toLowerCase().includes(search) ||
+            material.course.toLowerCase().includes(search);
+
+        const matchesCourse =
+            course === 'all' || material.course === course;
+
+        return matchesSearch && matchesCourse;
+
+    });
+
+    empty.hidden = allMaterials.length !== 0 || filtered.length !== 0;
+
+    if (allMaterials.length > 0 && filtered.length === 0) {
+        empty.hidden = false;
+        empty.querySelector('h3').textContent = 'No matching materials';
+        empty.querySelector('p').textContent = 'Try another search or course filter.';
+    } else {
+        empty.querySelector('h3').textContent = 'Your library is empty';
+        empty.querySelector('p').textContent = 'Upload your first PDF to start building your study library.';
+    }
+
+    filtered.forEach(material => {
+
+        const card = document.createElement('article');
+        card.className = 'material-card';
+
+        const icon = document.createElement('div');
+        icon.className = 'pdf-icon';
+        icon.textContent = 'PDF';
+
+        const name = document.createElement('h3');
+        name.textContent = material.name;
+
+        const details = document.createElement('p');
+
+        details.textContent =
+            `${(material.size / (1024 * 1024)).toFixed(2)} MB · ` +
+            new Date(material.date).toLocaleDateString();
+
+        const course = document.createElement('span');
+        course.className = 'material-course';
+        course.textContent = material.course;
+
+        const actions = document.createElement('div');
+        actions.className = 'material-actions';
+
+        const open = document.createElement('button');
+        open.textContent = 'Open';
+        open.addEventListener('click', () => openMaterial(material));
+
+        const download = document.createElement('button');
+        download.textContent = 'Download';
+        download.addEventListener('click', () => downloadMaterial(material));
+
+        const remove = document.createElement('button');
+        remove.textContent = 'Delete';
+        remove.className = 'delete';
+
+        remove.addEventListener('click', () => deleteMaterial(material.id));
+
+        actions.append(open, download, remove);
+
+        card.append(icon, name, details, course, actions);
+
+        grid.appendChild(card);
+
+    });
+}
+
+
+/* OPEN PDF */
+
+function openMaterial(material) {
+
+    const url = URL.createObjectURL(material.file);
+
+    window.open(url, '_blank');
+
+    setTimeout(() => URL.revokeObjectURL(url), 60000);
+}
+
+
+/* DOWNLOAD PDF */
+
+function downloadMaterial(material) {
+
+    const url = URL.createObjectURL(material.file);
+
+    const link = document.createElement('a');
+
+    link.href = url;
+    link.download = material.name;
+
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+
+/* DELETE PDF */
+
+async function deleteMaterial(id) {
+
+    if (!confirm('Are you sure you want to delete this material?')) {
+        return;
+    }
+
+    try {
+
+        await databaseAction('readwrite', 'delete', id);
+
+        toast('Material deleted successfully.');
+
+        loadMaterials();
+
+    } catch (error) {
+
+        console.error(error);
+        toast('Could not delete this material.');
+
+    }
+}
+
+
+/* SEARCH AND FILTER */
+
+$('#materialSearch').addEventListener('input', renderMaterials);
+
+$('#courseFilter').addEventListener('change', renderMaterials);
+
+
+/* ACCOUNT */
+
+let currentStudent = null;
+
+$('#account').addEventListener('click', () => {
+
+    if (currentStudent) {
+        toast(
+            currentStudent.displayName ||
+            currentStudent.email ||
+            'You are signed in.'
+        );
+    }
+
+});
+
+
+/* FIREBASE SESSION */
+
+async function startStudyHub() {
+
+    try {
+
+        await setPersistence(auth, browserLocalPersistence);
+
+        onAuthStateChanged(auth, async user => {
+
+            if (!user) {
+                window.location.replace('auth-firebase.html');
+                return;
+            }
+
+            currentStudent = user;
+
+            const accountButton = $('#account');
+
+            accountButton.textContent =
+                user.displayName
+                    ? user.displayName.charAt(0).toUpperCase()
+                    : user.email
+                        ? user.email.charAt(0).toUpperCase()
+                        : 'S';
+
+            accountButton.title =
+                user.displayName || user.email || 'Student account';
+
+            await loadMaterials();
+
+        });
+
+    } catch (error) {
+
+        console.error('Firebase authentication error:', error);
+        toast('Unable to verify your login. Please refresh the page.');
+
+    }
+
+}
+
+
+
+
+
+/* AAUA OFFICIAL FACULTY / DEPARTMENT DIRECTORY
+   Compiled from faculty pages on aaua.edu.ng. Department names are shown
+   where the official pages list departments; programme titles are not inferred.
+*/
+const AAUA_DIRECTORY = [
+ {faculty:"Agriculture",departments:["Agricultural Economics","Agricultural Extension and Rural Development","Agronomy","Animal Science","Fisheries and Aquaculture","Forestry and Wildlife Management","Food Science and Technology"]},
+ {faculty:"Arts",departments:["Philosophy","Religion and African Culture","History and International Studies","Linguistics and Languages","English Studies","Performing Arts"]},
+ {faculty:"Education",departments:["Arts Education","Educational Management","Guidance and Counselling","Science Education","Human Kinetics and Health Education","Library and Information Science","Adult and Continuing Education","Industrial Technology and Vocational Education","Social Science Education"]},
+ {faculty:"Environmental Design and Management",departments:["Architecture","Estate Management","Surveying and Geo-Informatics","Urban and Regional Planning"]},
+ {faculty:"Law",departments:["Commercial Law","Private Law","Jurisprudence and International Law","Public Law"]},
+ {faculty:"Science",departments:["Biochemistry","Chemical Sciences","Animal and Environmental Biology","Earth Sciences","Mathematical Sciences","Microbiology","Physics and Electronics","Plant Science and Biotechnology"]},
+ {faculty:"Social and Management Sciences",departments:["Accounting","Banking and Finance","Business Administration","Economics","Geography and Planning Sciences","Political Science and Public Administration","Pure and Applied Psychology","Sociology","Mass Communication"]}
+];
+
+function renderAAUADirectory(filterText=""){
+ const target=document.getElementById("facultyList");
+ if(!target)return;
+ target.replaceChildren();
+ const query=filterText.trim().toLowerCase();
+ AAUA_DIRECTORY.forEach(group=>{
+   const matches=group.departments.filter(name=>name.toLowerCase().includes(query));
+   if(query && !group.faculty.toLowerCase().includes(query) && !matches.length)return;
+   const card=document.createElement("article");card.className="faculty-group";
+   const title=document.createElement("h3");title.textContent=group.faculty;
+   const list=document.createElement("ul");
+   (query && group.faculty.toLowerCase().includes(query) ? group.departments : matches).forEach(name=>{
+     const li=document.createElement("li");li.textContent=name;list.appendChild(li);
+   });
+   card.append(title,list);target.appendChild(card);
+ });
+ if(!target.children.length){
+   const empty=document.createElement("p");empty.className="pdf-source-note";empty.textContent="No matching faculty or department found.";target.appendChild(empty);
+ }
+}
+const catalogSearch=document.getElementById("courseCatalogSearch");
+if(catalogSearch)catalogSearch.addEventListener("input",()=>renderAAUADirectory(catalogSearch.value));
+renderAAUADirectory();
+
+function updateCBTPdfChoices(){
+ const select=document.getElementById("cbtPdfSource");
+ if(!select)return;
+ const previous=select.value;
+ select.replaceChildren(new Option("Choose an uploaded PDF",""));
+ allMaterials.forEach(material=>select.add(new Option(material.name, String(material.id))));
+ if(allMaterials.some(material=>String(material.id)===previous))select.value=previous;
+ const status=document.getElementById("cbtPdfStatus");
+ if(!allMaterials.length){
+   status.textContent="No PDFs saved yet. Go to My Materials and upload a lecture note or handout.";
+ }else{
+   status.textContent=allMaterials.length+" PDF"+(allMaterials.length===1?"":"s")+" available in your library.";
+ }
+}
+const pdfSourceSelect=document.getElementById("cbtPdfSource");
+if(pdfSourceSelect)pdfSourceSelect.addEventListener("change",()=>{
+ const chosen=allMaterials.find(item=>String(item.id)===pdfSourceSelect.value);
+ document.getElementById("cbtPdfStatus").textContent=chosen
+   ? "Selected: "+chosen.name+" · "+chosen.course
+   : "Choose a document from your saved library.";
+});
+const openCbtPdfButton=document.getElementById("openCbtPdf");
+if(openCbtPdfButton)openCbtPdfButton.addEventListener("click",()=>{
+ const chosen=allMaterials.find(item=>String(item.id)===document.getElementById("cbtPdfSource").value);
+ if(!chosen){toast("Choose one of your uploaded PDFs first.");return;}
+ openMaterial(chosen);
+});
+
+/* CBT QUESTION BANK
+   Add verified questions using this structure:
+   {
+       course: "BIO 101",
+       question: "Question text?",
+       options: ["Option A", "Option B", "Option C", "Option D"],
+       answer: 0,
+       explanation: "Why the correct option is correct."
+   }
+   answer is the zero-based option index (0 to 3).
+*/
+const CBT_QUESTIONS = [];
+
+let cbtMode = 'practice';
+let cbtQuestions = [];
+let cbtAnswers = {};
+let cbtCurrent = 0;
+let cbtSecondsLeft = 0;
+let cbtTimerInterval = null;
+let cbtSubmitted = false;
+
+function updateCBTCourses() {
+    const courseSelect = document.getElementById('cbtCourse');
+    const emptyNotice = document.getElementById('cbtEmpty');
+    const previousValue = courseSelect.value;
+    const courses = [...new Set(CBT_QUESTIONS.map(item => item.course).filter(Boolean))].sort();
+    const officialDepartments = [...new Set(AAUA_DIRECTORY.flatMap(group => group.departments))].sort();
+
+    courseSelect.replaceChildren(new Option('Choose a course / department', ''));
+    officialDepartments.forEach(course => courseSelect.add(new Option(course, course)));
+    courses.forEach(course => {
+        if (!officialDepartments.includes(course)) courseSelect.add(new Option(course, course));
+    });
+
+    if (officialDepartments.includes(previousValue) || courses.includes(previousValue)) courseSelect.value = previousValue;
+    emptyNotice.hidden = false;
+    emptyNotice.querySelector('h3').textContent = courses.length
+        ? 'More verified question banks can be added'
+        : 'Your question bank is being prepared';
+    emptyNotice.querySelector('p').textContent = courses.length
+        ? 'AAUA departments are listed above. A test starts only when verified questions for the selected course have been added.'
+        : 'Choose a department to prepare your study area. Tests will become available when verified questions for that course are added to the question bank.';
+    const hasQuestions = courses.length > 0;
+    document.getElementById('startCBT').disabled = !hasQuestions;
+    document.getElementById('startCBT').style.opacity = hasQuestions ? '1' : '.55';
+}
+
+document.querySelectorAll('.cbt-mode').forEach(button => {
+    button.addEventListener('click', () => {
+        cbtMode = button.dataset.mode;
+        document.querySelectorAll('.cbt-mode').forEach(item => {
+            item.classList.toggle('selected', item === button);
+        });
+        document.getElementById('cbtDuration').disabled = cbtMode !== 'exam';
+        document.getElementById('cbtTimer').hidden = cbtMode !== 'exam';
+    });
+});
+
+function startCBT() {
+    const course = document.getElementById('cbtCourse').value;
+    if (!course) {
+        toast('Please select a course.');
+        return;
+    }
+
+    const available = CBT_QUESTIONS.filter(item =>
+        item.course === course &&
+        typeof item.question === 'string' &&
+        Array.isArray(item.options) &&
+        item.options.length === 4 &&
+        Number.isInteger(item.answer) &&
+        item.answer >= 0 && item.answer < 4
+    );
+
+    if (!available.length) {
+        toast('No valid questions are available for this course yet.');
+        return;
+    }
+
+    const requestedCount = Number(document.getElementById('cbtCount').value);
+    cbtQuestions = [...available].sort(() => Math.random() - 0.5).slice(0, requestedCount);
+    cbtAnswers = {};
+    cbtCurrent = 0;
+    cbtSubmitted = false;
+    clearInterval(cbtTimerInterval);
+
+    cbtSecondsLeft = Number(document.getElementById('cbtDuration').value) * 60;
+    document.getElementById('cbtExamCourse').textContent = course + (cbtMode === 'exam' ? ' · Examination' : ' · Practice');
+    document.getElementById('cbtSetup').hidden = true;
+    document.getElementById('cbtResults').hidden = true;
+    document.getElementById('cbtExamArea').hidden = false;
+    document.getElementById('cbtTimer').hidden = cbtMode !== 'exam';
+
+    renderCBTQuestion();
+
+    if (cbtMode === 'exam') {
+        updateCBTTimer();
+        cbtTimerInterval = setInterval(() => {
+            cbtSecondsLeft--;
+            updateCBTTimer();
+            if (cbtSecondsLeft <= 0) finishCBT(true);
+        }, 1000);
+    }
+}
+
+function updateCBTTimer() {
+    const mins = Math.floor(Math.max(0, cbtSecondsLeft) / 60);
+    const secs = Math.max(0, cbtSecondsLeft) % 60;
+    document.getElementById('cbtTimer').textContent =
+        String(mins).padStart(2, '0') + ':' + String(secs).padStart(2, '0');
+}
+
+function renderCBTQuestion() {
+    const item = cbtQuestions[cbtCurrent];
+    if (!item) return;
+
+    document.getElementById('cbtQuestionNumber').textContent =
+        `QUESTION ${cbtCurrent + 1} OF ${cbtQuestions.length}`;
+    document.getElementById('cbtQuestion').textContent = item.question;
+    document.getElementById('cbtProgressFill').style.width =
+        `${((cbtCurrent + 1) / cbtQuestions.length) * 100}%`;
+
+    const options = document.getElementById('cbtOptions');
+    options.replaceChildren();
+
+    item.options.forEach((option, index) => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'cbt-option' + (cbtAnswers[cbtCurrent] === index ? ' selected' : '');
+
+        const letter = document.createElement('span');
+        letter.className = 'cbt-option-letter';
+        letter.textContent = String.fromCharCode(65 + index);
+
+        const label = document.createElement('span');
+        label.textContent = option;
+
+        button.append(letter, label);
+        button.addEventListener('click', () => {
+            if (cbtSubmitted) return;
+            cbtAnswers[cbtCurrent] = index;
+            renderCBTQuestion();
+        });
+        options.appendChild(button);
+    });
+
+    document.getElementById('cbtPrevious').disabled = cbtCurrent === 0;
+    document.getElementById('cbtPrevious').style.opacity = cbtCurrent === 0 ? '.45' : '1';
+    document.getElementById('cbtNext').hidden = cbtCurrent === cbtQuestions.length - 1;
+}
+
+function finishCBT(autoSubmitted = false) {
+    if (cbtSubmitted || !cbtQuestions.length) return;
+
+    const unanswered = cbtQuestions.length - Object.keys(cbtAnswers).length;
+    if (!autoSubmitted && unanswered > 0 &&
+        !confirm(`You have ${unanswered} unanswered question(s). Submit anyway?`)) return;
+
+    cbtSubmitted = true;
+    clearInterval(cbtTimerInterval);
+
+    const correct = cbtQuestions.reduce((total, question, index) =>
+        total + (cbtAnswers[index] === question.answer ? 1 : 0), 0);
+    const total = cbtQuestions.length;
+    const percentage = Math.round((correct / total) * 100);
+    const results = document.getElementById('cbtResults');
+
+    results.replaceChildren();
+    const card = document.createElement('div');
+    card.className = 'cbt-result';
+
+    const heading = document.createElement('p');
+    heading.className = 'eyebrow';
+    heading.textContent = autoSubmitted ? 'TIME IS UP' : 'CBT COMPLETED';
+
+    const title = document.createElement('h2');
+    title.textContent = 'Your result';
+
+    const score = document.createElement('div');
+    score.className = 'cbt-score';
+    score.textContent = percentage + '%';
+
+    const summary = document.createElement('p');
+    summary.textContent = `${correct} correct · ${total - correct} incorrect · ${total} questions`;
+
+    const restart = document.createElement('button');
+    restart.type = 'button';
+    restart.className = 'primary';
+    restart.textContent = 'Back to CBT setup';
+    restart.addEventListener('click', resetCBT);
+
+    card.append(heading, title, score, summary, restart);
+
+    const review = document.createElement('div');
+    review.className = 'cbt-review';
+    const reviewTitle = document.createElement('h3');
+    reviewTitle.textContent = 'Answer review';
+    review.appendChild(reviewTitle);
+
+    cbtQuestions.forEach((question, index) => {
+        const item = document.createElement('div');
+        item.className = 'cbt-review-item';
+
+        const q = document.createElement('p');
+        q.textContent = `${index + 1}. ${question.question}`;
+
+        const chosen = document.createElement('p');
+        const selected = cbtAnswers[index];
+        chosen.className = selected === question.answer ? 'cbt-correct' : 'cbt-wrong';
+        chosen.textContent = 'Your answer: ' + (selected === undefined ? 'Not answered' : question.options[selected]);
+
+        const correctAnswer = document.createElement('p');
+        correctAnswer.className = 'cbt-correct';
+        correctAnswer.textContent = 'Correct answer: ' + question.options[question.answer];
+
+        item.append(q, chosen, correctAnswer);
+        if (question.explanation) {
+            const explanation = document.createElement('p');
+            explanation.textContent = 'Explanation: ' + question.explanation;
+            item.appendChild(explanation);
+        }
+        review.appendChild(item);
+    });
+
+    card.appendChild(review);
+    results.appendChild(card);
+    document.getElementById('cbtExamArea').hidden = true;
+    results.hidden = false;
+}
+
+function resetCBT() {
+    clearInterval(cbtTimerInterval);
+    cbtTimerInterval = null;
+    cbtQuestions = [];
+    cbtAnswers = {};
+    cbtCurrent = 0;
+    cbtSubmitted = false;
+    document.getElementById('cbtResults').replaceChildren();
+    document.getElementById('cbtResults').hidden = true;
+    document.getElementById('cbtExamArea').hidden = true;
+    document.getElementById('cbtSetup').hidden = false;
+    updateCBTCourses();
+}
+
+document.getElementById('startCBT').addEventListener('click', startCBT);
+document.getElementById('cbtPrevious').addEventListener('click', () => {
+    if (cbtCurrent > 0) {
+        cbtCurrent--;
+        renderCBTQuestion();
+    }
+});
+document.getElementById('cbtNext').addEventListener('click', () => {
+    if (cbtCurrent < cbtQuestions.length - 1) {
+        cbtCurrent++;
+        renderCBTQuestion();
+    }
+});
+document.getElementById('cbtSubmit').addEventListener('click', () => finishCBT(false));
+document.getElementById('cbtDuration').disabled = false;
+updateCBTCourses();
+
+
+/* START */
+
+startStudyHub();
+
+</script>
+
+</body>
+</html>
