@@ -38,11 +38,42 @@
     const mobileTheme=menu.querySelector("#themeMenuTrigger");
     if(!mobileTheme){const b=document.createElement("button");b.type="button";b.textContent="◐ Theme settings";b.addEventListener("click",openTheme);menu.appendChild(b);}
 
+    // Compact AI popup: same AI page/API and same-origin saved chat history.
+    function openAIPopup(){
+      let layer=document.getElementById("uniPilotAIPopup");
+      if(!layer){
+        layer=document.createElement("div");
+        layer.id="uniPilotAIPopup";
+        layer.innerHTML='<section class="up-ai-window" role="dialog" aria-modal="true" aria-label="Uni Pilot AI mini chat"><div class="up-ai-top"><strong>✦ Uni Pilot AI</strong><div class="up-ai-actions"><button type="button" data-up-ai-expand>Expand chat ↗</button><button type="button" data-up-ai-close aria-label="Close AI chat">×</button></div></div><iframe title="Uni Pilot AI chat" src="ai.html?mini=1"></iframe></section>';
+        const style=document.createElement("style");
+        style.textContent=`
+          #uniPilotAIPopup{position:fixed;inset:0;z-index:5000;display:flex;align-items:center;justify-content:center;padding:18px;background:rgba(3,12,8,.42);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px)}
+          #uniPilotAIPopup .up-ai-window{width:min(580px,calc(100vw - 28px));height:min(680px,70vh);min-height:420px;display:flex;flex-direction:column;overflow:hidden;border:1px solid rgba(255,255,255,.55);border-radius:22px;background:#fff;box-shadow:0 24px 80px rgba(0,0,0,.32)}
+          #uniPilotAIPopup .up-ai-top{height:54px;flex:0 0 54px;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:0 13px 0 17px;background:#0b5d3b;color:#fff;font:800 13px Manrope,Arial,sans-serif}
+          #uniPilotAIPopup .up-ai-actions{display:flex;align-items:center;gap:7px}
+          #uniPilotAIPopup .up-ai-actions button{border:1px solid rgba(255,255,255,.35);border-radius:10px;padding:8px 10px;background:rgba(255,255,255,.12);color:#fff;font:800 11px Manrope,Arial,sans-serif;cursor:pointer}
+          #uniPilotAIPopup .up-ai-actions [data-up-ai-close]{width:32px;height:32px;padding:0;font-size:21px}
+          #uniPilotAIPopup iframe{display:block;flex:1;width:100%;min-height:0;border:0;background:#fff}
+          @media(max-width:600px){#uniPilotAIPopup{padding:10px}#uniPilotAIPopup .up-ai-window{width:100%;height:68vh;min-height:390px;border-radius:19px}#uniPilotAIPopup .up-ai-top{height:50px;flex-basis:50px;padding:0 10px 0 13px}}
+          @media(prefers-reduced-motion:no-preference){#uniPilotAIPopup .up-ai-window{animation:upAIPopupIn .2s ease-out}@keyframes upAIPopupIn{from{opacity:0;transform:translateY(10px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}}
+          html[data-theme="dark"] #uniPilotAIPopup .up-ai-window{border-color:#263b49;background:#0d1720}
+        `;
+        document.head.appendChild(style);
+        document.body.appendChild(layer);
+        layer.querySelector("[data-up-ai-close]").addEventListener("click",()=>{layer.remove();const f=document.getElementById("uniPilotAIFloat");if(f)f.style.visibility="visible"});
+        layer.querySelector("[data-up-ai-expand]").addEventListener("click",()=>{location.href="ai.html"});
+        layer.addEventListener("click",e=>{if(e.target===layer){layer.remove();const f=document.getElementById("uniPilotAIFloat");if(f)f.style.visibility="visible"}});
+        document.addEventListener("keydown",e=>{if(e.key==="Escape"&&document.getElementById("uniPilotAIPopup")){document.getElementById("uniPilotAIPopup").remove();const f=document.getElementById("uniPilotAIFloat");if(f)f.style.visibility="visible"}});
+      }
+      const float=document.getElementById("uniPilotAIFloat");
+      if(float)float.style.visibility="hidden";
+    }
+
     // Draggable Uni Pilot AI shortcut, shared across pages using this script.
     if (!document.getElementById("uniPilotAIFloat")) {
       const floatStyle = document.createElement("style");
       floatStyle.textContent = `
-        #uniPilotAIFloat{position:fixed;right:22px;bottom:24px;z-index:9998;width:66px;height:66px;border:0;border-radius:50%;display:flex;align-items:center;justify-content:center;gap:0;background:linear-gradient(145deg,#0b5d3b,#063b26);color:#fff;box-shadow:0 8px 24px rgba(6,59,38,.32);font:900 29px Manrope,sans-serif;cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none;transition:box-shadow .2s ease,transform .2s ease}
+        #uniPilotAIFloat{position:fixed;right:22px;bottom:24px;z-index:1050;width:66px;height:66px;border:0;border-radius:50%;display:flex;align-items:center;justify-content:center;gap:0;background:linear-gradient(145deg,#0b5d3b,#063b26);color:#fff;box-shadow:0 8px 24px rgba(6,59,38,.32);font:900 29px Manrope,sans-serif;cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none;transition:box-shadow .2s ease,transform .2s ease}
         #uniPilotAIFloat::after{content:"AI";position:absolute;right:-2px;bottom:-2px;min-width:22px;height:22px;padding:0 4px;border:2px solid #fff;border-radius:12px;background:#f5c518;color:#173b2b;font:800 10px/18px Manrope,sans-serif;text-align:center}
         #uniPilotAIFloat:active{cursor:grabbing;transform:scale(.96)}
         @media(prefers-reduced-motion:no-preference){#uniPilotAIFloat{animation:upAiFloat 3.6s ease-in-out infinite}@keyframes upAiFloat{0%,100%{translate:0 0}50%{translate:0 -7px}}}
@@ -89,7 +120,7 @@
       });
       aiFloat.addEventListener("click", () => {
         if (moved) { moved=false; return; }
-        location.href = "ai.html";
+        openAIPopup();
       });
       window.addEventListener("resize", () => {
         const rect=aiFloat.getBoundingClientRect();
