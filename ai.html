@@ -144,43 +144,50 @@
 
     function formatAssistantText(text) {
       const escapeHtml = value => value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
-      let safe = escapeHtml(String(text || "")).replace(/\r\n?/g, "\n");
+      const inline = value => {
+        let out = value;
+        out = out.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+        out = out.replace(/__(.+?)__/g, "<strong>$1</strong>");
+        out = out.replace(/(?<!\*)\*([^*\n]+)\*(?!\*)/g, "<em>$1</em>");
+        out = out.replace(/(?<!_)_([^_\n]+)_(?!_)/g, "<em>$1</em>");
+        out = out.replace(/\x60([^\x60\n]+)\x60/g, "<code>$1</code>");
+        out = out.replace(/\*\*/g, "").replace(/(^|\s)\*(?=\s|$)/g, "$1");
+        return out;
+      };
+      const safe = escapeHtml(String(text || "")).replace(/\r\n?/g, "\n");
       const codeBlocks = [];
-      safe = safe.replace(/```([\w-]*)\n?([\s\S]*?)```/g, (_, lang, code) => {
-        const index = codeBlocks.push("<pre><code>" + code.trimEnd() + "</code></pre>") - 1;
-        return "@@CODE" + index + "@@";
+      const protectedText = safe.replace(/\x60{3}([\w-]*)\n?([\s\S]*?)\x60{3}/g, (_, lang, code) => {
+        return "@@CODE" + (codeBlocks.push("<pre><code>" + code.trimEnd() + "</code></pre>") - 1) + "@@";
       });
-      const lines = safe.split("\n");
       const output = [];
       let listType = null;
-      const closeList = () => { if (listType) { output.push(listType === "ul" ? "</ul>" : "</ol>"); listType = null; } };
-      for (const rawLine of lines) {
-        const line = rawLine.trim();
+      const closeList = () => { if (listType) output.push(listType === "ul" ? "</ul>" : "</ol>"); listType = null; };
+      for (const raw of protectedText.split("\n")) {
+        const line = raw.trim();
         if (!line) { closeList(); continue; }
-        const heading = line.match(/^(#{1,3})\s+(.+)$/);
-        if (heading) { closeList(); const level = heading[1].length; output.push("<h" + level + ">" + heading[2] + "</h" + level + ">"); continue; }
+        if (/^([-*_])\1\1+\s*$/.test(line)) { closeList(); continue; }
+        const heading = line.match(/^#{1,3}\s+(.+)$/);
+        if (heading) {
+          closeList();
+          const level = Math.min(line.match(/^#+/)[0].length, 3);
+          output.push("<h" + level + ">" + inline(heading[1]) + "</h" + level + ">");
+          continue;
+        }
         const bullet = line.match(/^[-*+]\s+(.+)$/);
         const numbered = line.match(/^\d+[.)]\s+(.+)$/);
         if (bullet || numbered) {
           const wanted = bullet ? "ul" : "ol";
           if (listType !== wanted) { closeList(); output.push(wanted === "ul" ? "<ul>" : "<ol>"); listType = wanted; }
-          output.push("<li>" + (bullet ? bullet[1] : numbered[1]) + "</li>");
+          output.push("<li>" + inline(bullet ? bullet[1] : numbered[1]) + "</li>");
           continue;
         }
         closeList();
         const quote = line.match(/^&gt;\s?(.*)$/);
-        if (quote) output.push("<blockquote>" + quote[1] + "</blockquote>");
-        else output.push("<p>" + line + "</p>");
+        if (quote) output.push("<blockquote>" + inline(quote[1]) + "</blockquote>");
+        else output.push("<p>" + inline(line.replace(/^#{1,6}\s*/, "")) + "</p>");
       }
       closeList();
-      let html = output.join("");
-      html = html.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
-      html = html.replace(/__(.+?)__/g, "<strong>$1</strong>");
-      html = html.replace(/(?<!\*)\*([^*\n]+)\*(?!\*)/g, "<em>$1</em>");
-      html = html.replace(/(?<!_)_([^_\n]+)_(?!_)/g, "<em>$1</em>");
-      html = html.replace(/`([^`\n]+)`/g, "<code>$1</code>");
-      html = html.replace(/@@CODE(\d+)@@/g, (_, index) => codeBlocks[Number(index)] || "");
-      return html;
+      return output.join("").replace(/@@CODE(\d+)@@/g, (_, index) => codeBlocks[Number(index)] || "");
     }
 
     function addMessage(text, role, extraClass) {
