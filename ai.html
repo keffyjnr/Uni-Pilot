@@ -176,7 +176,7 @@
       messagesEl.innerHTML = "";
       history.length = 0;
       chatLog.forEach(item => {
-        addMessage(item.content, item.role, item.role === "assistant" ? "restored" : "");
+        addMessage(item.content, item.role);
         history.push(item);
       });
       messagesEl.scrollTop = messagesEl.scrollHeight;
