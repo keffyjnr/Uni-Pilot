@@ -1,5 +1,5 @@
 /* Uni Pilot shared navigation fix */
-.site-nav-fix .header{position:sticky;top:0;z-index:1000;background:var(--nav-header-bg,#fff);box-shadow:0 3px 18px rgba(0,0,0,.06)}
+.site-nav-fix .header{position:sticky;top:0;z-index:1201;background:var(--nav-header-bg,#fff);box-shadow:0 3px 18px rgba(0,0,0,.06)}
 .site-nav-fix .navbar{width:min(1240px,calc(100% - 36px));min-height:76px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:18px}
 .site-nav-fix .brand{display:inline-flex;align-items:center;gap:10px;font-weight:800;color:var(--nav-text,#17221c);white-space:nowrap}
 .site-nav-fix .brand-icon{font-size:1.4rem}
