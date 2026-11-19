@@ -186,7 +186,8 @@
     function addMessage(text, role, extraClass) {
       const item = document.createElement("div");
       item.className = "message " + role + (extraClass ? " " + extraClass : "");
-      item.textContent = text;
+      if (role === "assistant" && !extraClass && text !== "Uni Pilot AI is thinking…") item.innerHTML = formatAssistantText(text);
+      else item.textContent = text;
       messagesEl.appendChild(item);
       messagesEl.scrollTop = messagesEl.scrollHeight;
       return item;
