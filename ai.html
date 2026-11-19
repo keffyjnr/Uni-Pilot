@@ -29,8 +29,9 @@
     body { position:fixed; inset:0; width:100%; height:100%; font-family:Manrope,sans-serif; background:var(--background,#f7faf8); color:var(--text,#17221c); }
     .ai-page { position:fixed; inset:0; width:min(100%, 920px); height:100vh; height:100dvh; margin:0 auto; padding:0; }
     .chat-card { height:100%; display:flex; flex-direction:column; background:var(--white,#fff); border-left:1px solid var(--border,#dfe8e2); border-right:1px solid var(--border,#dfe8e2); overflow:hidden; }
-    .chat-card { padding-top:72px; }
+    .chat-card { padding-top:110px; }
     .chat-head { position:fixed; top:var(--visual-viewport-top, 0px); left:50%; transform:translateX(-50%); width:min(100%,920px); flex:0 0 auto; min-height:72px; padding:12px 18px; display:flex; align-items:center; justify-content:space-between; gap:12px; border-bottom:1px solid var(--border,#dfe8e2); background:var(--white,#fff); z-index:20; }
+    .ai-notice { position:fixed; top:calc(var(--visual-viewport-top, 0px) + 72px); left:50%; transform:translateX(-50%); width:min(100%,920px); min-height:38px; padding:8px 18px; border-bottom:1px solid var(--border,#dfe8e2); background:var(--white,#fff); color:var(--muted,#6d7a72); font-size:.68rem; line-height:1.45; z-index:19; }
     .assistant-id { display:flex; align-items:center; gap:11px; min-width:0; }
     .assistant-icon { width:44px; height:44px; flex:0 0 44px; display:grid; place-items:center; border-radius:50%; background:#eaf6ef; font-size:23px; }
     .assistant-name { font-weight:800; font-size:.98rem; }
@@ -53,28 +54,28 @@
     .message.error { background:#fff0ed; color:#9b3020; }
     .assistant-response { align-self:flex-start; max-width:min(85%,680px); }
     .assistant-response .message { max-width:100%; }
-    .assistant-response .message > p,
-    .assistant-response .message > h1,
-    .assistant-response .message > h2,
-    .assistant-response .message > h3,
-    .assistant-response .message li,
-    .assistant-response .message pre,
-    .assistant-response .message blockquote {
+    .assistant-response.animate-answer .message > p,
+    .assistant-response.animate-answer .message > h1,
+    .assistant-response.animate-answer .message > h2,
+    .assistant-response.animate-answer .message > h3,
+    .assistant-response.animate-answer .message li,
+    .assistant-response.animate-answer .message pre,
+    .assistant-response.animate-answer .message blockquote {
       opacity:0;
-      animation: answerFadeIn 1.05s ease forwards;
+      animation: answerFadeIn 2.1s ease forwards;
     }
     @keyframes answerFadeIn {
       from { opacity:0; transform:translateY(5px); }
       to { opacity:1; transform:translateY(0); }
     }
     @media (prefers-reduced-motion: reduce) {
-      .assistant-response .message > p,
-      .assistant-response .message > h1,
-      .assistant-response .message > h2,
-      .assistant-response .message > h3,
-      .assistant-response .message li,
-      .assistant-response .message pre,
-      .assistant-response .message blockquote {
+      .assistant-response.animate-answer .message > p,
+      .assistant-response.animate-answer .message > h1,
+      .assistant-response.animate-answer .message > h2,
+      .assistant-response.animate-answer .message > h3,
+      .assistant-response.animate-answer .message li,
+      .assistant-response.animate-answer .message pre,
+      .assistant-response.animate-answer .message blockquote {
         opacity:1;
         animation:none;
       }
@@ -91,7 +92,7 @@
     .typing-bubble span:nth-child(3) { animation-delay:.32s; }
     @keyframes typingPulse { 0%,60%,100% { transform:translateY(0); opacity:.45; } 30% { transform:translateY(-5px); opacity:1; } }
     html[data-theme="dark"] body { background:#070d12; color:#eef4f7; }
-    html[data-theme="dark"] .chat-card, html[data-theme="dark"] .chat-head, html[data-theme="dark"] .composer-wrap { background:#0d1720; border-color:#263b49; }
+    html[data-theme="dark"] .chat-card, html[data-theme="dark"] .chat-head, html[data-theme="dark"] .composer-wrap, html[data-theme="dark"] .ai-notice { background:#0d1720; border-color:#263b49; }
     html[data-theme="dark"] .assistant-icon { background:#10382e; }
     html[data-theme="dark"] .message.assistant { background:#10382e; color:#eef4f7; }
     html[data-theme="dark"] .clear-btn { color:#eef4f7; border-color:#304452; }
@@ -99,8 +100,9 @@
     html[data-theme="dark"] .composer textarea { color:#eef4f7; }
     @media(max-width:600px) {
       .chat-card { border:0; }
-      .chat-card { padding-top:66px; }
+      .chat-card { padding-top:104px; }
       .chat-head { min-height:66px; padding:9px 13px; }
+      .ai-notice { top:calc(var(--visual-viewport-top, 0px) + 66px); min-height:38px; padding:8px 13px; font-size:.64rem; }
       .assistant-icon { width:41px; height:41px; flex-basis:41px; }
       .messages { padding:14px 11px; gap:11px; }
       .message, .assistant-response { max-width:93%; }
@@ -123,13 +125,14 @@
         <button class="clear-btn" id="clearChat" type="button">New chat ↻</button>
       </header>
 
+      <div class="ai-notice" role="note">AI can make mistakes. Confirm important admission and administrative information with official university sources.</div>
+
       <div class="messages" id="messages" aria-live="polite">
         <div class="assistant-response">
           <div class="message assistant">
             <p><strong>Hello! 👋</strong></p>
             <p>I'm here to help with your studies, learning and university life. What would you like to understand today?</p>
           </div>
-          <p class="fine-print">AI can make mistakes. Confirm important admission and administrative information with official university sources.</p>
         </div>
       </div>
 
@@ -176,10 +179,10 @@
       messagesEl.innerHTML = "";
       history.length = 0;
       chatLog.forEach(item => {
-        addMessage(item.content, item.role);
+        addMessage(item.content, item.role, null, true);
         history.push(item);
       });
-      messagesEl.scrollTop = messagesEl.scrollHeight;
+      requestAnimationFrame(() => { messagesEl.scrollTop = messagesEl.scrollHeight; });
       statusText.textContent = "● Previous chat restored";
     }
 
@@ -253,10 +256,10 @@
       return output.join("").replace(/@@CODE(\d+)@@/g, (_, index) => codeBlocks[Number(index)] || "");
     }
 
-    function addMessage(text, role, extraClass) {
+    function addMessage(text, role, extraClass, isRestored) {
       if (role === "assistant" && !extraClass) {
         const wrap = document.createElement("div");
-        wrap.className = "assistant-response";
+        wrap.className = "assistant-response" + (isRestored ? "" : " animate-answer");
         const bubble = document.createElement("div");
         bubble.className = "message assistant";
         bubble.innerHTML = formatAssistantText(text);
@@ -264,22 +267,21 @@
         // Fade the answer in from its first paragraph downward.
         const answerParts = bubble.querySelectorAll("p,h1,h2,h3,li,pre,blockquote");
         answerParts.forEach((part, index) => {
-          part.style.animationDelay = Math.min(index * 135, 4500) + "ms";
+          part.style.animationDelay = Math.min(index * 270, 9000) + "ms";
         });
 
-        const note = document.createElement("p");
-        note.className = "fine-print";
-        note.textContent = "AI can make mistakes. Confirm important admission and administrative information with official university sources.";
-        wrap.append(bubble, note);
+        wrap.appendChild(bubble);
         messagesEl.appendChild(wrap);
 
-        // Bring the beginning of this new answer into view, not its ending.
-        requestAnimationFrame(() => {
-          const answerTop = wrap.getBoundingClientRect().top
-            - messagesEl.getBoundingClientRect().top
-            + messagesEl.scrollTop;
-          messagesEl.scrollTop = Math.max(0, answerTop - 4);
-        });
+        // New answers begin at the top; restored answers stay at the bottom.
+        if (!isRestored) {
+          requestAnimationFrame(() => {
+            const answerTop = wrap.getBoundingClientRect().top
+              - messagesEl.getBoundingClientRect().top
+              + messagesEl.scrollTop;
+            messagesEl.scrollTop = Math.max(0, answerTop - 4);
+          });
+        }
         return wrap;
       }
 
@@ -360,7 +362,7 @@
       history.length = 0;
       chatLog = [];
       saveChatLog();
-      messagesEl.innerHTML = '<div class="assistant-response"><div class="message assistant"><p><strong>New conversation 👋</strong></p><p>What would you like to understand today?</p></div><p class="fine-print">AI can make mistakes. Confirm important admission and administrative information with official university sources.</p></div>';
+      messagesEl.innerHTML = '<div class="assistant-response"><div class="message assistant"><p><strong>New conversation 👋</strong></p><p>What would you like to understand today?</p></div></div>';
       statusText.textContent = "● Ready to help";
       input.focus();
     });
