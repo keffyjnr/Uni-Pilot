@@ -61,7 +61,7 @@
     .assistant-response .message pre,
     .assistant-response .message blockquote {
       opacity:0;
-      animation: answerFadeIn .32s ease forwards;
+      animation: answerFadeIn 1.05s ease forwards;
     }
     @keyframes answerFadeIn {
       from { opacity:0; transform:translateY(5px); }
@@ -225,7 +225,7 @@
         // Fade the answer in from its first paragraph downward.
         const answerParts = bubble.querySelectorAll("p,h1,h2,h3,li,pre,blockquote");
         answerParts.forEach((part, index) => {
-          part.style.animationDelay = Math.min(index * 45, 1500) + "ms";
+          part.style.animationDelay = Math.min(index * 135, 4500) + "ms";
         });
 
         const note = document.createElement("p");
