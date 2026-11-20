@@ -81,6 +81,10 @@
       }
     }
     .fine-print { margin:5px 5px 0; color:var(--muted,#6d7a72); font-size:.65rem; line-height:1.45; }
+    .continue-btn { display:none; width:100%; margin:0 0 9px; padding:10px 14px; border:1px solid #b9d9c7; border-radius:12px; background:#eaf6ef; color:#063b26; font:800 .78rem Manrope,sans-serif; cursor:pointer; text-align:center; }
+    .continue-btn.visible { display:block; }
+    .continue-btn:disabled { opacity:.6; cursor:wait; }
+    html[data-theme="dark"] .continue-btn { background:#10382e; color:#eaf6ef; border-color:#285b47; }
     .composer-wrap { flex:0 0 auto; padding:11px 14px max(12px, env(safe-area-inset-bottom)); border-top:1px solid var(--border,#dfe8e2); background:var(--white,#fff); }
     .composer { display:flex; gap:9px; align-items:flex-end; padding:7px; border:1px solid var(--border,#dfe8e2); border-radius:22px; background:var(--background,#f7faf8); }
     .composer textarea { flex:1; min-width:0; max-height:125px; min-height:43px; resize:none; border:0; outline:0; background:transparent; color:var(--text,#17221c); padding:11px 9px; font:500 .88rem Manrope,sans-serif; }
@@ -137,6 +141,7 @@
       </div>
 
       <div class="composer-wrap">
+        <button class="continue-btn" id="continueChat" type="button">Continue in New Chat ↗</button>
         <form class="composer" id="chatForm">
           <textarea id="userInput" rows="1" maxlength="3000" placeholder="Message Uni Pilot AI..." aria-label="Your message" required></textarea>
           <button class="send-btn" id="sendBtn" type="submit" aria-label="Send message">➤</button>
@@ -154,6 +159,52 @@
     const history = [];
     const CHAT_STORAGE_KEY = "uniPilotAIChatHistoryV1";
     let chatLog = [];
+    const continueBtn = document.getElementById("continueChat");
+
+    function totalHistoryCharacters(items) {
+      return items.reduce((total, item) => total + (item.content || "").length, 0);
+    }
+
+    function updateContinueButton() {
+      const shouldOffer = history.length >= 10 || totalHistoryCharacters(history) >= 18000;
+      continueBtn.classList.toggle("visible", shouldOffer);
+    }
+
+    async function continueInNewChat() {
+      if (continueBtn.disabled || !chatLog.length) return;
+      continueBtn.disabled = true;
+      continueBtn.textContent = "Preparing your conversation summary...";
+      statusText.textContent = "● Preparing continuation...";
+      try {
+        const response = await fetch(API_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ action: "summarize", messages: chatLog.slice(-40) })
+        });
+        const data = await response.json();
+        if (!response.ok || !data.summary) {
+          throw new Error(data.error || "Could not prepare the conversation summary.");
+        }
+
+        const handoff = "**Conversation carried over**\n\n" + data.summary.trim() +
+          "\n\nYou can continue asking questions from where we stopped.";
+        history.length = 0;
+        chatLog = [];
+        messagesEl.innerHTML = "";
+        history.push({ role: "assistant", content: handoff });
+        rememberMessage("assistant", handoff);
+        addMessage(handoff, "assistant", null, true);
+        continueBtn.classList.remove("visible");
+        statusText.textContent = "● Previous discussion carried over";
+        messagesEl.scrollTop = messagesEl.scrollHeight;
+      } catch (error) {
+        statusText.textContent = "● Could not prepare summary";
+        addMessage(error.message || "Unable to continue this conversation right now.", "assistant", "error");
+      } finally {
+        continueBtn.disabled = false;
+        continueBtn.textContent = "Continue in New Chat ↗";
+      }
+    }
 
     function saveChatLog() {
       try {
@@ -184,6 +235,7 @@
       });
       requestAnimationFrame(() => { messagesEl.scrollTop = messagesEl.scrollHeight; });
       statusText.textContent = "● Previous chat restored";
+      updateContinueButton();
     }
 
     function rememberMessage(role, content) {
@@ -319,7 +371,7 @@
         const response = await fetch(API_URL, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ messages: history.slice(-10) })
+          body: JSON.stringify({ messages: history.slice(-14) })
         });
 
         const data = await response.json();
@@ -333,11 +385,12 @@
         history.push({ role: "assistant", content: data.reply });
         rememberMessage("assistant", data.reply);
         statusText.textContent = "● Ready to help";
+        updateContinueButton();
       } catch (error) {
         typing.remove();
         addMessage(error.message || "Connection problem. Please try again.", "assistant", "error");
-        history.pop();
         statusText.textContent = "● Connection issue";
+        continueBtn.classList.add("visible");
       } finally {
         sendBtn.disabled = false;
         input.focus();
@@ -345,6 +398,7 @@
     }
 
     restoreChatLog();
+    continueBtn.addEventListener("click", continueInNewChat);
 
     form.addEventListener("submit", event => {
       event.preventDefault();
@@ -361,6 +415,7 @@
     document.getElementById("clearChat").addEventListener("click", () => {
       history.length = 0;
       chatLog = [];
+      continueBtn.classList.remove("visible");
       saveChatLog();
       messagesEl.innerHTML = '<div class="assistant-response"><div class="message assistant"><p><strong>New conversation 👋</strong></p><p>What would you like to understand today?</p></div></div>';
       statusText.textContent = "● Ready to help";
