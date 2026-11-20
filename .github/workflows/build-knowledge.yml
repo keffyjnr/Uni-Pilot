@@ -1,0 +1,33 @@
+name: Build Uni Pilot AI knowledge index
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "knowledge.json"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out website
+        uses: actions/checkout@v4
+
+      - name: Build searchable website knowledge
+        run: python scripts/build_knowledge.py
+
+      - name: Save updated knowledge index
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add knowledge.json
+          if git diff --cached --quiet; then
+            echo "Knowledge index is already up to date."
+          else
+            git commit -m "Update Uni Pilot AI knowledge index"
+            git push
+          fi
