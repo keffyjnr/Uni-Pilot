@@ -312,8 +312,26 @@
       rememberMessage("user", clean);
       input.value = "";
       sendBtn.disabled = true;
-      statusText.textContent = "● Typing...";
+      statusText.textContent = "● Connecting...";
       const typing = addTypingIndicator();
+
+      let streamedText = "";
+      let streamWrap = null;
+      let streamBubble = null;
+
+      function showStreamText() {
+        if (!streamWrap) {
+          typing.remove();
+          streamWrap = document.createElement("div");
+          streamWrap.className = "assistant-response";
+          streamBubble = document.createElement("div");
+          streamBubble.className = "message assistant";
+          streamWrap.appendChild(streamBubble);
+          messagesEl.appendChild(streamWrap);
+        }
+        streamBubble.textContent = streamedText;
+        messagesEl.scrollTop = messagesEl.scrollHeight;
+      }
 
       try {
         const response = await fetch(API_URL, {
@@ -322,20 +340,71 @@
           body: JSON.stringify({ messages: history.slice(-10) })
         });
 
-        const data = await response.json();
-        typing.remove();
+        if (!response.ok) {
+          let errorData = {};
+          try { errorData = await response.json(); } catch (_) {}
+          throw new Error(errorData.error || "The assistant could not respond. Please try again.");
+        }
+        if (!response.body) throw new Error("Streaming is not supported in this browser.");
 
-        if (!response.ok || !data.reply) {
-          throw new Error(data.error || "The assistant could not respond. Please try again.");
+        const reader = response.body.getReader();
+        const decoder = new TextDecoder();
+        let buffer = "";
+        let doneStream = false;
+
+        while (!doneStream) {
+          const { value, done } = await reader.read();
+          if (done) break;
+          buffer += decoder.decode(value, { stream: true });
+          const lines = buffer.split("\n");
+          buffer = lines.pop() || "";
+
+          for (const rawLine of lines) {
+            const line = rawLine.trim();
+            if (!line.startsWith("data:")) continue;
+            const payload = line.slice(5).trim();
+            if (!payload) continue;
+            if (payload === "[DONE]") { doneStream = true; break; }
+            try {
+              const event = JSON.parse(payload);
+              if (typeof event.response === "string" && event.response) {
+                streamedText += event.response;
+                showStreamText();
+              }
+            } catch (_) {}
+          }
         }
 
-        addMessage(data.reply, "assistant");
-        history.push({ role: "assistant", content: data.reply });
-        rememberMessage("assistant", data.reply);
+        buffer += decoder.decode();
+        const finalLine = buffer.trim();
+        if (finalLine.startsWith("data:")) {
+          const payload = finalLine.slice(5).trim();
+          if (payload && payload !== "[DONE]") {
+            try {
+              const event = JSON.parse(payload);
+              if (typeof event.response === "string") streamedText += event.response;
+            } catch (_) {}
+          }
+        }
+
+        if (!streamedText.trim()) throw new Error("The AI returned an empty response. Please try again.");
+        if (streamWrap && streamBubble) {
+          streamBubble.innerHTML = formatAssistantText(streamedText);
+        } else {
+          typing.remove();
+          addMessage(streamedText, "assistant");
+        }
+        history.push({ role: "assistant", content: streamedText });
+        rememberMessage("assistant", streamedText);
         statusText.textContent = "● Ready to help";
       } catch (error) {
         typing.remove();
-        addMessage(error.message || "Connection problem. Please try again.", "assistant", "error");
+        if (streamBubble && streamedText) {
+          streamBubble.textContent = streamedText + "\n\n" + (error.message || "Connection problem. Please try again.");
+          streamBubble.classList.add("error");
+        } else {
+          addMessage(error.message || "Connection problem. Please try again.", "assistant", "error");
+        }
         history.pop();
         statusText.textContent = "● Connection issue";
       } finally {
@@ -343,7 +412,6 @@
         input.focus();
       }
     }
-
     restoreChatLog();
 
     form.addEventListener("submit", event => {
