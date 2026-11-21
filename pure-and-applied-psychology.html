@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pure and Applied Psychology | AAUA Uni Pilot</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<style>
+:root{
+  --green:#0b5d3b;
+  --dark-green:#063b26;
+  --light-green:#eaf6ef;
+  --yellow:#f5c518;
+  --white:#ffffff;
+  --background:#f7faf8;
+  --text:#17221c;
+  --muted:#6d7a72;
+  --border:#dfe8e2;
+  --soft:#fbfdfb;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Manrope",Arial,Helvetica,sans-serif;background:var(--background);color:var(--text)}
+a{color:inherit;text-decoration:none}
+button,input{font-family:inherit}
+
+.department-page{
+  min-height:100vh;
+  background:
+    radial-gradient(circle at top right,rgba(11,93,59,.06),transparent 30%),
+    radial-gradient(circle at bottom left,rgba(245,197,24,.045),transparent 30%),
+    var(--background);
+}
+
+/* HERO */
+.department-hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(circle at 82% 18%,rgba(245,197,24,.16),transparent 28%),
+    linear-gradient(135deg,#07120d 0%,var(--dark-green) 48%,var(--green) 100%);
+  color:#fff;padding:58px 22px 50px;border-radius:30px;margin:18px 22px 0;
+  box-shadow:0 18px 50px rgba(6,59,38,.14);
+}
+.department-hero::after{
+  content:"PSY";position:absolute;right:22px;bottom:-25px;
+  font-size:clamp(5rem,15vw,11rem);line-height:.8;font-weight:800;
+  letter-spacing:-7px;color:rgba(255,255,255,.035);pointer-events:none;
+}
+.department-hero-content{position:relative;max-width:900px;margin:auto;text-align:center;z-index:2}
+.breadcrumb{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:7px;margin-bottom:22px;color:rgba(255,255,255,.62);font-size:.67rem;font-weight:600}
+.breadcrumb a{color:rgba(255,255,255,.86)}
+.breadcrumb a:hover{color:var(--yellow)}
+.department-label{
+  display:inline-flex;align-items:center;gap:7px;padding:7px 13px;
+  border:1px solid rgba(245,197,24,.35);border-radius:999px;
+  background:rgba(245,197,24,.08);color:var(--yellow);
+  font-size:.62rem;font-weight:800;letter-spacing:1.2px;text-transform:uppercase
+}
+.department-label::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--yellow)}
+.department-hero h1{margin:16px auto 0;max-width:900px;color:#fff;font-size:clamp(2.35rem,5.7vw,4.35rem);line-height:1;letter-spacing:-2.5px;font-weight:800}
+.department-hero h1 span{color:var(--yellow)}
+.faculty-name{margin:19px 0 0;color:var(--yellow);font-size:.9rem;font-weight:800}
+.department-hero-description{max-width:700px;margin:15px auto 0;color:rgba(255,255,255,.72);font-size:.82rem;line-height:1.7}
+.department-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:9px;margin-top:23px}
+.department-action{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:0 15px;border-radius:999px;font-size:.67rem;font-weight:800;transition:.2s ease}
+.department-action:hover{transform:translateY(-2px)}
+.department-action.primary{background:var(--yellow);color:var(--dark-green)}
+.department-action.secondary{border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.08);color:#fff}
+
+/* MAIN */
+.department-main{width:min(1120px,calc(100% - 44px));margin:0 auto;padding:42px 0 70px}
+.quick-info{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:70px}
+.quick-card,.content-card,.programme-card,.resource-card,.contact-card,.table-card,.rule-card{
+  background:#fff;border:1px solid var(--border);border-radius:20px;
+  box-shadow:0 12px 35px rgba(6,59,38,.05)
+}
+.quick-card{min-height:125px;padding:19px;transition:.2s ease}
+.quick-card:hover,.programme-card:hover,.resource-card:hover{transform:translateY(-3px);border-color:rgba(11,93,59,.25)}
+.quick-icon,.programme-icon,.resource-icon{
+  width:42px;height:42px;display:grid;place-items:center;margin-bottom:12px;
+  border-radius:13px;background:var(--light-green);font-size:18px
+}
+.quick-card span,.mini-label{
+  display:block;margin-bottom:6px;color:var(--muted);font-size:.61rem;
+  font-weight:800;letter-spacing:.06em;text-transform:uppercase
+}
+.quick-card strong{display:block;color:var(--text);font-size:.78rem;line-height:1.45}
+
+.department-section{margin-bottom:70px;scroll-margin-top:30px}
+.section-heading{margin-bottom:23px}
+.section-heading span{display:block;margin-bottom:7px;color:var(--green);font-size:.64rem;font-weight:800;letter-spacing:1.1px;text-transform:uppercase}
+.section-heading h2{margin:0;color:var(--text);font-size:clamp(1.8rem,4vw,2.4rem);line-height:1.05;letter-spacing:-1.2px}
+.section-heading p{margin:9px 0 0;color:var(--muted);font-size:.8rem;line-height:1.6}
+
+.about-box{padding:28px}
+.about-box p{margin:0 0 17px;color:var(--muted);font-size:.84rem;line-height:1.85}
+.about-box p:last-child{margin-bottom:0}
+.location-button,.action-button,.download-button,.upload-button,.whatsapp-button{
+  display:inline-flex;align-items:center;justify-content:center;gap:7px;
+  min-height:40px;padding:0 15px;border-radius:11px;font-size:.68rem;font-weight:800;
+  border:0;cursor:pointer;transition:.2s ease
+}
+.location-button,.download-button{background:var(--green);color:#fff}
+.location-button:hover,.download-button:hover{background:var(--dark-green);transform:translateY(-2px)}
+.upload-button{background:var(--yellow);color:var(--dark-green)}
+.whatsapp-button{background:var(--light-green);color:var(--green)}
+.upload-status{margin:9px 0 0;color:var(--muted);font-size:.7rem;line-height:1.5}
+
+.programme-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.programme-card{padding:24px;transition:.2s ease}
+.programme-icon{width:48px;height:48px;font-size:21px}
+.programme-card h3{margin:0 0 9px;color:var(--text);font-size:.98rem;line-height:1.45}
+.programme-card p{margin:0;color:var(--muted);font-size:.8rem;line-height:1.7}
+
+/* INFORMATION CARDS */
+.info-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.content-card{padding:24px}
+.content-card h3{margin:0 0 12px;font-size:1rem}
+.content-card p,.content-card li{color:var(--muted);font-size:.79rem;line-height:1.75}
+.content-card ul,.content-card ol{margin:0;padding-left:20px}
+.content-card li{margin-bottom:6px}
+.content-card li:last-child{margin-bottom:0}
+.full-card{grid-column:1/-1}
+
+/* COURSE STRUCTURE */
+.level-nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.level-nav a{padding:9px 13px;border-radius:999px;background:var(--light-green);color:var(--green);font-size:.68rem;font-weight:800}
+.level-nav a:hover{background:var(--yellow);color:var(--dark-green)}
+
+.course-block{margin-bottom:12px;display:none}
+.course-block.open{display:block}
+.course-block:last-child{margin-bottom:0}
+.course-block h3{margin:0 0 10px;color:var(--green);font-size:.92rem}
+.course-level-button{
+  width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:16px 18px;border:1px solid var(--border);border-radius:16px;background:#fff;
+  color:var(--green);font:inherit;font-size:.8rem;font-weight:800;cursor:pointer;text-align:left;
+  box-shadow:0 8px 24px rgba(6,59,38,.045);transition:.2s ease
+}
+.course-level-button:hover{border-color:rgba(11,93,59,.25);background:var(--light-green);transform:translateY(-1px)}
+.course-level-button::after{
+  content:"⌄";width:28px;height:28px;display:grid;place-items:center;flex:0 0 28px;
+  border-radius:9px;background:var(--light-green);color:var(--green);font-size:1rem;
+  transition:transform .2s ease,background .2s ease
+}
+.course-level-button.active{border-color:rgba(11,93,59,.25);background:var(--light-green)}
+.course-level-button.active::after{transform:rotate(180deg);background:var(--yellow);color:var(--dark-green)}
+.course-level-group{margin-bottom:10px}
+.course-level-group:last-child{margin-bottom:0}
+.course-level-group .course-block{margin:8px 0 0;padding:0 4px}
+.table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:16px;background:#fff}
+.course-table{width:100%;border-collapse:collapse;min-width:760px}
+.course-table th,.course-table td{padding:10px 11px;border-bottom:1px solid var(--border);text-align:left;font-size:.69rem;vertical-align:top}
+.course-table th{background:var(--light-green);color:var(--green);font-size:.62rem;letter-spacing:.04em;text-transform:uppercase}
+.course-table td:first-child{font-weight:800;color:var(--green);white-space:nowrap}
+.course-table tr:last-child td{border-bottom:0}
+.course-table .total-row td{font-weight:800;background:#fbfdfb;color:var(--text)}
+.note{margin:10px 0 0;color:var(--muted);font-size:.7rem;line-height:1.65}
+
+/* SUMMARY */
+.summary-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.summary-card{padding:24px;background:#fff;border:1px solid var(--border);border-radius:20px}
+.summary-card h3{margin:0 0 15px;font-size:.95rem}
+.summary-stat{display:flex;justify-content:space-between;gap:15px;padding:10px 0;border-bottom:1px solid var(--border);font-size:.74rem}
+.summary-stat:last-child{border-bottom:0}
+.summary-stat span{color:var(--muted)}
+.summary-stat strong{color:var(--green)}
+
+/* RESOURCES */
+.resource-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.resource-card{display:block;padding:24px;transition:.2s ease}
+.resource-icon{width:48px;height:48px;font-size:21px}
+.resource-card h3{margin:0 0 8px;font-size:.96rem}
+.resource-card p{margin:0;color:var(--muted);font-size:.78rem;line-height:1.7}
+.resource-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}
+.file-input{display:none}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.contact-card{padding:25px}
+.contact-card h3{margin:0 0 21px;font-size:.98rem}
+.contact-item{display:flex;align-items:flex-start;gap:12px;margin-bottom:17px}
+.contact-item:last-child{margin-bottom:0}
+.contact-item-icon{width:39px;height:39px;flex:0 0 39px;display:grid;place-items:center;border-radius:11px;background:var(--light-green);font-size:17px}
+.contact-item span{display:block;margin-bottom:4px;color:var(--muted);font-size:.62rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+.contact-item strong{color:var(--text);font-size:.78rem;line-height:1.5}
+
+/* HELP */
+.help-box{padding:40px 25px;border-radius:24px;background:radial-gradient(circle at 85% 15%,rgba(245,197,24,.13),transparent 28%),var(--dark-green);color:#fff;text-align:center}
+.help-box h2{margin:0 0 11px;font-size:clamp(1.5rem,4vw,2rem);letter-spacing:-.8px}
+.help-box p{max-width:700px;margin:0 auto 22px;color:rgba(255,255,255,.74);font-size:.8rem;line-height:1.7}
+.help-button{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 18px;border-radius:999px;background:var(--yellow);color:var(--dark-green);font-size:.7rem;font-weight:800}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border)}
+
+@media(max-width:950px){
+  .quick-info{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .resource-grid,.summary-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .programme-grid,.contact-grid,.info-grid{grid-template-columns:1fr}
+}
+@media(max-width:650px){
+  .department-hero{padding:40px 17px 36px;margin:12px 14px 0;border-radius:24px}
+  .department-hero h1{font-size:2.65rem;letter-spacing:-1.8px}
+  .department-main{width:min(100% - 34px,1120px);padding-top:35px}
+  .quick-info{grid-template-columns:1fr 1fr;gap:10px;margin-bottom:55px}
+  .quick-card{min-height:112px;padding:16px}
+  .resource-grid,.summary-grid{grid-template-columns:1fr}
+  .about-box,.programme-card,.resource-card,.contact-card,.content-card,.summary-card{padding:21px}
+  .department-actions{gap:7px}
+  .department-action{min-height:38px;padding:0 13px}
+}
+@media(max-width:430px){.quick-info{grid-template-columns:1fr}.breadcrumb{font-size:.6rem}}
+
+.level-nav{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:16px
+}
+.level-nav .course-level-button{
+  border-radius:999px;padding:10px 13px;min-height:42px;justify-content:center;font-size:.68rem;box-shadow:none
+}
+.level-nav .course-level-button::after{display:none}
+.level-nav > a{
+  display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:10px 13px;
+  border-radius:999px;background:var(--light-green);color:var(--green);font-size:.68rem;font-weight:800
+}
+.level-nav > a:hover{background:var(--yellow);color:var(--dark-green)}
+.course-level-content{display:none}
+.course-level-content.open{display:block}
+.course-level-content .course-block{display:block}
+@media(max-width:650px){.level-nav{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+
+.programme-structure-list{display:grid;gap:10px}
+.programme-structure-item{border-radius:16px}
+.programme-toggle{width:100%;display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border:1px solid var(--border);border-radius:16px;background:#fff;color:var(--green);font:inherit;font-size:.8rem;font-weight:800;cursor:pointer;text-align:left;box-shadow:0 8px 24px rgba(6,59,38,.045);transition:.2s ease}
+.programme-toggle:hover,.programme-toggle.active{border-color:rgba(11,93,59,.25);background:var(--light-green)}
+.programme-toggle span{width:28px;height:28px;display:grid;place-items:center;border-radius:9px;background:var(--light-green);font-size:1rem}
+.programme-toggle.active span{background:var(--yellow);color:var(--dark-green)}
+.programme-content{display:none;margin-top:8px}
+.programme-content.open{display:block}
+.programme-content .content-card{padding:21px}
+
+/* LIFE + MOTION: polished entrance, reveal, and responsive hover feedback */
+.department-back-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 22px}
+.department-back-button{display:inline-flex;align-items:center;gap:9px;min-height:40px;padding:0 15px;border:1px solid var(--border);border-radius:999px;background:#fff;color:var(--green);font:inherit;font-size:.72rem;font-weight:800;cursor:pointer;box-shadow:0 7px 20px rgba(6,59,38,.06);transition:transform .22s ease,box-shadow .22s ease,background .22s ease}
+.department-back-button span{font-size:1.1rem;transition:transform .22s ease}
+.department-back-button:hover{transform:translateY(-2px);background:var(--light-green);box-shadow:0 12px 25px rgba(6,59,38,.12)}
+.department-back-button:hover span{transform:translateX(-3px)}
+.back-hint{color:var(--muted);font-size:.68rem}
+.department-hero{animation:ictHeroEnter .8s cubic-bezier(.2,.75,.25,1) both}
+.department-hero-content{animation:ictContentEnter .9s .12s cubic-bezier(.2,.75,.25,1) both}
+.department-hero::after{animation:ictWatermarkFloat 9s ease-in-out infinite}
+@keyframes ictHeroEnter{from{opacity:0;transform:translateY(18px) scale(.99)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes ictContentEnter{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes ictWatermarkFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+.quick-card,.content-card,.programme-card,.resource-card,.contact-card,.summary-card,.help-box{transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.quick-card:hover,.content-card:hover,.contact-card:hover,.summary-card:hover{transform:translateY(-4px);box-shadow:0 18px 42px rgba(6,59,38,.1);border-color:rgba(11,93,59,.24)}
+.resource-card:hover{box-shadow:0 18px 42px rgba(6,59,38,.1)}
+.location-button,.download-button,.upload-button,.whatsapp-button,.help-button,.department-action{transition:transform .22s ease,box-shadow .22s ease,background .22s ease}
+.location-button:hover,.download-button:hover,.upload-button:hover,.whatsapp-button:hover,.help-button:hover,.department-action:hover{transform:translateY(-2px);box-shadow:0 9px 22px rgba(6,59,38,.12)}
+.reveal-on-scroll{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s cubic-bezier(.2,.75,.25,1)}
+.reveal-on-scroll.is-visible{opacity:1;transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .reveal-on-scroll{opacity:1;transform:none}
+}
+
+</style>
+  <link rel="stylesheet" href="site-navigation.css">
+</head>
+
+<body class="department-page">
+
+<header class="header">
+
+    <nav class="navbar">
+
+      <a
+        href="index.html"
+        class="brand"
+      >
+
+        <span class="brand-icon">
+          🎓
+        </span>
+
+        <span>
+          AAUA Uni Pilot
+        </span>
+
+      </a>
+
+
+      <div class="desktop-nav">
+
+        <a href="index.html">
+          Home
+        </a>
+
+        <a href="resources.html">
+          Resources
+        </a>
+
+        <a href="guide.html">
+          Student Guide
+        </a>
+
+        <a href="updates.html">
+          Updates
+        </a>
+
+        <a href="tools.html" class="active">
+          Tools
+        </a>
+
+      </div>
+
+
+      <div class="nav-actions">
+
+        <a
+          href="search.html"
+          class="icon-btn"
+          aria-label="Search AAUA Uni Pilot"
+          title="Search AAUA Uni Pilot"
+          style="display:grid;place-items:center;text-decoration:none;"
+        >
+          🔍
+        </a>
+
+
+        <button
+          class="menu-btn"
+          id="menuBtn"
+          type="button"
+          aria-label="Open menu"
+        >
+          ☰
+        </button>
+
+      </div>
+
+    </nav>
+
+  </header>
+
+<section class="department-hero">
+  <div class="department-hero-content">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a><span>›</span>
+      <a href="faculty-guide.html">Faculty Guide</a><span>›</span>
+      <span>Pure and Applied Psychology</span>
+    </div>
+    <span class="department-label">Department Guide</span>
+    <h1>Department of <span>Pure and Applied Psychology.</span></h1>
+    <p class="faculty-name">Adekunle Ajasin University, Akungba-Akoko</p>
+    <p class="department-hero-description">
+      Department information, programme structure, admission requirements,
+      course structure, SIWES, graduation requirements and student resources
+      for B.Sc. Pure and Applied Psychology at AAUA.
+    </p>
+    <div class="department-actions">
+      <a href="#overview" class="department-action primary">📚 Overview</a>
+      <a href="#courses" class="department-action secondary">📋 Courses</a>
+      <a href="#resources" class="department-action secondary">📁 Resources</a>
+      <a href="#help" class="department-action secondary">🆘 Get Help</a>
+    </div>
+  </div>
+</section>
+
+<main class="department-main">
+<div class="department-back-row"><button class="department-back-button" id="departmentBackButton" type="button"><span aria-hidden="true">←</span> Go Back</button><span class="back-hint">Return to the page you came from</span></div>
+<section class="quick-info">
+<div class="quick-card"><div class="quick-icon">👨‍🏫</div><span>Acting Head of Department</span><strong>Adepeju B. Ogungbamila</strong></div>
+<div class="quick-card"><div class="quick-icon">🎓</div><span>Programme</span><strong>B.Sc. Psychology</strong></div>
+<div class="quick-card"><div class="quick-icon">📘</div><span>Handbook</span><strong>Undergraduate Programme Handbook</strong></div>
+<div class="quick-card"><div class="quick-icon">⏳</div><span>Course information</span><strong>100, 300 and 400 Level tables received</strong></div>
+</section>
+<section class="department-section" id="overview">
+<div class="section-heading"><span>Introduction &amp; General Background</span><h2>Department of Pure and Applied Psychology</h2></div>
+<div class="about-box">
+<p>**Programme offered:** Bachelor of Science (B.Sc.) Psychology.</p>
+<p>Psychology is a scientific discipline which studies human and non-human behaviours from the physiological roots to the social influence processes which equips the students with skills needed for the explanation, prediction and modification of those behaviours for lasting peace and order in human society.</p>
+<p>As a profession in the social sciences, psychology aims to provide students with a top-ranked undergraduate education in various areas of psychology which include but are not limited to Clinical psychology, Neurobiological psychology, Behavioural medicine/Medical psychology, Social psychology, Industrial/organisational psychology, Positive psychology, health psychology among others.</p>
+<p>The goal of the programme is to train the next generation of leaders, innovators, and cutting-edge professionals in these diverse areas of psychology with the needed 21st-century skills. Graduates of Psychology are well-equipped for job opportunities in Health institutions, Schools, NGOs, Self-employment, industries, and security agencies.</p>
+</div>
+</section>
+<section class="department-section">
+<div class="section-heading"><span>Programme Philosophy</span><h2>Philosophy of the Programme</h2></div>
+<div class="content-card"><p>As a science, Psychology seeks to discover patterns of behaviour, using facts, principles and generalizations, in order to increase our knowledge and understanding of individual behaviour in various social and cultural settings, groups, institutions and organizations for proper adaptation or adjustment and development.</p><p>The philosophy behind the Psychology curriculum in Nigerian Universities is therefore to equip students with skills, concepts and principles which can help them to understand, explain, predict, modify, and change human and non-human behaviours for intra- and interpersonal harmonious coexistence and overall social, economic, political, and national development of Nigeria.</p></div>
+</section>
+<section class="department-section">
+<div class="section-heading"><span>Admission</span><h2>Admission Requirements</h2></div>
+<div class="info-grid">
+<div class="content-card"><h3>Four-year programme</h3><p>In addition to UTME score, the candidate should possess at least five O’Level credit passes, including Mathematics, English Language, Biology, and any other two subjects from Social Sciences, Arts or Sciences or its equivalent at not more than two sittings.</p></div>
+<div class="content-card"><h3>Three-year programme</h3><p>In addition to having five O’Level credits passes in English Language, Mathematics, Biology and two other subjects, Direct Entry candidates must have at least three Advanced Level or Joint Universities Preliminary Examination Board (JUPEB) credits passes, which must include English Language, Mathematics and Biology. He/she must have at least a total grade point of 6.0.</p><p>Candidates with relevant National Diploma (ND) with at least upper credit, Nursing and Midwifery certificates as well as Diploma in Psychology (at least Upper Credit), from any institution recognized by the Senate of this University, are also qualified, provided such candidates have credit passes in the relevant O’Level subjects.</p></div>
+</div>
+<div class="content-card"><p><strong>Direct Entry note:</strong> All Direct Entry students would be required to take and pass designated courses at the 100 Level.</p></div>
+</section>
+<section class="department-section">
+<div class="section-heading"><span>Faculty Leadership</span><h2>Principal Officers of the Faculty</h2></div>
+<div class="info-grid">
+<div class="content-card"><h3>Dean</h3><p>Professor Adebayo A. Fatukasi</p><p>B.Sc., M.Sc., Ph.D.</p></div>
+<div class="content-card"><h3>Sub-Dean</h3><p>Dr. Harisson Idowu</p><p>B.Sc., M.Sc., Ph.D.</p></div>
+</div>
+</section>
+<section class="department-section">
+<div class="section-heading"><span>Department Staff</span><h2>Academic Staff</h2></div>
+<div class="table-wrap"><table class="course-table"><thead><tr><th>S/N</th><th>Name</th><th>Qualifications</th><th>Designation</th><th>Area of Specialisation</th></tr></thead><tbody>
+<tr><td>1</td><td>Adepeju B. OGUNGBAMILA</td><td>B.Sc., M.Sc. (Akungba), Ph.D (Mafikeng, South Africa)</td><td>Senior Lecturer &amp; Ag. Head of Department</td><td>Occupational Health</td></tr>
+<tr><td>2</td><td>Ebenezer O. AKINNAWO</td><td>B.Sc. (Ife), M.Sc. (Benin), Ph.D. (Ibadan)</td><td>Professor</td><td>Clinical</td></tr>
+<tr><td>3</td><td>Olukayode A. AFOLABI</td><td>B.Sc., M.Sc., Ph.D (Ibadan)</td><td>Professor</td><td>Social and Personality</td></tr>
+<tr><td>4</td><td>Bolande OGUNGBAMILA</td><td>B.Sc. (Lagos), M.Sc., Ph.D (Ibadan)</td><td>Professor</td><td>Industrial and Organizational</td></tr>
+<tr><td>5</td><td>Oluynka A. OJEDOKUN</td><td>B.Sc., M.Sc., Ph.D (Ibadan)</td><td>Professor</td><td>Social and Environmental</td></tr>
+<tr><td>6</td><td>Stella A. OLOWODUNOYE</td><td>B.Sc. (Ado-Ekiti), M.Sc. (Akungba), Ph.D (Ado-Ekiti)</td><td>Professor</td><td>Industrial and Organizational</td></tr>
+<tr><td>7</td><td>Ibironke O. SEGUN-MARTINS</td><td>B.Sc. (Ado-Ekiti), M.Sc (Ibadan), Ph.D (Ado-Ekiti)</td><td>Reader</td><td>Clinical</td></tr>
+<tr><td>8</td><td>Chibuzor U. ONUOHA</td><td>B.Sc., M.Sc., Ph.D (Ibadan)</td><td>Reader</td><td>Industrial and Organizational</td></tr>
+<tr><td>9</td><td>Anthony G. BALOGUN</td><td>B.Sc., M.Sc., Ph.D. (Akungba)</td><td>Senior Lecturer</td><td>Industrial and Organizational</td></tr>
+<tr><td>10</td><td>Janet T. OLASENI</td><td>B.Sc. (Akungba), M.Sc. (Lagos), Ph.D (Akungba)</td><td>Lecturer I</td><td>Developmental</td></tr>
+<tr><td>11</td><td>Damilola F. OWOLABI</td><td>B.Sc., M.Sc. (Akungba)</td><td>Lecturer II</td><td>Developmental</td></tr>
+<tr><td>12</td><td>Emmanuel D. JOB</td><td>B.Sc., M.Sc., Ph.D (Akungba)</td><td>Lecturer II</td><td>Developmental</td></tr>
+</tbody></table></div>
+</section>
+<section class="department-section">
+<div class="section-heading"><span>Department Support</span><h2>Technical and Administrative Staff</h2></div>
+<div class="info-grid">
+<div class="content-card"><h3>Technical</h3><p>Mrs. Victoria O. ORASAMIKA</p><p>B.Ed. (Akungba) · Senior Lab. Assistant</p></div>
+<div class="content-card"><h3>Administrative</h3><p>Mrs. Cecilia O. FAPOHUNDA · B.Sc., MPA · Personal Secretary II</p><p>Mrs. Odunayo A. ADEOLA · B.A. (Ed) · Senior Clerical Officer</p><p>Mrs. Comfort O. OJOWURO · SSCE, ND · Senior Office Assistant</p></div>
+</div>
+</section>
+<section class="department-section" id="courses">
+  <div class="section-heading">
+    <span>Course Structure</span>
+    <h2>Courses by Level and Semester</h2>
+    <p>Course codes, titles, credit units and course status are reproduced from the supplied Undergraduate Programme Handbook. Select a level to view its semester tables.</p>
+  </div>
+  <div class="level-nav">
+    <button type="button" class="course-level-button" data-level="100">100 Level</button>
+    <button type="button" class="course-level-button" data-level="200">200 Level</button>
+    <button type="button" class="course-level-button" data-level="300">300 Level</button>
+    <button type="button" class="course-level-button" data-level="400">400 Level</button>
+  </div>
+  <div class="course-level-group">
+    <button type="button" class="course-level-button" data-level-toggle="100" aria-expanded="false">100 Level <span>+</span></button>
+    <div class="course-level-content" data-level-content="100">
+      <div class="course-block" data-level="100" id="level100"><h3>100 Level — First Semester</h3>
+        <div class="table-wrap"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th></tr></thead><tbody>
+          <tr><td>GST 111</td><td>Communication in English</td><td>2</td><td>C</td></tr><tr><td>PSY 101</td><td>Introduction to Psychology</td><td>2</td><td>C</td></tr><tr><td>PSY 103</td><td>Learning Processes</td><td>2</td><td>C</td></tr><tr><td>PSY 105</td><td>Ethics in Psychology</td><td>2</td><td>C</td></tr><tr><td>AAUA-PSY 101</td><td>History of Psychology</td><td>3</td><td>C</td></tr>
+        </tbody></table></div>
+        <h4>Electives (choose at least TWO)</h4><div class="table-wrap"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th></tr></thead><tbody><tr><td>POL 101</td><td>Introduction to Political Science</td><td>2</td><td>E</td></tr><tr><td>POL 103</td><td>Organisation of Government</td><td>2</td><td>E</td></tr><tr><td>SOC 101</td><td>Introduction to Sociology I</td><td>2</td><td>E</td></tr><tr><td>CSS 101</td><td>Introduction to Criminology and Security Studies</td><td>3</td><td>E</td></tr><tr><td>AAUA-ECO 105</td><td>Introduction to Business Economics</td><td>2</td><td>E</td></tr></tbody></table></div>
+      </div>
+      <div class="course-block" data-level="100"><h3>100 Level — Second Semester</h3><div class="table-wrap"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th></tr></thead><tbody><tr><td>GST 112</td><td>Nigerian Peoples and Culture</td><td>2</td><td>C</td></tr><tr><td>PSY 102</td><td>Determinants of Behaviour</td><td>2</td><td>C</td></tr><tr><td>PSY 104</td><td>Quantitative Methods in Psychology</td><td>2</td><td>C</td></tr><tr><td>AAUA-PSY 106</td><td>Introduction to Personality</td><td>3</td><td>C</td></tr></tbody></table></div><h4>Electives (choose at least THREE)</h4><div class="table-wrap"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th></tr></thead><tbody><tr><td>POL 102</td><td>Introduction to African Politics</td><td>2</td><td>E</td></tr><tr><td>POL 104</td><td>Nigerian Legal Systems</td><td>2</td><td>E</td></tr><tr><td>SOC 102</td><td>Introduction to Sociology II</td><td>2</td><td>E</td></tr><tr><td>GEO 102</td><td>Introduction to Human Geography</td><td>2</td><td>E</td></tr><tr><td>CSS 102</td><td>Introduction to Criminal Justice System</td><td>3</td><td>E</td></tr><tr><td>CSS 104</td><td>Social Sciences and Human Behaviours</td><td>3</td><td>E</td></tr></tbody></table></div></div>
+    </div>
+  </div>
+  <div class="course-level-group">
+    <button type="button" class="course-level-button" data-level-toggle="200" aria-expanded="false">200 Level <span>+</span></button>
+    <div class="course-level-content" data-level-content="200"><div class="content-card"><p>200-level course details are not yet available in the verified text supplied for this page. They will be added after the handbook entries have been checked.</p></div></div>
+  </div>
+  <div class="course-level-group">
+    <button type="button" class="course-level-button" data-level-toggle="300" aria-expanded="false">300 Level <span>+</span></button>
+    <div class="course-level-content" data-level-content="300">
+      <div class="course-block" data-level="300" id="level300-1"><h3>300 Level — First Semester</h3>
+        <div class="table-wrap"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th></tr></thead><tbody>
+          <tr><td>SSC 301</td><td>Innovation in the Social Sciences</td><td>2</td><td>C</td></tr><tr><td>PSY 301</td><td>Clinical Psychology</td><td>2</td><td>C</td></tr><tr><td>PSY 303</td><td>Gender Psychology</td><td>2</td><td>C</td></tr><tr><td>PSY 305</td><td>Psychological Testing and Test Construction</td><td>2</td><td>C</td></tr><tr><td>PSY 307</td><td>Statistical Methods in Psychology</td><td>2</td><td>C</td></tr><tr><td>PSY 309</td><td>Cognitive Psychology</td><td>2</td><td>C</td></tr><tr><td>AAUA-PSY 301</td><td>Social Psychology of Cyberspace</td><td>3</td><td>C</td></tr>
+        </tbody></table></div>
+        <h4>Electives (choose at least ONE)</h4><div class="table-wrap"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th></tr></thead><tbody><tr><td>AAUA-PSY 303</td><td>Psychology of Crime and Justice Administration</td><td>2</td><td>E</td></tr><tr><td>AAUA-PSY 305</td><td>Business Psychology</td><td>3</td><td>E</td></tr><tr><td>CSS 305</td><td>Forensic Science</td><td>2</td><td>E</td></tr><tr><td>SOC 303</td><td>Sociology of Crime and Delinquency I</td><td>2</td><td>E</td></tr><tr><td>AAUA-ECO 313</td><td>Industrial Economics</td><td>2</td><td>E</td></tr></tbody></table></div>
+        <p class="note"><strong>Total:</strong> 17/18 units. The minimum and maximum number of units per semester are 15 and 20 units, respectively.</p>
+      </div>
+      <div class="course-block" data-level="300"><h3>300 Level — Second Semester</h3>
+        <div class="table-wrap"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th></tr></thead><tbody>
+          <tr><td>GST 312</td><td>Peace and Conflict Resolution</td><td>2</td><td>C</td></tr><tr><td>ENT 312</td><td>Venture Creation</td><td>2</td><td>C</td></tr><tr><td>SSC 302</td><td>Research Methods I</td><td>2</td><td>C</td></tr><tr><td>PSY 302</td><td>Psychology of Mental Challenge</td><td>2</td><td>C</td></tr><tr><td>PSY 304</td><td>Psychology of Substance Use Disorder</td><td>2</td><td>C</td></tr><tr><td>PSY 306</td><td>Research Methods in Psychology</td><td>2</td><td>C</td></tr><tr><td>PSY 308</td><td>Environmental Psychology</td><td>2</td><td>C</td></tr><tr><td>PSY 310</td><td>Field Experience</td><td>2</td><td>C</td></tr>
+        </tbody></table></div>
+        <h4>Electives (choose at least ONE)</h4><div class="table-wrap"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th></tr></thead><tbody><tr><td>AAUA-PSY 302</td><td>Psychology of Workplace Diversity and Inclusion Management</td><td>3</td><td>E</td></tr><tr><td>AAUA-PSY 304</td><td>Psychology of Financial Management</td><td>2</td><td>E</td></tr><tr><td>CSS 302</td><td>Theoretical Perspectives on Security</td><td>2</td><td>E</td></tr><tr><td>SOC 302</td><td>Social Inequality</td><td>2</td><td>E</td></tr><tr><td>AAUA-ECO 312</td><td>Infrastructural Development and Finance</td><td>2</td><td>E</td></tr></tbody></table></div>
+        <p class="note"><strong>Total:</strong> 18/19 units. The minimum and maximum number of units per semester are 15 and 20 units, respectively.</p>
+      </div>
+    </div>
+  </div>
+  <div class="course-level-group">
+    <button type="button" class="course-level-button" data-level-toggle="400" aria-expanded="false">400 Level <span>+</span></button>
+    <div class="course-level-content" data-level-content="400">
+      <div class="course-block" data-level="400" id="level400-1"><h3>400 Level — First Semester</h3>
+        <div class="table-wrap"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th></tr></thead><tbody>
+          <tr><td>SSC 401</td><td>Research Methods II</td><td>2</td><td>C</td></tr><tr><td>PSY 401</td><td>Psychology of Terrorism and Trauma</td><td>2</td><td>C</td></tr><tr><td>PSY 403</td><td>Practicum in Psychotherapy</td><td>2</td><td>C</td></tr><tr><td>PSY 405</td><td>Forensic Psychology</td><td>2</td><td>C</td></tr><tr><td>PSY 407</td><td>Psychology of Social Change</td><td>2</td><td>C</td></tr><tr><td>AAUA-PSY 403</td><td>Occupational Health Psychology</td><td>2</td><td>C</td></tr>
+        </tbody></table></div>
+        <h4>Electives (choose at least ONE 3-unit course or TWO courses totalling 4 units)</h4><div class="table-wrap"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th></tr></thead><tbody><tr><td>AAUA-PSY 401</td><td>Psychotherapy in Multicultural and Diverse Society</td><td>3</td><td>E</td></tr><tr><td>AAUA-CSS 417</td><td>Zemiology and Corporate Deviance</td><td>2</td><td>E</td></tr><tr><td>POL 403</td><td>Contemporary Defence and Strategic Studies</td><td>2</td><td>E</td></tr><tr><td>AAUA-ECO 411</td><td>Problems and Policies of Development</td><td>2</td><td>E</td></tr></tbody></table></div>
+        <p class="note"><strong>Total:</strong> 15/16 units. The minimum and maximum number of units per semester are 15 and 20 units, respectively.</p>
+      </div>
+      <div class="course-block" data-level="400"><h3>400 Level — Second Semester</h3>
+        <div class="table-wrap"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th></tr></thead><tbody>
+          <tr><td>PSY 402</td><td>Advanced Psycho-Biological Study of Behaviour and Psychopharmacology</td><td>2</td><td>C</td></tr><tr><td>PSY 404</td><td>Advanced Clinical Psychology</td><td>2</td><td>C</td></tr><tr><td>PSY 406</td><td>Research Project</td><td>4</td><td>C</td></tr><tr><td>AAUA-PSY 402</td><td>Psychology of Stress and Its Management</td><td>3</td><td>C</td></tr>
+        </tbody></table></div>
+        <h4>Electives (choose at least TWO)</h4><div class="table-wrap"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th></tr></thead><tbody><tr><td>AAUA-PSY 404</td><td>Traffic Psychology</td><td>3</td><td>E</td></tr><tr><td>AAUA-CSS 414</td><td>Sex Offenders: Identification, Risk Assessment and Treatment</td><td>2</td><td>E</td></tr><tr><td>POL 406</td><td>International Law and Organisation</td><td>2</td><td>E</td></tr><tr><td>CSS 406</td><td>Comparative National Security</td><td>2</td><td>E</td></tr><tr><td>AAUA-ECO 410</td><td>Personnel Economics</td><td>2</td><td>E</td></tr></tbody></table></div>
+        <p class="note"><strong>Total:</strong> 15/16 units. The minimum and maximum number of units per semester are 15 and 20 units, respectively.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="department-section" id="course-unit-summary">
+  <div class="section-heading"><span>Course Unit Summary</span><h2>300 and 400 Level Unit Breakdown</h2><p>These figures reproduce the semester and level summaries shown in the handbook.</p></div>
+  <div class="info-grid">
+    <div class="content-card"><h3>300 Level</h3><div class="table-wrap"><table class="course-table"><thead><tr><th>Semester</th><th>Compulsory</th><th>GST</th><th>ENT</th><th>Electives</th></tr></thead><tbody><tr><td>1st</td><td>15</td><td>–</td><td>–</td><td>2/3</td></tr><tr><td>2nd</td><td>12</td><td>2</td><td>2</td><td>2/3</td></tr><tr class="total-row"><td>Total</td><td>29</td><td>2</td><td>2</td><td>4/6</td></tr></tbody></table></div></div>
+    <div class="content-card"><h3>400 Level</h3><div class="table-wrap"><table class="course-table"><thead><tr><th>Semester</th><th>Compulsory</th><th>GST</th><th>ENT</th><th>Electives</th></tr></thead><tbody><tr><td>1st</td><td>12</td><td>–</td><td>–</td><td>3/4</td></tr><tr><td>2nd</td><td>11</td><td>–</td><td>–</td><td>4/5</td></tr><tr class="total-row"><td>Total</td><td>23</td><td>–</td><td>–</td><td>7/9</td></tr></tbody></table></div></div>
+  </div>
+</section>
+<section class="department-section" id="resources">
+  <div class="section-heading">
+    <span>Student Support</span>
+    <h2>Academic Resources</h2>
+  </div>
+  <div class="resource-grid">
+    <div class="resource-card">
+      <div class="resource-icon">📖</div>
+      <h3>Department Guide</h3>
+      <p>Use this page to review the programme background, admission requirements, graduation requirements and academic structure.</p>
+    </div>
+
+    <div class="resource-card">
+      <div class="resource-icon">📄</div>
+      <h3>Lecture Notes PDF</h3>
+      <p>Download the department document or select a PDF/course note from your device.</p>
+      <div class="resource-actions">
+        <a class="download-button" aria-disabled="true" title="The official department PDF has not yet been provided">⬇ Download</a>
+        <label class="upload-button" for="psychologyPdfUpload">⬆ Upload PDF</label>
+        <input id="psychologyPdfUpload" class="file-input" type="file" accept="application/pdf,.pdf">
+      </div>
+      <p id="uploadStatus" class="upload-status">No PDF selected.</p>
+    </div>
+
+    <div class="resource-card">
+      <div class="resource-icon">💬</div>
+      <h3>Connect on WhatsApp</h3>
+      <p>Use the department/student support WhatsApp channel when the official link is available.</p>
+      <div class="resource-actions">
+        <a class="whatsapp-button" aria-disabled="true" title="The official department WhatsApp link has not yet been provided">💬 Join WhatsApp Group ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="department-section"><div class="section-heading"><span>Get in Touch</span><h2>Department Contacts</h2></div><div class="contact-grid"><div class="contact-card"><h3>Department Information</h3><div class="contact-item"><div class="contact-item-icon">🎓</div><div><span>Department</span><strong>Pure and Applied Psychology</strong></div></div><div class="contact-item"><div class="contact-item-icon">👨‍🏫</div><div><span>Acting HOD</span><strong>Adepeju B. Ogungbamila</strong></div></div></div><div class="contact-card"><h3>University</h3><div class="contact-item"><div class="contact-item-icon">📍</div><div><span>Location</span><strong>Adekunle Ajasin University, Akungba-Akoko, Ondo State</strong></div></div></div></div></section>
+<section class="department-section" id="help"><div class="help-box"><h2>Need help with your department?</h2><p>If you need help with registration, courses, departmental information or other student matters, use the AAUA Uni Pilot student help system.</p><a href="help.html" class="help-button">Get Department Help →</a></div></section>
+</main>
+
+<footer>
+  <div class="footer-container">
+    <div class="footer-brand">
+      <a href="index.html" class="brand">🎓 AAUA Uni Pilot</a>
+      <p>Your campus. Your resources. Your guide.</p>
+    </div>
+    <div class="footer-links">
+      <div>
+        <h4>Platform</h4>
+        <a href="resources.html">Resources</a>
+        <a href="guide.html">Student Guide</a>
+        <a href="updates.html">Updates</a>
+        <a href="tools.html">Student Tools</a>
+      </div>
+      <div>
+        <h4>Information</h4>
+        <a href="about.html">About</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Use</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 Uni Pilot. All rights reserved.</p></div>
+</footer>
+
+
+<script>
+document.querySelectorAll(".programme-toggle").forEach(button => {
+  button.addEventListener("click", function(){
+    const content = this.nextElementSibling;
+    const isOpen = content.classList.contains("open");
+    document.querySelectorAll(".programme-content").forEach(item => item.classList.remove("open"));
+    document.querySelectorAll(".programme-toggle").forEach(item => {
+      item.classList.remove("active");
+      item.setAttribute("aria-expanded", "false");
+      item.querySelector("span").textContent = "+";
+    });
+    if(!isOpen){
+      content.classList.add("open");
+      this.classList.add("active");
+      this.setAttribute("aria-expanded", "true");
+      this.querySelector("span").textContent = "−";
+    }
+  });
+});
+</script>
+<script>
+document.querySelectorAll(".course-level-button[data-level-toggle]").forEach(button => {
+  button.addEventListener("click", function(){
+    const level = this.dataset.levelToggle;
+    const content = document.querySelector(`[data-level-content="${level}"]`);
+    const isOpen = content.classList.contains("open");
+
+    document.querySelectorAll(".course-level-content").forEach(item => item.classList.remove("open"));
+    document.querySelectorAll(".course-level-button[data-level-toggle]").forEach(item => {
+      item.classList.remove("active");
+      item.setAttribute("aria-expanded", "false");
+      const symbol = item.querySelector("span");
+      if(symbol) symbol.textContent = "+";
+    });
+
+    if(!isOpen){
+      content.classList.add("open");
+      this.classList.add("active");
+      this.setAttribute("aria-expanded", "true");
+      const symbol = this.querySelector("span");
+      if(symbol) symbol.textContent = "−";
+    }
+  });
+});
+
+document.querySelectorAll(".level-nav .course-level-button[data-level]").forEach(button => {
+  button.addEventListener("click", function(){
+    const target = document.querySelector(`[data-level-toggle="${this.dataset.level}"]`);
+    if(target) target.click();
+  });
+});
+</script>
+
+<script>
+document.getElementById("psychologyPdfUpload").addEventListener("change", function(){
+  const status = document.getElementById("uploadStatus");
+  const file = this.files[0];
+
+  if(!file){
+    status.textContent = "No PDF selected.";
+    return;
+  }
+
+  const isPdf = file.type === "application/pdf" || file.name.toLowerCase().endsWith(".pdf");
+
+  if(!isPdf){
+    this.value = "";
+    status.textContent = "Please select a PDF file.";
+    return;
+  }
+
+  status.textContent = "Selected: " + file.name + " (ready for upload)";
+});
+</script>
+
+
+<script>
+  // Return to the referring page when possible; use the faculty guide as a safe fallback.
+  document.getElementById("departmentBackButton").addEventListener("click", function () {
+    if (window.history.length > 1 && document.referrer && new URL(document.referrer).origin === window.location.origin) {
+      window.history.back();
+    } else {
+      window.location.href = "faculty-guide.html";
+    }
+  });
+
+  // Reveal content as it enters the viewport.
+  (function () {
+    const items = document.querySelectorAll(".quick-card, .department-section, .programme-card, .content-card, .resource-card, .contact-card, .summary-card");
+    items.forEach((item, index) => {
+      item.classList.add("reveal-on-scroll");
+      item.style.transitionDelay = (index % 4) * 55 + "ms";
+    });
+
+    if (!("IntersectionObserver" in window)) {
+      items.forEach(item => item.classList.add("is-visible"));
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries, activeObserver) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          activeObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    items.forEach(item => observer.observe(item));
+  })();
+</script>
+
+  <script src="site-navigation.js"></script>
+</body>
+</html>
