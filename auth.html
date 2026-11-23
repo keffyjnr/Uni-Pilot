@@ -1037,8 +1037,10 @@ loginForm.addEventListener("submit", async event => {
       );
     }
 
+    const requestedReturn = new URLSearchParams(window.location.search).get("returnTo");
+    const allowedReturn = requestedReturn === "study-hub.html" ? "study-hub.html" : "index.html";
     setTimeout(() => {
-      window.location.href = "index.html";
+      window.location.href = allowedReturn;
     }, 1100);
 
   } catch (error) {
