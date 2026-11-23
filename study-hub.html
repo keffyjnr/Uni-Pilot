@@ -1845,17 +1845,17 @@ button:disabled {
     <section class="cards">
 
         <button class="feature" data-view="materials">
-            <i class="icon green">↑</i>
+            <i class="icon green">📄↑</i>
             <b>PDF to CBT</b>
             <p>Upload lecture notes and prepare them for question generation.</p>
             <small>START WITH A PDF ↗</small>
         </button>
 
-        <button class="feature" data-view="practice">
-            <i class="icon amber">◉</i>
-            <b>CBT practice</b>
-            <p>Practise with built-in AAUA question banks and generated tests.</p>
-            <small>CHOOSE A COURSE ↗</small>
+        <button class="feature" data-view="materials">
+            <i class="icon amber">📁</i>
+            <b>Materials</b>
+            <p>Upload materials, PDFs, lecture notes and handouts to your personal study library.</p>
+            <small>UPLOAD MATERIALS ↗</small>
         </button>
 
         <button class="feature" data-view="flashcards">
@@ -2345,7 +2345,14 @@ document.addEventListener('keydown', event => {
 
 /* VIEW SWITCHING */
 
-function showView(view) {
+function showView(view, updateHistory = true) {
+
+    if (updateHistory) {
+        const viewHash = view === 'overview' ? '#overview' : '#' + view;
+        if (window.location.hash !== viewHash) {
+            history.pushState({ studyHubView: view }, '', viewHash);
+        }
+    }
 
     $('#overviewView').hidden = view !== 'overview';
     $('#materialsView').hidden = view !== 'materials';
@@ -2376,6 +2383,17 @@ document.querySelectorAll('[data-view]').forEach(button => {
     button.addEventListener('click', () => {
         showView(button.dataset.view);
     });
+});
+
+// Browser back/forward moves between Study Hub views before leaving the page.
+window.addEventListener('popstate', event => {
+    const view = event.state?.studyHubView || (
+        window.location.hash === '#materials' ? 'materials' :
+        window.location.hash === '#practice' ? 'practice' :
+        window.location.hash === '#flashcards' ? 'flashcards' :
+        window.location.hash === '#progress' ? 'progress' : 'overview'
+    );
+    showView(view, false);
 });
 
 
