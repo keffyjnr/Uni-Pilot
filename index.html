@@ -20,18 +20,19 @@
 
   <!-- CSS -->
   <link rel="stylesheet" href="style.css">
-<script>
-(function () {
-  try {
-    var saved = localStorage.getItem("uniPilotTheme") || "light";
-    var dark = saved === "dark" || (saved === "system" && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
-    document.documentElement.dataset.theme = dark ? "dark" : "light";
-    document.documentElement.dataset.themeChoice = ["light", "dark", "system"].includes(saved) ? saved : "light";
-  } catch (e) {
-    document.documentElement.dataset.theme = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-  }
-})();
-</script>
+
+  <script>
+  (function () {
+    try {
+      var saved = localStorage.getItem("uniPilotTheme") || "light";
+      var dark = saved === "dark" || (saved === "system" && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
+      document.documentElement.dataset.theme = dark ? "dark" : "light";
+      document.documentElement.dataset.themeChoice = ["light", "dark", "system"].includes(saved) ? saved : "light";
+    } catch (e) {
+      document.documentElement.dataset.theme = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+  })();
+  </script>
 
   <style>
 
@@ -41,8 +42,6 @@
 
     body {
       position: relative;
-      /* Keep the fixed background image inside the page's paint order,
-         above the body colour but behind all page content. */
       isolation: isolate;
     }
 
@@ -63,13 +62,9 @@
       background-repeat: no-repeat;
 
       opacity: 0.5;
-
       pointer-events: none;
-
       z-index: -1;
     }
-
-    /* Keep the actual page above the background */
 
     main,
     footer {
@@ -83,19 +78,14 @@
 
     .welcome-section {
       position: relative;
-
       background: transparent !important;
     }
-
-    /* Remove the old solid-looking background */
 
     .welcome-section::before {
       content: "";
       position: absolute;
       inset: 0;
-
       background: rgba(255, 255, 255, 0.18);
-
       pointer-events: none;
     }
 
@@ -110,14 +100,10 @@
 
     .action-card {
       background: rgba(255, 255, 255, 0.72) !important;
-
       backdrop-filter: blur(5px);
       -webkit-backdrop-filter: blur(5px);
-
       border: 1px solid rgba(255, 255, 255, 0.75) !important;
-
-      box-shadow:
-        0 8px 25px rgba(0, 0, 0, 0.07);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
     }
 
     .action-card:hover {
@@ -137,31 +123,21 @@
       position: absolute;
       top: calc(100% + 10px);
       right: 0;
-
       min-width: 150px;
       padding: 6px;
-
       background: rgba(255, 255, 255, 0.78);
-
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
-
       border: 1px solid rgba(255, 255, 255, 0.65);
       border-radius: 14px;
-
-      box-shadow:
-        0 10px 30px rgba(0, 0, 0, 0.12);
-
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
       opacity: 0;
       visibility: hidden;
-
       transform: translateY(-8px);
-
       transition:
         opacity 0.2s ease,
         transform 0.2s ease,
         visibility 0.2s ease;
-
       z-index: 1000;
     }
 
@@ -173,24 +149,16 @@
 
     .logout-btn {
       width: 100%;
-
       padding: 10px 12px;
-
       border: none;
       border-radius: 10px;
-
       background: transparent;
-
       color: var(--text);
-
       font-family: inherit;
       font-size: 14px;
       font-weight: 600;
-
       text-align: left;
-
       cursor: pointer;
-
       transition: background 0.2s ease;
     }
 
@@ -198,9 +166,8 @@
       background: rgba(11, 93, 59, 0.08);
     }
 
-    /* Keep the existing homepage photo visible in Dark Mode too. */
+    /* Dark theme background */
     html[data-theme="dark"] body::before {
-      /* A light tint keeps the photo visible without losing dark-mode contrast. */
       background-image:
         linear-gradient(
           rgba(7, 13, 18, 0.18),
@@ -217,7 +184,6 @@
       background: rgba(7, 13, 18, 0.12);
     }
 
-    /* Keep homepage tiles readable while allowing the photo to show through. */
     html[data-theme="dark"] .action-card {
       background: rgba(13, 23, 32, 0.72) !important;
     }
@@ -228,28 +194,57 @@
 
   </style>
 
-<style>
-/* STUDENT GUIDE DARK MODE VISIBILITY */
-html[data-theme="dark"] .action-card h3,
-html[data-theme="dark"] .btn-secondary { color:#ffffff !important; }
-</style>
+  <style>
+  /* STUDENT GUIDE DARK MODE VISIBILITY */
+  html[data-theme="dark"] .action-card h3,
+  html[data-theme="dark"] .btn-secondary {
+    color: #ffffff !important;
+  }
+  </style>
 
-<style id="uni-pilot-float-animations">
-/* Uni Pilot: smooth floating and scroll-reveal effects */
-@media (prefers-reduced-motion: no-preference) {
-  .up-reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
-  .up-reveal.up-visible { opacity: 1; transform: translateY(0); }
-  .up-float { animation: upGentleFloat 5s ease-in-out infinite; }
-  .up-hover-float { transition: transform .28s ease, box-shadow .28s ease; }
-  .up-hover-float:hover { transform: translateY(-6px); }
-  @keyframes upGentleFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
-}
-@media (prefers-reduced-motion: reduce) { .up-reveal { opacity: 1; transform: none; } }
-</style>
+  <style id="uni-pilot-float-animations">
+  /* Uni Pilot: smooth floating and scroll-reveal effects */
+  @media (prefers-reduced-motion: no-preference) {
+    .up-reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1);
+    }
+
+    .up-reveal.up-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .up-float {
+      animation: upGentleFloat 5s ease-in-out infinite;
+    }
+
+    .up-hover-float {
+      transition: transform .28s ease, box-shadow .28s ease;
+    }
+
+    .up-hover-float:hover {
+      transform: translateY(-6px);
+    }
+
+    @keyframes upGentleFloat {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-7px); }
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .up-reveal {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  </style>
 
   <link rel="stylesheet" href="site-navigation.css">
 
-  <!-- Homepage-only mobile width fix: prevent horizontal page scrolling without changing tile layout. -->
+  <!-- Homepage-only mobile width fix -->
   <style id="homepage-width-fix">
     html {
       width: 100%;
@@ -341,24 +336,28 @@ html[data-theme="dark"] .btn-secondary { color:#ffffff !important; }
     }
   </style>
 
+  <!-- Mobile background stability and performance fix -->
   <style id="homepage-dark-theme-background-fix">
-    /* One fixed viewport background layer for BOTH themes.
-       Chrome's collapsing address/navigation bars won't make the photo
-       scroll with page content. */
+
     body::before {
+      content: "";
       position: fixed !important;
       top: 0 !important;
-      right: 0 !important;
-      bottom: 0 !important;
       left: 0 !important;
-      width: auto !important;
-      height: auto !important;
-      background-attachment: fixed !important;
+      width: 100% !important;
+      height: 100vh !important;
+      inset: 0 !important;
+
+      background-attachment: scroll !important;
       background-size: cover !important;
       background-position: center center !important;
       background-repeat: no-repeat !important;
-      transform: translateZ(0);
-      will-change: transform;
+
+      transform: none !important;
+      will-change: auto !important;
+
+      pointer-events: none;
+      z-index: -1;
     }
 
     html[data-theme="dark"] body {
@@ -367,13 +366,17 @@ html[data-theme="dark"] .btn-secondary { color:#ffffff !important; }
       color: #eef4f7;
     }
 
-    /* Dark tint on the fixed photo; do not disable the fixed layer. */
     html[data-theme="dark"] body::before {
       content: "" !important;
       display: block !important;
+
       background-image:
-        linear-gradient(rgba(7, 13, 18, 0.30), rgba(7, 13, 18, 0.30)),
+        linear-gradient(
+          rgba(7, 13, 18, 0.30),
+          rgba(7, 13, 18, 0.30)
+        ),
         url("images/home-bg.jpg") !important;
+
       opacity: 1 !important;
     }
 
@@ -412,13 +415,12 @@ html[data-theme="dark"] .btn-secondary { color:#ffffff !important; }
     html[data-theme="dark"] .welcome-description {
       color: #d2dedb !important;
     }
+
   </style>
 
 </head>
 
-
 <body>
-
 
   <!-- =========================
        NAVIGATION
@@ -428,22 +430,15 @@ html[data-theme="dark"] .btn-secondary { color:#ffffff !important; }
 
     <nav class="navbar">
 
-
       <!-- Logo -->
-
       <a href="index.html" class="brand">
-
         <div class="brand-icon">
           🎓
         </div>
-
         <span>Uni Pilot</span>
-
       </a>
 
-
       <!-- Desktop Navigation -->
-
       <div class="desktop-nav">
 
         <a href="index.html" class="active">
@@ -468,11 +463,8 @@ html[data-theme="dark"] .btn-secondary { color:#ffffff !important; }
 
       </div>
 
-
       <!-- Navigation Actions -->
-
       <div class="nav-actions">
-
 
         <button
           class="icon-btn"
@@ -482,9 +474,7 @@ html[data-theme="dark"] .btn-secondary { color:#ffffff !important; }
           🔍
         </button>
 
-
         <!-- Login / Account -->
-
         <div class="account-wrapper">
 
           <a
@@ -495,9 +485,7 @@ html[data-theme="dark"] .btn-secondary { color:#ffffff !important; }
             Login / Sign Up
           </a>
 
-
           <!-- Account Dropdown -->
-
           <div
             class="account-dropdown"
             id="accountDropdown"
@@ -515,9 +503,7 @@ html[data-theme="dark"] .btn-secondary { color:#ffffff !important; }
 
         </div>
 
-
         <!-- Mobile Menu Button -->
-
         <button
           class="menu-btn"
           id="menuBtn"
@@ -527,16 +513,11 @@ html[data-theme="dark"] .btn-secondary { color:#ffffff !important; }
           ☰
         </button>
 
-
       </div>
 
     </nav>
 
-
-    <!-- =========================
-         MOBILE MENU
-    ========================== -->
-
+    <!-- MOBILE MENU -->
     <div
       class="mobile-menu"
       id="navLinks"
@@ -570,7 +551,6 @@ html[data-theme="dark"] .btn-secondary { color:#ffffff !important; }
         About
       </a>
 
-
       <button class="theme-menu-trigger" id="themeMenuTrigger" type="button" aria-haspopup="dialog">
         <span aria-hidden="true">◐</span> Theme <span class="theme-current-label" id="themeCurrentLabel">System Default</span>
       </button>
@@ -586,32 +566,71 @@ html[data-theme="dark"] .btn-secondary { color:#ffffff !important; }
 
   </header>
 
-
-
   <!-- Theme selection modal -->
   <div class="theme-modal-backdrop" id="themeModal" aria-hidden="true">
+
     <section class="theme-modal" role="dialog" aria-modal="true" aria-labelledby="themeModalTitle">
-      <button class="theme-modal-close" id="themeModalClose" type="button" aria-label="Close theme settings">×</button>
-      <div class="theme-modal-icon" aria-hidden="true">◐</div>
-      <h2 id="themeModalTitle">Choose your theme</h2>
-      <p>Make Uni Pilot feel right for you.</p>
-      <div class="theme-options" role="radiogroup" aria-label="Website theme">
-        <button class="theme-option" type="button" data-theme-choice="light" role="radio" aria-checked="false"><span class="theme-option-symbol">☀</span><span><strong>Light</strong><small>Bright and familiar</small></span><span class="theme-radio"></span></button>
-        <button class="theme-option" type="button" data-theme-choice="dark" role="radio" aria-checked="false"><span class="theme-option-symbol">☾</span><span><strong>Dark</strong><small>Deep charcoal and emerald</small></span><span class="theme-radio"></span></button>
-        <button class="theme-option" type="button" data-theme-choice="system" role="radio" aria-checked="false"><span class="theme-option-symbol">◑</span><span><strong>System Default</strong><small>Follow your device settings</small></span><span class="theme-radio"></span></button>
+
+      <button class="theme-modal-close" id="themeModalClose" type="button" aria-label="Close theme settings">
+        ×
+      </button>
+
+      <div class="theme-modal-icon" aria-hidden="true">
+        ◐
       </div>
-      <p class="theme-modal-note">Your choice is saved on this device.</p>
+
+      <h2 id="themeModalTitle">
+        Choose your theme
+      </h2>
+
+      <p>
+        Make Uni Pilot feel right for you.
+      </p>
+
+      <div class="theme-options" role="radiogroup" aria-label="Website theme">
+
+        <button class="theme-option" type="button" data-theme-choice="light" role="radio" aria-checked="false">
+          <span class="theme-option-symbol">☀</span>
+          <span>
+            <strong>Light</strong>
+            <small>Bright and familiar</small>
+          </span>
+          <span class="theme-radio"></span>
+        </button>
+
+        <button class="theme-option" type="button" data-theme-choice="dark" role="radio" aria-checked="false">
+          <span class="theme-option-symbol">☾</span>
+          <span>
+            <strong>Dark</strong>
+            <small>Deep charcoal and emerald</small>
+          </span>
+          <span class="theme-radio"></span>
+        </button>
+
+        <button class="theme-option" type="button" data-theme-choice="system" role="radio" aria-checked="false">
+          <span class="theme-option-symbol">◑</span>
+          <span>
+            <strong>System Default</strong>
+            <small>Follow your device settings</small>
+          </span>
+          <span class="theme-radio"></span>
+        </button>
+
+      </div>
+
+      <p class="theme-modal-note">
+        Your choice is saved on this device.
+      </p>
+
     </section>
+
   </div>
 
-
   <!-- Menu Background Overlay -->
-
   <div
     class="menu-overlay"
     id="menuOverlay"
   ></div>
-
 
   <!-- =========================
        MAIN CONTENT
@@ -619,11 +638,7 @@ html[data-theme="dark"] .btn-secondary { color:#ffffff !important; }
 
   <main>
 
-
-    <!-- =========================
-         PERSONAL WELCOME HERO
-    ========================== -->
-
+    <!-- PERSONAL WELCOME HERO -->
     <section
       class="welcome-section"
       id="home"
@@ -631,208 +646,134 @@ html[data-theme="dark"] .btn-secondary { color:#ffffff !important; }
 
       <div class="welcome-content">
 
-
         <div class="welcome-tag">
           🎓 YOUR STUDENT COMPANION
         </div>
-
 
         <h1 id="welcomeMessage">
           👋 Hello, Student!
         </h1>
 
-
         <p class="welcome-description">
           What do you want to do today?
         </p>
 
-
-        <!-- =========================
-             QUICK ACTIONS
-        ========================== -->
-
+        <!-- QUICK ACTIONS -->
         <div class="action-grid">
 
-
           <!-- 1. FACULTY GUIDE -->
-
           <a
             href="faculty-guide.html"
             class="action-card"
           >
 
-            <span>
-              🏛️
-            </span>
+            <span>🏛️</span>
 
             <div>
-
-              <h3>
-                Faculty Guide
-              </h3>
-
+              <h3>Faculty Guide</h3>
               <p>
                 Explore faculties, departments and academic information.
               </p>
-
             </div>
 
-            <strong>
-              →
-            </strong>
+            <strong>→</strong>
 
           </a>
 
-
           <!-- 2. ACADEMIC RESOURCES -->
-
           <a
             href="study-hub.html"
             class="action-card"
           >
 
-            <span>
-              🎓
-            </span>
+            <span>📚</span>
 
             <div>
-
-              <h3>
-                Study Hub
-              </h3>
-
+              <h3>Study Hub</h3>
               <p>
                 Upload study materials, practise CBT and track your learning.
               </p>
-
             </div>
 
-            <strong>
-              →
-            </strong>
+            <strong>→</strong>
 
           </a>
 
-
           <!-- 3. STUDENT GUIDE -->
-
           <a
             href="guide.html"
             class="action-card"
           >
 
-            <span>
-              🎓
-            </span>
+            <span>🎓</span>
 
             <div>
-
-              <h3>
-                Student Guide
-              </h3>
-
+              <h3>Student Guide</h3>
               <p>
                 Get help with school procedures and student life.
               </p>
-
             </div>
 
-            <strong>
-              →
-            </strong>
+            <strong>→</strong>
 
           </a>
 
-
           <!-- 4. CAMPUS UPDATES -->
-
           <a
             href="updates.html"
             class="action-card"
           >
 
-            <span>
-              📢
-            </span>
+            <span>📢</span>
 
             <div>
-
-              <h3>
-                Campus Updates
-              </h3>
-
+              <h3>Campus Updates</h3>
               <p>
                 Stay updated with announcements and deadlines.
               </p>
-
             </div>
 
-            <strong>
-              →
-            </strong>
+            <strong>→</strong>
 
           </a>
 
-
           <!-- 5. OPPORTUNITIES -->
-
           <a
             href="opportunities.html"
             class="action-card"
           >
 
-            <span>
-              💼
-            </span>
+            <span>💼</span>
 
             <div>
-
-              <h3>
-                Opportunities
-              </h3>
-
+              <h3>Opportunities</h3>
               <p>
                 Find scholarships, internships and more.
               </p>
-
             </div>
 
-            <strong>
-              →
-            </strong>
+            <strong>→</strong>
 
           </a>
 
-
           <!-- 6. STUDENT TOOLS -->
-
           <a
             href="tools.html"
             class="action-card"
           >
 
-            <span>
-              🧮
-            </span>
+            <span>🧮</span>
 
             <div>
-
-              <h3>
-                Student Tools
-              </h3>
-
+              <h3>Student Tools</h3>
               <p>
                 GPA calculators, course units and useful tools.
               </p>
-
             </div>
 
-            <strong>
-              →
-            </strong>
+            <strong>→</strong>
 
           </a>
-
 
         </div>
 
@@ -840,43 +781,29 @@ html[data-theme="dark"] .btn-secondary { color:#ffffff !important; }
 
     </section>
 
-
-    <!-- =========================
-         PLATFORM INTRODUCTION
-    ========================== -->
-
+    <!-- PLATFORM INTRODUCTION -->
     <section class="platform-intro">
 
       <div class="platform-intro-content">
-
 
         <span class="intro-label">
           ALL YOUR STUDENT NEEDS
         </span>
 
-
         <h2>
-
           Everything Students Need
-
           <span>
             in One Place.
           </span>
-
         </h2>
 
-
         <p>
-
           Access academic resources, school guides, campus updates,
           opportunities, and useful student tools — all designed to
           make student life easier.
-
         </p>
 
-
         <div class="hero-buttons">
-
 
           <a
             href="resources.html"
@@ -885,7 +812,6 @@ html[data-theme="dark"] .btn-secondary { color:#ffffff !important; }
             Explore Resources →
           </a>
 
-
           <a
             href="guide.html"
             class="btn btn-secondary"
@@ -893,16 +819,13 @@ html[data-theme="dark"] .btn-secondary { color:#ffffff !important; }
             Student Guide
           </a>
 
-
         </div>
 
       </div>
 
     </section>
 
-
   </main>
-
 
   <!-- =========================
        FOOTER
@@ -935,14 +858,11 @@ html[data-theme="dark"] .btn-secondary { color:#ffffff !important; }
 
       </div>
 
-
       <div class="footer-links">
 
         <div class="footer-column">
 
-          <h4>
-            Platform
-          </h4>
+          <h4>Platform</h4>
 
           <a href="resources.html">
             Resources
@@ -962,12 +882,9 @@ html[data-theme="dark"] .btn-secondary { color:#ffffff !important; }
 
         </div>
 
-
         <div class="footer-column">
 
-          <h4>
-            Information
-          </h4>
+          <h4>Information</h4>
 
           <a href="about.html">
             About
@@ -991,7 +908,6 @@ html[data-theme="dark"] .btn-secondary { color:#ffffff !important; }
 
     </div>
 
-
     <div class="footer-bottom">
 
       <p>
@@ -1002,15 +918,10 @@ html[data-theme="dark"] .btn-secondary { color:#ffffff !important; }
 
   </footer>
 
-
   <!-- JavaScript -->
-
   <script src="script.js"></script>
 
-
-  <!-- =========================
-       LOGIN STATE + ACCOUNT DROPDOWN
-  ========================== -->
+  <!-- LOGIN STATE + ACCOUNT DROPDOWN -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const authBtn = document.getElementById("authBtn");
@@ -1026,7 +937,7 @@ html[data-theme="dark"] .btn-secondary { color:#ffffff !important; }
 
       function logOut() {
         clearLoginSession();
-        window.location.href = "index.html";
+        window.location.replace("auth.html");
       }
 
       const isLoggedIn = localStorage.getItem("uniPilotLoggedIn") === "true";
@@ -1035,6 +946,7 @@ html[data-theme="dark"] .btn-secondary { color:#ffffff !important; }
       if (!isLoggedIn || !savedUser) return;
 
       let user;
+
       try {
         user = JSON.parse(savedUser);
       } catch (error) {
@@ -1058,6 +970,7 @@ html[data-theme="dark"] .btn-secondary { color:#ffffff !important; }
 
         authBtn.addEventListener("click", function (event) {
           event.preventDefault();
+
           if (!accountDropdown) return;
 
           const isOpen = accountDropdown.classList.toggle("active");
@@ -1071,6 +984,7 @@ html[data-theme="dark"] .btn-secondary { color:#ffffff !important; }
 
       if (mobileAuthBtn) {
         mobileAuthBtn.textContent = "Log out ↩️";
+
         mobileAuthBtn.addEventListener("click", function (event) {
           event.preventDefault();
           logOut();
@@ -1083,48 +997,73 @@ html[data-theme="dark"] .btn-secondary { color:#ffffff !important; }
           !event.target.closest(".account-wrapper")
         ) {
           accountDropdown.classList.remove("active");
-          if (authBtn) authBtn.setAttribute("aria-expanded", "false");
+
+          if (authBtn) {
+            authBtn.setAttribute("aria-expanded", "false");
+          }
         }
       });
 
       document.addEventListener("keydown", function (event) {
         if (event.key === "Escape" && accountDropdown) {
           accountDropdown.classList.remove("active");
-          if (authBtn) authBtn.setAttribute("aria-expanded", "false");
+
+          if (authBtn) {
+            authBtn.setAttribute("aria-expanded", "false");
+          }
         }
       });
     });
   </script>
 
+  <script id="uni-pilot-float-script">
+  (() => {
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-<script id="uni-pilot-float-script">
-(() => {
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const revealSelectors = 'main > section, main > article, .faculty-hero-content, .section-heading, .platform-intro, .tools-section, .resource-card, .tool-card, .update-card, .browse-all-card, .faculty-card, .department-card, .quick-info-card, .program-card, .contact-card';
-  const candidates = [...document.querySelectorAll(revealSelectors)];
-  const seen = new Set();
-  candidates.forEach((el, i) => {
-    if (seen.has(el) || el.closest('footer, nav, .desktop-nav, .mobile-nav, .theme-modal')) return;
-    seen.add(el);
-    el.classList.add('up-reveal');
-    if (el.matches('.resource-card, .tool-card, .update-card, .browse-all-card, .faculty-card, .department-card, .quick-info-card, .program-card, .contact-card')) el.classList.add('up-hover-float');
-    if (el.matches('.faculty-hero-content, .platform-intro')) el.classList.add('up-float');
-    el.style.transitionDelay = `${Math.min(i % 5, 4) * 70}ms`;
-  });
-  if (reduced || !('IntersectionObserver' in window)) {
-    document.querySelectorAll('.up-reveal').forEach(el => el.classList.add('up-visible'));
-    return;
-  }
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) { entry.target.classList.add('up-visible'); observer.unobserve(entry.target); }
+    const revealSelectors = 'main > section, main > article, .faculty-hero-content, .section-heading, .platform-intro, .tools-section, .resource-card, .tool-card, .update-card, .browse-all-card, .faculty-card, .department-card, .quick-info-card, .program-card, .contact-card';
+
+    const candidates = [...document.querySelectorAll(revealSelectors)];
+    const seen = new Set();
+
+    candidates.forEach((el, i) => {
+      if (seen.has(el) || el.closest('footer, nav, .desktop-nav, .mobile-nav, .theme-modal')) return;
+
+      seen.add(el);
+      el.classList.add('up-reveal');
+
+      if (el.matches('.resource-card, .tool-card, .update-card, .browse-all-card, .faculty-card, .department-card, .quick-info-card, .program-card, .contact-card')) {
+        el.classList.add('up-hover-float');
+      }
+
+      if (el.matches('.faculty-hero-content, .platform-intro')) {
+        el.classList.add('up-float');
+      }
+
+      el.style.transitionDelay = `${Math.min(i % 5, 4) * 70}ms`;
     });
-  }, { threshold: 0.12, rootMargin: '0px 0px -35px 0px' });
-  document.querySelectorAll('.up-reveal').forEach(el => observer.observe(el));
-})();
-</script>
+
+    if (reduced || !('IntersectionObserver' in window)) {
+      document.querySelectorAll('.up-reveal').forEach(el => el.classList.add('up-visible'));
+      return;
+    }
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('up-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -35px 0px'
+    });
+
+    document.querySelectorAll('.up-reveal').forEach(el => observer.observe(el));
+  })();
+  </script>
 
   <script src="site-navigation.js"></script>
-</body>
 
+</body>
 </html>
