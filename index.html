@@ -341,25 +341,39 @@ html[data-theme="dark"] .btn-secondary { color:#ffffff !important; }
   </style>
 
   <style id="homepage-dark-theme-background-fix">
-    /* Homepage-only dark theme. Keep the campus photo on the BODY itself,
-       rather than relying on negative-z-index pseudo-elements. */
+    /* One fixed viewport background layer for BOTH themes.
+       Chrome's collapsing address/navigation bars won't make the photo
+       scroll with page content. */
+    body::before {
+      position: fixed !important;
+      top: 0 !important;
+      right: 0 !important;
+      bottom: 0 !important;
+      left: 0 !important;
+      width: auto !important;
+      height: auto !important;
+      background-attachment: fixed !important;
+      background-size: cover !important;
+      background-position: center center !important;
+      background-repeat: no-repeat !important;
+      transform: translateZ(0);
+      will-change: transform;
+    }
+
     html[data-theme="dark"] body {
       background-color: #070d12 !important;
-      background-image:
-        linear-gradient(rgba(7, 13, 18, 0.30), rgba(7, 13, 18, 0.30)),
-        url("images/home-bg.jpg") !important;
-      background-repeat: no-repeat, no-repeat !important;
-      background-position: center center, center center !important;
-      background-size: cover, cover !important;
-      background-attachment: scroll, scroll !important;
+      background-image: none !important;
       color: #eef4f7;
     }
 
-    /* Disable the old overlays that were competing with the real background. */
-    html[data-theme="dark"] body::before,
-    html[data-theme="dark"] body::after {
-      content: none !important;
-      display: none !important;
+    /* Dark tint on the fixed photo; do not disable the fixed layer. */
+    html[data-theme="dark"] body::before {
+      content: "" !important;
+      display: block !important;
+      background-image:
+        linear-gradient(rgba(7, 13, 18, 0.30), rgba(7, 13, 18, 0.30)),
+        url("images/home-bg.jpg") !important;
+      opacity: 1 !important;
     }
 
     html[data-theme="dark"] main {
@@ -375,7 +389,6 @@ html[data-theme="dark"] .btn-secondary { color:#ffffff !important; }
       background: rgba(7, 13, 18, 0.10) !important;
     }
 
-    /* Semi-transparent tiles let the campus photo remain visible between them. */
     html[data-theme="dark"] .action-card {
       background: rgba(10, 20, 27, 0.70) !important;
       border: 1px solid rgba(160, 190, 180, 0.24) !important;
