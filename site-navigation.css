@@ -28,3 +28,12 @@ html[data-theme="dark"] .site-nav-fix .mobile-menu a:hover,html[data-theme="dark
 .site-theme-dialog .site-theme-close{float:right;border:0;background:transparent;font-size:1.5rem;cursor:pointer}
 @media(max-width:820px){.site-nav-fix .navbar{width:calc(100% - 24px);min-height:68px;gap:8px}.site-nav-fix .desktop-nav{display:none!important}.site-nav-fix .menu-btn{display:inline-flex;align-items:center;justify-content:center}.site-nav-fix .site-theme-btn{display:none}.site-nav-fix .brand{font-size:.95rem}.site-nav-fix .nav-actions{gap:7px}}
 @media(min-width:821px){.site-nav-fix .mobile-menu,.site-nav-fix .menu-overlay{display:none!important}}
+
+/* Laptop navigation accessibility fix: compact menu before links become cramped. */
+@media (min-width:821px) and (max-width:1200px){
+.site-nav-fix .navbar{gap:10px!important}
+.site-nav-fix .desktop-nav{display:none!important}
+.site-nav-fix .menu-btn{display:inline-flex!important;align-items:center;justify-content:center}
+.site-nav-fix .site-theme-btn{display:inline-flex!important;align-items:center;justify-content:center}
+.site-nav-fix .nav-actions{gap:7px!important}
+}
