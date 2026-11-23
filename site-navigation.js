@@ -40,6 +40,43 @@
     const mobileTheme=menu.querySelector("#themeMenuTrigger");
     if(!mobileTheme){const b=document.createElement("button");b.type="button";b.textContent="◐ Theme settings";b.addEventListener("click",openTheme);menu.appendChild(b);}
 
+    // PWA setup: installable website with standalone app window.
+    if(!document.querySelector('link[rel="manifest"]')){
+      const manifestLink=document.createElement("link");
+      manifestLink.rel="manifest";
+      manifestLink.href="manifest.webmanifest";
+      document.head.appendChild(manifestLink);
+    }
+    if("serviceWorker" in navigator && location.protocol==="https:"){
+      navigator.serviceWorker.register("sw.js").catch(()=>{});
+    }
+    let installPromptEvent=null;
+    window.addEventListener("beforeinstallprompt",event=>{
+      event.preventDefault();
+      installPromptEvent=event;
+      installButton.style.display="block";
+      installButton.textContent="📲 Install Uni Pilot";
+    });
+    window.addEventListener("appinstalled",()=>{
+      installPromptEvent=null;
+      installButton.style.display="none";
+    });
+    const installButton=document.createElement("button");
+    installButton.type="button";
+    installButton.textContent="📲 Install Uni Pilot";
+    installButton.style.cssText="display:none;width:100%;text-align:left;padding:12px 14px;margin-top:6px;border:1px solid rgba(11,93,59,.18);border-radius:12px;background:rgba(11,93,59,.08);color:inherit;font:700 14px Manrope,Arial,sans-serif;cursor:pointer";
+    installButton.addEventListener("click",async()=>{
+      if(!installPromptEvent){
+        alert("To install Uni Pilot, open Chrome's menu (⋮) and choose 'Install app' or 'Add to Home screen'.");
+        return;
+      }
+      installPromptEvent.prompt();
+      await installPromptEvent.userChoice;
+      installPromptEvent=null;
+      installButton.style.display="none";
+    });
+    menu.appendChild(installButton);
+
     // Compact AI popup: same AI page/API and same-origin saved chat history.
     function openAIPopup(){
       let layer=document.getElementById("uniPilotAIPopup");
