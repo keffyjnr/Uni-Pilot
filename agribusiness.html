@@ -279,6 +279,15 @@ footer{border-top:1px solid var(--border)}
 .semester-content{display:none;padding:9px 0 2px}
 .semester-content.open{display:block}
 
+
+/* MOBILE WIDTH CONTAINMENT: prevent grade/course tables from stretching the page */
+html,body{width:100%;max-width:100%;overflow-x:hidden}
+.department-page{width:100%;max-width:100%;overflow-x:clip}
+.department-main,.department-section,.info-grid,.content-card,.table-wrap{min-width:0;max-width:100%}
+.info-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.table-wrap{width:100%;overflow-x:auto;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+.course-table{width:100%;max-width:100%}
+@media(max-width:950px){.info-grid{grid-template-columns:minmax(0,1fr)}}
 </style>
   <link rel="stylesheet" href="site-navigation.css">
 </head>
