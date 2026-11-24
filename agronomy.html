@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Agronomy | AAUA Uni Pilot</title>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
-<link href="style.css" rel="stylesheet"/>
+
+<link rel="preconnect" href="index.html">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
 <style>
 :root{
   --green:#0b5d3b;
@@ -47,7 +47,7 @@ button,input{font-family:inherit}
   box-shadow:0 18px 50px rgba(6,59,38,.14);
 }
 .department-hero::after{
-  content:"AERD";position:absolute;right:22px;bottom:-25px;
+  content:"ICT";position:absolute;right:22px;bottom:-25px;
   font-size:clamp(5rem,15vw,11rem);line-height:.8;font-weight:800;
   letter-spacing:-7px;color:rgba(255,255,255,.035);pointer-events:none;
 }
@@ -244,388 +244,390 @@ footer{border-top:1px solid var(--border)}
 .programme-content{display:none;margin-top:8px}
 .programme-content.open{display:block}
 .programme-content .content-card{padding:21px}
+
+/* LIFE + MOTION: polished entrance, reveal, and responsive hover feedback */
+.department-back-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 22px}
+.department-back-button{display:inline-flex;align-items:center;gap:9px;min-height:40px;padding:0 15px;border:1px solid var(--border);border-radius:999px;background:#fff;color:var(--green);font:inherit;font-size:.72rem;font-weight:800;cursor:pointer;box-shadow:0 7px 20px rgba(6,59,38,.06);transition:transform .22s ease,box-shadow .22s ease,background .22s ease}
+.department-back-button span{font-size:1.1rem;transition:transform .22s ease}
+.department-back-button:hover{transform:translateY(-2px);background:var(--light-green);box-shadow:0 12px 25px rgba(6,59,38,.12)}
+.department-back-button:hover span{transform:translateX(-3px)}
+.back-hint{color:var(--muted);font-size:.68rem}
+.department-hero{animation:ictHeroEnter .8s cubic-bezier(.2,.75,.25,1) both}
+.department-hero-content{animation:ictContentEnter .9s .12s cubic-bezier(.2,.75,.25,1) both}
+.department-hero::after{animation:ictWatermarkFloat 9s ease-in-out infinite}
+@keyframes ictHeroEnter{from{opacity:0;transform:translateY(18px) scale(.99)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes ictContentEnter{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes ictWatermarkFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+.quick-card,.content-card,.programme-card,.resource-card,.contact-card,.summary-card,.help-box{transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.quick-card:hover,.content-card:hover,.contact-card:hover,.summary-card:hover{transform:translateY(-4px);box-shadow:0 18px 42px rgba(6,59,38,.1);border-color:rgba(11,93,59,.24)}
+.resource-card:hover{box-shadow:0 18px 42px rgba(6,59,38,.1)}
+.location-button,.download-button,.upload-button,.whatsapp-button,.help-button,.department-action{transition:transform .22s ease,box-shadow .22s ease,background .22s ease}
+.location-button:hover,.download-button:hover,.upload-button:hover,.whatsapp-button:hover,.help-button:hover,.department-action:hover{transform:translateY(-2px);box-shadow:0 9px 22px rgba(6,59,38,.12)}
+.reveal-on-scroll{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s cubic-bezier(.2,.75,.25,1)}
+.reveal-on-scroll.is-visible{opacity:1;transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .reveal-on-scroll{opacity:1;transform:none}
+}
+
 </style>
   <link rel="stylesheet" href="site-navigation.css">
 </head>
+
 <body class="department-page">
+
 <header class="header">
-<nav class="navbar">
-<a class="brand" href="index.html">
-<span class="brand-icon">
+
+    <nav class="navbar">
+
+      <a
+        href="index.html"
+        class="brand"
+      >
+
+        <span class="brand-icon">
           🎓
         </span>
-<span>
+
+        <span>
           AAUA Uni Pilot
         </span>
-</a>
-<div class="desktop-nav">
-<a href="index.html">
+
+      </a>
+
+
+      <div class="desktop-nav">
+
+        <a href="index.html">
           Home
         </a>
-<a href="resources.html">
+
+        <a href="resources.html">
           Resources
         </a>
-<a href="guide.html">
+
+        <a href="guide.html">
           Student Guide
         </a>
-<a href="updates.html">
+
+        <a href="updates.html">
           Updates
         </a>
-<a class="active" href="tools.html">
+
+        <a href="tools.html" class="active">
           Tools
         </a>
-</div>
-<div class="nav-actions">
-<a aria-label="Search AAUA Uni Pilot" class="icon-btn" href="search.html" style="display:grid;place-items:center;text-decoration:none;" title="Search AAUA Uni Pilot">
+
+      </div>
+
+
+      <div class="nav-actions">
+
+        <a
+          href="search.html"
+          class="icon-btn"
+          aria-label="Search AAUA Uni Pilot"
+          title="Search AAUA Uni Pilot"
+          style="display:grid;place-items:center;text-decoration:none;"
+        >
           🔍
         </a>
-<button aria-label="Open menu" class="menu-btn" id="menuBtn" type="button">
+
+
+        <button
+          class="menu-btn"
+          id="menuBtn"
+          type="button"
+          aria-label="Open menu"
+        >
           ☰
         </button>
-</div>
-</nav>
-</header>
+
+      </div>
+
+    </nav>
+
+  </header>
+
+
 <section class="department-hero">
-<div class="department-hero-content">
-<div class="breadcrumb">
-<a href="index.html">Home</a><span>&rsaquo;</span>
-<a href="faculty-guide.html">Faculty Guide</a><span>&rsaquo;</span>
-<span>Agronomy</span>
-</div>
-<span class="department-label">Department Guide</span>
-<h1>Department of Agronomy.</h1>
-<p class="faculty-name">Faculty of Agriculture</p>
-<p class="department-hero-description">Welcome to the Department of Agronomy at Adekunle Ajasin University. Explore your programme, courses, academic resources and useful departmental information in one place.</p>
-<div class="department-actions">
-<a class="department-action primary" href="#overview">📚 Overview</a>
-<a class="department-action secondary" href="#courses">📋 Courses</a>
-<a class="department-action secondary" href="#resources">📁 Resources</a>
-<a class="department-action secondary" href="#help">🆘 Get Help</a>
-</div>
-</div>
+  <div class="department-hero-content">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>›</span><a href="faculty-guide.html">Faculty Guide</a><span>›</span><span>Agronomy</span></div>
+    <span class="department-label">Department Guide</span>
+    <h1>Department of <span>Agronomy.</span></h1>
+    <p class="faculty-name">Faculty of Agriculture</p>
+    <p class="department-hero-description">Explore the Department of Agronomy, its crop science programme, admission and graduation requirements, course structure and academic resources at Adekunle Ajasin University.</p>
+    <div class="department-actions">
+      <a href="#overview" class="department-action primary">📚 Overview</a>
+      <a href="#courses" class="department-action secondary">📋 Courses</a>
+      <a href="#resources" class="department-action secondary">📁 Resources</a>
+      <a href="#help" class="department-action secondary">🆘 Get Help</a>
+    </div>
+  </div>
 </section>
 <main class="department-main">
-<section class="quick-info">
-<div class="quick-card"><div class="quick-icon">🏛️</div><span>Faculty</span><strong>Faculty of Agriculture</strong></div>
-<div class="quick-card"><div class="quick-icon">👨&zwj;🏫</div><span>Head of Department</span><strong>Dr. Agbede, T.M</strong></div>
-<div class="quick-card"><div class="quick-icon">🎓</div><span>Degree</span><strong>B. Agric (Agronomy)</strong></div>
-<div class="quick-card"><div class="quick-icon">⏳</div><span>Duration</span><strong>Information coming soon</strong></div>
-</section>
-<section class="department-section" id="overview">
-<div class="section-heading">
-<span>About the Department</span>
-<h2>Agronomy</h2>
-</div>
-<div class="about-box"><p>The Department of Agronomy is one of the departments in the Faculty of Agriculture at Adekunle Ajasin University, Akungba-Akoko, Ondo State, Nigeria.</p><p>The Department was established in 2014 and officially took off in the 2014/2015 academic session. It offers the B. Agric (Honours) degree in Agronomy.</p><p>Students undertake science-based courses at the 100 level, while Agriculture-based courses are introduced from the 200 level. The University provides facilities and a conducive environment for teaching, learning and research.</p><p>The Department aims to produce graduates with adequate theoretical and practical knowledge for self-reliance, postgraduate studies and employment. It also contributes to consultancy, training and efforts towards food security.</p></div>
-</section>
-<section class="department-section">
-<div class="section-heading">
-<span>Programme Philosophy &amp; Objectives</span>
-<h2>Programme Philosophy &amp; Objectives</h2>
-</div>
-<div class="info-grid">
-<div class="content-card"><h3>Philosophy</h3><p>Information coming soon.</p></div>
-<div class="content-card"><h3>Objectives</h3><p>Information coming soon.</p></div>
-</div>
-</section>
-<section class="department-section">
-<div class="section-heading">
-<span>Programme Offered &amp; Duration</span>
-<h2>Agronomy</h2>
-</div>
-<div class="programme-grid">
-<div class="programme-card">
-<div class="programme-icon">🎓</div>
-<h3>B. Agric (Agronomy)</h3>
-<p>Bachelor of Agriculture programme leading to the B. Agric (Honours) degree in Agronomy.</p>
-</div>
-<div class="programme-card">
-<div class="programme-icon">⏱️</div>
-<h3>Duration</h3>
-<p>Information coming soon.</p>
-</div>
-</div>
-</section>
-<section class="department-section">
-<div class="section-heading">
-<span>Admission</span>
-<h2>Admission Requirements</h2>
-</div>
-<div class="info-grid">
-<div class="content-card"><h3>UTME Entry Requirements</h3><p>Information coming soon.</p></div>
-<div class="content-card"><h3>Direct Entry Requirements</h3><p>Information coming soon.</p></div>
-</div>
-</section>
-<section class="department-section">
-<div class="section-heading">
-<span>Graduation</span>
-<h2>Graduation Requirements</h2>
-</div>
-<div class="content-card"><p>Information coming soon.</p></div>
-</section>
-<section class="department-section">
-<div class="section-heading">
-<span>Registration</span>
-<h2>Registration for Courses</h2>
-</div>
-<div class="info-grid">
-<div class="rule-card content-card"><h3>Course Categories</h3><p>Information coming soon.</p></div>
-<div class="rule-card content-card"><h3>Registration Rules</h3><p>Information coming soon.</p></div>
-</div>
-</section>
-<section class="department-section">
-<div class="section-heading">
-<span>Academic Structure</span>
-<h2>Programme Structure</h2>
-</div>
-<div class="content-card">
-<h3>Programme</h3>
-<div class="table-wrap">
-<table class="course-table">
-<thead><tr><th>Level</th><th>Compulsory 1st</th><th>Compulsory 2nd</th><th>GST 1st</th><th>GST 2nd</th><th>ENT 1st</th><th>ENT 2nd</th><th>Elective 1st</th><th>Elective 2nd</th><th>Total 1st</th><th>Total 2nd</th></tr></thead>
-<tbody><tr><td colspan="11">Information coming soon.</td></tr></tbody>
-</table>
-</div>
-<p class="note">Programme structure information coming soon.</p>
-</div>
-<div class="content-card" style="margin-top:12px;">
-<h3>Programme</h3>
-<div class="table-wrap">
-<table class="course-table">
-<thead><tr><th>Level</th><th>Compulsory 1st</th><th>Compulsory 2nd</th><th>GST 1st</th><th>GST 2nd</th><th>ENT 1st</th><th>ENT 2nd</th><th>Elective 1st</th><th>Elective 2nd</th><th>Total 1st</th><th>Total 2nd</th></tr></thead>
-<tbody><tr><td colspan="11">Information coming soon.</td></tr></tbody>
-</table>
-</div>
-</div>
-</section>
-<section class="department-section" id="courses">
-<div class="section-heading">
-<span>Course Structure</span>
-<h2>Courses by Level and Semester</h2>
-<p>Course codes, titles, units and semester details: Information coming soon.</p>
-</div>
-<div class="level-nav">
-<button class="course-level-button" data-level="100" type="button">100 Level</button>
-<button class="course-level-button" data-level="200" type="button">200 Level</button>
-<button class="course-level-button" data-level="300" type="button">300 Level</button>
-<button class="course-level-button" data-level="400" type="button">400 Level</button>
-<a href="#siwes">SIWES</a>
-</div>
-<div class="course-level-group">
-<button aria-expanded="false" class="course-level-button" data-level-toggle="100" type="button">
-      100 Level <span aria-hidden="true">+</span>
-</button>
-<div class="course-level-content" data-level-content="100">
-<div class="course-block" data-level="100" id="level100">
-<h3>100 Level &mdash; First Semester</h3>
-<div class="table-wrap"><table class="course-table">
-<thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
-<tbody><tr><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td></tr></tbody>
-</table></div>
-</div>
-<div class="course-block" data-level="100">
-<h3>100 Level &mdash; Second Semester</h3>
-<div class="table-wrap"><table class="course-table">
-<thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
-<tbody><tr><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td></tr></tbody>
-</table></div>
-</div>
-</div>
-</div>
-<div class="course-level-group">
-<button aria-expanded="false" class="course-level-button" data-level-toggle="200" type="button">
-      200 Level <span aria-hidden="true">+</span>
-</button>
-<div class="course-level-content" data-level-content="200">
-<div class="course-block" data-level="200" id="level200">
-<h3>200 Level &mdash; First Semester</h3>
-<div class="table-wrap"><table class="course-table">
-<thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
-<tbody><tr><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td></tr></tbody>
-</table></div>
-<p class="note">Course and elective details: Information coming soon.</p>
-</div>
-<div class="course-block" data-level="200">
-<h3>200 Level &mdash; Second Semester</h3>
-<div class="table-wrap"><table class="course-table">
-<thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
-<tbody><tr><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td></tr></tbody>
-</table></div>
-<p class="note">Course and elective details: Information coming soon.</p>
-</div>
-</div>
-</div>
-<div class="course-level-group">
-<button aria-expanded="false" class="course-level-button" data-level-toggle="300" type="button">
-      300 Level <span aria-hidden="true">+</span>
-</button>
-<div class="course-level-content" data-level-content="300">
-<div class="course-block" data-level="300" id="level300">
-<h3>300 Level &mdash; First Semester</h3>
-<div class="table-wrap"><table class="course-table">
-<thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
-<tbody><tr><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td></tr></tbody>
-</table></div>
-<p class="note">Course and elective details: Information coming soon.</p>
-</div>
-<div class="course-block" data-level="300">
-<h3>300 Level &mdash; Second Semester / SIWES</h3>
-<div class="table-wrap"><table class="course-table">
-<thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
-<tbody><tr><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td></tr></tbody>
-</table></div>
-</div>
-</div>
-</div>
-<div class="course-level-group">
-<button aria-expanded="false" class="course-level-button" data-level-toggle="400" type="button">
-      400 Level <span aria-hidden="true">+</span>
-</button>
-<div class="course-level-content" data-level-content="400">
-<div class="course-block" data-level="400" id="level400">
-<h3>400 Level &mdash; First Semester</h3>
-<div class="table-wrap"><table class="course-table">
-<thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
-<tbody><tr><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td></tr></tbody>
-</table></div>
-<p class="note">Course and elective details: Information coming soon.</p>
-</div>
-<div class="course-block" data-level="400">
-<h3>400 Level &mdash; Second Semester</h3>
-<div class="table-wrap"><table class="course-table">
-<thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
-<tbody><tr><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td></tr></tbody>
-</table></div>
-<p class="note">Course and elective details: Information coming soon.</p>
-</div>
-</div></div></section>
-<section class="department-section" id="siwes">
-<div class="section-heading">
-<span>SIWES</span>
-<h2>Industrial Training Structure</h2>
-</div>
-<div class="content-card"><p>Information coming soon.</p></div>
-</section>
-<section class="department-section">
-<div class="section-heading">
-<span>Programme Summary</span>
-<h2>Programme Summary</h2>
-</div>
-<div class="summary-grid">
-<div class="summary-card">
-<h3>Programme Information</h3>
-<div class="summary-stat"><span>Programme details</span><strong>Information coming soon</strong></div>
-<div class="summary-stat"><span>Programme details</span><strong>Information coming soon</strong></div>
-<div class="summary-stat"><span>Programme details</span><strong>Information coming soon</strong></div>
-<div class="summary-stat"><span>Programme details</span><strong>Information coming soon</strong></div>
-<div class="summary-stat"><span>Programme details</span><strong>Information coming soon</strong></div>
-</div>
-<div class="summary-card">
-<h3>Programme Information</h3>
-<div class="summary-stat"><span>Programme details</span><strong>Information coming soon</strong></div>
-<div class="summary-stat"><span>Programme details</span><strong>Information coming soon</strong></div>
-<div class="summary-stat"><span>Programme details</span><strong>Information coming soon</strong></div>
-<div class="summary-stat"><span>Programme details</span><strong>Information coming soon</strong></div>
-<div class="summary-stat"><span>Programme details</span><strong>Information coming soon</strong></div>
-</div>
-</div>
-</section>
-<section class="department-section">
-<div class="section-heading">
-<span>Administrative Staff List</span>
-<h2>Department Administration</h2>
-</div>
-<div class="table-wrap">
-<table class="course-table">
-<thead><tr><th>S/N</th><th>Name</th><th>Qualification</th><th>Status</th></tr></thead>
-<tbody><tr><td>1</td><td>Information coming soon</td><td>Information coming soon</td><td>Information coming soon</td></tr></tbody>
-</table>
-</div>
-</section>
-<section class="department-section" id="resources">
-<div class="section-heading">
-<span>Student Support</span>
-<h2>Academic Resources</h2>
-</div>
-<div class="resource-grid">
-<div class="resource-card">
-<div class="resource-icon">📖</div>
-<h3>Department Guide</h3>
-<p>Find useful information about the Department of Agronomy and your academic programme.</p>
-</div>
-<div class="resource-card">
-<div class="resource-icon">📄</div>
-<h3>Lecture Notes PDF</h3>
-<p>Download a department document when the official PDF is available, or select a PDF/course note from your device.</p>
-<div class="resource-actions">
-<a class="download-button" href="#">⬇ Download</a>
-<label class="upload-button" for="departmentPdfUpload">⬆ Upload PDF</label>
-<input accept="application/pdf,.pdf" class="file-input" id="departmentPdfUpload" type="file"/>
-</div>
-<p class="upload-status" id="departmentUploadStatus">No PDF selected.</p>
-</div>
-<div class="resource-card">
-<div class="resource-icon">💬</div>
-<h3>Student Resources</h3>
-<p>Useful academic materials and information for students.</p>
-<div class="resource-actions">
-<a aria-label="Connect on WhatsApp" class="whatsapp-button" href="#">💬 Meet on WhatsApp</a>
-</div>
-</div>
-</div>
-</section>
-<section class="department-section">
-<div class="section-heading">
-<span>Get in Touch</span>
-<h2>Department Contacts</h2>
-</div>
-<div class="contact-grid">
-<div class="contact-card">
-<h3>Department Information</h3>
-<div class="contact-item"><div class="contact-item-icon">🏛️</div><div><span>Faculty</span><strong>Faculty of Agriculture</strong></div></div>
-<div class="contact-item"><div class="contact-item-icon">🎓</div><div><span>Department</span><strong>Agronomy</strong></div></div>
-<div class="contact-item"><div class="contact-item-icon">👨&zwj;🏫</div><div><span>Head of Department</span><strong>Dr. Agbede, T.M</strong></div></div>
-</div>
-<div class="contact-card">
-<h3>University</h3>
-<div class="contact-item"><div class="contact-item-icon">📍</div><div><span>Location</span><strong>Adekunle Ajasin University, Akungba-Akoko, Ondo State</strong></div></div>
-<div class="contact-item"><div class="contact-item-icon">🏫</div><div><span>Faculty</span><strong>Faculty of Agriculture</strong></div></div>
-</div>
-</div>
-</section>
-<section class="department-section" id="help">
-<div class="help-box">
-<h2>Need help with your department?</h2>
-<p>If you need help with registration, courses, departmental information or other student matters, use the AAUA Uni Pilot student help system.</p>
-<a class="help-button" href="help.html">Get Department Help &rarr;</a>
-</div>
-</section>
+  <div class="department-back-row">
+    <button class="department-back-button" id="departmentBackButton" type="button"><span aria-hidden="true">←</span> Go Back</button>
+    <span class="back-hint">Return to the page you came from</span>
+  </div>
+  <section class="quick-info">
+    <div class="quick-card"><div class="quick-icon">🏛️</div><span>Faculty</span><strong>Faculty of Agriculture</strong></div>
+    <div class="quick-card"><div class="quick-icon">👨‍🏫</div><span>Head of Department</span><strong>Dr. T. M. Agbede</strong></div>
+    <div class="quick-card"><div class="quick-icon">🎓</div><span>Degree</span><strong>B. Agric. (Honours) in Agronomy</strong></div>
+    <div class="quick-card"><div class="quick-icon">⏳</div><span>Duration</span><strong>4 years UTME · 3 years Direct Entry</strong></div>
+  </section>
+
+  <section class="department-section" id="overview">
+    <div class="section-heading"><span>Introduction &amp; General Background</span><h2>Department of Agronomy</h2></div>
+    <div class="about-box">
+      <p>The crop science programme curriculum is designed to impact knowledge in a broad sense in all aspects of crop science, production, produce preservation and utilization. It emphasizes a complete value chain in crop production.</p>
+      <p>As much as possible, it teaches the deployment of modern technology in meeting the emerging challenges of food insecurity and grooming learners for the development of a sustainable enterprise. An appropriate delivery of the contents of the course modules of this curriculum would produce not just scientists, but equally entrepreneurs in crop production, value addition to crop produce as well as packaging of final crop produce.</p>
+      <a href="https://www.google.com/maps/search/?api=1&query=Faculty+of+Agriculture+Adekunle+Ajasin+University+Akungba+Akoko" class="location-button" target="_blank" rel="noopener noreferrer">📍 View Faculty Location ↗</a>
+    </div>
+  </section>
+
+  <section class="department-section">
+    <div class="section-heading"><span>Programme Philosophy &amp; Objectives</span><h2>What the Programme Aims to Develop</h2></div>
+    <div class="info-grid">
+      <div class="content-card"><h3>Philosophy</h3><p>The principal focus of the national agriculture policy is to strengthen the component parts of the agricultural sector, with particular reference to the crop production sub-sector to meet the demand for food and industrial raw materials. Thus, the philosophy and mission statement underlying the crop science programme of agriculture are aimed at making a positive and significant contribution to the nation's gross domestic product (GDP), and furthering Nigeria's renewed commitment to food sufficiency and general self-reliance through graduates equipped with comprehensive theoretical knowledge and practical skills for meaningful engagement in crop production.</p></div>
+      <div class="content-card"><h3>Objectives</h3><p>The objectives of the programmes in agriculture are in tandem with national needs and priorities. Graduates are expected to be resourceful, creative and knowledgeable in solving relevant societal problems.</p><ol>
+        <li>Equip graduates with adequate knowledge in the theory and practice of crop production to meet increasing food demand, food security and self-sufficiency.</li>
+        <li>Enhance national industrialization through increased production of industrial raw materials for a diversified economy.</li>
+        <li>Advance knowledge in modern production techniques, produce processing and value addition through processing, storage, preservation, transit and distribution.</li>
+        <li>Improve employability and employment opportunities, reducing social ills resulting from unemployment.</li>
+        <li>Apply contemporary technology to improve crop production techniques and productivity per land area.</li>
+        <li>Produce graduates confident in entering practical crop-production enterprises.</li>
+        <li>Equip graduates with scientific knowledge and background for effective research in crop science.</li>
+      </ol></div>
+    </div>
+  </section>
+
+  <section class="department-section">
+    <div class="section-heading"><span>Programme Features &amp; Skills</span><h2>Employability and 21st Century Skills</h2></div>
+    <div class="info-grid">
+      <div class="content-card"><h3>Employability Skills</h3><p>The curriculum takes due cognizance of employability, developing competence and skills in:</p><ul>
+        <li>Production enterprise in arable crop farming.</li><li>Production enterprise in vegetable crop farming.</li>
+        <li>Production enterprise in orchard establishment and management.</li><li>Enterprise in seed production, processing and packaging.</li>
+        <li>Consultancy in all aspects of crop production.</li><li>Research in crop science and crop improvement.</li>
+      </ul></div>
+      <div class="content-card"><h3>21st Century Skills</h3><p>The new CCMAS addresses emerging 21st-century skill gaps in crop science, including:</p><ul>
+        <li>Critical thinking, problem solving, reasoning, analysis, interpretation and synthesizing information.</li>
+        <li>Research skills and practices, including interrogative questioning.</li><li>Leadership, teamwork and collaboration.</li>
+        <li>Learning skills and literacy skills.</li><li>Oral and written communication and public speaking.</li>
+        <li>Perseverance, self-direction, planning, self-discipline, adaptability and initiative.</li>
+        <li>ICT literacy, media and internet literacy, and computer programming.</li>
+      </ul></div>
+      <div class="content-card full-card"><h3>Unique Features of the Programme</h3><ul>
+        <li>The new crop science programme's philosophy and objectives align with the goals of the national policy on agriculture, making graduates relevant to national and global agricultural development.</li>
+        <li>The programme provides broad training at lower levels, giving students basic knowledge across agriculture before advanced crop science training in later years.</li>
+        <li>Practical training is enterprise-based and addresses food and industrial crop supply gaps, contributing to food security.</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <section class="department-section">
+    <div class="section-heading"><span>Programme Offered &amp; Duration</span><h2>B. Agric. (Honours) in Agronomy</h2></div>
+    <div class="programme-grid">
+      <div class="programme-card"><div class="programme-icon">🎓</div><h3>Bachelor of Agriculture Degree</h3><p>The programme leads to the B. Agric. (Honours) degree in Agronomy.</p></div>
+      <div class="programme-card"><div class="programme-icon">⏱️</div><h3>Duration</h3><p>UTME candidates spend a minimum of four academic sessions (four years). Direct Entry candidates admitted to 200 level spend a minimum of three academic sessions (three years).</p></div>
+    </div>
+  </section>
+
+  <section class="department-section">
+    <div class="section-heading"><span>Admission</span><h2>Admission Requirements</h2></div>
+    <div class="info-grid">
+      <div class="content-card"><h3>UTME — Four Year Degree Programme</h3><p>In addition to the UTME score, candidates should possess five credit passes in Senior Secondary Certificate (SSC), including English Language, Mathematics, Biology or Agricultural Science, Chemistry and Physics, in not more than two sittings.</p></div>
+      <div class="content-card"><h3>Direct Entry Mode</h3><p>Candidates must have at least two Advanced Level credit passes or equivalent in Chemistry and Biology, plus the five SSC (or equivalent) credit passes prescribed for UTME entry. Diploma holders with a minimum of Lower Credit, plus the five SSC (or equivalent) credit passes, obtained in not more than two sittings, are eligible for consideration for admission into 200 level.</p></div>
+    </div>
+  </section>
+
+  <section class="department-section">
+    <div class="section-heading"><span>Graduation</span><h2>Graduation Requirements</h2></div>
+    <div class="content-card"><p>To graduate, a student shall have completed four years of study depending on the entry point, including one practical year or six months of practicals. Activities during the practical period should include periodic seminars on the student's work and the presentation of a written report for grading at the end of the period.</p>
+      <p>Candidates admitted through UTME must register for at least 120 course units for the four-year track, while Direct Entry candidates must register for at least 84 units for the three-year track, as indicated under course requirements. Candidates must also register and pass all compulsory courses specified for the programme.</p>
+      <p>Submission of an undergraduate project report based on supervised research is a graduation requirement. It exposes students to problem-solving techniques and develops their ability to organize ideas from literature and research findings, preparing them for post-graduation careers and further postgraduate training.</p>
+    </div>
+  </section>
+
+  <section class="department-section">
+    <div class="section-heading"><span>Registration</span><h2>Course Registration Information</h2></div>
+    <div class="info-grid">
+      <div class="rule-card content-card"><h3>Course Categories</h3><p><strong>Compulsory Courses:</strong> Courses marked C are compulsory and must be completed as specified for the programme.</p><p><strong>Elective Courses:</strong> Courses marked E are electives. At 400 level, students are to choose one elective from the listed options.</p></div>
+      <div class="rule-card content-card"><h3>Course Structure Legend</h3><ul><li><strong>LH:</strong> Lecture Hours.</li><li><strong>PH:</strong> Practical Hours.</li><li><strong>C:</strong> Compulsory course.</li><li><strong>E:</strong> Elective course.</li></ul></div>
+    </div>
+  </section>
+
+  <section class="department-section">
+    <div class="section-heading"><span>Academic Structure</span><h2>Programme Course Unit Summary</h2><p>Course unit totals are shown by level. Semester placement follows the odd/even course-code numbering rule supplied for this programme.</p></div>
+    <div class="content-card"><div class="table-wrap"><table class="course-table">
+      <thead><tr><th>Level</th><th>First Semester Units (Odd Codes)</th><th>Second Semester Units (Even Codes)</th><th>Level Total</th></tr></thead>
+      <tbody><tr><td>100</td><td>15</td><td>15</td><td>30</td></tr><tr><td>200</td><td>14</td><td>16</td><td>30</td></tr><tr><td>300</td><td>15</td><td>16</td><td>31</td></tr><tr><td>400</td><td>16</td><td>17</td><td>33</td></tr><tr class="total-row"><td>Programme Course Units Listed</td><td colspan="2">Includes the two 400-level elective options in the detailed course list</td><td>—</td></tr></tbody>
+    </table></div></div>
+  </section>
+
+  <section class="department-section" id="courses">
+    <div class="section-heading"><span>Course Structure</span><h2>Courses by Level and Semester</h2><p>Courses are arranged by course-code number: odd-numbered courses under First Semester and even-numbered courses under Second Semester. LH = lecture hours; PH = practical hours; C = compulsory; E = elective.</p></div>
+    <div class="level-nav">
+      <button type="button" class="course-level-button" data-level="100">100 Level</button>
+      <button type="button" class="course-level-button" data-level="200">200 Level</button>
+      <button type="button" class="course-level-button" data-level="300">300 Level</button>
+      <button type="button" class="course-level-button" data-level="400">400 Level</button>
+    </div>
+    
+  <div class="course-level-group">
+    <button type="button" class="course-level-button" data-level-toggle="100" aria-expanded="false">100 Level <span aria-hidden="true">+</span></button>
+    <div class="course-level-content" data-level-content="100">
+      <div class="course-block" data-level="100">
+    <h3>100 Level — First Semester</h3>
+    <div class="table-wrap"><table class="course-table">
+      <thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
+      <tbody><tr><td>GST 111</td><td>Communication in English</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>AGR 111</td><td>Introduction to Agriculture I</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>BIO 101</td><td>General Biology I</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>BIO 107</td><td>General Biology Practical I</td><td>1</td><td>C</td><td>–</td><td>45</td></tr><tr><td>CHM 101</td><td>General Chemistry I</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>CHM 107</td><td>General Chemistry Practical I</td><td>1</td><td>C</td><td>–</td><td>45</td></tr><tr><td>MTH 101</td><td>Elementary Mathematics I</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>PHY 101</td><td>General Physics I</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>PHY 107</td><td>General Physics Practical I</td><td>1</td><td>C</td><td>–</td><td>45</td></tr>
+        <tr class="total-row"><td>Total</td><td></td><td>15</td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table></div>
+  </div>
+      <div class="course-block" data-level="100">
+    <h3>100 Level — Second Semester</h3>
+    <div class="table-wrap"><table class="course-table">
+      <thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
+      <tbody><tr><td>GST 112</td><td>Nigerian Peoples and Culture</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>AGR 112</td><td>Introduction to Agriculture II</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>BIO 102</td><td>General Biology II</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>BIO 108</td><td>General Biology Practical II</td><td>1</td><td>C</td><td>–</td><td>45</td></tr><tr><td>CHM 102</td><td>General Chemistry II</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>CHM 108</td><td>General Chemistry Practical II</td><td>1</td><td>C</td><td>–</td><td>45</td></tr><tr><td>MTH 102</td><td>Elementary Mathematics II</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>PHY 102</td><td>General Physics II</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>PHY 108</td><td>General Physics Practical II</td><td>1</td><td>C</td><td>–</td><td>45</td></tr>
+        <tr class="total-row"><td>Total</td><td></td><td>15</td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table></div>
+  </div>
+    </div>
+  </div>
+
+  <div class="course-level-group">
+    <button type="button" class="course-level-button" data-level-toggle="200" aria-expanded="false">200 Level <span aria-hidden="true">+</span></button>
+    <div class="course-level-content" data-level-content="200">
+      <div class="course-block" data-level="200">
+    <h3>200 Level — First Semester</h3>
+    <div class="table-wrap"><table class="course-table">
+      <thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
+      <tbody><tr><td>ENT 211</td><td>Entrepreneurship and Innovation</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>AGR 201</td><td>Principles of Crop Production</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>CPS 203</td><td>Introduction to Computer Application in Crop Science</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>WMA 201</td><td>Agro-meteorology and Biogeography and Climate Change</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>CPS 205</td><td>Principles of Crop Physiology</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>AAUA-CPS 207</td><td>Introduction to Horticulture</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>AAUA-SOS 209</td><td>Introduction to Instrumentation and Analytical Techniques in Soil and Plant Sciences</td><td>2</td><td>C</td><td>15</td><td>45</td></tr>
+        <tr class="total-row"><td>Total</td><td></td><td>14</td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table></div>
+  </div>
+      <div class="course-block" data-level="200">
+    <h3>200 Level — Second Semester</h3>
+    <div class="table-wrap"><table class="course-table">
+      <thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
+      <tbody><tr><td>GST 212</td><td>Philosophy, Logic and Human Existence</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>AGR 202</td><td>Introduction to Agricultural Economics, Extension and Rural Sociology</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>AGR 204</td><td>Introduction to Animal Production</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>AGR 206</td><td>Principles of Family and Consumer Sciences, Food Science and Technology</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>AAUA-CPS 206</td><td>Organic Crop Farming</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>AAUA-CPS 208</td><td>Cropping Systems</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>AAUA-SOS 212</td><td>Sustainable Soil Management</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>AAUA-SOS 214</td><td>Problematic Soils and their Management</td><td>2</td><td>C</td><td>15</td><td>45</td></tr>
+        <tr class="total-row"><td>Total</td><td></td><td>16</td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table></div>
+  </div>
+    </div>
+  </div>
+
+  <div class="course-level-group">
+    <button type="button" class="course-level-button" data-level-toggle="300" aria-expanded="false">300 Level <span aria-hidden="true">+</span></button>
+    <div class="course-level-content" data-level-content="300">
+      <div class="course-block" data-level="300">
+    <h3>300 Level — First Semester</h3>
+    <div class="table-wrap"><table class="course-table">
+      <thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
+      <tbody><tr><td>ENT 311</td><td>Enterprise Appreciation</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>CPS 301</td><td>Arable Crops Production</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>CPS 303</td><td>Crop Pests and Diseases</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>CPS 305</td><td>Farm Mechanization Practices</td><td>1</td><td>C</td><td>–</td><td>45</td></tr><tr><td>CPS 307</td><td>Vegetables and Orchard Management</td><td>1</td><td>C</td><td>–</td><td>45</td></tr><tr><td>AAUA-CPS 301</td><td>Farm Practice I</td><td>1</td><td>C</td><td>–</td><td>45</td></tr><tr><td>AAUA-SOS 303</td><td>Principles of Practical Farm Layout, Soil Survey and Land Use Planning</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>AAUA-SOS 309</td><td>Land Degradation and Management</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>AAUA-SOS 311</td><td>Soil and Plant Analysis</td><td>2</td><td>C</td><td>15</td><td>45</td></tr>
+        <tr class="total-row"><td>Total</td><td></td><td>15</td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table></div>
+  </div>
+      <div class="course-block" data-level="300">
+    <h3>300 Level — Second Semester</h3>
+    <div class="table-wrap"><table class="course-table">
+      <thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
+      <tbody><tr><td>GST 312</td><td>Peace and Conflict Resolution</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>ENT 312</td><td>Venture Creation</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>CPS 302</td><td>Permanent Crops Production</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>CPS 304</td><td>Crop Genetics and Breeding</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>CPS 306</td><td>Crop Processing and Storage</td><td>1</td><td>C</td><td>–</td><td>45</td></tr><tr><td>CPS 308</td><td>Statistics and Data Processing</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>AAUA-CPS 302</td><td>Farm Practice II</td><td>1</td><td>C</td><td>–</td><td>45</td></tr><tr><td>AAUA-SOS 308</td><td>Soil Plant Water Relations</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>AAUA-CPS 310</td><td>Introduction to Floriculture</td><td>2</td><td>C</td><td>30</td><td>–</td></tr>
+        <tr class="total-row"><td>Total</td><td></td><td>16</td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table></div>
+  </div>
+    </div>
+  </div>
+
+  <div class="course-level-group">
+    <button type="button" class="course-level-button" data-level-toggle="400" aria-expanded="false">400 Level <span aria-hidden="true">+</span></button>
+    <div class="course-level-content" data-level-content="400">
+      <div class="course-block" data-level="400">
+    <h3>400 Level — First Semester</h3>
+    <div class="table-wrap"><table class="course-table">
+      <thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
+      <tbody><tr><td>CPS 401</td><td>Vegetable Crop Production</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>CPS 403</td><td>Methods of Field Experimentation</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>CPS 405</td><td>Weed Science and Control</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>CPS 407</td><td>Irrigation Practices in Crop Production</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>CPS 499</td><td>Final Year Project</td><td>4</td><td>C</td><td>–</td><td>180</td></tr><tr><td>SOS 405</td><td>Fertilizers, Fertilizer Manufacture and Fertilizer Use</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>AAUA-CPS 409</td><td>Pasture and Forage Crops</td><td>2</td><td>C</td><td>30</td><td>–</td></tr>
+        <tr class="total-row"><td>Total</td><td></td><td>16</td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table></div>
+  </div>
+      <div class="course-block" data-level="400">
+    <h3>400 Level — Second Semester</h3>
+    <div class="table-wrap"><table class="course-table">
+      <thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
+      <tbody><tr><td>CPS 402</td><td>Seed Production Technology</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>CPS 404</td><td>Advanced Crop Protection</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>CPS 406</td><td>Soil Fertility Management and Crop Nutrition</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>CPS 408</td><td>Post-harvest Physiology and Produce Storage</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>CPS 498</td><td>Seminar</td><td>1</td><td>C</td><td>–</td><td>15</td></tr><tr><td>AAUA-CPS 410</td><td>Agronomy of Industrial Crops</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>AAUA-SOS 412</td><td>Crop and Soil Modelling</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>AAUA-CPS 414</td><td>Hydroponics and Greenhouse Crop Production Systems</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>AAUA-SOS 410</td><td>Soil and Plant Nutrient Bioavailability</td><td>2</td><td>E</td><td>30</td><td>–</td></tr><tr><td>AAUA-AGR 416</td><td>Horticulture Crop Production Techniques</td><td>2</td><td>E</td><td>15</td><td>45</td></tr>
+        <tr class="total-row"><td>Total</td><td></td><td>17*</td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table></div>
+    <p class="note">* The two elective options are listed above; students choose one (2 units). The semester total includes one elective.</p>
+  </div>
+    </div>
+  </div>
+  </section>
+
+  <section class="department-section" id="resources">
+    <div class="section-heading"><span>Student Support</span><h2>Academic Resources</h2></div>
+    <div class="resource-grid">
+      <div class="resource-card"><div class="resource-icon">📖</div><h3>Department Guide</h3><p>Review the programme overview, philosophy, objectives, admission requirements, graduation requirements and course structure on this page.</p></div>
+      <div class="resource-card"><div class="resource-icon">📄</div><h3>Course Information</h3><p>Use the course structure above to check course codes, titles, units, course status, lecture hours and practical hours for each level.</p></div>
+      <div class="resource-card"><div class="resource-icon">💬</div><h3>Student Help</h3><p>For assistance with departmental information, course registration or student support, visit the AAUA Uni Pilot help page.</p><div class="resource-actions"><a class="whatsapp-button" href="help.html">Get Student Help ↗</a></div></div>
+    </div>
+  </section>
+
+  <section class="department-section">
+    <div class="section-heading"><span>Get in Touch</span><h2>Department Contacts</h2></div>
+    <div class="contact-grid">
+      <div class="contact-card"><h3>Department Information</h3>
+        <div class="contact-item"><div class="contact-item-icon">🏛️</div><div><span>Faculty</span><strong>Faculty of Agriculture</strong></div></div>
+        <div class="contact-item"><div class="contact-item-icon">🎓</div><div><span>Department</span><strong>Department of Agronomy</strong></div></div>
+        <div class="contact-item"><div class="contact-item-icon">👨‍🏫</div><div><span>HOD</span><strong>Dr. T. M. Agbede</strong></div></div>
+        <div class="contact-item"><div class="contact-item-icon">📞</div><div><span>Department Contact</span><strong><a href="tel:+2348067646215">+234 806 764 6215</a></strong></div></div>
+        <div class="contact-item"><div class="contact-item-icon">🕘</div><div><span>Office Hours</span><strong>Monday–Friday, 9:00 a.m.–4:00 p.m.</strong></div></div>
+      </div>
+      <div class="contact-card"><h3>University</h3>
+        <div class="contact-item"><div class="contact-item-icon">📍</div><div><span>Location</span><strong>Adekunle Ajasin University, Akungba-Akoko, Ondo State</strong></div></div>
+        <div class="contact-item"><div class="contact-item-icon">🏫</div><div><span>Faculty</span><strong>Faculty of Agriculture</strong></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="department-section" id="help"><div class="help-box"><h2>Need help with your department?</h2><p>If you need help with course registration, academic information or other student matters, use the AAUA Uni Pilot student help system.</p><a href="help.html" class="help-button">Get Department Help →</a></div></section>
 </main>
+
 <footer>
-<div class="footer-container">
-<div class="footer-brand">
-<a class="brand" href="index.html">🎓 AAUA Uni Pilot</a>
-<p>Your campus. Your resources. Your guide.</p>
-</div>
-<div class="footer-links">
-<div>
-<h4>Platform</h4>
-<a href="resources.html">Resources</a>
-<a href="guide.html">Student Guide</a>
-<a href="updates.html">Updates</a>
-<a href="tools.html">Student Tools</a>
-</div>
-<div>
-<h4>Information</h4>
-<a href="about.html">About</a>
-<a href="privacy.html">Privacy Policy</a>
-<a href="terms.html">Terms of Use</a>
-<a href="contact.html">Contact</a>
-</div>
-</div>
-</div>
-<div class="footer-bottom"><p>&copy; 2026 Uni Pilot. All rights reserved.</p></div>
+  <div class="footer-container">
+    <div class="footer-brand">
+      <a href="index.html" class="brand">🎓 AAUA Uni Pilot</a>
+      <p>Your campus. Your resources. Your guide.</p>
+    </div>
+    <div class="footer-links">
+      <div>
+        <h4>Platform</h4>
+        <a href="resources.html">Resources</a>
+        <a href="guide.html">Student Guide</a>
+        <a href="updates.html">Updates</a>
+        <a href="tools.html">Student Tools</a>
+      </div>
+      <div>
+        <h4>Information</h4>
+        <a href="about.html">About</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Use</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 Uni Pilot. All rights reserved.</p></div>
 </footer>
+
+
 <script>
 document.querySelectorAll(".programme-toggle").forEach(button => {
   button.addEventListener("click", function(){
@@ -678,27 +680,46 @@ document.querySelectorAll(".level-nav .course-level-button[data-level]").forEach
   });
 });
 </script>
+
+
+
+
 <script>
-document.getElementById("departmentPdfUpload").addEventListener("change", function(){
-  const status = document.getElementById("departmentUploadStatus");
-  const file = this.files[0];
+  // Return to the referring page when possible; use the faculty guide as a safe fallback.
+  document.getElementById("departmentBackButton").addEventListener("click", function () {
+    if (window.history.length > 1 && document.referrer && new URL(document.referrer).origin === window.location.origin) {
+      window.history.back();
+    } else {
+      window.location.href = "faculty-guide.html";
+    }
+  });
 
-  if(!file){
-    status.textContent = "No PDF selected.";
-    return;
-  }
+  // Reveal content as it enters the viewport.
+  (function () {
+    const items = document.querySelectorAll(".quick-card, .department-section, .programme-card, .content-card, .resource-card, .contact-card, .summary-card");
+    items.forEach((item, index) => {
+      item.classList.add("reveal-on-scroll");
+      item.style.transitionDelay = (index % 4) * 55 + "ms";
+    });
 
-  const isPdf = file.type === "application/pdf" || file.name.toLowerCase().endsWith(".pdf");
+    if (!("IntersectionObserver" in window)) {
+      items.forEach(item => item.classList.add("is-visible"));
+      return;
+    }
 
-  if(!isPdf){
-    this.value = "";
-    status.textContent = "Please select a PDF file.";
-    return;
-  }
+    const observer = new IntersectionObserver((entries, activeObserver) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          activeObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
 
-  status.textContent = "Selected: " + file.name + " (ready for upload)";
-});
+    items.forEach(item => observer.observe(item));
+  })();
 </script>
+
   <script src="site-navigation.js"></script>
 </body>
 </html>

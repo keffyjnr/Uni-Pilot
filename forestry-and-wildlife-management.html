@@ -1,1965 +1,647 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forestry and Wildlife Management | AAUA Uni Pilot</title>
 
-<title>Forestry and Wildlife Management | Uni Pilot</title>
-
+<link rel="preconnect" href="index.html">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 
 <style>
-
-/* =========================================================
-   DEPARTMENT PAGE
-   GREEN THEME — NO BLUE
-========================================================= */
-
-:root {
-
-  --green: #0b5d3b;
-
-  --dark-green: #063b26;
-
-  --light-green: #eaf6ef;
-
-  --yellow: #f5c518;
-
-  --light-yellow: #fff8dc;
-
-  --white: #ffffff;
-
-  --background: #f7faf8;
-
-  --text: #17221c;
-
-  --muted: #6d7a72;
-
-  --border: #dfe8e2;
-
+:root{
+  --green:#0b5d3b;
+  --dark-green:#063b26;
+  --light-green:#eaf6ef;
+  --yellow:#f5c518;
+  --white:#ffffff;
+  --background:#f7faf8;
+  --text:#17221c;
+  --muted:#6d7a72;
+  --border:#dfe8e2;
+  --soft:#fbfdfb;
 }
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Manrope",Arial,Helvetica,sans-serif;background:var(--background);color:var(--text)}
+a{color:inherit;text-decoration:none}
+button,input{font-family:inherit}
 
-* {
-
-  box-sizing: border-box;
-
-  margin: 0;
-
-  padding: 0;
-
-}
-
-html {
-
-  scroll-behavior: smooth;
-
-}
-
-body {
-
-  font-family: Arial, Helvetica, sans-serif;
-
-  background: var(--background);
-
-  color: var(--text);
-
-}
-
-a {
-
-  color: inherit;
-
-  text-decoration: none;
-
-}
-
-.department-page {
-
-  min-height: 100vh;
-
+.department-page{
+  min-height:100vh;
   background:
-
-    radial-gradient(
-
-      circle at 10% 10%,
-
-      rgba(11, 93, 59, 0.08),
-
-      transparent 30%
-
-    ),
-
-    radial-gradient(
-
-      circle at 90% 80%,
-
-      rgba(11, 93, 59, 0.06),
-
-      transparent 30%
-
-    ),
-
+    radial-gradient(circle at top right,rgba(11,93,59,.06),transparent 30%),
+    radial-gradient(circle at bottom left,rgba(245,197,24,.045),transparent 30%),
     var(--background);
-
 }
 
-/* =========================================================
-   HERO
-========================================================= */
-
-.department-hero {
-
-  position: relative;
-
-  overflow: hidden;
-
-  padding: 80px 20px 110px;
-
-  color: var(--white);
-
+/* HERO */
+.department-hero{
+  position:relative;overflow:hidden;
   background:
-
-    linear-gradient(
-
-      135deg,
-
-      var(--dark-green),
-
-      var(--green),
-
-      var(--dark-green)
-
-    );
-
-}
-
-.department-hero::before {
-
-  content: "";
-
-  position: absolute;
-
-  width: 420px;
-
-  height: 420px;
-
-  border-radius: 50%;
-
-  background: rgba(11, 93, 59, 0.35);
-
-  top: -220px;
-
-  right: -120px;
-
-}
-
-.department-hero::after {
-
-  content: "";
-
-  position: absolute;
-
-  width: 300px;
-
-  height: 300px;
-
-  border-radius: 50%;
-
-  background: rgba(11, 93, 59, 0.20);
-
-  bottom: -170px;
-
-  left: -100px;
-
-}
-
-.department-hero-content {
-
-  position: relative;
-
-  z-index: 2;
-
-  width: min(1150px, 100%);
-
-  margin: auto;
-
-}
-
-.breadcrumb {
-
-  display: flex;
-
-  align-items: center;
-
-  flex-wrap: wrap;
-
-  gap: 9px;
-
-  margin-bottom: 30px;
-
-  font-size: 14px;
-
-  color: rgba(255,255,255,0.75);
-
-}
-
-.breadcrumb a {
-
-  color: var(--white);
-
-  transition: color 0.2s ease;
-
-}
-
-.breadcrumb a:hover {
-
-  color: var(--yellow);
-
-}
-
-.department-label {
-
-  display: inline-block;
-
-  padding: 8px 15px;
-
-  margin-bottom: 18px;
-
-  border: 1px solid rgba(255,255,255,0.25);
-
-  border-radius: 30px;
-
-  background: rgba(255,255,255,0.10);
-
-  color: var(--yellow);
-
-  font-size: 13px;
-
-  font-weight: 700;
-
-  letter-spacing: 1px;
-
-  text-transform: uppercase;
-
-}
-
-.department-hero h1 {
-
-  max-width: 900px;
-
-  margin-bottom: 12px;
-
-  font-size: clamp(38px, 6vw, 68px);
-
-  line-height: 1.05;
-
-}
-
-.department-hero .faculty-name {
-
-  margin-bottom: 22px;
-
-  color: var(--yellow);
-
-  font-size: 20px;
-
-  font-weight: 700;
-
-}
-
-.department-hero-description {
-
-  max-width: 850px;
-
-  margin-bottom: 30px;
-
-  color: rgba(255,255,255,0.82);
-
-  font-size: 17px;
-
-  line-height: 1.8;
-
-}
-
-.department-actions {
-
-  display: flex;
-
-  flex-wrap: wrap;
-
-  gap: 12px;
-
-}
-
-.department-action {
-
-  display: inline-flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  min-height: 48px;
-
-  padding: 0 20px;
-
-  border-radius: 10px;
-
-  font-weight: 700;
-
-  transition:
-
-    background 0.2s ease,
-
-    transform 0.2s ease,
-
-    border-color 0.2s ease;
-
-}
-
-.department-action:hover {
-
-  transform: translateY(-2px);
-
-}
-
-.department-action.primary {
-
-  background: var(--yellow);
-
-  color: var(--dark-green);
-
-}
-
-.department-action.primary:hover {
-
-  background: #e6b600;
-
-}
-
-.department-action.secondary {
-
-  border: 1px solid rgba(255,255,255,0.30);
-
-  background: rgba(255,255,255,0.08);
-
-  color: var(--white);
-
-}
-
-.department-action.secondary:hover {
-
-  background: rgba(255,255,255,0.16);
-
-}
-
-/* =========================================================
-   MAIN
-========================================================= */
-
-.department-main {
-
-  width: min(1150px, calc(100% - 40px));
-
-  margin: -55px auto 70px;
-
-  position: relative;
-
-  z-index: 5;
-
-}
-
-/* =========================================================
-   QUICK INFO
-========================================================= */
-
-.quick-info {
-
-  display: grid;
-
-  grid-template-columns: repeat(4, 1fr);
-
-  gap: 15px;
-
-  margin-bottom: 50px;
-
-}
-
-.quick-card {
-
-  min-height: 145px;
-
-  padding: 24px;
-
-  border: 1px solid var(--border);
-
-  border-radius: 16px;
-
-  background: var(--white);
-
-  box-shadow: 0 12px 35px rgba(6,59,38,0.08);
-
-}
-
-.quick-icon {
-
-  width: 45px;
-
-  height: 45px;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  margin-bottom: 15px;
-
-  border-radius: 12px;
-
-  background: var(--light-green);
-
-  color: var(--green);
-
-  font-size: 20px;
-
-}
-
-.quick-card span {
-
-  display: block;
-
-  margin-bottom: 6px;
-
-  color: var(--muted);
-
-  font-size: 13px;
-
-}
-
-.quick-card strong {
-
-  display: block;
-
-  color: var(--text);
-
-  font-size: 16px;
-
-}
-
-/* =========================================================
-   SECTIONS
-========================================================= */
-
-.department-section {
-
-  margin-bottom: 55px;
-
-}
-
-.section-heading {
-
-  margin-bottom: 22px;
-
-}
-
-.section-heading span {
-
-  display: block;
-
-  margin-bottom: 7px;
-
-  color: var(--green);
-
-  font-size: 13px;
-
-  font-weight: 800;
-
-  letter-spacing: 1px;
-
-  text-transform: uppercase;
-
-}
-
-.section-heading h2 {
-
-  font-size: clamp(27px, 4vw, 38px);
-
-  color: var(--text);
-
-}
-
-/* =========================================================
-   ABOUT
-========================================================= */
-
-.about-box {
-
-  padding: 30px;
-
-  border: 1px solid var(--border);
-
-  border-radius: 18px;
-
-  background: var(--white);
-
-  box-shadow: 0 10px 30px rgba(6,59,38,0.05);
-
-}
-
-.about-box p {
-
-  color: var(--muted);
-
-  font-size: 16px;
-
-  line-height: 1.85;
-
-}
-
-/* =========================================================
-   PROGRAMMES
-========================================================= */
-
-.programme-grid {
-
-  display: grid;
-
-  grid-template-columns: repeat(2, 1fr);
-
-  gap: 20px;
-
-}
-
-.programme-card {
-
-  padding: 28px;
-
-  border: 1px solid var(--border);
-
-  border-radius: 18px;
-
-  background: var(--white);
-
-  transition:
-
-    background 0.2s ease,
-
-    transform 0.2s ease,
-
-    border-color 0.2s ease;
-
-}
-
-.programme-card:hover {
-
-  transform: translateY(-4px);
-
-  border-color: var(--green);
-
-  background: var(--light-green);
-
-}
-
-.programme-icon {
-
-  width: 50px;
-
-  height: 50px;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  margin-bottom: 18px;
-
-  border-radius: 14px;
-
-  background: var(--light-green);
-
-  color: var(--green);
-
-  font-size: 22px;
-
-}
-
-.programme-card h3 {
-
-  margin-bottom: 10px;
-
-  color: var(--text);
-
-  font-size: 20px;
-
-}
-
-.programme-card p {
-
-  color: var(--muted);
-
-  line-height: 1.7;
-
-}
-
-/* =========================================================
-   COURSES
-========================================================= */
-
-.courses-box {
-
-  display: grid;
-
-  gap: 14px;
-
-}
-
-.level-card {
-
-  overflow: hidden;
-
-  border: 1px solid var(--border);
-
-  border-radius: 15px;
-
-  background: var(--white);
-
-}
-
-.level-button {
-
-  width: 100%;
-
-  padding: 20px 22px;
-
-  border: none;
-
-  background: var(--white);
-
-  color: var(--text);
-
-  cursor: pointer;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: space-between;
-
-  font-size: 17px;
-
-  font-weight: 700;
-
-  text-align: left;
-
-}
-
-.level-button:hover {
-
-  background: var(--light-green);
-
-}
-
-.level-arrow {
-
-  color: var(--green);
-
-  transition: transform 0.2s ease;
-
-}
-
-.level-card.active .level-arrow {
-
-  transform: rotate(180deg);
-
-}
-
-.course-list {
-
-  display: none;
-
-  border-top: 1px solid var(--border);
-
-}
-
-.level-card.active .course-list {
-
-  display: block;
-
-}
-
-.course-row {
-
-  display: grid;
-
-  grid-template-columns: 150px 1fr 90px;
-
-  gap: 15px;
-
-  padding: 17px 22px;
-
-  border-bottom: 1px solid var(--border);
-
-  color: var(--muted);
-
-}
-
-.course-row:last-child {
-
-  border-bottom: none;
-
-}
-
-.course-code {
-
-  color: var(--green);
-
-  font-weight: 700;
-
-}
-
-.course-unit {
-
-  text-align: right;
-
-  font-weight: 700;
-
-}
-
-/* =========================================================
-   RESOURCES
-========================================================= */
-
-.resource-grid {
-
-  display: grid;
-
-  grid-template-columns: repeat(3, 1fr);
-
-  gap: 20px;
-
-}
-
-.resource-card {
-
-  display: block;
-
-  padding: 28px;
-
-  border: 1px solid var(--border);
-
-  border-radius: 18px;
-
-  background: var(--white);
-
-  transition:
-
-    background 0.2s ease,
-
-    transform 0.2s ease,
-
-    border-color 0.2s ease;
-
-}
-
-.resource-card:hover {
-
-  transform: translateY(-4px);
-
-  border-color: var(--green);
-
-  background: var(--light-green);
-
-}
-
-.resource-icon {
-
-  width: 50px;
-
-  height: 50px;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  margin-bottom: 18px;
-
-  border-radius: 14px;
-
-  background: var(--light-green);
-
-  color: var(--green);
-
-  font-size: 22px;
-
-}
-
-.resource-card h3 {
-
-  margin-bottom: 9px;
-
-  color: var(--text);
-
-}
-
-.resource-card p {
-
-  color: var(--muted);
-
-  line-height: 1.6;
-
-}
-
-/* =========================================================
-   CONTACT
-========================================================= */
-
-.contact-grid {
-
-  display: grid;
-
-  grid-template-columns: repeat(2, 1fr);
-
-  gap: 20px;
-
-}
-
-.contact-card {
-
-  padding: 28px;
-
-  border: 1px solid var(--border);
-
-  border-radius: 18px;
-
-  background: var(--white);
-
-}
-
-.contact-card h3 {
-
-  margin-bottom: 22px;
-
-  color: var(--text);
-
-}
-
-.contact-item {
-
-  display: flex;
-
-  align-items: flex-start;
-
-  gap: 13px;
-
-  margin-bottom: 18px;
-
-}
-
-.contact-item:last-child {
-
-  margin-bottom: 0;
-
-}
-
-.contact-item-icon {
-
-  width: 40px;
-
-  height: 40px;
-
-  flex: 0 0 40px;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  border-radius: 10px;
-
-  background: var(--light-green);
-
-  color: var(--green);
-
-}
-
-.contact-item span {
-
-  display: block;
-
-  margin-bottom: 4px;
-
-  color: var(--muted);
-
-  font-size: 13px;
-
-}
-
-.contact-item strong {
-
-  color: var(--text);
-
-  line-height: 1.5;
-
-}
-
-/* =========================================================
-   HELP
-========================================================= */
-
-.help-box {
-
-  padding: 45px 30px;
-
-  border-radius: 20px;
-
-  background: var(--dark-green);
-
-  color: var(--white);
-
-  text-align: center;
-
-}
-
-.help-box h2 {
-
-  margin-bottom: 12px;
-
-  font-size: 30px;
-
-}
-
-.help-box p {
-
-  max-width: 650px;
-
-  margin: 0 auto 25px;
-
-  color: rgba(255,255,255,0.78);
-
-  line-height: 1.7;
-
-}
-
-.help-button {
-
-  display: inline-flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  min-height: 48px;
-
-  padding: 0 22px;
-
-  border-radius: 10px;
-
-  background: var(--yellow);
-
-  color: var(--dark-green);
-
-  font-weight: 800;
-
-  transition:
-
-    background 0.2s ease,
-
-    transform 0.2s ease;
-
-}
-
-.help-button:hover {
-
-  background: #e6b600;
-
-  transform: translateY(-2px);
-
-}
-
-/* =========================================================
-   RESPONSIVE
-========================================================= */
-
-@media (max-width: 900px) {
-
-  .quick-info {
-
-    grid-template-columns: repeat(2, 1fr);
-
-  }
-
-  .programme-grid,
-
-  .contact-grid {
-
-    grid-template-columns: 1fr;
-
-  }
-
-  .resource-grid {
-
-    grid-template-columns: repeat(2, 1fr);
-
-  }
-
-}
-
-@media (max-width: 650px) {
-
-  .department-hero {
-
-    padding: 55px 18px 90px;
-
-  }
-
-  .department-main {
-
-    width: min(100% - 28px, 1150px);
-
-  }
-
-  .department-hero h1 {
-
-    font-size: 38px;
-
-  }
-
-  .department-hero-description {
-
-    font-size: 15px;
-
-  }
-
-  .department-actions {
-
-    flex-direction: column;
-
-  }
-
-  .department-action {
-
-    width: 100%;
-
-  }
-
-  .quick-info {
-
-    grid-template-columns: 1fr;
-
-  }
-
-  .resource-grid {
-
-    grid-template-columns: 1fr;
-
-  }
-
-  .course-row {
-
-    grid-template-columns: 1fr;
-
-    gap: 6px;
-
-  }
-
-  .course-unit {
-
-    text-align: left;
-
-  }
-
-  .about-box,
-
-  .programme-card,
-
-  .resource-card,
-
-  .contact-card {
-
-    padding: 22px;
-
-  }
-
+    radial-gradient(circle at 82% 18%,rgba(245,197,24,.16),transparent 28%),
+    linear-gradient(135deg,#07120d 0%,var(--dark-green) 48%,var(--green) 100%);
+  color:#fff;padding:58px 22px 50px;border-radius:30px;margin:18px 22px 0;
+  box-shadow:0 18px 50px rgba(6,59,38,.14);
+}
+.department-hero::after{
+  content:"ICT";position:absolute;right:22px;bottom:-25px;
+  font-size:clamp(5rem,15vw,11rem);line-height:.8;font-weight:800;
+  letter-spacing:-7px;color:rgba(255,255,255,.035);pointer-events:none;
+}
+.department-hero-content{position:relative;max-width:900px;margin:auto;text-align:center;z-index:2}
+.breadcrumb{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:7px;margin-bottom:22px;color:rgba(255,255,255,.62);font-size:.67rem;font-weight:600}
+.breadcrumb a{color:rgba(255,255,255,.86)}
+.breadcrumb a:hover{color:var(--yellow)}
+.department-label{
+  display:inline-flex;align-items:center;gap:7px;padding:7px 13px;
+  border:1px solid rgba(245,197,24,.35);border-radius:999px;
+  background:rgba(245,197,24,.08);color:var(--yellow);
+  font-size:.62rem;font-weight:800;letter-spacing:1.2px;text-transform:uppercase
+}
+.department-label::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--yellow)}
+.department-hero h1{margin:16px auto 0;max-width:900px;color:#fff;font-size:clamp(2.35rem,5.7vw,4.35rem);line-height:1;letter-spacing:-2.5px;font-weight:800}
+.department-hero h1 span{color:var(--yellow)}
+.faculty-name{margin:19px 0 0;color:var(--yellow);font-size:.9rem;font-weight:800}
+.department-hero-description{max-width:700px;margin:15px auto 0;color:rgba(255,255,255,.72);font-size:.82rem;line-height:1.7}
+.department-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:9px;margin-top:23px}
+.department-action{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:0 15px;border-radius:999px;font-size:.67rem;font-weight:800;transition:.2s ease}
+.department-action:hover{transform:translateY(-2px)}
+.department-action.primary{background:var(--yellow);color:var(--dark-green)}
+.department-action.secondary{border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.08);color:#fff}
+
+/* MAIN */
+.department-main{width:min(1120px,calc(100% - 44px));margin:0 auto;padding:42px 0 70px}
+.quick-info{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:70px}
+.quick-card,.content-card,.programme-card,.resource-card,.contact-card,.table-card,.rule-card{
+  background:#fff;border:1px solid var(--border);border-radius:20px;
+  box-shadow:0 12px 35px rgba(6,59,38,.05)
+}
+.quick-card{min-height:125px;padding:19px;transition:.2s ease}
+.quick-card:hover,.programme-card:hover,.resource-card:hover{transform:translateY(-3px);border-color:rgba(11,93,59,.25)}
+.quick-icon,.programme-icon,.resource-icon{
+  width:42px;height:42px;display:grid;place-items:center;margin-bottom:12px;
+  border-radius:13px;background:var(--light-green);font-size:18px
+}
+.quick-card span,.mini-label{
+  display:block;margin-bottom:6px;color:var(--muted);font-size:.61rem;
+  font-weight:800;letter-spacing:.06em;text-transform:uppercase
+}
+.quick-card strong{display:block;color:var(--text);font-size:.78rem;line-height:1.45}
+
+.department-section{margin-bottom:70px;scroll-margin-top:30px}
+.section-heading{margin-bottom:23px}
+.section-heading span{display:block;margin-bottom:7px;color:var(--green);font-size:.64rem;font-weight:800;letter-spacing:1.1px;text-transform:uppercase}
+.section-heading h2{margin:0;color:var(--text);font-size:clamp(1.8rem,4vw,2.4rem);line-height:1.05;letter-spacing:-1.2px}
+.section-heading p{margin:9px 0 0;color:var(--muted);font-size:.8rem;line-height:1.6}
+
+.about-box{padding:28px}
+.about-box p{margin:0 0 17px;color:var(--muted);font-size:.84rem;line-height:1.85}
+.about-box p:last-child{margin-bottom:0}
+.location-button,.action-button,.download-button,.upload-button,.whatsapp-button{
+  display:inline-flex;align-items:center;justify-content:center;gap:7px;
+  min-height:40px;padding:0 15px;border-radius:11px;font-size:.68rem;font-weight:800;
+  border:0;cursor:pointer;transition:.2s ease
+}
+.location-button,.download-button{background:var(--green);color:#fff}
+.location-button:hover,.download-button:hover{background:var(--dark-green);transform:translateY(-2px)}
+.upload-button{background:var(--yellow);color:var(--dark-green)}
+.whatsapp-button{background:var(--light-green);color:var(--green)}
+.upload-status{margin:9px 0 0;color:var(--muted);font-size:.7rem;line-height:1.5}
+
+.programme-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.programme-card{padding:24px;transition:.2s ease}
+.programme-icon{width:48px;height:48px;font-size:21px}
+.programme-card h3{margin:0 0 9px;color:var(--text);font-size:.98rem;line-height:1.45}
+.programme-card p{margin:0;color:var(--muted);font-size:.8rem;line-height:1.7}
+
+/* INFORMATION CARDS */
+.info-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.content-card{padding:24px}
+.content-card h3{margin:0 0 12px;font-size:1rem}
+.content-card p,.content-card li{color:var(--muted);font-size:.79rem;line-height:1.75}
+.content-card ul,.content-card ol{margin:0;padding-left:20px}
+.content-card li{margin-bottom:6px}
+.content-card li:last-child{margin-bottom:0}
+.full-card{grid-column:1/-1}
+
+/* COURSE STRUCTURE */
+.level-nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.level-nav a{padding:9px 13px;border-radius:999px;background:var(--light-green);color:var(--green);font-size:.68rem;font-weight:800}
+.level-nav a:hover{background:var(--yellow);color:var(--dark-green)}
+
+.course-block{margin-bottom:12px;display:none}
+.course-block.open{display:block}
+.course-block:last-child{margin-bottom:0}
+.course-block h3{margin:0 0 10px;color:var(--green);font-size:.92rem}
+.course-level-button{
+  width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:16px 18px;border:1px solid var(--border);border-radius:16px;background:#fff;
+  color:var(--green);font:inherit;font-size:.8rem;font-weight:800;cursor:pointer;text-align:left;
+  box-shadow:0 8px 24px rgba(6,59,38,.045);transition:.2s ease
+}
+.course-level-button:hover{border-color:rgba(11,93,59,.25);background:var(--light-green);transform:translateY(-1px)}
+.course-level-button::after{
+  content:"⌄";width:28px;height:28px;display:grid;place-items:center;flex:0 0 28px;
+  border-radius:9px;background:var(--light-green);color:var(--green);font-size:1rem;
+  transition:transform .2s ease,background .2s ease
+}
+.course-level-button.active{border-color:rgba(11,93,59,.25);background:var(--light-green)}
+.course-level-button.active::after{transform:rotate(180deg);background:var(--yellow);color:var(--dark-green)}
+.course-level-group{margin-bottom:10px}
+.course-level-group:last-child{margin-bottom:0}
+.course-level-group .course-block{margin:8px 0 0;padding:0 4px}
+.table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:16px;background:#fff}
+.course-table{width:100%;border-collapse:collapse;min-width:760px}
+.course-table th,.course-table td{padding:10px 11px;border-bottom:1px solid var(--border);text-align:left;font-size:.69rem;vertical-align:top}
+.course-table th{background:var(--light-green);color:var(--green);font-size:.62rem;letter-spacing:.04em;text-transform:uppercase}
+.course-table td:first-child{font-weight:800;color:var(--green);white-space:nowrap}
+.course-table tr:last-child td{border-bottom:0}
+.course-table .total-row td{font-weight:800;background:#fbfdfb;color:var(--text)}
+.note{margin:10px 0 0;color:var(--muted);font-size:.7rem;line-height:1.65}
+
+/* SUMMARY */
+.summary-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.summary-card{padding:24px;background:#fff;border:1px solid var(--border);border-radius:20px}
+.summary-card h3{margin:0 0 15px;font-size:.95rem}
+.summary-stat{display:flex;justify-content:space-between;gap:15px;padding:10px 0;border-bottom:1px solid var(--border);font-size:.74rem}
+.summary-stat:last-child{border-bottom:0}
+.summary-stat span{color:var(--muted)}
+.summary-stat strong{color:var(--green)}
+
+/* RESOURCES */
+.resource-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.resource-card{display:block;padding:24px;transition:.2s ease}
+.resource-icon{width:48px;height:48px;font-size:21px}
+.resource-card h3{margin:0 0 8px;font-size:.96rem}
+.resource-card p{margin:0;color:var(--muted);font-size:.78rem;line-height:1.7}
+.resource-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}
+.file-input{display:none}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.contact-card{padding:25px}
+.contact-card h3{margin:0 0 21px;font-size:.98rem}
+.contact-item{display:flex;align-items:flex-start;gap:12px;margin-bottom:17px}
+.contact-item:last-child{margin-bottom:0}
+.contact-item-icon{width:39px;height:39px;flex:0 0 39px;display:grid;place-items:center;border-radius:11px;background:var(--light-green);font-size:17px}
+.contact-item span{display:block;margin-bottom:4px;color:var(--muted);font-size:.62rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+.contact-item strong{color:var(--text);font-size:.78rem;line-height:1.5}
+
+/* HELP */
+.help-box{padding:40px 25px;border-radius:24px;background:radial-gradient(circle at 85% 15%,rgba(245,197,24,.13),transparent 28%),var(--dark-green);color:#fff;text-align:center}
+.help-box h2{margin:0 0 11px;font-size:clamp(1.5rem,4vw,2rem);letter-spacing:-.8px}
+.help-box p{max-width:700px;margin:0 auto 22px;color:rgba(255,255,255,.74);font-size:.8rem;line-height:1.7}
+.help-button{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 18px;border-radius:999px;background:var(--yellow);color:var(--dark-green);font-size:.7rem;font-weight:800}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border)}
+
+@media(max-width:950px){
+  .quick-info{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .resource-grid,.summary-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .programme-grid,.contact-grid,.info-grid{grid-template-columns:1fr}
+}
+@media(max-width:650px){
+  .department-hero{padding:40px 17px 36px;margin:12px 14px 0;border-radius:24px}
+  .department-hero h1{font-size:2.65rem;letter-spacing:-1.8px}
+  .department-main{width:min(100% - 34px,1120px);padding-top:35px}
+  .quick-info{grid-template-columns:1fr 1fr;gap:10px;margin-bottom:55px}
+  .quick-card{min-height:112px;padding:16px}
+  .resource-grid,.summary-grid{grid-template-columns:1fr}
+  .about-box,.programme-card,.resource-card,.contact-card,.content-card,.summary-card{padding:21px}
+  .department-actions{gap:7px}
+  .department-action{min-height:38px;padding:0 13px}
+}
+@media(max-width:430px){.quick-info{grid-template-columns:1fr}.breadcrumb{font-size:.6rem}}
+
+.level-nav{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:16px
+}
+.level-nav .course-level-button{
+  border-radius:999px;padding:10px 13px;min-height:42px;justify-content:center;font-size:.68rem;box-shadow:none
+}
+.level-nav .course-level-button::after{display:none}
+.level-nav > a{
+  display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:10px 13px;
+  border-radius:999px;background:var(--light-green);color:var(--green);font-size:.68rem;font-weight:800
+}
+.level-nav > a:hover{background:var(--yellow);color:var(--dark-green)}
+.course-level-content{display:none}
+.course-level-content.open{display:block}
+.course-level-content .course-block{display:block}
+@media(max-width:650px){.level-nav{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+
+.programme-structure-list{display:grid;gap:10px}
+.programme-structure-item{border-radius:16px}
+.programme-toggle{width:100%;display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border:1px solid var(--border);border-radius:16px;background:#fff;color:var(--green);font:inherit;font-size:.8rem;font-weight:800;cursor:pointer;text-align:left;box-shadow:0 8px 24px rgba(6,59,38,.045);transition:.2s ease}
+.programme-toggle:hover,.programme-toggle.active{border-color:rgba(11,93,59,.25);background:var(--light-green)}
+.programme-toggle span{width:28px;height:28px;display:grid;place-items:center;border-radius:9px;background:var(--light-green);font-size:1rem}
+.programme-toggle.active span{background:var(--yellow);color:var(--dark-green)}
+.programme-content{display:none;margin-top:8px}
+.programme-content.open{display:block}
+.programme-content .content-card{padding:21px}
+
+/* LIFE + MOTION: polished entrance, reveal, and responsive hover feedback */
+.department-back-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 22px}
+.department-back-button{display:inline-flex;align-items:center;gap:9px;min-height:40px;padding:0 15px;border:1px solid var(--border);border-radius:999px;background:#fff;color:var(--green);font:inherit;font-size:.72rem;font-weight:800;cursor:pointer;box-shadow:0 7px 20px rgba(6,59,38,.06);transition:transform .22s ease,box-shadow .22s ease,background .22s ease}
+.department-back-button span{font-size:1.1rem;transition:transform .22s ease}
+.department-back-button:hover{transform:translateY(-2px);background:var(--light-green);box-shadow:0 12px 25px rgba(6,59,38,.12)}
+.department-back-button:hover span{transform:translateX(-3px)}
+.back-hint{color:var(--muted);font-size:.68rem}
+.department-hero{animation:ictHeroEnter .8s cubic-bezier(.2,.75,.25,1) both}
+.department-hero-content{animation:ictContentEnter .9s .12s cubic-bezier(.2,.75,.25,1) both}
+.department-hero::after{animation:ictWatermarkFloat 9s ease-in-out infinite}
+@keyframes ictHeroEnter{from{opacity:0;transform:translateY(18px) scale(.99)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes ictContentEnter{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes ictWatermarkFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+.quick-card,.content-card,.programme-card,.resource-card,.contact-card,.summary-card,.help-box{transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.quick-card:hover,.content-card:hover,.contact-card:hover,.summary-card:hover{transform:translateY(-4px);box-shadow:0 18px 42px rgba(6,59,38,.1);border-color:rgba(11,93,59,.24)}
+.resource-card:hover{box-shadow:0 18px 42px rgba(6,59,38,.1)}
+.location-button,.download-button,.upload-button,.whatsapp-button,.help-button,.department-action{transition:transform .22s ease,box-shadow .22s ease,background .22s ease}
+.location-button:hover,.download-button:hover,.upload-button:hover,.whatsapp-button:hover,.help-button:hover,.department-action:hover{transform:translateY(-2px);box-shadow:0 9px 22px rgba(6,59,38,.12)}
+.reveal-on-scroll{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s cubic-bezier(.2,.75,.25,1)}
+.reveal-on-scroll.is-visible{opacity:1;transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .reveal-on-scroll{opacity:1;transform:none}
 }
 
 </style>
-
   <link rel="stylesheet" href="site-navigation.css">
 </head>
 
-<body>
+<body class="department-page">
 
-<div class="department-page">
+<header class="header">
 
-  <!-- =====================================================
-       HERO
-  ====================================================== -->
+    <nav class="navbar">
 
-  <section class="department-hero">
+      <a
+        href="index.html"
+        class="brand"
+      >
 
-    <div class="department-hero-content">
+        <span class="brand-icon">
+          🎓
+        </span>
 
-      <div class="breadcrumb">
+        <span>
+          AAUA Uni Pilot
+        </span>
 
-        <a href="index.html">Home</a>
+      </a>
 
-        <span>›</span>
 
-        <a href="faculty-guide.html">Faculty Guide</a>
+      <div class="desktop-nav">
 
-        <span>›</span>
-
-        <span>Forestry and Wildlife Management</span>
-
-      </div>
-
-      <span class="department-label">
-
-        Department Guide
-
-      </span>
-
-      <h1 id="departmentName">
-
-        Forestry and Wildlife Management
-
-      </h1>
-
-      <p class="faculty-name" id="facultyName">
-
-        Faculty of Agriculture
-
-      </p>
-
-      <p class="department-hero-description" id="departmentDescription">
-
-        Welcome to the Department of Forestry and Wildlife Management at
-
-        Adekunle Ajasin University. Explore your programme,
-
-        courses, academic resources and useful departmental
-
-        information in one place.
-
-      </p>
-
-      <div class="department-actions">
-
-        <a href="#resources" class="department-action primary">
-
-          📚 Resources
-
+        <a href="index.html">
+          Home
         </a>
-
-        <a href="#courses" class="department-action secondary">
-
-          📋 Courses
-
-        </a>
-
-        <a href="#help" class="department-action secondary">
-
-          🆘 Get Help
-
-        </a>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-
-  <!-- =====================================================
-       MAIN
-  ====================================================== -->
-
-  <main class="department-main">
-
-    <!-- QUICK INFORMATION -->
-
-    <section class="quick-info">
-
-      <div class="quick-card">
-
-        <div class="quick-icon">🏛️</div>
-
-        <span>Faculty</span>
-
-        <strong>Faculty of Agriculture</strong>
-
-      </div>
-
-      <div class="quick-card">
-
-        <div class="quick-icon">👨‍🏫</div>
-
-        <span>Head of Department</span>
-
-        <strong>Information coming soon</strong>
-
-      </div>
-
-      <div class="quick-card">
-
-        <div class="quick-icon">🎓</div>
-
-        <span>Degree</span>
-
-        <strong>B. Forestry and Wild Life Management</strong>
-
-      </div>
-
-      <div class="quick-card">
-
-        <div class="quick-icon">⏳</div>
-
-        <span>Duration</span>
-
-        <strong>Information coming soon</strong>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- ===================================================
-         ABOUT
-    ==================================================== -->
-
-    <section class="department-section">
-
-      <div class="section-heading">
-
-        <span>About the Department</span>
-
-        <h2>Forestry and Wildlife Management</h2>
-
-      </div>
-
-      <div class="about-box">
-
-        <p>
-
-          The Department of Forestry and Wild Life Management is one of
-
-          the academic departments in the Faculty of Agriculture at
-
-          Adekunle Ajasin University, Akungba-Akoko.
-
-          The department is part of the University's Bachelor of Forestry
-
-          Programme and contributes to the training of graduates in
-
-          forestry and wildlife management.
-
-        </p>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- ===================================================
-         PROGRAMMES
-    ==================================================== -->
-
-    <section class="department-section">
-
-      <div class="section-heading">
-
-        <span>Academic Programme</span>
-
-        <h2>Programme & Admission</h2>
-
-      </div>
-
-      <div class="programme-grid">
-
-        <div class="programme-card">
-
-          <div class="programme-icon">
-
-            🎓
-
-          </div>
-
-          <h3>B. Forestry and Wild Life Management</h3>
-
-          <p>
-
-            Bachelor of Forestry programme in Forestry and Wild Life
-
-            Management.
-
-          </p>
-
-        </div>
-
-
-
-        <div class="programme-card">
-
-          <div class="programme-icon">
-
-            🌳
-
-          </div>
-
-          <h3>Forestry and Wildlife Management</h3>
-
-          <p>
-
-            Study forestry and wildlife management within the Faculty
-
-            of Agriculture.
-
-          </p>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- ===================================================
-         COURSES
-    ==================================================== -->
-
-    <section class="department-section" id="courses">
-
-      <div class="section-heading">
-
-        <span>Academic Information</span>
-
-        <h2>Courses by Level</h2>
-
-      </div>
-
-      <div class="courses-box">
-
-
-
-        <!-- 100 LEVEL -->
-
-        <div class="level-card">
-
-          <button class="level-button" type="button">
-
-            <span>100 Level</span>
-
-            <span class="level-arrow">
-
-              ▼
-
-            </span>
-
-          </button>
-
-          <div class="course-list">
-
-            <div class="course-row">
-
-              <span class="course-code">
-
-                Course Code
-
-              </span>
-
-              <span>
-
-                Course Title
-
-              </span>
-
-              <span class="course-unit">
-
-                3 Units
-
-              </span>
-
-            </div>
-
-            <div class="course-row">
-
-              <span class="course-code">
-
-                Course Code
-
-              </span>
-
-              <span>
-
-                Course Title
-
-              </span>
-
-              <span class="course-unit">
-
-                2 Units
-
-              </span>
-
-            </div>
-
-            <div class="course-row">
-
-              <span class="course-code">
-
-                Course Code
-
-              </span>
-
-              <span>
-
-                Course Title
-
-              </span>
-
-              <span class="course-unit">
-
-                3 Units
-
-              </span>
-
-            </div>
-
-          </div>
-
-        </div>
-
-
-
-        <!-- 200 LEVEL -->
-
-        <div class="level-card">
-
-          <button class="level-button" type="button">
-
-            <span>200 Level</span>
-
-            <span class="level-arrow">
-
-              ▼
-
-            </span>
-
-          </button>
-
-          <div class="course-list">
-
-            <div class="course-row">
-
-              <span class="course-code">
-
-                Course Code
-
-              </span>
-
-              <span>
-
-                Course Title
-
-              </span>
-
-              <span class="course-unit">
-
-                3 Units
-
-              </span>
-
-            </div>
-
-          </div>
-
-        </div>
-
-
-
-        <!-- 300 LEVEL -->
-
-        <div class="level-card">
-
-          <button class="level-button" type="button">
-
-            <span>300 Level</span>
-
-            <span class="level-arrow">
-
-              ▼
-
-            </span>
-
-          </button>
-
-          <div class="course-list">
-
-            <div class="course-row">
-
-              <span class="course-code">
-
-                Course Code
-
-              </span>
-
-              <span>
-
-                Course Title
-
-              </span>
-
-              <span class="course-unit">
-
-                3 Units
-
-              </span>
-
-            </div>
-
-          </div>
-
-        </div>
-
-
-
-        <!-- 400 LEVEL -->
-
-        <div class="level-card">
-
-          <button class="level-button" type="button">
-
-            <span>400 Level</span>
-
-            <span class="level-arrow">
-
-              ▼
-
-            </span>
-
-          </button>
-
-          <div class="course-list">
-
-            <div class="course-row">
-
-              <span class="course-code">
-
-                Course Code
-
-              </span>
-
-              <span>
-
-                Course Title
-
-              </span>
-
-              <span class="course-unit">
-
-                3 Units
-
-              </span>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- ===================================================
-         RESOURCES
-    ==================================================== -->
-
-    <section class="department-section" id="resources">
-
-      <div class="section-heading">
-
-        <span>Student Support</span>
-
-        <h2>Academic Resources</h2>
-
-      </div>
-
-      <div class="resource-grid">
-
-        <a href="#" class="resource-card">
-
-          <div class="resource-icon">
-
-            📖
-
-          </div>
-
-          <h3>Department Guide</h3>
-
-          <p>
-
-            Find useful information about the department and
-
-            your academic programme.
-
-          </p>
-
-        </a>
-
-
-
-        <a href="#" class="resource-card">
-
-          <div class="resource-icon">
-
-            📝
-
-          </div>
-
-          <h3>Course Information</h3>
-
-          <p>
-
-            Access information about courses and academic levels.
-
-          </p>
-
-        </a>
-
-
-
-        <a href="#" class="resource-card">
-
-          <div class="resource-icon">
-
-            🎓
-
-          </div>
-
-          <h3>Student Resources</h3>
-
-          <p>
-
-            Useful academic materials and information for students.
-
-          </p>
-
-        </a>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- ===================================================
-         CONTACT
-    ==================================================== -->
-
-    <section class="department-section">
-
-      <div class="section-heading">
-
-        <span>Get in Touch</span>
-
-        <h2>Department Contacts</h2>
-
-      </div>
-
-      <div class="contact-grid">
-
-        <div class="contact-card">
-
-          <h3>Department Information</h3>
-
-          <div class="contact-item">
-
-            <div class="contact-item-icon">
-
-              🏛️
-
-            </div>
-
-            <div>
-
-              <span>Faculty</span>
-
-              <strong>Faculty of Agriculture</strong>
-
-            </div>
-
-          </div>
-
-
-
-          <div class="contact-item">
-
-            <div class="contact-item-icon">
-
-              🎓
-
-            </div>
-
-            <div>
-
-              <span>Department</span>
-
-              <strong>Forestry and Wildlife Management</strong>
-
-            </div>
-
-          </div>
-
-        </div>
-
-
-
-        <div class="contact-card">
-
-          <h3>University</h3>
-
-          <div class="contact-item">
-
-            <div class="contact-item-icon">
-
-              📍
-
-            </div>
-
-            <div>
-
-              <span>Location</span>
-
-              <strong>
-
-                Adekunle Ajasin University,
-
-                Akungba-Akoko, Ondo State
-
-              </strong>
-
-            </div>
-
-          </div>
-
-
-
-          <div class="contact-item">
-
-            <div class="contact-item-icon">
-
-              🏫
-
-            </div>
-
-            <div>
-
-              <span>Faculty</span>
-
-              <strong>Faculty of Agriculture</strong>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- ===================================================
-         HELP
-    ==================================================== -->
-
-    <section class="department-section" id="help">
-
-      <div class="help-box">
-
-        <h2>Need help with your department?</h2>
-
-        <p>
-
-          If you need help with registration, courses,
-
-          departmental information or other student matters,
-
-          use the Uni Pilot student help system.
-
-        </p>
-
-        <a href="help.html" class="help-button">
-
-          Get Help
-
-        </a>
-
-      </div>
-
-    </section>
-
-  </main>
-
-</div>
-
-
-<!-- =========================
-     FOOTER
-========================== -->
-
-<footer>
-
-  <div class="footer-container">
-
-    <div class="footer-brand">
-
-      <h2>
-
-        AAUA Uni Pilot
-
-      </h2>
-
-      <p>
-
-        Your campus. Your resources. Your guide.
-
-      </p>
-
-    </div>
-
-
-
-    <div class="footer-links">
-
-
-
-      <div>
-
-        <h4>
-
-          Platform
-
-        </h4>
 
         <a href="resources.html">
-
           Resources
-
         </a>
 
         <a href="guide.html">
-
           Student Guide
-
         </a>
 
         <a href="updates.html">
-
           Updates
-
         </a>
 
-        <a href="tools.html">
-
-          Student Tools
-
+        <a href="tools.html" class="active">
+          Tools
         </a>
 
       </div>
 
 
+      <div class="nav-actions">
 
-      <div>
-
-        <h4>
-
-          Information
-
-        </h4>
-
-        <a href="about.html">
-
-          About
-
+        <a
+          href="search.html"
+          class="icon-btn"
+          aria-label="Search AAUA Uni Pilot"
+          title="Search AAUA Uni Pilot"
+          style="display:grid;place-items:center;text-decoration:none;"
+        >
+          🔍
         </a>
 
-        <a href="#">
 
-          Privacy Policy
-
-        </a>
-
-        <a href="#">
-
-          Terms of Use
-
-        </a>
-
-        <a href="#">
-
-          Contact
-
-        </a>
+        <button
+          class="menu-btn"
+          id="menuBtn"
+          type="button"
+          aria-label="Open menu"
+        >
+          ☰
+        </button>
 
       </div>
 
+    </nav>
+
+  </header>
 
 
+<section class="department-hero">
+  <div class="department-hero-content">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>›</span><a href="faculty-guide.html">Faculty Guide</a><span>›</span><span>Forestry and Wildlife Management</span></div>
+    <span class="department-label">Department Guide</span>
+    <h1>Department of <span>Forestry and Wildlife Management.</span></h1>
+    <p class="faculty-name">Faculty of Agriculture</p>
+    <p class="department-hero-description">Explore the Department of Forestry and Wildlife Management, its programme philosophy, admission and graduation requirements, course structure and academic resources at Adekunle Ajasin University.</p>
+    <div class="department-actions">
+      <a href="#overview" class="department-action primary">📚 Overview</a>
+      <a href="#courses" class="department-action secondary">📋 Courses</a>
+      <a href="#resources" class="department-action secondary">📁 Resources</a>
+      <a href="#help" class="department-action secondary">🆘 Get Help</a>
     </div>
-
   </div>
-
-
-
-  <div class="footer-bottom">
-
-    <p>
-
-      © 2026 AAUA Uni Pilot. All rights reserved.
-
-    </p>
-
+</section>
+<main class="department-main">
+  <div class="department-back-row">
+    <button class="department-back-button" id="departmentBackButton" type="button"><span aria-hidden="true">←</span> Go Back</button>
+    <span class="back-hint">Return to the page you came from</span>
   </div>
+  <section class="quick-info">
+  <div class="quick-card"><div class="quick-icon">🏛️</div><span>Faculty</span><strong>Faculty of Agriculture</strong></div>
+  <div class="quick-card"><div class="quick-icon">👨‍🏫</div><span>Head of Department</span><strong>Prof. Bukola A. Oyebade</strong></div>
+  <div class="quick-card"><div class="quick-icon">🎓</div><span>Degree</span><strong>Bachelor of Forestry</strong></div>
+  <div class="quick-card"><div class="quick-icon">⏳</div><span>Duration</span><strong>4 years UTME · 3 years Direct Entry</strong></div>
+</section>
+
+  <section class="department-section" id="overview">
+  <div class="section-heading"><span>Introduction &amp; General Background</span><h2>Department of Forestry and Wildlife Management</h2></div>
+  <div class="about-box">
+    <p>Welcome to the Department of Forestry and Wildlife Management, Faculty of Agriculture, Adekunle Ajasin University, Akungba-Akoko, Ondo State, Nigeria. The Department prepares students for the sustainable management and conservation of forest and wildlife resources.</p>
+    <p>The programme provides training in the scientific use, conservation and productivity of renewable natural resources. It addresses major environmental challenges such as deforestation, desertification, biodiversity loss and climate change, while developing graduates who can contribute to sustainable development and establish forestry and wildlife-related enterprises.</p>
+    <p>The curriculum covers the management of natural and man-made forests, wildlife resources, forest products and conservation practices. It also exposes students to practical and entrepreneurial opportunities in urban forestry, ecotourism, timber harvesting, wood-products processing and Geographic Information Systems (GIS).</p>
+    <a href="https://www.google.com/maps/search/?api=1&query=Faculty+of+Agriculture+Adekunle+Ajasin+University+Akungba+Akoko" class="location-button" target="_blank" rel="noopener noreferrer">📍 View Faculty Location ↗</a>
+  </div>
+</section>
+
+  <section class="department-section">
+  <div class="section-heading"><span>Programme Philosophy &amp; Objectives</span><h2>What the Programme Aims to Develop</h2></div>
+  <div class="info-grid">
+    <div class="content-card"><h3>Philosophy</h3><p>The programme is designed to produce graduates with comprehensive theoretical knowledge and practical skills for the sustainable management, conservation and productive use of forest and wildlife resources. It promotes scientific resource management, environmental protection, self-employment and the development of technical, research and entrepreneurial skills in forestry and wildlife management.</p></div>
+    <div class="content-card"><h3>Objectives</h3><p>The programme aims to:</p><ol>
+      <li>Equip graduates with skills for sustainable management of forest and wildlife resources and the establishment of independent enterprises.</li>
+      <li>Support local and global initiatives for sustainable development of renewable natural resources.</li>
+      <li>Contribute to diversification and transformation of the national economy through forestry and wildlife-related activities.</li>
+      <li>Promote climate-change mitigation, biodiversity conservation and ecological stability.</li>
+      <li>Develop technical, productive, research and entrepreneurial skills relevant to the discipline.</li>
+      <li>Prepare graduates to contribute to industry, communities and national development through responsible resource use.</li>
+    </ol></div>
+  </div>
+</section>
+
+  <section class="department-section">
+  <div class="section-heading"><span>Programme Features &amp; Skills</span><h2>Employability and 21st Century Skills</h2></div>
+  <div class="info-grid">
+    <div class="content-card"><h3>Employability Skills</h3><ul>
+      <li>Forest establishment, management and regeneration.</li>
+      <li>Plant propagation, seedling production and nursery management.</li>
+      <li>Wildlife conservation, habitat management and game management.</li>
+      <li>Forest products processing, timber harvesting and utilization.</li>
+      <li>Ecotourism, urban forestry and natural-resource consultancy.</li>
+      <li>GIS, remote sensing, field research and environmental assessment.</li>
+      <li>Entrepreneurship and management of forestry and wildlife enterprises.</li>
+    </ul></div>
+    <div class="content-card"><h3>21st Century Skills</h3><ul>
+      <li>Critical thinking, problem-solving and research skills.</li>
+      <li>Communication, report writing and presentation.</li>
+      <li>Teamwork, collaboration and leadership.</li>
+      <li>Digital literacy, information literacy and use of GIS technologies.</li>
+      <li>Adaptability, initiative, time management and self-direction.</li>
+      <li>Environmental awareness, innovation and responsible decision-making.</li>
+    </ul></div>
+    <div class="content-card full-card"><h3>Unique Features of the Programme</h3><ul>
+      <li>Training in the conservation and sustainable use of renewable natural resources.</li>
+      <li>Exposure to specialist areas such as urban forestry, wood-products processing, ecological conservation, ecotourism, timber harvesting and GIS.</li>
+      <li>Practical and field-based learning that connects classroom knowledge with forestry and wildlife management activities.</li>
+      <li>Preparation for self-employment, enterprise development and professional careers in natural-resource management.</li>
+    </ul></div>
+  </div>
+</section>
+
+  <section class="department-section">
+  <div class="section-heading"><span>Programme Offered &amp; Duration</span><h2>Bachelor of Forestry</h2></div>
+  <div class="programme-grid">
+    <div class="programme-card"><div class="programme-icon">🎓</div><h3>Bachelor of Forestry</h3><p>The Faculty of Agriculture lists Forestry and Wildlife Management under its Bachelor of Forestry programme.</p></div>
+    <div class="programme-card"><div class="programme-icon">⏱️</div><h3>Duration</h3><p>UTME candidates spend a minimum of four academic sessions (four years). Direct Entry candidates admitted to 200 level spend a minimum of three academic sessions (three years).</p></div>
+  </div>
+</section>
+
+  <section class="department-section">
+  <div class="section-heading"><span>Admission</span><h2>Admission Requirements</h2></div>
+  <div class="info-grid">
+    <div class="content-card"><h3>UTME — Four-Year Degree Programme</h3><p>Candidates should possess five Senior Secondary Certificate credit passes in English Language, Mathematics, Chemistry, Biology and Agricultural Science, in not more than two sittings, alongside a pass in Physics, and must meet the current UTME requirements.</p><p><strong>Duration:</strong> Minimum of four academic sessions.</p></div>
+    <div class="content-card"><h3>Direct Entry Mode</h3><p>The programme summary supplied for this department describes eligibility through relevant Advanced Level passes in Chemistry and Biology together with the required O’Level credits, or relevant National Diploma, NCE or HND qualifications with at least Lower Credit for consideration for admission into 200 level.</p><p><strong>Duration:</strong> Minimum of three academic sessions.</p><p class="note">Applicants should confirm current subject combinations and accepted qualifications against the latest JAMB brochure and AAUA admission notice.</p></div>
+  </div>
+</section>
+
+  <section class="department-section">
+  <div class="section-heading"><span>Graduation</span><h2>Graduation Requirements</h2></div>
+  <div class="content-card"><p>Students are expected to complete the approved course requirements for their entry route and pass all compulsory courses specified for the programme.</p>
+    <p>The programme summary used for this department page specifies a minimum of <strong>120 credit units</strong> for UTME candidates and <strong>90 credit units</strong> for Direct Entry candidates. Students should confirm the applicable total and current regulations with the Department before final course registration.</p>
+    <p>Students must also complete the approved practical and research requirements, including the supervised undergraduate project report where specified by the department. The project develops problem-solving, literature review, research and report-writing skills.</p>
+  </div>
+</section>
+
+  <section class="department-section">
+  <div class="section-heading"><span>Registration</span><h2>Course Registration Information</h2></div>
+  <div class="info-grid">
+    <div class="rule-card content-card"><h3>Course Categories</h3><p><strong>Compulsory Courses:</strong> Courses marked C are compulsory and must be completed as specified for the programme.</p><p><strong>Elective Courses:</strong> Courses marked E are electives. Students should select electives according to the department's approved course-registration guidance.</p></div>
+    <div class="rule-card content-card"><h3>Course Structure Legend</h3><ul><li><strong>LH:</strong> Lecture Hours.</li><li><strong>PH:</strong> Practical Hours.</li><li><strong>C:</strong> Compulsory course.</li><li><strong>E:</strong> Elective course.</li></ul></div>
+  </div>
+</section>
+
+  <section class="department-section">
+  <div class="section-heading"><span>Academic Structure</span><h2>Programme Course Unit Summary</h2><p>Use the course tables below for the detailed course list by level and semester. Confirm minimum graduation units with the Department.</p></div>
+  <div class="content-card"><div class="table-wrap"><table class="course-table">
+    <thead><tr><th>Entry Route</th><th>Minimum Credit Units</th><th>Normal Duration</th></tr></thead>
+    <tbody><tr><td>UTME</td><td>120</td><td>4 academic sessions</td></tr><tr><td>Direct Entry</td><td>90</td><td>3 academic sessions</td></tr></tbody>
+  </table></div></div>
+</section>
+
+  <section class="department-section" id="courses">
+  <div class="section-heading"><span>Course Structure</span><h2>Courses by Level and Semester</h2><p>Courses are arranged by course-code number: odd-numbered courses under First Semester and even-numbered courses under Second Semester. LH = lecture hours; PH = practical hours; C = compulsory; E = elective.</p></div>
+  <div class="level-nav">
+    <button type="button" class="course-level-button" data-level="100">100 Level</button>
+    <button type="button" class="course-level-button" data-level="200">200 Level</button>
+    <button type="button" class="course-level-button" data-level="300">300 Level</button>
+    <button type="button" class="course-level-button" data-level="400">400 Level</button>
+  </div>
+  <div class="course-level-group"><button type="button" class="course-level-button" data-level-toggle="100" aria-expanded="false">100 Level <span aria-hidden="true">+</span></button><div class="course-level-content" data-level-content="100"><div class="course-block" data-level="100"><h3>100 Level — First Semester</h3><div class="table-wrap"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead><tbody><tr><td>GST 111</td><td>Communication in English</td><td>2</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>AGR 111</td><td>Introduction to Agriculture I</td><td>2</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>BIO 101</td><td>General Biology I</td><td>2</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>BIO 107</td><td>General Biology Practical I</td><td>1</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>CHM 101</td><td>General Chemistry I</td><td>2</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>CHM 107</td><td>General Chemistry Practical I</td><td>1</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>MTH 101</td><td>Elementary Mathematics I</td><td>2</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>PHY 101</td><td>General Physics I</td><td>2</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>PHY 107</td><td>General Physics Practical I</td><td>1</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr></tbody></table></div></div>
+<div class="course-block" data-level="100"><h3>100 Level — Second Semester</h3><div class="table-wrap"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead><tbody><tr><td>GST 112</td><td>Nigerian Peoples and Culture</td><td>2</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>AGR 112</td><td>Introduction to Agriculture II</td><td>2</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>BIO 102</td><td>General Biology II</td><td>2</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>BIO 108</td><td>General Biology Practical II</td><td>1</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>CHM 102</td><td>General Chemistry II</td><td>2</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>CHM 108</td><td>General Chemistry Practical II</td><td>1</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>MTH 102</td><td>Elementary Mathematics II</td><td>2</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>PHY 102</td><td>General Physics II</td><td>2</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>PHY 108</td><td>General Physics Practical II</td><td>1</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr></tbody></table></div></div></div></div>
+<div class="course-level-group"><button type="button" class="course-level-button" data-level-toggle="200" aria-expanded="false">200 Level <span aria-hidden="true">+</span></button><div class="course-level-content" data-level-content="200"><div class="course-block" data-level="200"><h3>200 Level — First Semester</h3><div class="table-wrap"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead><tbody><tr><td>ENT 211</td><td>Entrepreneurship and Innovation</td><td>2</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>AGR 201</td><td>Principles of Crop Production</td><td>2</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>FWM 201</td><td>Introduction to Forest Extension and Economics</td><td>2</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>FWM 203</td><td>Introduction to Remote Sensing and GIS Applications</td><td>2</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>FWM 205</td><td>Principles of Silviculture</td><td>2</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>AAUA-ANS 203</td><td>Principles of Animal Production</td><td>2</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>AAUA-ANS 205</td><td>Introductory Agricultural Biochemistry I</td><td>2</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>AAUA-FWM 207</td><td>Computer Applications in Forest and Wildlife Management</td><td>2</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>AAUA-FWM 209</td><td>Agro-Meteorology, Biogeography and Climate Change</td><td>2</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr></tbody></table></div></div>
+<div class="course-block" data-level="200"><h3>200 Level — Second Semester</h3><div class="table-wrap"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead><tbody><tr><td>GST 212</td><td>Philosophy, Logic and Human Existence</td><td>2</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>FWM 202</td><td>Natural Ecosystems</td><td>2</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>FWM 204</td><td>Introduction to Forest Resources and Wildlife Management</td><td>2</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>FWM 206</td><td>Introduction to Wildlife Ecology</td><td>2</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>AAUA-ANS 206</td><td>Introductory Agricultural Biochemistry II</td><td>2</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>AAUA-FWM 208</td><td>Forest and Wildlife Extension and Rural Sociology</td><td>2</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>AAUA-FWM 210</td><td>Forest Survey and Road Alignment</td><td>3</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>AAUA-FWM 212</td><td>Principle of Agroforestry Techniques</td><td>2</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr></tbody></table></div></div></div></div>
+<div class="course-level-group"><button type="button" class="course-level-button" data-level-toggle="300" aria-expanded="false">300 Level <span aria-hidden="true">+</span></button><div class="course-level-content" data-level-content="300"><div class="course-block" data-level="300"><h3>300 Level — First Semester</h3><div class="table-wrap"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead><tbody><tr><td>FWM 301</td><td>Forest Inventory and Mensuration</td><td>2</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>FWM 303</td><td>Environmental Impact Assessment</td><td>1</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>FWM 305</td><td>Forest and Wildlife Biometrics</td><td>2</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>FWM 307</td><td>Wildlife Population Analysis</td><td>1</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>FWM 309</td><td>Ethno Forestry</td><td>1</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>FWM 311</td><td>Training in Firearms and Ballistics</td><td>1</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>AAUA-FWM 313</td><td>Plant Taxonomy and Biosystematics</td><td>3</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr></tbody></table></div></div>
+<div class="course-block" data-level="300"><h3>300 Level — Second Semester</h3><div class="table-wrap"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead><tbody><tr><td>GST 312</td><td>Peace and Conflict Resolution</td><td>2</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>ENT 312</td><td>Venture Creation</td><td>2</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>FWM 302</td><td>Tropical Silviculture and Silvicultural Techniques</td><td>2</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>FWM 304</td><td>Wildlife Resources Management</td><td>2</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>FWM 306</td><td>Wood Formation, Anatomy &amp; Properties</td><td>1</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>FWM 308</td><td>Urban Forestry Development</td><td>1</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>FWM 310</td><td>Zoo &amp; Parks Management Techniques</td><td>1</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>AAUA-SOS 308</td><td>Soil Water Plant Relation</td><td>2</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>AAUA-FWM 312</td><td>Forest Reservation and Biodiversity Conservation</td><td>2</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>AAUA-FWM 314</td><td>Saw Milling, Wood Seasoning and Preservation</td><td>2</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr></tbody></table></div></div></div></div>
+<div class="course-level-group"><button type="button" class="course-level-button" data-level-toggle="400" aria-expanded="false">400 Level <span aria-hidden="true">+</span></button><div class="course-level-content" data-level-content="400"><div class="course-block" data-level="400"><h3>400 Level — First Semester</h3><div class="table-wrap"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead><tbody><tr><td>FWM 401</td><td>Multiple Land Use</td><td>2</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>FWM 403</td><td>Forest and Wildlife Policy, Law and Administration</td><td>2</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>FWM 405</td><td>Museum and Herbarium Techniques</td><td>2</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>FWM 407</td><td>Natural &amp; Man-made Forest Plantation Techniques</td><td>2</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>FWM 409</td><td>Game Ranching and Domestication</td><td>2</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>FWM 499</td><td>Project</td><td>4</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>AAUA-FWM 411</td><td>Management of Game Birds and Ornithology</td><td>2</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>AAUA-FWM 413</td><td>Pulp and Paper Making Technology</td><td>2</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>AAUA-FWM 415</td><td>Wood Panel Products</td><td>2</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>AAUA-FWM 417</td><td>Forest Products, NTFPs Marketing and Value Additions</td><td>2</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr></tbody></table></div></div>
+<div class="course-block" data-level="400"><h3>400 Level — Second Semester</h3><div class="table-wrap"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead><tbody><tr><td>FWM 402</td><td>Forest Soils</td><td>2</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>FWM 404</td><td>Forest and Wildlife Resources Improvement and Protection</td><td>3</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>FWM 406</td><td>Forest Operations and Management</td><td>2</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>FWM 408</td><td>Harvesting, Processing &amp; Wood</td><td>2</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>FWM 410</td><td>Report Writing</td><td>1</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>FWM 498</td><td>Seminar</td><td>1</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>AAUA-FWM 412</td><td>Forest and Wildlife Pests and Diseases</td><td>2</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>AAUA-FWM 414</td><td>Park Design and Management</td><td>2</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr><tr><td>AAUA-FWM 416</td><td>Wildlife Nutrition</td><td>2</td><td><span class="status compulsory">C</span></td><td>—</td><td>—</td></tr></tbody></table></div></div></div></div>
+</section>
+
+  <section class="department-section" id="resources">
+  <div class="section-heading"><span>Student Support</span><h2>Academic Resources</h2></div>
+  <div class="resource-grid">
+    <div class="resource-card"><div class="resource-icon">📖</div><h3>Department Guide</h3><p>Review the programme overview, philosophy, objectives, admission requirements, graduation requirements and course structure on this page.</p></div>
+    <div class="resource-card"><div class="resource-icon">🌐</div><h3>Official Department Page</h3><p>Visit AAUA's official Department of Forestry and Wildlife Management page for university-published updates and departmental information.</p><div class="resource-actions"><a class="whatsapp-button" href="https://aaua.edu.ng/department/forestry-and-wildlife-management" target="_blank" rel="noopener noreferrer">Visit Official Page ↗</a></div></div>
+    <div class="resource-card"><div class="resource-icon">📚</div><h3>Department Handbook</h3><p>Check the official department page for the current handbook and programme documents.</p><div class="resource-actions"><a class="download-button" href="https://aaua.edu.ng/department/forestry-and-wildlife-management" target="_blank" rel="noopener noreferrer">Check Handbook Link ↗</a></div></div>
+    <div class="resource-card"><div class="resource-icon">💬</div><h3>Student Help</h3><p>For assistance with departmental information, course registration or student support, visit the AAUA Uni Pilot help page.</p><div class="resource-actions"><a class="whatsapp-button" href="help.html">Get Student Help ↗</a></div></div>
+    <div class="resource-card"><div class="resource-icon">🏅</div><h3>NUC Accreditation Report</h3><p>The NUC's December 2024 assessment report records a 92.00% score and full accreditation status for the programme.</p><div class="resource-actions"><a class="download-button" href="https://www.nuc.edu.ng/accreditation-tech-report-view/entry/13350/" target="_blank" rel="noopener noreferrer">View NUC Report ↗</a></div></div>
+  </div>
+</section>
+
+  <section class="department-section">
+  <div class="section-heading"><span>Get in Touch</span><h2>Department Contacts</h2></div>
+  <div class="contact-grid">
+    <div class="contact-card"><h3>Department Information</h3>
+      <div class="contact-item"><div class="contact-item-icon">🏛️</div><div><span>Faculty</span><strong>Faculty of Agriculture</strong></div></div>
+      <div class="contact-item"><div class="contact-item-icon">🎓</div><div><span>Department</span><strong>Department of Forestry and Wildlife Management</strong></div></div>
+      <div class="contact-item"><div class="contact-item-icon">👨‍🏫</div><div><span>HOD</span><strong>Prof. Bukola A. Oyebade</strong></div></div>
+      <div class="contact-item"><div class="contact-item-icon">📞</div><div><span>Department Contact</span><strong><a href="tel:+2348063567002">+234 806 356 7002</a></strong></div></div>
+      <div class="contact-item"><div class="contact-item-icon">✉️</div><div><span>HOD Email</span><strong><a href="mailto:adekunlei@aaua.edu.ng">adekunlei@aaua.edu.ng</a></strong></div></div>
+      <div class="contact-item"><div class="contact-item-icon">🕘</div><div><span>Office Hours</span><strong>Monday–Friday, 9:00 a.m.–4:00 p.m.</strong></div></div>
+    </div>
+    <div class="contact-card"><h3>University</h3>
+      <div class="contact-item"><div class="contact-item-icon">📍</div><div><span>Location</span><strong>Adekunle Ajasin University, P.M.B. 01, Akungba-Akoko, Ondo State, Nigeria</strong></div></div>
+      <div class="contact-item"><div class="contact-item-icon">🏫</div><div><span>Faculty</span><strong>Faculty of Agriculture</strong></div></div>
+      <div class="contact-item"><div class="contact-item-icon">☎️</div><div><span>University Telephone</span><strong><a href="tel:+2348161651123">+234 816 165 1123</a><br><a href="tel:+2347089105452">+234 708 910 5452</a></strong></div></div>
+      <div class="contact-item"><div class="contact-item-icon">✉️</div><div><span>University Email</span><strong><a href="mailto:info@aaua.edu.ng">info@aaua.edu.ng</a></strong></div></div>
+    </div>
+  </div>
+</section>
+
+  <section class="department-section" id="help"><div class="help-box"><h2>Need help with your department?</h2><p>If you need help with course registration, academic information or other student matters, use the AAUA Uni Pilot student help system.</p><a href="help.html" class="help-button">Get Department Help →</a></div></section>
+</main>
+
+<footer>
+  <div class="footer-container">
+    <div class="footer-brand">
+      <a href="index.html" class="brand">🎓 AAUA Uni Pilot</a>
+      <p>Your campus. Your resources. Your guide.</p>
+    </div>
+    <div class="footer-links">
+      <div>
+        <h4>Platform</h4>
+        <a href="resources.html">Resources</a>
+        <a href="guide.html">Student Guide</a>
+        <a href="updates.html">Updates</a>
+        <a href="tools.html">Student Tools</a>
+      </div>
+      <div>
+        <h4>Information</h4>
+        <a href="about.html">About</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Use</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 Uni Pilot. All rights reserved.</p></div>
+</footer>
+
 
 <script>
-
-/* =========================================================
-   COURSE ACCORDION
-========================================================= */
-
-document.querySelectorAll(".level-button").forEach(button => {
-
-  button.addEventListener("click", () => {
-
-    const card = button.closest(".level-card");
-
-    card.classList.toggle("active");
-
+document.querySelectorAll(".programme-toggle").forEach(button => {
+  button.addEventListener("click", function(){
+    const content = this.nextElementSibling;
+    const isOpen = content.classList.contains("open");
+    document.querySelectorAll(".programme-content").forEach(item => item.classList.remove("open"));
+    document.querySelectorAll(".programme-toggle").forEach(item => {
+      item.classList.remove("active");
+      item.setAttribute("aria-expanded", "false");
+      item.querySelector("span").textContent = "+";
+    });
+    if(!isOpen){
+      content.classList.add("open");
+      this.classList.add("active");
+      this.setAttribute("aria-expanded", "true");
+      this.querySelector("span").textContent = "−";
+    }
   });
+});
+</script>
+<script>
+document.querySelectorAll(".course-level-button[data-level-toggle]").forEach(button => {
+  button.addEventListener("click", function(){
+    const level = this.dataset.levelToggle;
+    const content = document.querySelector(`[data-level-content="${level}"]`);
+    const isOpen = content.classList.contains("open");
 
+    document.querySelectorAll(".course-level-content").forEach(item => item.classList.remove("open"));
+    document.querySelectorAll(".course-level-button[data-level-toggle]").forEach(item => {
+      item.classList.remove("active");
+      item.setAttribute("aria-expanded", "false");
+      const symbol = item.querySelector("span");
+      if(symbol) symbol.textContent = "+";
+    });
+
+    if(!isOpen){
+      content.classList.add("open");
+      this.classList.add("active");
+      this.setAttribute("aria-expanded", "true");
+      const symbol = this.querySelector("span");
+      if(symbol) symbol.textContent = "−";
+    }
+  });
 });
 
+document.querySelectorAll(".level-nav .course-level-button[data-level]").forEach(button => {
+  button.addEventListener("click", function(){
+    const target = document.querySelector(`[data-level-toggle="${this.dataset.level}"]`);
+    if(target) target.click();
+  });
+});
+</script>
+
+
+
+
+<script>
+  // Return to the referring page when possible; use the faculty guide as a safe fallback.
+  document.getElementById("departmentBackButton").addEventListener("click", function () {
+    if (window.history.length > 1 && document.referrer && new URL(document.referrer).origin === window.location.origin) {
+      window.history.back();
+    } else {
+      window.location.href = "faculty-guide.html";
+    }
+  });
+
+  // Reveal content as it enters the viewport.
+  (function () {
+    const items = document.querySelectorAll(".quick-card, .department-section, .programme-card, .content-card, .resource-card, .contact-card, .summary-card");
+    items.forEach((item, index) => {
+      item.classList.add("reveal-on-scroll");
+      item.style.transitionDelay = (index % 4) * 55 + "ms";
+    });
+
+    if (!("IntersectionObserver" in window)) {
+      items.forEach(item => item.classList.add("is-visible"));
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries, activeObserver) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          activeObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    items.forEach(item => observer.observe(item));
+  })();
 </script>
 
   <script src="site-navigation.js"></script>
 </body>
-
 </html>

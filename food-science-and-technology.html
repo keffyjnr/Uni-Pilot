@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Food Science and Technology | AAUA Uni Pilot</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<style>
+:root{
+  --green:#0b5d3b;
+  --dark-green:#063b26;
+  --light-green:#eaf6ef;
+  --yellow:#f5c518;
+  --white:#ffffff;
+  --background:#f7faf8;
+  --text:#17221c;
+  --muted:#6d7a72;
+  --border:#dfe8e2;
+  --soft:#fbfdfb;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Manrope",Arial,Helvetica,sans-serif;background:var(--background);color:var(--text)}
+a{color:inherit;text-decoration:none}
+button,input{font-family:inherit}
+
+.department-page{
+  min-height:100vh;
+  background:
+    radial-gradient(circle at top right,rgba(11,93,59,.06),transparent 30%),
+    radial-gradient(circle at bottom left,rgba(245,197,24,.045),transparent 30%),
+    var(--background);
+}
+
+/* HERO */
+.department-hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(circle at 82% 18%,rgba(245,197,24,.16),transparent 28%),
+    linear-gradient(135deg,#07120d 0%,var(--dark-green) 48%,var(--green) 100%);
+  color:#fff;padding:58px 22px 50px;border-radius:30px;margin:18px 22px 0;
+  box-shadow:0 18px 50px rgba(6,59,38,.14);
+}
+.department-hero::after{
+  content:"FOOD SCIENCE & TECHNOLOGY";position:absolute;right:22px;bottom:-25px;
+  font-size:clamp(5rem,15vw,11rem);line-height:.8;font-weight:800;
+  letter-spacing:-7px;color:rgba(255,255,255,.035);pointer-events:none;
+}
+.department-hero-content{position:relative;max-width:900px;margin:auto;text-align:center;z-index:2}
+.breadcrumb{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:7px;margin-bottom:22px;color:rgba(255,255,255,.62);font-size:.67rem;font-weight:600}
+.breadcrumb a{color:rgba(255,255,255,.86)}
+.breadcrumb a:hover{color:var(--yellow)}
+.department-label{
+  display:inline-flex;align-items:center;gap:7px;padding:7px 13px;
+  border:1px solid rgba(245,197,24,.35);border-radius:999px;
+  background:rgba(245,197,24,.08);color:var(--yellow);
+  font-size:.62rem;font-weight:800;letter-spacing:1.2px;text-transform:uppercase
+}
+.department-label::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--yellow)}
+.department-hero h1{margin:16px auto 0;max-width:900px;color:#fff;font-size:clamp(2.35rem,5.7vw,4.35rem);line-height:1;letter-spacing:-2.5px;font-weight:800}
+.department-hero h1 span{color:var(--yellow)}
+.faculty-name{margin:19px 0 0;color:var(--yellow);font-size:.9rem;font-weight:800}
+.department-hero-description{max-width:700px;margin:15px auto 0;color:rgba(255,255,255,.72);font-size:.82rem;line-height:1.7}
+.department-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:9px;margin-top:23px}
+.department-action{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:0 15px;border-radius:999px;font-size:.67rem;font-weight:800;transition:.2s ease}
+.department-action:hover{transform:translateY(-2px)}
+.department-action.primary{background:var(--yellow);color:var(--dark-green)}
+.department-action.secondary{border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.08);color:#fff}
+
+/* MAIN */
+.department-main{width:min(1120px,calc(100% - 44px));margin:0 auto;padding:42px 0 70px}
+.quick-info{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:70px}
+.quick-card,.content-card,.programme-card,.resource-card,.contact-card,.table-card,.rule-card{
+  background:#fff;border:1px solid var(--border);border-radius:20px;
+  box-shadow:0 12px 35px rgba(6,59,38,.05)
+}
+.quick-card{min-height:125px;padding:19px;transition:.2s ease}
+.quick-card:hover,.programme-card:hover,.resource-card:hover{transform:translateY(-3px);border-color:rgba(11,93,59,.25)}
+.quick-icon,.programme-icon,.resource-icon{
+  width:42px;height:42px;display:grid;place-items:center;margin-bottom:12px;
+  border-radius:13px;background:var(--light-green);font-size:18px
+}
+.quick-card span,.mini-label{
+  display:block;margin-bottom:6px;color:var(--muted);font-size:.61rem;
+  font-weight:800;letter-spacing:.06em;text-transform:uppercase
+}
+.quick-card strong{display:block;color:var(--text);font-size:.78rem;line-height:1.45}
+
+.department-section{margin-bottom:70px;scroll-margin-top:30px}
+.section-heading{margin-bottom:23px}
+.section-heading span{display:block;margin-bottom:7px;color:var(--green);font-size:.64rem;font-weight:800;letter-spacing:1.1px;text-transform:uppercase}
+.section-heading h2{margin:0;color:var(--text);font-size:clamp(1.8rem,4vw,2.4rem);line-height:1.05;letter-spacing:-1.2px}
+.section-heading p{margin:9px 0 0;color:var(--muted);font-size:.8rem;line-height:1.6}
+
+.about-box{padding:28px}
+.about-box p{margin:0 0 17px;color:var(--muted);font-size:.84rem;line-height:1.85}
+.about-box p:last-child{margin-bottom:0}
+.location-button,.action-button,.download-button,.upload-button,.whatsapp-button{
+  display:inline-flex;align-items:center;justify-content:center;gap:7px;
+  min-height:40px;padding:0 15px;border-radius:11px;font-size:.68rem;font-weight:800;
+  border:0;cursor:pointer;transition:.2s ease
+}
+.location-button,.download-button{background:var(--green);color:#fff}
+.location-button:hover,.download-button:hover{background:var(--dark-green);transform:translateY(-2px)}
+.upload-button{background:var(--yellow);color:var(--dark-green)}
+.whatsapp-button{background:var(--light-green);color:var(--green)}
+.upload-status{margin:9px 0 0;color:var(--muted);font-size:.7rem;line-height:1.5}
+
+.programme-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.programme-card{padding:24px;transition:.2s ease}
+.programme-icon{width:48px;height:48px;font-size:21px}
+.programme-card h3{margin:0 0 9px;color:var(--text);font-size:.98rem;line-height:1.45}
+.programme-card p{margin:0;color:var(--muted);font-size:.8rem;line-height:1.7}
+
+/* INFORMATION CARDS */
+.info-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.content-card{padding:24px}
+.content-card h3{margin:0 0 12px;font-size:1rem}
+.content-card p,.content-card li{color:var(--muted);font-size:.79rem;line-height:1.75}
+.content-card ul,.content-card ol{margin:0;padding-left:20px}
+.content-card li{margin-bottom:6px}
+.content-card li:last-child{margin-bottom:0}
+.full-card{grid-column:1/-1}
+
+/* COURSE STRUCTURE */
+.level-nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.level-nav a{padding:9px 13px;border-radius:999px;background:var(--light-green);color:var(--green);font-size:.68rem;font-weight:800}
+.level-nav a:hover{background:var(--yellow);color:var(--dark-green)}
+
+.course-block{margin-bottom:12px;display:none}
+.course-block.open{display:block}
+.course-block:last-child{margin-bottom:0}
+.course-block h3{margin:0 0 10px;color:var(--green);font-size:.92rem}
+.course-level-button{
+  width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:16px 18px;border:1px solid var(--border);border-radius:16px;background:#fff;
+  color:var(--green);font:inherit;font-size:.8rem;font-weight:800;cursor:pointer;text-align:left;
+  box-shadow:0 8px 24px rgba(6,59,38,.045);transition:.2s ease
+}
+.course-level-button:hover{border-color:rgba(11,93,59,.25);background:var(--light-green);transform:translateY(-1px)}
+.course-level-button::after{
+  content:"⌄";width:28px;height:28px;display:grid;place-items:center;flex:0 0 28px;
+  border-radius:9px;background:var(--light-green);color:var(--green);font-size:1rem;
+  transition:transform .2s ease,background .2s ease
+}
+.course-level-button.active{border-color:rgba(11,93,59,.25);background:var(--light-green)}
+.course-level-button.active::after{transform:rotate(180deg);background:var(--yellow);color:var(--dark-green)}
+.course-level-group{margin-bottom:10px}
+.course-level-group:last-child{margin-bottom:0}
+.course-level-group .course-block{margin:8px 0 0;padding:0 4px}
+.table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:16px;background:#fff}
+.course-table{width:100%;border-collapse:collapse;min-width:760px}
+.course-table th,.course-table td{padding:10px 11px;border-bottom:1px solid var(--border);text-align:left;font-size:.69rem;vertical-align:top}
+.course-table th{background:var(--light-green);color:var(--green);font-size:.62rem;letter-spacing:.04em;text-transform:uppercase}
+.course-table td:first-child{font-weight:800;color:var(--green);white-space:nowrap}
+.course-table tr:last-child td{border-bottom:0}
+.course-table .total-row td{font-weight:800;background:#fbfdfb;color:var(--text)}
+.note{margin:10px 0 0;color:var(--muted);font-size:.7rem;line-height:1.65}
+
+/* SUMMARY */
+.summary-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.summary-card{padding:24px;background:#fff;border:1px solid var(--border);border-radius:20px}
+.summary-card h3{margin:0 0 15px;font-size:.95rem}
+.summary-stat{display:flex;justify-content:space-between;gap:15px;padding:10px 0;border-bottom:1px solid var(--border);font-size:.74rem}
+.summary-stat:last-child{border-bottom:0}
+.summary-stat span{color:var(--muted)}
+.summary-stat strong{color:var(--green)}
+
+/* RESOURCES */
+.resource-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.resource-card{display:block;padding:24px;transition:.2s ease}
+.resource-icon{width:48px;height:48px;font-size:21px}
+.resource-card h3{margin:0 0 8px;font-size:.96rem}
+.resource-card p{margin:0;color:var(--muted);font-size:.78rem;line-height:1.7}
+.resource-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}
+.file-input{display:none}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.contact-card{padding:25px}
+.contact-card h3{margin:0 0 21px;font-size:.98rem}
+.contact-item{display:flex;align-items:flex-start;gap:12px;margin-bottom:17px}
+.contact-item:last-child{margin-bottom:0}
+.contact-item-icon{width:39px;height:39px;flex:0 0 39px;display:grid;place-items:center;border-radius:11px;background:var(--light-green);font-size:17px}
+.contact-item span{display:block;margin-bottom:4px;color:var(--muted);font-size:.62rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+.contact-item strong{color:var(--text);font-size:.78rem;line-height:1.5}
+
+/* HELP */
+.help-box{padding:40px 25px;border-radius:24px;background:radial-gradient(circle at 85% 15%,rgba(245,197,24,.13),transparent 28%),var(--dark-green);color:#fff;text-align:center}
+.help-box h2{margin:0 0 11px;font-size:clamp(1.5rem,4vw,2rem);letter-spacing:-.8px}
+.help-box p{max-width:700px;margin:0 auto 22px;color:rgba(255,255,255,.74);font-size:.8rem;line-height:1.7}
+.help-button{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 18px;border-radius:999px;background:var(--yellow);color:var(--dark-green);font-size:.7rem;font-weight:800}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border)}
+
+@media(max-width:950px){
+  .quick-info{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .resource-grid,.summary-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .programme-grid,.contact-grid,.info-grid{grid-template-columns:1fr}
+}
+@media(max-width:650px){
+  .department-hero{padding:40px 17px 36px;margin:12px 14px 0;border-radius:24px}
+  .department-hero h1{font-size:2.65rem;letter-spacing:-1.8px}
+  .department-main{width:min(100% - 34px,1120px);padding-top:35px}
+  .quick-info{grid-template-columns:1fr 1fr;gap:10px;margin-bottom:55px}
+  .quick-card{min-height:112px;padding:16px}
+  .resource-grid,.summary-grid{grid-template-columns:1fr}
+  .about-box,.programme-card,.resource-card,.contact-card,.content-card,.summary-card{padding:21px}
+  .department-actions{gap:7px}
+  .department-action{min-height:38px;padding:0 13px}
+}
+@media(max-width:430px){.quick-info{grid-template-columns:1fr}.breadcrumb{font-size:.6rem}}
+
+.level-nav{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:16px
+}
+.level-nav .course-level-button{
+  border-radius:999px;padding:10px 13px;min-height:42px;justify-content:center;font-size:.68rem;box-shadow:none
+}
+.level-nav .course-level-button::after{display:none}
+.level-nav > a{
+  display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:10px 13px;
+  border-radius:999px;background:var(--light-green);color:var(--green);font-size:.68rem;font-weight:800
+}
+.level-nav > a:hover{background:var(--yellow);color:var(--dark-green)}
+.course-level-content{display:none}
+.course-level-content.open{display:block}
+.course-level-content .course-block{display:block}
+@media(max-width:650px){.level-nav{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+
+.programme-structure-list{display:grid;gap:10px}
+.programme-structure-item{border-radius:16px}
+.programme-toggle{width:100%;display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border:1px solid var(--border);border-radius:16px;background:#fff;color:var(--green);font:inherit;font-size:.8rem;font-weight:800;cursor:pointer;text-align:left;box-shadow:0 8px 24px rgba(6,59,38,.045);transition:.2s ease}
+.programme-toggle:hover,.programme-toggle.active{border-color:rgba(11,93,59,.25);background:var(--light-green)}
+.programme-toggle span{width:28px;height:28px;display:grid;place-items:center;border-radius:9px;background:var(--light-green);font-size:1rem}
+.programme-toggle.active span{background:var(--yellow);color:var(--dark-green)}
+.programme-content{display:none;margin-top:8px}
+.programme-content.open{display:block}
+.programme-content .content-card{padding:21px}
+
+/* LIFE + MOTION: polished entrance, reveal, and responsive hover feedback */
+.department-back-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 22px}
+.department-back-button{display:inline-flex;align-items:center;gap:9px;min-height:40px;padding:0 15px;border:1px solid var(--border);border-radius:999px;background:#fff;color:var(--green);font:inherit;font-size:.72rem;font-weight:800;cursor:pointer;box-shadow:0 7px 20px rgba(6,59,38,.06);transition:transform .22s ease,box-shadow .22s ease,background .22s ease}
+.department-back-button span{font-size:1.1rem;transition:transform .22s ease}
+.department-back-button:hover{transform:translateY(-2px);background:var(--light-green);box-shadow:0 12px 25px rgba(6,59,38,.12)}
+.department-back-button:hover span{transform:translateX(-3px)}
+.back-hint{color:var(--muted);font-size:.68rem}
+.department-hero{animation:ictHeroEnter .8s cubic-bezier(.2,.75,.25,1) both}
+.department-hero-content{animation:ictContentEnter .9s .12s cubic-bezier(.2,.75,.25,1) both}
+.department-hero::after{animation:ictWatermarkFloat 9s ease-in-out infinite}
+@keyframes ictHeroEnter{from{opacity:0;transform:translateY(18px) scale(.99)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes ictContentEnter{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes ictWatermarkFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+.quick-card,.content-card,.programme-card,.resource-card,.contact-card,.summary-card,.help-box{transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.quick-card:hover,.content-card:hover,.contact-card:hover,.summary-card:hover{transform:translateY(-4px);box-shadow:0 18px 42px rgba(6,59,38,.1);border-color:rgba(11,93,59,.24)}
+.resource-card:hover{box-shadow:0 18px 42px rgba(6,59,38,.1)}
+.location-button,.download-button,.upload-button,.whatsapp-button,.help-button,.department-action{transition:transform .22s ease,box-shadow .22s ease,background .22s ease}
+.location-button:hover,.download-button:hover,.upload-button:hover,.whatsapp-button:hover,.help-button:hover,.department-action:hover{transform:translateY(-2px);box-shadow:0 9px 22px rgba(6,59,38,.12)}
+.reveal-on-scroll{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s cubic-bezier(.2,.75,.25,1)}
+.reveal-on-scroll.is-visible{opacity:1;transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .reveal-on-scroll{opacity:1;transform:none}
+}
+
+</style>
+  <link rel="stylesheet" href="site-navigation.css">
+</head>
+
+<body class="department-page">
+
+<header class="header">
+
+    <nav class="navbar">
+
+      <a
+        href="index.html"
+        class="brand"
+      >
+
+        <span class="brand-icon">
+          🎓
+        </span>
+
+        <span>
+          AAUA Uni Pilot
+        </span>
+
+      </a>
+
+
+      <div class="desktop-nav">
+
+        <a href="index.html">
+          Home
+        </a>
+
+        <a href="resources.html">
+          Resources
+        </a>
+
+        <a href="guide.html">
+          Student Guide
+        </a>
+
+        <a href="updates.html">
+          Updates
+        </a>
+
+        <a href="tools.html" class="active">
+          Tools
+        </a>
+
+      </div>
+
+
+      <div class="nav-actions">
+
+        <a
+          href="search.html"
+          class="icon-btn"
+          aria-label="Search AAUA Uni Pilot"
+          title="Search AAUA Uni Pilot"
+          style="display:grid;place-items:center;text-decoration:none;"
+        >
+          🔍
+        </a>
+
+
+        <button
+          class="menu-btn"
+          id="menuBtn"
+          type="button"
+          aria-label="Open menu"
+        >
+          ☰
+        </button>
+
+      </div>
+
+    </nav>
+
+  </header>
+
+
+<section class="department-hero">
+  <div class="department-hero-content">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a><span>›</span>
+      <a href="faculty-guide.html">Faculty Guide</a><span>›</span>
+      <span>Food Science and Technology</span>
+    </div>
+    <span class="department-label">Department Guide</span>
+    <h1>Department of <span>Food Science and Technology.</span></h1>
+    <p class="faculty-name">Faculty of Agriculture</p>
+    <p class="department-hero-description">Programme information, philosophy, admission and graduation requirements, course structure, academic resources and departmental contacts for B.Sc. Food Science and Technology at AAUA.</p>
+    <div class="department-actions">
+      <a href="#overview" class="department-action primary">📚 Overview</a>
+      <a href="#courses" class="department-action secondary">📋 Courses</a>
+      <a href="#resources" class="department-action secondary">📁 Resources</a>
+      <a href="#contacts" class="department-action secondary">☎ Contacts</a>
+    </div>
+  </div>
+</section>
+
+<main class="department-main">
+  <div class="department-back-row">
+    <button class="department-back-button" id="departmentBackButton" type="button"><span aria-hidden="true">←</span> Go Back</button>
+    <span class="back-hint">Return to the page you came from</span>
+  </div>
+
+
+<section class="quick-info">
+<div class="quick-card"><div class="quick-icon">🏛️</div><span>Faculty</span><strong>Faculty of Agriculture</strong></div>
+<div class="quick-card"><div class="quick-icon">👨‍🏫</div><span>Head of Department</span><strong>Prof. T. N. Fagbemi</strong></div>
+<div class="quick-card"><div class="quick-icon">🎓</div><span>Degree</span><strong>B.Sc. Food Science and Technology</strong></div>
+<div class="quick-card"><div class="quick-icon">⏳</div><span>Duration</span><strong>5 years UTME · 4 years Direct Entry</strong></div>
+</section>
+<section class="department-section" id="overview"><div class="section-heading"><span>Introduction &amp; General Background</span><h2>Food Science and Technology</h2></div><div class="about-box">
+<p>Welcome to the Department of Food Science and Technology, Faculty of Agriculture, Adekunle Ajasin University, Akungba-Akoko. The Department is committed to developing knowledgeable, skilled and innovative graduates who can contribute to food production, processing, preservation, quality assurance and the advancement of the food industry.</p>
+<p>Food Science and Technology is an interdisciplinary field applying scientific and engineering principles to food processing, preservation, packaging, storage, distribution, analysis and evaluation. It examines the physical, chemical, biological and nutritional properties of food and develops ways to improve food quality, safety, availability and consumer acceptability.</p>
+<p>The programme addresses food security and post-harvest challenges by preparing graduates to transform agricultural raw materials into safe, nutritious and marketable food products. It combines theoretical instruction with practical learning, laboratory experiments, food analysis, processing activities and product development.</p>
+<a href="https://www.google.com/maps/search/?api=1&amp;query=Department+of+Food+Science+and+Technology+Adekunle+Ajasin+University+Akungba+Akoko" class="location-button" target="_blank" rel="noopener noreferrer">📍 View Department Location ↗</a>
+</div></section>
+<section class="department-section"><div class="section-heading"><span>Programme Philosophy, Aim &amp; Objectives</span><h2>What the Programme Aims to Develop</h2></div><div class="info-grid">
+<div class="content-card"><h3>Philosophy</h3><p>The programme responds to the need for skilled manpower in preserving agricultural crops and developing food products and processes that provide nutritious and balanced diets. It applies science and engineering to food processing, preservation, packaging, storage, distribution, analysis and the design and evaluation of food systems and machinery.</p><p>Its philosophy is to produce graduates with strong academic standards and practical competence in food science and post-harvest management, prepared for self-employment and valuable service to industry, academia and the wider community in support of global food security.</p></div>
+<div class="content-card"><h3>Aim</h3><p>The programme aims to support the National Policy on Agriculture and Nigeria's commitment to food sufficiency and self-reliance. It prepares graduates with theoretical knowledge and practical skills for meaningful work in food management, processing and technology, enabling them to become self-reliant and valuable contributors to industry and society.</p></div>
+<div class="content-card full-card"><h3>Programme Objectives</h3><ol><li>Train skilled technical and managerial manpower for agro-allied industries.</li><li>Prepare graduates to establish, manage and direct small-scale food-processing and related industries using locally available raw materials.</li><li>Develop personnel for consultancy, product development, research, processing and preservation to reduce post-harvest losses.</li><li>Equip graduates with knowledge of food-processing equipment design and fabrication and the development of traditional technology.</li><li>Prepare graduates for postgraduate study and teaching in Food Science and Technology and related disciplines.</li><li>Contribute to national self-sufficiency in basic food and agricultural raw materials needed for industrialisation.</li><li>Support modernisation of agricultural production, processing, storage, preservation and distribution.</li><li>Improve employment opportunities and contribute to rural development and quality of life.</li><li>Develop professional judgement and entrepreneurial ability to establish small- and medium-scale enterprises.</li><li>Produce manpower for research and for production, quality assurance and quality-control management in food-processing industries.</li></ol></div>
+</div></section>
+<section class="department-section"><div class="section-heading"><span>Training &amp; Career Development</span><h2>Learning, Practical Training &amp; Employability</h2></div><div class="info-grid">
+<div class="content-card"><h3>Food Sector Skills</h3><ul><li>Food quality management, quality assurance and quality control.</li><li>Food safety management, hygiene, legislation and control.</li><li>Research and development, product development, consumer and nutritional science.</li><li>Food production operations, manufacturing management, engineering maintenance, health, safety and environmental practices.</li><li>Food retail, supply-chain logistics, transportation and food-service support.</li><li>Food processing and manufacturing, including meat and poultry processing.</li></ul></div>
+<div class="content-card"><h3>Employability &amp; Career Opportunities</h3><ul><li>Research and development officer in food industries.</li><li>Food production, processing and quality assurance/control manager.</li><li>Consultant assessing food-processing plants and recommending good manufacturing practices.</li><li>Entrepreneur establishing cottage or small-scale food-processing businesses.</li><li>Food inspection and regulatory roles with agencies such as NAFDAC and the Standards Organisation of Nigeria.</li><li>Food-processing equipment design and construction.</li><li>Teaching and research in appropriate institutions.</li><li>Opportunities with food and agriculture organisations, including FAO, subject to recruitment requirements.</li></ul></div>
+<div class="content-card full-card"><h3>Five 21st-Century Priority Skills</h3><ol><li>Product development.</li><li>Food legislation and control, and food safety management.</li><li>Food hygiene and food safety control.</li><li>Quality management, quality assurance and quality control.</li><li>Research.</li></ol></div>
+</div></section>
+<section class="department-section"><div class="section-heading"><span>Programme Offered &amp; Duration</span><h2>B.Sc. Food Science and Technology</h2></div><div class="programme-grid">
+<div class="programme-card"><div class="programme-icon">🎓</div><h3>Bachelor of Science</h3><p>The degree awarded is Bachelor of Science in Food Science and Technology (B.Sc. Food Science and Technology).</p></div>
+<div class="programme-card"><div class="programme-icon">⏱️</div><h3>Programme Duration</h3><p>UTME candidates: five academic sessions (five years). Direct Entry candidates: four academic sessions (four years), subject to approved entry level and admission conditions.</p></div>
+</div></section>
+<section class="department-section"><div class="section-heading"><span>Admission</span><h2>Admission Requirements</h2></div><div class="info-grid">
+<div class="content-card"><h3>UTME Entry Requirements</h3><ol><li>Meet the University's UTME admission conditions.</li><li>Obtain at least five SSCE credit passes, including English Language, Mathematics, Physics, Chemistry, and Biology or Agricultural Science.</li><li>The five required credits must be obtained in not more than two sittings.</li></ol><p><strong>UTME subject combination:</strong> English Language, Mathematics or Physics, Chemistry, and Biology or Agricultural Science.</p></div>
+<div class="content-card"><h3>Direct Entry Requirements</h3><ol><li>Five SSCE credit passes, including English Language, plus two principal passes in relevant subjects at Advanced GCE, NCE or equivalent level.</li><li>OND, NCE, JUPEB or IJMB holders with credit passes in relevant subjects may be considered for admission into 200 Level.</li><li>HND holders with Upper Credit may be considered for admission into 300 Level.</li></ol><p><strong>Note:</strong> The supplied text also mentions OND/HND or equivalent with at least Lower Credit for advanced placement. Confirm the exact entry level and minimum qualification with AAUA Admissions.</p></div>
+</div></section>
+<section class="department-section"><div class="section-heading"><span>Graduation</span><h2>Graduation Requirements</h2></div><div class="content-card"><p>Students must complete and pass the approved compulsory and elective courses, meet the minimum credit-unit requirements for their entry route, and satisfy departmental and University regulations.</p><ul><li>UTME students: minimum of 182 credit units.</li><li>Direct Entry students: minimum of 156 credit units.</li><li>Complete all compulsory courses and required elective units.</li><li>Obtain a minimum CGPA of 1.50.</li><li>Meet any additional requirements prescribed by the Department and Senate.</li></ul><p class="note">The supplied Direct Entry level table has incomplete or misaligned entries at 100 Level. The stated overall minimum of 156 units is retained pending confirmation.</p></div></section>
+<section class="department-section"><div class="section-heading"><span>Registration</span><h2>Course Status &amp; Registration Guidance</h2></div><div class="info-grid">
+<div class="content-card"><h3>Course Categories</h3><p><strong>Compulsory (C):</strong> Core courses that must be taken and passed.</p><p><strong>Required (R):</strong> Courses that must be taken and passed.</p><p><strong>Elective (E):</strong> Approved options students may select to meet the minimum credit-unit requirement.</p><p><strong>University Courses:</strong> University courses are treated as required courses.</p></div>
+<div class="content-card"><h3>Course Registration</h3><p>Register for courses according to the approved level and semester structure, entry route and departmental guidance. The tables preserve the First Semester and Second Semester arrangement printed in the programme document.</p><p>Confirm elective choices and course-code or title discrepancies with the Department before registration.</p></div>
+</div></section>
+<section class="department-section"><div class="section-heading"><span>Assessment</span><h2>Evaluation of Students' Performance</h2></div><div class="info-grid">
+<div class="content-card"><h3>Course Assessment</h3><ul><li>Each course is graded out of 100 marks.</li><li>Continuous assessment accounts for 30%.</li><li>The end-of-course examination accounts for 70%.</li><li>The minimum pass mark is 40%.</li></ul></div>
+<div class="content-card"><h3>Grade Scale</h3><div class="table-wrap"><table class="course-table"><thead><tr><th>Percentage Score</th><th>Letter Grade</th><th>Grade Point</th></tr></thead><tbody><tr><td>70–100</td><td>A</td><td>5</td></tr><tr><td>60–69</td><td>B</td><td>4</td></tr><tr><td>50–59</td><td>C</td><td>3</td></tr><tr><td>45–49</td><td>D</td><td>2</td></tr><tr><td>40–44</td><td>E</td><td>1</td></tr></tbody></table></div></div>
+<div class="content-card full-card"><h3>Academic Standing &amp; GPA</h3><p>GPA is calculated by multiplying each course's grade point by its credit units, adding the weighted points for the semester and dividing by the total registered credit units. CGPA is calculated by dividing cumulative weighted grade points across semesters by the total credit units registered.</p><p><strong>Academic status codes:</strong> P — Probation; WN — Warning at the end of the semester after probation where GPA is below 1.50; W — Withdrawal from course.</p></div>
+</div></section>
+<section class="department-section"><div class="section-heading"><span>Academic Structure</span><h2>Minimum Course-Unit Requirements</h2></div><div class="info-grid">
+<div class="content-card"><h3>UTME Entry Route</h3><div class="table-wrap"><table class="course-table"><thead><tr><th>Level</th><th>Total Units</th></tr></thead><tbody><tr><td>100 Level</td><td>30</td></tr><tr><td>200 Level</td><td>35</td></tr><tr><td>300 Level</td><td>40</td></tr><tr><td>400 Level</td><td>38</td></tr><tr><td>500 Level</td><td>39</td></tr><tr class="total-row"><td>Total</td><td>182</td></tr></tbody></table></div></div>
+<div class="content-card"><h3>Direct Entry Route</h3><p><strong>Minimum required units for graduation: 156.</strong></p><p>The supplied level-by-level Direct Entry table is incomplete in its 100 Level row. The overall minimum is displayed as stated in the programme document.</p></div>
+</div></section>
+<section class="department-section" id="courses"><div class="section-heading"><span>Course Structure</span><h2>Courses by Level and Semester</h2><p>The semester arrangement follows the programme document supplied by the Department. Course codes, titles, units, status, lecture hours (LH) and practical hours (PH) are retained as provided.</p></div><div class="level-nav"><button type="button" class="course-level-button" data-level="100">100 Level</button><button type="button" class="course-level-button" data-level="200">200 Level</button><button type="button" class="course-level-button" data-level="300">300 Level</button><button type="button" class="course-level-button" data-level="400">400 Level</button><button type="button" class="course-level-button" data-level="500">500 Level</button></div><div class="course-level-group"><button type="button" class="course-level-button" data-level-toggle="100" aria-expanded="false">100 Level <span aria-hidden="true">+</span></button><div class="course-level-content" data-level-content="100"><div class="course-block"><h3>100 Level — FIRST SEMESTER</h3><div class="table-wrap"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead><tbody><tr><td>GST 111</td><td>Communication in English</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>AGR 111</td><td>Introduction to Agriculture I</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>BIO 101</td><td>General Biology I</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>BIO 107</td><td>General Biology Practical I</td><td>1</td><td>C</td><td>—</td><td>45</td></tr><tr><td>CHM 101</td><td>General Chemistry I</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>CHM 107</td><td>General Chemistry Practical I</td><td>1</td><td>C</td><td>—</td><td>45</td></tr><tr><td>MTH 101</td><td>Elementary Mathematics I</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>PHY 101</td><td>General Physics I</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>PHY 107</td><td>General Physics Practical I</td><td>1</td><td>C</td><td>—</td><td>45</td></tr><tr class="total-row"><td>Semester total</td><td></td><td>15</td><td></td><td></td><td></td></tr></tbody></table></div></div><div class="course-block"><h3>100 Level — SECOND SEMESTER</h3><div class="table-wrap"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead><tbody><tr><td>GST 112</td><td>Nigerian Peoples and Culture</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>AGR 112</td><td>Introduction to Agriculture II</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>BIO 102</td><td>General Biology II</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>BIO 108</td><td>General Biology Practical II</td><td>1</td><td>C</td><td>—</td><td>45</td></tr><tr><td>CHM 102</td><td>General Chemistry II</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>CHM 108</td><td>General Chemistry Practical II</td><td>1</td><td>C</td><td>—</td><td>45</td></tr><tr><td>MTH 102</td><td>Elementary Mathematics II</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>PHY 102</td><td>General Physics II</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>PHY 108</td><td>General Physics Practical II</td><td>1</td><td>C</td><td>—</td><td>45</td></tr><tr class="total-row"><td>Semester total</td><td></td><td>15</td><td></td><td></td><td></td></tr></tbody></table></div></div></div></div><div class="course-level-group"><button type="button" class="course-level-button" data-level-toggle="200" aria-expanded="false">200 Level <span aria-hidden="true">+</span></button><div class="course-level-content" data-level-content="200"><div class="course-block"><h3>200 Level — FIRST SEMESTER</h3><div class="table-wrap"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead><tbody><tr><td>ENT 211</td><td>Entrepreneurship and Innovation</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>AGR 201</td><td>Principles of Agronomy</td><td>3</td><td>C</td><td>45</td><td>—</td></tr><tr><td>AGR 203</td><td>Introduction to Forest Resources and Wildlife Management</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>AGR 205</td><td>Introduction to Fisheries and Aquaculture</td><td>3</td><td>C</td><td>45</td><td>—</td></tr><tr><td>FST 201</td><td>Principles of Food Processing and Preservation</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>AAUA-FST 201</td><td>Introduction to Computer Applications in Food Science</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>AAUA-FST 203</td><td>Introductory Agricultural Biochemistry I</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>AAUA-FST 205</td><td>Human Nutrition</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>AAUA-FST 207</td><td>Thermodynamics, Heat and Mass Transfer</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr class="total-row"><td>Semester total</td><td></td><td>20</td><td></td><td></td><td></td></tr></tbody></table></div></div><div class="course-block"><h3>200 Level — SECOND SEMESTER</h3><div class="table-wrap"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead><tbody><tr><td>GST 212</td><td>Philosophy, Logic and Human Existence</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>AGR 202</td><td>Introduction to Agricultural Economics, Extension and Rural Sociology</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>AGR 204</td><td>Introduction to Animal Production</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>AGR 206</td><td>Principles of Family and Consumer Sciences, Food Science and Technology</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>AAUA-FST 202</td><td>Introduction to Food Science and Technology</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>AAUA-FST 204</td><td>Introductory Agricultural Biochemistry II</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>AAUA-FST 206</td><td>Food Processing Practical</td><td>1</td><td>C</td><td>—</td><td>45</td></tr><tr><td>AAUA-FST 208</td><td>Introduction to Food Biochemistry</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr class="total-row"><td>Semester total</td><td></td><td>15</td><td></td><td></td><td></td></tr></tbody></table></div></div></div></div><div class="course-level-group"><button type="button" class="course-level-button" data-level-toggle="300" aria-expanded="false">300 Level <span aria-hidden="true">+</span></button><div class="course-level-content" data-level-content="300"><div class="course-block"><h3>300 Level — FIRST SEMESTER</h3><div class="table-wrap"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead><tbody><tr><td>FST 301</td><td>Food Microbiology</td><td>3</td><td>C</td><td>30</td><td>45</td></tr><tr><td>FST 303</td><td>Food Process Engineering</td><td>3</td><td>C</td><td>30</td><td>45</td></tr><tr><td>FST 305</td><td>Principles of Sensory evaluation</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>AAUA-FST 301</td><td>Food Microbiology Practical I</td><td>1</td><td>C</td><td>0</td><td>45</td></tr><tr><td>AAUA-FST 303</td><td>Food Processing Practical I</td><td>1</td><td>C</td><td>—</td><td>45</td></tr><tr><td>AAUA-FST 305</td><td>Food Processing Practical II</td><td>1</td><td>C</td><td>—</td><td>45</td></tr><tr><td>AAUA-FST 307</td><td>Introduction to Post-Harvest Handling</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>AAUA-FST 309</td><td>Food Standards, Laws and Quality Assessment</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>AAUA-FST 311</td><td>Food Biotechnology</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>AAUA-FST 313</td><td>Business Management for Food Scientists and Technologists</td><td>3</td><td>C</td><td>45</td><td>—</td></tr><tr class="total-row"><td>Semester total</td><td></td><td>20</td><td></td><td></td><td></td></tr></tbody></table></div></div><div class="course-block"><h3>300 Level — SECOND SEMESTER</h3><div class="table-wrap"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead><tbody><tr><td>GST 312</td><td>Peace and Conflict Resolution</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>ENT 312</td><td>Venture Creation</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>FST 302</td><td>Basic Food Chemistry</td><td>3</td><td>C</td><td>30</td><td>45</td></tr><tr><td>FST 304</td><td>Principles of Food Analysis</td><td>3</td><td>C</td><td>30</td><td>45</td></tr><tr><td>FST 306</td><td>Unit Operations in Food Processing</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>AAUA-FST 302</td><td>Food Microbiology Practical II</td><td>1</td><td>C</td><td>0</td><td>45</td></tr><tr><td>AAUA-FST 304</td><td>Food Standards, Laws and Quality Assessment</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>AAUA-FST 306</td><td>Food Chemistry II</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>AAUA-FST 308</td><td>Food Microbiology II</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>AAUA-FSN 310</td><td>Food Microbiology Practical II</td><td>1</td><td>C</td><td>—</td><td>45</td></tr><tr><td>AAUA-FST 312</td><td>Post-harvest Physiology and Storage Technology</td><td>2</td><td>E</td><td>30</td><td>—</td></tr><tr class="total-row"><td>Semester total</td><td></td><td>22</td><td></td><td></td><td></td></tr></tbody></table></div></div></div></div><div class="course-level-group"><button type="button" class="course-level-button" data-level-toggle="400" aria-expanded="false">400 Level <span aria-hidden="true">+</span></button><div class="course-level-content" data-level-content="400"><div class="course-block"><h3>400 Level — FIRST SEMESTER</h3><div class="table-wrap"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead><tbody><tr><td>FST 401</td><td>Food Quality Control & Plant Sanitation</td><td>3</td><td>C</td><td>30</td><td>45</td></tr><tr><td>FST 403</td><td>Fruits and Vegetables Technology</td><td>3</td><td>C</td><td>30</td><td>45</td></tr><tr><td>AAUA-FST 401</td><td>Food Analysis</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>AAUA-FST 403</td><td>Food Analysis Practical</td><td>1</td><td>C</td><td>—</td><td>45</td></tr><tr><td>AAUA-FST 405</td><td>Cereals and Tuber Technology</td><td>3</td><td>C</td><td>30</td><td>45</td></tr><tr><td>AAUA-FST 407</td><td>Food Industrial Waste Management</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>AAUA-FST 409</td><td>Technical Writing and Research Methodology</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>AAUA-FST 411</td><td>Food Machinery</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>AAUA-FST 415</td><td>Survey of Food Industries (Industrial Visit)</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr class="total-row"><td>Semester total</td><td></td><td>20</td><td></td><td></td><td></td></tr></tbody></table></div></div><div class="course-block"><h3>400 Level — SECOND SEMESTER</h3><div class="table-wrap"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead><tbody><tr><td>FST 402</td><td>Title not legible in supplied document</td><td>4</td><td>C</td><td>—</td><td>180</td></tr><tr><td>FST 404</td><td>University based Supervisor's Assessment (SIWES)</td><td>4</td><td>C</td><td>—</td><td>180</td></tr><tr><td>FST 406</td><td>Students Reports and Practical Presentation (SIWES)</td><td>4</td><td>C</td><td>—</td><td>180</td></tr><tr><td>AAUA-FST 408</td><td>SIWES Seminar/Oral Presentation</td><td>4</td><td>C</td><td>—</td><td>—</td></tr><tr class="total-row"><td>Semester total</td><td></td><td>16</td><td></td><td></td><td></td></tr></tbody></table></div></div><div class="content-card"><h3>400 Level — First Semester Elective Options</h3><p>The document says to select any 2 units from the following elective options.</p><div class="table-wrap"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead><tbody><tr><td>AAUA-FST 417</td><td>Malting and Brewing Science</td><td>2</td><td>E</td><td>30</td><td>—</td></tr><tr><td>AAUA-FST 419</td><td>Fermented Foods and Biotechnology</td><td>2</td><td>E</td><td>15</td><td>45</td></tr><tr><td>AAUA-ANS 421</td><td>Animal Husbandry Technique (Cattle, Goat, Sheep, Pig and Poultry)</td><td>2</td><td>E</td><td>15</td><td>45</td></tr></tbody></table></div></div></div></div><div class="course-level-group"><button type="button" class="course-level-button" data-level-toggle="500" aria-expanded="false">500 Level <span aria-hidden="true">+</span></button><div class="course-level-content" data-level-content="500"><div class="course-block"><h3>500 Level — FIRST SEMESTER</h3><div class="table-wrap"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead><tbody><tr><td>FST 501</td><td>Cereals and Tubers Technology</td><td>3</td><td>C</td><td>30</td><td>45</td></tr><tr><td>FST 503</td><td>Fats and Oils Technology</td><td>3</td><td>C</td><td>30</td><td>45</td></tr><tr><td>FST 505</td><td>Food Products Development</td><td>3</td><td>C</td><td>30</td><td>45</td></tr><tr><td>AAUA-FST 501</td><td>Food Plant Design and Pilot Demonstration</td><td>2</td><td>C</td><td>1</td><td>0</td></tr><tr><td>AAUA-FST 503</td><td>Food Additives, Toxicology and Safety</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>AAUA-FST 505</td><td>Process Control and Automation</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>AAUA-FST 507</td><td>Beef and Dairy Production</td><td>3</td><td>E</td><td>45</td><td>—</td></tr><tr class="total-row"><td>Semester total</td><td></td><td>18</td><td></td><td></td><td></td></tr></tbody></table></div></div><div class="course-block"><h3>500 Level — SECOND SEMESTER</h3><div class="table-wrap"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead><tbody><tr><td>FST 502</td><td>Meat Science & Fish Science & Technology</td><td>3</td><td>C</td><td>30</td><td>45</td></tr><tr><td>FST 504</td><td>Milk and Dairy Technology</td><td>3</td><td>C</td><td>30</td><td>45</td></tr><tr><td>AAUA-FST 504</td><td>Food Packaging</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>AAUA-FST 506</td><td>Post-Harvest and Storage Technology</td><td>2</td><td>C</td><td>45</td><td>—</td></tr><tr><td>AAUA-FST 508</td><td>Miscellaneous Food Commodities</td><td>3</td><td>E</td><td>45</td><td>—</td></tr><tr><td>FST 599</td><td>Research Project</td><td>6</td><td>C</td><td>—</td><td>—</td></tr><tr><td>FST 510</td><td>Seminar</td><td>2</td><td>C</td><td>—</td><td>180</td></tr><tr class="total-row"><td>Semester total</td><td></td><td>21</td><td></td><td></td><td></td></tr></tbody></table></div></div></div></div><p class="note">The supplied 300 Level semester totals are 20 and 22 units (42 combined), while the graduation table states 40 units for that level. The listed rows are preserved pending departmental confirmation. The course code AAUA-FSN 310 is also retained exactly as supplied and flagged for confirmation.</p></section>
+<section class="department-section"><div class="section-heading"><span>Programme Summary</span><h2>Minimum Graduation Credit Units</h2></div><div class="summary-grid">
+<div class="summary-card"><h3>UTME Entry</h3><div class="summary-stat"><span>GNS / GST courses</span><strong>8 units</strong></div><div class="summary-stat"><span>Compulsory courses</span><strong>167 units</strong></div><div class="summary-stat"><span>Electives</span><strong>7 units</strong></div><div class="summary-stat"><span>Minimum total</span><strong>182 units</strong></div></div>
+<div class="summary-card"><h3>Direct Entry</h3><div class="summary-stat"><span>GNS / GST courses</span><strong>8 units</strong></div><div class="summary-stat"><span>Compulsory courses</span><strong>141 units</strong></div><div class="summary-stat"><span>Electives</span><strong>7 units</strong></div><div class="summary-stat"><span>Minimum total</span><strong>156 units</strong></div></div>
+</div><p class="note">The 300 Level course tables total 42 units as printed, while the UTME graduation table assigns 40 units to that level. This is flagged for confirmation; no course data has been silently altered.</p></section>
+<section class="department-section" id="resources"><div class="section-heading"><span>Student Support</span><h2>Academic Resources</h2></div><div class="resource-grid">
+<div class="resource-card"><div class="resource-icon">📖</div><h3>Programme Guide</h3><p>Review the programme philosophy, aims, objectives, admission requirements, graduation requirements and course structure on this page.</p></div>
+<div class="resource-card"><div class="resource-icon">🌐</div><h3>Official AAUA Department Page</h3><p>Visit the university's official page for the HOD's welcome message and current departmental information.</p><div class="resource-actions"><a class="download-button" href="https://aaua.edu.ng/department/food-science-and-technology" target="_blank" rel="noopener noreferrer">Visit Official Page ↗</a></div></div>
+<div class="resource-card"><div class="resource-icon">📚</div><h3>Department Handbook</h3><p>Check the official AAUA page for handbook links and departmental updates.</p><div class="resource-actions"><a class="whatsapp-button" href="https://aaua.edu.ng/department/food-science-and-technology" target="_blank" rel="noopener noreferrer">Check Official Resources ↗</a></div></div>
+</div></section>
+<section class="department-section" id="contacts"><div class="section-heading"><span>Get in Touch</span><h2>Department Contacts</h2></div><div class="contact-grid">
+<div class="contact-card"><h3>Department Information</h3><div class="contact-item"><div class="contact-item-icon">🏛️</div><div><span>Faculty</span><strong>Faculty of Agriculture</strong></div></div><div class="contact-item"><div class="contact-item-icon">🎓</div><div><span>Department</span><strong>Department of Food Science and Technology</strong></div></div><div class="contact-item"><div class="contact-item-icon">👨‍🏫</div><div><span>HOD</span><strong>Professor T. N. Fagbemi</strong></div></div><div class="contact-item"><div class="contact-item-icon">☎️</div><div><span>Department Contact Number</span><strong>Not Confirmed Yet</strong></div></div><div class="contact-item"><div class="contact-item-icon">✉️</div><div><span>Department Email</span><strong>Not Confirmed Yet</strong></div></div><div class="contact-item"><div class="contact-item-icon">🕘</div><div><span>Office Hours</span><strong>Monday – Friday, 9:00 a.m. – 4:00 p.m.</strong></div></div></div>
+<div class="contact-card"><h3>University Information</h3><div class="contact-item"><div class="contact-item-icon">📍</div><div><span>Address</span><strong>Adekunle Ajasin University, P.M.B. 01, Akungba-Akoko, Ondo State, Nigeria</strong></div></div><div class="contact-item"><div class="contact-item-icon">🏫</div><div><span>Faculty</span><strong>Faculty of Agriculture</strong></div></div><div class="contact-item"><div class="contact-item-icon">☎️</div><div><span>University Telephone</span><strong><a href="tel:+2348161651123">+234 816 165 1123</a><br><a href="tel:+2347089105452">+234 708 910 5452</a></strong></div></div><div class="contact-item"><div class="contact-item-icon">✉️</div><div><span>University Email</span><strong><a href="mailto:info@aaua.edu.ng">info@aaua.edu.ng</a></strong></div></div></div>
+</div><p class="note">The HOD's name and office hours are published on the official AAUA department page. A direct departmental telephone number and readable HOD email were not available on the page checked, so they are marked as not confirmed.</p></section>
+<section class="department-section" id="help"><div class="help-box"><h2>Need help with your department?</h2><p>For questions about course registration, departmental requirements or academic information, contact the Department of Food Science and Technology or use the AAUA Uni Pilot student help system.</p><a href="help.html" class="help-button">Get Department Help →</a></div></section>
+</main><footer>
+  <div class="footer-container">
+    <div class="footer-brand">
+      <a href="index.html" class="brand">🎓 AAUA Uni Pilot</a>
+      <p>Your campus. Your resources. Your guide.</p>
+    </div>
+    <div class="footer-links">
+      <div>
+        <h4>Platform</h4>
+        <a href="resources.html">Resources</a>
+        <a href="guide.html">Student Guide</a>
+        <a href="updates.html">Updates</a>
+        <a href="tools.html">Student Tools</a>
+      </div>
+      <div>
+        <h4>Information</h4>
+        <a href="about.html">About</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Use</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 Uni Pilot. All rights reserved.</p></div>
+</footer>
+
+
+<script>
+document.querySelectorAll(".course-level-button[data-level-toggle]").forEach(button => {
+  button.addEventListener("click", function(){
+    const level = this.dataset.levelToggle;
+    const content = document.querySelector('[data-level-content="' + level + '"]');
+    const isOpen = content.classList.contains("open");
+    content.classList.toggle("open", !isOpen);
+    this.classList.toggle("active", !isOpen);
+    this.setAttribute("aria-expanded", String(!isOpen));
+    const symbol = this.querySelector("span");
+    if(symbol) symbol.textContent = isOpen ? "+" : "−";
+  });
+});
+document.querySelectorAll(".level-nav .course-level-button[data-level]").forEach(button => {
+  button.addEventListener("click", function(){
+    const target = document.querySelector('[data-level-toggle="' + this.dataset.level + '"]');
+    if(target && !target.classList.contains("active")) target.click();
+    const group = target ? target.closest(".course-level-group") : null;
+    if(group) group.scrollIntoView({behavior:"smooth",block:"start"});
+  });
+});
+</script>
+
+<script>
+  // Return to the referring page when possible; use the faculty guide as a safe fallback.
+  document.getElementById("departmentBackButton").addEventListener("click", function () {
+    if (window.history.length > 1 && document.referrer && new URL(document.referrer).origin === window.location.origin) {
+      window.history.back();
+    } else {
+      window.location.href = "faculty-guide.html";
+    }
+  });
+
+  // Reveal content as it enters the viewport.
+  (function () {
+    const items = document.querySelectorAll(".quick-card, .department-section, .programme-card, .content-card, .resource-card, .contact-card, .summary-card");
+    items.forEach((item, index) => {
+      item.classList.add("reveal-on-scroll");
+      item.style.transitionDelay = (index % 4) * 55 + "ms";
+    });
+
+    if (!("IntersectionObserver" in window)) {
+      items.forEach(item => item.classList.add("is-visible"));
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries, activeObserver) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          activeObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    items.forEach(item => observer.observe(item));
+  })();
+</script>
+
+  <script src="site-navigation.js"></script>
+</body>
+</html>

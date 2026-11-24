@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Animal Science | AAUA Uni Pilot</title>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
-<link href="style.css" rel="stylesheet"/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
 <style>
 :root{
   --green:#0b5d3b;
@@ -46,7 +47,7 @@ button,input{font-family:inherit}
   box-shadow:0 18px 50px rgba(6,59,38,.14);
 }
 .department-hero::after{
-  content:"AERD";position:absolute;right:22px;bottom:-25px;
+  content:"ANIMAL SCIENCE";position:absolute;right:22px;bottom:-25px;
   font-size:clamp(5rem,15vw,11rem);line-height:.8;font-weight:800;
   letter-spacing:-7px;color:rgba(255,255,255,.035);pointer-events:none;
 }
@@ -243,461 +244,627 @@ footer{border-top:1px solid var(--border)}
 .programme-content{display:none;margin-top:8px}
 .programme-content.open{display:block}
 .programme-content .content-card{padding:21px}
+
+/* LIFE + MOTION: polished entrance, reveal, and responsive hover feedback */
+.department-back-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 22px}
+.department-back-button{display:inline-flex;align-items:center;gap:9px;min-height:40px;padding:0 15px;border:1px solid var(--border);border-radius:999px;background:#fff;color:var(--green);font:inherit;font-size:.72rem;font-weight:800;cursor:pointer;box-shadow:0 7px 20px rgba(6,59,38,.06);transition:transform .22s ease,box-shadow .22s ease,background .22s ease}
+.department-back-button span{font-size:1.1rem;transition:transform .22s ease}
+.department-back-button:hover{transform:translateY(-2px);background:var(--light-green);box-shadow:0 12px 25px rgba(6,59,38,.12)}
+.department-back-button:hover span{transform:translateX(-3px)}
+.back-hint{color:var(--muted);font-size:.68rem}
+.department-hero{animation:ictHeroEnter .8s cubic-bezier(.2,.75,.25,1) both}
+.department-hero-content{animation:ictContentEnter .9s .12s cubic-bezier(.2,.75,.25,1) both}
+.department-hero::after{animation:ictWatermarkFloat 9s ease-in-out infinite}
+@keyframes ictHeroEnter{from{opacity:0;transform:translateY(18px) scale(.99)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes ictContentEnter{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes ictWatermarkFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+.quick-card,.content-card,.programme-card,.resource-card,.contact-card,.summary-card,.help-box{transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.quick-card:hover,.content-card:hover,.contact-card:hover,.summary-card:hover{transform:translateY(-4px);box-shadow:0 18px 42px rgba(6,59,38,.1);border-color:rgba(11,93,59,.24)}
+.resource-card:hover{box-shadow:0 18px 42px rgba(6,59,38,.1)}
+.location-button,.download-button,.upload-button,.whatsapp-button,.help-button,.department-action{transition:transform .22s ease,box-shadow .22s ease,background .22s ease}
+.location-button:hover,.download-button:hover,.upload-button:hover,.whatsapp-button:hover,.help-button:hover,.department-action:hover{transform:translateY(-2px);box-shadow:0 9px 22px rgba(6,59,38,.12)}
+.reveal-on-scroll{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s cubic-bezier(.2,.75,.25,1)}
+.reveal-on-scroll.is-visible{opacity:1;transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .reveal-on-scroll{opacity:1;transform:none}
+}
+
 </style>
   <link rel="stylesheet" href="site-navigation.css">
 </head>
+
 <body class="department-page">
+
 <header class="header">
-<nav class="navbar">
-<a class="brand" href="index.html">
-<span class="brand-icon">
+
+    <nav class="navbar">
+
+      <a
+        href="index.html"
+        class="brand"
+      >
+
+        <span class="brand-icon">
           🎓
         </span>
-<span>
+
+        <span>
           AAUA Uni Pilot
         </span>
-</a>
-<div class="desktop-nav">
-<a href="index.html">
+
+      </a>
+
+
+      <div class="desktop-nav">
+
+        <a href="index.html">
           Home
         </a>
-<a href="resources.html">
+
+        <a href="resources.html">
           Resources
         </a>
-<a href="guide.html">
+
+        <a href="guide.html">
           Student Guide
         </a>
-<a href="updates.html">
+
+        <a href="updates.html">
           Updates
         </a>
-<a class="active" href="tools.html">
+
+        <a href="tools.html" class="active">
           Tools
         </a>
-</div>
-<div class="nav-actions">
-<a aria-label="Search AAUA Uni Pilot" class="icon-btn" href="search.html" style="display:grid;place-items:center;text-decoration:none;" title="Search AAUA Uni Pilot">
+
+      </div>
+
+
+      <div class="nav-actions">
+
+        <a
+          href="search.html"
+          class="icon-btn"
+          aria-label="Search AAUA Uni Pilot"
+          title="Search AAUA Uni Pilot"
+          style="display:grid;place-items:center;text-decoration:none;"
+        >
           🔍
         </a>
-<button aria-label="Open menu" class="menu-btn" id="menuBtn" type="button">
+
+
+        <button
+          class="menu-btn"
+          id="menuBtn"
+          type="button"
+          aria-label="Open menu"
+        >
           ☰
         </button>
-</div>
-</nav>
-</header>
+
+      </div>
+
+    </nav>
+
+  </header>
+
+
 <section class="department-hero">
-<div class="department-hero-content">
-<div class="breadcrumb">
-<a href="index.html">Home</a><span>&rsaquo;</span>
-<a href="faculty-guide.html">Faculty Guide</a><span>&rsaquo;</span>
-<span>Animal Science</span>
-</div>
-<span class="department-label">Department Guide</span>
-<h1>Department of Animal Science.</h1>
-<p class="faculty-name">Faculty of Agriculture</p>
-<p class="department-hero-description">Welcome to the Department of Animal Science at Adekunle Ajasin University. Explore your programme, courses, academic resources and useful departmental information in one place.</p>
-<div class="department-actions">
-<a class="department-action primary" href="#overview">📚 Overview</a>
-<a class="department-action secondary" href="#courses">📋 Courses</a>
-<a class="department-action secondary" href="#resources">📁 Resources</a>
-<a class="department-action secondary" href="#help">🆘 Get Help</a>
-</div>
-</div>
+  <div class="department-hero-content">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a><span>›</span>
+      <a href="faculty-guide.html">Faculty Guide</a><span>›</span>
+      <span>Animal Science</span>
+    </div>
+    <span class="department-label">Department Guide</span>
+    <h1>Department of <span>Animal Science.</span></h1>
+    <p class="faculty-name">Faculty of Agriculture</p>
+    <p class="department-hero-description">Department information, programme philosophy, admission and graduation requirements, course structure, academic resources and departmental contacts for B. Agric. (Animal Science) at AAUA.</p>
+    <div class="department-actions">
+      <a href="#overview" class="department-action primary">📚 Overview</a>
+      <a href="#courses" class="department-action secondary">📋 Courses</a>
+      <a href="#resources" class="department-action secondary">📁 Resources</a>
+      <a href="#contacts" class="department-action secondary">☎ Contacts</a>
+    </div>
+  </div>
 </section>
+
 <main class="department-main">
+  <div class="department-back-row">
+    <button class="department-back-button" id="departmentBackButton" type="button"><span aria-hidden="true">←</span> Go Back</button>
+    <span class="back-hint">Return to the page you came from</span>
+  </div>
+
 <section class="quick-info">
-<div class="quick-card"><div class="quick-icon">🏛️</div><span>Faculty</span><strong>Faculty of Agriculture</strong></div>
-<div class="quick-card"><div class="quick-icon">👨&zwj;🏫</div><span>Head of Department</span><strong>Dr. O.D. Oloruntola</strong></div>
-<div class="quick-card"><div class="quick-icon">🎓</div><span>Degree</span><strong>B. Agric (Animal Science)</strong></div>
-<div class="quick-card"><div class="quick-icon">⏳</div><span>Duration</span><strong>Information coming soon</strong></div>
+  <div class="quick-card"><div class="quick-icon">🏛️</div><span>Faculty</span><strong>Faculty of Agriculture</strong></div>
+  <div class="quick-card"><div class="quick-icon">👨‍🏫</div><span>Head of Department</span><strong>Dr. O. D. Oloruntola</strong></div>
+  <div class="quick-card"><div class="quick-icon">🎓</div><span>Degree</span><strong>B. Agric. (Animal Science)</strong></div>
+  <div class="quick-card"><div class="quick-icon">⏳</div><span>Duration</span><strong>4 years UTME · 3 years Direct Entry</strong></div>
 </section>
+
 <section class="department-section" id="overview">
-<div class="section-heading">
-<span>About the Department</span>
-<h2>Animal Science</h2>
-</div>
-<div class="about-box"><p>You are warmly welcome to the Department of Animal Science at Adekunle Ajasin University, Akungba-Akoko, Ondo State, Nigeria.</p><p>The Department provides broad-based, functional and practical training in Animal Science, with emphasis on sound scientific training, teaching, research, extension and entrepreneurial skills development.</p><p>The programme is designed to meet the needs of the immediate environment and agricultural sustainability, including the improvement of animal production through appropriate manpower development.</p><p>The Department aims to produce graduates with comprehensive theoretical knowledge and practical skills who can contribute to animal production, research, entrepreneurship, agriculture and national development.</p></div>
+  <div class="section-heading"><span>Introduction &amp; General Background</span><h2>Animal Science</h2></div>
+  <div class="about-box">
+    <p>Welcome to the Department of Animal Science at Adekunle Ajasin University, Akungba-Akoko, Ondo State, Nigeria. The Department provides broad-based, functional and practical training in Animal Science, with emphasis on scientific training, teaching, research, extension and entrepreneurial skills development.</p>
+    <p>The programme is designed to respond to the needs of the immediate environment and agricultural sustainability by developing appropriate manpower to improve animal production. It prepares students with theoretical knowledge and practical skills to contribute to animal production, research, entrepreneurship, agriculture and national development.</p>
+    <p><strong>General Overview:</strong> Animal Science is the study of animals that live alongside humans and the science and business of producing domestic livestock species, including beef and dairy cattle, horses, poultry, sheep, goats, swine and rabbits. It also covers companion animals, including their nutrition, care and welfare. The discipline draws on animal behaviour and management, genetics, nutrition, physiology, reproduction and meat science. A broad knowledge base prepares graduates for careers across animal agriculture and related fields.</p>
+    <p>The programme combines formal scientific training with practical understanding of animal production, care and use. It addresses the biology and management of livestock and companion animals, and the application of scientific knowledge to productive and sustainable animal agriculture.</p>
+    <a href="https://www.google.com/maps/search/?api=1&amp;query=Faculty+of+Agriculture+Adekunle+Ajasin+University+Akungba+Akoko" class="location-button" target="_blank" rel="noopener noreferrer">📍 View Faculty Location ↗</a>
+  </div>
 </section>
+
 <section class="department-section">
-<div class="section-heading">
-<span>Programme Philosophy &amp; Objectives</span>
-<h2>Programme Philosophy &amp; Objectives</h2>
-</div>
-<div class="info-grid">
-<div class="content-card"><h3>Philosophy</h3><p>Information coming soon.</p></div>
-<div class="content-card"><h3>Objectives</h3><p>Information coming soon.</p></div>
-</div>
+  <div class="section-heading"><span>Programme Philosophy &amp; Objectives</span><h2>What the Programme Aims to Develop</h2></div>
+  <div class="info-grid">
+    <div class="content-card"><h3>Philosophy</h3>
+      <p>The philosophy that guides the training of students in Animal Science is to adopt practical and realistic approaches to produce skilled manpower furnished with comprehensive knowledge of animal biology and livestock genetic resources, together with the technologies required to improve animal yield and productivity.</p>
+      <p>The programme seeks to produce graduates with technical, productive and entrepreneurial skills for animal agriculture, livestock farm management and related enterprises, while developing the research inclination needed for careers in academic fields.</p>
+    </div>
+    <div class="content-card"><h3>Objectives</h3>
+      <ol>
+        <li>Produce graduates knowledgeable in animal breeding and genetics, physiology, behaviour and handling, nutrition and biochemistry, husbandry practices, animal health care management, and animal products and by-product technology.</li>
+        <li>Equip graduates with the skills to establish and profitably operate animal and livestock enterprises.</li>
+        <li>Contribute to the production of animal-based raw materials for industrial development.</li>
+        <li>Develop technical and entrepreneurial skills to apply scientific knowledge to practical solutions and advance the animal/livestock subsector.</li>
+        <li>Develop the capacity to process livestock into useful products and participate across livestock value chains.</li>
+        <li>Prepare graduates to create demand-driven technologies responsive to local needs and ecological challenges for sustainable animal agriculture and livestock productivity.</li>
+        <li>Build knowledge of animal-waste management and wealth creation from animal-waste resources.</li>
+      </ol>
+    </div>
+  </div>
 </section>
+
 <section class="department-section">
-<div class="section-heading">
-<span>Programme Offered &amp; Duration</span>
-<h2>Animal Science</h2>
-</div>
-<div class="programme-grid">
-<div class="programme-card">
-<div class="programme-icon">🎓</div>
-<h3>B. Agric (Animal Science)</h3>
-<p>Bachelor of Agriculture programme in Animal Science.</p>
-</div>
-<div class="programme-card">
-<div class="programme-icon">⏱️</div>
-<h3>Duration</h3>
-<p>Information coming soon.</p>
-</div>
-</div>
+  <div class="section-heading"><span>Unique Features &amp; Employability</span><h2>Learning, Practical Training &amp; Career Skills</h2></div>
+  <div class="info-grid">
+    <div class="content-card"><h3>Unique Features of the Programme</h3>
+      <ul>
+        <li>Addresses knowledge gaps arising from technological innovations in animal agriculture.</li>
+        <li>Provides knowledge for the care and management of work and companion animals in line with global trends.</li>
+        <li>Prepares graduates for present and future animal-production challenges through opportunity identification and innovative solutions.</li>
+        <li>Encourages entrepreneurship and the development of graduates who can become self-employed or employers.</li>
+        <li>Includes practical training on animal farms and related enterprises in the fourth year.</li>
+      </ul>
+    </div>
+    <div class="content-card"><h3>Employability Skills</h3>
+      <ul>
+        <li>Independent work and research with minimal supervision.</li>
+        <li>Verbal and written communication, including reports, publications and presentations.</li>
+        <li>Active listening, interpersonal skills and teamwork.</li>
+        <li>Time management and meeting deadlines.</li>
+        <li>Problem-solving and sound decision-making.</li>
+        <li>Organisation, planning and task coordination.</li>
+        <li>Ability to learn, adapt and respond to change.</li>
+        <li>Self-motivation, resilience and pride in achievement.</li>
+      </ul>
+    </div>
+    <div class="content-card full-card"><h3>21st-Century Skills</h3>
+      <p>Curiosity, critical thinking, creativity, collaboration, teamwork, digital literacy, information literacy, communication, media literacy, flexibility, leadership, initiative and social skills.</p>
+    </div>
+  </div>
 </section>
+
 <section class="department-section">
-<div class="section-heading">
-<span>Admission</span>
-<h2>Admission Requirements</h2>
-</div>
-<div class="info-grid">
-<div class="content-card"><h3>UTME Entry Requirements</h3><p>Information coming soon.</p></div>
-<div class="content-card"><h3>Direct Entry Requirements</h3><p>Information coming soon.</p></div>
-</div>
+  <div class="section-heading"><span>Programme Offered &amp; Duration</span><h2>B. Agric. (Animal Science)</h2></div>
+  <div class="programme-grid">
+    <div class="programme-card"><div class="programme-icon">🎓</div><h3>Bachelor of Agriculture in Animal Science</h3><p>The official programme listed by Adekunle Ajasin University is B. Agric. (Animal Science).</p></div>
+    <div class="programme-card"><div class="programme-icon">⏱️</div><h3>Duration</h3><p>UTME candidates spend a minimum of four academic sessions (four years). Direct Entry candidates admitted into 200 Level spend a minimum of three academic sessions (three years).</p></div>
+  </div>
 </section>
+
 <section class="department-section">
-<div class="section-heading">
-<span>Graduation</span>
-<h2>Graduation Requirements</h2>
-</div>
-<div class="content-card"><p>Information coming soon.</p></div>
+  <div class="section-heading"><span>Admission</span><h2>Admission Requirements</h2></div>
+  <div class="info-grid">
+    <div class="content-card"><h3>UTME Entry Requirements</h3>
+      <ol>
+        <li>Obtain the required UTME score and meet the University's admission conditions.</li>
+        <li>Have five Senior Secondary Certificate (SSC) credit passes, including English Language, Mathematics, Biology or Agricultural Science, Chemistry and Physics.</li>
+        <li>The five required credits must be obtained in not more than two sittings.</li>
+      </ol>
+    </div>
+    <div class="content-card"><h3>Direct Entry Requirements</h3>
+      <ol>
+        <li>At least two A-Level passes or equivalent in Chemistry and Biology, together with the five SSC credit passes prescribed for UTME candidates.</li>
+        <li>Diploma holders with at least Lower Credit and the required five SSC credits, obtained in not more than two sittings, may be considered for admission into 200 Level.</li>
+      </ol>
+    </div>
+  </div>
 </section>
+
 <section class="department-section">
-<div class="section-heading">
-<span>Registration</span>
-<h2>Registration for Courses</h2>
-</div>
-<div class="info-grid">
-<div class="rule-card content-card"><h3>Course Categories</h3><p>Information coming soon.</p></div>
-<div class="rule-card content-card"><h3>Registration Rules</h3><p>Information coming soon.</p></div>
-</div>
+  <div class="section-heading"><span>Graduation</span><h2>Graduation Requirements</h2></div>
+  <div class="content-card">
+    <p>Students must complete the minimum course-unit requirements for their entry route, pass all compulsory and required courses, and fulfil the programme's seminar and research requirements.</p>
+    <ul>
+      <li>Minimum of 125 course units for the four-year UTME programme.</li>
+      <li>Minimum of 103 course units for the three-year Direct Entry programme.</li>
+      <li>Attend periodic seminars and submit the required written report for assessment at the end of the year.</li>
+      <li>Pass all compulsory courses and the required electives.</li>
+      <li>Complete a supervised undergraduate research project and submit the project report. This develops problem-solving, research, literature-review and report-writing skills.</li>
+    </ul>
+  </div>
 </section>
+
 <section class="department-section">
-<div class="section-heading">
-<span>Academic Structure</span>
-<h2>Programme Structure</h2>
-</div>
-<div class="content-card">
-<h3>Programme</h3>
-<div class="table-wrap">
-<table class="course-table">
-<thead><tr><th>Level</th><th>Compulsory 1st</th><th>Compulsory 2nd</th><th>GST 1st</th><th>GST 2nd</th><th>ENT 1st</th><th>ENT 2nd</th><th>Elective 1st</th><th>Elective 2nd</th><th>Total 1st</th><th>Total 2nd</th></tr></thead>
-<tbody><tr><td colspan="11">Information coming soon.</td></tr></tbody>
-</table>
-</div>
-<p class="note">Programme structure information coming soon.</p>
-</div>
-<div class="content-card" style="margin-top:12px;">
-<h3>Programme</h3>
-<div class="table-wrap">
-<table class="course-table">
-<thead><tr><th>Level</th><th>Compulsory 1st</th><th>Compulsory 2nd</th><th>GST 1st</th><th>GST 2nd</th><th>ENT 1st</th><th>ENT 2nd</th><th>Elective 1st</th><th>Elective 2nd</th><th>Total 1st</th><th>Total 2nd</th></tr></thead>
-<tbody><tr><td colspan="11">Information coming soon.</td></tr></tbody>
-</table>
-</div>
-</div>
+  <div class="section-heading"><span>Registration</span><h2>Registration for Courses</h2></div>
+  <div class="info-grid">
+    <div class="rule-card content-card"><h3>Course Categories</h3>
+      <p><strong>GST Courses:</strong> General Studies courses required as part of the programme.</p>
+      <p><strong>ENT Courses:</strong> Entrepreneurship courses included in the programme.</p>
+      <p><strong>Compulsory Courses:</strong> Courses that students must register for and pass.</p>
+      <p><strong>Elective Courses:</strong> Approved options from which students select the required number of units.</p>
+    </div>
+    <div class="rule-card content-card"><h3>Course Registration Guidance</h3>
+      <p>Students should register for courses according to their level, semester, entry route and the approved programme structure. The course tables below distinguish compulsory (C) and elective (E) courses and show lecture hours (LH) and practical hours (PH).</p>
+      <p>Students should confirm elective choices and registration details with the Department before completing registration.</p>
+    </div>
+  </div>
 </section>
+
+<section class="department-section">
+  <div class="section-heading"><span>Academic Structure</span><h2>Minimum Programme Course-Unit Requirements</h2></div>
+  <div class="info-grid">
+    <div class="content-card"><h3>Four-Year UTME Programme</h3>
+      <div class="table-wrap"><table class="course-table"><thead><tr><th>Course Category</th><th>Units</th></tr></thead><tbody>
+        <tr><td>GST Courses</td><td>8</td></tr><tr><td>ENT Courses</td><td>4</td></tr><tr><td>Compulsory Courses</td><td>105</td></tr><tr><td>Elective Courses</td><td>8</td></tr><tr class="total-row"><td>Total</td><td>125</td></tr>
+      </tbody></table></div>
+    </div>
+    <div class="content-card"><h3>Three-Year Direct Entry Programme</h3>
+      <div class="table-wrap"><table class="course-table"><thead><tr><th>Course Category</th><th>Units</th></tr></thead><tbody>
+        <tr><td>GST Courses</td><td>8</td></tr><tr><td>ENT Courses</td><td>4</td></tr><tr><td>Compulsory Courses</td><td>95</td></tr><tr><td>Elective Courses</td><td>8</td></tr><tr class="total-row"><td>Total</td><td>103</td></tr>
+      </tbody></table></div>
+    </div>
+  </div>
+  <p class="note">The category totals above are the programme minimums supplied for the two entry routes. The level-by-level course lists are shown separately below.</p>
+</section>
+
 <section class="department-section" id="courses">
-<div class="section-heading">
-<span>Course Structure</span>
-<h2>Courses by Level and Semester</h2>
-<p>Course codes, titles, units and semester details: Information coming soon.</p>
-</div>
-<div class="level-nav">
-<button class="course-level-button" data-level="100" type="button">100 Level</button>
-<button class="course-level-button" data-level="200" type="button">200 Level</button>
-<button class="course-level-button" data-level="300" type="button">300 Level</button>
-<button class="course-level-button" data-level="400" type="button">400 Level</button>
-<a href="#siwes">SIWES</a>
-</div>
-<div class="course-level-group">
-<button aria-expanded="false" class="course-level-button" data-level-toggle="100" type="button">
+  <div class="section-heading"><span>Course Structure</span><h2>Courses by Level and Semester</h2><p>Odd-numbered course codes are placed under First Semester; even-numbered course codes are placed under Second Semester. C = Compulsory, E = Elective, LH = Lecture Hours, PH = Practical Hours.</p></div>
+  <div class="level-nav">
+    <button type="button" class="course-level-button" data-level="100">100 Level</button>
+    <button type="button" class="course-level-button" data-level="200">200 Level</button>
+    <button type="button" class="course-level-button" data-level="300">300 Level</button>
+    <button type="button" class="course-level-button" data-level="400">400 Level</button>
+  </div>
+  
+  <div class="course-level-group">
+    <button type="button" class="course-level-button" data-level-toggle="100" aria-expanded="false">
       100 Level <span aria-hidden="true">+</span>
-</button>
-<div class="course-level-content" data-level-content="100">
-<div class="course-block" data-level="100" id="level100">
-<h3>100 Level &mdash; First Semester</h3>
-<div class="table-wrap"><table class="course-table">
-<thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
-<tbody><tr><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td></tr></tbody>
-</table></div>
-</div>
-<div class="course-block" data-level="100">
-<h3>100 Level &mdash; Second Semester</h3>
-<div class="table-wrap"><table class="course-table">
-<thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
-<tbody><tr><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td></tr></tbody>
-</table></div>
-</div>
-</div>
-</div>
-<div class="course-level-group">
-<button aria-expanded="false" class="course-level-button" data-level-toggle="200" type="button">
+    </button>
+    <div class="course-level-content" data-level-content="100">
+      <div class="course-block" data-level="100">
+    <h3>100 Level — First Semester</h3>
+    <div class="table-wrap"><table class="course-table">
+      <thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
+      <tbody><tr><td>GST 111</td><td>Communication in English</td><td>2</td><td>C</td><td>15</td><td>45</td></tr>
+<tr><td>AGR 111</td><td>Introduction to Agriculture I</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>BIO 101</td><td>General Biology I</td><td>1</td><td>C</td><td>—</td><td>45</td></tr>
+<tr><td>BIO 107</td><td>General Biology Practical I</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>CHM 101</td><td>General Chemistry I</td><td>1</td><td>C</td><td>—</td><td>45</td></tr>
+<tr><td>CHM 107</td><td>General Chemistry Practical I</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>MTH 101</td><td>Elementary Mathematics I</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>PHY 101</td><td>General Physics I</td><td>1</td><td>C</td><td>—</td><td>45</td></tr>
+<tr><td>PHY 107</td><td>General Physics Practical I</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+      <tr class="total-row"><td>Semester total</td><td></td><td>15</td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table></div>
+    
+    
+    
+    
+  </div>
+      <div class="course-block" data-level="100">
+    <h3>100 Level — Second Semester</h3>
+    <div class="table-wrap"><table class="course-table">
+      <thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
+      <tbody><tr><td>GST 112</td><td>Nigerian Peoples and Culture</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>AGR 112</td><td>Introduction to Agriculture II</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>BIO 102</td><td>General Biology II</td><td>1</td><td>C</td><td>—</td><td>45</td></tr>
+<tr><td>BIO 108</td><td>General Biology Practical II</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>CHM 102</td><td>General Chemistry II</td><td>1</td><td>C</td><td>—</td><td>45</td></tr>
+<tr><td>CHM 108</td><td>General Chemistry Practical II</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>MTH 102</td><td>Elementary Mathematics II</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>PHY 102</td><td>General Physics II</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>PHY 108</td><td>General Physics Practical II</td><td>1</td><td>C</td><td>—</td><td>45</td></tr>
+      <tr class="total-row"><td>Semester total</td><td></td><td>15</td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table></div>
+    
+    
+    
+    
+  </div>
+    </div>
+  </div>
+
+  <div class="course-level-group">
+    <button type="button" class="course-level-button" data-level-toggle="200" aria-expanded="false">
       200 Level <span aria-hidden="true">+</span>
-</button>
-<div class="course-level-content" data-level-content="200">
-<div class="course-block" data-level="200" id="level200">
-<h3>200 Level &mdash; First Semester</h3>
-<div class="table-wrap"><table class="course-table">
-<thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
-<tbody><tr><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td></tr></tbody>
-</table></div>
-<p class="note">Course and elective details: Information coming soon.</p>
-</div>
-<div class="course-block" data-level="200">
-<h3>200 Level &mdash; Second Semester</h3>
-<div class="table-wrap"><table class="course-table">
-<thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
-<tbody><tr><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td></tr></tbody>
-</table></div>
-<p class="note">Course and elective details: Information coming soon.</p>
-</div>
-</div>
-</div>
-<div class="course-level-group">
-<button aria-expanded="false" class="course-level-button" data-level-toggle="300" type="button">
+    </button>
+    <div class="course-level-content" data-level-content="200">
+      <div class="course-block" data-level="200">
+    <h3>200 Level — First Semester</h3>
+    <div class="table-wrap"><table class="course-table">
+      <thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
+      <tbody><tr><td>ENT 211</td><td>Entrepreneurship and Innovation</td><td>2</td><td>C</td><td>15</td><td>45</td></tr>
+<tr><td>AGR 201</td><td>Principles of Crop Production</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>AGR 203</td><td>Introduction to Forest Resources and Wildlife Management</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>AGR 205</td><td>Introduction to Fisheries and Aquaculture</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>ANS 201</td><td>Introduction to Computer Applications in Animal Production</td><td>2</td><td>C</td><td>15</td><td>45</td></tr>
+<tr><td>FAA 201</td><td>Entrepreneurship in Fisheries and Aquaculture</td><td>2</td><td>E</td><td>30</td><td>—</td></tr>
+<tr><td>FWM 203</td><td>Introduction to Remote Sensing and GIS Applications</td><td>2</td><td>E</td><td>30</td><td>—</td></tr>
+<tr><td>AAUA-ANS 203</td><td>Principles of Animal Production</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>AAUA-ANS 205</td><td>Introductory Agricultural Biochemistry I</td><td>2</td><td>C</td><td>15</td><td>45</td></tr>
+      <tr class="total-row"><td>Semester total</td><td></td><td>18</td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table></div>
+    
+    
+    
+    
+  </div>
+      <div class="course-block" data-level="200">
+    <h3>200 Level — Second Semester</h3>
+    <div class="table-wrap"><table class="course-table">
+      <thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
+      <tbody><tr><td>GST 212</td><td>Philosophy, Logic and Human Existence</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>AGR 202</td><td>Introduction to Agricultural Economics, Extension and Rural Sociology</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>AGR 204</td><td>Introduction to Animal Production</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>AGR 206</td><td>Principles of Family and Consumer Sciences, Food Science and Technology</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>ANS 202</td><td>Introduction to Anatomy and Physiology of Farm Animals, Work/Draft and Companion Animals</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>AAUA-ANS 204</td><td>Introduction to Biotechnology in Animal Science</td><td>2</td><td>C</td><td>15</td><td>45</td></tr>
+<tr><td>AAUA-ANS 206</td><td>Introductory Agricultural Biochemistry II</td><td>2</td><td>C</td><td>15</td><td>45</td></tr>
+<tr><td>AAUA-ANS 208</td><td>Animal Behaviour and Handling Techniques</td><td>2</td><td>E</td><td>15</td><td>45</td></tr>
+<tr><td>AAUA-ANS 210</td><td>Bio-security and Animal Health Management Techniques</td><td>2</td><td>E</td><td>15</td><td>45</td></tr>
+      <tr class="total-row"><td>Semester total</td><td></td><td>18</td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table></div>
+    
+    
+    
+    
+  </div>
+    </div>
+  </div>
+
+  <div class="course-level-group">
+    <button type="button" class="course-level-button" data-level-toggle="300" aria-expanded="false">
       300 Level <span aria-hidden="true">+</span>
-</button>
-<div class="course-level-content" data-level-content="300">
-<div class="course-block" data-level="300" id="level300">
-<h3>300 Level &mdash; First Semester</h3>
-<div class="table-wrap"><table class="course-table">
-<thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
-<tbody><tr><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td></tr></tbody>
-</table></div>
-<p class="note">Course and elective details: Information coming soon.</p>
-</div>
-<div class="course-block" data-level="300">
-<h3>300 Level &mdash; Second Semester / SIWES</h3>
-<div class="table-wrap"><table class="course-table">
-<thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
-<tbody><tr><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td></tr></tbody>
-</table></div>
-</div>
-</div>
-</div>
-<div class="course-level-group">
-<button aria-expanded="false" class="course-level-button" data-level-toggle="400" type="button">
+    </button>
+    <div class="course-level-content" data-level-content="300">
+      <div class="course-block" data-level="300">
+    <h3>300 Level — First Semester</h3>
+    <div class="table-wrap"><table class="course-table">
+      <thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
+      <tbody><tr><td>ANS 303</td><td>Principles of Animal Nutrition and Biochemistry</td><td>2</td><td>C</td><td>15</td><td>45</td></tr>
+<tr><td>ANS 305</td><td>Ruminant Animal Production</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>ANS 309</td><td>Nigerian Feed and Feeding Stuffs</td><td>2</td><td>C</td><td>15</td><td>45</td></tr>
+<tr><td>ANS 399</td><td>Field Practical Year Report</td><td>1</td><td>C</td><td>—</td><td>45</td></tr>
+<tr><td>AGE 307</td><td>Introduction to Farm Management Accounting</td><td>2</td><td>E</td><td>30</td><td>—</td></tr>
+<tr><td>FAA 307</td><td>Principles of Aquaculture</td><td>2</td><td>E</td><td>15</td><td>45</td></tr>
+<tr><td>AAUA-ANS 311</td><td>Principles of Meat Science and Muscle Biology</td><td>2</td><td>C</td><td>15</td><td>45</td></tr>
+<tr><td>AAUA-ANS 313</td><td>Livestock Farm Practice I</td><td>2</td><td>C</td><td>—</td><td>90</td></tr>
+<tr><td>AAUA-ANS 315</td><td>Principles of Food Safety</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+      <tr class="total-row"><td>Semester total</td><td></td><td>17</td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table></div>
+    
+    
+    
+    
+  </div>
+      <div class="course-block" data-level="300">
+    <h3>300 Level — Second Semester</h3>
+    <div class="table-wrap"><table class="course-table">
+      <thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
+      <tbody><tr><td>GST 312</td><td>Peace and Conflict Resolution</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>ENT 312</td><td>Venture Creation</td><td>2</td><td>C</td><td>15</td><td>45</td></tr>
+<tr><td>ANS 302</td><td>Introduction to Animal Breeding, Genetics and Biotechnology</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>ANS 304</td><td>Non-Ruminant Animal Production</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>ANS 306</td><td>Principles of Animal Health and Diseases</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>ANS 308</td><td>Livestock Statistics and Data Processing</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>AAUA-ANS 312</td><td>Beef and Dairy Cattle Production and Dairying</td><td>2</td><td>C</td><td>15</td><td>45</td></tr>
+<tr><td>AAUA-ANS 314</td><td>Livestock Farm Practice II</td><td>2</td><td>C</td><td>—</td><td>90</td></tr>
+      <tr class="total-row"><td>Semester total</td><td></td><td>16</td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table></div>
+    
+    
+    
+    
+  </div>
+    </div>
+  </div>
+
+  <div class="course-level-group">
+    <button type="button" class="course-level-button" data-level-toggle="400" aria-expanded="false">
       400 Level <span aria-hidden="true">+</span>
-</button>
-<div class="course-level-content" data-level-content="400">
-<div class="course-block" data-level="400" id="level400">
-<h3>400 Level &mdash; First Semester</h3>
-<div class="table-wrap"><table class="course-table">
-<thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
-<tbody><tr><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td></tr></tbody>
-</table></div>
-<p class="note">Course and elective details: Information coming soon.</p>
-</div>
-<div class="course-block" data-level="400">
-<h3>400 Level &mdash; Second Semester</h3>
-<div class="table-wrap"><table class="course-table">
-<thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
-<tbody><tr><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td></tr></tbody>
-</table></div>
-<p class="note">Course and elective details: Information coming soon.</p>
-</div>
-</div></div></section>
-<section class="department-section" id="siwes">
-<div class="section-heading">
-<span>SIWES</span>
-<h2>Industrial Training Structure</h2>
-</div>
-<div class="content-card"><p>Information coming soon.</p></div>
+    </button>
+    <div class="course-level-content" data-level-content="400">
+      <div class="course-block" data-level="400">
+    <h3>400 Level — First Semester</h3>
+    <div class="table-wrap"><table class="course-table">
+      <thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
+      <tbody><tr><td>ANS 403</td><td>Animal Products, Processing, Handling and Marketing</td><td>2</td><td>C</td><td>—</td><td>90</td></tr>
+<tr><td>ANS 405</td><td>Animal Husbandry Techniques</td><td>2</td><td>C</td><td>—</td><td>90</td></tr>
+<tr><td>ANS 407</td><td>Animal Experimentation and Research Techniques with Professional Ethics in Livestock Production Practices and Legislation</td><td>2</td><td>C</td><td>—</td><td>90</td></tr>
+<tr><td>ANS 409</td><td>Pasture and Range Production and Management</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>ANS 499</td><td>Project Report</td><td>4</td><td>C</td><td>—</td><td>180</td></tr>
+<tr><td>FAA 401</td><td>Fish Processing, Handling, Utilization Technology and Control</td><td>2</td><td>E</td><td>15</td><td>45</td></tr>
+<tr><td>FWM 409</td><td>Game Ranching and Domestication</td><td>2</td><td>E</td><td>15</td><td>45</td></tr>
+<tr><td>AAUA-ANS 411</td><td>Hatchery Technology</td><td>2</td><td>C</td><td>15</td><td>45</td></tr>
+<tr><td>AAUA-ANS 415</td><td>Micro Livestock Production</td><td>2</td><td>C</td><td>15</td><td>45</td></tr>
+<tr><td>AAUA-ANS 497</td><td>Seminar</td><td>2</td><td>C</td><td>—</td><td>90</td></tr>
+      <tr class="total-row"><td>Semester total</td><td></td><td>22</td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table></div>
+    
+    
+    
+    
+  </div>
+      <div class="course-block" data-level="400">
+    <h3>400 Level — Second Semester</h3>
+    <div class="table-wrap"><table class="course-table">
+      <thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
+      <tbody><tr><td>ANS 402</td><td>Feed Production Technology and Entrepreneurship</td><td>2</td><td>C</td><td>—</td><td>90</td></tr>
+<tr><td>ANS 406</td><td>Animal Breeding and Genetics</td><td>2</td><td>C</td><td>—</td><td>90</td></tr>
+<tr><td>ANS 408</td><td>Reproductive Physiology and Artificial Insemination</td><td>2</td><td>C</td><td>15</td><td>45</td></tr>
+<tr><td>AAUA-ANS 404</td><td>Poultry Production</td><td>2</td><td>C</td><td>15</td><td>45</td></tr>
+<tr><td>AAUA-ANS 410</td><td>Swine Production</td><td>2</td><td>C</td><td>15</td><td>45</td></tr>
+<tr><td>AAUA-ANS 412</td><td>Sheep and Goat Production</td><td>2</td><td>C</td><td>15</td><td>45</td></tr>
+      <tr class="total-row"><td>Semester total</td><td></td><td>12</td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table></div>
+    
+    
+    
+    
+  </div>
+    </div>
+  </div>
+  <p class="note">Annual course-unit totals supplied: 100 Level — 30 units; 200 Level — 32 units; 300 Level — 31 units; 400 Level — 32 units. Where elective options are listed, the annual minimum reflects the stated selection requirement.</p>
 </section>
+
 <section class="department-section">
-<div class="section-heading">
-<span>Programme Summary</span>
-<h2>Programme Summary</h2>
-</div>
-<div class="summary-grid">
-<div class="summary-card">
-<h3>Programme Information</h3>
-<div class="summary-stat"><span>Programme details</span><strong>Information coming soon</strong></div>
-<div class="summary-stat"><span>Programme details</span><strong>Information coming soon</strong></div>
-<div class="summary-stat"><span>Programme details</span><strong>Information coming soon</strong></div>
-<div class="summary-stat"><span>Programme details</span><strong>Information coming soon</strong></div>
-<div class="summary-stat"><span>Programme details</span><strong>Information coming soon</strong></div>
-</div>
-<div class="summary-card">
-<h3>Programme Information</h3>
-<div class="summary-stat"><span>Programme details</span><strong>Information coming soon</strong></div>
-<div class="summary-stat"><span>Programme details</span><strong>Information coming soon</strong></div>
-<div class="summary-stat"><span>Programme details</span><strong>Information coming soon</strong></div>
-<div class="summary-stat"><span>Programme details</span><strong>Information coming soon</strong></div>
-<div class="summary-stat"><span>Programme details</span><strong>Information coming soon</strong></div>
-</div>
-</div>
+  <div class="section-heading"><span>Programme Summary</span><h2>Minimum Course Unit Summary</h2></div>
+  <div class="summary-grid">
+    <div class="summary-card"><h3>Four-Year UTME</h3>
+      <div class="summary-stat"><span>GST Courses</span><strong>8 units</strong></div>
+      <div class="summary-stat"><span>ENT Courses</span><strong>4 units</strong></div>
+      <div class="summary-stat"><span>Compulsory Courses</span><strong>105 units</strong></div>
+      <div class="summary-stat"><span>Elective Courses</span><strong>8 units</strong></div>
+      <div class="summary-stat"><span>Minimum Total</span><strong>125 units</strong></div>
+    </div>
+    <div class="summary-card"><h3>Three-Year Direct Entry</h3>
+      <div class="summary-stat"><span>GST Courses</span><strong>8 units</strong></div>
+      <div class="summary-stat"><span>ENT Courses</span><strong>4 units</strong></div>
+      <div class="summary-stat"><span>Compulsory Courses</span><strong>95 units</strong></div>
+      <div class="summary-stat"><span>Elective Courses</span><strong>8 units</strong></div>
+      <div class="summary-stat"><span>Minimum Total</span><strong>103 units</strong></div>
+    </div>
+  </div>
 </section>
-<section class="department-section">
-<div class="section-heading">
-<span>Administrative Staff List</span>
-<h2>Department Administration</h2>
-</div>
-<div class="table-wrap">
-<table class="course-table">
-<thead><tr><th>S/N</th><th>Name</th><th>Qualification</th><th>Status</th></tr></thead>
-<tbody><tr><td>1</td><td>Information coming soon</td><td>Information coming soon</td><td>Information coming soon</td></tr></tbody>
-</table>
-</div>
-</section>
+
 <section class="department-section" id="resources">
-<div class="section-heading">
-<span>Student Support</span>
-<h2>Academic Resources</h2>
-</div>
-<div class="resource-grid">
-<div class="resource-card">
-<div class="resource-icon">📖</div>
-<h3>Department Guide</h3>
-<p>Find useful information about the Department of Animal Science and your academic programme.</p>
-</div>
-<div class="resource-card">
-<div class="resource-icon">📄</div>
-<h3>Lecture Notes PDF</h3>
-<p>Download a department document when the official PDF is available, or select a PDF/course note from your device.</p>
-<div class="resource-actions">
-<a class="download-button" href="#">⬇ Download</a>
-<label class="upload-button" for="departmentPdfUpload">⬆ Upload PDF</label>
-<input accept="application/pdf,.pdf" class="file-input" id="departmentPdfUpload" type="file"/>
-</div>
-<p class="upload-status" id="departmentUploadStatus">No PDF selected.</p>
-</div>
-<div class="resource-card">
-<div class="resource-icon">💬</div>
-<h3>Student Resources</h3>
-<p>Useful academic materials and information for students.</p>
-<div class="resource-actions">
-<a aria-label="Connect on WhatsApp" class="whatsapp-button" href="#">💬 Meet on WhatsApp</a>
-</div>
-</div>
-</div>
+  <div class="section-heading"><span>Student Support</span><h2>Academic Resources</h2></div>
+  <div class="resource-grid">
+    <div class="resource-card"><div class="resource-icon">📖</div><h3>Department Guide</h3><p>Review the programme overview, philosophy, admission requirements, graduation requirements and course structure on this page.</p></div>
+    <div class="resource-card"><div class="resource-icon">🌐</div><h3>Official Department Page</h3><p>Visit the university's official Animal Science department page for university-published updates and departmental information.</p><div class="resource-actions"><a class="download-button" href="https://aaua.edu.ng/department/animal-science" target="_blank" rel="noopener noreferrer">Visit Official Page ↗</a></div></div>
+    <div class="resource-card"><div class="resource-icon">📚</div><h3>Department Handbook</h3><p>The department's official page provides a handbook link. Contact the department if the document is unavailable online.</p><div class="resource-actions"><a class="whatsapp-button" href="https://aaua.edu.ng/department/animal-science" target="_blank" rel="noopener noreferrer">Check Handbook Link ↗</a></div></div>
+  </div>
 </section>
-<section class="department-section">
-<div class="section-heading">
-<span>Get in Touch</span>
-<h2>Department Contacts</h2>
-</div>
-<div class="contact-grid">
-<div class="contact-card">
-<h3>Department Information</h3>
-<div class="contact-item"><div class="contact-item-icon">🏛️</div><div><span>Faculty</span><strong>Faculty of Agriculture</strong></div></div>
-<div class="contact-item"><div class="contact-item-icon">🎓</div><div><span>Department</span><strong>Animal Science</strong></div></div>
-<div class="contact-item"><div class="contact-item-icon">👨&zwj;🏫</div><div><span>Head of Department</span><strong>Dr. O.D. Oloruntola</strong></div></div>
-</div>
-<div class="contact-card">
-<h3>University</h3>
-<div class="contact-item"><div class="contact-item-icon">📍</div><div><span>Location</span><strong>Adekunle Ajasin University, Akungba-Akoko, Ondo State</strong></div></div>
-<div class="contact-item"><div class="contact-item-icon">🏫</div><div><span>Faculty</span><strong>Faculty of Agriculture</strong></div></div>
-</div>
-</div>
+
+<section class="department-section" id="contacts">
+  <div class="section-heading"><span>Get in Touch</span><h2>Department Contacts</h2></div>
+  <div class="contact-grid">
+    <div class="contact-card"><h3>Department Information</h3>
+      <div class="contact-item"><div class="contact-item-icon">🏛️</div><div><span>Faculty</span><strong>Faculty of Agriculture</strong></div></div>
+      <div class="contact-item"><div class="contact-item-icon">🎓</div><div><span>Department</span><strong>Department of Animal Science</strong></div></div>
+      <div class="contact-item"><div class="contact-item-icon">👨‍🏫</div><div><span>Head of Department</span><strong>Dr. O. D. Oloruntola</strong></div></div>
+      <div class="contact-item"><div class="contact-item-icon">☎️</div><div><span>Department Contact Number</span><strong><a href="tel:+2348060087911">0806 008 7911</a></strong></div></div>
+      <div class="contact-item"><div class="contact-item-icon">🕘</div><div><span>Office Hours</span><strong>Monday – Friday, 9:00 a.m. – 4:00 p.m.</strong></div></div>
+    </div>
+    <div class="contact-card"><h3>University Information</h3>
+      <div class="contact-item"><div class="contact-item-icon">📍</div><div><span>Address</span><strong>Adekunle Ajasin University, P.M.B. 01, Akungba-Akoko, Ondo State, Nigeria</strong></div></div>
+      <div class="contact-item"><div class="contact-item-icon">🏫</div><div><span>Faculty</span><strong>Faculty of Agriculture</strong></div></div>
+      <div class="contact-item"><div class="contact-item-icon">☎️</div><div><span>University Telephone</span><strong><a href="tel:+2348161651123">+234 816 165 1123</a><br><a href="tel:+2347089105452">+234 708 910 5452</a></strong></div></div>
+      <div class="contact-item"><div class="contact-item-icon">✉️</div><div><span>University Email</span><strong><a href="mailto:info@aaua.edu.ng">info@aaua.edu.ng</a></strong></div></div>
+    </div>
+  </div>
+  <p class="note">The departmental phone number, HOD name, office hours and university contact details are taken from the official AAUA department contact information. The email shown for the HOD is masked on the university page, so it has not been guessed or reproduced.</p>
 </section>
-<section class="department-section" id="help">
-<div class="help-box">
-<h2>Need help with your department?</h2>
-<p>If you need help with registration, courses, departmental information or other student matters, use the AAUA Uni Pilot student help system.</p>
-<a class="help-button" href="help.html">Get Department Help &rarr;</a>
-</div>
-</section>
+
+<section class="department-section" id="help"><div class="help-box"><h2>Need help with your department?</h2><p>For questions about course registration, departmental requirements or academic information, contact the Department of Animal Science or use the AAUA Uni Pilot student help system.</p><a href="help.html" class="help-button">Get Department Help →</a></div></section>
 </main>
+
 <footer>
-<div class="footer-container">
-<div class="footer-brand">
-<a class="brand" href="index.html">🎓 AAUA Uni Pilot</a>
-<p>Your campus. Your resources. Your guide.</p>
-</div>
-<div class="footer-links">
-<div>
-<h4>Platform</h4>
-<a href="resources.html">Resources</a>
-<a href="guide.html">Student Guide</a>
-<a href="updates.html">Updates</a>
-<a href="tools.html">Student Tools</a>
-</div>
-<div>
-<h4>Information</h4>
-<a href="about.html">About</a>
-<a href="privacy.html">Privacy Policy</a>
-<a href="terms.html">Terms of Use</a>
-<a href="contact.html">Contact</a>
-</div>
-</div>
-</div>
-<div class="footer-bottom"><p>&copy; 2026 Uni Pilot. All rights reserved.</p></div>
+  <div class="footer-container">
+    <div class="footer-brand">
+      <a href="index.html" class="brand">🎓 AAUA Uni Pilot</a>
+      <p>Your campus. Your resources. Your guide.</p>
+    </div>
+    <div class="footer-links">
+      <div>
+        <h4>Platform</h4>
+        <a href="resources.html">Resources</a>
+        <a href="guide.html">Student Guide</a>
+        <a href="updates.html">Updates</a>
+        <a href="tools.html">Student Tools</a>
+      </div>
+      <div>
+        <h4>Information</h4>
+        <a href="about.html">About</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Use</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 Uni Pilot. All rights reserved.</p></div>
 </footer>
-<script>
-document.querySelectorAll(".programme-toggle").forEach(button => {
-  button.addEventListener("click", function(){
-    const content = this.nextElementSibling;
-    const isOpen = content.classList.contains("open");
-    document.querySelectorAll(".programme-content").forEach(item => item.classList.remove("open"));
-    document.querySelectorAll(".programme-toggle").forEach(item => {
-      item.classList.remove("active");
-      item.setAttribute("aria-expanded", "false");
-      item.querySelector("span").textContent = "+";
-    });
-    if(!isOpen){
-      content.classList.add("open");
-      this.classList.add("active");
-      this.setAttribute("aria-expanded", "true");
-      this.querySelector("span").textContent = "−";
-    }
-  });
-});
-</script>
+
+
 <script>
 document.querySelectorAll(".course-level-button[data-level-toggle]").forEach(button => {
   button.addEventListener("click", function(){
     const level = this.dataset.levelToggle;
-    const content = document.querySelector(`[data-level-content="${level}"]`);
+    const content = document.querySelector('[data-level-content="' + level + '"]');
     const isOpen = content.classList.contains("open");
-
-    document.querySelectorAll(".course-level-content").forEach(item => item.classList.remove("open"));
-    document.querySelectorAll(".course-level-button[data-level-toggle]").forEach(item => {
-      item.classList.remove("active");
-      item.setAttribute("aria-expanded", "false");
-      const symbol = item.querySelector("span");
-      if(symbol) symbol.textContent = "+";
-    });
-
-    if(!isOpen){
-      content.classList.add("open");
-      this.classList.add("active");
-      this.setAttribute("aria-expanded", "true");
-      const symbol = this.querySelector("span");
-      if(symbol) symbol.textContent = "−";
-    }
+    content.classList.toggle("open", !isOpen);
+    this.classList.toggle("active", !isOpen);
+    this.setAttribute("aria-expanded", String(!isOpen));
+    const symbol = this.querySelector("span");
+    if(symbol) symbol.textContent = isOpen ? "+" : "−";
   });
 });
-
 document.querySelectorAll(".level-nav .course-level-button[data-level]").forEach(button => {
   button.addEventListener("click", function(){
-    const target = document.querySelector(`[data-level-toggle="${this.dataset.level}"]`);
-    if(target) target.click();
+    const target = document.querySelector('[data-level-toggle="' + this.dataset.level + '"]');
+    if(target && !target.classList.contains("active")) target.click();
+    const group = target ? target.closest(".course-level-group") : null;
+    if(group) group.scrollIntoView({behavior:"smooth",block:"start"});
   });
 });
 </script>
+
 <script>
-document.getElementById("departmentPdfUpload").addEventListener("change", function(){
-  const status = document.getElementById("departmentUploadStatus");
-  const file = this.files[0];
+  // Return to the referring page when possible; use the faculty guide as a safe fallback.
+  document.getElementById("departmentBackButton").addEventListener("click", function () {
+    if (window.history.length > 1 && document.referrer && new URL(document.referrer).origin === window.location.origin) {
+      window.history.back();
+    } else {
+      window.location.href = "faculty-guide.html";
+    }
+  });
 
-  if(!file){
-    status.textContent = "No PDF selected.";
-    return;
-  }
+  // Reveal content as it enters the viewport.
+  (function () {
+    const items = document.querySelectorAll(".quick-card, .department-section, .programme-card, .content-card, .resource-card, .contact-card, .summary-card");
+    items.forEach((item, index) => {
+      item.classList.add("reveal-on-scroll");
+      item.style.transitionDelay = (index % 4) * 55 + "ms";
+    });
 
-  const isPdf = file.type === "application/pdf" || file.name.toLowerCase().endsWith(".pdf");
+    if (!("IntersectionObserver" in window)) {
+      items.forEach(item => item.classList.add("is-visible"));
+      return;
+    }
 
-  if(!isPdf){
-    this.value = "";
-    status.textContent = "Please select a PDF file.";
-    return;
-  }
+    const observer = new IntersectionObserver((entries, activeObserver) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          activeObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
 
-  status.textContent = "Selected: " + file.name + " (ready for upload)";
-});
+    items.forEach(item => observer.observe(item));
+  })();
 </script>
+
   <script src="site-navigation.js"></script>
 </body>
 </html>

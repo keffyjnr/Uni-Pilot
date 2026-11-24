@@ -244,6 +244,12 @@ footer{border-top:1px solid var(--border)}
 .programme-content{display:none;margin-top:8px}
 .programme-content.open{display:block}
 .programme-content .content-card{padding:21px}
+.reveal-on-scroll{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s cubic-bezier(.2,.75,.25,1)}
+.reveal-on-scroll.is-visible{opacity:1;transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .reveal-on-scroll{opacity:1;transform:none}
+}
 </style>
   <link rel="stylesheet" href="site-navigation.css">
 </head>
@@ -332,8 +338,7 @@ footer{border-top:1px solid var(--border)}
     <h1>Department of <span>Agricultural Economics.</span></h1>
     <p class="faculty-name">Faculty of Agriculture</p>
     <p class="department-hero-description">
-      Department information, academic programmes, course structure and student resources
-      for Agricultural Economics at Adekunle Ajasin University, Akungba-Akoko.
+      Explore the B.Sc. Agricultural Economics programme, admission requirements, course structure and student resources at Adekunle Ajasin University, Akungba-Akoko.
     </p>
     <div class="department-actions">
       <a href="#overview" class="department-action primary">📚 Overview</a>
@@ -347,93 +352,220 @@ footer{border-top:1px solid var(--border)}
 <main class="department-main">
 <section class="quick-info">
   <div class="quick-card"><div class="quick-icon">🏛️</div><span>Faculty</span><strong>Faculty of Agriculture</strong></div>
-  <div class="quick-card"><div class="quick-icon">👨‍🏫</div><span>Head of Department</span><strong>Information Coming Soon</strong></div>
-  <div class="quick-card"><div class="quick-icon">🎓</div><span>Degree</span><strong>B. Agric (Agric Economics)</strong></div>
+  <div class="quick-card"><div class="quick-icon">👨‍🏫</div><span>Head of Department</span><strong>Dr. Adeyose E. Akinbola</strong></div>
+  <div class="quick-card"><div class="quick-icon">🎓</div><span>Degree</span><strong>B.Sc. Agricultural Economics</strong></div>
   <div class="quick-card"><div class="quick-icon">⏳</div><span>Duration</span><strong>4 Years</strong></div>
 </section>
 
 <section class="department-section" id="overview">
-  <div class="section-heading"><span>About the Department</span><h2>Agricultural Economics</h2></div>
-  <div class="about-box">
-    <p>The Department of Agricultural Economics is part of the Faculty of Agriculture at Adekunle Ajasin University, Akungba-Akoko. The department focuses on the economic, business and management aspects of agriculture and prepares students with knowledge that can be applied to agricultural production, agribusiness, research, entrepreneurship and rural development.</p>
-    <p><a href="campus-map.html" class="location-button">📍 View Department Location</a></p>
-  </div>
+<div class="section-heading"><span>About the Department</span><h2>Agricultural Economics</h2></div>
+<div class="about-box">
+<p>The Department of Agricultural Economics is domiciled in the Faculty of Agriculture at Adekunle Ajasin University. The B.Sc. Agricultural Economics programme combines economic theory with practical agricultural knowledge to prepare graduates to address food security, agricultural productivity, sustainable food systems and economic resilience.</p>
+<p><a href="campus-map.html" class="location-button">📍 View Department Location</a></p>
+</div></section>
+
+<section class="department-section">
+<div class="section-heading"><span>Programme Philosophy, Vision &amp; Objectives</span><h2>Programme Direction</h2></div>
+<div class="info-grid">
+<div class="content-card full-card"><h3>Philosophy</h3><p>The B.Sc. Agricultural Economics programme seeks to equip students with analytical skills, an innovative mindset and a global perspective to address food-security challenges. It blends economic theory with practical agricultural insights and prepares graduates for work in academia, research, policy-making and the agricultural industry. Graduates are expected to apply evidence-based approaches to improve productivity, reduce food waste and develop resilient food supply chains in support of food security and sustainable development.</p></div>
+<div class="content-card"><h3>Vision</h3><p>To develop globally competitive agricultural economists who drive sustainable food systems, enhance productivity and lead innovative solutions for food security and economic resilience worldwide.</p></div>
+<div class="content-card"><h3>Objectives</h3><ul>
+<li>Develop a skilled workforce with the technology and knowledge needed for productive rural agricultural settings.</li>
+<li>Support national self-sufficiency in essential food and agricultural raw materials for industrialisation.</li>
+<li>Modernise agricultural production, processing, storage, preservation and distribution.</li>
+<li>Expand employment opportunities and improve quality of life in rural communities.</li>
+<li>Adapt and apply external technologies to local agricultural management challenges.</li>
+<li>Encourage graduates to treat farming as a viable enterprise and exercise sound professional judgement.</li>
+<li>Prepare manpower for agricultural production and research across relevant sectors.</li>
+</ul></div>
+<div class="content-card"><h3>Unique Features of the Programme</h3><ul>
+<li>Aligns with the National Policy on Agriculture and addresses theoretical and practical priorities across local, national and global agricultural value chains.</li>
+<li>Uses SMART objectives: Specific, Measurable, Achievable, Realistic and Time-bound.</li>
+<li>Supports career pathways in agricultural communications, social services, production, finance, sales and marketing.</li>
+<li>Prepares graduates for opportunities in agro-processing, agro-allied industries and agri-finance, as well as further study.</li>
+<li>Builds specialist knowledge for advanced study and practical problem-solving.</li>
+</ul></div>
+<div class="content-card"><h3>Employability Skills</h3><ul>
+<li>Self-employment and job creation as agricultural economists or agribusiness enterprise owners.</li>
+<li>Professional services in agribusiness, agro-allied industries and agricultural finance.</li>
+<li>Manpower for agro-industrial manufacturing.</li>
+<li>Roles in agro-allied, marketing and financial sectors.</li>
+<li>Collaboration with other specialist sectors to support economic growth and development.</li>
+</ul></div>
+<div class="content-card"><h3>21st-Century Skills</h3><ul>
+<li>Critical thinking and creativity</li><li>Collaboration and communication</li><li>Information, media and technology literacy</li><li>Flexibility and adaptability</li><li>Leadership and initiative</li><li>Productivity and social skills</li>
+</ul></div>
+</div></section>
+
+<section class="department-section">
+<div class="section-heading"><span>Programme Offered &amp; Duration</span><h2>B.Sc. Agricultural Economics</h2></div>
+<div class="programme-grid">
+<div class="programme-card"><div class="programme-icon">🎓</div><h3>B.Sc. Agricultural Economics</h3><p>Four academic sessions (four years) for candidates admitted through UTME.</p></div>
+<div class="programme-card"><div class="programme-icon">📈</div><h3>Direct Entry</h3><p>Relevant OND or equivalent qualifications may qualify candidates for admission into 200 Level, subject to the university's entry requirements.</p></div>
+</div>
 </section>
 
 <section class="department-section">
-  <div class="section-heading"><span>Programme Philosophy &amp; Objectives</span><h2>What the Programme Aims to Develop</h2></div>
-  <div class="info-grid">
-    <div class="content-card"><h3>Philosophy</h3><p>Information Coming Soon</p></div>
-    <div class="content-card"><h3>Objectives</h3><p>Information Coming Soon</p></div>
-  </div>
-</section>
+<div class="section-heading"><span>Admission</span><h2>Admission Requirements</h2></div>
+<div class="info-grid">
+<div class="content-card"><h3>UTME Entry Requirements</h3><p>In addition to an acceptable UTME score, candidates must have at least five SSCE credit passes, including English Language, Mathematics, Physics, Chemistry and Biology or Agricultural Science, at not more than two sittings.</p></div>
+<div class="content-card"><h3>Direct Entry Requirements</h3><p>For the three-year Direct Entry route, candidates must have five SSCE credit passes including English Language, plus two principal passes at Advanced GCE Level or NCE (or equivalent). Holders of OND, NCE, JUPEB or IJMB with credit passes in relevant subjects may be considered for 200 Level entry.</p></div>
+<div class="content-card"><h3>UTME Subject Combination</h3><p>English Language, Mathematics or Physics, Chemistry, and Biology or Agricultural Science. Candidates should confirm the current approved subject combination with the university and JAMB before applying.</p></div>
+<div class="content-card"><h3>Programme Duration</h3><p>UTME: four academic sessions (four years). Direct Entry: three academic sessions, with admission normally into 200 Level, subject to applicable requirements.</p></div>
+</div></section>
 
 <section class="department-section">
-  <div class="section-heading"><span>Programme Offered &amp; Duration</span><h2>B. Agric (Agric Economics)</h2></div>
-  <div class="programme-grid">
-    <div class="programme-card"><div class="programme-icon">🎓</div><h3>B. Agric (Agric Economics)</h3><p>Bachelor of Agriculture programme in Agricultural Economics.</p></div>
-    <div class="programme-card"><div class="programme-icon">📈</div><h3>Agricultural Economics</h3><p>Study the economic and business principles involved in agriculture, agricultural production and related activities.</p></div>
-  </div>
-</section>
+<div class="section-heading"><span>Graduation</span><h2>Graduation Requirements</h2></div>
+<div class="content-card">
+<p>Students must complete and pass the approved compulsory and elective courses and satisfy the university's other graduation conditions.</p>
+<ul>
+<li><strong>UTME:</strong> the programme document states a minimum of 129 units.</li>
+<li><strong>Direct Entry:</strong> the programme document states a minimum of 116 units, with GST 111, GST 112, AGG 102 and AGG 112 to be audited.</li>
+</ul>
+<p class="note"><strong>Source discrepancy:</strong> The supplied UTME level table totals 133 units (30 + 32 + 37 + 34), although the narrative states 129. The Direct Entry level table is also not fully clear in the supplied extract. These figures are retained for review and should be confirmed against the complete approved programme document.</p>
+</div></section>
 
 <section class="department-section">
-  <div class="section-heading"><span>Admission</span><h2>Admission Requirements</h2></div>
-  <div class="info-grid">
-    <div class="content-card"><h3>UTME Entry Requirements</h3><p>Information Coming Soon</p></div>
-    <div class="content-card"><h3>Direct Entry Requirements</h3><p>Information Coming Soon</p></div>
-  </div>
-</section>
-
-<section class="department-section">
-  <div class="section-heading"><span>Graduation</span><h2>Graduation Requirements</h2></div>
-  <div class="content-card"><p>Information Coming Soon</p></div>
-</section>
-
-<section class="department-section">
-  <div class="section-heading"><span>Academic Information</span><h2>Registration for Courses</h2></div>
-  <div class="info-grid">
-    <div class="content-card"><h3>Course Categories</h3><p>Information Coming Soon</p></div>
-    <div class="content-card"><h3>Registration Rules</h3><p>Information Coming Soon</p></div>
-  </div>
-</section>
-
-<section class="department-section">
-  <div class="section-heading"><span>Programme Structure</span><h2>Programme Structure</h2></div>
-  <div class="info-grid">
-    <div class="content-card"><h3>Direct Entry Programme</h3><p>Information Coming Soon</p></div>
-    <div class="content-card"><h3>UTME Programme</h3><p>Information Coming Soon</p></div>
-  </div>
-</section>
+<div class="section-heading"><span>Academic Information</span><h2>Course Registration Guidance</h2></div>
+<div class="info-grid">
+<div class="content-card"><h3>Semester Allocation</h3><p>Course codes ending in an odd number are placed under First Semester (for example, AGR 101). Course codes ending in an even number are placed under Second Semester (for example, AGR 102).</p></div>
+<div class="content-card"><h3>Course Status</h3><p><strong>C</strong> indicates a compulsory course and <strong>E</strong> indicates an elective course. Where an elective choice is specified, students should select the required number of options in line with departmental guidance.</p></div>
+</div></section>
 
 <section class="department-section" id="courses">
-  <div class="section-heading"><span>Academic Information</span><h2>Courses by Level and Semester</h2><p>Detailed course codes, titles, units and semester breakdowns will be added when available.</p></div>
-  <div class="level-nav">
-    <a href="#level100">100 Level</a><a href="#level200">200 Level</a><a href="#level300">300 Level</a><a href="#level400">400 Level</a>
-  </div>
-  <div class="course-level-group" id="level100"><button class="course-level-button" type="button" data-level-toggle="agric100" aria-expanded="false"><span>100 Level</span><span>+</span></button><div class="course-block course-level-content" data-level-content="agric100"><div class="table-wrap"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th></tr></thead><tbody><tr><td>Information Coming Soon</td><td>Information Coming Soon</td><td>Information Coming Soon</td><td>Information Coming Soon</td></tr></tbody></table></div></div></div>
-  <div class="course-level-group" id="level200"><button class="course-level-button" type="button" data-level-toggle="agric200" aria-expanded="false"><span>200 Level</span><span>+</span></button><div class="course-block course-level-content" data-level-content="agric200"><div class="table-wrap"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th></tr></thead><tbody><tr><td>Information Coming Soon</td><td>Information Coming Soon</td><td>Information Coming Soon</td><td>Information Coming Soon</td></tr></tbody></table></div></div></div>
-  <div class="course-level-group" id="level300"><button class="course-level-button" type="button" data-level-toggle="agric300" aria-expanded="false"><span>300 Level</span><span>+</span></button><div class="course-block course-level-content" data-level-content="agric300"><div class="table-wrap"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th></tr></thead><tbody><tr><td>Information Coming Soon</td><td>Information Coming Soon</td><td>Information Coming Soon</td><td>Information Coming Soon</td></tr></tbody></table></div></div></div>
-  <div class="course-level-group" id="level400"><button class="course-level-button" type="button" data-level-toggle="agric400" aria-expanded="false"><span>400 Level</span><span>+</span></button><div class="course-block course-level-content" data-level-content="agric400"><div class="table-wrap"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th></tr></thead><tbody><tr><td>Information Coming Soon</td><td>Information Coming Soon</td><td>Information Coming Soon</td><td>Information Coming Soon</td></tr></tbody></table></div></div></div>
-</section>
+<div class="section-heading"><span>Course Structure</span><h2>Courses by Level and Semester</h2><p>Course codes, titles, units, course status, lecture hours (LH) and practical hours (PH) are shown where supplied. Odd-numbered course codes are placed in First Semester; even-numbered course codes are placed in Second Semester.</p></div>
+<div class="level-nav">
+<button type="button" class="course-level-button" data-level="100">100 Level</button>
+<button type="button" class="course-level-button" data-level="200">200 Level</button>
+<button type="button" class="course-level-button" data-level="300">300 Level</button>
+<button type="button" class="course-level-button" data-level="400">400 Level</button>
+</div>
+<div class="course-level-group">
+<button type="button" class="course-level-button" data-level-toggle="100" aria-expanded="false">100 Level <span aria-hidden="true">+</span></button>
+<div class="course-level-content" data-level-content="100">
+<div class="course-block">
+<h3>100 Level — First Semester</h3>
+<div class="table-wrap"><table class="course-table">
+<thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
+<tbody><tr><td>GST 111</td><td>Communication in English</td><td>2</td><td>C</td><td>15</td><td>45</td></tr>
+<tr><td>AGR 111</td><td>Introduction to Agriculture I</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>BIO 101</td><td>General Biology I</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>BIO 107</td><td>General Biology Practical I</td><td>1</td><td>C</td><td>—</td><td>45</td></tr>
+<tr><td>CHM 101</td><td>General Chemistry I</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>CHM 107</td><td>General Chemistry Practical I</td><td>1</td><td>C</td><td>—</td><td>45</td></tr>
+<tr><td>MTH 101</td><td>Elementary Mathematics I</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>PHY 101</td><td>General Physics I</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>PHY 107</td><td>General Physics Practical I</td><td>1</td><td>C</td><td>—</td><td>45</td></tr>
+<tr class="total-row"><td>Total</td><td></td><td>15</td><td></td><td></td><td></td></tr></tbody>
+</table></div>
+</div>
+<div class="course-block">
+<h3>100 Level — Second Semester</h3>
+<div class="table-wrap"><table class="course-table">
+<thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
+<tbody><tr><td>GST 112</td><td>Nigerian Peoples and Culture</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>AGR 112</td><td>Introduction to Agriculture II</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>BIO 102</td><td>General Biology II</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>BIO 108</td><td>General Biology Practical II</td><td>1</td><td>C</td><td>—</td><td>45</td></tr>
+<tr><td>CHM 102</td><td>General Chemistry II</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>CHM 108</td><td>General Chemistry Practical II</td><td>1</td><td>C</td><td>—</td><td>45</td></tr>
+<tr><td>MTH 102</td><td>Elementary Mathematics II</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>PHY 102</td><td>General Physics II</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>PHY 108</td><td>General Physics Practical II</td><td>1</td><td>C</td><td>—</td><td>45</td></tr>
+<tr class="total-row"><td>Total</td><td></td><td>15</td><td></td><td></td><td></td></tr></tbody>
+</table></div>
+</div>
 
-<section class="department-section" id="siwes">
-  <div class="section-heading"><span>Industrial Training</span><h2>SIWES Information</h2></div>
-  <div class="content-card"><p>Information Coming Soon</p></div>
+</div></div>
+<div class="course-level-group">
+<button type="button" class="course-level-button" data-level-toggle="200" aria-expanded="false">200 Level <span aria-hidden="true">+</span></button>
+<div class="course-level-content" data-level-content="200">
+<div class="course-block">
+<h3>200 Level — First Semester</h3>
+<div class="table-wrap"><table class="course-table">
+<thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
+<tbody><tr><td>ENT 211</td><td>Entrepreneurship & Innovation</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>AGR 201</td><td>Principles to Crop Production</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>AGR 203</td><td>Introduction to Forestry and Wildlife Management</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>AGR 205</td><td>Introduction to Fisheries and Aquaculture</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>SOS 201</td><td>Principles of Soil Science</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>MWA 201</td><td>Agro-Meteorology, Biogeography and Climate Change</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr class="total-row"><td>Total</td><td></td><td>12</td><td></td><td></td><td></td></tr></tbody>
+</table></div>
+</div>
+<div class="course-block">
+<h3>200 Level — Second Semester</h3>
+<div class="table-wrap"><table class="course-table">
+<thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
+<tbody><tr><td>GST 212</td><td>Philosophy, Logic and Human Existence</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>AGR 202</td><td>Introduction to Agricultural Economics, Extension and Rural Sociology</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>AGR 204</td><td>Introduction to Animal Production</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>AGR 206</td><td>Principles of Family and Consumer Sciences</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr class="total-row"><td>Total</td><td></td><td>8</td><td></td><td></td><td></td></tr></tbody>
+</table></div>
+</div>
+<p class="note"><strong>Course-code confirmation needed:</strong> The supplied document lists seven additional 200-level courses with incomplete codes: Introduction to Agribusiness Value Chain Management; Introduction to Agribusiness Management Theory and … (title cut off); Food and Consumer Economics; Basic Statistics for Agricultural Students; Agricultural Production and Prices; Data Science in Agriculture I; and Basic Mathematics for Agricultural Students. Each is listed as 2 units, but the full code numbers are not visible, so they have not been assigned to a semester. The source gives a 200-level total of 34 units.</p>
+</div></div>
+<div class="course-level-group">
+<button type="button" class="course-level-button" data-level-toggle="300" aria-expanded="false">300 Level <span aria-hidden="true">+</span></button>
+<div class="course-level-content" data-level-content="300">
+<div class="course-block">
+<h3>300 Level — First Semester</h3>
+<div class="table-wrap"><table class="course-table">
+<thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
+<tbody><tr><td>AGE 301</td><td>Research and Statistical Methods</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>AGB 305</td><td>Farm Business Management and Production Economics</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>AEC 307</td><td>Farm Management Accounting</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>AGB 313</td><td>Entrepreneurship and Agribusiness Development</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>AGB 303</td><td>Business Law</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>AEC 305</td><td>Economics of Climate Change</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>AGE 399</td><td>Practical Field Year Report</td><td>1</td><td>C</td><td>—</td><td>90</td></tr>
+<tr class="total-row"><td>Total</td><td></td><td>13</td><td></td><td></td><td></td></tr></tbody>
+</table></div>
+</div>
+<div class="course-block">
+<h3>300 Level — Second Semester</h3>
+<div class="table-wrap"><table class="course-table">
+<thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
+<tbody><tr><td>ENT 312</td><td>Venture Creation</td><td>2</td><td>C</td><td>15</td><td>45</td></tr>
+<tr><td>GST 312</td><td>Peace and Conflict Resolution</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>AGE 302</td><td>Introduction to Computer Application in Agricultural … (title cut off)</td><td>2</td><td>C</td><td>15</td><td>45</td></tr>
+<tr class="total-row"><td>Total</td><td></td><td>6</td><td></td><td></td><td></td></tr></tbody>
+</table></div>
+</div>
+<p class="note"><strong>Course-code confirmation needed:</strong> The supplied list also contains Managerial Economics for Agribusiness; Intermediate Microeconomics; Intermediate Macroeconomics; Cooperative Development for Agribusiness and Personnel; Management Information System; and Data Science in Agriculture II. Their numeric course-code suffixes are missing. The two listed electives are Agribusiness Organisational Behaviour and Principles of Food Safety (select one); their complete codes are also needed before semester placement. Source level total: 33 units.</p>
+</div></div>
+<div class="course-level-group">
+<button type="button" class="course-level-button" data-level-toggle="400" aria-expanded="false">400 Level <span aria-hidden="true">+</span></button>
+<div class="course-level-content" data-level-content="400">
+<div class="course-block">
+<h3>400 Level — First Semester</h3>
+<div class="table-wrap"><table class="course-table">
+<thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
+<tbody><tr><td>AEC 403</td><td>Macroeconomic Theory</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>AGE 401</td><td>Econometrics</td><td>2</td><td>C</td><td>30</td><td>45</td></tr>
+<tr><td>AGE 403</td><td>Agricultural Development and Policy</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>AGE 405</td><td>Environmental and Natural Resource Economics</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>AGE 499</td><td>Research Project</td><td>6</td><td>C</td><td>—</td><td>180</td></tr>
+<tr><td>AAUA-AGE 443</td><td>Mathematical Economics</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr class="total-row"><td>Total</td><td></td><td>16</td><td></td><td></td><td></td></tr></tbody>
+</table></div>
+</div>
+<div class="course-block">
+<h3>400 Level — Second Semester</h3>
+<div class="table-wrap"><table class="course-table">
+<thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
+<tbody><tr><td>AEC 402</td><td>Microeconomic Theory</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>AGB 402</td><td>Entrepreneurship and Agribusiness Development</td><td>2</td><td>C</td><td>45</td><td>—</td></tr>
+<tr><td>AGE 402</td><td>Project Monitoring and Evaluation in Agriculture</td><td>2</td><td>C</td><td>30</td><td>—</td></tr>
+<tr><td>AGE 404</td><td>Agricultural Marketing and International Commodity Trade</td><td>2</td><td>C</td><td>45</td><td>—</td></tr>
+<tr><td>AGE 406</td><td>Seminar</td><td>2</td><td>C</td><td>—</td><td>90</td></tr>
+<tr class="total-row"><td>Total</td><td></td><td>10</td><td></td><td></td><td></td></tr></tbody>
+</table></div>
+</div>
+<p class="note"><strong>Course-code confirmation needed:</strong> The list includes Agribusiness Ethics and Philosophy; Analysis of Agribusiness Decisions; and two electives—Agricultural Labour and Personnel Management or Practical Guide to Research Methods—but their full numeric codes are not shown. Their semester placement is therefore pending code confirmation. Source level total: 32 units.</p>
+</div></div>
 </section>
-
-<section class="department-section">
-  <div class="section-heading"><span>Academic Summary</span><h2>Minimum Course Unit Summary</h2></div>
-  <div class="summary-grid">
-    <div class="summary-card"><h3>UTME Programme</h3><div class="summary-stat"><span>Minimum Course Units</span><strong>Information Coming Soon</strong></div></div>
-    <div class="summary-card"><h3>Direct Entry Programme</h3><div class="summary-stat"><span>Minimum Course Units</span><strong>Information Coming Soon</strong></div></div>
-  </div>
-</section>
-
-<section class="department-section">
-  <div class="section-heading"><span>Department Administration</span><h2>Department Administration</h2></div>
-  <div class="table-wrap"><table class="course-table"><thead><tr><th>S/N</th><th>Name</th><th>Qualification</th><th>Status</th></tr></thead><tbody><tr><td>—</td><td>Information Coming Soon</td><td>Information Coming Soon</td><td>Information Coming Soon</td></tr></tbody></table></div>
-</section>
-
 <section class="department-section" id="resources">
   <div class="section-heading"><span>Student Support</span><h2>Academic Resources</h2></div>
   <div class="resource-grid">
@@ -446,8 +578,8 @@ footer{border-top:1px solid var(--border)}
 <section class="department-section">
   <div class="section-heading"><span>Get in Touch</span><h2>Department Contacts</h2></div>
   <div class="contact-grid">
-    <div class="contact-card"><h3>Department Information</h3><div class="contact-item"><div class="contact-item-icon">🏛️</div><div><span>Faculty</span><strong>Faculty of Agriculture</strong></div></div><div class="contact-item"><div class="contact-item-icon">🎓</div><div><span>Department</span><strong>Agricultural Economics</strong></div></div><div class="contact-item"><div class="contact-item-icon">👨‍🏫</div><div><span>Head of Department</span><strong>Information Coming Soon</strong></div></div></div>
-    <div class="contact-card"><h3>University</h3><div class="contact-item"><div class="contact-item-icon">📍</div><div><span>Location</span><strong>Adekunle Ajasin University, Akungba-Akoko, Ondo State</strong></div></div><div class="contact-item"><div class="contact-item-icon">🏫</div><div><span>Faculty</span><strong>Faculty of Agriculture</strong></div></div></div>
+    <div class="contact-card"><h3>Department Information</h3><div class="contact-item"><div class="contact-item-icon">🏛️</div><div><span>Faculty</span><strong>Faculty of Agriculture</strong></div></div><div class="contact-item"><div class="contact-item-icon">🎓</div><div><span>Department</span><strong>Agricultural Economics</strong></div></div><div class="contact-item"><div class="contact-item-icon">👨‍🏫</div><div><span>HOD</span><strong>Dr. Adeyose E. Akinbola</strong></div></div><div class="contact-item"><div class="contact-item-icon">☎️</div><div><span>Department Contact</span><strong>+234 806 356 7002</strong></div></div><div class="contact-item"><div class="contact-item-icon">🕘</div><div><span>Office Hours</span><strong>Monday–Friday, 9:00 a.m.–4:00 p.m.</strong></div></div></div>
+    <div class="contact-card"><h3>University</h3><div class="contact-item"><div class="contact-item-icon">📍</div><div><span>Location</span><strong>Adekunle Ajasin University Akungba Akoko, Ondo State</strong></div></div><div class="contact-item"><div class="contact-item-icon">🏫</div><div><span>Faculty</span><strong>Faculty of Agriculture</strong></div></div></div>
   </div>
 </section>
 
@@ -483,6 +615,13 @@ footer{border-top:1px solid var(--border)}
 </footer>
 
 <script>
+document.querySelectorAll(".level-nav .course-level-button[data-level]").forEach(button => {
+  button.addEventListener("click", function(){
+    const target = document.querySelector(`[data-level-toggle="${this.dataset.level}"]`);
+    if (target) target.click();
+  });
+});
+
 document.querySelectorAll(".course-level-button[data-level-toggle]").forEach(button => {
   button.addEventListener("click", function(){
     const level = this.dataset.levelToggle;
@@ -496,6 +635,33 @@ document.querySelectorAll(".course-level-button[data-level-toggle]").forEach(but
   });
 });
 </script>
-  <script src="site-navigation.js"></script>
+  <script>
+  // Reveal content as it enters the viewport, matching the other Faculty of Agriculture pages.
+  (function () {
+    const items = document.querySelectorAll(".quick-card, .department-section, .programme-card, .content-card, .resource-card, .contact-card, .summary-card");
+    items.forEach((item, index) => {
+      item.classList.add("reveal-on-scroll");
+      item.style.transitionDelay = (index % 4) * 55 + "ms";
+    });
+
+    if (!("IntersectionObserver" in window)) {
+      items.forEach(item => item.classList.add("is-visible"));
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries, activeObserver) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          activeObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    items.forEach(item => observer.observe(item));
+  })();
+</script>
+
+<script src="site-navigation.js"></script>
 </body>
 </html>

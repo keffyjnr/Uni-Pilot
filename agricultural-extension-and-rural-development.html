@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Agricultural Extension and Rural Development | AAUA Uni Pilot</title>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
-<link href="style.css" rel="stylesheet"/>
+
+<link rel="preconnect" href="index.html">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
 <style>
 :root{
   --green:#0b5d3b;
@@ -46,7 +47,7 @@ button,input{font-family:inherit}
   box-shadow:0 18px 50px rgba(6,59,38,.14);
 }
 .department-hero::after{
-  content:"AERD";position:absolute;right:22px;bottom:-25px;
+  content:"AGX";position:absolute;right:22px;bottom:-25px;
   font-size:clamp(5rem,15vw,11rem);line-height:.8;font-weight:800;
   letter-spacing:-7px;color:rgba(255,255,255,.035);pointer-events:none;
 }
@@ -243,391 +244,364 @@ footer{border-top:1px solid var(--border)}
 .programme-content{display:none;margin-top:8px}
 .programme-content.open{display:block}
 .programme-content .content-card{padding:21px}
+
+/* LIFE + MOTION: polished entrance, reveal, and responsive hover feedback */
+.department-back-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 22px}
+.department-back-button{display:inline-flex;align-items:center;gap:9px;min-height:40px;padding:0 15px;border:1px solid var(--border);border-radius:999px;background:#fff;color:var(--green);font:inherit;font-size:.72rem;font-weight:800;cursor:pointer;box-shadow:0 7px 20px rgba(6,59,38,.06);transition:transform .22s ease,box-shadow .22s ease,background .22s ease}
+.department-back-button span{font-size:1.1rem;transition:transform .22s ease}
+.department-back-button:hover{transform:translateY(-2px);background:var(--light-green);box-shadow:0 12px 25px rgba(6,59,38,.12)}
+.department-back-button:hover span{transform:translateX(-3px)}
+.back-hint{color:var(--muted);font-size:.68rem}
+.department-hero{animation:ictHeroEnter .8s cubic-bezier(.2,.75,.25,1) both}
+.department-hero-content{animation:ictContentEnter .9s .12s cubic-bezier(.2,.75,.25,1) both}
+.department-hero::after{animation:ictWatermarkFloat 9s ease-in-out infinite}
+@keyframes ictHeroEnter{from{opacity:0;transform:translateY(18px) scale(.99)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes ictContentEnter{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes ictWatermarkFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+.quick-card,.content-card,.programme-card,.resource-card,.contact-card,.summary-card,.help-box{transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.quick-card:hover,.content-card:hover,.contact-card:hover,.summary-card:hover{transform:translateY(-4px);box-shadow:0 18px 42px rgba(6,59,38,.1);border-color:rgba(11,93,59,.24)}
+.resource-card:hover{box-shadow:0 18px 42px rgba(6,59,38,.1)}
+.location-button,.download-button,.upload-button,.whatsapp-button,.help-button,.department-action{transition:transform .22s ease,box-shadow .22s ease,background .22s ease}
+.location-button:hover,.download-button:hover,.upload-button:hover,.whatsapp-button:hover,.help-button:hover,.department-action:hover{transform:translateY(-2px);box-shadow:0 9px 22px rgba(6,59,38,.12)}
+.reveal-on-scroll{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s cubic-bezier(.2,.75,.25,1)}
+.reveal-on-scroll.is-visible{opacity:1;transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .reveal-on-scroll{opacity:1;transform:none}
+}
+
 </style>
   <link rel="stylesheet" href="site-navigation.css">
 </head>
+
 <body class="department-page">
+
 <header class="header">
-<nav class="navbar">
-<a class="brand" href="index.html">
-<span class="brand-icon">
+
+    <nav class="navbar">
+
+      <a
+        href="index.html"
+        class="brand"
+      >
+
+        <span class="brand-icon">
           🎓
         </span>
-<span>
+
+        <span>
           AAUA Uni Pilot
         </span>
-</a>
-<div class="desktop-nav">
-<a href="index.html">
+
+      </a>
+
+
+      <div class="desktop-nav">
+
+        <a href="index.html">
           Home
         </a>
-<a href="resources.html">
+
+        <a href="resources.html">
           Resources
         </a>
-<a href="guide.html">
+
+        <a href="guide.html">
           Student Guide
         </a>
-<a href="updates.html">
+
+        <a href="updates.html">
           Updates
         </a>
-<a class="active" href="tools.html">
+
+        <a href="tools.html" class="active">
           Tools
         </a>
-</div>
-<div class="nav-actions">
-<a aria-label="Search AAUA Uni Pilot" class="icon-btn" href="search.html" style="display:grid;place-items:center;text-decoration:none;" title="Search AAUA Uni Pilot">
+
+      </div>
+
+
+      <div class="nav-actions">
+
+        <a
+          href="search.html"
+          class="icon-btn"
+          aria-label="Search AAUA Uni Pilot"
+          title="Search AAUA Uni Pilot"
+          style="display:grid;place-items:center;text-decoration:none;"
+        >
           🔍
         </a>
-<button aria-label="Open menu" class="menu-btn" id="menuBtn" type="button">
+
+
+        <button
+          class="menu-btn"
+          id="menuBtn"
+          type="button"
+          aria-label="Open menu"
+        >
           ☰
         </button>
-</div>
-</nav>
-</header>
+
+      </div>
+
+    </nav>
+
+  </header>
+
+
 <section class="department-hero">
-<div class="department-hero-content">
-<div class="breadcrumb">
-<a href="index.html">Home</a><span>›</span>
-<a href="faculty-guide.html">Faculty Guide</a><span>›</span>
-<span>Agricultural Extension and Rural Development</span>
-</div>
-<span class="department-label">Department Guide</span>
-<h1>Department of <span>Agricultural Extension and Rural Development.</span></h1>
-<p class="faculty-name">Faculty of Agriculture</p>
-<p class="department-hero-description">Department information, programme structure, course structure and student resources for Agricultural Extension and Rural Development at AAUA.</p>
-<div class="department-actions">
-<a class="department-action primary" href="#overview">📚 Overview</a>
-<a class="department-action secondary" href="#courses">📋 Courses</a>
-<a class="department-action secondary" href="#resources">📁 Resources</a>
-<a class="department-action secondary" href="#help">🆘 Get Help</a>
-</div>
-</div>
+  <div class="department-hero-content">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>›</span><a href="faculty-guide.html">Faculty Guide</a><span>›</span><span>Agricultural Extension and Rural Development</span></div>
+    <span class="department-label">Department Guide</span>
+    <h1>Department of <span>Agricultural Extension and Rural Development.</span></h1>
+    <p class="faculty-name">Faculty of Agriculture</p>
+    <p class="department-hero-description">Explore the Department of Agricultural Extension and Rural Development, its programme, admission and graduation requirements, course structure and academic resources at Adekunle Ajasin University.</p>
+    <div class="department-actions">
+      <a href="#overview" class="department-action primary">📚 Overview</a>
+      <a href="#courses" class="department-action secondary">📋 Courses</a>
+      <a href="#resources" class="department-action secondary">📁 Resources</a>
+      <a href="#help" class="department-action secondary">🆘 Get Help</a>
+    </div>
+  </div>
 </section>
 <main class="department-main">
-<section class="quick-info">
-<div class="quick-card"><div class="quick-icon">🏛️</div><span>Faculty</span><strong>Faculty of Agriculture</strong></div>
-<div class="quick-card"><div class="quick-icon">👨‍🏫</div><span>Head of Department</span><strong>Prof. Adekunle A. Oluwasegun</strong></div>
-<div class="quick-card"><div class="quick-icon">🎓</div><span>Degree</span><strong>B. Agric (Agric Extension &amp; Rural Development)</strong></div>
-<div class="quick-card"><div class="quick-icon">⏳</div><span>Duration</span><strong>Information coming soon</strong></div>
-</section>
-<section class="department-section" id="overview">
-<div class="section-heading">
-<span>About the Department</span>
-<h2>Agricultural Extension and Rural Development</h2>
-</div>
-<div class="about-box"><p>The Department of Agricultural Extension and Rural Development is one of the six departments in the Faculty of Agriculture at Adekunle Ajasin University, Akungba-Akoko. The Department was created in the 2013/2014 academic session.</p><p>The Department trains students in the theory and practice of agricultural extension and engages in rural development activities with a view to improving farmers' standard of living through effective and efficient information dissemination to farmers.</p><p>The Department aims to produce graduates who can assume leadership positions, create employment opportunities, particularly in Agriculture, and improve the wellbeing of rural dwellers.</p><p>Areas of specialization include rural community development, rural women and gender studies, training in extension, extension administration, communication in extension, evaluation in extension, adoption studies, programme planning, group dynamics and leadership studies, and indigenous knowledge systems.</p><a class="location-button" href="campus-map.html">📍 View Department Location</a></div>
-</section>
-<section class="department-section">
-<div class="section-heading">
-<span>Programme Philosophy &amp; Objectives</span>
-<h2>Programme Philosophy &amp; Objectives</h2>
-</div>
-<div class="info-grid">
-<div class="content-card"><h3>Philosophy</h3><p>Information coming soon.</p></div>
-<div class="content-card"><h3>Objectives</h3><p>Information coming soon.</p></div>
-</div>
-</section>
-<section class="department-section">
-<div class="section-heading">
-<span>Programme Offered &amp; Duration</span>
-<h2>Agricultural Extension and Rural Development</h2>
-</div>
-<div class="programme-grid">
-<div class="programme-card">
-<div class="programme-icon">🎓</div>
-<h3>B. Agric (Agricultural Extension and Rural Development)</h3>
-<p>Bachelor of Agriculture programme in Agricultural Extension and Rural Development.</p>
-</div>
-<div class="programme-card">
-<div class="programme-icon">⏱️</div>
-<h3>Duration</h3>
-<p>Information coming soon.</p>
-</div>
-</div>
-</section>
-<section class="department-section">
-<div class="section-heading">
-<span>Admission</span>
-<h2>Admission Requirements</h2>
-</div>
-<div class="info-grid">
-<div class="content-card"><h3>UTME Entry Requirements</h3><p>Information coming soon.</p></div>
-<div class="content-card"><h3>Direct Entry Requirements</h3><p>Information coming soon.</p></div>
-</div>
-</section>
-<section class="department-section">
-<div class="section-heading">
-<span>Graduation</span>
-<h2>Graduation Requirements</h2>
-</div>
-<div class="content-card"><p>Information coming soon.</p></div>
-</section>
-<section class="department-section">
-<div class="section-heading">
-<span>Registration</span>
-<h2>Registration for Courses</h2>
-</div>
-<div class="info-grid">
-<div class="rule-card content-card"><h3>Course Categories</h3><p>Information coming soon.</p></div>
-<div class="rule-card content-card"><h3>Registration Rules</h3><p>Information coming soon.</p></div>
-</div>
-</section>
-<section class="department-section">
-<div class="section-heading">
-<span>Academic Structure</span>
-<h2>Programme Structure</h2>
-</div>
-<div class="content-card">
-<h3>Programme</h3>
-<div class="table-wrap">
-<table class="course-table">
-<thead><tr><th>Level</th><th>Compulsory 1st</th><th>Compulsory 2nd</th><th>GST 1st</th><th>GST 2nd</th><th>ENT 1st</th><th>ENT 2nd</th><th>Elective 1st</th><th>Elective 2nd</th><th>Total 1st</th><th>Total 2nd</th></tr></thead>
-<tbody><tr><td colspan="11">Information coming soon.</td></tr></tbody>
-</table>
-</div>
-<p class="note">Programme structure information coming soon.</p>
-</div>
-<div class="content-card" style="margin-top:12px;">
-<h3>Programme</h3>
-<div class="table-wrap">
-<table class="course-table">
-<thead><tr><th>Level</th><th>Compulsory 1st</th><th>Compulsory 2nd</th><th>GST 1st</th><th>GST 2nd</th><th>ENT 1st</th><th>ENT 2nd</th><th>Elective 1st</th><th>Elective 2nd</th><th>Total 1st</th><th>Total 2nd</th></tr></thead>
-<tbody><tr><td colspan="11">Information coming soon.</td></tr></tbody>
-</table>
-</div>
-</div>
-</section>
-<section class="department-section" id="courses">
-<div class="section-heading">
-<span>Course Structure</span>
-<h2>Courses by Level and Semester</h2>
-<p>Course codes, titles, units and semester details: Information coming soon.</p>
-</div>
-<div class="level-nav">
-<button class="course-level-button" data-level="100" type="button">100 Level</button>
-<button class="course-level-button" data-level="200" type="button">200 Level</button>
-<button class="course-level-button" data-level="300" type="button">300 Level</button>
-<button class="course-level-button" data-level="400" type="button">400 Level</button>
-<a href="#siwes">SIWES</a>
-</div>
-<div class="course-level-group">
-<button aria-expanded="false" class="course-level-button" data-level-toggle="100" type="button">
-      100 Level <span aria-hidden="true">+</span>
-</button>
-<div class="course-level-content" data-level-content="100">
-<div class="course-block" data-level="100" id="level100">
-<h3>100 Level — First Semester</h3>
-<div class="table-wrap"><table class="course-table">
-<thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
-<tbody><tr><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td></tr></tbody>
-</table></div>
-</div>
-<div class="course-block" data-level="100">
-<h3>100 Level — Second Semester</h3>
-<div class="table-wrap"><table class="course-table">
-<thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
-<tbody><tr><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td></tr></tbody>
-</table></div>
-</div>
-</div>
-</div>
-<div class="course-level-group">
-<button aria-expanded="false" class="course-level-button" data-level-toggle="200" type="button">
-      200 Level <span aria-hidden="true">+</span>
-</button>
-<div class="course-level-content" data-level-content="200">
-<div class="course-block" data-level="200" id="level200">
-<h3>200 Level — First Semester</h3>
-<div class="table-wrap"><table class="course-table">
-<thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
-<tbody><tr><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td></tr></tbody>
-</table></div>
-<p class="note">Course and elective details: Information coming soon.</p>
-</div>
-<div class="course-block" data-level="200">
-<h3>200 Level — Second Semester</h3>
-<div class="table-wrap"><table class="course-table">
-<thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
-<tbody><tr><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td></tr></tbody>
-</table></div>
-<p class="note">Course and elective details: Information coming soon.</p>
-</div>
-</div>
-</div>
-<div class="course-level-group">
-<button aria-expanded="false" class="course-level-button" data-level-toggle="300" type="button">
-      300 Level <span aria-hidden="true">+</span>
-</button>
-<div class="course-level-content" data-level-content="300">
-<div class="course-block" data-level="300" id="level300">
-<h3>300 Level — First Semester</h3>
-<div class="table-wrap"><table class="course-table">
-<thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
-<tbody><tr><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td></tr></tbody>
-</table></div>
-<p class="note">Course and elective details: Information coming soon.</p>
-</div>
-<div class="course-block" data-level="300">
-<h3>300 Level — Second Semester / SIWES</h3>
-<div class="table-wrap"><table class="course-table">
-<thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
-<tbody><tr><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td></tr></tbody>
-</table></div>
-</div>
-</div>
-</div>
-<div class="course-level-group">
-<button aria-expanded="false" class="course-level-button" data-level-toggle="400" type="button">
-      400 Level <span aria-hidden="true">+</span>
-</button>
-<div class="course-level-content" data-level-content="400">
-<div class="course-block" data-level="400" id="level400">
-<h3>400 Level — First Semester</h3>
-<div class="table-wrap"><table class="course-table">
-<thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
-<tbody><tr><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td></tr></tbody>
-</table></div>
-<p class="note">Course and elective details: Information coming soon.</p>
-</div>
-<div class="course-block" data-level="400">
-<h3>400 Level — Second Semester</h3>
-<div class="table-wrap"><table class="course-table">
-<thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
-<tbody><tr><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td><td>Information coming soon.</td></tr></tbody>
-</table></div>
-<p class="note">Course and elective details: Information coming soon.</p>
-</div>
-</div></div></section>
+  <div class="department-back-row">
+    <button class="department-back-button" id="departmentBackButton" type="button"><span aria-hidden="true">←</span> Go Back</button>
+    <span class="back-hint">Return to the page you came from</span>
+  </div>
+  <section class="quick-info">
+    <div class="quick-card"><div class="quick-icon">🏛️</div><span>Faculty</span><strong>Faculty of Agriculture</strong></div>
+    <div class="quick-card"><div class="quick-icon">👨‍🏫</div><span>Head of Department</span><strong>Prof. Adekunle A. Oluwasegun</strong></div>
+    <div class="quick-card"><div class="quick-icon">🎓</div><span>Degree</span><strong>B. Agric. (Agricultural Extension and Rural Development)</strong></div>
+    <div class="quick-card"><div class="quick-icon">⏳</div><span>Duration</span><strong>4 years UTME · 3 years Direct Entry</strong></div>
+  </section>
 
+  <section class="department-section" id="overview">
+    <div class="section-heading"><span>Introduction &amp; General Background</span><h2>Department of Agricultural Extension and Rural Development</h2></div>
+    <div class="about-box">
+      <p>The Agricultural Extension programme is designed to educate and train undergraduate students seeking a first degree in Agricultural Extension. Its core curriculum provides the academic foundation and practical exposure required to prepare graduates for national and global development, particularly as agriculture and its value chains respond to the opportunities and demands of the Fourth Industrial Revolution.</p>
+      <p>The programme follows the Core Curriculum and Minimum Academic Standards (CCMAS) for Agricultural Extension while allowing universities to introduce relevant innovations in curriculum content and delivery. At AAUA, the department combines theoretical teaching, practical extension work and rural development activities to improve farmers’ access to useful information and contemporary agricultural practices.</p>
+      <p>AAUA's Department of Agricultural Extension and Rural Development was established in the 2013/2014 academic session. It works to improve the wellbeing of farmers and rural communities through effective information dissemination, needs-based extension services, research uptake and collaboration with government agencies and non-governmental organisations.</p>
+      <a href="https://www.google.com/maps/search/?api=1&query=Faculty+of+Agriculture+Adekunle+Ajasin+University+Akungba+Akoko" class="location-button" target="_blank" rel="noopener noreferrer">📍 View Faculty Location ↗</a>
+    </div>
+  </section>
 
+  <section class="department-section">
+    <div class="section-heading"><span>Programme Philosophy &amp; Objectives</span><h2>What the Programme Aims to Develop</h2></div>
+    <div class="info-grid">
+      <div class="content-card"><h3>Philosophy</h3><p>The B. Agric. programme is designed to develop globally competitive manpower in agricultural extension and rural development. It equips graduates with comprehensive theoretical knowledge and practical skills to teach farmers and agricultural practitioners contemporary methods, techniques and approaches for productive engagement in agriculture, self-reliance, and national and global development.</p></div>
+      <div class="content-card"><h3>Objectives</h3><p>The programme aims to:</p><ul>
+        <li>Produce skilled Agricultural Extension Agents who can work effectively in rural settings and address gaps in knowledge of contemporary farming methods.</li>
+        <li>Support national food self-sufficiency and the production of agricultural raw materials for industry.</li>
+        <li>Improve rural quality of life through effective agricultural extension education.</li>
+        <li>Promote the adaptation and adoption of appropriate technologies to solve local agricultural management problems.</li>
+        <li>Develop graduates with independent thought and sound professional judgement who can provide quality consultancy services to farmers.</li>
+      </ul></div>
+    </div>
+  </section>
 
-<section class="department-section" id="siwes">
-<div class="section-heading">
-<span>SIWES</span>
-<h2>Industrial Training Structure</h2>
-</div>
-<div class="content-card"><p>Information coming soon.</p></div>
-</section>
-<section class="department-section">
-<div class="section-heading">
-<span>Programme Summary</span>
-<h2>Programme Summary</h2>
-</div>
-<div class="summary-grid">
-<div class="summary-card">
-<h3>Programme Information</h3>
-<div class="summary-stat"><span>Programme details</span><strong>Information coming soon</strong></div>
-<div class="summary-stat"><span>Programme details</span><strong>Information coming soon</strong></div>
-<div class="summary-stat"><span>Programme details</span><strong>Information coming soon</strong></div>
-<div class="summary-stat"><span>Programme details</span><strong>Information coming soon</strong></div>
-<div class="summary-stat"><span>Programme details</span><strong>Information coming soon</strong></div>
-</div>
-<div class="summary-card">
-<h3>Programme Information</h3>
-<div class="summary-stat"><span>Programme details</span><strong>Information coming soon</strong></div>
-<div class="summary-stat"><span>Programme details</span><strong>Information coming soon</strong></div>
-<div class="summary-stat"><span>Programme details</span><strong>Information coming soon</strong></div>
-<div class="summary-stat"><span>Programme details</span><strong>Information coming soon</strong></div>
-<div class="summary-stat"><span>Programme details</span><strong>Information coming soon</strong></div>
-</div>
-</div>
-</section>
-<section class="department-section">
-<div class="section-heading">
-<span>Administrative Staff List</span>
-<h2>Department Administration</h2>
-</div>
-<div class="table-wrap">
-<table class="course-table">
-<thead><tr><th>S/N</th><th>Name</th><th>Qualification</th><th>Status</th></tr></thead>
-<tbody><tr><td>1</td><td>Information coming soon</td><td>Information coming soon</td><td>Information coming soon</td></tr></tbody>
-</table>
-</div>
-</section>
-<section class="department-section" id="resources">
-<div class="section-heading">
-<span>Student Support</span>
-<h2>Academic Resources</h2>
-</div>
-<div class="resource-grid">
-<div class="resource-card">
-<div class="resource-icon">📖</div>
-<h3>Department Guide</h3>
-<p>Find useful information about the Department of Agricultural Extension and Rural Development and your academic programme.</p>
-</div>
-<div class="resource-card">
-<div class="resource-icon">📄</div>
-<h3>Lecture Notes PDF</h3>
-<p>Download a department document when the official PDF is available, or select a PDF/course note from your device.</p>
-<div class="resource-actions">
-<a class="download-button" href="#">⬇ Download</a>
-<label class="upload-button" for="departmentPdfUpload">⬆ Upload PDF</label>
-<input accept="application/pdf,.pdf" class="file-input" id="departmentPdfUpload" type="file"/>
-</div>
-<p class="upload-status" id="departmentUploadStatus">No PDF selected.</p>
-</div>
-<div class="resource-card">
-<div class="resource-icon">💬</div>
-<h3>Student Resources</h3>
-<p>Useful academic materials and information for students.</p>
-<div class="resource-actions">
-<a aria-label="Connect on WhatsApp" class="whatsapp-button" href="#">💬 Meet on WhatsApp</a>
-</div>
-</div>
-</div>
-</section>
-<section class="department-section">
-<div class="section-heading">
-<span>Get in Touch</span>
-<h2>Department Contacts</h2>
-</div>
-<div class="contact-grid">
-<div class="contact-card">
-<h3>Department Information</h3>
-<div class="contact-item"><div class="contact-item-icon">🏛️</div><div><span>Faculty</span><strong>Faculty of Agriculture</strong></div></div>
-<div class="contact-item"><div class="contact-item-icon">🎓</div><div><span>Department</span><strong>Agricultural Extension and Rural Development</strong></div></div>
-<div class="contact-item"><div class="contact-item-icon">👨‍🏫</div><div><span>Head of Department</span><strong>Prof. Adekunle A. Oluwasegun</strong></div></div>
-</div>
-<div class="contact-card">
-<h3>University</h3>
-<div class="contact-item"><div class="contact-item-icon">📍</div><div><span>Location</span><strong>Adekunle Ajasin University, Akungba-Akoko, Ondo State</strong></div></div>
-<div class="contact-item"><div class="contact-item-icon">🏫</div><div><span>Faculty</span><strong>Faculty of Agriculture</strong></div></div>
-</div>
-</div>
-</section>
-<section class="department-section" id="help">
-<div class="help-box">
-<h2>Need help with your department?</h2>
-<p>If you need help with registration, courses, departmental information or other student matters, use the AAUA Uni Pilot student help system.</p>
-<a class="help-button" href="help.html">Get Department Help →</a>
-</div>
-</section>
+  <section class="department-section">
+    <div class="section-heading"><span>Programme Features &amp; Skills</span><h2>Employability and 21st Century Skills</h2></div>
+    <div class="info-grid">
+      <div class="content-card"><h3>Employability Skills</h3><p>Graduates are expected to develop the following workplace and professional capabilities:</p><ul>
+        <li>Critical thinking and practical problem-solving.</li>
+        <li>Independent research planning, data gathering and research process management.</li>
+        <li>Teamwork, collaboration and effective workplace communication.</li>
+        <li>Entrepreneurship and the ability to provide agricultural consultancy services.</li>
+        <li>Career opportunities in public and private extension organisations, NGOs, research institutes, government agencies and international organisations.</li>
+      </ul></div>
+      <div class="content-card"><h3>21st Century Skills</h3><ul>
+        <li>Critical thinking, problem-solving, reasoning, analysis, interpretation and synthesis.</li>
+        <li>Research practices, inquiry and interrogative questioning.</li>
+        <li>Leadership, teamwork and collaboration.</li>
+        <li>Learning and literacy skills.</li>
+        <li>Oral and written communication and public speaking.</li>
+        <li>Perseverance, self-direction, planning, self-discipline, adaptability and initiative.</li>
+        <li>ICT, media and internet literacy, including introductory computer programming.</li>
+      </ul></div>
+      <div class="content-card full-card"><h3>Unique Features of the Programme</h3><ul>
+        <li>Blended learning that combines face-to-face teaching with virtual learning.</li>
+        <li>Comprehensive approaches to teaching and learning.</li>
+        <li>Emphasis on ICT and contemporary global extension platforms for effective agricultural extension service delivery.</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <section class="department-section">
+    <div class="section-heading"><span>Programme Offered &amp; Duration</span><h2>B. Agric. in Agricultural Extension and Rural Development</h2></div>
+    <div class="programme-grid">
+      <div class="programme-card"><div class="programme-icon">🎓</div><h3>Bachelor of Agriculture Degree</h3><p>The department awards the B. Agric. degree in Agricultural Extension and Rural Development.</p></div>
+      <div class="programme-card"><div class="programme-icon">⏱️</div><h3>Duration</h3><p>UTME candidates complete a minimum of four academic sessions (four years). Direct Entry candidates admitted into 200 Level complete a minimum of three academic sessions (three years).</p></div>
+    </div>
+  </section>
+
+  <section class="department-section">
+    <div class="section-heading"><span>Admission</span><h2>Admission Requirements</h2></div>
+    <div class="info-grid">
+      <div class="content-card"><h3>UTME — Four-Year Degree Programme</h3><p>In addition to the required UTME score, candidates must have five credit passes in the Senior Secondary Certificate (SSC) or its equivalent, including English Language, Mathematics, Biology or Agricultural Science, and any two other subjects selected from Chemistry, Physics, Geography and Economics. The credits must be obtained in not more than two sittings.</p></div>
+      <div class="content-card"><h3>Direct Entry — Three-Year Programme</h3><p>Candidates must have at least two Advanced Level credit passes or equivalent in Chemistry and Biology, in addition to the five SSC (or equivalent) credit passes prescribed for UTME entry. Diploma holders with a minimum of Upper Credit and five SSC (or equivalent) credit passes obtained in not more than two sittings are eligible for consideration for admission into 200 Level.</p></div>
+    </div>
+  </section>
+
+  <section class="department-section">
+    <div class="section-heading"><span>Graduation</span><h2>Graduation Requirements</h2></div>
+    <div class="content-card">
+      <p>To qualify for the award of the B. Agric. degree in Agricultural Extension and Rural Development, a student must complete and pass all registered courses, including all compulsory courses and other requirements prescribed by the University and Faculty.</p>
+      <p>Students must obtain the minimum CGPA specified by the University, which must not be less than 1.0, and earn at least 120 credit units for the four-year programme or 90 credit units for the three-year Direct Entry programme.</p>
+      <p><strong>Important:</strong> The programme's supplied course list and graduation-unit minimums are reproduced as provided. Students should confirm their approved registration load and graduation audit with the Faculty or Department.</p>
+    </div>
+  </section>
+
+  <section class="department-section">
+    <div class="section-heading"><span>Registration</span><h2>Course Registration Information</h2></div>
+    <div class="info-grid">
+      <div class="rule-card content-card"><h3>Course Categories</h3><p><strong>Compulsory Courses:</strong> Courses marked C are compulsory and must be completed as prescribed for the programme.</p><p><strong>Elective Courses:</strong> Courses marked E are electives. At 300 and 400 levels, students are to choose any one elective from the two options listed for that level.</p></div>
+      <div class="rule-card content-card"><h3>Course Structure Legend</h3><ul><li><strong>LH:</strong> Lecture Hours.</li><li><strong>PH:</strong> Practical Hours.</li><li><strong>C:</strong> Compulsory course.</li><li><strong>E:</strong> Elective course.</li></ul><p class="note">Semester allocation in this presentation follows the odd/even course-code arrangement used for the other Faculty of Agriculture pages.</p></div>
+    </div>
+  </section>
+
+  <section class="department-section">
+    <div class="section-heading"><span>Academic Structure</span><h2>Programme Course Unit Summary</h2><p>Totals below are calculated from the course list supplied for this department, including one elective at 300 and 400 levels.</p></div>
+    <div class="content-card"><div class="table-wrap"><table class="course-table">
+      <thead><tr><th>Level</th><th>First Semester Units (Odd Codes)</th><th>Second Semester Units (Even Codes)</th><th>Level Total</th></tr></thead>
+      <tbody><tr><td>100</td><td>15</td><td>15</td><td>30</td></tr><tr><td>200</td><td>15</td><td>16</td><td>31</td></tr><tr><td>300</td><td>18</td><td>18</td><td>36</td></tr><tr><td>400</td><td>15</td><td>16</td><td>31</td></tr><tr class="total-row"><td>Programme Course Units Listed</td><td>63</td><td>65</td><td>128</td></tr></tbody>
+    </table></div>
+    <p class="note">The 128 units shown are the sum of the course structure supplied here; this is separate from the stated minimum graduation thresholds of 120 units (UTME) and 90 units (Direct Entry).</p></div>
+  </section>
+
+  <section class="department-section" id="courses">
+    <div class="section-heading"><span>Course Structure</span><h2>Courses by Level and Semester</h2><p>Courses are arranged by course-code number: odd-numbered courses under First Semester and even-numbered courses under Second Semester. LH = lecture hours; PH = practical hours; C = compulsory; E = elective. At 300 and 400 levels, choose one elective from the options listed under the relevant semester.</p></div>
+    <div class="level-nav">
+      <button type="button" class="course-level-button" data-level="100">100 Level</button>
+      <button type="button" class="course-level-button" data-level="200">200 Level</button>
+      <button type="button" class="course-level-button" data-level="300">300 Level</button>
+      <button type="button" class="course-level-button" data-level="400">400 Level</button>
+    </div>
+    <div class="course-level-group">
+    <button type="button" class="course-level-button" data-level-toggle="100" aria-expanded="false">100 Level <span aria-hidden="true">+</span></button>
+    <div class="course-level-content" data-level-content="100"><div class="course-block" data-level="100">
+    <h3>100 Level — First Semester</h3>
+    <div class="table-wrap"><table class="course-table">
+      <thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
+      <tbody><tr><td>BIO 101</td><td>General Biology I</td><td>2</td><td>C</td><td>45</td><td>–</td></tr><tr><td>BIO 107</td><td>General Biology Practical I</td><td>1</td><td>C</td><td>–</td><td>45</td></tr><tr><td>AGR 111</td><td>Introduction to Agriculture I</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>CHM 101</td><td>General Chemistry I</td><td>2</td><td>C</td><td>45</td><td>–</td></tr><tr><td>CHM 107</td><td>General Chemistry Practical I</td><td>1</td><td>C</td><td>–</td><td>45</td></tr><tr><td>MTH 101</td><td>Elementary Mathematics I</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>PHY 101</td><td>General Physics I</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>PHY 107</td><td>General Physics Practical I</td><td>1</td><td>C</td><td>–</td><td>45</td></tr><tr><td>GST 111</td><td>Communication in English</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr class="total-row"><td>Total</td><td></td><td>15</td><td></td><td></td><td></td></tr></tbody>
+    </table></div>
+  </div><div class="course-block" data-level="100">
+    <h3>100 Level — Second Semester</h3>
+    <div class="table-wrap"><table class="course-table">
+      <thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
+      <tbody><tr><td>BIO 102</td><td>General Biology II</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>BIO 108</td><td>General Biology Practical II</td><td>1</td><td>C</td><td>–</td><td>45</td></tr><tr><td>AGR 112</td><td>Introduction to Agriculture II</td><td>2</td><td>C</td><td>15</td><td>–</td></tr><tr><td>CHM 102</td><td>General Chemistry II</td><td>2</td><td>C</td><td>45</td><td>–</td></tr><tr><td>CHM 108</td><td>General Chemistry Practical II</td><td>1</td><td>C</td><td>–</td><td>45</td></tr><tr><td>MTH 102</td><td>Elementary Mathematics II</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>PHY 102</td><td>General Physics II</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>PHY 108</td><td>General Physics Practical II</td><td>1</td><td>C</td><td>–</td><td>45</td></tr><tr><td>GST 112</td><td>Nigerian Peoples and Culture</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr class="total-row"><td>Total</td><td></td><td>15</td><td></td><td></td><td></td></tr></tbody>
+    </table></div>
+  </div></div>
+  </div>
+<div class="course-level-group">
+    <button type="button" class="course-level-button" data-level-toggle="200" aria-expanded="false">200 Level <span aria-hidden="true">+</span></button>
+    <div class="course-level-content" data-level-content="200"><div class="course-block" data-level="200">
+    <h3>200 Level — First Semester</h3>
+    <div class="table-wrap"><table class="course-table">
+      <thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
+      <tbody><tr><td>ENT 211</td><td>Entrepreneurship and Innovation</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>CPS 201</td><td>Principles of Crop Production</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>AGR 203</td><td>Introduction to Forest Resources and Wildlife Management</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>AGX 205</td><td>Social Statistics and Research Methods in Extension</td><td>2</td><td>C</td><td>45</td><td>–</td></tr><tr><td>FAA 205</td><td>Introduction to Fisheries and Aquaculture</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>SOS 207</td><td>Principles of Soil Science</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>AAUA-AGX 201</td><td>General Agricultural Extension I</td><td>3</td><td>C</td><td>30</td><td>–</td></tr><tr class="total-row"><td>Total</td><td></td><td>15</td><td></td><td></td><td></td></tr></tbody>
+    </table></div>
+  </div><div class="course-block" data-level="200">
+    <h3>200 Level — Second Semester</h3>
+    <div class="table-wrap"><table class="course-table">
+      <thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
+      <tbody><tr><td>GST 212</td><td>Philosophy, Logic and Human Existence</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>AGE 202</td><td>Introduction to Agricultural Economics</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>FCS 202</td><td>Principles of Family and Consumer Sciences, Food Science and Technology</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>AGX 204</td><td>Introduction to Agricultural Extension and Rural Sociology</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>ANS 204</td><td>Introduction to Animal Production</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>AGX 206</td><td>Introduction to Computer Application in Agricultural Extension</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>AAUA-AGX 202</td><td>General Agricultural Extension II</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>AAUA-AGX 208</td><td>Extension Practices</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr class="total-row"><td>Total</td><td></td><td>16</td><td></td><td></td><td></td></tr></tbody>
+    </table></div>
+  </div></div>
+  </div>
+<div class="course-level-group">
+    <button type="button" class="course-level-button" data-level-toggle="300" aria-expanded="false">300 Level <span aria-hidden="true">+</span></button>
+    <div class="course-level-content" data-level-content="300"><div class="course-block" data-level="300">
+    <h3>300 Level — First Semester</h3>
+    <div class="table-wrap"><table class="course-table">
+      <thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
+      <tbody><tr><td>AGB 301</td><td>Agribusiness Value Chain Analysis</td><td>2</td><td>C</td><td>–</td><td>90</td></tr><tr><td>AGX 301</td><td>Community Agricultural Extension</td><td>2</td><td>C</td><td>–</td><td>90</td></tr><tr><td>AGX 303</td><td>Systems Thinking for Changing Agriculture</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>ANS 303</td><td>Entrepreneurship in Agriculture</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>AGX 305</td><td>Gender and Sustainable Agricultural Development</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>AGX 313</td><td>Multimedia Resource and Application in Agriculture</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>AGR 399</td><td>Field Practical Year Report</td><td>1</td><td>C</td><td>–</td><td>270</td></tr><tr><td>AAUA-AGX 301</td><td>Introduction to Environmental Extension</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>AAUA-AGX 307</td><td>Record keeping in Agricultural Extension</td><td>1</td><td>C</td><td>30</td><td>–</td></tr><tr><td>AAUA-AGX 309</td><td>Principles of development communication</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr class="total-row"><td>Total</td><td></td><td>18</td><td></td><td></td><td></td></tr></tbody>
+    </table></div>
+  </div><div class="course-block" data-level="300">
+    <h3>300 Level — Second Semester</h3>
+    <div class="table-wrap"><table class="course-table">
+      <thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
+      <tbody><tr><td>GST 312</td><td>Peace and Conflict Resolution</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>ENT 312</td><td>Venture Creation</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>AGX 302</td><td>Planning of Supervised Enterprise Project (SEP)</td><td>2</td><td>C</td><td>–</td><td>90</td></tr><tr><td>AGX 304</td><td>Extension and Community Development Practices</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>AAUA-AGX 302</td><td>Digital Extension Practices</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>AAUA-AGX 306</td><td>Rural Child and Youth Development in Agriculture</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>AAUA-AGX 308</td><td>Principles of Community Development</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>AAUA-AGX 310</td><td>Introducing Technological Change in Agriculture</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr class="total-row"><td>Total</td><td></td><td>16</td><td></td><td></td><td></td></tr></tbody>
+    </table></div><p class="note"><strong>Electives — choose any one (2 units):</strong> AAUA-AGX 312 Principles of Agricultural Extension; AAUA-AGX 314 Women and Youth Program in Agriculture.</p>
+  </div></div>
+  </div>
+<div class="course-level-group">
+    <button type="button" class="course-level-button" data-level-toggle="400" aria-expanded="false">400 Level <span aria-hidden="true">+</span></button>
+    <div class="course-level-content" data-level-content="400"><div class="course-block" data-level="400">
+    <h3>400 Level — First Semester</h3>
+    <div class="table-wrap"><table class="course-table">
+      <thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
+      <tbody><tr><td>AGX 401</td><td>Programme Planning and Evaluation</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>AGX 403</td><td>Teaching, Learning Methods in Agricultural Extension</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>AGR 499</td><td>Seminar</td><td>1</td><td>C</td><td>30</td><td>–</td></tr><tr><td>AAUA-AGX 401</td><td>Group Dynamics and Leadership in Extension</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>AAUA-AGX 403</td><td>Extension Organisation, Management and Supervision</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>AAUA-AGX 405</td><td>Extension Psychology</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>AAUA-AGX 407</td><td>Research Methods and Statistical Analysis</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr class="total-row"><td>Total</td><td></td><td>13</td><td></td><td></td><td></td></tr></tbody>
+    </table></div><p class="note"><strong>Electives — choose any one (2 units):</strong> AAUA-AGX 409 Principles of Co-operative Practices; AAUA-AGX 411 Elements of Comparative Agricultural Extension Systems.</p>
+  </div><div class="course-block" data-level="400">
+    <h3>400 Level — Second Semester</h3>
+    <div class="table-wrap"><table class="course-table">
+      <thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead>
+      <tbody><tr><td>AGR 400</td><td>Special Project</td><td>6</td><td>C</td><td>–</td><td>180</td></tr><tr><td>AGX 402</td><td>Extension Communication Systems and Methods</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>AGE 404</td><td>Agricultural Development and Policy</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>AAUA-AGX 402</td><td>Diffusion and Adoption of Agricultural Innovation</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr><td>AAUA-AGX 404</td><td>Agro-Industrial Information Generation and Utilization</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>AAUA-AGX 406</td><td>Rural Community Development and Social Change in Agriculture</td><td>2</td><td>C</td><td>30</td><td>–</td></tr><tr class="total-row"><td>Total</td><td></td><td>16</td><td></td><td></td><td></td></tr></tbody>
+    </table></div>
+  </div></div>
+  </div>
+  </section>
+
+  <section class="department-section" id="resources">
+    <div class="section-heading"><span>Student Support</span><h2>Academic Resources</h2></div>
+    <div class="resource-grid">
+      <div class="resource-card"><div class="resource-icon">📖</div><h3>Department Guide</h3><p>Review the programme overview, philosophy, objectives, admission requirements, graduation requirements and course structure on this page.</p></div>
+      <div class="resource-card"><div class="resource-icon">📄</div><h3>Course Information</h3><p>Use the course structure above to check course codes, titles, units, course status, lecture hours and practical hours for each level.</p></div>
+      <a class="resource-card" href="https://aaua.edu.ng/department/agricultural-extension-and-rural-development" target="_blank" rel="noopener noreferrer"><div class="resource-icon">🌐</div><h3>Official Department Page</h3><p>Visit AAUA's official Department of Agricultural Extension and Rural Development page for university-published information.</p></a>
+    </div>
+  </section>
+
+  <section class="department-section">
+    <div class="section-heading"><span>Get in Touch</span><h2>Department Contacts</h2></div>
+    <div class="contact-grid">
+      <div class="contact-card"><h3>Department Information</h3>
+        <div class="contact-item"><div class="contact-item-icon">🏛️</div><div><span>Faculty</span><strong>Faculty of Agriculture</strong></div></div>
+        <div class="contact-item"><div class="contact-item-icon">🎓</div><div><span>Department</span><strong>Agricultural Extension and Rural Development</strong></div></div>
+        <div class="contact-item"><div class="contact-item-icon">👨‍🏫</div><div><span>HOD</span><strong>Prof. Adekunle A. Oluwasegun</strong></div></div>
+        <div class="contact-item"><div class="contact-item-icon">🕘</div><div><span>Office Hours</span><strong>Monday–Friday, 9:00 a.m.–4:00 p.m.</strong></div></div>
+        <div class="contact-item"><div class="contact-item-icon">🌐</div><div><span>Official Department Page</span><strong><a href="https://aaua.edu.ng/department/agricultural-extension-and-rural-development" target="_blank" rel="noopener noreferrer">Visit AAUA Department Page ↗</a></strong></div></div>
+      </div>
+      <div class="contact-card"><h3>University</h3>
+        <div class="contact-item"><div class="contact-item-icon">📍</div><div><span>Location</span><strong>P.M.B. 01, Akungba-Akoko, Ondo State, Nigeria</strong></div></div>
+        <div class="contact-item"><div class="contact-item-icon">🏫</div><div><span>Faculty</span><strong>Faculty of Agriculture</strong></div></div>
+        <div class="contact-item"><div class="contact-item-icon">📞</div><div><span>University Phones</span><strong><a href="tel:+2348161651123">+234 816 165 1123</a><br><a href="tel:+2347089105452">+234 708 910 5452</a></strong></div></div>
+        <div class="contact-item"><div class="contact-item-icon">✉️</div><div><span>University Email</span><strong><a href="mailto:info@aaua.edu.ng">info@aaua.edu.ng</a></strong></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="department-section" id="help"><div class="help-box"><h2>Need help with your department?</h2><p>If you need help with course registration, academic information or other student matters, use the AAUA Uni Pilot student help system.</p><a href="help.html" class="help-button">Get Department Help →</a></div></section>
 </main>
+
 <footer>
-<div class="footer-container">
-<div class="footer-brand">
-<a class="brand" href="index.html">🎓 AAUA Uni Pilot</a>
-<p>Your campus. Your resources. Your guide.</p>
-</div>
-<div class="footer-links">
-<div>
-<h4>Platform</h4>
-<a href="resources.html">Resources</a>
-<a href="guide.html">Student Guide</a>
-<a href="updates.html">Updates</a>
-<a href="tools.html">Student Tools</a>
-</div>
-<div>
-<h4>Information</h4>
-<a href="about.html">About</a>
-<a href="privacy.html">Privacy Policy</a>
-<a href="terms.html">Terms of Use</a>
-<a href="contact.html">Contact</a>
-</div>
-</div>
-</div>
-<div class="footer-bottom"><p>© 2026 Uni Pilot. All rights reserved.</p></div>
+  <div class="footer-container">
+    <div class="footer-brand">
+      <a href="index.html" class="brand">🎓 AAUA Uni Pilot</a>
+      <p>Your campus. Your resources. Your guide.</p>
+    </div>
+    <div class="footer-links">
+      <div>
+        <h4>Platform</h4>
+        <a href="resources.html">Resources</a>
+        <a href="guide.html">Student Guide</a>
+        <a href="updates.html">Updates</a>
+        <a href="tools.html">Student Tools</a>
+      </div>
+      <div>
+        <h4>Information</h4>
+        <a href="about.html">About</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Use</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 Uni Pilot. All rights reserved.</p></div>
 </footer>
+
+
 <script>
 document.querySelectorAll(".programme-toggle").forEach(button => {
   button.addEventListener("click", function(){
@@ -680,27 +654,46 @@ document.querySelectorAll(".level-nav .course-level-button[data-level]").forEach
   });
 });
 </script>
+
+
+
+
 <script>
-document.getElementById("departmentPdfUpload").addEventListener("change", function(){
-  const status = document.getElementById("departmentUploadStatus");
-  const file = this.files[0];
+  // Return to the referring page when possible; use the faculty guide as a safe fallback.
+  document.getElementById("departmentBackButton").addEventListener("click", function () {
+    if (window.history.length > 1 && document.referrer && new URL(document.referrer).origin === window.location.origin) {
+      window.history.back();
+    } else {
+      window.location.href = "faculty-guide.html";
+    }
+  });
 
-  if(!file){
-    status.textContent = "No PDF selected.";
-    return;
-  }
+  // Reveal content as it enters the viewport.
+  (function () {
+    const items = document.querySelectorAll(".quick-card, .department-section, .programme-card, .content-card, .resource-card, .contact-card, .summary-card");
+    items.forEach((item, index) => {
+      item.classList.add("reveal-on-scroll");
+      item.style.transitionDelay = (index % 4) * 55 + "ms";
+    });
 
-  const isPdf = file.type === "application/pdf" || file.name.toLowerCase().endsWith(".pdf");
+    if (!("IntersectionObserver" in window)) {
+      items.forEach(item => item.classList.add("is-visible"));
+      return;
+    }
 
-  if(!isPdf){
-    this.value = "";
-    status.textContent = "Please select a PDF file.";
-    return;
-  }
+    const observer = new IntersectionObserver((entries, activeObserver) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          activeObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
 
-  status.textContent = "Selected: " + file.name + " (ready for upload)";
-});
+    items.forEach(item => observer.observe(item));
+  })();
 </script>
+
   <script src="site-navigation.js"></script>
 </body>
 </html>
