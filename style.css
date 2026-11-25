@@ -2779,3 +2779,26 @@ html[data-theme='dark'] .up-study-theme-link{background:rgba(255,255,255,.035)!i
 html[data-theme='dark'] .up-study-drawer-bottom{background:rgba(255,255,255,.04)!important;border-color:rgba(255,255,255,.06)!important;color:#8ce0ba!important}
 @media(max-width:700px){.up-study-navbar{min-height:72px!important;padding:0 16px!important;gap:12px!important}.up-study-crumb{font-size:13px;gap:8px}.up-study-campus{padding:10px 12px;font-size:8px;letter-spacing:1.2px}.up-study-avatar{width:44px!important;height:44px!important;flex-basis:44px!important}.up-study-drawer{width:min(350px,86vw)!important;padding:24px 18px 18px!important}}
 @media(max-width:400px){.up-study-campus{display:none!important}}
+
+
+/* FIXED STUDY-HUB INSPIRED DRAWER STACKING + ACCOUNT PROFILE POPUP */
+.up-study-header{z-index:1300!important;position:sticky!important}
+.menu-overlay.active{z-index:1200!important}
+.up-study-drawer{z-index:1350!important}
+.up-study-profile-pop{width:min(290px,calc(100vw - 28px))!important;min-width:0!important;padding:12px!important;top:calc(100% + 12px)!important;right:0!important;border-radius:20px!important;background:rgba(255,255,255,.96)!important;border:1px solid rgba(11,93,59,.10)!important;box-shadow:0 24px 60px rgba(6,59,38,.18)!important;backdrop-filter:blur(22px)!important;-webkit-backdrop-filter:blur(22px)!important;z-index:1400!important}
+.up-study-profile-head{padding:12px 10px 14px;text-align:center}
+.up-study-profile-avatar{width:54px;height:54px;display:grid;place-items:center;margin:0 auto 10px;border-radius:50%;background:#0b5d3b;color:#fff;font-weight:800;font-size:18px;box-shadow:0 8px 20px rgba(11,93,59,.18)}
+.up-study-profile-name{color:#17221c;font-size:15px;font-weight:800;line-height:1.4;overflow-wrap:anywhere}
+.up-study-profile-email{color:#7b8981;font-size:12px;margin-top:4px;overflow-wrap:anywhere}
+.up-study-edit-profile,.up-study-signout{display:flex!important;align-items:center!important;justify-content:space-between!important;width:100%!important;padding:12px 13px!important;border-radius:12px!important;border:1px solid rgba(11,93,59,.07)!important;background:rgba(11,93,59,.045)!important;color:#526058!important;text-align:left!important;font-weight:700!important;font-family:inherit!important;font-size:13px!important}
+.up-study-edit-profile:disabled{opacity:1!important;cursor:not-allowed!important}
+.up-study-edit-profile span{font-size:10px;font-weight:700;color:#8a9890;background:#edf4ef;padding:5px 7px;border-radius:999px}
+.up-study-profile-divider{height:1px;margin:8px 2px;background:rgba(11,93,59,.10)}
+.up-study-signout{background:rgba(180,35,35,.06)!important;color:#b42323!important;border-color:rgba(180,35,35,.10)!important;justify-content:flex-start!important}
+html[data-theme='dark'] .up-study-profile-pop{background:rgba(12,23,27,.97)!important;border-color:rgba(255,255,255,.08)!important}
+html[data-theme='dark'] .up-study-profile-name{color:#eef5f2!important}
+html[data-theme='dark'] .up-study-profile-email{color:#94a6a0!important}
+html[data-theme='dark'] .up-study-edit-profile{background:rgba(255,255,255,.04)!important;color:#a6b8b1!important;border-color:rgba(255,255,255,.06)!important}
+html[data-theme='dark'] .up-study-edit-profile span{background:rgba(255,255,255,.07)!important;color:#92a39d!important}
+html[data-theme='dark'] .up-study-profile-divider{background:rgba(255,255,255,.09)!important}
+html[data-theme='dark'] .up-study-signout{background:rgba(255,80,80,.08)!important;color:#ff9a9a!important;border-color:rgba(255,80,80,.10)!important}
