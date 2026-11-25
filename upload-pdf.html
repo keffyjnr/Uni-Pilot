@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload PDF | Uni-Pilot</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f7f5;
+            color: #17221c;
+        }
+
+        header {
+            background: #063b26;
+            color: white;
+            padding: 22px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: 45px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0,0,0,.07);
+        }
+
+        h2 {
+            color: #0b5d3b;
+        }
+
+        label {
+            display: block;
+            margin: 17px 0 7px;
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #dfe8e2;
+            border-radius: 7px;
+            font-size: 15px;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 90px;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            margin-top: 22px;
+            background: #0b5d3b;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:disabled {
+            opacity: .6;
+            cursor: not-allowed;
+        }
+
+        #message {
+            margin-top: 18px;
+            text-align: center;
+        }
+
+        .note {
+            background: #eaf6ef;
+            padding: 12px;
+            border-radius: 7px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Uni-Pilot PDF Repository</h1>
+    <p>Submit your academic materials</p>
+</header>
+
+<div class="container">
+
+    <h2>Upload PDF</h2>
+
+    <p class="note">
+        Your document will be reviewed by an administrator
+        before appearing in the PDF library.
+    </p>
+
+    <form id="uploadForm">
+
+        <label>Document Title</label>
+        <input type="text" id="title" required>
+
+        <label>Description</label>
+        <textarea id="description"></textarea>
+
+        <label>Course Code</label>
+        <input type="text" id="courseCode">
+
+        <label>Faculty</label>
+        <input type="text" id="faculty" required>
+
+        <label>Department</label>
+        <input type="text" id="department" required>
+
+        <label>Academic Level</label>
+        <select id="level" required>
+            <option value="">Select level</option>
+            <option>100 Level</option>
+            <option>200 Level</option>
+            <option>300 Level</option>
+            <option>400 Level</option>
+            <option>500 Level</option>
+            <option>600 Level</option>
+        </select>
+
+        <label>Select PDF</label>
+        <input
+            type="file"
+            id="pdfFile"
+            accept="application/pdf,.pdf"
+            required
+        >
+
+        <button type="submit" id="submitBtn">
+            Submit PDF
+        </button>
+
+    </form>
+
+    <div id="message"></div>
+
+</div>
+
+<script type="module">
+
+import { supabase } from "./js/supabase-config.js";
+
+const form = document.getElementById("uploadForm");
+const message = document.getElementById("message");
+const submitBtn = document.getElementById("submitBtn");
+
+form.addEventListener("submit", async (e) => {
+
+    e.preventDefault();
+
+    submitBtn.disabled = true;
+    message.textContent = "Checking your account...";
+
+    try {
+
+        const { data: { user }, error: authError } =
+            await supabase.auth.getUser();
+
+        if (authError || !user) {
+            throw new Error(
+                "Please log in before uploading a PDF."
+            );
+        }
+
+        const file = document.getElementById("pdfFile").files[0];
+
+        if (!file) {
+            throw new Error("Please select a PDF.");
+        }
+
+        if (file.type !== "application/pdf" ||
+            !file.name.toLowerCase().endsWith(".pdf")) {
+            throw new Error("Only PDF files are allowed.");
+        }
+
+        if (file.size > 20 * 1024 * 1024) {
+            throw new Error("PDF must not exceed 20MB.");
+        }
+
+        const filePath = `${user.id}/${crypto.randomUUID()}.pdf`;
+
+        message.textContent = "Uploading your PDF...";
+
+        const { error: uploadError } = await supabase.storage
+            .from("UNI-PILOT pdf")
+            .upload(filePath, file, {
+                contentType: "application/pdf",
+                upsert: false
+            });
+
+        if (uploadError) throw uploadError;
+
+        message.textContent = "Saving document information...";
+
+        const { error: databaseError } = await supabase
+            .from("documents")
+            .insert({
+                title: document.getElementById("title").value,
+                description: document.getElementById("description").value,
+                course_code: document.getElementById("courseCode").value,
+                faculty: document.getElementById("faculty").value,
+                department: document.getElementById("department").value,
+                academic_level: document.getElementById("level").value,
+                file_path: filePath,
+                uploaded_by: user.id,
+                status: "pending"
+            });
+
+        if (databaseError) throw databaseError;
+
+        message.textContent =
+            "PDF submitted successfully! Awaiting administrator approval.";
+
+        message.style.color = "green";
+
+        form.reset();
+
+    } catch (error) {
+
+        message.textContent = error.message;
+        message.style.color = "red";
+
+    } finally {
+
+        submitBtn.disabled = false;
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
