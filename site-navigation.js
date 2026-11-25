@@ -16,6 +16,42 @@
     document.body.insertBefore(header,document.body.firstChild);
     header.querySelector(".up-study-crumb strong").textContent=pageName;
     if(preservedAccount) header.querySelector(".account-wrapper").replaceWith(preservedAccount);
+    if(!preservedAccount){
+      const account=header.querySelector(".up-study-account");
+      const avatar=header.querySelector("#authBtn");
+      const dropdown=header.querySelector("#accountDropdown");
+      const close=header.querySelector("#profilePopupClose");
+      const logout=header.querySelector("#logoutBtn");
+      const mobileAuth=header.querySelector("#mobileAuthBtn");
+      let user=null;
+      try{
+        if(localStorage.getItem("uniPilotLoggedIn")==="true"){
+          user=JSON.parse(localStorage.getItem("uniPilotCurrentUser")||"null");
+        }
+      }catch(e){user=null;}
+      if(user&&user.name&&avatar&&dropdown){
+        const initial=String(user.name).trim().charAt(0).toUpperCase()||"K";
+        avatar.textContent=initial;avatar.href="#";avatar.title=user.name;avatar.setAttribute("aria-expanded","false");
+        header.querySelector("#profilePopupInitial").textContent=initial;
+        header.querySelector("#profilePopupName").textContent=user.name;
+        header.querySelector("#profilePopupEmail").textContent=user.email||"";
+        const closeProfile=()=>{dropdown.classList.remove("active");avatar.setAttribute("aria-expanded","false");};
+        avatar.addEventListener("click",event=>{event.preventDefault();const opened=dropdown.classList.toggle("active");avatar.setAttribute("aria-expanded",String(opened));});
+        if(close)close.addEventListener("click",closeProfile);
+        document.addEventListener("click",event=>{
+          if(dropdown.classList.contains("active")&&!account.contains(event.target)){
+            event.preventDefault();event.stopPropagation();event.stopImmediatePropagation();closeProfile();
+          }
+        },true);
+        document.addEventListener("keydown",event=>{if(event.key==="Escape")closeProfile();});
+        const signOut=()=>{try{localStorage.removeItem("uniPilotLoggedIn");localStorage.removeItem("uniPilotCurrentUser");}catch(e){}location.replace("auth.html");};
+        if(logout)logout.addEventListener("click",signOut);
+        if(mobileAuth){mobileAuth.textContent="↩ Log out";mobileAuth.addEventListener("click",event=>{event.preventDefault();signOut();});}
+      }else{
+        if(dropdown)dropdown.remove();
+        if(avatar){avatar.href="auth.html";avatar.setAttribute("aria-label","Login / Sign up");}
+      }
+    }
     const activeFile=location.pathname.split("/").pop()||"index.html";
     header.querySelectorAll(".up-study-nav-link[href]").forEach(a=>{if(a.getAttribute("href")===activeFile)a.classList.add("active");});
     let menu=header.querySelector("#navLinks"),overlay=header.querySelector("#menuOverlay"),btn=header.querySelector("#menuBtn");
