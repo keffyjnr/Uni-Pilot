@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap');
+
 /* =========================
    UNI PILOT - GLOBAL STYLES
 ========================= */
@@ -2802,3 +2804,9 @@ html[data-theme='dark'] .up-study-edit-profile{background:rgba(255,255,255,.04)!
 html[data-theme='dark'] .up-study-edit-profile span{background:rgba(255,255,255,.07)!important;color:#92a39d!important}
 html[data-theme='dark'] .up-study-profile-divider{background:rgba(255,255,255,.09)!important}
 html[data-theme='dark'] .up-study-signout{background:rgba(255,80,80,.08)!important;color:#ff9a9a!important;border-color:rgba(255,80,80,.10)!important}
+
+
+/* SITE-WIDE TYPOGRAPHY: match the Study Hub font */
+html, body, body *, body *::before, body *::after {
+  font-family: 'DM Sans', sans-serif !important;
+}
