@@ -37,3 +37,32 @@ html[data-theme="dark"] .site-nav-fix .mobile-menu a:hover,html[data-theme="dark
 .site-nav-fix .site-theme-btn{display:inline-flex!important;align-items:center;justify-content:center}
 .site-nav-fix .nav-actions{gap:7px!important}
 }
+
+/* STUDY HUB DRAWER REPLICA — compact left glass drawer, full-height */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap');
+html.site-nav-fix, html.site-nav-fix body, html.site-nav-fix body *, html.site-nav-fix body *::before, html.site-nav-fix body *::after {
+  font-family: 'DM Sans', sans-serif !important;
+}
+.site-nav-fix .mobile-menu {
+  display:flex !important; flex-direction:column; gap:6px;
+  position:fixed !important; top:0 !important; bottom:0 !important; left:0 !important; right:auto !important;
+  width:250px !important; max-width:250px !important; height:100vh !important; height:100dvh !important;
+  max-height:none !important; overflow-y:auto !important; padding:26px 18px !important;
+  border:1px solid rgba(255,255,255,.45) !important; border-left:0 !important; border-radius:0 18px 18px 0 !important;
+  background:rgba(255,255,255,.78) !important; backdrop-filter:blur(22px) saturate(140%) !important;
+  -webkit-backdrop-filter:blur(22px) saturate(140%) !important;
+  box-shadow:15px 0 35px rgba(16,43,28,.12) !important;
+  z-index:1200 !important; transform:translateX(-105%) !important; visibility:hidden !important; opacity:0 !important; pointer-events:none !important;
+  transition:transform .28s ease, opacity .25s ease, visibility .25s !important;
+}
+.site-nav-fix .mobile-menu.is-open {
+  transform:translateX(0) !important; visibility:visible !important; opacity:1 !important; pointer-events:auto !important;
+}
+.site-nav-fix .mobile-menu a,.site-nav-fix .mobile-menu button {
+  min-height:0 !important; padding:12px !important; border-radius:9px !important; gap:10px !important;
+  font:700 13px 'DM Sans',sans-serif !important; text-decoration:none !important;
+}
+.site-nav-fix .menu-overlay { z-index:1190 !important; background:rgba(4,25,15,.36) !important; backdrop-filter:blur(4px) !important; -webkit-backdrop-filter:blur(4px) !important; }
+.site-nav-fix .menu-overlay.is-open { display:block !important; opacity:1 !important; visibility:visible !important; pointer-events:auto !important; }
+html[data-theme="dark"] .site-nav-fix .mobile-menu { background:rgba(12,23,27,.78) !important; border-color:rgba(255,255,255,.12) !important; }
+@media(min-width:821px){.site-nav-fix .mobile-menu,.site-nav-fix .menu-overlay{display:none!important}}
