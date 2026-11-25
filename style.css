@@ -2737,3 +2737,45 @@ html[data-theme="dark"] .faculty-contact .contact-item small {
   color: #a9c7ba !important;
 }
 
+
+
+/* STUDY HUB-INSPIRED HOMEPAGE HEADER + DRAWER */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap');
+html,body,button,input,select,textarea{font-family:'DM Sans',Arial,sans-serif!important}
+.up-study-header{position:sticky!important;top:0!important;z-index:1100!important;background:rgba(255,255,255,.82)!important;backdrop-filter:blur(22px)!important;-webkit-backdrop-filter:blur(22px)!important;border-bottom:1px solid rgba(11,93,59,.08)!important;box-shadow:0 6px 24px rgba(6,59,38,.04)!important}
+.up-study-navbar{max-width:1200px!important;margin:auto!important;min-height:76px!important;padding:0 22px!important;display:flex!important;align-items:center!important;gap:18px!important;justify-content:flex-start!important}
+.up-study-menu-btn{display:inline-flex!important;align-items:center!important;justify-content:center!important;flex:0 0 44px!important;width:44px!important;height:44px!important;border:0!important;background:transparent!important;border-radius:13px!important;color:#0b5d3b!important;font-size:26px!important;line-height:1!important}
+.up-study-crumb{display:flex;align-items:center;gap:12px;min-width:0;font-size:14px;color:#718078;white-space:nowrap}
+.up-study-crumb a{color:#718078;text-decoration:none}.up-study-crumb strong{color:#17221c;font-weight:800}
+.up-study-campus{margin-left:auto;display:inline-flex;align-items:center;gap:7px;padding:13px 18px;border-radius:999px;background:#eaf6ef;border:1px solid rgba(11,93,59,.06);color:#0b5d3b;font-size:10px;font-weight:800;letter-spacing:1.7px;white-space:nowrap}
+.up-study-avatar{display:grid!important;place-items:center!important;width:52px!important;height:52px!important;flex:0 0 52px!important;padding:0!important;border:0!important;border-radius:50%!important;background:#0b5d3b!important;color:#fff!important;font-size:17px!important;font-weight:800!important;text-decoration:none!important;box-shadow:0 8px 18px rgba(11,93,59,.18)!important}
+.up-study-account .account-dropdown{top:calc(100% + 12px)!important}
+.up-study-drawer{position:fixed!important;top:0!important;left:0!important;right:auto!important;bottom:0!important;height:100dvh!important;width:min(360px,88vw)!important;max-width:360px!important;padding:28px 22px 22px!important;display:flex!important;flex-direction:column!important;gap:8px!important;background:rgba(245,250,247,.92)!important;border:1px solid rgba(255,255,255,.75)!important;border-right:1px solid rgba(11,93,59,.12)!important;border-radius:0 26px 26px 0!important;box-shadow:0 28px 80px rgba(6,59,38,.20)!important;backdrop-filter:blur(26px)!important;-webkit-backdrop-filter:blur(26px)!important;z-index:1200!important;opacity:0!important;visibility:hidden!important;pointer-events:none!important;transform:translateX(-105%)!important;transform-origin:left center!important;transition:transform .34s cubic-bezier(.2,.8,.2,1),opacity .25s ease,visibility .25s ease!important;overflow-y:auto!important}
+.up-study-drawer.active{opacity:1!important;visibility:visible!important;pointer-events:auto!important;transform:translateX(0)!important}
+.up-study-drawer-brand{display:flex;align-items:center;gap:12px;padding:4px 8px 32px;color:#17221c}
+.up-study-brand-mark{display:grid;place-items:center;width:54px;height:54px;border-radius:17px;background:#0b5d3b;color:white;font-size:25px;box-shadow:0 10px 22px rgba(11,93,59,.16)}
+.up-study-drawer-brand strong,.up-study-drawer-brand small{display:block;letter-spacing:1.6px}.up-study-drawer-brand strong{font-size:13px;font-weight:800}.up-study-drawer-brand small{margin-top:5px;font-size:10px;color:#0b5d3b;font-weight:800}
+.up-study-side-label{padding:0 12px 8px;margin:0;color:#9aa69f;font-size:10px;letter-spacing:1.8px;font-weight:800}
+.up-study-nav-link{display:flex!important;align-items:center!important;gap:12px!important;width:100%!important;min-height:52px!important;padding:13px 15px!important;border-radius:15px!important;color:#627168!important;text-decoration:none!important;font-size:14px!important;font-weight:600!important;background:rgba(11,93,59,.035)!important;border:1px solid transparent!important;transition:background .2s ease,color .2s ease,transform .2s ease!important}
+.up-study-nav-link span{display:inline-grid;place-items:center;width:22px;flex:0 0 22px;font-size:15px}
+.up-study-nav-link:hover,.up-study-nav-link:active{background:#eaf6ef!important;color:#0b5d3b!important;transform:translateX(2px)!important}
+.up-study-nav-link.active{background:rgba(255,255,255,.75)!important;color:#0b5d3b!important;border-color:rgba(11,93,59,.14)!important;box-shadow:0 5px 18px rgba(6,59,38,.06)!important;font-weight:800!important;position:relative!important}
+.up-study-nav-link.active:before{content:'';position:absolute;left:0;top:10px;bottom:10px;width:4px;border-radius:0 4px 4px 0;background:#0b5d3b}
+.up-study-theme-link{width:100%!important;min-height:52px!important;display:flex!important;align-items:center!important;gap:12px!important;padding:13px 15px!important;border-radius:15px!important;border:1px solid transparent!important;background:rgba(11,93,59,.035)!important;color:#627168!important;font-weight:600!important;font-size:14px!important;text-align:left!important}
+.up-study-theme-link .theme-current-label{margin-left:auto!important;color:#8a9890!important;font-size:11px!important}
+.up-study-login{margin-top:4px!important}
+.up-study-drawer-bottom{margin-top:auto!important;padding:18px 16px!important;border-radius:18px!important;background:rgba(255,255,255,.55)!important;border:1px solid rgba(255,255,255,.7)!important;color:#0b5d3b!important}
+.up-study-drawer-bottom p{margin:0 0 6px!important;font-size:12px!important;font-weight:800!important}.up-study-drawer-bottom small{font-size:11px!important;color:#839188!important;line-height:1.5!important}
+.menu-overlay.active{z-index:1190!important;background:rgba(6,59,38,.24)!important;backdrop-filter:blur(5px)!important;-webkit-backdrop-filter:blur(5px)!important}
+html[data-theme='dark'] .up-study-header{background:rgba(8,16,20,.84)!important;border-bottom-color:rgba(255,255,255,.07)!important}
+html[data-theme='dark'] .up-study-crumb a{color:#9aa9a7!important}html[data-theme='dark'] .up-study-crumb strong{color:#f0f6f4!important}
+html[data-theme='dark'] .up-study-campus{background:#102820!important;color:#8ce0ba!important;border-color:rgba(140,224,186,.08)!important}
+html[data-theme='dark'] .up-study-avatar{background:#0b5d3b!important;color:#fff!important}
+html[data-theme='dark'] .up-study-drawer{background:rgba(12,23,27,.94)!important;border-color:rgba(255,255,255,.07)!important}
+html[data-theme='dark'] .up-study-drawer-brand{color:#f0f6f4!important}html[data-theme='dark'] .up-study-drawer-brand small{color:#8ce0ba!important}
+html[data-theme='dark'] .up-study-nav-link{color:#9aaba6!important;background:rgba(255,255,255,.035)!important}
+html[data-theme='dark'] .up-study-nav-link:hover,html[data-theme='dark'] .up-study-nav-link.active{background:rgba(11,93,59,.18)!important;color:#8ce0ba!important;border-color:rgba(140,224,186,.12)!important}
+html[data-theme='dark'] .up-study-theme-link{background:rgba(255,255,255,.035)!important;color:#9aaba6!important}
+html[data-theme='dark'] .up-study-drawer-bottom{background:rgba(255,255,255,.04)!important;border-color:rgba(255,255,255,.06)!important;color:#8ce0ba!important}
+@media(max-width:700px){.up-study-navbar{min-height:72px!important;padding:0 16px!important;gap:12px!important}.up-study-crumb{font-size:13px;gap:8px}.up-study-campus{padding:10px 12px;font-size:8px;letter-spacing:1.2px}.up-study-avatar{width:44px!important;height:44px!important;flex-basis:44px!important}.up-study-drawer{width:min(350px,86vw)!important;padding:24px 18px 18px!important}}
+@media(max-width:400px){.up-study-campus{display:none!important}}
