@@ -882,7 +882,8 @@
       }
 
       if (authBtn) {
-        authBtn.textContent = "👤 " + user.name;
+        authBtn.textContent = user.name.charAt(0).toUpperCase();
+        authBtn.title = user.name;
         authBtn.href = "#";
         authBtn.setAttribute("aria-expanded", "false");
 
