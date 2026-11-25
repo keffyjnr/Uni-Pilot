@@ -146,6 +146,8 @@
       visibility: visible;
       transform: translateY(0);
     }
+    .up-study-profile-close{position:absolute;top:7px;right:8px;width:30px;height:30px;border:0;border-radius:50%;background:rgba(11,93,59,.08);color:var(--text);font-size:21px;line-height:1;cursor:pointer;z-index:2}
+    .account-dropdown{padding-top:38px}
 
     .logout-btn {
       width: 100%;
@@ -465,6 +467,7 @@
       <div class="account-wrapper up-study-account">
         <a href="auth.html" class="auth-btn up-study-avatar" id="authBtn" aria-label="Account">?</a>
         <div class="account-dropdown up-study-profile-pop" id="accountDropdown">
+          <button class="up-study-profile-close" id="profilePopupClose" type="button" aria-label="Close account menu">×</button>
           <div class="up-study-profile-head">
             <div class="up-study-profile-avatar" id="profilePopupInitial">K</div>
             <div class="up-study-profile-name" id="profilePopupName">Student</div>
@@ -942,18 +945,24 @@
         });
       }
 
-      document.addEventListener("click", function (event) {
-        if (
-          accountDropdown &&
-          !event.target.closest(".account-wrapper")
-        ) {
-          accountDropdown.classList.remove("active");
+      function closeAccountDropdown() {
+        if (accountDropdown) accountDropdown.classList.remove("active");
+        if (authBtn) authBtn.setAttribute("aria-expanded", "false");
+      }
+      const profileClose = document.getElementById("profilePopupClose");
+      if (profileClose) profileClose.addEventListener("click", closeAccountDropdown);
 
-          if (authBtn) {
-            authBtn.setAttribute("aria-expanded", "false");
-          }
+      // Capture outside taps so the first tap only dismisses the popup;
+      // it cannot activate a button or link underneath.
+      document.addEventListener("click", function (event) {
+        if (accountDropdown && accountDropdown.classList.contains("active") &&
+            !event.target.closest(".account-wrapper")) {
+          event.preventDefault();
+          event.stopPropagation();
+          event.stopImmediatePropagation();
+          closeAccountDropdown();
         }
-      });
+      }, true);
 
       document.addEventListener("keydown", function (event) {
         if (event.key === "Escape" && accountDropdown) {
