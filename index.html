@@ -442,8 +442,15 @@
 
       <div class="account-wrapper up-study-account">
         <a href="auth.html" class="auth-btn up-study-avatar" id="authBtn" aria-label="Account">?</a>
-        <div class="account-dropdown" id="accountDropdown">
-          <button class="logout-btn" id="logoutBtn" type="button">Log out ↩</button>
+        <div class="account-dropdown up-study-profile-pop" id="accountDropdown">
+          <div class="up-study-profile-head">
+            <div class="up-study-profile-avatar" id="profilePopupInitial">K</div>
+            <div class="up-study-profile-name" id="profilePopupName">Student</div>
+            <div class="up-study-profile-email" id="profilePopupEmail"></div>
+          </div>
+          <button class="up-study-edit-profile" type="button" disabled aria-disabled="true">Edit profile <span>Coming soon</span></button>
+          <div class="up-study-profile-divider"></div>
+          <button class="logout-btn up-study-signout" id="logoutBtn" type="button">Sign out</button>
         </div>
       </div>
 
@@ -544,11 +551,7 @@
 
   </div>
 
-  <!-- Menu Background Overlay -->
-  <div
-    class="menu-overlay"
-    id="menuOverlay"
-  ></div>
+  <!-- Navigation overlay is defined once above the main content. -->
 
   <!-- =========================
        MAIN CONTENT
@@ -882,8 +885,15 @@
       }
 
       if (authBtn) {
-        authBtn.textContent = user.name.charAt(0).toUpperCase();
+        const userInitial = user.name.charAt(0).toUpperCase();
+        authBtn.textContent = userInitial;
         authBtn.title = user.name;
+        const profileName = document.getElementById("profilePopupName");
+        const profileInitial = document.getElementById("profilePopupInitial");
+        const profileEmail = document.getElementById("profilePopupEmail");
+        if (profileName) profileName.textContent = user.name;
+        if (profileInitial) profileInitial.textContent = userInitial;
+        if (profileEmail) profileEmail.textContent = user.email || "";
         authBtn.href = "#";
         authBtn.setAttribute("aria-expanded", "false");
 
