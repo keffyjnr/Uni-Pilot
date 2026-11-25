@@ -58,11 +58,14 @@
     let menu=header.querySelector("#navLinks"),overlay=header.querySelector("#menuOverlay"),btn=header.querySelector("#menuBtn");
     let savedScrollY=0,bodyPosition="",bodyTop="",bodyWidth="",bodyOverflow="",htmlOverflow="";
     function closeMenu(){
+      const wasOpen=menu.classList.contains("active")||overlay.classList.contains("active");
       menu.classList.remove("active","is-open");overlay.classList.remove("active","is-open");
       document.removeEventListener("touchmove",blockBackgroundTouch,{capture:true});
       document.removeEventListener("wheel",blockBackgroundWheel,{capture:true});
-      document.body.style.position=bodyPosition;document.body.style.top=bodyTop;document.body.style.width=bodyWidth;document.body.style.overflow=bodyOverflow;document.documentElement.style.overflow=htmlOverflow;
-      window.scrollTo(0,savedScrollY);
+      if(wasOpen){
+        document.body.style.position=bodyPosition;document.body.style.top=bodyTop;document.body.style.width=bodyWidth;document.body.style.overflow=bodyOverflow;document.documentElement.style.overflow=htmlOverflow;
+        window.scrollTo(0,savedScrollY);
+      }
       if(btn){btn.setAttribute("aria-expanded","false");btn.setAttribute("aria-label","Open menu");btn.textContent="☰";}
     }
     function blockBackgroundTouch(event){if(!menu.contains(event.target)){event.preventDefault();}}
