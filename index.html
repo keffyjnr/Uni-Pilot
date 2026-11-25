@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
-    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap"
     rel="stylesheet"
   >
 
@@ -426,145 +426,63 @@
        NAVIGATION
   ========================== -->
 
-  <header class="header">
+  <header class="header up-study-header">
 
-    <nav class="navbar">
+    <nav class="navbar up-study-navbar">
 
-      <!-- Logo -->
-      <a href="index.html" class="brand">
-        <div class="brand-icon">
-          🎓
-        </div>
-        <span>Uni Pilot</span>
-      </a>
+      <button class="menu-btn up-study-menu-btn" id="menuBtn" aria-label="Open navigation menu" type="button">☰</button>
 
-      <!-- Desktop Navigation -->
-      <div class="desktop-nav">
-
-        <a href="index.html" class="active">
-          Home
-        </a>
-
-        <a href="resources.html">
-          Resources
-        </a>
-
-        <a href="guide.html">
-          Student Guide
-        </a>
-
-        <a href="updates.html">
-          Updates
-        </a>
-
-        <a href="tools.html">
-          Tools
-        </a>
-
+      <div class="up-study-crumb">
+        <a href="index.html">Uni Pilot</a>
+        <span>/</span>
+        <strong>Home</strong>
       </div>
 
-      <!-- Navigation Actions -->
-      <div class="nav-actions">
+      <span class="up-study-campus">● AAUA STUDENT SPACE</span>
 
-        <button
-          class="icon-btn"
-          aria-label="Search"
-          type="button"
-        >
-          🔍
-        </button>
-
-        <!-- Login / Account -->
-        <div class="account-wrapper">
-
-          <a
-            href="auth.html"
-            class="auth-btn"
-            id="authBtn"
-          >
-            Login / Sign Up
-          </a>
-
-          <!-- Account Dropdown -->
-          <div
-            class="account-dropdown"
-            id="accountDropdown"
-          >
-
-            <button
-              class="logout-btn"
-              id="logoutBtn"
-              type="button"
-            >
-              Log out ↩️
-            </button>
-
-          </div>
-
+      <div class="account-wrapper up-study-account">
+        <a href="auth.html" class="auth-btn up-study-avatar" id="authBtn" aria-label="Account">?</a>
+        <div class="account-dropdown" id="accountDropdown">
+          <button class="logout-btn" id="logoutBtn" type="button">Log out ↩</button>
         </div>
-
-        <!-- Mobile Menu Button -->
-        <button
-          class="menu-btn"
-          id="menuBtn"
-          aria-label="Open Menu"
-          type="button"
-        >
-          ☰
-        </button>
-
       </div>
 
     </nav>
 
-    <!-- MOBILE MENU -->
-    <div
-      class="mobile-menu"
-      id="navLinks"
-    >
+    <!-- LEFT SLIDING NAVIGATION -->
+    <div class="mobile-menu up-study-drawer" id="navLinks" aria-label="Uni Pilot navigation">
+      <div class="up-study-drawer-brand">
+        <div class="up-study-brand-mark">🎓</div>
+        <div><strong>UNI PILOT</strong><small>YOUR STUDENT GUIDE</small></div>
+      </div>
 
-      <a href="index.html">
-        Home
-      </a>
+      <p class="up-study-side-label">MAIN MENU</p>
 
-      <a href="resources.html">
-        Academic Resources
-      </a>
+      <a href="index.html" class="up-study-nav-link active"><span>▦</span> Home</a>
+      <a href="study-hub.html" class="up-study-nav-link"><span>🎓</span> Study Hub</a>
+      <a href="tools.html" class="up-study-nav-link"><span>⚙</span> Student Tools</a>
+      <a href="faculty-guide.html" class="up-study-nav-link"><span>⌂</span> Faculty Guide</a>
+      <a href="resources.html" class="up-study-nav-link"><span>▤</span> Resources</a>
+      <a href="updates.html" class="up-study-nav-link"><span>◷</span> Campus Updates</a>
+      <a href="opportunities.html" class="up-study-nav-link"><span>✦</span> Opportunities</a>
+      <a href="about.html" class="up-study-nav-link"><span>ⓘ</span> About</a>
 
-      <a href="guide.html">
-        Student Guide
-      </a>
-
-      <a href="updates.html">
-        Campus Updates
-      </a>
-
-      <a href="opportunities.html">
-        Opportunities
-      </a>
-
-      <a href="tools.html">
-        Student Tools
-      </a>
-
-      <a href="about.html">
-        About
-      </a>
-
-      <button class="theme-menu-trigger" id="themeMenuTrigger" type="button" aria-haspopup="dialog">
+      <button class="theme-menu-trigger up-study-theme-link" id="themeMenuTrigger" type="button" aria-haspopup="dialog">
         <span aria-hidden="true">◐</span> Theme <span class="theme-current-label" id="themeCurrentLabel">System Default</span>
       </button>
 
-      <a
-        href="auth.html"
-        id="mobileAuthBtn"
-      >
-        Login / Sign Up
-      </a>
+      <a href="auth.html" id="mobileAuthBtn" class="up-study-nav-link up-study-login"><span>↗</span> Login / Sign Up</a>
 
+      <div class="up-study-drawer-bottom">
+        <p>✦ Your student companion</p>
+        <small>Your campus. Your resources. Your guide.</small>
+      </div>
     </div>
 
   </header>
+
+  <!-- Menu background overlay -->
+  <div class="menu-overlay" id="menuOverlay"></div>
 
   <!-- Theme selection modal -->
   <div class="theme-modal-backdrop" id="themeModal" aria-hidden="true">
