@@ -5,13 +5,16 @@
     // The full AI page is embedded in the mini-chat iframe; do not inject a second nav or floating launcher there.
     if(new URLSearchParams(location.search).get("mini")==="1") return;
     document.documentElement.classList.add("site-nav-fix");
-    let header=document.querySelector("header.header");
-    if(!header || !header.querySelector("#menuBtn")){
-      if(header) header.remove();
-      header=document.createElement("header");header.className="header";
-      header.innerHTML='<nav class="navbar"><a class="brand" href="index.html"><span class="brand-icon">🎓</span><span>Uni Pilot</span></a><div class="desktop-nav"></div><div class="nav-actions"><button class="icon-btn" id="siteSearchBtn" type="button" aria-label="Search" onclick="location.href=\'search.html\'">🔍</button><button class="site-theme-btn" type="button" data-open-site-theme>◐ Theme</button><button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false">☰</button></div></nav><div class="mobile-menu" id="navLinks"></div><div class="menu-overlay" id="menuOverlay"></div>';
-      document.body.insertBefore(header,document.body.firstChild);
-    }
+    const preservedAccount=document.querySelector(".account-wrapper");
+    if(preservedAccount) preservedAccount.remove();
+    document.querySelectorAll("header.header").forEach(node=>node.remove());
+    document.querySelectorAll("#navLinks,#menuOverlay").forEach(node=>node.remove());
+    const header=document.createElement("header");
+    header.className="header site-shared-header";
+    header.innerHTML='<nav class="navbar"><a class="brand" href="index.html"><span class="brand-icon">🎓</span><span>Uni Pilot</span></a><div class="desktop-nav"></div><div class="nav-actions"><button class="icon-btn" id="siteSearchBtn" type="button" aria-label="Search" onclick="location.href=\'search.html\'">🔍</button><button class="site-theme-btn" type="button" data-open-site-theme>◐ Theme</button><button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false">☰</button></div></nav><nav class="mobile-menu" id="navLinks" aria-label="Uni Pilot navigation"></nav><div class="menu-overlay" id="menuOverlay" aria-hidden="true"></div>';
+    document.body.insertBefore(header,document.body.firstChild);
+    if(preservedAccount) header.querySelector(".nav-actions").appendChild(preservedAccount);
+    else { const account=document.createElement("a");account.className="site-account-link";account.href="auth.html";account.setAttribute("aria-label","Account");account.textContent="👤";header.querySelector(".nav-actions").appendChild(account); }
     let desktop=header.querySelector(".desktop-nav");
     if(!desktop){desktop=document.createElement("div");desktop.className="desktop-nav";header.querySelector(".navbar").insertBefore(desktop,header.querySelector(".nav-actions"));}
     if(!desktop.children.length) links.filter(x=>x[0]!=="Opportunities").forEach(([label,url])=>{const a=document.createElement("a");a.href=url;a.textContent=label;if(location.pathname.endsWith("/"+url))a.classList.add("active");desktop.appendChild(a)});
@@ -21,9 +24,24 @@
     let overlay=header.querySelector("#menuOverlay")||document.querySelector("#menuOverlay");
     if(!overlay){overlay=document.createElement("div");overlay.id="menuOverlay";overlay.className="menu-overlay";header.appendChild(overlay);}
     let btn=header.querySelector("#menuBtn")||document.querySelector("#menuBtn");
-    let savedBodyOverflow="",savedHtmlOverflow="";
-    function closeMenu(){menu.classList.remove("is-open");overlay.classList.remove("is-open");document.body.style.overflow=savedBodyOverflow;document.documentElement.style.overflow=savedHtmlOverflow;if(btn){btn.setAttribute("aria-expanded","false");btn.setAttribute("aria-label","Open menu");btn.textContent="☰";}}
-    function openMenu(){savedBodyOverflow=document.body.style.overflow;savedHtmlOverflow=document.documentElement.style.overflow;document.body.style.overflow="hidden";document.documentElement.style.overflow="hidden";menu.classList.add("is-open");overlay.classList.add("is-open");if(btn){btn.setAttribute("aria-expanded","true");btn.setAttribute("aria-label","Close menu");btn.textContent="×";}}
+    let savedScrollY=0,bodyPosition="",bodyTop="",bodyWidth="",bodyOverflow="",htmlOverflow="";
+    function closeMenu(){
+      menu.classList.remove("is-open");overlay.classList.remove("is-open");
+      document.removeEventListener("touchmove",blockBackgroundTouch,{capture:true});
+      document.removeEventListener("wheel",blockBackgroundWheel,{capture:true});
+      document.body.style.position=bodyPosition;document.body.style.top=bodyTop;document.body.style.width=bodyWidth;document.body.style.overflow=bodyOverflow;document.documentElement.style.overflow=htmlOverflow;
+      window.scrollTo(0,savedScrollY);
+      if(btn){btn.setAttribute("aria-expanded","false");btn.setAttribute("aria-label","Open menu");btn.textContent="☰";}
+    }
+    function blockBackgroundTouch(event){if(!menu.contains(event.target)){event.preventDefault();}}
+    function blockBackgroundWheel(event){if(!menu.contains(event.target)){event.preventDefault();}}
+    function openMenu(){
+      savedScrollY=window.scrollY;bodyPosition=document.body.style.position;bodyTop=document.body.style.top;bodyWidth=document.body.style.width;bodyOverflow=document.body.style.overflow;htmlOverflow=document.documentElement.style.overflow;
+      document.body.style.position="fixed";document.body.style.top="-"+savedScrollY+"px";document.body.style.width="100%";document.body.style.overflow="hidden";document.documentElement.style.overflow="hidden";
+      menu.classList.add("is-open");overlay.classList.add("is-open");
+      document.addEventListener("touchmove",blockBackgroundTouch,{passive:false,capture:true});document.addEventListener("wheel",blockBackgroundWheel,{passive:false,capture:true});
+      if(btn){btn.setAttribute("aria-expanded","true");btn.setAttribute("aria-label","Close menu");btn.textContent="×";}
+    }
     if(btn&&!btn.dataset.siteBound){btn.dataset.siteBound="1";btn.addEventListener("click",()=>{const open=!menu.classList.contains("is-open");if(open){openMenu();}else closeMenu();});}
     if(!overlay.dataset.siteBound){overlay.dataset.siteBound="1";overlay.addEventListener("click",event=>{event.preventDefault();event.stopPropagation();closeMenu();});}
     if(!menu.dataset.siteLinksBound){menu.dataset.siteLinksBound="1";menu.addEventListener("click",event=>{const link=event.target.closest("a[href]");if(link)closeMenu();});}
