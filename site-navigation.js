@@ -21,8 +21,10 @@
     let overlay=header.querySelector("#menuOverlay")||document.querySelector("#menuOverlay");
     if(!overlay){overlay=document.createElement("div");overlay.id="menuOverlay";overlay.className="menu-overlay";header.appendChild(overlay);}
     let btn=header.querySelector("#menuBtn")||document.querySelector("#menuBtn");
-    function closeMenu(){menu.classList.remove("is-open");overlay.classList.remove("is-open");if(btn){btn.setAttribute("aria-expanded","false");btn.setAttribute("aria-label","Open menu");btn.textContent="☰";}}
-    if(btn&&!btn.dataset.siteBound){btn.dataset.siteBound="1";btn.addEventListener("click",()=>{const open=!menu.classList.contains("is-open");if(open){menu.classList.add("is-open");overlay.classList.add("is-open");btn.setAttribute("aria-expanded","true");btn.setAttribute("aria-label","Close menu");btn.textContent="×";}else closeMenu();});}
+    let savedBodyOverflow="",savedHtmlOverflow="";
+    function closeMenu(){menu.classList.remove("is-open");overlay.classList.remove("is-open");document.body.style.overflow=savedBodyOverflow;document.documentElement.style.overflow=savedHtmlOverflow;if(btn){btn.setAttribute("aria-expanded","false");btn.setAttribute("aria-label","Open menu");btn.textContent="☰";}}
+    function openMenu(){savedBodyOverflow=document.body.style.overflow;savedHtmlOverflow=document.documentElement.style.overflow;document.body.style.overflow="hidden";document.documentElement.style.overflow="hidden";menu.classList.add("is-open");overlay.classList.add("is-open");if(btn){btn.setAttribute("aria-expanded","true");btn.setAttribute("aria-label","Close menu");btn.textContent="×";}}
+    if(btn&&!btn.dataset.siteBound){btn.dataset.siteBound="1";btn.addEventListener("click",()=>{const open=!menu.classList.contains("is-open");if(open){openMenu();}else closeMenu();});}
     if(!overlay.dataset.siteBound){overlay.dataset.siteBound="1";overlay.addEventListener("click",event=>{event.preventDefault();event.stopPropagation();closeMenu();});}
     if(!menu.dataset.siteLinksBound){menu.dataset.siteLinksBound="1";menu.addEventListener("click",event=>{const link=event.target.closest("a[href]");if(link)closeMenu();});}
     window.addEventListener("pageshow",closeMenu);
