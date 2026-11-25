@@ -28,7 +28,7 @@ html[data-theme="dark"] .site-nav-fix .mobile-menu a:hover,html[data-theme="dark
 .site-theme-dialog .site-theme-choice[aria-checked="true"]{border-color:#0b5d3b;background:#eaf6ef}
 .site-theme-dialog .site-theme-close{float:right;border:0;background:transparent;font-size:1.5rem;cursor:pointer}
 @media(max-width:820px){.site-nav-fix .navbar{width:calc(100% - 24px);min-height:68px;gap:8px}.site-nav-fix .desktop-nav{display:none!important}.site-nav-fix .menu-btn{display:inline-flex;align-items:center;justify-content:center}.site-nav-fix .site-theme-btn{display:none}.site-nav-fix .brand{font-size:.95rem}.site-nav-fix .nav-actions{gap:7px}}
-@media(min-width:821px){.site-nav-fix .mobile-menu,.site-nav-fix .menu-overlay{display:none!important}}
+@media(min-width:1201px){.site-nav-fix .mobile-menu,.site-nav-fix .menu-overlay{display:none!important}}
 
 /* Laptop navigation accessibility fix: compact menu before links become cramped. */
 @media (min-width:821px) and (max-width:1200px){
@@ -65,7 +65,7 @@ html.site-nav-fix, html.site-nav-fix body, html.site-nav-fix body *, html.site-n
 .site-nav-fix .menu-overlay { z-index:1190 !important; background:rgba(4,25,15,.36) !important; backdrop-filter:blur(4px) !important; -webkit-backdrop-filter:blur(4px) !important; }
 .site-nav-fix .menu-overlay.is-open { display:block !important; opacity:1 !important; visibility:visible !important; pointer-events:auto !important; }
 html[data-theme="dark"] .site-nav-fix .mobile-menu { background:rgba(12,23,27,.78) !important; border-color:rgba(255,255,255,.12) !important; }
-@media(min-width:821px){.site-nav-fix .mobile-menu,.site-nav-fix .menu-overlay{display:none!important}}
+@media(min-width:1201px){.site-nav-fix .mobile-menu,.site-nav-fix .menu-overlay{display:none!important}}
 
 
 /* Full-screen glass navigation drawer */
