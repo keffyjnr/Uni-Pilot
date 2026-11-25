@@ -9,24 +9,19 @@
     if(preservedAccount) preservedAccount.remove();
     document.querySelectorAll("header.header").forEach(node=>node.remove());
     document.querySelectorAll("#navLinks,#menuOverlay").forEach(node=>node.remove());
+    const pageName=(()=>{const p=location.pathname.split("/").pop()||"index.html";const names={"index.html":"Home","study-hub.html":"Study Hub","resources.html":"Resources","guide.html":"Student Guide","updates.html":"Campus Updates","opportunities.html":"Opportunities","tools.html":"Student Tools","about.html":"About","faculty-guide.html":"Faculty Guide","auth.html":"Account","ai.html":"Uni Pilot AI","search.html":"Search"};return names[p]||document.title.split(/[|—-]/)[0].trim()||"Student Guide";})();
     const header=document.createElement("header");
-    header.className="header site-shared-header";
-    header.innerHTML='<nav class="navbar"><a class="brand" href="index.html"><span class="brand-icon">🎓</span><span>Uni Pilot</span></a><div class="desktop-nav"></div><div class="nav-actions"><button class="icon-btn" id="siteSearchBtn" type="button" aria-label="Search" onclick="location.href=\'search.html\'">🔍</button><button class="site-theme-btn" type="button" data-open-site-theme>◐ Theme</button><button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false">☰</button></div></nav><nav class="mobile-menu" id="navLinks" aria-label="Uni Pilot navigation"></nav><div class="menu-overlay" id="menuOverlay" aria-hidden="true"></div>';
+    header.className="header up-study-header";
+    header.innerHTML='<nav class="navbar up-study-navbar"><button class="menu-btn up-study-menu-btn" id="menuBtn" aria-label="Open navigation menu" aria-expanded="false" type="button">☰</button><div class="up-study-crumb"><a href="index.html">Uni Pilot</a><span>/</span><strong></strong></div><span class="up-study-campus">● AAUA STUDENT SPACE</span><div class="account-wrapper up-study-account"><a href="auth.html" class="auth-btn up-study-avatar" id="authBtn" aria-label="Account">K</a><div class="account-dropdown up-study-profile-pop" id="accountDropdown"><button class="up-study-profile-close" id="profilePopupClose" type="button" aria-label="Close account menu">×</button><div class="up-study-profile-head"><div class="up-study-profile-avatar" id="profilePopupInitial">K</div><div class="up-study-profile-name" id="profilePopupName">Student</div><div class="up-study-profile-email" id="profilePopupEmail"></div></div><button class="up-study-edit-profile" type="button" disabled aria-disabled="true">Edit profile <span>Coming soon</span></button><div class="up-study-profile-divider"></div><button class="logout-btn up-study-signout" id="logoutBtn" type="button">Sign out</button></div></div></nav><div class="mobile-menu up-study-drawer" id="navLinks" aria-label="Uni Pilot navigation"><div class="up-study-drawer-brand"><div class="up-study-brand-mark">🎓</div><div><strong>UNI PILOT</strong><small>YOUR STUDENT GUIDE</small></div></div><p class="up-study-side-label">MAIN MENU</p><a href="index.html" class="up-study-nav-link"><span>▦</span> Home</a><a href="study-hub.html" class="up-study-nav-link"><span>🎓</span> Study Hub</a><a href="tools.html" class="up-study-nav-link"><span>⚙</span> Student Tools</a><a href="faculty-guide.html" class="up-study-nav-link"><span>⌂</span> Faculty Guide</a><a href="resources.html" class="up-study-nav-link"><span>▤</span> Resources</a><a href="updates.html" class="up-study-nav-link"><span>◷</span> Campus Updates</a><a href="opportunities.html" class="up-study-nav-link"><span>✦</span> Opportunities</a><a href="about.html" class="up-study-nav-link"><span>ⓘ</span> About</a><button class="theme-menu-trigger up-study-theme-link" id="themeMenuTrigger" type="button" aria-haspopup="dialog"><span aria-hidden="true">◐</span> Theme <span class="theme-current-label" id="themeCurrentLabel">System Default</span></button><a href="auth.html" id="mobileAuthBtn" class="up-study-nav-link up-study-login"><span>↗</span> Login / Sign Up</a><div class="up-study-drawer-bottom"><p>✦ Your student companion</p><small>Your campus. Your resources. Your guide.</small></div></div><div class="menu-overlay" id="menuOverlay"></div>';
     document.body.insertBefore(header,document.body.firstChild);
-    if(preservedAccount) header.querySelector(".nav-actions").appendChild(preservedAccount);
-    else { const account=document.createElement("a");account.className="site-account-link";account.href="auth.html";account.setAttribute("aria-label","Account");account.textContent="👤";header.querySelector(".nav-actions").appendChild(account); }
-    let desktop=header.querySelector(".desktop-nav");
-    if(!desktop){desktop=document.createElement("div");desktop.className="desktop-nav";header.querySelector(".navbar").insertBefore(desktop,header.querySelector(".nav-actions"));}
-    if(!desktop.children.length) links.filter(x=>x[0]!=="Opportunities").forEach(([label,url])=>{const a=document.createElement("a");a.href=url;a.textContent=label;if(location.pathname.endsWith("/"+url))a.classList.add("active");desktop.appendChild(a)});
-    let menu=header.querySelector("#navLinks")||document.querySelector("#navLinks");
-    if(!menu){menu=document.createElement("div");menu.id="navLinks";menu.className="mobile-menu";header.appendChild(menu);}
-    if(!menu.children.length) links.forEach(([label,url])=>{const a=document.createElement("a");a.href=url;a.textContent=label;menu.appendChild(a)});
-    let overlay=header.querySelector("#menuOverlay")||document.querySelector("#menuOverlay");
-    if(!overlay){overlay=document.createElement("div");overlay.id="menuOverlay";overlay.className="menu-overlay";header.appendChild(overlay);}
-    let btn=header.querySelector("#menuBtn")||document.querySelector("#menuBtn");
+    header.querySelector(".up-study-crumb strong").textContent=pageName;
+    if(preservedAccount) header.querySelector(".account-wrapper").replaceWith(preservedAccount);
+    const activeFile=location.pathname.split("/").pop()||"index.html";
+    header.querySelectorAll(".up-study-nav-link[href]").forEach(a=>{if(a.getAttribute("href")===activeFile)a.classList.add("active");});
+    let menu=header.querySelector("#navLinks"),overlay=header.querySelector("#menuOverlay"),btn=header.querySelector("#menuBtn");
     let savedScrollY=0,bodyPosition="",bodyTop="",bodyWidth="",bodyOverflow="",htmlOverflow="";
     function closeMenu(){
-      menu.classList.remove("is-open");overlay.classList.remove("is-open");
+      menu.classList.remove("active");overlay.classList.remove("active");
       document.removeEventListener("touchmove",blockBackgroundTouch,{capture:true});
       document.removeEventListener("wheel",blockBackgroundWheel,{capture:true});
       document.body.style.position=bodyPosition;document.body.style.top=bodyTop;document.body.style.width=bodyWidth;document.body.style.overflow=bodyOverflow;document.documentElement.style.overflow=htmlOverflow;
@@ -38,7 +33,7 @@
     function openMenu(){
       savedScrollY=window.scrollY;bodyPosition=document.body.style.position;bodyTop=document.body.style.top;bodyWidth=document.body.style.width;bodyOverflow=document.body.style.overflow;htmlOverflow=document.documentElement.style.overflow;
       document.body.style.position="fixed";document.body.style.top="-"+savedScrollY+"px";document.body.style.width="100%";document.body.style.overflow="hidden";document.documentElement.style.overflow="hidden";
-      menu.classList.add("is-open");overlay.classList.add("is-open");
+      menu.classList.add("active");overlay.classList.add("active");
       document.addEventListener("touchmove",blockBackgroundTouch,{passive:false,capture:true});document.addEventListener("wheel",blockBackgroundWheel,{passive:false,capture:true});
       if(btn){btn.setAttribute("aria-expanded","true");btn.setAttribute("aria-label","Close menu");btn.textContent="×";}
     }
