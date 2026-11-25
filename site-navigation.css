@@ -73,3 +73,8 @@ html[data-theme="dark"] .site-nav-fix .mobile-menu { background:rgba(12,23,27,.7
 .site-nav-fix .menu-overlay{position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;height:100dvh!important;z-index:1190!important;}
 .site-nav-fix .mobile-menu{z-index:1200!important;}
 @media(min-width:821px) and (max-width:1200px){.site-nav-fix .mobile-menu{width:290px!important;max-width:86vw!important}}
+
+
+/* Prevent background page scrolling while the navigation backdrop is active */
+.site-nav-fix .menu-overlay.is-open{touch-action:none!important;overscroll-behavior:none!important;}
+.site-nav-fix .mobile-menu.is-open{overscroll-behavior:contain!important;}
