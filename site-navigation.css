@@ -149,3 +149,70 @@ html[data-theme="dark"].site-nav-fix .up-study-theme-link{background:rgba(255,25
 html[data-theme="dark"].site-nav-fix .up-study-drawer-bottom{background:rgba(255,255,255,.04)!important;border-color:rgba(255,255,255,.06)!important;color:#8ce0ba!important}
 @media(max-width:700px){html.site-nav-fix .up-study-navbar{min-height:72px!important;padding:0 16px!important;gap:12px!important}html.site-nav-fix .up-study-crumb{font-size:13px!important;gap:8px!important}html.site-nav-fix .up-study-campus{padding:10px 12px!important;font-size:8px!important;letter-spacing:1.2px!important}html.site-nav-fix .up-study-avatar{width:44px!important;height:44px!important;flex-basis:44px!important}html.site-nav-fix .up-study-drawer{width:min(350px,86vw)!important;padding:24px 18px 18px!important}}
 @media(max-width:400px){html.site-nav-fix .up-study-campus{display:none!important}}
+
+
+/* =========================================================
+   STUDY HUB LAYOUT — shared across the main Uni Pilot pages
+   Desktop: fixed left glass sidebar + compact sticky topbar.
+   Mobile: same sidebar slides in over a blurred backdrop.
+   ========================================================= */
+html.site-nav-fix body{padding-left:250px!important;transition:padding-left .2s ease}
+html.site-nav-fix .up-study-header{display:contents!important}
+html.site-nav-fix .up-study-drawer{
+  box-sizing:border-box!important;position:fixed!important;inset:0 auto 0 0!important;
+  width:250px!important;max-width:250px!important;height:100vh!important;height:100dvh!important;
+  max-height:none!important;overflow-y:auto!important;display:flex!important;flex-direction:column!important;
+  gap:0!important;padding:26px 18px!important;margin:0!important;border:0!important;border-right:1px solid rgba(255,255,255,.78)!important;
+  border-radius:0!important;background:radial-gradient(ellipse at 18% 0%,rgba(255,255,255,.78),transparent 44%),linear-gradient(155deg,rgba(255,255,255,.88),rgba(235,246,239,.76))!important;
+  -webkit-backdrop-filter:blur(28px) saturate(165%)!important;backdrop-filter:blur(28px) saturate(165%)!important;
+  box-shadow:12px 0 42px rgba(17,65,42,.08),inset -1px 0 0 rgba(11,93,59,.055)!important;
+  z-index:1400!important;transform:none!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important;
+}
+html.site-nav-fix .up-study-drawer-brand{display:flex!important;align-items:center!important;gap:11px!important;padding:0 9px 35px!important;color:#17221c!important;text-decoration:none!important}
+html.site-nav-fix .up-study-brand-mark{width:40px!important;height:40px!important;flex:0 0 40px!important;display:grid!important;place-items:center!important;border-radius:13px!important;background:linear-gradient(145deg,#0a6a45,#06432e)!important;color:#fff!important;font-size:23px!important}
+html.site-nav-fix .up-study-drawer-brand strong,html.site-nav-fix .up-study-drawer-brand small{display:block!important;letter-spacing:1.3px!important}
+html.site-nav-fix .up-study-drawer-brand strong{font:800 13px Manrope,'DM Sans',sans-serif!important;color:#17221c!important}
+html.site-nav-fix .up-study-drawer-brand small{margin-top:3px!important;color:#0b5d3b!important;font-size:9px!important;font-weight:700!important}
+html.site-nav-fix .up-study-side-label{padding:0 12px 10px!important;margin:0!important;color:#9aa69f!important;font-size:9px!important;letter-spacing:1.7px!important;font-weight:700!important}
+html.site-nav-fix .up-study-side-nav{display:flex!important;flex-direction:column!important;gap:2px!important}
+html.site-nav-fix .up-study-nav-link,html.site-nav-fix .up-study-theme-link{display:flex!important;align-items:center!important;gap:10px!important;width:100%!important;min-height:0!important;padding:12px!important;margin:0!important;border:0!important;border-radius:9px!important;background:transparent!important;color:#65736b!important;text-decoration:none!important;text-align:left!important;font:600 13px 'DM Sans',sans-serif!important;transition:background .2s ease,color .2s ease!important}
+html.site-nav-fix .up-study-nav-link span,html.site-nav-fix .up-study-theme-link>span:first-child{width:18px!important;text-align:center!important;flex:0 0 18px!important}
+html.site-nav-fix .up-study-nav-link:hover,html.site-nav-fix .up-study-nav-link.active,html.site-nav-fix .up-study-theme-link:hover{background:#eaf6ef!important;color:#0b5d3b!important;font-weight:700!important}
+html.site-nav-fix .up-study-theme-link{cursor:pointer!important}
+html.site-nav-fix .up-study-theme-link .theme-current-label{margin-left:auto!important;font-size:9px!important;color:#8b988f!important}
+html.site-nav-fix .up-study-login{margin-top:8px!important;border-top:1px solid #e6ece8!important;border-radius:0!important;padding-top:17px!important}
+html.site-nav-fix .up-study-drawer-bottom{margin-top:auto!important;padding-top:22px!important}
+html.site-nav-fix .up-study-help-card{padding:15px!important;border:1px solid #e5efe8!important;border-radius:12px!important;background:#f3f8f4!important;font-size:12px!important;color:#17221c!important}
+html.site-nav-fix .up-study-help-card p{margin:7px 0 0!important;color:#718078!important;font-size:11px!important;line-height:1.5!important}
+html.site-nav-fix .up-study-back-link{display:block!important;padding:19px 8px 0!important;color:#0b5d3b!important;font-size:12px!important;text-decoration:none!important;font-weight:700!important}
+html.site-nav-fix .up-study-navbar{box-sizing:border-box!important;position:sticky!important;top:0!important;z-index:1300!important;width:100%!important;min-height:68px!important;margin:0!important;padding:0 5%!important;display:flex!important;align-items:center!important;gap:15px!important;justify-content:flex-start!important;background:rgba(255,255,255,.78)!important;-webkit-backdrop-filter:blur(18px)!important;backdrop-filter:blur(18px)!important;border-bottom:1px solid #e6ece8!important;box-shadow:none!important}
+html.site-nav-fix .up-study-menu-btn{display:none!important;width:38px!important;height:38px!important;flex:0 0 38px!important;border:0!important;background:transparent!important;color:#0b5d3b!important;font-size:25px!important}
+html.site-nav-fix .up-study-crumb{display:flex!important;align-items:center!important;gap:8px!important;flex:1!important;min-width:0!important;color:#89958e!important;font-size:12px!important;white-space:nowrap!important}
+html.site-nav-fix .up-study-crumb a{color:#89958e!important;text-decoration:none!important}
+html.site-nav-fix .up-study-crumb span{color:#c0c9c3!important}
+html.site-nav-fix .up-study-crumb strong{color:#17221c!important;font-weight:800!important}
+html.site-nav-fix .up-study-campus{display:inline-flex!important;align-items:center!important;padding:9px 12px!important;margin-left:auto!important;border-radius:25px!important;background:#eaf6ef!important;color:#0b5d3b!important;font-size:9px!important;font-weight:700!important;letter-spacing:1px!important;white-space:nowrap!important}
+html.site-nav-fix .up-study-account{display:flex!important;align-items:center!important;margin:0!important}
+html.site-nav-fix .up-study-avatar{display:grid!important;place-items:center!important;width:38px!important;height:38px!important;flex:0 0 38px!important;padding:0!important;border:0!important;border-radius:50%!important;background:#063b26!important;color:#fff!important;font-weight:700!important;text-decoration:none!important}
+html.site-nav-fix .menu-overlay{display:none!important;position:fixed!important;inset:0!important;z-index:1390!important;background:rgba(4,25,15,.4)!important;-webkit-backdrop-filter:blur(4px)!important;backdrop-filter:blur(4px)!important}
+html.site-nav-fix .menu-overlay.active,html.site-nav-fix .menu-overlay.is-open{display:block!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important}
+html[data-theme="dark"].site-nav-fix body{background:#0d1510!important}
+html[data-theme="dark"].site-nav-fix .up-study-drawer{background:linear-gradient(155deg,rgba(15,28,21,.96),rgba(10,20,15,.94))!important;border-color:rgba(255,255,255,.1)!important}
+html[data-theme="dark"].site-nav-fix .up-study-drawer-brand strong,html[data-theme="dark"].site-nav-fix .up-study-crumb strong{color:#f4f7f5!important}
+html[data-theme="dark"].site-nav-fix .up-study-navbar{background:rgba(15,22,18,.88)!important;border-color:#2d3b32!important}
+html[data-theme="dark"].site-nav-fix .up-study-nav-link,html[data-theme="dark"].site-nav-fix .up-study-theme-link{color:#c4d0c8!important}
+html[data-theme="dark"].site-nav-fix .up-study-nav-link:hover,html[data-theme="dark"].site-nav-fix .up-study-nav-link.active,html[data-theme="dark"].site-nav-fix .up-study-theme-link:hover{background:#20382a!important;color:#f5c518!important}
+html[data-theme="dark"].site-nav-fix .up-study-help-card{background:#17251c!important;border-color:#2d4535!important;color:#f4f7f5!important}
+html[data-theme="dark"].site-nav-fix .up-study-help-card p{color:#b0beb5!important}
+@media(max-width:700px){
+ html.site-nav-fix body{padding-left:0!important}
+ html.site-nav-fix .up-study-drawer{transform:translateX(-105%)!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;transition:transform .3s ease,opacity .25s ease,visibility .25s!important}
+ html.site-nav-fix .up-study-drawer.active,html.site-nav-fix .up-study-drawer.is-open{transform:translateX(0)!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important}
+ html.site-nav-fix .up-study-menu-btn{display:inline-flex!important;align-items:center!important;justify-content:center!important}
+ html.site-nav-fix .up-study-navbar{min-height:60px!important;padding:0 15px!important;gap:10px!important}
+ html.site-nav-fix .up-study-campus{font-size:7px!important;padding:8px!important}
+ html.site-nav-fix .menu-overlay.active,html.site-nav-fix .menu-overlay.is-open{display:block!important}
+}
+@media(min-width:701px){
+ html.site-nav-fix .menu-overlay{display:none!important}
+}
