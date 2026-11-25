@@ -1,229 +1,107 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap');
-/* Uni Pilot shared navigation fix */
-.site-nav-fix .header{position:sticky;top:0;z-index:1201;background:var(--nav-header-bg,#fff);box-shadow:0 3px 18px rgba(0,0,0,.06)}
-.site-nav-fix .navbar{width:min(1240px,calc(100% - 36px));min-height:76px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:18px}
-.site-nav-fix .brand{display:inline-flex;align-items:center;gap:10px;font-weight:800;color:var(--nav-text,#17221c);white-space:nowrap}
-.site-nav-fix .brand-icon{font-size:1.4rem}
-.site-nav-fix .desktop-nav{display:flex!important;align-items:center;gap:clamp(10px,1.5vw,22px);margin-left:auto}
-.site-nav-fix .desktop-nav a{font-size:.82rem;font-weight:800;color:var(--nav-text,#17221c);padding:10px 2px;text-decoration:none}
-.site-nav-fix .desktop-nav a:hover,.site-nav-fix .desktop-nav a.active{color:#0b5d3b}
-.site-nav-fix .nav-actions{display:flex;align-items:center;gap:9px}
-.site-nav-fix .nav-actions .icon-btn,.site-nav-fix .menu-btn,.site-nav-fix .site-theme-btn{min-width:42px;min-height:42px;border:1px solid var(--nav-border,#dfe8e2);border-radius:13px;background:var(--nav-button-bg,#fff);color:var(--nav-text,#17221c);font-size:1.05rem;cursor:pointer}
-.site-nav-fix .menu-btn{display:none}
-.site-nav-fix .site-theme-btn{padding:0 12px;font-size:.78rem;font-weight:800;white-space:nowrap}
-.site-nav-fix .mobile-menu{display:none;position:fixed;z-index:1200;top:84px;right:14px;left:auto;width:min(320px,calc(100vw - 28px));max-height:calc(100vh - 105px);overflow:auto;padding:12px;background:var(--nav-menu-bg,#fff);border:1px solid var(--nav-border,#dfe8e2);border-radius:20px;box-shadow:0 20px 55px rgba(0,0,0,.2)}
-.site-nav-fix .mobile-menu.is-open{display:flex!important;flex-direction:column;gap:4px;opacity:1!important;visibility:visible!important;pointer-events:auto!important;transform:translate(0,0) scale(1)!important}
-.site-nav-fix .mobile-menu a,.site-nav-fix .mobile-menu button{display:flex;align-items:center;width:100%;padding:13px 14px;border:0;border-radius:12px;background:transparent;color:var(--nav-text,#17221c);text-decoration:none;text-align:left;font:800 .85rem Manrope,Arial,sans-serif;cursor:pointer}
-.site-nav-fix .mobile-menu a:hover,.site-nav-fix .mobile-menu button:hover{background:#eaf6ef;color:#0b5d3b}
-.site-nav-fix .menu-overlay{display:none;position:fixed;inset:0;z-index:1100;background:rgba(0,0,0,.22);backdrop-filter:blur(2px)}
-.site-nav-fix .menu-overlay.is-open{display:block;opacity:1;visibility:visible;pointer-events:auto;background:rgba(0,0,0,.22);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px)}
-html[data-theme="dark"] .site-nav-fix .header{--nav-header-bg:#101512;--nav-text:#f4f7f5;--nav-border:#2d3b32;--nav-button-bg:#151d18;--nav-menu-bg:#101512}
-html[data-theme="dark"] .site-nav-fix .desktop-nav a:hover,html[data-theme="dark"] .site-nav-fix .desktop-nav a.active{color:#f5c518}
-html[data-theme="dark"] .site-nav-fix .mobile-menu a:hover,html[data-theme="dark"] .site-nav-fix .mobile-menu button:hover{background:#20382a;color:#f5c518}
-.site-theme-backdrop{display:none;position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.55);backdrop-filter:blur(5px);align-items:center;justify-content:center;padding:18px}
-.site-theme-backdrop.is-open{display:flex}
-.site-theme-dialog{width:min(410px,100%);padding:24px;border-radius:22px;background:#fff;color:#17221c;box-shadow:0 24px 80px rgba(0,0,0,.28)}
-.site-theme-dialog h2{margin:0 0 8px;font-size:1.35rem}.site-theme-dialog p{color:#6d7a72;font-size:.88rem}
-.site-theme-dialog .site-theme-choice{width:100%;display:flex;align-items:center;gap:12px;padding:13px;margin-top:8px;border:1px solid #dfe8e2;border-radius:13px;background:#fff;text-align:left;color:#17221c;cursor:pointer;font-weight:800}
-.site-theme-dialog .site-theme-choice[aria-checked="true"]{border-color:#0b5d3b;background:#eaf6ef}
-.site-theme-dialog .site-theme-close{float:right;border:0;background:transparent;font-size:1.5rem;cursor:pointer}
-@media(max-width:820px){.site-nav-fix .navbar{width:calc(100% - 24px);min-height:68px;gap:8px}.site-nav-fix .desktop-nav{display:none!important}.site-nav-fix .menu-btn{display:inline-flex;align-items:center;justify-content:center}.site-nav-fix .site-theme-btn{display:none}.site-nav-fix .brand{font-size:.95rem}.site-nav-fix .nav-actions{gap:7px}}
-@media(min-width:1201px){.site-nav-fix .mobile-menu,.site-nav-fix .menu-overlay{display:none!important}}
 
-/* Laptop navigation accessibility fix: compact menu before links become cramped. */
-@media (min-width:821px) and (max-width:1200px){
-.site-nav-fix .navbar{gap:10px!important}
-.site-nav-fix .desktop-nav{display:none!important}
-.site-nav-fix .menu-btn{display:inline-flex!important;align-items:center;justify-content:center}
-.site-nav-fix .site-theme-btn{display:inline-flex!important;align-items:center;justify-content:center}
-.site-nav-fix .nav-actions{gap:7px!important}
-}
-
-/* STUDY HUB DRAWER REPLICA — compact left glass drawer, full-height */
-html.site-nav-fix, html.site-nav-fix body, html.site-nav-fix body *, html.site-nav-fix body *::before, html.site-nav-fix body *::after {
-  font-family: 'DM Sans', sans-serif !important;
-}
-.site-nav-fix .mobile-menu {
-  display:flex !important; flex-direction:column; gap:6px;
-  position:fixed !important; top:0 !important; bottom:0 !important; left:0 !important; right:auto !important;
-  width:250px !important; max-width:250px !important; height:100vh !important; height:100dvh !important;
-  max-height:none !important; overflow-y:auto !important; padding:26px 18px !important;
-  border:1px solid rgba(255,255,255,.45) !important; border-left:0 !important; border-radius:0 18px 18px 0 !important;
-  background:rgba(255,255,255,.78) !important; backdrop-filter:blur(22px) saturate(140%) !important;
-  -webkit-backdrop-filter:blur(22px) saturate(140%) !important;
-  box-shadow:15px 0 35px rgba(16,43,28,.12) !important;
-  z-index:1200 !important; transform:translateX(-105%) !important; visibility:hidden !important; opacity:0 !important; pointer-events:none !important;
-  transition:transform .28s ease, opacity .25s ease, visibility .25s !important;
-}
-.site-nav-fix .mobile-menu.is-open {
-  transform:translateX(0) !important; visibility:visible !important; opacity:1 !important; pointer-events:auto !important;
-}
-.site-nav-fix .mobile-menu a,.site-nav-fix .mobile-menu button {
-  min-height:0 !important; padding:12px !important; border-radius:9px !important; gap:10px !important;
-  font:700 13px 'DM Sans',sans-serif !important; text-decoration:none !important;
-}
-.site-nav-fix .menu-overlay { z-index:1190 !important; background:rgba(4,25,15,.36) !important; backdrop-filter:blur(4px) !important; -webkit-backdrop-filter:blur(4px) !important; }
-.site-nav-fix .menu-overlay.is-open { display:block !important; opacity:1 !important; visibility:visible !important; pointer-events:auto !important; }
-html[data-theme="dark"] .site-nav-fix .mobile-menu { background:rgba(12,23,27,.78) !important; border-color:rgba(255,255,255,.12) !important; }
-@media(min-width:1201px){.site-nav-fix .mobile-menu,.site-nav-fix .menu-overlay{display:none!important}}
-
-
-/* Full-screen glass navigation drawer */
-.site-nav-fix .mobile-menu{box-sizing:border-box!important;position:fixed!important;top:0!important;bottom:0!important;left:0!important;right:auto!important;width:min(290px,86vw)!important;max-width:86vw!important;height:100vh!important;height:100dvh!important;min-height:100vh!important;min-height:100dvh!important;max-height:none!important;margin:0!important;padding:26px 18px!important;overflow-y:auto!important;overscroll-behavior:contain!important;}
-.site-nav-fix .menu-overlay{position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;height:100dvh!important;z-index:1190!important;}
-.site-nav-fix .mobile-menu{z-index:1200!important;}
-@media(min-width:821px) and (max-width:1200px){.site-nav-fix .mobile-menu{width:290px!important;max-width:86vw!important}}
-
-
-/* Prevent background page scrolling while the navigation backdrop is active */
-.site-nav-fix .menu-overlay.is-open{touch-action:none!important;overscroll-behavior:none!important;}
-.site-nav-fix .mobile-menu.is-open{overscroll-behavior:contain!important;}
-
-
-/* Canonical shared header: page-specific header styles must not override it. */
-.site-nav-fix .site-shared-header{position:sticky!important;top:0!important;z-index:1201!important;display:block!important;width:100%!important;margin:0!important;padding:0!important;background:var(--nav-header-bg,#fff)!important;box-shadow:0 3px 18px rgba(0,0,0,.06)!important}
-.site-nav-fix .site-shared-header .navbar{width:min(1240px,calc(100% - 36px))!important;min-height:76px!important;margin:0 auto!important;padding:0!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:18px!important}
-.site-nav-fix .site-shared-header .brand{display:inline-flex!important;align-items:center!important;gap:10px!important;margin:0!important;padding:0!important;color:var(--nav-text,#17221c)!important;text-decoration:none!important;font:800 1rem 'DM Sans',sans-serif!important}
-.site-nav-fix .site-shared-header .desktop-nav{display:flex!important;align-items:center!important;gap:clamp(10px,1.5vw,22px)!important;margin-left:auto!important}
-.site-nav-fix .site-shared-header .desktop-nav a{padding:10px 2px!important;color:var(--nav-text,#17221c)!important;font:800 .82rem 'DM Sans',sans-serif!important;text-decoration:none!important}
-.site-nav-fix .site-shared-header .nav-actions{display:flex!important;align-items:center!important;gap:9px!important;margin:0!important}
-.site-nav-fix .site-shared-header .nav-actions>*{flex-shrink:0}
-.site-nav-fix .site-shared-header .site-account-link{width:42px;height:42px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--nav-border,#dfe8e2);border-radius:50%;background:var(--nav-button-bg,#fff);color:var(--nav-text,#17221c);text-decoration:none;font-size:19px}
-.site-nav-fix .site-shared-header .mobile-menu{position:fixed!important;z-index:1200!important;top:0!important;bottom:0!important;left:0!important;right:auto!important;width:min(290px,86vw)!important;height:100vh!important;height:100dvh!important;max-height:none!important;overflow-y:auto!important;overscroll-behavior:contain!important;touch-action:pan-y!important;padding:26px 18px!important;border-radius:0 18px 18px 0!important}
-.site-nav-fix .site-shared-header .menu-overlay{position:fixed!important;inset:0!important;z-index:1190!important;width:100vw!important;height:100vh!important;height:100dvh!important;touch-action:none!important;overscroll-behavior:none!important}
-.site-nav-fix .site-shared-header .menu-overlay.is-open{display:block!important}
-.site-nav-fix .site-shared-header .mobile-menu.is-open{display:flex!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important;transform:translateX(0)!important}
-.site-nav-fix .site-shared-header .mobile-menu:not(.is-open){visibility:hidden!important;pointer-events:none!important;transform:translateX(-105%)!important}
-@media(max-width:820px){.site-nav-fix .site-shared-header .navbar{width:calc(100% - 24px)!important;min-height:68px!important;gap:8px!important}.site-nav-fix .site-shared-header .desktop-nav{display:none!important}.site-nav-fix .site-shared-header .menu-btn{display:inline-flex!important;align-items:center!important;justify-content:center!important}.site-nav-fix .site-shared-header .site-theme-btn{display:none!important}}
-@media(min-width:821px) and (max-width:1200px){.site-nav-fix .site-shared-header .desktop-nav{display:none!important}.site-nav-fix .site-shared-header .menu-btn{display:inline-flex!important;align-items:center!important;justify-content:center!important}.site-nav-fix .site-shared-header .site-theme-btn{display:inline-flex!important}}
-
-/* Exact finished homepage header and left drawer, now shared site-wide. */
-html.site-nav-fix .up-study-header{position:sticky!important;top:0!important;z-index:1300!important;background:rgba(255,255,255,.82)!important;backdrop-filter:blur(22px)!important;-webkit-backdrop-filter:blur(22px)!important;border-bottom:1px solid rgba(11,93,59,.08)!important;box-shadow:0 6px 24px rgba(6,59,38,.04)!important}
-html.site-nav-fix .up-study-navbar{max-width:1200px!important;margin:auto!important;min-height:76px!important;padding:0 22px!important;display:flex!important;align-items:center!important;gap:18px!important;justify-content:flex-start!important}
-html.site-nav-fix .up-study-menu-btn{display:inline-flex!important;align-items:center!important;justify-content:center!important;flex:0 0 44px!important;width:44px!important;height:44px!important;border:0!important;background:transparent!important;border-radius:13px!important;color:#0b5d3b!important;font-size:26px!important;line-height:1!important}
-html.site-nav-fix .up-study-crumb{display:flex!important;align-items:center!important;gap:12px!important;min-width:0!important;font-size:14px!important;color:#718078!important;white-space:nowrap!important}
-html.site-nav-fix .up-study-crumb a{color:#718078!important;text-decoration:none!important}
-html.site-nav-fix .up-study-crumb strong{color:#17221c!important;font-weight:800!important}
-html.site-nav-fix .up-study-campus{margin-left:auto!important;display:inline-flex!important;align-items:center!important;gap:7px!important;padding:13px 18px!important;border-radius:999px!important;background:#eaf6ef!important;border:1px solid rgba(11,93,59,.06)!important;color:#0b5d3b!important;font-size:10px!important;font-weight:800!important;letter-spacing:1.7px!important;white-space:nowrap!important}
-html.site-nav-fix .up-study-avatar{display:grid!important;place-items:center!important;width:52px!important;height:52px!important;flex:0 0 52px!important;padding:0!important;border:0!important;border-radius:50%!important;background:#0b5d3b!important;color:#fff!important;font-size:17px!important;font-weight:800!important;text-decoration:none!important;box-shadow:0 8px 18px rgba(11,93,59,.18)!important}
-html.site-nav-fix .up-study-account{position:relative!important;display:inline-block!important}
-html.site-nav-fix .up-study-account .account-dropdown{top:calc(100% + 12px)!important}
-html.site-nav-fix .up-study-drawer{position:fixed!important;inset:0 auto 0 0!important;height:100vh!important;height:100dvh!important;width:min(360px,88vw)!important;max-width:360px!important;box-sizing:border-box!important;padding:28px 22px 22px!important;display:flex!important;flex-direction:column!important;gap:8px!important;background:rgba(245,250,247,.92)!important;border:1px solid rgba(255,255,255,.75)!important;border-right:1px solid rgba(11,93,59,.12)!important;border-radius:0 26px 26px 0!important;box-shadow:0 28px 80px rgba(6,59,38,.20)!important;backdrop-filter:blur(26px)!important;-webkit-backdrop-filter:blur(26px)!important;z-index:1350!important;opacity:0!important;visibility:hidden!important;pointer-events:none!important;transform:translateX(-105%)!important;transform-origin:left center!important;transition:transform .34s cubic-bezier(.2,.8,.2,1),opacity .25s ease,visibility .25s ease!important;overflow-y:auto!important;overscroll-behavior:contain!important}
-html.site-nav-fix .up-study-drawer.active{opacity:1!important;visibility:visible!important;pointer-events:auto!important;transform:translateX(0)!important}
-html.site-nav-fix .up-study-drawer-brand{display:flex!important;align-items:center!important;gap:12px!important;padding:4px 8px 32px!important;color:#17221c!important}
-html.site-nav-fix .up-study-brand-mark{display:grid!important;place-items:center!important;width:54px!important;height:54px!important;border-radius:17px!important;background:#0b5d3b!important;color:white!important;font-size:25px!important;box-shadow:0 10px 22px rgba(11,93,59,.16)!important}
-html.site-nav-fix .up-study-drawer-brand strong,html.site-nav-fix .up-study-drawer-brand small{display:block!important;letter-spacing:1.6px!important}
-html.site-nav-fix .up-study-drawer-brand strong{font-size:13px!important;font-weight:800!important}
-html.site-nav-fix .up-study-drawer-brand small{margin-top:5px!important;font-size:10px!important;color:#0b5d3b!important;font-weight:800!important}
-html.site-nav-fix .up-study-side-label{padding:0 12px 8px!important;margin:0!important;color:#9aa69f!important;font-size:10px!important;letter-spacing:1.8px!important;font-weight:800!important}
-html.site-nav-fix .up-study-nav-link{display:flex!important;align-items:center!important;gap:12px!important;width:100%!important;min-height:52px!important;padding:13px 15px!important;border-radius:15px!important;color:#627168!important;text-decoration:none!important;font-size:14px!important;font-weight:600!important;background:rgba(11,93,59,.035)!important;border:1px solid transparent!important;transition:background .2s ease,color .2s ease,transform .2s ease!important}
-html.site-nav-fix .up-study-nav-link span{display:inline-grid!important;place-items:center!important;width:22px!important;flex:0 0 22px!important;font-size:15px!important}
-html.site-nav-fix .up-study-nav-link:hover,html.site-nav-fix .up-study-nav-link:active{background:#eaf6ef!important;color:#0b5d3b!important;transform:translateX(2px)!important}
-html.site-nav-fix .up-study-nav-link.active{background:rgba(255,255,255,.75)!important;color:#0b5d3b!important;border-color:rgba(11,93,59,.14)!important;box-shadow:0 5px 18px rgba(6,59,38,.06)!important;font-weight:800!important;position:relative!important}
-html.site-nav-fix .up-study-nav-link.active:before{content:''!important;position:absolute!important;left:0!important;top:10px!important;bottom:10px!important;width:4px!important;border-radius:0 4px 4px 0!important;background:#0b5d3b!important}
-html.site-nav-fix .up-study-theme-link{width:100%!important;min-height:52px!important;display:flex!important;align-items:center!important;gap:12px!important;padding:13px 15px!important;border-radius:15px!important;border:1px solid transparent!important;background:rgba(11,93,59,.035)!important;color:#627168!important;font-weight:600!important;font-size:14px!important;text-align:left!important}
-html.site-nav-fix .up-study-theme-link .theme-current-label{margin-left:auto!important;color:#8a9890!important;font-size:11px!important}
-html.site-nav-fix .up-study-login{margin-top:4px!important}
-html.site-nav-fix .up-study-drawer-bottom{margin-top:auto!important;padding:18px 16px!important;border-radius:18px!important;background:rgba(255,255,255,.55)!important;border:1px solid rgba(255,255,255,.7)!important;color:#0b5d3b!important}
-html.site-nav-fix .up-study-drawer-bottom p{margin:0 0 6px!important;font-size:12px!important;font-weight:800!important}
-html.site-nav-fix .up-study-drawer-bottom small{font-size:11px!important;color:#839188!important;line-height:1.5!important}
-html.site-nav-fix .menu-overlay{position:fixed!important;inset:0!important;z-index:1200!important;display:block!important;background:rgba(6,59,38,.24)!important;backdrop-filter:blur(5px)!important;-webkit-backdrop-filter:blur(5px)!important;opacity:0!important;visibility:hidden!important;pointer-events:none!important}
-html.site-nav-fix .menu-overlay.active{opacity:1!important;visibility:visible!important;pointer-events:auto!important}
-html.site-nav-fix .up-study-profile-pop{width:min(290px,calc(100vw - 28px))!important;min-width:0!important;padding:38px 12px 12px!important;top:calc(100% + 12px)!important;right:0!important;border-radius:20px!important;background:rgba(255,255,255,.96)!important;border:1px solid rgba(11,93,59,.10)!important;box-shadow:0 24px 60px rgba(6,59,38,.18)!important;backdrop-filter:blur(22px)!important;-webkit-backdrop-filter:blur(22px)!important;z-index:1400!important}
-html.site-nav-fix .up-study-profile-head{padding:12px 10px 14px!important;text-align:center!important}
-html.site-nav-fix .up-study-profile-avatar{width:54px!important;height:54px!important;display:grid!important;place-items:center!important;margin:0 auto 10px!important;border-radius:50%!important;background:#0b5d3b!important;color:#fff!important;font-weight:800!important;font-size:18px!important;box-shadow:0 8px 20px rgba(11,93,59,.18)!important}
-html.site-nav-fix .up-study-profile-name{color:#17221c!important;font-size:15px!important;font-weight:800!important;line-height:1.4!important;overflow-wrap:anywhere!important}
-html.site-nav-fix .up-study-profile-email{color:#7b8981!important;font-size:12px!important;margin-top:4px!important;overflow-wrap:anywhere!important}
-html.site-nav-fix .up-study-edit-profile,html.site-nav-fix .up-study-signout{display:flex!important;align-items:center!important;justify-content:space-between!important;width:100%!important;padding:12px 13px!important;border-radius:12px!important;border:1px solid rgba(11,93,59,.07)!important;background:rgba(11,93,59,.045)!important;color:#526058!important;text-align:left!important;font-weight:700!important;font-family:inherit!important;font-size:13px!important}
-html.site-nav-fix .up-study-profile-close{position:absolute!important;top:7px!important;right:8px!important;width:30px!important;height:30px!important;border:0!important;border-radius:50%!important;background:rgba(11,93,59,.08)!important;color:#17221c!important;font-size:21px!important;line-height:1!important;cursor:pointer!important}
-html[data-theme="dark"].site-nav-fix .up-study-header{background:rgba(8,16,20,.84)!important;border-bottom-color:rgba(255,255,255,.07)!important}
-html[data-theme="dark"].site-nav-fix .up-study-crumb a{color:#9aa9a7!important}
-html[data-theme="dark"].site-nav-fix .up-study-crumb strong{color:#f0f6f4!important}
-html[data-theme="dark"].site-nav-fix .up-study-campus{background:#102820!important;color:#8ce0ba!important;border-color:rgba(140,224,186,.08)!important}
-html[data-theme="dark"].site-nav-fix .up-study-drawer{background:rgba(12,23,27,.94)!important;border-color:rgba(255,255,255,.07)!important}
-html[data-theme="dark"].site-nav-fix .up-study-drawer-brand{color:#f0f6f4!important}
-html[data-theme="dark"].site-nav-fix .up-study-drawer-brand small{color:#8ce0ba!important}
-html[data-theme="dark"].site-nav-fix .up-study-nav-link{color:#9aaba6!important;background:rgba(255,255,255,.035)!important}
-html[data-theme="dark"].site-nav-fix .up-study-nav-link:hover,html[data-theme="dark"].site-nav-fix .up-study-nav-link.active{background:rgba(11,93,59,.18)!important;color:#8ce0ba!important;border-color:rgba(140,224,186,.12)!important}
-html[data-theme="dark"].site-nav-fix .up-study-theme-link{background:rgba(255,255,255,.035)!important;color:#9aaba6!important}
-html[data-theme="dark"].site-nav-fix .up-study-drawer-bottom{background:rgba(255,255,255,.04)!important;border-color:rgba(255,255,255,.06)!important;color:#8ce0ba!important}
-@media(max-width:700px){html.site-nav-fix .up-study-navbar{min-height:72px!important;padding:0 16px!important;gap:12px!important}html.site-nav-fix .up-study-crumb{font-size:13px!important;gap:8px!important}html.site-nav-fix .up-study-campus{padding:10px 12px!important;font-size:8px!important;letter-spacing:1.2px!important}html.site-nav-fix .up-study-avatar{width:44px!important;height:44px!important;flex-basis:44px!important}html.site-nav-fix .up-study-drawer{width:min(350px,86vw)!important;padding:24px 18px 18px!important}}
-@media(max-width:400px){html.site-nav-fix .up-study-campus{display:none!important}}
-
-
-/* =========================================================
-   STUDY HUB LAYOUT — shared across the main Uni Pilot pages
-   Desktop: fixed left glass sidebar + compact sticky topbar.
-   Mobile: same sidebar slides in over a blurred backdrop.
-   ========================================================= */
-html.site-nav-fix body{padding-left:250px!important;transition:padding-left .2s ease}
+/* Uni Pilot — single source of truth for the shared Study Hub navigation.
+   The Study Hub page itself is excluded by site-navigation.js. */
+html.site-nav-fix,html.site-nav-fix body{min-height:100%;font-family:'DM Sans',Arial,sans-serif!important}
+html.site-nav-fix body{margin:0!important;padding-left:250px!important;box-sizing:border-box!important;transition:none!important}
+html.site-nav-fix body,html.site-nav-fix body *{box-sizing:border-box}
 html.site-nav-fix .up-study-header{display:contents!important}
+
+/* Fixed Study Hub-style sidebar */
 html.site-nav-fix .up-study-drawer{
-  box-sizing:border-box!important;position:fixed!important;inset:0 auto 0 0!important;
-  width:250px!important;max-width:250px!important;height:100vh!important;height:100dvh!important;
-  max-height:none!important;overflow-y:auto!important;display:flex!important;flex-direction:column!important;
-  gap:0!important;padding:26px 18px!important;margin:0!important;border:0!important;border-right:1px solid rgba(255,255,255,.78)!important;
-  border-radius:0!important;background:radial-gradient(ellipse at 18% 0%,rgba(255,255,255,.78),transparent 44%),linear-gradient(155deg,rgba(255,255,255,.88),rgba(235,246,239,.76))!important;
-  -webkit-backdrop-filter:blur(28px) saturate(165%)!important;backdrop-filter:blur(28px) saturate(165%)!important;
-  box-shadow:12px 0 42px rgba(17,65,42,.08),inset -1px 0 0 rgba(11,93,59,.055)!important;
-  z-index:1400!important;transform:none!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important;
+ position:fixed!important;inset:0 auto 0 0!important;width:250px!important;height:100vh!important;height:100dvh!important;
+ max-width:250px!important;max-height:none!important;margin:0!important;padding:26px 18px!important;
+ display:flex!important;flex-direction:column!important;gap:0!important;overflow-y:auto!important;overscroll-behavior:contain!important;
+ background:rgba(255,255,255,.88)!important;border:0!important;border-right:1px solid rgba(11,93,59,.10)!important;
+ border-radius:0!important;box-shadow:12px 0 38px rgba(17,65,42,.08)!important;
+ -webkit-backdrop-filter:blur(22px) saturate(150%)!important;backdrop-filter:blur(22px) saturate(150%)!important;
+ z-index:1400!important;transform:none!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important;
+ transition:transform .28s ease,opacity .22s ease,visibility .22s ease!important;
 }
-html.site-nav-fix .up-study-drawer-brand{display:flex!important;align-items:center!important;gap:11px!important;padding:0 9px 35px!important;color:#17221c!important;text-decoration:none!important}
-html.site-nav-fix .up-study-brand-mark{width:40px!important;height:40px!important;flex:0 0 40px!important;display:grid!important;place-items:center!important;border-radius:13px!important;background:linear-gradient(145deg,#0a6a45,#06432e)!important;color:#fff!important;font-size:23px!important}
+html.site-nav-fix .up-study-drawer-brand{display:flex!important;align-items:center!important;gap:11px!important;padding:0 9px 35px!important;margin:0!important;color:#17221c!important;text-decoration:none!important}
+html.site-nav-fix .up-study-brand-mark{width:40px!important;height:40px!important;flex:0 0 40px!important;display:grid!important;place-items:center!important;border-radius:13px!important;background:#0b5d3b!important;color:#fff!important;font-size:22px!important}
 html.site-nav-fix .up-study-drawer-brand strong,html.site-nav-fix .up-study-drawer-brand small{display:block!important;letter-spacing:1.3px!important}
-html.site-nav-fix .up-study-drawer-brand strong{font:800 13px Manrope,'DM Sans',sans-serif!important;color:#17221c!important}
+html.site-nav-fix .up-study-drawer-brand strong{font:800 13px 'DM Sans',sans-serif!important;color:#17221c!important}
 html.site-nav-fix .up-study-drawer-brand small{margin-top:3px!important;color:#0b5d3b!important;font-size:9px!important;font-weight:700!important}
-html.site-nav-fix .up-study-side-label{padding:0 12px 10px!important;margin:0!important;color:#9aa69f!important;font-size:9px!important;letter-spacing:1.7px!important;font-weight:700!important}
+html.site-nav-fix .up-study-side-label{margin:0!important;padding:0 12px 10px!important;color:#9aa69f!important;font:700 9px 'DM Sans',sans-serif!important;letter-spacing:1.7px!important}
 html.site-nav-fix .up-study-side-nav{display:flex!important;flex-direction:column!important;gap:2px!important}
-html.site-nav-fix .up-study-nav-link,html.site-nav-fix .up-study-theme-link{display:flex!important;align-items:center!important;gap:10px!important;width:100%!important;min-height:0!important;padding:12px!important;margin:0!important;border:0!important;border-radius:9px!important;background:transparent!important;color:#65736b!important;text-decoration:none!important;text-align:left!important;font:600 13px 'DM Sans',sans-serif!important;transition:background .2s ease,color .2s ease!important}
-html.site-nav-fix .up-study-nav-link span,html.site-nav-fix .up-study-theme-link>span:first-child{width:18px!important;text-align:center!important;flex:0 0 18px!important}
+html.site-nav-fix .up-study-nav-link,html.site-nav-fix .up-study-theme-link{
+ display:flex!important;align-items:center!important;gap:10px!important;width:100%!important;min-height:0!important;
+ margin:0!important;padding:12px!important;border:0!important;border-radius:9px!important;background:transparent!important;
+ color:#65736b!important;text-decoration:none!important;text-align:left!important;font:600 13px 'DM Sans',sans-serif!important;
+ cursor:pointer!important;transition:background .18s ease,color .18s ease!important
+}
+html.site-nav-fix .up-study-nav-link span,html.site-nav-fix .up-study-theme-link>span:first-child{width:18px!important;flex:0 0 18px!important;text-align:center!important}
 html.site-nav-fix .up-study-nav-link:hover,html.site-nav-fix .up-study-nav-link.active,html.site-nav-fix .up-study-theme-link:hover{background:#eaf6ef!important;color:#0b5d3b!important;font-weight:700!important}
-html.site-nav-fix .up-study-theme-link{cursor:pointer!important}
-html.site-nav-fix .up-study-theme-link .theme-current-label{margin-left:auto!important;font-size:9px!important;color:#8b988f!important}
+html.site-nav-fix .up-study-theme-link .theme-current-label{margin-left:auto!important;color:#8b988f!important;font-size:9px!important}
 html.site-nav-fix .up-study-login{margin-top:8px!important;border-top:1px solid #e6ece8!important;border-radius:0!important;padding-top:17px!important}
 html.site-nav-fix .up-study-drawer-bottom{margin-top:auto!important;padding-top:22px!important}
-html.site-nav-fix .up-study-help-card{padding:15px!important;border:1px solid #e5efe8!important;border-radius:12px!important;background:#f3f8f4!important;font-size:12px!important;color:#17221c!important}
+html.site-nav-fix .up-study-help-card{padding:15px!important;border:1px solid #e5efe8!important;border-radius:12px!important;background:#f3f8f4!important;color:#17221c!important;font-size:12px!important}
+html.site-nav-fix .up-study-help-card b{font-weight:800!important}
 html.site-nav-fix .up-study-help-card p{margin:7px 0 0!important;color:#718078!important;font-size:11px!important;line-height:1.5!important}
 html.site-nav-fix .up-study-back-link{display:block!important;padding:19px 8px 0!important;color:#0b5d3b!important;font-size:12px!important;text-decoration:none!important;font-weight:700!important}
-html.site-nav-fix .up-study-navbar{box-sizing:border-box!important;position:sticky!important;top:0!important;z-index:1300!important;width:100%!important;min-height:68px!important;margin:0!important;padding:0 5%!important;display:flex!important;align-items:center!important;gap:15px!important;justify-content:flex-start!important;background:rgba(255,255,255,.78)!important;-webkit-backdrop-filter:blur(18px)!important;backdrop-filter:blur(18px)!important;border-bottom:1px solid #e6ece8!important;box-shadow:none!important}
-html.site-nav-fix .up-study-menu-btn{display:none!important;width:38px!important;height:38px!important;flex:0 0 38px!important;border:0!important;background:transparent!important;color:#0b5d3b!important;font-size:25px!important}
-html.site-nav-fix .up-study-crumb{display:flex!important;align-items:center!important;gap:8px!important;flex:1!important;min-width:0!important;color:#89958e!important;font-size:12px!important;white-space:nowrap!important}
+
+/* Compact sticky topbar — same hierarchy as Study Hub */
+html.site-nav-fix .up-study-navbar{
+ position:sticky!important;top:0!important;z-index:1300!important;width:100%!important;min-height:68px!important;
+ margin:0!important;padding:0 5%!important;display:flex!important;align-items:center!important;gap:15px!important;
+ justify-content:flex-start!important;background:rgba(255,255,255,.82)!important;
+ -webkit-backdrop-filter:blur(18px)!important;backdrop-filter:blur(18px)!important;border:0!important;
+ border-bottom:1px solid #e6ece8!important;box-shadow:none!important
+}
+html.site-nav-fix .up-study-menu-btn{display:none!important;align-items:center!important;justify-content:center!important;width:38px!important;height:38px!important;flex:0 0 38px!important;padding:0!important;border:0!important;border-radius:10px!important;background:transparent!important;color:#0b5d3b!important;font:400 25px 'DM Sans',sans-serif!important;cursor:pointer!important}
+html.site-nav-fix .up-study-crumb{display:flex!important;align-items:center!important;gap:8px!important;flex:1 1 auto!important;min-width:0!important;margin:0!important;color:#89958e!important;font-size:12px!important;white-space:nowrap!important}
 html.site-nav-fix .up-study-crumb a{color:#89958e!important;text-decoration:none!important}
 html.site-nav-fix .up-study-crumb span{color:#c0c9c3!important}
 html.site-nav-fix .up-study-crumb strong{color:#17221c!important;font-weight:800!important}
-html.site-nav-fix .up-study-campus{display:inline-flex!important;align-items:center!important;padding:9px 12px!important;margin-left:auto!important;border-radius:25px!important;background:#eaf6ef!important;color:#0b5d3b!important;font-size:9px!important;font-weight:700!important;letter-spacing:1px!important;white-space:nowrap!important}
-html.site-nav-fix .up-study-account{display:flex!important;align-items:center!important;margin:0!important}
-html.site-nav-fix .up-study-avatar{display:grid!important;place-items:center!important;width:38px!important;height:38px!important;flex:0 0 38px!important;padding:0!important;border:0!important;border-radius:50%!important;background:#063b26!important;color:#fff!important;font-weight:700!important;text-decoration:none!important}
-html.site-nav-fix .menu-overlay{display:none!important;position:fixed!important;inset:0!important;z-index:1390!important;background:rgba(4,25,15,.4)!important;-webkit-backdrop-filter:blur(4px)!important;backdrop-filter:blur(4px)!important}
+html.site-nav-fix .up-study-campus{display:inline-flex!important;align-items:center!important;flex:0 0 auto!important;margin-left:auto!important;padding:9px 12px!important;border:0!important;border-radius:25px!important;background:#eaf6ef!important;color:#0b5d3b!important;font-size:9px!important;font-weight:700!important;letter-spacing:1px!important;white-space:nowrap!important}
+html.site-nav-fix .up-study-account{position:relative!important;display:flex!important;align-items:center!important;flex:0 0 auto!important;margin:0!important}
+html.site-nav-fix .up-study-avatar{display:grid!important;place-items:center!important;width:38px!important;height:38px!important;flex:0 0 38px!important;margin:0!important;padding:0!important;border:0!important;border-radius:50%!important;background:#063b26!important;color:#fff!important;font:800 15px 'DM Sans',sans-serif!important;text-decoration:none!important;cursor:pointer!important}
+html.site-nav-fix .up-study-profile-pop{position:absolute!important;top:calc(100% + 12px)!important;right:0!important;left:auto!important;width:min(290px,calc(100vw - 28px))!important;min-width:0!important;margin:0!important;padding:38px 12px 12px!important;border:1px solid rgba(11,93,59,.10)!important;border-radius:20px!important;background:rgba(255,255,255,.97)!important;box-shadow:0 24px 60px rgba(6,59,38,.18)!important;z-index:1500!important}
+html.site-nav-fix .up-study-profile-pop:not(.active){display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important}
+html.site-nav-fix .up-study-profile-pop.active{display:block!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important}
+html.site-nav-fix .up-study-profile-head{padding:12px 10px 14px!important;text-align:center!important}
+html.site-nav-fix .up-study-profile-avatar{display:grid!important;place-items:center!important;width:54px!important;height:54px!important;margin:0 auto 10px!important;border-radius:50%!important;background:#0b5d3b!important;color:#fff!important;font-size:18px!important;font-weight:800!important}
+html.site-nav-fix .up-study-profile-name{color:#17221c!important;font-size:15px!important;font-weight:800!important;text-align:center!important;overflow-wrap:anywhere!important}
+html.site-nav-fix .up-study-profile-email{margin-top:4px!important;color:#7b8981!important;font-size:12px!important;text-align:center!important;overflow-wrap:anywhere!important}
+html.site-nav-fix .up-study-edit-profile,html.site-nav-fix .up-study-signout{display:flex!important;align-items:center!important;justify-content:space-between!important;width:100%!important;padding:12px 13px!important;border:1px solid rgba(11,93,59,.07)!important;border-radius:12px!important;background:rgba(11,93,59,.045)!important;color:#526058!important;text-align:left!important;font:700 13px 'DM Sans',sans-serif!important;cursor:pointer!important}
+html.site-nav-fix .up-study-profile-close{position:absolute!important;top:7px!important;right:8px!important;width:30px!important;height:30px!important;border:0!important;border-radius:50%!important;background:rgba(11,93,59,.08)!important;color:#17221c!important;font-size:21px!important;line-height:1!important;cursor:pointer!important}
+
+/* Mobile: the same sidebar becomes a left slide-out drawer */
+html.site-nav-fix .menu-overlay{display:none!important;position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;height:100dvh!important;z-index:1390!important;background:rgba(4,25,15,.38)!important;-webkit-backdrop-filter:blur(4px)!important;backdrop-filter:blur(4px)!important;touch-action:none!important}
 html.site-nav-fix .menu-overlay.active,html.site-nav-fix .menu-overlay.is-open{display:block!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important}
-html[data-theme="dark"].site-nav-fix body{background:#0d1510!important}
-html[data-theme="dark"].site-nav-fix .up-study-drawer{background:linear-gradient(155deg,rgba(15,28,21,.96),rgba(10,20,15,.94))!important;border-color:rgba(255,255,255,.1)!important}
-html[data-theme="dark"].site-nav-fix .up-study-drawer-brand strong,html[data-theme="dark"].site-nav-fix .up-study-crumb strong{color:#f4f7f5!important}
-html[data-theme="dark"].site-nav-fix .up-study-navbar{background:rgba(15,22,18,.88)!important;border-color:#2d3b32!important}
-html[data-theme="dark"].site-nav-fix .up-study-nav-link,html[data-theme="dark"].site-nav-fix .up-study-theme-link{color:#c4d0c8!important}
-html[data-theme="dark"].site-nav-fix .up-study-nav-link:hover,html[data-theme="dark"].site-nav-fix .up-study-nav-link.active,html[data-theme="dark"].site-nav-fix .up-study-theme-link:hover{background:#20382a!important;color:#f5c518!important}
-html[data-theme="dark"].site-nav-fix .up-study-help-card{background:#17251c!important;border-color:#2d4535!important;color:#f4f7f5!important}
-html[data-theme="dark"].site-nav-fix .up-study-help-card p{color:#b0beb5!important}
 @media(max-width:700px){
  html.site-nav-fix body{padding-left:0!important}
- html.site-nav-fix .up-study-drawer{transform:translateX(-105%)!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;transition:transform .3s ease,opacity .25s ease,visibility .25s!important}
+ html.site-nav-fix .up-study-navbar{min-height:62px!important;padding:0 15px!important;gap:10px!important}
+ html.site-nav-fix .up-study-menu-btn{display:inline-flex!important}
+ html.site-nav-fix .up-study-drawer{width:min(320px,86vw)!important;max-width:86vw!important;padding:24px 18px 18px!important;transform:translateX(-105%)!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;z-index:1400!important}
  html.site-nav-fix .up-study-drawer.active,html.site-nav-fix .up-study-drawer.is-open{transform:translateX(0)!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important}
- html.site-nav-fix .up-study-menu-btn{display:inline-flex!important;align-items:center!important;justify-content:center!important}
- html.site-nav-fix .up-study-navbar{min-height:60px!important;padding:0 15px!important;gap:10px!important}
- html.site-nav-fix .up-study-campus{font-size:7px!important;padding:8px!important}
- html.site-nav-fix .menu-overlay.active,html.site-nav-fix .menu-overlay.is-open{display:block!important}
+ html.site-nav-fix .up-study-campus{font-size:7px!important;padding:8px!important;letter-spacing:.6px!important}
 }
-@media(min-width:701px){
- html.site-nav-fix .menu-overlay{display:none!important}
-}
+@media(max-width:390px){html.site-nav-fix .up-study-campus{display:none!important}}
+@media(min-width:701px){html.site-nav-fix .menu-overlay{display:none!important}}
 
-/* Account popup must stay closed until the signed-in user opens it. */
-html.site-nav-fix .up-study-profile-pop{
-  display:none!important;visibility:hidden!important;opacity:0!important;
-  pointer-events:none!important;transform:translateY(-5px)!important;
-  transition:opacity .18s ease,transform .18s ease,visibility .18s ease!important;
-}
-html.site-nav-fix .up-study-profile-pop.active{
-  display:block!important;visibility:visible!important;opacity:1!important;
-  pointer-events:auto!important;transform:translateY(0)!important;
-}
+/* Dark mode */
+html[data-theme="dark"].site-nav-fix .up-study-drawer{background:rgba(12,23,27,.96)!important;border-right-color:rgba(255,255,255,.09)!important}
+html[data-theme="dark"].site-nav-fix .up-study-drawer-brand strong,html[data-theme="dark"].site-nav-fix .up-study-crumb strong{color:#f4f7f5!important}
+html[data-theme="dark"].site-nav-fix .up-study-drawer-brand small{color:#8ce0ba!important}
+html[data-theme="dark"].site-nav-fix .up-study-nav-link,html[data-theme="dark"].site-nav-fix .up-study-theme-link{color:#c4d0c8!important}
+html[data-theme="dark"].site-nav-fix .up-study-nav-link:hover,html[data-theme="dark"].site-nav-fix .up-study-nav-link.active,html[data-theme="dark"].site-nav-fix .up-study-theme-link:hover{background:#20382a!important;color:#f5c518!important}
+html[data-theme="dark"].site-nav-fix .up-study-navbar{background:rgba(15,22,18,.90)!important;border-bottom-color:#2d3b32!important}
+html[data-theme="dark"].site-nav-fix .up-study-crumb a{color:#9aa9a7!important}
+html[data-theme="dark"].site-nav-fix .up-study-campus{background:#102820!important;color:#8ce0ba!important}
+html[data-theme="dark"].site-nav-fix .up-study-help-card{background:#17251c!important;border-color:#2d4535!important;color:#f4f7f5!important}
+html[data-theme="dark"].site-nav-fix .up-study-help-card p{color:#b0beb5!important}
+html[data-theme="dark"].site-nav-fix .up-study-profile-pop{background:rgba(13,23,32,.98)!important;border-color:#263b49!important}
+html[data-theme="dark"].site-nav-fix .up-study-profile-name{color:#f4f7f5!important}
+html[data-theme="dark"].site-nav-fix .up-study-profile-close{color:#f4f7f5!important;background:rgba(255,255,255,.09)!important}
+html[data-theme="dark"].site-nav-fix .up-study-edit-profile,html[data-theme="dark"].site-nav-fix .up-study-signout{background:rgba(255,255,255,.06)!important;border-color:rgba(255,255,255,.08)!important;color:#e6eee9!important}
+
+/* Theme picker */
+.site-theme-backdrop{display:none;position:fixed;inset:0;z-index:2000;align-items:center;justify-content:center;padding:18px;background:rgba(0,0,0,.55);-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px)}
+.site-theme-backdrop.is-open{display:flex}
+.site-theme-dialog{width:min(410px,100%);padding:24px;border-radius:22px;background:#fff;color:#17221c;box-shadow:0 24px 80px rgba(0,0,0,.28)}
+.site-theme-dialog h2{margin:0 0 8px;font-size:1.35rem}.site-theme-dialog p{color:#6d7a72;font-size:.88rem}
+.site-theme-dialog .site-theme-choice{display:flex;align-items:center;gap:12px;width:100%;margin-top:8px;padding:13px;border:1px solid #dfe8e2;border-radius:13px;background:#fff;color:#17221c;text-align:left;cursor:pointer;font-weight:800}
+.site-theme-dialog .site-theme-choice[aria-checked="true"]{border-color:#0b5d3b;background:#eaf6ef}
+.site-theme-dialog .site-theme-close{float:right;border:0;background:transparent;font-size:1.5rem;cursor:pointer}
