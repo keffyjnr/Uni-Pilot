@@ -216,3 +216,14 @@ html[data-theme="dark"].site-nav-fix .up-study-help-card p{color:#b0beb5!importa
 @media(min-width:701px){
  html.site-nav-fix .menu-overlay{display:none!important}
 }
+
+/* Account popup must stay closed until the signed-in user opens it. */
+html.site-nav-fix .up-study-profile-pop{
+  display:none!important;visibility:hidden!important;opacity:0!important;
+  pointer-events:none!important;transform:translateY(-5px)!important;
+  transition:opacity .18s ease,transform .18s ease,visibility .18s ease!important;
+}
+html.site-nav-fix .up-study-profile-pop.active{
+  display:block!important;visibility:visible!important;opacity:1!important;
+  pointer-events:auto!important;transform:translateY(0)!important;
+}
