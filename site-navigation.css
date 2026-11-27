@@ -134,3 +134,10 @@ html[data-theme="dark"] .site-nav-fix .up-study-drawer .menu-breadcrumb-link:hov
 html[data-theme="dark"] .site-nav-fix .up-study-drawer .menu-breadcrumb-link.current{
   background:rgba(150,190,170,.12);color:#a9d7bd;
 }
+
+
+/* Hide original department breadcrumbs after their links are copied into the drawer. */
+body [data-menu-breadcrumb]{
+  display:none!important;
+  visibility:hidden!important;
+}
