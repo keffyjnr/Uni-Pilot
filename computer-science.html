@@ -270,6 +270,26 @@ footer{border-top:1px solid var(--border)}
   .reveal-on-scroll{opacity:1;transform:none}
 }
 
+
+/* ACADEMIC REGULATIONS */
+.regulations-section{margin:0 0 70px;scroll-margin-top:30px}
+.regulations-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.regulations-card{background:#fff;border:1px solid var(--border,#dfe8e2);border-radius:20px;padding:24px;box-shadow:0 12px 35px rgba(6,59,38,.05)}
+.regulations-card.assessment{grid-column:1/-1}
+.regulations-card h3{margin:0 0 15px;color:var(--text,#17221c);font-size:1rem}
+.regulations-card p{margin:0;color:var(--muted,#6d7a72);font-size:.84rem;line-height:1.8}
+.grading-table{width:100%;border-collapse:separate;border-spacing:0;overflow:hidden;border:1px solid var(--border,#dfe8e2);border-radius:14px}
+.grading-table th,.grading-table td{padding:11px 12px;text-align:center;border-bottom:1px solid var(--border,#dfe8e2);font-size:.78rem}
+.grading-table th{background:var(--light-green,#eaf6ef);color:var(--green,#0b5d3b);font-weight:800}
+.grading-table tr:last-child td{border-bottom:0}
+.degree-list{display:grid;gap:0}
+.degree-item{padding:12px 0;border-bottom:1px solid var(--border,#dfe8e2)}
+.degree-item:first-child{padding-top:0}
+.degree-item:last-child{padding-bottom:0;border-bottom:0}
+.degree-item span{display:block;color:var(--muted,#6d7a72);font-size:.82rem;margin-bottom:4px}
+.degree-item strong{display:block;color:var(--green,#0b5d3b);font-size:.92rem;font-weight:800}
+@media(max-width:700px){.regulations-grid{grid-template-columns:1fr}.regulations-card.assessment{grid-column:auto}.regulations-card{padding:21px}.grading-table th,.grading-table td{padding:10px 8px}}
+
 </style>
   <link rel="stylesheet" href="site-navigation.css">
 </head>
@@ -351,7 +371,7 @@ footer{border-top:1px solid var(--border)}
 
 <section class="department-hero">
   <div class="department-hero-content">
-    <div class="breadcrumb">
+    <div class="breadcrumb" data-menu-breadcrumb>
       <a href="index.html">Home</a><span>›</span>
       <a href="faculty-guide.html">Faculty Guide</a><span>›</span>
       <span>Computer Science</span>
@@ -545,7 +565,18 @@ footer{border-top:1px solid var(--border)}
     <h2>Courses by Level and Semester</h2>
     <p>Course titles and codes transcribed from the 7-page Computer Science handbook you supplied. Some scanned table cells are blurred or misaligned, so verify unclear codes and unit values with the department before relying on them for registration.</p>
   </div>
-  <div class="content-card course-table-card">
+  
+  <div class="level-nav" aria-label="Course levels">
+    <button type="button" class="course-level-button" data-level="100">100 Level</button>
+    <button type="button" class="course-level-button" data-level="200">200 Level</button>
+    <button type="button" class="course-level-button" data-level="300">300 Level</button>
+    <button type="button" class="course-level-button" data-level="400">400 Level</button>
+    <a href="#siwes">SIWES</a>
+  </div>
+  <div class="course-level-group">
+    <button type="button" class="course-level-button" data-level-toggle="100" aria-expanded="false">100 Level <span aria-hidden="true">+</span></button>
+    <div class="course-level-content" data-level-content="100">
+      <div class="content-card course-table-card">
     <h3>100 Level — First Semester</h3>
     <div class="table-responsive"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th></tr></thead><tbody>
       <tr><td>GST 111</td><td>Communication in English</td><td>—</td></tr>
@@ -570,7 +601,12 @@ footer{border-top:1px solid var(--border)}
       <tr><td>AAUA-CYB 102</td><td>Internet and its Applications</td><td>—</td></tr>
     </tbody></table></div>
   </div>
-  <div class="content-card course-table-card">
+    </div>
+  </div>
+  <div class="course-level-group">
+    <button type="button" class="course-level-button" data-level-toggle="200" aria-expanded="false">200 Level <span aria-hidden="true">+</span></button>
+    <div class="course-level-content" data-level-content="200">
+      <div class="content-card course-table-card">
     <h3>200 Level — First Semester</h3>
     <div class="table-responsive"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units / Note</th></tr></thead><tbody>
       <tr><td>AAUA-CSC 201</td><td>Introduction to Computer Arithmetic</td><td>—</td></tr>
@@ -593,7 +629,12 @@ footer{border-top:1px solid var(--border)}
     <h3>200 Level Electives listed in the handbook</h3>
     <ul><li>DTS 204 — Statistical Computing Inference and Modelling (3 units)</li><li>MTH 204 — Linear Algebra II (2 units)</li><li>INS 202 — Human-Computer Interaction (2 units)</li><li>AAUA-SEN 202 — Introduction to Software Engineering II (2 units)</li></ul>
   </div>
-  <div class="content-card course-table-card">
+    </div>
+  </div>
+  <div class="course-level-group">
+    <button type="button" class="course-level-button" data-level-toggle="300" aria-expanded="false">300 Level <span aria-hidden="true">+</span></button>
+    <div class="course-level-content" data-level-content="300">
+      <div class="content-card course-table-card">
     <h3>300 Level — First Semester</h3>
     <p>The scan's course-code column is unclear for several entries; titles below are transcribed from the handbook.</p>
     <ul><li>Data Structures and Algorithm</li><li>Artificial Intelligence</li><li>Introduction to Cybersecurity and Strategy</li><li>Data Communications System and Network</li><li>E-Business Systems Development</li><li>Automata Theory and Formal Language</li><li>Machine Learning</li><li>Elective — minimum 2 units</li></ul>
@@ -610,7 +651,12 @@ footer{border-top:1px solid var(--border)}
     <h3>300 Level — Second Semester</h3>
     <p>The provided scan clearly shows the SIWES assessment courses above; the remaining second-semester course table is not legible enough to confidently assign all titles and codes.</p>
   </div>
-  <div class="content-card course-table-card">
+    </div>
+  </div>
+  <div class="course-level-group">
+    <button type="button" class="course-level-button" data-level-toggle="400" aria-expanded="false">400 Level <span aria-hidden="true">+</span></button>
+    <div class="course-level-content" data-level-content="400">
+      <div class="content-card course-table-card">
     <h3>400 Level — First Semester</h3>
     <p>The handbook scan shows these course titles, but several codes/rows are blurred or displaced. Please verify the precise mapping before registration.</p>
     <ul><li>Research Methodology</li><li>Technical Writing</li><li>INS 401 — Project Management</li><li>Final Year Project I</li><li>Web Programming</li><li>Formal Methods</li><li>Software Development</li><li>Elective (minimum of 2 units)</li></ul>
@@ -628,7 +674,47 @@ footer{border-top:1px solid var(--border)}
     <h3>400 Level Electives listed in the handbook</h3>
     <ul><li>CYB 404 — Cloud Computing Security (2 units)</li><li>SEN 410 — Software Architecture Design (2 units)</li><li>AAUA-CSC 404 — Compiler Design (2 units)</li><li>AAUA-CSC 406 — Computer System Modelling &amp; Simulation (2 units)</li><li>AAUA-CSC 412 — Parallel Programming (2 units)</li><li>CSC 432 — Distributed Computing Systems (2 units)</li><li>DTS 402 — Big Data Computing (2 units)</li><li>AAUA-CSC 442 — Operation Research (units unclear)</li></ul>
   </div>
+    </div>
+  </div>
   <p class="note">The handbook says students may choose electives from 200, 300 and 400 Level in the Faculty of Computing, excluding GST and ENT courses. Some units and code/title pairings are not readable in the scanned copy; these are marked for confirmation rather than guessed.</p>
+</section>
+</section>
+
+
+<section class="department-section regulations-section" id="academic-regulations">
+  <div class="section-heading">
+    <span>Academic Regulations</span>
+    <h2>Examination, Grading &amp; Degree Classification</h2>
+  </div>
+  <div class="regulations-grid">
+    <div class="regulations-card assessment">
+      <h3>Assessment</h3>
+      <p>Continuous assessment contributes 30% and the final semester examination contributes 70%. Final-year project scripts and oral examinations are moderated or conducted by external examiners.</p>
+    </div>
+    <div class="regulations-card">
+      <h3>Grading System</h3>
+      <table class="grading-table">
+        <thead><tr><th>Marks</th><th>Grade</th><th>Point</th></tr></thead>
+        <tbody>
+          <tr><td>70–100</td><td>A</td><td>5</td></tr>
+          <tr><td>60–69</td><td>B</td><td>4</td></tr>
+          <tr><td>50–59</td><td>C</td><td>3</td></tr>
+          <tr><td>45–49</td><td>D</td><td>2</td></tr>
+          <tr><td>40–44</td><td>E</td><td>1</td></tr>
+          <tr><td>0–39</td><td>F</td><td>0</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="regulations-card">
+      <h3>Class of Degree (CGPA)</h3>
+      <div class="degree-list">
+        <div class="degree-item"><span>First Class Honours</span><strong>4.50–5.00</strong></div>
+        <div class="degree-item"><span>Second Class Upper</span><strong>3.50–4.49</strong></div>
+        <div class="degree-item"><span>Second Class Lower</span><strong>2.40–3.49</strong></div>
+        <div class="degree-item"><span>Third Class Honours</span><strong>1.50–2.39</strong></div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section class="department-section" id="siwes">
@@ -642,11 +728,6 @@ footer{border-top:1px solid var(--border)}
     <div class="summary-card"><h3>4-Year Programme</h3><div class="summary-stat"><span>Compulsory Courses</span><strong>118 units</strong></div><div class="summary-stat"><span>Elective Courses</span><strong>10 units</strong></div><div class="summary-stat"><span>GST Courses</span><strong>8 units</strong></div><div class="summary-stat"><span>ENT Courses</span><strong>4 units</strong></div><div class="summary-stat"><span>Minimum Total</span><strong>140 units</strong></div></div>
     <div class="summary-card"><h3>3-Year Programme</h3><div class="summary-stat"><span>Compulsory Courses</span><strong>86 units</strong></div><div class="summary-stat"><span>Elective Courses</span><strong>10 units</strong></div><div class="summary-stat"><span>GST Courses</span><strong>8 units</strong></div><div class="summary-stat"><span>ENT Courses</span><strong>4 units</strong></div><div class="summary-stat"><span>Minimum Total</span><strong>108 units</strong></div></div>
   </div>
-</section>
-
-<section class="department-section">
-  <div class="section-heading"><span>Administrative Staff List</span><h2>Department Administration</h2></div>
-  <div class="content-card"><p>Information coming soon. The current Computer Science department administrative staff list will be added when verified details are available.</p></div>
 </section>
 
 <section class="department-section" id="resources">
