@@ -105,3 +105,32 @@ html[data-theme="dark"].site-nav-fix .up-study-edit-profile,html[data-theme="dar
 .site-theme-dialog .site-theme-choice{display:flex;align-items:center;gap:12px;width:100%;margin-top:8px;padding:13px;border:1px solid #dfe8e2;border-radius:13px;background:#fff;color:#17221c;text-align:left;cursor:pointer;font-weight:800}
 .site-theme-dialog .site-theme-choice[aria-checked="true"]{border-color:#0b5d3b;background:#eaf6ef}
 .site-theme-dialog .site-theme-close{float:right;border:0;background:transparent;font-size:1.5rem;cursor:pointer}
+
+
+/* Faculty department breadcrumb navigation inside the shared drawer */
+.site-nav-fix .up-study-drawer .menu-breadcrumb-group{
+  display:flex;flex-direction:column;gap:6px;
+  margin:14px 0 10px;padding:13px 12px;
+  border:1px solid rgba(11,93,59,.14);border-radius:14px;
+  background:rgba(11,93,59,.045);
+}
+.site-nav-fix .up-study-drawer .menu-breadcrumb-heading{
+  margin:0 0 4px;color:#789087;font-size:10px;
+  font-weight:900;letter-spacing:1.1px;
+}
+.site-nav-fix .up-study-drawer .menu-breadcrumb-link{
+  display:block;padding:8px 10px;border-radius:9px;
+  color:inherit;text-decoration:none;font-size:12px;font-weight:700;
+}
+.site-nav-fix .up-study-drawer .menu-breadcrumb-link:hover,
+.site-nav-fix .up-study-drawer .menu-breadcrumb-link.current{
+  background:rgba(11,93,59,.09);color:#0b5d3b;
+}
+html[data-theme="dark"] .site-nav-fix .up-study-drawer .menu-breadcrumb-group{
+  border-color:rgba(150,190,170,.18);background:rgba(150,190,170,.07);
+}
+html[data-theme="dark"] .site-nav-fix .up-study-drawer .menu-breadcrumb-heading{color:#9ab2a5}
+html[data-theme="dark"] .site-nav-fix .up-study-drawer .menu-breadcrumb-link:hover,
+html[data-theme="dark"] .site-nav-fix .up-study-drawer .menu-breadcrumb-link.current{
+  background:rgba(150,190,170,.12);color:#a9d7bd;
+}
