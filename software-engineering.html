@@ -270,6 +270,26 @@ footer{border-top:1px solid var(--border)}
   .reveal-on-scroll{opacity:1;transform:none}
 }
 
+
+/* ACADEMIC REGULATIONS */
+.regulations-section{margin:0 0 70px;scroll-margin-top:30px}
+.regulations-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.regulations-card{background:#fff;border:1px solid var(--border,#dfe8e2);border-radius:20px;padding:24px;box-shadow:0 12px 35px rgba(6,59,38,.05)}
+.regulations-card.assessment{grid-column:1/-1}
+.regulations-card h3{margin:0 0 15px;color:var(--text,#17221c);font-size:1rem}
+.regulations-card p{margin:0;color:var(--muted,#6d7a72);font-size:.84rem;line-height:1.8}
+.grading-table{width:100%;border-collapse:separate;border-spacing:0;overflow:hidden;border:1px solid var(--border,#dfe8e2);border-radius:14px}
+.grading-table th,.grading-table td{padding:11px 12px;text-align:center;border-bottom:1px solid var(--border,#dfe8e2);font-size:.78rem}
+.grading-table th{background:var(--light-green,#eaf6ef);color:var(--green,#0b5d3b);font-weight:800}
+.grading-table tr:last-child td{border-bottom:0}
+.degree-list{display:grid;gap:0}
+.degree-item{padding:12px 0;border-bottom:1px solid var(--border,#dfe8e2)}
+.degree-item:first-child{padding-top:0}
+.degree-item:last-child{padding-bottom:0;border-bottom:0}
+.degree-item span{display:block;color:var(--muted,#6d7a72);font-size:.82rem;margin-bottom:4px}
+.degree-item strong{display:block;color:var(--green,#0b5d3b);font-size:.92rem;font-weight:800}
+@media(max-width:700px){.regulations-grid{grid-template-columns:1fr}.regulations-card.assessment{grid-column:auto}.regulations-card{padding:21px}.grading-table th,.grading-table td{padding:10px 8px}}
+
 </style>
   <link rel="stylesheet" href="site-navigation.css">
 </head>
@@ -351,7 +371,7 @@ footer{border-top:1px solid var(--border)}
 
 <section class="department-hero">
   <div class="department-hero-content">
-    <div class="breadcrumb">
+    <div class="breadcrumb" data-menu-breadcrumb>
       <a href="index.html">Home</a><span>›</span>
       <a href="faculty-guide.html">Faculty Guide</a><span>›</span>
       <span>Software Engineering</span>
@@ -365,7 +385,6 @@ footer{border-top:1px solid var(--border)}
     <div class="department-actions">
       <a href="#overview" class="department-action primary">📚 Overview</a>
       <a href="#courses" class="department-action secondary">📋 Courses</a>
-      <a href="#staff" class="department-action secondary">👩‍🏫 Staff</a>
       <a href="#help" class="department-action secondary">🆘 Get Help</a>
     </div>
   </div>
@@ -454,6 +473,43 @@ footer{border-top:1px solid var(--border)}
   </div>
 </section>
 
+
+<section class="department-section regulations-section" id="academic-regulations">
+  <div class="section-heading">
+    <span>Academic Regulations</span>
+    <h2>Examination, Grading &amp; Degree Classification</h2>
+  </div>
+  <div class="regulations-grid">
+    <div class="regulations-card assessment">
+      <h3>Assessment</h3>
+      <p>Continuous assessment contributes 30% and the final semester examination contributes 70%. Final-year project scripts and oral examinations are moderated or conducted by external examiners.</p>
+    </div>
+    <div class="regulations-card">
+      <h3>Grading System</h3>
+      <table class="grading-table">
+        <thead><tr><th>Marks</th><th>Grade</th><th>Point</th></tr></thead>
+        <tbody>
+          <tr><td>70–100</td><td>A</td><td>5</td></tr>
+          <tr><td>60–69</td><td>B</td><td>4</td></tr>
+          <tr><td>50–59</td><td>C</td><td>3</td></tr>
+          <tr><td>45–49</td><td>D</td><td>2</td></tr>
+          <tr><td>40–44</td><td>E</td><td>1</td></tr>
+          <tr><td>0–39</td><td>F</td><td>0</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="regulations-card">
+      <h3>Class of Degree (CGPA)</h3>
+      <div class="degree-list">
+        <div class="degree-item"><span>First Class Honours</span><strong>4.50–5.00</strong></div>
+        <div class="degree-item"><span>Second Class Upper</span><strong>3.50–4.49</strong></div>
+        <div class="degree-item"><span>Second Class Lower</span><strong>2.40–3.49</strong></div>
+        <div class="degree-item"><span>Third Class Honours</span><strong>1.50–2.39</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="department-section" id="siwes">
 <div class="section-heading"><span>Industrial Training</span><h2>Industrial Training Structure</h2><p>The prospectus places the SIWES components in the 300 Level course structure. The course codes, units and assessment components are listed under 300 Level in the course tables above.</p></div>
 </section>
@@ -461,37 +517,6 @@ footer{border-top:1px solid var(--border)}
 <section class="department-section">
 <div class="section-heading"><span>Programme Unit Summary</span><h2>Minimum Course Unit Summary</h2><p>The prospectus contains conflicting 3-year programme totals. The detailed figures and reconciliation note are retained in the programme structure section above; confirm the official total with the department before relying on it.</p></div>
 </section>
-
-<section class="department-section" id="staff"><div class="section-heading"><span>19.1 · List of Staff in the Department</span><h2>Department Staff</h2></div><div class="section-heading" style="margin-top:20px"><h2>Academic Staff</h2></div><div class="table-wrap"><table class="course-table"><thead><tr><th>S/N</th><th>Name</th><th>Area of Specialization</th><th>Discipline</th><th>Qualification</th><th>Rank</th></tr></thead><tbody>
-<tr><td>1</td><td>Dr. Ednah O. ALIYU</td><td>Biometrics, Formal Methods &amp; NLP</td><td>Computer Science</td><td>B.Tech. (Minna), M.Tech. Ph.D (Akure)</td><td>Senior Lecturer &amp; Ag. HOD</td></tr>
-<tr><td>2</td><td>Prof. Sunday O. OLATUNJI</td><td>Artificial Intelligence</td><td>Computer Science</td><td>B.Sc. (Ado-Ekiti), M.Sc. (Ibadan), Ph.D. (Malaysia)</td><td>Professor</td></tr>
-<tr><td>3</td><td>Dr. Alaba O. AKINGBESOTE</td><td>Expert System and e-Mobile System</td><td>Computer Science</td><td>B.Sc. (Ago-Iwoye), M.Tech. (Akure), Ph.D (South Africa)</td><td>Reader</td></tr>
-<tr><td>4</td><td>Dr. Olusola O. AJAYI</td><td>Software Engineering &amp; Machine Learning</td><td>Computer Science</td><td>B.Sc. (Ilorin), M.Sc. Ph.D (Benin)</td><td>Reader</td></tr>
-<tr><td>5</td><td>Dr. Felix O. ARANUWA</td><td>Informatics, Biometrics &amp; Machine Learning</td><td>Computer Science</td><td>B.Sc. (Ado-Ekiti), M.Sc. (Ibadan), Ph.D. (Malaysia)</td><td>Reader</td></tr>
-<tr><td>6</td><td>Dr. Oluwafemi ORIOLA</td><td>Cyber Security, Data Mining and NNP</td><td>Computer Science</td><td>B.Sc. (Akungba), M.Sc. Ph.D. (Ibadan)</td><td>Reader</td></tr>
-<tr><td>7</td><td>Prof. Olatunbosun OLABODE</td><td>Database Mgt</td><td>Computer Science</td><td>B.Tech, M.Tech, Ph.D (FUTA)</td><td>Professor (Visiting)</td></tr>
-<tr><td>8</td><td>Prof. Gabriel B. IWASOKUN</td><td>Pattern Recognition</td><td>Computer Science</td><td>B.Tech, M.Tech, Ph.D (FUTA)</td><td>Professor (Visiting)</td></tr>
-<tr><td>9</td><td>Dr. David A. AKINWUMI</td><td>Network/Cyber Security</td><td>Computer Science</td><td>B.Sc (Ado-Ekiti), M.Tech, Ph.D (FUTA)</td><td>Senior Lecturer</td></tr>
-<tr><td>10</td><td>Dr. David B. ADEWOLE</td><td>Wireless Computing</td><td>Computer Science</td><td>B.Sc (Ife), M.Tech, Ph.D (Akure)</td><td>Senior Lecturer</td></tr>
-<tr><td>11</td><td>Dr. Folake AKINBOHUN</td><td>ICT</td><td>Computer Science</td><td>B.Sc, M.Sc, FUTA (Akure)</td><td>Senior Lecturer</td></tr>
-<tr><td>12</td><td>Dr. Oladele S. ADEOLA</td><td>Data Mining &amp; Intelligent Systems</td><td>Computer Science</td><td>B.Tech, M.Tech (Akure), Ph.D (Ogbomoso)</td><td>Senior Lecturer (Visiting)</td></tr>
-<tr><td>13</td><td>Omojokun G. AJU</td><td>Computer Networks and Security</td><td>Computer Science</td><td>B.Sc. (Sunderland), M.Sc. (Greenwich), Ph.D (Benin)</td><td>Senior Lecturer</td></tr>
-<tr><td>14</td><td>Samuel Oluwatayo OGUNLANA</td><td>Biometrics and Information Technology</td><td>Computer Science</td><td>B.Sc. (Ado-Ekiti), M.Tech, Ph.D (Akure)</td><td>Lecturer I</td></tr>
-<tr><td>15</td><td>Ayokunle IGE</td><td>Data Science &amp; HCI</td><td>Computer Science</td><td>B.Sc, M.Sc. (Akungba), Ph.D. (Malaysia)</td><td>Lecturer II</td></tr>
-<tr><td>16</td><td>Adewuyi ADEGBITE</td><td>Intelligent &amp; Information Systems</td><td>Computer Science</td><td>B.Sc, M.Sc, Ph.D. (OAU)</td><td>Lecturer II</td></tr>
-<tr><td>17</td><td>Taiwo.G OMOMULE</td><td>Data Science &amp; Machine Learning</td><td>Computer Science</td><td>B.Sc. (Akungba); M.Tech (Akure)</td><td>Lecturer II</td></tr>
-<tr><td>18</td><td>Oluwatosin, L. OGBEIDE</td><td>Artificial Intelligent</td><td>Computer Science</td><td>B.Sc, M.Sc. (Akungba)</td><td>Lecturer II</td></tr>
-<tr><td>19</td><td>Oluwole. A. AYEGBUSI</td><td>Software Engineering</td><td>Computer Science</td><td>B.Sc, (Akungba), M.Sc</td><td>Lecturer II</td></tr>
-<tr><td>20</td><td>Ayodeji O AKINWUMI</td><td>Network Security &amp; Information Systems</td><td>Computer Science</td><td>B.Sc, M.Sc (Akungba)</td><td>Lecturer II</td></tr>
-<tr><td>21</td><td>Olatunde David AKINROLABU</td><td>Data Science &amp; AI</td><td>Computer Science</td><td>B.Sc, M.Sc (Akungba)</td><td>Assistant Lecturer</td></tr>
-<tr><td>22</td><td>Bolu AKINGBESOTE</td><td>Data Science &amp; AI</td><td>Computer Science</td><td>B.Sc (Akungba)</td><td>Teaching Assistant</td></tr>
-</tbody></table></div>
-<div class="section-heading" style="margin-top:28px"><h2>Technical Staff</h2></div><div class="table-wrap"><table class="course-table"><thead><tr><th>S/N</th><th>Name</th><th>Qualification</th><th>Status</th></tr></thead><tbody>
-<tr><td>1</td><td>Jenyo V. OLOWOKERE</td><td>B.Eng Computer Engineering</td><td>Network Engineer</td></tr><tr><td>2</td><td>Akin, EBITIGHA</td><td>B.Sc. (Akungba)</td><td>System Analyst/Programmer I</td></tr><tr><td>3</td><td>Blessing OLOTUAH (Mrs)</td><td>B.Sc. (Akungba)</td><td>System Analyst/Programmer I</td></tr><tr><td>4</td><td>Femi OJO (Mr)</td><td>HND, (E/E), B.Sc (Owo)</td><td>Assistant Chief Technologist</td></tr><tr><td>5</td><td>Timothy O. OGBEYE</td><td>B.Sc, M.Sc (Akungba)</td><td>System Analyst I</td></tr><tr><td>6</td><td>Tosin OGUNLANA (Miss)</td><td>B.Sc, M.Sc (Owo)</td><td>System Analyst I</td></tr><tr><td>7</td><td>Isaac K. IBITOYE (Mr.)</td><td>B.Sc (Akungba)</td><td>System Analyst I</td></tr><tr><td>8</td><td>Margaret ILEKURA (Mrs)</td><td>SSC, GRADE II</td><td>Senior Lab Assistant</td></tr>
-</tbody></table></div>
-<div class="section-heading" style="margin-top:28px"><h2>Administrative Staff</h2></div><div class="table-wrap"><table class="course-table"><thead><tr><th>S/N</th><th>Name</th><th>Qualification</th><th>Status</th></tr></thead><tbody>
-<tr><td>1</td><td>Roseline. A. OMOTOSO (Miss)</td><td>B.Ed (Akungba); HND, OGT (Owo); Dip Data Processing, NABTEB, SSC</td><td>Senior Personal Secretary</td></tr><tr><td>2</td><td>Mathew. O. ADEYEMI (Mr)</td><td>B.A (Akungba); SSC</td><td>Senior Executive Officer</td></tr><tr><td>3</td><td>F.T. ABIDAKUN (Mrs)</td><td>B.Sc (Akungba); NABTEB</td><td>Senior Office Attendant</td></tr>
-</tbody></table></div></section>
 
 <section class="department-section" id="resources">
   <div class="section-heading">
