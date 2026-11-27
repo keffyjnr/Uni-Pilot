@@ -56,6 +56,34 @@
     const activeFile=location.pathname.split("/").pop()||"index.html";
     header.querySelectorAll(".up-study-nav-link[href]").forEach(a=>{if(a.getAttribute("href")===activeFile)a.classList.add("active");});
     let menu=header.querySelector("#navLinks"),overlay=header.querySelector("#menuOverlay"),btn=header.querySelector("#menuBtn");
+    // Preserve department page breadcrumbs inside the shared Study Hub-style drawer.
+    const pageBreadcrumb=document.querySelector("[data-menu-breadcrumb]");
+    if(pageBreadcrumb && !menu.querySelector(".menu-breadcrumb-group")){
+      const group=document.createElement("div");
+      group.className="menu-breadcrumb-group";
+      const heading=document.createElement("div");
+      heading.className="menu-breadcrumb-heading";
+      heading.textContent="PAGE NAVIGATION";
+      group.appendChild(heading);
+      pageBreadcrumb.querySelectorAll("a").forEach(source=>{
+        const link=document.createElement("a");
+        link.href=source.href;
+        link.textContent=source.textContent.trim();
+        link.className="menu-breadcrumb-link";
+        group.appendChild(link);
+      });
+      const current=pageBreadcrumb.lastElementChild;
+      if(current && current.tagName!=="A" && current.textContent.trim()){
+        const link=document.createElement("a");
+        link.href=location.pathname.split("/").pop() || location.href;
+        link.textContent=current.textContent.trim();
+        link.className="menu-breadcrumb-link current";
+        group.appendChild(link);
+      }
+      menu.appendChild(group);
+      pageBreadcrumb.remove();
+    }
+
     let savedScrollY=0,bodyPosition="",bodyTop="",bodyWidth="",bodyOverflow="",htmlOverflow="";
     function closeMenu(){
       const wasOpen=menu.classList.contains("active")||overlay.classList.contains("active");
